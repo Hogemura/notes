@@ -1,0 +1,194 @@
+\setcounter{chapter}{7}
+\chapter{代数的整数}
+\begin{screen}
+  \begin{thm} \label{B_normal_ring}
+    代数体の整数環は整閉整域である
+  \end{thm}
+\end{screen}
+\begin{proof}
+  $A$を整域，$K$を$A$の商体，$L/K$を有限次拡大とする．
+  $B$を$A$の$L$における整閉包とする．この時，$B$の商体は$L$になる（命題8.1.14）．
+  $C$を$L$における$B$の整閉包とする．ここで，$B/A$が整拡大，$C/B$が整拡大なので，$C/A$も整拡大（命題8.1.4）となり，$C \subset B$となる．
+  また，$L$が$B$の商体であることを考えれば，$B \subset L$は明らかに$B$上整なので，$B \subset C$である．
+  以上から，$B = C$となり，$B$の商体$L$における$B$の整閉包は$B$なので$B$は整閉整域．
+  これを$A = \mathbb{Z}$，$K = \mathbb{Q}$，$L = K$，$B = \mathcal{O}_K$とすれば代数体$K$の整数環$ \mathcal{O}_K$が整閉整域である．
+\end{proof}
+
+\setcounter{section}{4}
+\section{$2$次体の整数環}
+\paragraph{例8.5.6}~
+\begin{screen}
+  同型で素イデアルが対応する
+\end{screen}
+\begin{proof}
+  $ \phi:A \to B$によって$A \simeq B$，$A$の素イデアルを$ \mathfrak{p}$とする．
+  $a, b \in A$に対し，$ab \in \mathfrak{p} \Rightarrow a, b \in \mathfrak{p}$．
+  従って，$ \phi(ab) = \phi(a) \phi(b) \in \phi( \mathfrak{p}) \Rightarrow \mathfrak{a}, \mathfrak{b} \in \phi( \mathfrak{p})$．
+  すなわち，$ \phi( \mathfrak{p})$は$B$における素イデアル．
+\end{proof}
+
+\begin{screen}
+  \begin{rem} \label{prime_decomposition}
+    代数体の整数環$A$のイデアル$I$の素イデアル分解の流れ
+  \end{rem}
+\end{screen}
+\begin{proof}
+  素イデアル$ \mathfrak{p}$が素数$p$の上にあるとすれば，系II-1.10.16，命題II-1.10.13から，$f$を$ \mathfrak{p}/p$の相対次数として
+  \[ \mathcal{N}( \mathfrak{p}) = \mathcal{N}_\mathbb{Z}( \N_{K/\mathbb{Q}}( \mathfrak{p})) = \mathcal{N}_\mathbb{Z}(p^f) = p^f. \]
+  $I$の素イデアル分解を$I = \mathfrak{p}_1{}^{a_1} \cdots \mathfrak{p}_{s}^{a_s}$とする．
+  中国式剰余定理から
+  \[A/( \mathfrak{p}_1{}^{a_1} \cdots \mathfrak{p}_s{}^{a_s}) \simeq A/\mathfrak{p}_1{}^{a_1} \times \cdots \times A/\mathfrak{p}_s{}^{a_s} \]
+  なので，$ \mathcal{N}(I) = \mathcal{N}( \mathfrak{p}_1)^{a_1} \cdots$．
+  $ \mathfrak{p}_1, \ldots$の下にある素数を$q_1, \ldots$とおく（$i \neq j$であれば$q_i \neq q_j$とする）．
+  今までの話から，$ \mathcal{N}_A(I) = q_1{}^{b_1} \cdots q_t{}^{b_t}$と表すことができる．
+
+  さらに，$A/I \simeq B/J$とする（$B$は必ずしも代数体でなくとも良い）．$ \mathcal{N}_A(I) = \mathcal{N}_B(J)$となる．
+  $ \mathcal{N}_B(J) = q_1^{b_1} \cdots q_t{}^{b_t}$と素因数分解されれば，$I$について，$q_1, \ldots, q_t$の上にある素イデアルで構成されることが分かる．
+
+  % 合ってる？
+  % $B/J$の素イデアル分解が体となった場合，つまり$A/I \simeq F_1 \times \cdots \times F_k$なら， \ref{field_product_number}と \ref{field_product_iso}から，$A/I$も$k$個の体の直積に同型：$A/I \simeq E_1 \times \cdots E_k$で，$E_1 \simeq F_1, \ldots$となる．
+\end{proof}
+
+\begin{screen}
+  例8.5.6の素イデアル分解
+\end{screen}
+\begin{proof}
+  $A/I \simeq \mathbb{F}_3 \times \mathbb{F}_5 \simeq A/\mathfrak{p}_1 \times A/\mathfrak{p}_2$となるので，$ \mathfrak{p}_1$は$3$の上に，$ \mathfrak{p}_2$は$5$の上にある．準同型：
+  \[
+  \begin{tikzcd}
+    A \arrow[r, two heads] \arrow[d, phantom, " \ni" sloped] & A/\mathfrak{p}_1 \times A/\mathfrak{p}_2 \arrow[r, equal] \arrow[d, phantom, "\ni" sloped] & A/\mathfrak{p}_1 \times A/\mathfrak{p}_2 \arrow[r, phantom, "\simeq"] \arrow[d, phantom, "\ni" sloped] & \mathbb{F}_3 \times \mathbb{F}_5 \arrow[d, phantom, "\ni" sloped] \\
+    a+b \sqrt{-5} \arrow[r, mapsto] & ([a+b \sqrt{-5}], [a+b \sqrt{-5}]) \arrow[r, equal] & ([ \overline{a}+ \overline{b} \sqrt{-5}], [ \overline{a}'+ \overline{b}' \sqrt{-5}]) \arrow[r, mapsto] & ( \overline{a}+ \overline{b}, \overline{a}')
+  \end{tikzcd}
+  \]
+  を考える．$ \overline{a}, \overline{b}$は$a, b$を$3$で割った余り，$ \overline{a}', \overline{b}'$は$a, b$を$5$で割った余り．
+  \[a+b \sqrt{-5} \in \mathfrak{p}_1 \Leftrightarrow(0, \bullet) \in A/\mathfrak{p}_1 \times A/\mathfrak{p}_2 \Leftrightarrow(0, \bullet) \in \mathbb{F}_3 \times \mathbb{F}_5 \Leftrightarrow \overline{a}+ \overline{b} = 0 \Leftrightarrow a+b \sqrt{-5} \in(3, \sqrt{-5}-1) \]
+  なので$ \mathfrak{p}_1 = (3, \sqrt{-5}-1)$．同様に
+  \[a+b \sqrt{-5} \in \mathfrak{p}_1 \Leftrightarrow( \bullet, 0) \in A/\mathfrak{p}_1 \times A/\mathfrak{p}_2 \Leftrightarrow( \bullet, 0) \in \mathbb{F}_3 \times \mathbb{F}_5 \Leftrightarrow \overline{a}' = 0 \Leftrightarrow a+b \sqrt{-5} \in( \sqrt{-5}) \]
+  なので$ \mathfrak{p}_2 = ( \sqrt{-5})$．
+\end{proof}
+
+\setcounter{section}{6}
+\section{不定方程式$x^3 + y^3 = 1$}
+\paragraph{定理8.7.1}~
+\begin{screen}
+  $(a+b)(a+b \omega)(a+b \omega^2) = \varepsilon c^3$の分解（p.270の最後とp.271の上）
+\end{screen}
+\begin{proof}
+  $a+b = \varepsilon_1 \alpha \lambda^{ \ord(c)-2}, a+b \omega = \varepsilon_2 \beta \lambda, a+b \omega^2 = \varepsilon_3 \gamma \lambda$とする．
+  ここで，$ \varepsilon_1, \varepsilon_2, \varepsilon_3$は単数とする．
+  さらに，$ \omega, \lambda \nmid \alpha, \beta, \gamma$とする．
+  また，$a+b, a+b \omega, a+b \omega^2$の2つづつの最大公約元は$ \lambda$なので，$ \alpha, \beta, \gamma$は互いに素であり，公約元は単元のうち$ \pm 1$のみ．
+  この時，$c = \lambda^{ \ord(c)}k$とすれば，$ \varepsilon k^3 = \varepsilon_1 \varepsilon_2 \varepsilon_3 \alpha \beta \gamma$．
+
+  $ \varepsilon$は単元なので，$k^3 = \varepsilon_1 \varepsilon_2 \varepsilon_3 \varepsilon^{-1} \alpha \beta \gamma$．
+  ここで，$ \varepsilon_1 \varepsilon_2 \varepsilon_3 \varepsilon^{-1}$は単元$ \set{ \pm 1, \pm \omega, \pm \omega^2}$のいずれか．
+
+  さらに，$k = a+b \omega \ (a, b \in \mathbb{Z})$として$k^3 = (a+b \omega)^3$が$ \omega$の倍数にならないことが初等的に証明できる．
+  よって，$k^3$は$ \omega$の倍数ではないので，$ \varepsilon_1 \varepsilon_2 \varepsilon_3 \varepsilon^{-1} \alpha \beta \gamma$も$ \omega$の倍数ではない．
+  よって，単元$ \varepsilon_1 \varepsilon_2 \varepsilon_3 \varepsilon^{-1}$は$ \pm 1$．
+
+  $ \mathbb{Z}[ \omega]$がEuclid環であることに注意し，$k$を素元分解し，$k = p_1{}^{t_1} \cdots p_n{}^{t_n}$とする．
+  ここで，$ \alpha, \beta$は互いに素なので，$p_i \mid \alpha, \beta$となることはない．
+  さらに$q_1 \mid \alpha, q_2 \mid \beta$によって$q_1q_2 = p_i$となる場合$p_i$が素元であるので，$q_1$は単元，$q_2 = p_i$となる（どうせ3乗するのでこれでいい）．よって，
+  \[ \alpha = p_1{}^{3t_1} \cdots p_u{}^{3t_u}, \beta = p_{u+1}{}^{3t_{u+1}} \cdots p_v{}^{3t_v}, \gamma = p_{v+1}{}^{3t_{v+1}} \cdots p_n{}^{3t_n}. \]
+  改めてこれらを$ \alpha^3, \beta^3, \gamma^3$として，示すべき分解が得られる．
+\end{proof}
+
+\setcounter{section}{10}
+\section{円分体の整数環}
+\begin{screen} \label{composite_field}
+  合成体$M \cdot N$は$M$の元の$N$上線形結合になる
+\end{screen}
+\begin{proof}
+  $k$を体，$A$を$k$代数，$S = (s_1, \ldots, s_n) \subset A$を乗法的部分集合とする．
+  乗法的部分集合$S$で生成された部分$k$代数$k[S] = \set{f(s_1, \ldots, s_n) \mid f(x_1, \ldots, x_n) \in k[x_1, \ldots, x_n], s_i \in S }$で多項式$f(x_1, \ldots, x_n)$は各引数$x_1, \ldots, x_n$について$1$次で構わない．
+  なぜなら，$x_ix_j{}^2$の様な項があったらそれは部分$k$代数では$s_1s_j{}^2 = s_c$となり，$x_c$の$1$次式になるから．
+  よって，乗法的部分集合$S$で生成された部分$k$代数は$k[S] = \set{ \sum_ik_is_i | k_i \in k, s_i \in S}$と線形結合になる．
+
+  合成体$M(N)$は
+  \[M(N) = \set{f(s_1, \ldots, s_n)/g(s_1, \ldots, s_n) \mid f(x_1, \ldots, x_n), g(x_1, \ldots, x_n) \in M[x_1, \ldots, x_n], s_i \in N} \]
+  となるが，上と同様の考察をすれば$f(x_1, \ldots, x_n), g(x_1, \ldots, x_n)$は引数$x_1, \ldots, x_n$に対し$1$次で構わない．よって合成体は次の様になる：
+  \[ \Set{ \sum_im_in_i/\sum_im'_in'_i | m_i, m'_i \in M, n_i, n'_i \in N}. \]
+
+  系7.1.14から，$M(N)/M$が体の代数拡大，$N \in M(N)$なので，$M[N]$は体．合成体
+  \[M(N) = N(M) = \Set{ \sum_im_in_i/\sum_im'_in'_i | m_i, m'_i \in M, n_i, n'_i \in N} \]
+  は$M[N] = \set{ \sum_im_in_i| m_i \in M, n_i \in N}$の商体である．
+  $M[N]$は体なので，その商体$M(N)$と一致する．よって，$M(N) = M[N] = \set{ \sum_im_in_i| m_i \in M, n_i \in N}$．
+\end{proof}
+
+\begin{screen} \label{composite_of_Galois}
+  （完全体の）Galois拡大の合成体がGalois拡大である
+\end{screen}
+\begin{proof}
+  $K$を完全体，$M/K$，$N/K$をGalois拡大とする．命題7.4.13から$M = K( \alpha)$，$N = K( \beta)$となり，上の話から$M \cdot N = K( \alpha, \beta)$．
+  $M/K$は正規拡大なので$ \alpha$の$K$上共軛は$M$に含まれ，同様に$ \beta$の$K$上共軛は$N$に含まれる．
+  よって$ \alpha, \beta$の共軛は$M \cdot N$に含まれる．よって系7.3.10から$M \cdot N/K$は正規拡大．
+  $K$は完全体なので$M \cdot N/K$は分離拡大．以上から$M \cdot N/K$はGalois拡大．
+\end{proof}
+
+\paragraph{補題8.11.19}~
+\begin{screen}
+  $ \mathbb{Q}( \zeta_p)$が$ \pm \zeta_p{}^{r}$以外の$1$の冪根をもてば，$ \zeta_4, \zeta_{p^d}, \zeta_q$のいずれかを含む（p.291の真ん中ら辺）
+\end{screen}
+\begin{proof}
+  奇素数$p \geq 5$とする．
+  $4$以上の整数は，$p^d \ (d \in \mathbb{N})$の倍数か$4$の倍数か$p$と互いに素な奇素数$q$の倍数．
+  なぜなら，もし$q$の倍数でなければ$2^k, p^l \ (k, l \in \mathbb{N}, k \geq 2)$の形であり，これらはそれぞれ$4$の倍数，$p^d$の倍数．
+  よって，$ \mathbb{Q}( \zeta_p)$が$ \pm \zeta_p{}^{r}$以外の$1$の冪根をもてば，$ \zeta_4, \zeta_{p^d}, \zeta_q$のいずれかを含む．
+\end{proof}
+
+\chapter{$p$進数}
+\section{$p$進数とHenselの補題}
+\paragraph{定理9.1.26}~
+\begin{screen}
+  $p$進整数環$ \mathbb{Z}_p: = \set{x \in \mathbb{Q}_p| |x|_p \leq 1}$はDedekind環
+\end{screen}
+\begin{proof}
+  定理6.1.6から単項イデアル整域は一意分解環で，命題8.1.8から一意分解環は正規環なので，$ \mathbb{Z}_p$は正規環．
+  例6.8.35から単項イデアル整域はNoether環なので，$ \mathbb{Z}_p$はNoether環．
+  $ \mathbb{Z}_p$は単項イデアル整域なので命題6.6.12から，$(0)$でない任意の素イデアルが極大イデアルであることが言える．
+  よって，$ \mathbb{Z}_p$はDedekind環となる．
+\end{proof}
+
+\begin{screen}
+  $p$進整数の距離が$1$未満であれば$ \mathbb{Z}_p$の単数である
+\end{screen}
+\begin{proof}
+  $x \in \mathbb{Z}_p$の$p$進展開
+  \[x = a_0+pa_1+ \cdots+p^na_n+ \cdots \ (a_i \in \set{0, \ldots, p-1}) \]
+  で$a_0 \neq 0$ならば$z \in \mathbb{Z}_p \setminus p \mathbb{Z}_p$．
+  $ \mathbb{Z}_p$は$p \mathbb{Z}_p$を極大イデアルとする離散付値環なので命題6.5.8から$x \in \mathbb{Z}_p^ \times$．
+\end{proof}
+
+\paragraph{命題9.1.31}~
+\begin{screen}
+  同型$ \mathbb{Z}_p/p \mathbb{Z}_p \simeq \mathbb{Z}/p \mathbb{Z} = \mathbb{F}_p$の存在
+\end{screen}
+\begin{proof}
+  $x \in \mathbb{Z}_p$の$p$進展開
+  \[x = a_0+pa_1+ \cdots+p^na_n+ \cdots \ (a_i \in \set{0, \ldots, p-1}) \]
+  を考えると，$ \mathbb{Z}_p/p \mathbb{Z}_p \ni a_0+p \mathbb{Z}_p$となる．
+  自然な準同型$ \phi: \mathbb{Z}_p/p \mathbb{Z}_p \ni a_0+p \mathbb{Z}_p \mapsto a_0 \in \mathbb{Z}/\mathbb{Z}_p$によって同型が得られる．
+  同様に考えれば，$x \in \mathbb{Q}_p$の$p$進展開
+  \[x = p^n(a_0+pa_1+ \cdots+p^na_n+ \cdots) \ (a_i \in \set{0, \ldots, p-1}) \]
+  に対しても，
+  \[p^n \mathbb{Z}_p/p^m \mathbb{Z}_p \ni p^n(a_0+ \cdots+p^{m-n-1}a_{m-n-1})+p^m \mathbb{Z}_p \mapsto p^n(a_0+ \cdots+p^{m-n-1}a_{m-n-1}) \in p^n \mathbb{Z}/p^m \mathbb{Z} \]
+  が同型となる．
+\end{proof}
+
+\section{$2$次形式とHilbert記号}
+\paragraph{定理9.2.8}~
+\begin{screen}
+  $( \mathbb{Q}_p^ \times: \N_{ \mathbb{Q}_p( \sqrt{c})/\mathbb{Q}_p}) \leq 2$
+\end{screen}
+\begin{proof}
+  $c \in \mathbb{Z}_p^ \times$に対し，体拡大$ \mathbb{Q}_p( \sqrt{c})$を考える．
+  Henselの補題から，任意の$e \in \mathbb{Q}_p^ \times$に対し，$x^2-cy^2 = e$を満たす$x, y \in \mathbb{Z}_p$が存在する．
+  よって$ \N_{ \mathbb{Q}_p( \sqrt{c})/\mathbb{Q}_p}(x+ \sqrt{c}y) = e \in \N_{ \mathbb{Q}_p( \sqrt{c})/\mathbb{Q}_p}$なので，$ \mathbb{Z}_p^ \times \subset \N_{ \mathbb{Q}_p( \sqrt{c})/\mathbb{Q}_p}$．
+  よって，
+  \[a_0+pa_1+ \cdots+p^na_n+ \cdots \in \N_{ \mathbb{Q}_p( \sqrt{c})/\mathbb{Q}_p} \ (a_0 \neq0, a_i \in \set{0, \ldots, p-1}). \]
+  $ \N_{ \mathbb{Q}_p( \sqrt{c})/\mathbb{Q}_p}(p) = p^2$なので，$p^2 \in \N_{ \mathbb{Q}_p( \sqrt{c})/\mathbb{Q}_p}$．
+  また，$ \N_{ \mathbb{Q}_p( \sqrt{c})/\mathbb{Q}_p}$は$ \mathbb{Q}_p^ \times$の部分群となるので，$p^{2k}(a_0+pa_1+ \cdots) \in \N_{ \mathbb{Q}_p( \sqrt{c})/\mathbb{Q}_p} \ (a_0 \neq 0, k \in \mathbb{Z})$．
+  よって，$ \mathbb{Q}_p^ \times/\N_{ \mathbb{Q}_p( \sqrt{c})/\mathbb{Q}_p}$の完全代表系は$ \set{1, p}$（もしくは$ \set{1}$）．
+  よって，$( \mathbb{Q}_p^ \times: \N_{ \mathbb{Q}_p( \sqrt{c})/\mathbb{Q}_p}) \leq 2$．
+\end{proof}

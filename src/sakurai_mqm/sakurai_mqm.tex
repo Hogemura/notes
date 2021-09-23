@@ -1,0 +1,627 @@
+\documentclass[a4paper]{ltjsreport}
+\usepackage[hiragino-pro]{luatexja-preset}
+\usepackage{../hogehoge}
+\renewcommand{\prechaptername}{Chapter}
+\renewcommand{\postchaptername}{}
+\begin{document}
+\chapter*{Modern Quantum Mechanics (Sakurai and Napolitano)}
+使用しているのはsecond edition．演習問題はサボった．そのうちやるw
+
+\chapter{Fundamental Concepts}
+\paragraph{(1.7.20)}
+$\bra{ x'} p^n \ket{\alpha} = (-i\hbar)^n\nabla'^n \braket{ x' | \alpha}$は大事
+
+\setcounter{chapter}{2}
+\chapter{Theory of Angular Momentum}
+\paragraph{(3.11.19), (3.11.23)}
+(3.5.49)
+
+\paragraph{角運動量の合成}
+2種類の角運動量$\boldsymbol{J}_1$, $\boldsymbol{J}_2$を考える．
+$\boldsymbol{J} = \boldsymbol{J}_1 \otimes 1 + 1 \otimes \boldsymbol{J}_2$とする．
+このとき，2種類の同時固有函数を考える．すなわち
+\begin{enumerate}[label=ef \arabic*.]
+  \item\label{ef1} $\boldsymbol{J}_1{}^2$, $\boldsymbol{J}_2{}^2$, $J_{1z}$, $J_{2z}$の同時固有函数$\ket{j_1j_2; m_1m_2}$：
+  \begin{align}
+    \begin{split}
+      (\boldsymbol{J}_1{}^2 \otimes 1) \ket{j_1j_2; m_1m_2} & = j_1(j_1 + 1) \ket{j_1j_2; m_1m_2} , \\
+      (1 \otimes \boldsymbol{J}_2{}^2) \ket{j_1j_2; m_1m_2} & = j_2(j_2 + 1) \ket{j_1j_2; m_1m_2} , \\
+      (J_{1z} \otimes 1) \ket{j_1j_2; m_1m_2} & = m_1 \ket{j_1j_2; m_1m_2} , \\
+      (1 \otimes J_{2z}) \ket{j_1j_2; m_1m_2} & = m_2 \ket{j_1j_2; m_1m_2} .
+    \end{split}
+  \end{align}
+
+  \item $\boldsymbol{J}_1{}^2$, $\boldsymbol{J}_2{}^2$, $\boldsymbol{J}^2$, $J_z$の同時固有函数$\ket{j_1j_2; jm}$：
+  \begin{align}
+    \begin{split}
+      (\boldsymbol{J}_1{}^2 \otimes 1) \ket{j_1j_2; jm} & = j_1(j_1 + 1) \ket{j_1j_2; jm} , \\
+      (1 \otimes \boldsymbol{J}_2{}^2) \ket{j_1j_2; jm} & = j_2(j_2 + 1) \ket{j_1j_2; jm} , \\
+      \boldsymbol{J}^2 \ket{j_1j_2; jm} & = j(j + 1) \ket{j_1j_2; jm} , \\
+      J_z \ket{j_1j_2; jm} & = m \ket{j_1j_2; jm} .
+    \end{split}
+  \end{align}
+\end{enumerate}
+
+同時固有函数\ref{ef1}は容易に構成できる．すなわち，$\boldsymbol{J}_1{}^2$, $J_{1z}$の同時固有函数$\ket{j_1m_1}$：
+\begin{align}
+  \boldsymbol{J}_1{}^2 \ket{j_1m_1} & = j_1(j_1 + 1) \ket{j_1m_1} , \\
+  J_{1z} \ket{j_1m_1} & = m_1 \ket{j_1m_1}
+\end{align}
+及び$\boldsymbol{J}_2{}^2$, $J_{2z}$の同時固有函数$\ket{j_2m_2}$：
+\begin{align}
+  \boldsymbol{J}_2{}^2 \ket{j_2m_2} & = j_2(j_2 + 1) \ket{j_1m_1} , \\
+  J_{2z} \ket{j_2m_2} & = m_2 \ket{j_2m_2}
+\end{align}
+が与えられていれば，
+\begin{align}
+  \ket{j_1j_2; m_1m_2} = \ket{j_1m_1} \otimes \ket{j_2m_2}
+\end{align}
+とすればよい．
+
+$j_1$, $j_2$を固定する（これによって部分空間が得られる）．$\ket{j_1j_2; m_1m_2}$, $\ket{j_1j_2; jm}$はこの部分空間の基底となるので，
+\begin{align}
+  \sum_{m_1}\sum_{m_2} \ket{j_1j_2; m_1m_2}\bra{j_1j_2; m_1m_2} = 1 .
+\end{align}
+従って，
+\begin{align}
+  \ket{j_1j_2; jm} = \sum_{m_1}\sum_{m_2} \ket{j_1j_2; m_1m_2} \braket{j_1j_2; m_1m_2 | j_1j_2; jm}
+\end{align}
+が成立する．
+
+\begin{screen}
+  \begin{dfn}
+    $\braket{j_1j_2; m_1m_2 | j_1j_2; jm}$をClebsch-Gordan係数と呼ぶ．
+  \end{dfn}
+\end{screen}
+
+\begin{screen}
+  \begin{thm}
+    Clebsch-Gordan係数$\braket{j_1j_2; m_1m_2 | j_1j_2; jm}$は$m = m_1 + m_2$でない限り$0$となる．
+  \end{thm}
+\end{screen}
+
+例えば，電子の軌道角運動量とスピン角運動量の場合は$j_1 = l$，$j_2 = 1/2$．
+全角運動量の大きさが$j = l + 1/2$で，その$z$成分が$m$の函数を展開してみる．
+Clebsch-Gordan係数が非零なのは$(m_1, m_2) = (m \mp 1/2, \pm 1/2)$の場合のみなので，
+（$j_1j_2;$は省略して）
+\begin{align}
+  \begin{split}
+    \Ket{l + \frac{1}{2}, m} = \Ket{m - \frac{1}{2}, \frac{1}{2} } \Braket{ m - \frac{1}{2}, \frac{1}{2} | l + \frac{1}{2}, m }
+    + \Ket{m + \frac{1}{2}, -\frac{1}{2} } \Braket{ m + \frac{1}{2}, -\frac{1}{2} | l + \frac{1}{2}, m } .
+  \end{split}
+\end{align}
+
+\paragraph{2電子系}
+\subparagraph{1電子のスピン}
+まず，1電子のスピンについて考える．
+スピンの$z$成分$s_z$の固有函数を$\ket{+}$, $\ket{-}$とする：
+\[ s_z \ket{+} = \frac{1}{2} \ket{+} , \quad s_z \ket{-} = -\frac{1}{2} \ket{-} . \]
+固有函数の性質から
+\[ \braket{+|+} = \braket{-|-} = 1 , \quad \braket{+|-} = \braket{-|+} = 0 , \quad \ket{+}\bra{+} + \ket{-}\bra{-} = 1 . \]
+$s_x$, $s_y$, $s_z$は次のように書ける：
+\begin{align*}
+  s_x &= \frac{1}{2} \left( \ket{+}\bra{-} + \ket{-}\bra{+} \right) , \\
+  s_y &= \frac{i}{2} \left( \ket{-}\bra{+} - \ket{+}\bra{-} \right) , \\
+  s_z &= \frac{1}{2} \left( \ket{+}\bra{+} - \ket{-}\bra{-} \right) .
+\end{align*}
+さらに，
+\[ s_+ = s_x + is_y = \ket{+}\bra{-} , \quad s_- = s_x - is_y = \ket{-}\bra{+} \]
+とすれば，
+\[ s_+ \ket{+} = s_- \ket{-} = 0 , \quad s_- \ket{+} = \ket{-} , \quad s_+ \ket{-} = \ket{+} . \]
+
+\subparagraph{2電子のスピン}
+2電子のスピンを$\boldsymbol{s}_1$, $\boldsymbol{s}_2$で表す．合成スピンを
+\[ \boldsymbol{s} = \boldsymbol{s}_1 \otimes 1 + \boldsymbol{s}_2 \otimes 1 \]
+とする．合成スピンの$z$成分は
+\[ s_z = s_{1z} \otimes 1 + 1 \otimes s_{2z} \]
+で与えらえれ，その大きさは
+\begin{align*}
+  \boldsymbol{s}^2 &= s_{1x}{}^2 \otimes 1 + 1 \otimes s_{2x}{}^2 + 2 s_{1x} \otimes s_{2x} + \cdots \\
+  &= \boldsymbol{s}_1{}^2 \otimes 1 + 1 \otimes \boldsymbol{s}_2{}^2 + 2 s_{1z} \otimes s_{2z} + s_{1+} \otimes s_{2-} + s_{1-} \otimes s_{2+} \\
+\end{align*}
+となる．
+
+$\boldsymbol{s}^2$, $\boldsymbol{s}_z$の同時固有函数がClebsch-Gordan係数を使って求まるが，それの検算をしてみる．
+
+$\ket{+} \otimes \ket{+}$．
+\begin{align*}
+  s_z(\ket{+} \otimes \ket{+}) &= (s_{1z} \otimes 1)(\ket{+} \otimes \ket{+}) + (1 \otimes s_{2z})(\ket{+} \otimes \ket{+}) \\
+  &= \ket{+} \otimes \ket{+}
+\end{align*}
+なので，合成スピンの$z$成分は$1$．
+\begin{align*}
+  \boldsymbol{s}^2(\ket{+} \otimes \ket{+}) &= (\boldsymbol{s}_1{}^2 \otimes 1)(\ket{+} \otimes \ket{+}) + (1 \otimes \boldsymbol{s}_2{}^2)(\ket{+} \otimes \ket{+}) + 2 (s_{1z} \otimes s_{2z})(\ket{+} \otimes \ket{+})\\
+  & \qquad + (s_{1+} \otimes s_{2-})(\ket{+} \otimes \ket{+}) + s_{1-} \otimes s_{2+}(\ket{+} \otimes \ket{+}) \\
+  &= \frac{3}{4}(\ket{+} \otimes \ket{+}) + \frac{3}{4}(\ket{+} \otimes \ket{+}) + \frac{1}{2}(\ket{+} \otimes \ket{+}) \\
+  &= 2 (\ket{+} \otimes \ket{+})
+\end{align*}
+なので，スピンの大きさは$2=1(1+1)$．
+
+$\ket{-} \otimes \ket{-} $．
+\begin{align*}
+  s_z(\ket{-} \otimes \ket{-} ) &= (s_{1z} \otimes 1)(\ket{-} \otimes \ket{-} ) + (1 \otimes s_{2z})(\ket{-} \otimes \ket{-} ) \\
+  &= - \ket{-} \otimes \ket{-}
+\end{align*}
+なので，合成スピンの$z$成分は$-1$．
+\begin{align*}
+  \boldsymbol{s}^2(\ket{-} \otimes \ket{-} ) &= (\boldsymbol{s}_1{}^2 \otimes 1)(\ket{-} \otimes \ket{-} ) + (1 \otimes \boldsymbol{s}_2{}^2)(\ket{-} \otimes \ket{-} ) + 2 (s_{1z} \otimes s_{2z})(\ket{-} \otimes \ket{-} )\\
+  & \qquad + (s_{1+} \otimes s_{2-})(\ket{-} \otimes \ket{-} ) + s_{1-} \otimes s_{2+}(\ket{-} \otimes \ket{-} ) \\
+  &= \frac{3}{4}(\ket{-} \otimes \ket{-} ) + \frac{3}{4}(\ket{-} \otimes \ket{-} ) + \frac{1}{2}(\ket{-} \otimes \ket{-} ) \\
+  &= 2 (\ket{-} \otimes \ket{-} )
+\end{align*}
+なので，スピンの大きさは$2=1(1+1)$．
+
+$\ket{+} \otimes \ket{-} $．
+\begin{align*}
+  s_z(\ket{+} \otimes \ket{-} ) &= (s_{1z} \otimes 1)(\ket{+} \otimes \ket{-} ) + (1 \otimes s_{2z})(\ket{+} \otimes \ket{-} ) \\
+  &= 0
+\end{align*}
+なので，合成スピンの$z$成分は$0$．
+\begin{align*}
+  \boldsymbol{s}^2(\ket{+} \otimes \ket{-} ) &= (\boldsymbol{s}_1{}^2 \otimes 1)(\ket{+} \otimes \ket{-} ) + (1 \otimes \boldsymbol{s}_2{}^2)(\ket{+} \otimes \ket{-} ) + 2 (s_{1z} \otimes s_{2z})(\ket{+} \otimes \ket{-} )\\
+  & \qquad + (s_{1+} \otimes s_{2-})(\ket{+} \otimes \ket{-} ) + s_{1-} \otimes s_{2+}(\ket{+} \otimes \ket{-} ) \\
+  &= \frac{3}{4}(\ket{+} \otimes \ket{-} ) + \frac{3}{4}(\ket{+} \otimes \ket{-} ) - \frac{1}{2}(\ket{+} \otimes \ket{-} ) + \ket{-} \otimes \ket{+} \\
+  &= \ket{+} \otimes \ket{-} + \ket{-} \otimes \ket{+} .
+\end{align*}
+
+$\ket{-} \otimes \ket{+} $．
+\begin{align*}
+  s_z(\ket{-} \otimes \ket{+} ) &= (s_{1z} \otimes 1)(\ket{-} \otimes \ket{+} ) + (1 \otimes s_{2z})(\ket{-} \otimes \ket{+} ) \\
+  &= 0
+\end{align*}
+なので，合成スピンの$z$成分は$0$．
+\begin{align*}
+  \boldsymbol{s}^2(\ket{-} \otimes \ket{+} ) &= (\boldsymbol{s}_1{}^2 \otimes 1)(\ket{-} \otimes \ket{+} ) + (1 \otimes \boldsymbol{s}_2{}^2)(\ket{-} \otimes \ket{+} ) + 2 (s_{1z} \otimes s_{2z})(\ket{-} \otimes \ket{+} )\\
+  & \qquad + (s_{1+} \otimes s_{2-})(\ket{-} \otimes \ket{+} ) + s_{1-} \otimes s_{2+}(\ket{-} \otimes \ket{+} ) \\
+  &= \frac{3}{4}(\ket{-} \otimes \ket{+} ) + \frac{3}{4}(\ket{-} \otimes \ket{+} ) - \frac{1}{2}(\ket{-} \otimes \ket{+} ) + \ket{+} \otimes \ket{-} \\
+  &= \ket{-} \otimes \ket{+} + \ket{+} \otimes \ket{-} .
+\end{align*}
+
+後半2つは$\boldsymbol{s}^2$の固有函数ではないので，これらの線形結合を考える．
+\begin{align*}
+  s_z \frac{\ket{+} \otimes \ket{-} + \ket{-} \otimes \ket{+}}{\sqrt{2}} &= 0 , \\
+  \boldsymbol{s}^2 \frac{\ket{+} \otimes \ket{-} + \ket{-} \otimes \ket{+}}{\sqrt{2}} &= 2 \frac{\ket{+} \otimes \ket{-} + \ket{-} \otimes \ket{+}}{\sqrt{2}}
+\end{align*}
+なので，$(\ket{+} \otimes \ket{-} + \ket{-} \otimes \ket{+})/\sqrt{2}$はスピンの大きさが$2=1(1+1)$．
+\begin{align*}
+  s_z \frac{\ket{+} \otimes \ket{-} - \ket{-} \otimes \ket{+}}{\sqrt{2}} &= 0 , \\
+  \boldsymbol{s}^2 \frac{\ket{+} \otimes \ket{-} - \ket{-} \otimes \ket{+}}{\sqrt{2}} &= 0
+\end{align*}
+なので，$(\ket{+} \otimes \ket{-} - \ket{-} \otimes \ket{+})/\sqrt{2}$はスピンの大きさが$0=0(0+1)$．
+
+$\sqrt{2}$は規格化定数．実際，
+\begin{align*}
+  & (\bra{+} \otimes \bra{-} + \bra{-} \otimes \bra{+}) (\ket{+} \otimes \ket{-} + \ket{-} \otimes \ket{+}) \\
+  &= \braket{+|+} \otimes \braket{-|-} + \braket{-|-} \otimes \braket{+|+} \\
+  &= 2.
+\end{align*}
+
+\paragraph{(3.2.47)}
+単位ベクトル$\boldsymbol{n}$の周りに$\phi$だけ回転する時，スピノル$\chi$は
+\begin{align}
+  \chi\to\exp\left(-\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\chi
+\end{align}
+と変化する．この時，$\chi^\dagger\sigma_k\chi$は
+\[\chi^\dagger\sigma_k\chi\to\chi^\dagger\exp\left(\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\sigma_k\exp\left(-\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\chi\]
+となる．ここで出てきた
+\begin{align}
+  \exp\left(\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\sigma_k\exp\left(-\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)
+\end{align}
+を計算する．$\boldsymbol{\sigma}=(\sigma_1,\sigma_2,\sigma_3)$はPauli行列で
+\begin{align}
+  \sigma_1 =
+  \begin{pmatrix}
+    0 & 1 \\
+    1 & 0
+  \end{pmatrix}
+  ,\quad\sigma_2 =
+  \begin{pmatrix}
+    0 & -i \\
+    i & 0
+  \end{pmatrix}
+  ,\quad\sigma_3 =
+  \begin{pmatrix}
+    1 & 0 \\
+    0 & -1
+  \end{pmatrix}
+  \label{Pauli}
+\end{align}
+で与えられる．指数関数の部分はTaylor展開され，$(\boldsymbol{\sigma}\cdot\boldsymbol{n})^2=1$などを使うと，
+\begin{align}
+  \exp\left(-\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right) =
+  \begin{pmatrix}
+    \cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right) & -(in_x+n_y)\sin\left(\frac{\phi}{2}\right) \\
+    (-in_x+n_y)\sin\left(\frac{\phi}{2}\right) & \cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right)
+  \end{pmatrix}
+  \label{exp}
+\end{align}
+となる．また，３次元で$\boldsymbol{n}=(n_x,n_y,n_z)$の周りの$\phi$の回転は次の行列：
+\begin{align}
+  R=\left(
+  \begin{array}{ccc}
+    \cos\phi+n_x{}^2(1-\cos\phi) & n_x n_y(1-\cos\phi)-n_z\sin\phi & n_z n_x(1-\cos\phi)+n_y\sin\phi \\
+    n_x n_y(1-\cos\phi)+n_z\sin\phi &  \cos\phi+n_y{}^2(1-\cos\phi) & n_y n_z(1-\cos\phi)-n_x\sin\phi \\
+    n_z n_x(1-\cos\phi)-n_y\sin\phi &  n_y n_z(1-\cos\phi)+n_x\sin\phi & \cos\phi+n_z{}^2(1-\cos\phi)
+  \end{array}
+  \right)
+  \label{Rodriguez}
+\end{align}
+で与えられる．
+
+まずは$\sigma_1$の計算から．\eqref{Pauli}\eqref{exp}から
+\begin{align}
+  \begin{split}
+    & \exp\left(\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\sigma_1\exp\left(-\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\\
+    & =
+    \begin{pmatrix}
+      \cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right) & (in_x+n_y)\sin\left(\frac{\phi}{2}\right) \\
+      (in_x-n_y)\sin\left(\frac{\phi}{2}\right) & \cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right)
+    \end{pmatrix}
+    \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix}
+    \\
+    & \qquad\times
+    \begin{pmatrix}
+      \cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right) & -(in_x+n_y)\sin\left(\frac{\phi}{2}\right) \\
+      (-in_x+n_y)\sin\left(\frac{\phi}{2}\right) & \cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right)
+    \end{pmatrix}
+    \\
+    & =
+    \begin{pmatrix}
+      \cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right) & (in_x+n_y)\sin\left(\frac{\phi}{2}\right)\\
+      (in_x-n_y)\sin\left(\frac{\phi}{2}\right) & \cos\left(\frac{\phi}{2}\right)-i_z\sin\left(\frac{\phi}{2}\right)
+    \end{pmatrix}
+    \begin{pmatrix}
+      (-in_x+n_y)\sin\left(\frac{\phi}{2}\right) & \cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right)\\
+      \cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right) & -(in_x+n_y)\sin\left(\frac{\phi}{2}\right)
+    \end{pmatrix}
+    \\
+    & =
+    \begin{pmatrix}
+      A_{11} & A_{12}\\
+      A_{12}^* & -A_{12}
+    \end{pmatrix}
+    .
+  \end{split}
+  \label{comp_1}
+\end{align}
+成分を計算すれば，
+\begin{align}
+  \begin{split}
+    A_{11} & = \left[\cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right)\right](-in_x+n_y)\sin\left(\frac{\phi}{2}\right)+(in_x+n_y)\sin\left(\frac{\phi}{2}\right)\left[\cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right)\right]\\
+    & = n_y\sin\phi+n_zn_x(1-\cos\phi),\\
+    A_{12} & = \left[\cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right)\right]^2-(in_x+n_y)^2\sin^2\left(\frac{\phi}{2}\right)\\
+    & = \cos\phi+n_x{}^2(1-\cos\phi)-in_xn_y(1-\cos\phi)+in_z\sin\phi.
+  \end{split}
+  \label{a_1}
+\end{align}
+ところで，\eqref{Pauli}\eqref{exp}\eqref{Rodriguez}\eqref{a_1}から
+\begin{align}
+  R_{11}\sigma_1+R_{12}\sigma_2+R_{13}\sigma_3 =
+  \begin{pmatrix}
+    A_{11} & A_{12}\\
+    A_{12}^* & -A_{11}
+  \end{pmatrix}
+  \label{R_comp_1}
+\end{align}
+となる．\eqref{comp_1}\eqref{R_comp_1}から
+\begin{align}
+  \exp\left(\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\sigma_1\exp\left(-\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)=\sum_lR_{1l}\sigma_l.\label{result_1}
+\end{align}
+
+次に$\sigma_2$の計算．\eqref{Pauli}\eqref{exp}から
+\begin{align}
+  \begin{split}
+    & \exp\left(\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\sigma_2\exp\left(-\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\\
+    & =
+    \begin{pmatrix}
+      \cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right) & (in_x+n_y)\sin\left(\frac{\phi}{2}\right) \\
+      (in_x-n_y)\sin\left(\frac{\phi}{2}\right) & \cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right)
+    \end{pmatrix}
+    \begin{pmatrix}
+      0 & -1 \\
+      i & 0
+    \end{pmatrix}
+    \\
+    & \qquad\times
+    \begin{pmatrix}
+      \cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right) & -(in_x+n_y)\sin\left(\frac{\phi}{2}\right) \\
+      (-in_x+n_y)\sin\left(\frac{\phi}{2}\right) & \cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right)
+    \end{pmatrix}
+    \\
+    & =
+    \begin{pmatrix}
+      \cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right) & (in_x+n_y)\sin\left(\frac{\phi}{2}\right) \\
+      (in_x-n_y)\sin\left(\frac{\phi}{2}\right) & \cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right) \\
+    \end{pmatrix}
+    \\
+    & \qquad\times
+    \begin{pmatrix}
+      (-n_x-in_y)\sin\left(\frac{\phi}{2}\right) & -i\cos\left(\frac{\phi}{2}\right)+n_z\sin\left(\frac{\phi}{2}\right) \\
+      i\cos\left(\frac{\phi}{2}\right)+n_z\sin\left(\frac{\phi}{2}\right) & -(-n_x-in_y)\sin\left(\frac{\phi}{2}\right) \\
+    \end{pmatrix}
+    \\
+    & =
+    \begin{pmatrix}
+      B_{11} & B_{12}\\
+      B_{12}^* & -B_{11}
+    \end{pmatrix}
+    .
+  \end{split}
+  \label{comp_2}
+\end{align}
+成分を計算すれば，
+\begin{align}
+  \begin{split}
+    B_{11} & = \left[\cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right)\right](-n_x-in_y)\sin\left(\frac{\phi}{2}\right)+(in_x+n_y)\sin\left(\frac{\phi}{2}\right)\left[i\cos\left(\frac{\phi}{2}\right)+n_z\sin\left(\frac{\phi}{2}\right)\right]\\
+    & = n_yn_z(1-\cos\phi)-n_x\sin\phi,\\
+    B_{12} & = \left[\cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right)\right]\left[-i\cos\left(\frac{\phi}{2}\right)+n_z\sin\left(\frac{\phi}{2}\right)\right] \\
+    & \qquad - (in_x+n_y)\sin\left(\frac{\phi}{2}\right)(-n_x-in_y)\sin\left(\frac{\phi}{2}\right)\\
+    & = n_xn_y(1-\cos\phi)+n_z\sin\phi-i\cos\phi-in_y{}^2(1-\cos\phi).
+  \end{split}
+  \label{b_1}
+\end{align}
+ところで，\eqref{Pauli}\eqref{exp}\eqref{Rodriguez}\eqref{b_1}から
+\begin{align}
+  R_{21}\sigma_1+R_{22}\sigma_2+R_{23}\sigma_3 =
+  \begin{pmatrix}
+    B_{11} & B_{12}\\
+    B_{12}^* & -B_{11}
+  \end{pmatrix}
+  \label{R_comp_2}
+\end{align}
+となる．\eqref{comp_2}\eqref{R_comp_2}から
+\begin{align}
+  \exp\left(\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\sigma_2\exp\left(-\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)=\sum_lR_{2l}\sigma_l.\label{result_2}
+\end{align}
+
+最後に$\sigma_3$の計算．\eqref{Pauli}\eqref{exp}から
+\begin{align}
+  \begin{split}
+    & \exp\left(\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\sigma_3\exp\left(-\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\\
+    & =
+    \begin{pmatrix}
+      \cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right) & (in_x+n_y)\sin\left(\frac{\phi}{2}\right) \\
+      (in_x-n_y)\sin\left(\frac{\phi}{2}\right) & \cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right)
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & -1
+    \end{pmatrix}
+    \\
+    & \qquad\times
+    \begin{pmatrix}
+      \cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right) & -(in_x+n_y)\sin\left(\frac{\phi}{2}\right) \\
+      (-in_x+n_y)\sin\left(\frac{\phi}{2}\right) & \cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right)
+    \end{pmatrix}
+    \\
+    & =
+    \begin{pmatrix}
+      \cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right) & (in_x+n_y)\sin\left(\frac{\phi}{2}\right) \\
+      (in_x-n_y)\sin\left(\frac{\phi}{2}\right) & \cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right)
+    \end{pmatrix}
+    \\
+    & \qquad\times
+    \begin{pmatrix}
+      \cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right) & -(in_x+n_y)\sin\left(\frac{\phi}{2}\right) \\
+      -(-in_x+n_y)\sin\left(\frac{\phi}{2}\right) & -\cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right)
+    \end{pmatrix}
+    \\
+    & =
+    \begin{pmatrix}
+      C_{11} & C_{12}\\
+      C_{12}^* & -C_{11}
+    \end{pmatrix}
+    .
+  \end{split}
+  \label{comp_3}
+\end{align}
+成分を計算すれば，
+\begin{align}
+  \begin{split}
+    C_{11} & = \left[\cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right)\right]\left[\cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right)\right]-(in_x+n_y)\sin\left(\frac{\phi}{2}\right)(-in_x+n_y)\sin\left(\frac{\phi}{2}\right)\\
+    & = \cos\phi+n_z{}^2(1-\cos\phi),\\
+    C_{12} & = -\left[\cos\left(\frac{\phi}{2}\right)+in_z\sin\left(\frac{\phi}{2}\right)\right](in_x+n_y)\sin\left(\frac{\phi}{2}\right) \\
+    &\qquad + (in_x+n_y)\sin\left(\frac{\phi}{2}\right)\left[-\cos\left(\frac{\phi}{2}\right)-in_z\sin\left(\frac{\phi}{2}\right)\right]\\
+    & = n_zn_x(1-\cos\phi)n_y\sin\phi-in_yn_z(1-\cos\phi)-in_x\sin\phi.
+  \end{split}
+  \label{c_1}
+\end{align}
+ところで，\eqref{Pauli}\eqref{exp}\eqref{Rodriguez}\eqref{c_1}から
+\begin{align}
+  R_{31}\sigma_1+R_{32}\sigma_2+R_{33}\sigma_3 =
+  \begin{pmatrix}
+    C_{11} & C_{12} \\
+    C_{12}^* & -C_{11}
+  \end{pmatrix}
+  \label{R_comp_3}
+\end{align}
+となる．\eqref{comp_3}\eqref{R_comp_3}から
+\begin{align}
+  \exp\left(\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\sigma_3\exp\left(-\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)=\sum_lR_{3l}\sigma_l.\label{result_3}
+\end{align}
+
+\eqref{result_1}\eqref{result_2}\eqref{result_3}から
+\[\exp\left(\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)\sigma_k\exp\left(-\frac{i\boldsymbol{\sigma}\cdot\boldsymbol{n}\phi}{2}\right)=\sum_lR_{kl}\sigma_l.\]
+
+\chapter{Symmetry in Quantum Mechanics}
+\paragraph{変換とか}
+\subparagraph{定義}
+ケットに対する微小変換を
+\[ \ket{\psi'} = U(\epsilon) \ket{\psi} \]
+と定義する．$U$はユニタリ演算子（下の計算でノルムを考えれば直ちに分かる）．
+\[ \bra{\psi} A \ket{\psi} \to \bra{\psi'} A \ket{\psi'} = \bra{\psi} U^\dagger A U \ket{\psi} = \bra{\psi} U^{-1} A U \ket{\psi} \]
+なので，微小変換によって，\textbf{演算子}が
+\[ A \to U^{-1} A U \]
+に変化するとも考えることができる．微小変換$U(\epsilon)$を
+\[ U(\epsilon) = 1 - i \epsilon T \]
+と書く．ユニタリ演算子$T$を\textbf{生成子}と呼ぶ．
+\[ \delta A = U^{-1} A U - A = i \epsilon [T, A] \]
+となる．これを生成子の定義とすることもある．
+
+\subparagraph{空間並進}
+$\boldsymbol{t}$の向きに$\epsilon$進む空間並進を考える．
+これにより，$\delta x^\nu = \epsilon^\nu$となる．
+この変換の生成子は$\boldsymbol{t} \cdot \boldsymbol{P}$．実際，
+\[ i \epsilon [t^\mu P^\mu , X^\nu] = \epsilon t^\mu \delta^{\mu\nu} = \epsilon t^\nu = \delta x^\nu . \]
+
+\subparagraph{空間回転}
+$\boldsymbol{n}$を軸として$\epsilon$回る回転を考える．
+これにより，$\delta x^\nu = \epsilon (\boldsymbol{n} \times \boldsymbol{X})^\nu$となる．
+この変換の生成子は$\boldsymbol{n} \cdot \boldsymbol{L}$．実際
+\begin{align*}
+  i \epsilon [n^\mu L^\mu , X^\nu] &= i \epsilon n^\mu [\epsilon^{\mu\rho\sigma} X^\rho P^\sigma , X^\nu]
+  = i \epsilon n^\mu \epsilon^{\mu\rho\sigma} X^\rho [P^\sigma , X^\nu]
+  = \epsilon n^\mu \epsilon^{\mu\rho\sigma} X^\rho \delta^{\sigma^\nu}
+  = \epsilon n^\mu \epsilon^{\mu\rho\nu} X^\rho
+  = \epsilon (\boldsymbol{n} \times \boldsymbol{X})^\nu \\
+  &= \delta x^\nu .
+\end{align*}
+
+\subparagraph{時間並進}
+時刻が$\epsilon$経過する変換を考える．これについては，生成子は$H$．
+実際，$\psi(t + \epsilon) = \psi(t) - i \epsilon H \psi(t)$．
+
+% COMBAK: (4.4.65), (4.4.66), (4.4.67)の導出が分からない．
+% COMBAK: p.298真ん中らへん．$\mathscr{D}^{(k)}_{00}(0,\pi,0) = (-1)^k$：(3.5.50)(3.5.51)(3.9.33)と矛盾するくね？
+
+\chapter{Approximation Methods}
+\paragraph{(5.2.13)}
+解くべき摂動方程式は
+\[(H_0 + \lambda V) \ket{l} = E \ket{l}.\]
+$\ket{l}$の摂動展開は
+\[\ket{l} = \ket{l^{(0)}} + \lambda \ket{l^{(1)}} + \cdots\]
+で$E$の摂動展開は
+\[E = E_D^{(0)} + \lambda E^{(1)} + \cdots\]
+とする．非摂動状態($\lambda = 0$)でエネルギー固有値$E_D^{(0)}$に属する状態を$\ket{m^{(0)}} ~ (m = 0, 1, \ldots)$とする：
+\[H_0 \ket{m^{(0)}} = E_D^{(0)} \ket{m^{(0)}}.\]
+$\ket{l}$は$\lambda \to 0$で$\ket{l^{(0)}}$になり，エネルギーが$E_D^{(0)}$になるので，
+$\ket{l^{(0)}}$は$\ket{m^{(0)}}$の線形結合となる：
+\[\ket{l^{(0)}} = \sum_{m \in D} \braket{m^{(0)} | l^{(0)}} \ket{m^{(0)}}.\]
+摂動をあらわに書けば
+\[(H_0 + \lambda V) (\ket{l^{(0)}} + \lambda \ket{l^{(1)}} + \cdots) = (E_D^{(0)} + \lambda E^{(1)} + \cdots) (\ket{l^{(0)}} + \lambda \ket{l^{(1)}} + \cdots).\]
+
+まずは$\lambda$の係数を比較して，
+\[V \ket{l^{(0)}} + H_0\ket{l^{(1)}} = E_D^{(0)} \ket{l^{(1)}} + E^{(1)} \ket{l^{(0)}}.\]
+$\ket{l^{(0)}}$を展開して，
+\[\sum_{m \in D} \braket{m^{(0)} | l^{(0)}} V \ket{m^{(0)}} + H_0\ket{l^{(1)}} = E_D^{(0)} \ket{l^{(1)}} + E^{(1)} \sum_{m \in D} \braket{m^{(0)} | l^{(0)}} \ket{m^{(0)}}.\]
+両辺に$\bra{m'^{(0)}}$をかけて，
+\[\sum_{m \in D} \braket{m^{(0)} | l^{(0)}} \bra{m'^{(0)}} V \ket{m^{(0)}} + \bra{m'^{(0)}} H_0 \ket{l^{(1)}} = E_D^{(0)} \braket{m'^{(0)} | l^{(1)}} + E^{(1)} \sum_{m \in D} \braket{m^{(0)} | l^{(0)}} \braket{m'^{(0)} | m^{(0)}}.\]
+$\braket{m'^{(0)} | m^{(0)}} = \delta_{mm'}$なので
+\[\sum_{m \in D} V_{m'm} \braket{m^{(0)} | l^{(0)}} + E_D^{(0)} \braket{m'^{(0)} | l^{(1)}} = E_D^{(0)} \braket{m'^{(0)} | l^{(1)}} + E^{(1)} \braket{m'^{(0)} | l^{(0)}}.\]
+従って，
+\[\sum_{m \in D} V_{m'm} \braket{m^{(0)} | l^{(0)}} = E^{(1)} \braket{m'^{(0)} | l^{(0)}}.\]
+あらわに書けば，
+\[
+\begin{pmatrix}
+  V_{11} & V_{12} & \cdots \\
+  V_{21} & V_{22} & \cdots \\
+  \vdots & \vdots & \ddots
+\end{pmatrix}
+\begin{pmatrix}
+  \braket{1^{(0)} | l^{(0)}} \\
+  \braket{2^{(0)} | l^{(0)}} \\
+  \vdots \\
+  \braket{g^{(0)} | l^{(0)}}
+\end{pmatrix}
+= E^{(1)}
+\begin{pmatrix}
+  \braket{1^{(0)} | l^{(0)}} \\
+  \braket{2^{(0)} | l^{(0)}} \\
+  \vdots \\
+  \braket{g^{(0)} | l^{(0)}}
+\end{pmatrix}
+\]
+となる．
+\[\sum_{m \in D} \bra{m'^{(0)}} V\ket{m^{(0)}} \braket{m^{(0)} | l^{(0)}} = E^{(1)} \braket{m'^{(0)} | l^{(0)}} \]
+だが，$P_0 = \sum_{m \in D} \ket{m^{(0)}} \bra{m^{(0)}}$なので，
+\[\bra{m'^{(0)}} VP_0 \ket{l^{(0)}} = E^{(1)} \braket{m'^{(0)} | l^{(0)}}.\]
+両辺に$\ket{m'^{(0)}}$をかけて$m' \in D$で和をとると，
+\[\sum_{m'\in D} \ket{m'^{(0)}} \bra{m'^{(0)}} VP_0 \ket{l^{(0)}} = E^{(1)} \sum_{m' \in D} \ket{m'^{(0)}} \braket{m'^{(0)} | l^{(0)}}.\]
+従って
+\[P_0VP_0P_0 \ket{l^{(0)}} = E^{(1)} P_0 \ket{l^{(0)}}.\]
+これは$P_0VP_0$の固有値問題となっている．従って，重解を含めて$g$個の固有ベクトル$P_0\ket{l^{(0)}_i}$とエネルギー固有値$v_i$が存在する：
+\[P_0VP_0P_0 \ket{l^{(0)}_i} = v_iP_0 \ket{l^{(0)}_i}.\]
+容易に分かるように，$\ket{l^{(0)}_i}$は正規直交系をなす：$\braket{l_i^{(0)} | l_j^{(0)}} = \delta_{ij}$．
+よって，
+\[(H_0 + \lambda P_0VP_0) P_0 \ket{l^{(0)}_i} = (E^{(0)}_D + \lambda v_i) P_0 \ket{l^{(0)}_i}.\]
+(5.2.3)から
+\[(E_i - E_D^{(0)} - \lambda P_0VP_0) P_0 \ket{l_i} =  \lambda P_0VP_1\ket{l_i}\]
+なので，$E_i = E_D^{(0)} + \lambda v_i + \lambda^2\Delta_i^{(2)} + \cdots$として，
+\[(\lambda v_i + \lambda^2 \Delta_i^{(2)} + \cdots - \lambda P_0VP_0) (P_0\ket{l^{(0)}_i} + \lambda P_0 \ket{l_i^{(1)}} + \cdots) = \lambda P_0V(P_0\ket{l^{(0)}_i} + \lambda P_0\ket{l_i^{(1)}} + \cdots).\]
+$P_1\ket{l^{(0)}_i} = P_1P_0\ket{l^{(0)}_i} = 0$に注意して，$\lambda^2$の係数を比較すれば，
+\[v_iP_0 \ket{l_1^{(0)}} - P_0VP_0 \ket{l_i^{(1)}} + \Delta_i^{(2)} P_0 \ket{l^{(0)}_i} = P_0VP_1 \ket{l_i^{(1)}}.\]
+(5.2.6)を代入して，
+\[ = P_0\sum_{k\not\in D} \frac{V \ket{k} \bra{k} V \ket{l^{(0)}_i}}{E_D^{(0)} - E_k^{(0)}}.\]
+$\bra{l_j^{(0)}}$をかけて，
+\[v_i \bra{l_j^{(0)}} P_0 \ket{l_i^{(1)}} - \bra{l_j^{(0)}} P_0VP_0 \ket{l_i^{(1)}} + \Delta_i^{(2)} \bra{l_j^{(0)}} P_0\ket{l^{(0)}_i} = \sum_{k\not\in D} \frac{\bra{l_j^{(0)}} V\ket{k} \bra{k} V\ket{l^{(0)}_i}}{E_D^{(0)}-E_k^{(0)}}.\]
+少し変形して
+\[(v_i-v_j) \bra{l_j^{(0)}} P_0 \ket{l_i^{(1)}} + \Delta_i^{(2)} \delta_{ij} = \sum_{k\not\in D} \frac{\bra{l_j^{(0)}} V\ket{k} \bra{k} V \ket{l^{(0)}_i}}{E_D^{(0)} - E_k^{(0)}}.\]
+$i = j$なら
+\[\Delta_i^{(2)} = \sum_{k\not\in D} \frac{\left\lvert \bra{k} V\ket{l^{(0)}_i}\right\rvert^2}{E_D^{(0)}-E_k^{(0)}}.\]
+$i\neq j$なら左から$\ket{l_j^{(0)}}$をかけて，
+\[\ket{l_j^{(0)}}\bra{l_j^{(0)}} P_0\ket{l_i^{(1)}} = \ket{l_j^{(0)}}\frac{1}{v_i-v_j} \sum_{k\not\in D} \frac{\bra{l_j^{(0)}} V\ket{k} \bra{k} V\ket{l^{(0)}_i}}{E_D^{(0)} - E_k^{(0)}}.\]
+$j\neq i$で和を取って，
+\[\sum_{j\neq i} \ket{l_j^{(0)}} \frac{1}{v_i-v_j} \sum_{k\not\in D} \frac{\bra{l_j^{(0)}} V\ket{k} \bra{k} V\ket{l^{(0)}_i}}{E_D^{(0)} - E_k^{(0)}} = \sum_{j\neq i} \ket{l_j^{(0)}}\bra{l_j^{(0)}} P_0 \ket{l_i^{(1)}}.\]
+$\ket{l_j^{(0)}}\bra{l_j^{(0)}} P_0\ket{l_i^{(1)}} = \ket{l_j^{(0)}} \braket{l_j^{(0)} | l_i^{(1)}}$で，$i = j$ならば$\braket{l_j^{(0)} | l_i^{(1)}} = 0$なので，
+\[\sum_{j\neq i} \ket{l_j^{(0)}} \bra{l_j^{(0)}} P_0 \ket{l_i^{(1)}} = \sum_j \ket{l_j^{(0)}} \bra{l_j^{(0)}} P_0 \ket{l_i^{(1)}} = P_0\ket{l_i^{(1)}}.\]
+（$\{\ket{l_j^{(0)}}\}$が完全系をなすのは縮退部分空間$D$において，であることに注意）以上から，
+\[P_0 \ket{l_i^{(1)}} = \sum_{j\neq i} \ket{l_j^{(0)}} \frac{1}{v_i-v_j} \sum_{k\not\in D} \frac{\bra{l_j^{(0)}} V \ket{k} \bra{k} V \ket{l^{(0)}_i}}{E_D^{(0)}-E_k^{(0)}}.\]
+
+\paragraph{(5.3.45)}
+(3.8.63)
+
+\paragraph{(5.3.50)}
+(3.8.39), (3.8.65)
+
+\paragraph{(5.6.43)}
+(2.6.38), (2.6.40), (2.7.68)
+
+\chapter{Scattering Theory}
+\paragraph{(6.3.3)}
+(6.2.14)
+
+\paragraph{(6.3.17)}
+(6.2.3), (6.2.14)
+
+\paragraph{(6.4.14)}
+(6.2.23)と
+\[\int_{-1}^1 P_l(x)P_{l'}(x)\,dx = \frac{2}{2l + 1} \delta_{ll'}.\]
+
+\paragraph{(6.4.17)}
+(6.4.41)
+
+\paragraph{(6.5.7)}
+(6.2.14)と$\boldsymbol{k}$が$ + \hat{\boldsymbol{z}}$の向きであることに注意．
+
+\paragraph{(6.5.19)}
+(6.4.41)
+
+\paragraph{(6.6.9)}
+(6.4.55)
+
+\paragraph{(6.6.31)}
+(6.6.13)
+
+\paragraph{(6.9.6)}
+(6.1.19)を$\rho(E_n) = mk'/\hbar^2(L/2\pi)^3\,d\Omega$，(6.1.20)を$w(i\to n) = mk'L^3/(2\pi)^2\hbar^3 \lvert T_{ni} \rvert^2\,d\Omega$として(6.1.22)が
+\[\frac{d\sigma}{d\Omega} = \frac{k'}{k} \left(\frac{mL^3}{2\pi\hbar^2} \right)^3\lvert \bra{\boldsymbol{k}', n} T \ket{ \boldsymbol{k}, 0}  \rvert^2.\]
+さらにBorn近似$T = V$とする．
+
+\chapter{Identical Particles}
+\paragraph{(7.3.9)}
+(3.8.12)(3.8.15)から$(\boldsymbol{S}_1 + \boldsymbol{S}_2)^2 = \boldsymbol{S}^2$の固有値はtripletが$2\hbar^2$；singletが$0$．
+$\boldsymbol{S}_1 \cdot \boldsymbol{S}_2 = (\boldsymbol{S}^2 - \boldsymbol{S}_1{}^2 - \boldsymbol{S}_1{}^2)/2$なので，従う．
+
+\paragraph{(7.6.16)}
+磁場の計算：
+\begin{align*}
+  \boldsymbol{B} & =  \boldsymbol{\nabla} \times \boldsymbol{A}(x, t) = \boldsymbol{\nabla} \times \sum_{\boldsymbol{k}, \lambda} \hat{\boldsymbol{e}}_{\boldsymbol{k}, \lambda} \boldsymbol{A}_{\boldsymbol{k}, \lambda}(\boldsymbol{x}, t) \\
+  & =  \sum_{\boldsymbol{k}, \lambda} \boldsymbol{\nabla} \times \hat{\boldsymbol{e}}_{\boldsymbol{k}, \lambda} \left[ \boldsymbol{A}_{\boldsymbol{k}, \lambda} e^{-i(\omega_k t - \boldsymbol{k} \cdot \boldsymbol{x})} + \boldsymbol{A}^\ast_{\boldsymbol{k}, \lambda} e^{i(\omega_k t - \boldsymbol{k} \cdot \boldsymbol{x})} \right] \\
+  & =  \sum_{\boldsymbol{k}, \lambda} i \boldsymbol{k} \times \hat{\boldsymbol{e}}_{\boldsymbol{k}, \lambda} \boldsymbol{A}_{\boldsymbol{k}, \lambda} e^{-i(\omega_k t - \boldsymbol{k} \cdot \boldsymbol{x})} - \sum_{\boldsymbol{k}, \lambda} i \boldsymbol{k} \times \hat{\boldsymbol{e}}_{\boldsymbol{k}, \lambda} \boldsymbol{A}^\ast_{\boldsymbol{k}, \lambda} e^{i(\omega_k t - \boldsymbol{k} \cdot \boldsymbol{x})} \\
+  & =  i\sum_{\boldsymbol{k}, \lambda} \left[ \boldsymbol{A}_{\boldsymbol{k}, \lambda} e^{-i(\omega_k t - \boldsymbol{k} \cdot \boldsymbol{x})} - \boldsymbol{A}^\ast_{\boldsymbol{k}, \lambda} e^{i(\omega_k t - \boldsymbol{k} \cdot \boldsymbol{x})} \right] (\boldsymbol{k} \times \hat{\boldsymbol{e}}_{\boldsymbol{k}, \lambda}).
+\end{align*}
+
+\end{document}

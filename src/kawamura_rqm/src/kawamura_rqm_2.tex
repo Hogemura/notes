@@ -1,0 +1,587 @@
+\chapter{Compton散乱}
+\paragraph{(12.6)}
+\begin{align*}
+  E_\mu & = -\frac{\partial A_\mu}{\partial t}\\
+  & = \frac{\hbar\varepsilon^\mu}{\sqrt{2EV\varepsilon_0}}\left(-\frac{i}{\hbar}Ee^{-iqx/\hbar}+\frac{i}{\hbar}Ee^{iqx/\hbar}\right)\\
+  & = \sqrt{\frac{2E}{V\varepsilon_0}}\varepsilon^\mu\sin(qx/\hbar)
+\end{align*}
+なので，
+\[\frac{\varepsilon_0}{2}\boldsymbol{E}^2=\frac{E}{V}\boldsymbol{\varepsilon}^2\sin^2(qx/\hbar)=\frac{E}{V}\sin^2(qx/\hbar).\]
+$\boldsymbol{B}=\partial_iA_j\boldsymbol{e}_k\varepsilon_{ijk}$なので，
+\begin{align*}
+  \frac{\boldsymbol{B}^2}{2\mu_0} & = \frac{1}{2\mu_0}\left(\sum_{ijk}\varepsilon_{ijk}\partial_iA_j\boldsymbol{e}_k\right)\cdot\left(\sum_{lmn}\varepsilon_{lmn}\partial_lA_m\boldsymbol{e}_n\right)\\
+  & = \frac{1}{2\mu_0}\sum_{ijklmn}\varepsilon_{ijk}\varepsilon_{lmn}\partial_iA_j\partial_lA_m\delta_{kn}\\
+  & = \frac{1}{2\mu_0}\sum_{ijklm}\varepsilon_{ijk}\varepsilon_{lmn}\partial_iA_j\partial_lA_m\\
+  & = \frac{1}{2\mu_0}\sum_{ijlm}(\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl})\partial_iA_j\partial_lA_m\\
+  & = \frac{1}{2\mu_0}\sum_{ij}\partial_iA_j(\partial_iA_j-\partial_jA_i)\\
+  & = \frac{2}{\mu_0}\sum_{ij}\frac{\hbar\varepsilon^j}{\sqrt{2EV\varepsilon_0}}\frac{q_i}{\hbar}\sin(qx/\hbar)\left[\frac{\hbar\varepsilon^j}{\sqrt{2EV\varepsilon_0}}\frac{q_i}{\hbar}\sin(qx/\hbar)-\frac{\hbar\varepsilon^i}{\sqrt{2EV\varepsilon_0}}\frac{q_j}{\hbar}\sin(qx/\hbar)\right]\\
+  & = \frac{1}{EV\varepsilon_0\mu_0}\sin^2(qx/\hbar)\sum_{ij}(\varepsilon^j\varepsilon^jq_iq_i-\varepsilon^i\varepsilon^jq_iq_j)\\
+  & = \frac{1}{EV\varepsilon_0\mu_0}\sin^2(qx/\hbar)\sum_{ij}(\varepsilon^j\varepsilon^jq_iq_i-\varepsilon^i\varepsilon^jq_iq_j)\\
+  & = \frac{c^2}{EV}\sin^2(qx/\hbar)\sum_{ij}(\varepsilon^j\varepsilon^jq_iq_i-\varepsilon^i\varepsilon^jq_iq_j).
+\end{align*}
+ここで，$\sum_j\varepsilon^j\varepsilon^j=1$，$q_\mu\varepsilon^\mu=q_1\varepsilon^1+\cdots=0$，$0=q^\mu q_\mu=q_0q_0-q_1q_2-\cdots$なので，
+\begin{align*}
+  & = \frac{c^2}{EV}\sin^2(qx/\hbar)\sum_{i=0}^3q_i{}^2 = \frac{c^2}{EV}\sin^2(qx/\hbar)q_0{}^2\\
+  & = \frac{c^2}{EV}\sin^2(qx/\hbar)(\frac{E}{c})^2 = \frac{E}{V}\sin^2(qx/\hbar).
+\end{align*}
+
+\paragraph{(12.13)}
+\begin{align*}
+  \int_0^\infty dp_{f0}\operatorname{\delta}(p_f{}^2-m_\text{e}{}^2c^2) & = \int_0^\infty dp_{f0}\operatorname{\delta}(p_{f0}{}^2-\lvert\boldsymbol{p}_f\rvert^2-m_\text{e}{}^2c^2)\\
+  & = \int_0^\infty dp_{f0}\operatorname{\delta}\left(p_{f0}{}^2-\frac{E_f{}^2}{c^2}\right) = \frac{c}{2E_f}.
+\end{align*}
+
+\paragraph{(12.21)}
+(11.19)の計算と同様に(11.20)(11.21)(11.36)を使う．
+
+\paragraph{(12.30)}
+まずは３行目第１項の計算から．$q\varepsilon=0$なので，
+\[\Tr [(\slashed{p}_i+m_ec)\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}] = -\Tr [(\slashed{p}_i+m_ec)\slashed{\varepsilon}'\slashed{q}\slashed{\varepsilon}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}].\]
+(H.29)を使って，
+\begin{align*}
+  & = -2(\varepsilon'q)\Tr [(\slashed{p}_i+m_ec)\slashed{\varepsilon}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}]
+  + \Tr [(\slashed{p}_i+m_ec)\slashed{q}\slashed{\varepsilon}'\slashed{\varepsilon}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}]\\
+  & = -2(\varepsilon'q)\Tr [(\slashed{p}_i+m_ec)(-\slashed{p}_i+m_ec)\slashed{\varepsilon}\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}]
+  + \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}].
+\end{align*}
+$(\slashed{p}_i+m_ec)(-\slashed{p}_i+m_ec)=-(p_i)^2+(m_ec)^2=0$なので，
+\begin{align*}
+  & = 2(\varepsilon q')\Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{\varepsilon}'\slashed{\varepsilon}'\slashed{\varepsilon}]
+  - \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{\varepsilon}'\slashed{q}'\slashed{\varepsilon}\slashed{\varepsilon}'\slashed{\varepsilon}]\\
+  & = -2(\varepsilon q')\Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{\varepsilon}]\\
+  & \quad - 2(\varepsilon'q')\Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{\varepsilon}\slashed{\varepsilon}'\slashed{\varepsilon}] + \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{\varepsilon}'\slashed{\varepsilon}].
+\end{align*}
+$\varepsilon'q'=0$なので，
+\begin{align*}
+  & = -2(\varepsilon q')\Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{\varepsilon}] + \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{\varepsilon}'\slashed{\varepsilon}]\\
+  & = -2(\varepsilon q')\Tr [(\slashed{p}_i+m_ec)\slashed{q}\slashed{\varepsilon}(\slashed{p}_i-m_ec)] + \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{\varepsilon}'\slashed{\varepsilon}].
+\end{align*}
+p.160定理１を使えば，
+\begin{align*}
+  & = -2(\varepsilon q')\Tr [\slashed{p}_i\slashed{q}\slashed{\varepsilon}\slashed{p}_i] + 2(\varepsilon q')(m_ec)^2\Tr [\slashed{q}\slashed{\varepsilon}] + \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{\varepsilon}'\slashed{\varepsilon}] \\
+  & = -2(\varepsilon q')\Tr [\slashed{q}\slashed{\varepsilon}\slashed{p}_i\slashed{p}_i] + 2(\varepsilon q')(m_ec)^2\Tr [\slashed{q}\slashed{\varepsilon}] + \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{\varepsilon}'\slashed{\varepsilon}] \\
+  & = -2(\varepsilon q')(m_ec)^2\Tr [\slashed{q}\slashed{\varepsilon}] + 2(\varepsilon q')(m_ec)^2\Tr [\slashed{q}\slashed{\varepsilon}] + \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{\varepsilon}'\slashed{\varepsilon}] \\
+  & = \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{\varepsilon}'\slashed{\varepsilon}].
+\end{align*}
+次に３行目第２項の計算．
+\begin{align*}
+  & \Tr [\slashed{q}\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}]\\
+  & = 2(\varepsilon'q)\Tr [\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}] - \Tr [\slashed{\varepsilon}'\slashed{q}\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}]\\
+  & = 2(\varepsilon'q)\Tr [\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{\varepsilon}] \\
+  & \quad -2(\varepsilon\varepsilon')\Tr [\slashed{\varepsilon}'\slashed{q}\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}']\\
+  & \quad +\Tr [\slashed{\varepsilon}'\slashed{q}\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}\slashed{\varepsilon}']\\
+  & = -2(\varepsilon'q)\Tr [\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'] \\
+  & \quad -4(\varepsilon\varepsilon')(\varepsilon q)\Tr [\slashed{\varepsilon}'\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}']  + 2(\varepsilon\varepsilon')\Tr [\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}']\\
+  & \quad +\Tr [\slashed{q}\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}\slashed{\varepsilon}'\slashed{\varepsilon}'].
+\end{align*}
+$\slashed{q}\slashed{q}=0$，$\varepsilon q=0$なので，
+\begin{align*}
+  & = -2(\varepsilon'q)\Tr [\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'] - \Tr [\slashed{q}\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}]\\
+  & = -2(\varepsilon'q)\Tr [\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'] \\
+  & \quad -2(\varepsilon q)\Tr [\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}] + \Tr [\slashed{q}\slashed{q}\slashed{\varepsilon}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}]\\
+  & = -2(\varepsilon'q)\Tr [\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}']\\
+  & = -2(\varepsilon'q)\Tr [\slashed{q}\slashed{p}_i\slashed{q}'\slashed{\varepsilon}'] - 2m_ec(\varepsilon'q)\Tr [\slashed{q}\slashed{q}'\slashed{\varepsilon}']\\
+  & = -2(\varepsilon'q)\Tr [\slashed{q}\slashed{p}_i\slashed{q}'\slashed{\varepsilon}'].
+\end{align*}
+第３項についても同様に，
+\begin{align*}
+  & \Tr [\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}]\\
+  & = \Tr [\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}']\\
+  & = 2(\varepsilon'q')\Tr [\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{\varepsilon}\slashed{q}'] - \Tr [\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{\varepsilon}'\slashed{q}'\slashed{\varepsilon}\slashed{q}']\\
+  & = -2(\varepsilon q')\Tr [\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{\varepsilon}'\slashed{q}'] + \Tr [\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{\varepsilon}'\slashed{q}'\slashed{q}'\slashed{\varepsilon}]\\
+  & = -4(\varepsilon q')(\varepsilon'q')\Tr [\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)] + 2(\varepsilon q')\Tr [\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}']\\
+  & = 2(\varepsilon q')\Tr [\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}']\\
+  & = -2(\varepsilon q')\Tr [\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}']\\
+  & = -2(\varepsilon q')\Tr [\slashed{\varepsilon}\slashed{q}\slashed{p}_i\slashed{q}'].
+\end{align*}
+以上から，
+\begin{align*}
+  & \Tr [(\slashed{p}_f+m_ec)\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}]\\
+  & = \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{\varepsilon}'\slashed{\varepsilon}] - 2(\varepsilon'q)\Tr [\slashed{q}\slashed{p}_i\slashed{q}'\slashed{\varepsilon}'] + 2(\varepsilon q')\Tr [\slashed{\varepsilon}\slashed{q}\slashed{p}_i\slashed{q}']\\
+  % <!--  -->
+  & = 2(\varepsilon\varepsilon')\Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}] - \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}'\slashed{\varepsilon}\slashed{\varepsilon}]\\
+  & \quad -2(\varepsilon'q)\left[4(qp_i)(q'\varepsilon')+4(q\varepsilon')(p_iq')-4(qq')(p_i\varepsilon')\right]\\
+  & \quad +2(\varepsilon q')\left[4(\varepsilon q)(p_iq')+4(\varepsilon q')(qp_i)-4(\varepsilon p_i)(qq')\right]\\
+  % <!--  -->
+  & = 2(\varepsilon\varepsilon')\Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}] - \Tr [(\slashed{p}_i+m_ec)\slashed{q}(\slashed{p}_i+m_ec)\slashed{q}']\\
+  & \quad -8(\varepsilon'q)^2(p_iq') + 8(\varepsilon q')^2(p_iq)\\
+  % <!--  -->
+  & = 2(\varepsilon\varepsilon')\Tr [\slashed{p}_i\slashed{q}\slashed{p}_i\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}] + 2(\varepsilon\varepsilon')(m_ec)^2\Tr [\slashed{q}\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}]\\
+  & \quad -\Tr [\slashed{p}_i\slashed{q}\slashed{p}_i\slashed{q}'] - (m_ec)^2\Tr [\slashed{q}\slashed{q}']\\
+  & \quad -8(\varepsilon'q)^2(p_iq') + 8(\varepsilon q')^2(p_iq)\\
+  % <!--  -->
+  & = 2(\varepsilon\varepsilon')\Tr [\slashed{p}_i\slashed{q}\slashed{p}_i\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}]\\
+  & \quad + 2(\varepsilon\varepsilon')(m_ec)^2[4(qq')(\varepsilon\varepsilon')+4(q\varepsilon)(q'\varepsilon')-4(q\varepsilon')(q'\varepsilon)]\\
+  & \quad -4[2(p_iq)(p_iq')-(p_i)^2(qq')] - (m_ec)^24(qq')\\
+  & \quad -8(\varepsilon'q)^2(p_iq') + 8(\varepsilon q')^2(p_iq)\\
+  % <!--  -->
+  & = 2(\varepsilon\varepsilon')\Tr [\slashed{p}_i\slashed{q}\slashed{p}_i\slashed{q}'\slashed{\varepsilon}'\slashed{\varepsilon}]\\
+  & \quad +8(m_ec)^2(\varepsilon\varepsilon')^2(qq') - 8(m_ec)^2(\varepsilon\varepsilon')(q\varepsilon')(q'\varepsilon)\\
+  & \quad -8(p_iq)(p_iq') - 8(\varepsilon'q)^2(p_iq') + 8(\varepsilon q')^2(p_iq)\\
+  % <!--  -->
+  & = 2(\varepsilon\varepsilon')4[(\varepsilon\varepsilon')(p_iq)(p_iq')-(m_ec)^2(qq')(\varepsilon\varepsilon')+(m_ec)^2(q\varepsilon')(q'\varepsilon)+(\varepsilon\varepsilon')(p_iq')(p_iq)]\\
+  & \quad +8(m_ec)^2(\varepsilon\varepsilon')^2(qq') - 8(m_ec)^2(\varepsilon\varepsilon')(q\varepsilon')(q'\varepsilon)\\
+  & \quad -8(p_iq)(p_iq') - 8(\varepsilon'q)^2(p_iq') + 8(\varepsilon q')^2(p_iq)\\
+  % <!--  -->
+  & = 8(p_iq)(p_iq')[2(\varepsilon\varepsilon')^2-1] - 8(\varepsilon'q)^2(p_iq') + 8(\varepsilon q')^2(p_iq).
+\end{align*}
+
+\section*{電子・陽電子の対消滅の詳しい計算}
+対消滅過程のS行列要素は(12.1)と同様に
+\begin{align}
+  S_{fi} = -i\left(\frac{e}{\hbar}\right)^2\int d^4x\int d^4y\,\overline{\psi}_f(y)[\slashed{A}(y;q_2)S_F(y;x)\slashed{A}(x;q_1) + \slashed{A}(y;q_1)S_F(y;x)\slashed{A}(x;q_2)]\psi_i(x).\label{S_fi}
+\end{align}
+始状態は運動量$p_-$の電子：
+\begin{align}
+  \psi_i(x) = \sqrt{\frac{m_ec^2}{E_-V}}u(p_-,s_-)e^{-\frac{i}{\hbar}p_-x}.\label{psi_i}
+\end{align}
+終状態は運動量$p_+$の陽電子：
+\begin{align}
+  \overline{\psi}_f(y) = \sqrt{\frac{m_ec^2}{E_+V}}\overline{v}(p_+,s_+)e^{-\frac{i}{\hbar}p_+x}.\label{psi_f}
+\end{align}
+光子の平面波は
+\begin{align}
+  \begin{split}
+    A^\mu(x;q_1) &= \frac{\hbar\varepsilon_1^\mu}{\sqrt{2E_1V\varepsilon_0}}(e^{-\frac{i}{\hbar}q_1x}+e^{\frac{i}{\hbar}q_1x}),\quad E_1 = q_1^0c, \\
+    A^\mu(y;q_2) &= \frac{\hbar\varepsilon_2^\mu}{\sqrt{2E_2V\varepsilon_0}}(e^{-\frac{i}{\hbar}q_2y}+e^{\frac{i}{\hbar}q_2y}),\quad E_2 = q_2^0c.
+  \end{split}\label{A}
+\end{align}
+Lorenzゲージを採用する：
+\begin{align}
+  (q_1)^2=(q_2)^2=0,\quad q_1\varepsilon_1=q_2\varepsilon_2=0.\label{LorenzGauge}
+\end{align}
+Feynman伝播函数は
+\begin{align}
+  S_F(x';x) = \int\frac{d^4p}{(2\pi\hbar)^4}e^{-\frac{i}{\hbar}p(x'-x)}\frac{\hbar}{\slashed{p}-m_ec}\label{FeynmanPropagator}
+\end{align}
+で与えられる．これらを\eqref{S_fi}に代入して，
+\begin{align}
+  \begin{split}
+    S_{fi} &= -i\left(\frac{e}{\hbar}\right)^2\frac{\hbar^2}{c\varepsilon_0}\int d^4x\int d^4y \frac{m_ec^2}{V^2} \frac{1}{\sqrt{E_-E_+}} \frac{1}{\sqrt{2q_1^0q_2^0}} \\
+    &\qquad \times \overline{v}(p_+,s_+)\slashed{\varepsilon}_2\int \frac{d^4p}{(2\pi\hbar)^4} \frac{\hbar}{\slashed{p}-m_ec} e^{-\frac{i}{\hbar}p(y-x)} \slashed{\varepsilon}_1 u(p_-,s_-) \\
+    &\qquad \times e^{-\frac{i}{\hbar}p_+y}(e^{-\frac{i}{\hbar}q_2y}+e^{\frac{i}{\hbar}q_2y})(e^{-\frac{i}{\hbar}q_1x}+e^{\frac{i}{\hbar}q_1x})e^{-\frac{i}{\hbar}p_-x}\\
+    &\quad -i\left(\frac{e}{\hbar}\right)^2\frac{\hbar^2}{c\varepsilon_0}\int d^4x\int d^4y \frac{m_ec^2}{V^2} \frac{1}{\sqrt{E_-E_+}} \frac{1}{\sqrt{2q_1^0q_2^0}} \\
+    &\qquad \times \overline{v}(p_+,s_+)\slashed{\varepsilon}_1\int \frac{d^4p}{(2\pi\hbar)^4} \frac{\hbar}{\slashed{p}-m_ec} e^{-\frac{i}{\hbar}p(y-x)} \slashed{\varepsilon}_2 u(p_-,s_-) \\
+    &\qquad \times e^{-\frac{i}{\hbar}p_+y}(e^{-\frac{i}{\hbar}q_1y}+e^{\frac{i}{\hbar}q_1y})(e^{-\frac{i}{\hbar}q_2x}+e^{\frac{i}{\hbar}q_2x})e^{-\frac{i}{\hbar}p_-x}.
+  \end{split}
+\end{align}
+運動量保存$p_- + p_+ = q_1 + q_2$を考慮して，(11.7)を使えば
+\begin{align}
+  S_{fi} &= \left(\frac{e}{\hbar}\right)^2\frac{\hbar^2}{c\varepsilon_0} \frac{m_ec^2}{V^2} \frac{1}{\sqrt{E_+E_-}} \frac{1}{\sqrt{2q_1^0q_2^0}} (2\pi\hbar)^4 \delta^4(-p_+ + q_2 - p_- + q_1) M_{fi} \label{S_fi_M_fi} \\
+  M_{fi} &= \overline{v}(p_+,s_+)\left[(-i\slashed{\varepsilon}_2) \frac{i\hbar}{\slashed{p}_- - \slashed{q}_1 - m_ec} (-i\slashed{\varepsilon}_1) + (-i\slashed{\varepsilon}_1) \frac{i\hbar}{\slashed{p}_- - \slashed{q}_2 - m_ec} (-i\slashed{\varepsilon}_2) \right] u(p_-,s_-)\label{M_fi}
+\end{align}
+となる．散乱断面積は\eqref{S_fi_M_fi}から
+\begin{align}
+  d\sigma &= \frac{\lvert S_{fi}\rvert^2}{v_+/V}\frac{Vd^3q_1}{(2\pi\hbar)^3} \frac{Vd^3q_2}{(2\pi\hbar)^3} \frac{1}{T}\notag\\
+  &= \frac{e^4m_e{}^2c^5}{(c\varepsilon_0)^2 (2\pi\hbar)^2 E_+E_-v_+} \delta^4(-p_+ + q_2 - p_- + q_1) \lvert M_{fi}\rvert^2 \frac{d^3q_1}{2q_1^0} \frac{d^3q_2}{2q_2^0}\label{d_sigma}
+\end{align}
+となる（$v_+E_+=p_+c^2$）．
+
+はじめに電子が静止している系とする：
+\begin{align}
+  p_- = (m_ec,0)
+\end{align}
+とする．さらに，
+\begin{align}
+  \varepsilon_1p_- = \varepsilon_2p_- = 0,\quad \varepsilon_1 = (0,\boldsymbol{\varepsilon}_1),\quad \varepsilon_2 = (0,\boldsymbol{\varepsilon}_2),\quad \boldsymbol{\varepsilon_1}\cdot\boldsymbol{q}_1 = \boldsymbol{\varepsilon_2}\cdot\boldsymbol{q}_2 = 0
+\end{align}
+とする．Dirac方程式から
+\begin{align}
+  (\slashed{p}_- + m_ec)\slashed{\varepsilon}_1 u(p_-,s_-) &= \slashed{\varepsilon}_1 (\slashed{p}_- - m_ec) u(p_-,s_-) = 0 \\
+  (\slashed{p}_- + m_ec)\slashed{\varepsilon}_2 u(p_-,s_-) &= \slashed{\varepsilon}_2 (\slashed{p}_- - m_ec) u(p_-,s_-) = 0
+\end{align}
+なので，不変振幅\eqref{M_fi}は
+\begin{align}
+  M_{fi} = -i\hbar \overline{v}(p_+,s_+)\left[\frac{\slashed{\varepsilon}_2\slashed{q}_1\slashed{\varepsilon}_1}{2q_1p_-} + \frac{\slashed{\varepsilon}_1\slashed{q}_2\slashed{\varepsilon}_2}{2q_2p_-}\right] u(p_-,s_-)\label{M_fi_Dirac}
+\end{align}
+\eqref{M_fi_Dirac}を\eqref{d_sigma}に代入して，
+\begin{align}
+  \begin{split}
+    d\overline{\sigma} &= \frac{1}{4}\sum_{\pm s_-,\pm s_+}d\sigma \\
+    &= \frac{e^4}{(2\pi\hbar)^2} \frac{\hbar^2}{(c\varepsilon_0)^2} \frac{m_e^2c^5}{E_-E_+v_+} \frac{1}{4} \delta^4(-p_+ + q_2 - p_- + q_1)\\
+    &\qquad\times \sum_{\pm s_-,\pm s_+}\left\lvert \overline{v}(p_+,s_+)\left[\frac{\slashed{\varepsilon}_2\slashed{q}_1\slashed{\varepsilon}_1}{2q_1p_-} + \frac{\slashed{\varepsilon}_1\slashed{q}_2\slashed{\varepsilon}_2}{2q_2p_-}\right] u(p_-,s_-) \right\rvert^2 \frac{d^3q_1}{2\lvert\boldsymbol{q}_1\rvert} \frac{d^3q_2}{2\lvert\boldsymbol{q}_2\rvert}.
+  \end{split}\label{d_sigma_spin_ave}
+\end{align}
+和の部分を計算する．Griffiths(7.99)から(11.20)(11.21)と同等の式
+\begin{align}
+  \sum_{\pm s_-} u_\beta(p_-, s_-) \overline{u}_\gamma(p_-,s_-) &= \left( \frac{\slashed{p}_- + m_ec}{2m_ec} \right)_{\beta\gamma} \\
+  \sum_{\pm s_+} v_\delta(p_+, s_+) \overline{v}_\alpha(p_+,s_+) &= \left( \frac{\slashed{p}_+ - m_ec}{2m_ec} \right)_{\delta\alpha}
+\end{align}
+と(11.36)を使って，(11.19)と同様に計算すれば
+\begin{align}
+  \begin{split}
+    & \sum_{\alpha\beta\gamma\delta} \sum_{\pm s_-,\pm s_+} \overline{v}_\alpha(p_+,s_+) \Gamma_{\alpha\beta} u_\beta(p_-, s_-) \overline{u}_\gamma(p_-,s_-) \overline{\Gamma}_{\gamma\delta} v_\delta(p_+, s_+) \\
+    &= \sum_{\alpha\beta\gamma\delta} \left( \frac{\slashed{p}_+ - m_ec}{2m_ec} \right)_{\delta\alpha} \Gamma_{\alpha\beta} \left( \frac{\slashed{p}_- + m_ec}{2m_ec} \right)_{\beta\gamma} \overline{\Gamma}_{\gamma\delta}\\
+    &= \operatorname{Tr}\left( \frac{\slashed{p}_+ - m_ec}{2m_ec} \Gamma \frac{\slashed{p}_- + m_ec}{2m_ec} \overline{\Gamma} \right).
+  \end{split}
+\end{align}
+(11.37)から
+\begin{align}
+  \overline{\Gamma} = \frac{\slashed{\varepsilon}_1\slashed{q}_1\slashed{\varepsilon}_2}{2q_1p_-} + \frac{\slashed{\varepsilon}_2\slashed{q}_2\slashed{\varepsilon}_1}{2q_2p_-}
+\end{align}
+なので，\eqref{d_sigma_spin_ave}は
+\begin{align}
+  \begin{split}
+    d\overline{\sigma} &= \frac{e^4}{(2\pi\hbar)^2} \frac{\hbar^2}{(c\varepsilon_0)^2} \frac{m_e^2c^5}{E_-E_+v_+} \frac{1}{4}
+    \operatorname{Tr}\left[ \frac{\slashed{p}_+ - m_ec}{2m_ec} \left(\frac{\slashed{\varepsilon}_2\slashed{q}_1\slashed{\varepsilon}_1}{2q_1p_-} + \frac{\slashed{\varepsilon}_1\slashed{q}_2\slashed{\varepsilon}_2}{2q_2p_-}\right) \frac{\slashed{p}_- + m_ec}{2m_ec} \left(\frac{\slashed{\varepsilon}_1\slashed{q}_1\slashed{\varepsilon}_2}{2q_1p_-} + \frac{\slashed{\varepsilon}_2\slashed{q}_2\slashed{\varepsilon}_1}{2q_2p_-}\right) \right] \\
+    & \qquad\times \delta^4(-p_+ + q_2 - p_- + q_1) \frac{d^3q_1}{2\lvert\boldsymbol{q}_1\rvert} \frac{d^3q_2}{2\lvert\boldsymbol{q}_2\rvert}\\
+    &= \frac{-e^4}{(2\pi\hbar)^2} \frac{\hbar^2}{(c\varepsilon_0)^2} \frac{m_e^2c^5}{E_-E_+v_+} \frac{1}{4}
+    \operatorname{Tr}\left[ \frac{-\slashed{p}_+ + m_ec}{2m_ec} \left(\frac{\slashed{\varepsilon}_2\slashed{\varepsilon}_1\slashed{q}_1}{2q_1p_-} + \frac{\slashed{\varepsilon}_1\slashed{\varepsilon}_2\slashed{q}_2}{2q_2p_-}\right) \frac{\slashed{p}_- + m_ec}{2m_ec} \left(\frac{\slashed{q}_1\slashed{\varepsilon}_1\slashed{\varepsilon}_2}{2q_1p_-} + \frac{\slashed{q}_2\slashed{\varepsilon}_2\slashed{\varepsilon}_1}{2q_2p_-}\right) \right] \\
+    & \qquad\times \delta^4(-p_+ + q_2 - p_- + q_1) \frac{d^3q_1}{2\lvert\boldsymbol{q}_1\rvert} \frac{d^3q_2}{2\lvert\boldsymbol{q}_2\rvert}.
+  \end{split}
+  \label{d_sigma_spin_aved}
+\end{align}
+これで(12.43)が導出できた．
+
+\eqref{d_sigma_spin_aved}のトレースを計算する．(12.21)と見比べれば，
+\begin{align}
+  p_i \leftrightarrow p_- \quad p_f \leftrightarrow -p_+ \quad \varepsilon \leftrightarrow \varepsilon_1 \quad \varepsilon' \leftrightarrow \varepsilon_2 \quad q \leftrightarrow q_1 \quad q'\leftrightarrow q_2
+\end{align}
+の対応があることが分かる．まず，(12.28)と同等の式を計算する：
+\begin{align}
+  \begin{split}
+    \operatorname{Tr}[(-\slashed{p}_+ + m_ec)\slashed{\varepsilon}_2\slashed{\varepsilon}_1\slashed{q}_1(\slashed{p}_- + m_ec)\slashed{q}_1\slashed{\varepsilon}_1\slashed{\varepsilon}_2] &= -8(q_1p_-)[(q_1p_+)+2(q_1\varepsilon_2)(p_+\varepsilon_2)]\\
+    &= -8(q_1p_-)[(q_2p_-)+2(q_1\varepsilon_2)^2].
+  \end{split}
+\end{align}
+次に(12.29)：
+\begin{align}
+  \begin{split}
+    \operatorname{Tr}[(-\slashed{p}_+ + m_ec)\slashed{\varepsilon}_1\slashed{\varepsilon}_2\slashed{q}_2(\slashed{p}_- + m_ec)\slashed{q}_2\slashed{\varepsilon}_2\slashed{\varepsilon}_1] &= -8(q_2p_-)[(q_2p_+)+2(q_2\varepsilon_1)(p_+\varepsilon_1)]\\
+    &= -8(q_2p_-)[(q_1p_-)+2(q_2\varepsilon_1)^2].
+  \end{split}
+\end{align}
+次に(12.30)：
+\begin{align}
+  \begin{split}
+    & \operatorname{Tr}[(-\slashed{p}_+ + m_ec)\slashed{\varepsilon}_2\slashed{\varepsilon}_1\slashed{q}_1(\slashed{p}_- + m_ec)\slashed{q}_2\slashed{\varepsilon}_2\slashed{\varepsilon}_1] \\
+    &= \operatorname{Tr}[(\slashed{p}_- - \slashed{q}_1 - \slashed{q}_2 + m_ec)\slashed{\varepsilon}_2\slashed{\varepsilon}_1\slashed{q}_1(\slashed{p}_- + m_ec)\slashed{q}_2\slashed{\varepsilon}_2\slashed{\varepsilon}_1] \\
+    &= \operatorname{Tr}[(\slashed{p}_- + m_ec)\slashed{\varepsilon}_2\slashed{\varepsilon}_1\slashed{q}_1(\slashed{p}_- + m_ec)\slashed{q}_2\slashed{\varepsilon}_2\slashed{\varepsilon}_1] - \operatorname{Tr}[(\slashed{q}_1 + \slashed{q}_2)\slashed{\varepsilon}_2\slashed{\varepsilon}_1\slashed{q}_1(\slashed{p}_- + m_ec)\slashed{q}_2\slashed{\varepsilon}_2\slashed{\varepsilon}_1]\\
+    &= 8(p_-q_1)(p_-q_2)[2(\varepsilon_1\varepsilon_2)^2 - 1] + 8(\varepsilon_2q_1)^2(p_-q_2) + 8(\varepsilon_1q_2)^2(p_-q_1).
+  \end{split}
+\end{align}
+同様に，$T_4$に対応する部分はこれと等しい．よって，トレースは
+\begin{align}
+  \begin{split}
+    & \operatorname{Tr}\left[ \frac{-\slashed{p}_+ + m_ec}{2m_ec} \left(\frac{\slashed{\varepsilon}_2\slashed{\varepsilon}_1\slashed{q}_1}{2q_1p_-} + \frac{\slashed{\varepsilon}_1\slashed{\varepsilon}_2\slashed{q}_2}{2q_2p_-}\right) \frac{\slashed{p}_- + m_ec}{2m_ec} \left(\frac{\slashed{q}_1\slashed{\varepsilon}_1\slashed{\varepsilon}_2}{2q_1p_-} + \frac{\slashed{q}_2\slashed{\varepsilon}_2\slashed{\varepsilon}_1}{2q_2p_-}\right) \right] \\
+    &\quad = \frac{1}{4m_e{}^2c^2}\left[\frac{-8(q_1p_-)}{4(q_1p_-)^2}\{(q_2p_-) + 2(q_1\varepsilon_2)^2\} + \frac{-8(q_2p_-)}{4(q_2p_-)^2}\{(q_1p_-) + 2(q_2\varepsilon_1)^2\} \right] \\
+    &\qquad + \frac{1}{4m_e{}^2c^2}\frac{2}{4(q_1p_-)(q_2p_-)}[8(p_-q_1)(p_-q_2)\{2(\varepsilon_1\varepsilon_2)^2-1\} + 8(\varepsilon_2q_1)^2(p_-q_2) + 8(\varepsilon_1q_2)^2(p_-q_1)] \\
+    &\quad = \frac{1}{4m_e{}^2c^2}\left[-2\frac{(q_2p_-)}{(q_1p_-)} - 4\frac{(q_1\varepsilon_2)^2}{(q_1p_-)} - 2\frac{(q_1p_-)}{(q_2p_-)} - 4\frac{(q_2\varepsilon_1)^2}{(q_2p_-)} + 4\{2(\varepsilon_1\varepsilon_2)^2-1\} + 4\frac{(q_1\varepsilon_2)^2}{(q_1p_-)} + 4\frac{(q_2\varepsilon_1)^2}{(q_2p_-)}\right] \\
+    &\quad = -\frac{1}{2m_e{}^2c^2}\left[ \frac{\lvert\boldsymbol{q}_2\lvert}{\lvert\boldsymbol{q}_1\lvert} + \frac{\lvert\boldsymbol{q}_1\lvert}{\lvert\boldsymbol{q}_2\lvert} - 4(\varepsilon_1\varepsilon_2)^2 + 2 \right].
+  \end{split}
+\end{align}
+これを\eqref{d_sigma_spin_aved}に代入して，
+\begin{align}
+  \begin{split}
+    d\overline{\sigma} &= \frac{e^4}{(2\pi\hbar)^2} \frac{\hbar^2}{(c\varepsilon_0)^2} \frac{m_e^2c^5}{E_-E_+v_+} \frac{1}{4}
+    \frac{1}{2m_e{}^2c^2}\left[ \frac{\lvert\boldsymbol{q}_2\lvert}{\lvert\boldsymbol{q}_1\lvert} + \frac{\lvert\boldsymbol{q}_1\lvert}{\lvert\boldsymbol{q}_2\lvert} - 4(\varepsilon_1\varepsilon_2)^2 + 2 \right]
+    \delta^4(-p_+ + q_2 - p_- + q_1) \frac{d^3q_1}{2\lvert\boldsymbol{q}_1\rvert} \frac{d^3q_2}{2\lvert\boldsymbol{q}_2\rvert}\\
+    &= \frac{\alpha^2\hbar^2}{2m_ec\lvert\boldsymbol{p}_+\rvert}\left[ \frac{\lvert\boldsymbol{q}_2\lvert}{\lvert\boldsymbol{q}_1\lvert} + \frac{\lvert\boldsymbol{q}_1\lvert}{\lvert\boldsymbol{q}_2\lvert} - 4(\varepsilon_1\varepsilon_2)^2 + 2 \right]
+    \delta^4(-p_+ + q_2 - p_- + q_1) \frac{d^3q_1}{2\lvert\boldsymbol{q}_1\rvert} \frac{d^3q_2}{2\lvert\boldsymbol{q}_2\rvert}.
+  \end{split}
+  \label{d_sigma_spin_aved_tred}
+\end{align}
+
+\eqref{d_sigma_spin_aved_tred}の積分を計算する．
+\begin{align}
+  \begin{split}
+    & \int\delta^4(-p_+ + q_2 - p_- + q_1) \frac{d^3q_1}{2\lvert\boldsymbol{q}_1\rvert} \frac{d^3q_2}{2\lvert\boldsymbol{q}_2\rvert}\\
+    &\quad = \int\delta^3(-\boldsymbol{p}_+ + \boldsymbol{q}_2 + \boldsymbol{q}_1) \delta\left(-\frac{E_+}{c} + \lvert\boldsymbol{q}_2\rvert - m_ec +\lvert\boldsymbol{q}_1\rvert\right) \frac{d^3q_1}{2\lvert\boldsymbol{q}_1\rvert}\frac{d^3q_2}{2\lvert\boldsymbol{q}_2\rvert}\\
+    &\quad = \int \delta\left(-\frac{E_+}{c} + \lvert \boldsymbol{p}_+ - \boldsymbol{q}_1 \rvert - m_ec +\lvert\boldsymbol{q}_1\rvert\right) \frac{d^3q_1}{4\lvert\boldsymbol{q}_1\rvert \lvert \boldsymbol{p}_+ - \boldsymbol{q}_1 \rvert}\\
+    &\quad = \int \delta\left(-\frac{E_+}{c} + \sqrt{\lvert\boldsymbol{p}_+\rvert^2 + \lvert\boldsymbol{q}_1\rvert^2 - 2\lvert\boldsymbol{p}_+\rvert \lvert\boldsymbol{q}_1\rvert \cos\theta} - m_ec +\lvert\boldsymbol{q}_1\rvert\right) \frac{d^3q_1}{4\lvert\boldsymbol{q}_1\rvert \lvert \boldsymbol{p}_+ - \boldsymbol{q}_1 \rvert}\\
+    &\quad = \int \delta\left(-\frac{E_+}{c} + \sqrt{\lvert\boldsymbol{p}_+\rvert^2 + \lvert\boldsymbol{q}_1\rvert^2 - 2\lvert\boldsymbol{p}_+\rvert \lvert\boldsymbol{q}_1\rvert \cos\theta} - m_ec +\lvert\boldsymbol{q}_1\rvert\right) \frac{\lvert\boldsymbol{q}_1\rvert}{4\lvert \boldsymbol{p}_+ - \boldsymbol{q}_1 \rvert}\,d\Omega_{q_1}
+  \end{split}
+  \label{delta_int}
+\end{align}
+なので，$\boldsymbol{q}_2 = \boldsymbol{p}_+ - \boldsymbol{q}_1$．デルタ函数の引数を$f(\lvert\boldsymbol{q}_1\rvert)$とする．
+$E_+{}^2 = c^2\lvert\boldsymbol{p}_+\rvert^2 + m_e{}^2c^2$に注意して，$f=0$となるのは，
+\begin{align}
+  \begin{split}
+    \lvert\boldsymbol{q}_1\rvert &= \frac{(E_+/c + m_ec)^2 - \lvert\boldsymbol{p}_+\rvert^2}{2(E_+/c + m_ec - \lvert\boldsymbol{p}_+\rvert\cos\theta)}\\
+    &= \frac{m_ec(m_ec^2 + E_+)}{(E_+ + m_ec^2 - c\lvert\boldsymbol{p}_+\rvert\cos\theta)}.
+  \end{split}\label{q1_scatter}
+\end{align}
+このとき，
+\begin{align}
+  \begin{split}
+    \lvert\boldsymbol{q}_2\rvert &= \lvert\boldsymbol{p}_+ - \boldsymbol{q}_1\rvert \\
+    &= \frac{E_+}{c} + m_ec - \lvert\boldsymbol{q}_1\rvert \\
+    &= \frac{E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta}{m_ec^2}\lvert\boldsymbol{q}_1\rvert\\
+    &= \frac{E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta}{m_ec^2}\frac{m_ec(m_ec^2 + E_+)}{(E_+ + m_ec^2 - c\lvert\boldsymbol{p}_+\rvert\cos\theta)}.
+  \end{split}\label{q2_scatter}
+\end{align}
+次に，$\delta(f(\lvert\boldsymbol{q}_1\rvert))$を計算する．
+\[ f'(\lvert\boldsymbol{q}_1\rvert) = \frac{\lvert\boldsymbol{q}_1\rvert - \lvert\boldsymbol{p}_+\rvert\cos\theta + \lvert\boldsymbol{p}_+ - \boldsymbol{q}_1\rvert}{\lvert\boldsymbol{p}_+ - \boldsymbol{q}_1\rvert} \]
+なので，
+\[f'\left( \frac{m_ec(m_ec^2 + E_+)}{(E_+ + m_ec^2 - c\lvert\boldsymbol{p}_+\rvert\cos\theta)} \right) = \frac{E_+ + m_ec^2 - c\lvert\boldsymbol{p}_+\rvert\cos\theta}{c\lvert\boldsymbol{q}_2\rvert}.\]
+従って，
+\begin{align}
+  \delta(f(\lvert\boldsymbol{q}_1\rvert)) = \frac{c\lvert\boldsymbol{q}_2\rvert}{E_+ + m_ec^2 - c\lvert\boldsymbol{p}_+\rvert\cos\theta}\delta\left(\lvert\boldsymbol{q}_1\rvert - \frac{m_ec(m_ec^2 + E_+)}{(E_+ + m_ec^2 - c\lvert\boldsymbol{p}_+\rvert\cos\theta)}\right)
+\end{align}
+これらを\eqref{delta_int}に代入して，
+\begin{align}
+  \int\delta^4(-p_+ + q_2 - p_- + q_1) \frac{d^3q_1}{2\lvert\boldsymbol{q}_1\rvert} \frac{d^3q_2}{2\lvert\boldsymbol{q}_2\rvert} = \frac{1}{4}\frac{m_ec^2(m_ec^2 + E_+)}{(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta)^2}\,d\Omega_{q_1}.
+\end{align}
+\eqref{d_sigma_spin_aved_tred}に代入して，
+\begin{align}
+  \begin{split}
+    \frac{d\overline{\sigma}}{d\Omega_{q_1}} &= \frac{\alpha^2\hbar^2}{2m_ec\lvert\boldsymbol{p}_+\rvert}\left[ \frac{\lvert\boldsymbol{q}_2\lvert}{\lvert\boldsymbol{q}_1\lvert} + \frac{\lvert\boldsymbol{q}_1\lvert}{\lvert\boldsymbol{q}_2\lvert} - 4(\varepsilon_1\varepsilon_2)^2 + 2 \right]\frac{1}{4}\frac{m_ec^2(m_ec^2 + E_+)}{(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta)^2} \\
+    &= \frac{\hbar^2\alpha^2c(m_ec^2 + E_+)}{8\lvert\boldsymbol{p}_+\rvert(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta)^2}\left[ \frac{\lvert\boldsymbol{q}_2\lvert}{\lvert\boldsymbol{q}_1\lvert} + \frac{\lvert\boldsymbol{q}_1\lvert}{\lvert\boldsymbol{q}_2\lvert} - 4(\varepsilon_1\varepsilon_2)^2 + 2 \right] \\
+    &= \frac{\hbar^2\alpha^2c(m_ec^2 + E_+)}{8\lvert\boldsymbol{p}_+\rvert(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta)^2}\left[  \frac{E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta}{m_ec^2} + \frac{m_ec^2}{E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta} - 4(\varepsilon_1\varepsilon_2)^2 + 2 \right].
+  \end{split}
+\end{align}
+$\lvert\boldsymbol{q}_1\rvert$，$\lvert\boldsymbol{q}_2\rvert$は\eqref{q1_scatter}\eqref{q2_scatter}で与えられる．
+
+最後に，全断面積を求める．(12.34)以降の手続きと同様にすれば良いが，いくつか注意点：
+\begin{itemize}
+  \item ２つの光子の偏極について和を取る（Compton散乱の場合は始状態の光子は平均を取って，終状態は和を取った），つまり(12.34), (12.35)は$2$倍になる．
+  \item $\boldsymbol{\varepsilon}_1$と$\boldsymbol{\varepsilon}_2$のなす角$\phi$は散乱角$\theta$と異なる．
+  \item 出てくる光子は区別できないので，計算結果を$1/2$する必要がある．
+\end{itemize}
+特に，２点目については，
+\begin{align}
+  \begin{split}
+    \sin^2\phi &= \left(\frac{\lvert\boldsymbol{p}_+\rvert}{\lvert\boldsymbol{q}_2\rvert}\right)\sin^2\theta \\
+    &= \left(\frac{m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta}{E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta}\right)^2 \left(\frac{c\lvert\boldsymbol{p}_+\rvert}{E_+ + m_ec^2}\right)^2 \sin^2\theta
+  \end{split}
+\end{align}
+となる．まず，光子の偏極に関して平均を取れば，
+\begin{align}
+  \begin{split}
+    \frac{d\overline\sigma}{d\Omega_{q_1}} &= \frac{\hbar^2\alpha^2c(m_ec^2 + E_+)}{2\lvert\boldsymbol{p}_+\rvert(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta)^2}\left[  \frac{E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta}{m_ec^2} + \frac{m_ec^2}{E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta} - 4\frac{1+\cos^2\phi}{4} + 2 \right]\\
+    &= \frac{\hbar^2\alpha^2c(m_ec^2 + E_+)}{2\lvert\boldsymbol{p}_+\rvert(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta)^2}\left[  \frac{E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta}{m_ec^2} + \frac{m_ec^2}{E_+ - c\lvert\boldsymbol{p}_+\rvert\cos\theta} + \sin^2\phi \right].
+  \end{split}
+\end{align}
+従って，全断面積は，
+\begin{align}
+  \overline{\sigma} &= \frac{1}{2}\int \frac{d\overline\sigma}{d\Omega_{q_1}}\,d\Omega_{q_1} \\
+  &= \pi\int_0^\pi\frac{d\overline\sigma}{d\Omega_{q_1}}\sin\theta\,d\theta \\
+  &= \pi\int_{-1}^1\frac{d\overline\sigma}{d\Omega_{q_1}}\,dz \\
+  &= \frac{\pi\hbar^2\alpha^2c(m_ec^2 + E_+)}{2\lvert\boldsymbol{p}_+\rvert}(R_1 + R_2 + R_3 + R_4)\label{cross_section}
+\end{align}
+となる．ただし，
+\begin{align}
+  \begin{split}
+    R_1 &= \int_{-1}^1 \frac{1}{(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2}\frac{E_+ - c\lvert\boldsymbol{p}_+\rvert z}{m_ec^2}\,dz \\
+    &= \frac{1}{m_ec^2}\int_{-1}^1 \frac{dz}{m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert z} - \int_{-1}^1 \frac{1}{(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2}\,dz,\\
+    R_2 &= \int_{-1}^1 \frac{1}{(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2}\frac{m_ec^2}{E_+ - c\lvert\boldsymbol{p}_+\rvert z}\,dz \\
+    &= -\frac{1}{m_ec^2}\int_{-1}^1 \frac{dz}{m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert z} - \int_{-1}^1 \frac{1}{(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2}\,dz + \frac{1}{m_ec^2}\int^1_{-1}\frac{dz}{E_+ - c\lvert\boldsymbol{p}_+\rvert z}, \\
+    R_3 &= \left(\frac{c\lvert\boldsymbol{p}_+\rvert}{E_+ + m_ec^2}\right)^2 \int_{-1}^1 \frac{dz}{(E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2} \\
+    R_4 &= \left(\frac{c\lvert\boldsymbol{p}_+\rvert}{E_+ + m_ec^2}\right)^2 \int_{-1}^1 \frac{-z^2\,dz}{(E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2} \\
+    &= \left(\frac{c\lvert\boldsymbol{p}_+\rvert}{E_+ + m_ec^2}\right)^2 \left[\int_{-1}^1 -\frac{dz}{c^2\lvert\boldsymbol{p}_+\rvert^2} + \frac{2E_+}{c^2\lvert\boldsymbol{p}_+\rvert^2}\int_{-1}^1 \frac{dz}{E_+ - c\lvert\boldsymbol{p}_+\rvert z} - \frac{E_+{}^2}{c^2\lvert\boldsymbol{p}_+\rvert^2}\int_{-1}^1 \frac{dz}{(E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2}\right] \\
+    &= -\frac{2}{(E+m_ec^2)^2} + \frac{2E_+}{(E_+ + m_ec^2)^2} \int_{-1}^1 \frac{dz}{E_+ - c\lvert\boldsymbol{p}_+\rvert z} - \left(\frac{E_+}{E_+ + m_ec^2}\right)^2 \int_{-1}^1 \frac{dz}{(E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2}
+  \end{split}
+\end{align}
+と分けて計算する．以上から，
+\begin{align}
+  \begin{split}
+    R_1 + R_2 + R_3 + R_4 &= -\frac{2}{(E+m_ec^2)^2}\\
+    &\quad + \left[\frac{2E_+}{(E_+ + m_ec^2)^2} + \frac{1}{m_ec^2}\right]\int_{-1}^1 \frac{dz}{E_+ - c\lvert\boldsymbol{p}_+\rvert z} \\
+    &\quad + \frac{c^2\lvert\boldsymbol{p}_+\rvert^2 - E_+{}^2}{(E_+ + m_ec^2)^2} \int_{-1}^1 \frac{dz}{(E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2} \\
+    &\quad - 2\int_{-1}^1 \frac{dz}{(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2}.
+  \end{split}\label{Rsum}
+\end{align}
+第２項は
+\begin{align}
+  \begin{split}
+    \left[\frac{2E_+}{(E_+ + m_ec^2)^2} + \frac{1}{m_ec^2}\right] \frac{1}{c\lvert\boldsymbol{p}_+\rvert} \log\left\lvert\frac{E_+ + c\lvert\boldsymbol{p}_+\rvert}{E_+ - c\lvert\boldsymbol{p}_+\rvert}\right\rvert &= \left[\frac{2E_+}{(E_+ + m_ec^2)^2} + \frac{1}{m_ec^2}\right] \frac{1}{c\lvert\boldsymbol{p}_+\rvert} \log\frac{(E_+ + c\lvert\boldsymbol{p}_+\rvert)^2}{E_+{}^2 - c^2\lvert\boldsymbol{p}_+\rvert^2} \\
+    &= \left[\frac{2E_+}{(E_+ + m_ec^2)^2} + \frac{1}{m_ec^2}\right] \frac{2}{c\lvert\boldsymbol{p}_+\rvert} \log \frac{E_+ + c\lvert\boldsymbol{p}_+\rvert}{m_ec^2} \\
+    &= \frac{E_+{}^2 + 4E_+m_ec^2 + m_e{}^2c^4}{(E_+ + m_ec^2)^2m_ec^2} \frac{2}{c\lvert\boldsymbol{p}_+\rvert} \log \frac{E_+ + c\lvert\boldsymbol{p}_+\rvert}{m_ec^2}.
+  \end{split}\label{R2}
+\end{align}
+第３項は
+\begin{align}
+  \begin{split}
+    \frac{c^2\lvert\boldsymbol{p}_+\rvert^2 - E_+{}^2}{(E_+ + m_ec^2)^2} \int_{-1}^1 \frac{dz}{(E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2} &= \frac{-m_e{}^2c^4}{(E_+ + m_ec^2)^2}\frac{2}{m_e{}^2c^4} \\
+    &= -\frac{2}{(E_+ + m_ec^2)^2}.
+  \end{split}\label{R3}
+\end{align}
+第４項は
+\begin{align}
+  \begin{split}
+    - 2\int_{-1}^1 \frac{1}{(m_ec^2 + E_+ - c\lvert\boldsymbol{p}_+\rvert z)^2}\,dz &= -\frac{4}{(E_++m_ec^2)^2 - c^2\lvert\boldsymbol{p}_+\rvert^2} \\
+    &= -\frac{2}{m_ec^2(E_+ + m_ec^2)}.
+  \end{split}\label{R4}
+\end{align}
+\eqref{R2}\eqref{R3}\eqref{R4}を\eqref{Rsum}に代入して，
+\begin{align}
+  \begin{split}
+    & R_1 + R_2 + R_3 + R_4 \\
+    &= -\frac{2}{(E_+ + m_ec^2)^2} + \frac{E_+{}^2 + 4E_+m_ec^2 + m_e{}^2c^4}{(E_+ + m_ec^2)^2m_ec^2} \frac{2}{c\lvert\boldsymbol{p}_+\rvert} \log \frac{E_+ + c\lvert\boldsymbol{p}_+\rvert}{m_ec^2} \\
+    &\qquad - \frac{2}{(E_+ + m_ec^2)^2} - \frac{2}{m_ec^2(E_+ + m_ec^2)} \\
+    &= \frac{2}{(E_+ + m_ec^2)^2m_ec^2c\lvert\boldsymbol{p}_+\rvert} \left[(E_+{}^2 + 4m_ec^2E_+ + m_e{}^2c^4)\log \frac{E_+ + c\lvert\boldsymbol{p}_+\rvert}{m_ec^2} - (E_+ + 3m_ec^2) c\lvert\boldsymbol{p}_+\rvert\right].
+  \end{split}
+\end{align}
+\eqref{cross_section}に代入して，
+\begin{align}
+  \begin{split}
+    \overline{\sigma} &= \frac{\pi\hbar^2\alpha^2c(m_ec^2 + E_+)}{2\lvert\boldsymbol{p}_+\rvert}\frac{2}{(E_+ + m_ec^2)^2m_ec^2c\lvert\boldsymbol{p}_+\rvert} \\
+    & \qquad \times \left[(E_+{}^2 + 4m_ec^2E_+ + m_e{}^2c^4)\log \frac{E_+ + c\lvert\boldsymbol{p}_+\rvert}{m_ec^2} - (E_+ + 3m_ec^2) c\lvert\boldsymbol{p}_+\rvert\right] \\
+    &= \frac{\pi\hbar^2\alpha^2}{m_ec^2\lvert\boldsymbol{p}_+\rvert(E_+ + m_ec^2)}\left[(E_+{}^2 + 4m_ec^2E_+ + m_e{}^2c^4)\log \frac{E_+ + c\lvert\boldsymbol{p}_+\rvert}{m_ec^2} - (E_+ + 3m_ec^2) c\lvert\boldsymbol{p}_+\rvert\right].
+  \end{split}
+\end{align}
+
+\chapter{電子・電子散乱と電子・陽電子散乱}
+\paragraph{(13.21)}
+１つめの項は
+\begin{align*}
+  & \sum_{\pm s_1, \pm s_1'} \sum_{\pm s_2, \pm s_2'} \frac{1}{(p_1-p_1')^4} \left[ \overline{u}(p_1',s_1') \gamma_\mu u(p_1, s_1) \overline{u}(p_2',s_2') \gamma^\mu u(p_2, s_2) \right] \\
+  & \qquad\qquad\qquad\qquad\qquad\qquad \times \left[ \overline{u}(p_1',s_1') \gamma_\nu u(p_1, s_1) \overline{u}(p_2',s_2') \gamma^\nu u(p_2, s_2) \right]^* \\
+  & = \sum_{\pm s_1, \pm s_1'} \sum_{\pm s_2, \pm s_2'} \frac{1}{(p_1-p_1')^4} \left[ \overline{u}(p_1',s_1') \gamma_\mu u(p_1, s_1) \right] \left[ \overline{u}(p_1',s_1') \gamma_\nu u(p_1, s_1) \right]^* \\
+  & \qquad\qquad\qquad\qquad\qquad\qquad \times \left[ \overline{u}(p_2',s_2') \gamma^\mu u(p_2, s_2) \right] \left[ \overline{u}(p_2',s_2') \gamma^\nu u(p_2, s_2) \right]^* \\
+  & = \frac{1}{(p_1-p_1')^4} \sum_{\pm s_1, \pm s_1'} \left[ \overline{u}(p_1',s_1') \gamma_\mu u(p_1, s_1) \right] \left[ \overline{u}(p_1, s_1) \overline{\gamma}_\nu u(p_1', s_1') \right] \\
+  & \qquad\qquad \times \sum_{\pm s_2, \pm s_2'}\left[ \overline{u}(p_2',s_2') \gamma^\mu u(p_2, s_2) \right] \left[ \overline{u}(p_2,s_2) \overline{\gamma}^\nu u(p_2', s_2') \right]
+\end{align*}
+となり，(11.19)と同様に計算すれば，
+\[=\frac{1}{(p_1-p_1')^4} \Tr \left( \frac{\slashed{p}_1'+m_ec}{2m_ec} \gamma_\mu \frac{\slashed{p}_1+m_ec}{2m_ec} \gamma_\nu \right) \Tr \left( \frac{\slashed{p}_2'+m_ec}{2m_ec} \gamma^\mu \frac{\slashed{p}_2+m_ec}{2m_ec} \gamma^\nu \right). \]
+２つめの項は
+\begin{align*}
+  & \sum_{\pm s_1, \pm s_1'} \sum_{\pm s_2, \pm s_2'} \frac{1}{(p_1-p_1')^2(p_1-p_2')^2} \left[ \overline{u}(p_1',s_1') \gamma_\mu u(p_1, s_1) \overline{u}(p_2',s_2') \gamma^\mu u(p_2, s_2) \right] \\
+  &\qquad\qquad\qquad\qquad \times \left[ \overline{u}(p_2',s_2') \gamma_\nu u(p_1, s_1) \overline{u}(p_1',s_1') \gamma^\nu u(p_2, s_2) \right]^* \\
+  & = \sum_{\pm s_1, \pm s_1'} \sum_{\pm s_2, \pm s_2'} \frac{1}{(p_1-p_1')^2(p_1-p_2')^2} \left[ \overline{u}(p_1',s_1') \gamma_\mu u(p_1, s_1) \right] \left[ \overline{u}(p_2',s_2') \gamma^\mu u(p_2, s_2) \right]\\
+  &\qquad\qquad\qquad\qquad \times \left[ \overline{u}(p_2',s_2') \gamma_\nu u(p_1, s_1) \right]^* \left[ \overline{u}(p_1',s_1') \gamma^\nu u(p_2, s_2) \right]^* \\
+  & = \sum_{\pm s_1, \pm s_1'} \sum_{\pm s_2, \pm s_2'} \frac{1}{(p_1-p_1')^2(p_1-p_2')^2} \left[ \overline{u}(p_1',s_1') \gamma_\mu u(p_1, s_1) \right] \left[ \overline{u}(p_2',s_2') \gamma^\mu u(p_2, s_2) \right] \\
+  & \qquad\qquad\qquad\qquad \times \left[ \overline{u}(p_1,s_1) \overline{\gamma}_\nu u(p_2', s_2') \right] \left[ \overline{u}(p_2, s_2) \overline{\gamma}^\nu u(p_1', s_1') \right] \\
+  & = \sum_{\pm s_1, \pm s_1'} \sum_{\pm s_2, \pm s_2'} \frac{1}{(p_1-p_1')^2(p_1-p_2')^2} \left[ \overline{u}(p_1',s_1') \gamma_\mu u(p_1, s_1) \right] \left[ \overline{u}(p_1,s_1) \overline{\gamma}_\nu u(p_2', s_2') \right] \\
+  & \qquad\qquad\qquad\qquad \times \left[ \overline{u}(p_2',s_2') \gamma^\mu u(p_2, s_2) \right]  \left[ \overline{u}(p_2, s_2) \overline{\gamma}^\nu u(p_1', s_1') \right]
+\end{align*}
+となり，(11.19)と同様に計算すれば，
+\[=\frac{1}{(p_1-p_1')^2(p_1-p_2')^2}\Tr \left( \frac{\slashed{p}_1'+m_ec}{2m_ec} \gamma_\mu \frac{\slashed{p}_1+m_ec}{2m_ec} \gamma_\nu  \frac{\slashed{p}_2'+m_ec}{2m_ec} \gamma^\mu \frac{\slashed{p}_2+m_ec}{2m_ec} \gamma^\nu \right). \]
+
+\paragraph{(13.31)}
+$\delta_{(s)}{}^\mu$を$\mu=s$に対しては$1$，$\mu\neq s$に対しては$0$となる４元ベクトルとすれば，$\slashed{\delta}_{(\nu)}=\gamma_\nu$となる．
+これに注意して(H.34), (H.30)を使えば，
+\begin{align*}
+  \Tr (\slashed{p}_1' \gamma_\mu \slashed{p}_1 \gamma_\nu \slashed{p}_2' \gamma^\mu \slashed{p}_2 \gamma^\nu) & = -2\Tr (\slashed{p}_1' \slashed{p}_2' \gamma_\nu \slashed{p}_1 \slashed{p}_2 \gamma^\nu) \\
+  & = -8(p_1p_2)\Tr (\slashed{p}_1' \slashed{p}_2' ) \\
+  & = -8(p_1p_2)(p_1'p_2').
+\end{align*}
+
+\paragraph{(13.37), (13.38)}
+(13.9)を使う．図13.2(a)のパターンだと
+\begin{align*}
+  \psi_i(x) & = \sqrt{\frac{m_ec^2}{E_1V}} u(p_1, s_1) e^{-\frac{i}{\hbar}p_1x}, \\
+  \overline{\psi}_f(x) & = \sqrt{\frac{m_ec^2}{E_1'V}} \overline{u}(p_1', s_1') e^{\frac{i}{\hbar}p_1'x}, \\
+  \psi_i^{(2)}(y) & = \sqrt{\frac{m_ec^2}{\tilde{E}_2'V}} v(\overline{p}_2', \overline{s}_2') e^{\frac{i}{\hbar}\overline{p}_2'y}, \\
+  \overline{\psi}_f^{(2)}(y) & = \sqrt{\frac{m_ec^2}{\tilde{E}_2V}} \overline{v}(\overline{p}_2, \overline{s}_2) e^{-\frac{i}{\hbar}\overline{p}_2y}.
+\end{align*}
+図13.2(b)のパターンだと
+\begin{align*}
+  \psi_i(x) & = \sqrt{\frac{m_ec^2}{E_1V}} u(p_1, s_1) e^{-\frac{i}{\hbar}p_1x}, \\
+  \overline{\psi}_f(x) & = \sqrt{\frac{m_ec^2}{\tilde{E}_2V}} \overline{v}(\overline{p}_2, \overline{s}_2) e^{-\frac{i}{\hbar}\overline{p}_2y}, \\
+  \psi_i^{(2)}(y) & = \sqrt{\frac{m_ec^2}{\tilde{E}_2'V}} v(\overline{p}_2', \overline{s}_2') e^{\frac{i}{\hbar}\overline{p}_2'y}, \\
+  \overline{\psi}_f^{(2)}(y) & = \sqrt{\frac{m_ec^2}{E_1'V}} \overline{u}(p_1', s_1') e^{\frac{i}{\hbar}p_1'x}.
+\end{align*}
+
+[Griffiths](7.99)から(11.20)(11.21)と同等の式
+\begin{align*}
+  \sum_{\pm s_-} u_\beta(p_-, s_-) \overline{u}_\gamma(p_-,s_-) & = \left( \frac{\slashed{p}_- + m_ec}{2m_ec} \right)_{\beta\gamma} \\
+  \sum_{\pm s_+} v_\delta(p_+, s_+) \overline{v}_\alpha(p_+,s_+) & = \left( \frac{\slashed{p}_+ - m_ec}{2m_ec} \right)_{\delta\alpha}
+\end{align*}
+
+\paragraph{(13.39)}
+(13.20)に対応する式は
+\[d\overline{\sigma} = \frac{16\hbar^2c\alpha^2}{\lvert\boldsymbol{v}_1 -\boldsymbol{v}_2\rvert} \frac{m_e{}^4c^8}{E_1\overline{E}_2'} \operatorname{\delta}^4(p_1' + \overline{p}_2' - p_1 - \overline{p}_2) \overline{\lvert M_{fi}\rvert}^2 \frac{d^3p_1'}{2E_1'} \frac{d^3\overline{p}_2}{2\overline{E}_2}.\]
+高エネルギー極限で重心系から見た場合は(13.22)と同様に，
+\[ p_1 = (E/c, \boldsymbol{p}),\quad \overline{p}_2 = (E/c, -\boldsymbol{p}),\quad p_1' = (E'/c, \boldsymbol{p}'),\quad \overline{p}_2' = (E'/c, -\boldsymbol{p}'),\quad \lvert\boldsymbol{v}_1 - \boldsymbol{v}_2 \rvert = \frac{2\lvert\boldsymbol{p}\rvert c^2}{E}. \]
+(13.23)に対応する式は
+\[d\overline{\sigma} = \frac{d^3p_1'}{2E'} \frac{d^3\overline{p}_2}{2E} \operatorname{\delta}^4(p_1' + \overline{p}_2' - p_1 - \overline{p}_2) F(p_1', \overline{p}_2),\quad F(p_1', \overline{p}_2) = \frac{8\hbar^2\alpha^2m_e{}^4c^7}{\lvert\boldsymbol{p}\rvert E} \lvert M_{fi}\rvert^2. \]
+(13.26)に対応する式は
+\[d\overline{\sigma} = d\Omega_1'\frac{\hbar^2\alpha^2m_e{}^4c^6}{E^2} \lvert M_{fi}\rvert^2. \]
+(13.27)対応する式は
+\[ p_1\overline{p}_2 \approx \frac{2E^2}{c^2},\quad p_1'\overline{p}_2' \approx \frac{2E'^2}{c^2},\quad p_1\overline{p}_2' = p_1'\overline{p}_2 \approx \frac{2EE'}{c^2}\cos^2\frac{\theta}{2},\quad p_1p_1' = \overline{p}_2\overline{p}_2' \approx \frac{2EE'}{c^2}\sin^2\frac{\theta}{2}. \]
+$\lvert M_{fi}\rvert^2$の第１項に対応する部分（前半は(13.21)の計算；最後の計算は(13.29)と同じ）は，
+\begin{align*}
+  & \frac{1}{4} \sum_{\pm s_1, \pm s_1'} \sum_{\pm \overline{s}_2, \pm\overline{s}_2'} \frac{1}{(p_1 - p_1')^4} [\overline{u}(p_1', s_1') \gamma_\mu u(p_1, s_1) \overline{v}(\overline{p}_2, \overline{s}_2) \gamma^\mu v(\overline{p}_2', \overline{s}_2')] \\
+  &\qquad\qquad\qquad \times [\overline{u}(p_1', s_1') \gamma_\mu u(p_1, s_1) \overline{v}(\overline{p}_2, \overline{s}_2) \gamma^\mu v(\overline{p}_2', \overline{s}_2')]^* \\
+  & = \frac{1}{4} \frac{1}{(p_1 - p_1')^4} \sum_{\pm s_1, \pm s_1'} [\overline{u}(p_1', s_1') \gamma_\mu u(p_1, s_1)] [\overline{u}(p_1, s_1) \overline{\gamma}_\nu u(p_1', s_1')] \\
+  &\qquad\qquad\qquad \times \sum_{\pm \overline{s}_2, \pm\overline{s}_2'} [\overline{v}(\overline{p}_2, \overline{s}_2) \gamma^\mu v(\overline{p}_2', \overline{s}_2')] [\overline{v}(\overline{p}_2', \overline{s}_2') \overline{\gamma}^\nu v(\overline{p}_2, \overline{s}_2)] \\
+  & = \frac{1}{4} \frac{1}{(p_1-p_1')^4} \Tr \left( \frac{\slashed{p}_1'+m_ec}{2m_ec} \gamma_\mu \frac{\slashed{p}_1+m_ec}{2m_ec} \gamma_\nu \right) \Tr \left( \frac{\slashed{\overline{p}}_2 - m_ec}{2m_ec} \gamma^\mu \frac{\slashed{\overline{p}}_2' - m_ec}{2m_ec} \gamma^\nu \right) \\
+  & \approx \frac{1}{8m_e{}^4c^4}\frac{1+\cos^4\frac{\theta}{2}}{\sin^4\frac{\theta}{2}}.
+\end{align*}
+% <!-- & \approx \frac{1}{4} \frac{1}{(p_1-p_1')^4} \frac{1}{16m_e{}^4c^4} \Tr (\slashed{p}_1' \gamma_\mu \slashed{p}_1 \gamma_\nu)  \Tr (\slashed{\overline{p}}_2 \gamma^\mu \slashed{\overline{p}}_2' \gamma^\nu) -->
+第２・３項は（トレースの展開は(13.31)と同様）
+\begin{align*}
+  & -\frac{1}{4} \sum_{\pm s_1, \pm s_1'} \sum_{\pm \overline{s}_2, \pm\overline{s}_2'} \frac{1}{(p_1 - p_1')^2(p_1 +\overline{p}_2)^2} [\overline{u}(p_1', s_1') \gamma_\mu u(p_1, s_1) \overline{v}(\overline{p}_2, \overline{s}_2) \gamma^\mu v(\overline{p}_2', \overline{s}_2')] \\
+  &\qquad\qquad\qquad \times [\overline{u}(p_1', s_1') \gamma_\nu v(\overline{p}_2', \overline{s}_2') \overline{v}(\overline{p}_2, \overline{s}_2) \gamma^\nu u(p_1, s_1)]^* \\
+  & = -\frac{1}{4} \frac{1}{(p_1 - p_1')^2(p_1 +\overline{p}_2)^2} \sum_{\pm s_1, \pm s_1'} \sum_{\pm \overline{s}_2, \pm\overline{s}_2'} [\overline{u}(p_1', s_1') \gamma_\mu u(p_1, s_1)] [\overline{u}(p_1, s_1) \overline{\gamma}^\nu v(\overline{p}_2, \overline{s}_2)] \\
+  &\qquad\qquad\qquad \times [\overline{v}(\overline{p}_2, \overline{s}_2) \gamma^\mu v(\overline{p}_2', \overline{s}_2')] [\overline{v}(\overline{p}_2', \overline{s}_2') \overline{\gamma}_\nu u(p_1', s_1')] \\
+  & = -\frac{1}{4} \frac{1}{(p_1 - p_1')^2(p_1 +\overline{p}_2)^2} \Tr \left( \frac{\slashed{p}_1'+m_ec}{2m_ec} \gamma_\mu \frac{\slashed{p}_1+m_ec}{2m_ec} \gamma^\nu \frac{\slashed{\overline{p}}_2 - m_ec}{2m_ec} \gamma^\mu \frac{\slashed{\overline{p}}_2' - m_ec}{2m_ec} \gamma_\nu \right) \\
+  & \approx -\frac{1}{4} \frac{1}{(p_1 - p_1')^2(p_1 +\overline{p}_2)^2} \frac{1}{16m_e{}^4c^4} \Tr (\slashed{p}_1' \gamma_\mu \slashed{p}_1 \gamma^\nu \slashed{\overline{p}}_2 \gamma^\mu \slashed{\overline{p}}_2' \gamma_\nu) \\
+  & \approx -\frac{1}{4} \left(-4\frac{EE'}{c^2}\sin^2\frac{\theta}{2}\right)^{-1} \left(\frac{4E^2}{c^2} \right)^{-1} \frac{-32}{16m_e{}^4c^4} (p_1\overline{p}_2')(p_1'\overline{p}_2) \\
+  & = -\frac{1}{8m_e{}^4c^4}\frac{\cos^4\frac{\theta}{2}}{\sin^2\frac{\theta}{2}}.
+\end{align*}
+第４項は
+\begin{align*}
+  & \frac{1}{4} \sum_{\pm s_1, \pm s_1'} \sum_{\pm \overline{s}_2, \pm\overline{s}_2'} \frac{1}{(p_1 +\overline{p}_2)^4} [\overline{u}(p_1', s_1') \gamma_\mu v(\overline{p}_2', \overline{s}_2') \overline{v}(\overline{p}_2, \overline{s}_2) \gamma^\mu u(p_1, s_1)] \\
+  &\qquad\qquad\qquad \times [\overline{u}(p_1', s_1') \gamma_\nu v(\overline{p}_2', \overline{s}_2') \overline{v}(\overline{p}_2, \overline{s}_2) \gamma^\nu u(p_1, s_1)]^* \\
+  & = \frac{1}{4} \frac{1}{(p_1 +\overline{p}_2)^4} \sum_{\pm s_1, \pm s_1'} \sum_{\pm \overline{s}_2, \pm\overline{s}_2'} [\overline{u}(p_1', s_1') \gamma_\mu v(\overline{p}_2', \overline{s}_2')] [\overline{v}(\overline{p}_2', \overline{s}_2') \gamma_\nu u(p_1', s_1')] \\
+  &\qquad\qquad\qquad \times [\overline{v}(\overline{p}_2, \overline{s}_2) \gamma^\mu u(p_1, s_1)] [\overline{u}(p_1, s_1) \gamma^\nu v(\overline{p}_2, \overline{s}_2)] \\
+  & = \frac{1}{4} \frac{1}{(p_1 +\overline{p}_2)^4} \Tr \left( \frac{\slashed{p}_1'+m_ec}{2m_ec} \gamma_\mu \frac{\slashed{\overline{p}}_2'-m_ec}{2m_ec} \gamma_\nu \right) \Tr \left( \frac{\slashed{\overline{p}}_2 - m_ec}{2m_ec} \gamma^\mu \frac{\slashed{p}_1 + m_ec}{2m_ec} \gamma^\nu \right) \\
+  & \approx \frac{1}{4} \frac{1}{(p_1 +\overline{p}_2)^4} \frac{1}{16m_e{}^4c^4} \Tr \left( \slashed{p}_1' \gamma_\mu \overline{p}_2' \gamma_\nu \right) \Tr \left( \slashed{\overline{p}}_2 \gamma^\mu \slashed{p}_1 \gamma^\nu \right) \\
+  & \approx \frac{1}{4} \frac{1}{(p_1 +\overline{p}_2)^4} \frac{1}{m_e{}^4c^4} [p_{1\mu}'\overline{p}_{2\nu}' + p_{1\nu}'\overline{p}_{2\mu}' - (p_1'\overline{p}_2')\eta_{\mu\nu}] [\overline{p}_2{}^\mu p_1{}^\nu + \overline{p}_2{}^\nu p_1{}^\mu - (\overline{p}_2 p_1)\eta^{\mu\nu}] \\
+  & = \frac{1}{2} \frac{1}{(p_1 +\overline{p}_2)^4} \frac{1}{m_e{}^4c^4} [(p_1'\overline{p}_2)(\overline{p}_2'p_1) + (p_1'p_1)(\overline{p}_2'\overline{p}_2)] \\
+  & = \frac{1}{8} \frac{1}{m_e{}^4c^4} \left( \cos^4\frac{\theta}{2} + \sin^4\frac{\theta}{2} \right).
+\end{align*}
+従って，
+\begin{align*}
+  \frac{d\overline{\sigma}}{d\Omega_1'} & = \frac{c^2\hbar^2\alpha^2}{8E^2}\left(\frac{1+\cos^4\frac{\theta}{2}}{\sin^4\frac{\theta}{2}} - 2\times\frac{\cos^4\frac{\theta}{2}}{\sin^2\frac{\theta}{2}} + \cos^4\frac{\theta}{2} + \sin^4\frac{\theta}{2}\right) \\
+  & = \frac{c^2\hbar^2\alpha^2}{8E^2}\left[ \frac{1+\cos^4\frac{\theta}{2}}{\sin^4\frac{\theta}{2}} - 2\times\frac{\cos^4\frac{\theta}{2}}{\sin^2\frac{\theta}{2}} + \left(\frac{1 + \cos\theta}{2}\right)^2\left(\frac{1 - \cos\theta}{2}\right)^2 \right] \\
+  & = \frac{c^2\hbar^2\alpha^2}{8E^2}\left(\frac{1+\cos^4\frac{\theta}{2}}{\sin^4\frac{\theta}{2}} - 2\frac{\cos^4\frac{\theta}{2}}{\sin^2\frac{\theta}{2}} + \frac{1 + \cos^2\theta}{2}\right).
+\end{align*}
+
+\setcounter{chapter}{14}
+
+\chapter{高次補正　---その1---}
+\paragraph{(15.3)}
+(11.7)(11.8)を使う．左図のS行列は
+\begin{align*}
+  & \overline{u}(p_f, s_f) \int \frac{d^4p}{(2\pi\hbar)^4} i \slashed{\varepsilon} \frac{i\hbar}{\slashed{p} - m_ec + i\varepsilon} i\gamma^0 \int d^4x\, e^{\frac{i}{\hbar}(p_f \mp k - p)x} \int d^4y\, e^{\frac{i}{\hbar}(p - p_i)y} \frac{1}{\lvert\boldsymbol{y}\rvert} u(p_i, s_i) \\
+  & = - \overline{u}(p_f, s_f) \int \frac{d^4p}{(2\pi\hbar)^4} \slashed{\varepsilon} \frac{i\hbar}{\slashed{p} - m_ec + i\varepsilon} \gamma^0 (2\pi\hbar)^4 \operatorname{\delta}^4(p_f \mp k - p) (2\pi\hbar) \operatorname{\delta}(E - E_i) \frac{4\pi\hbar}{\lvert\boldsymbol{p} - \boldsymbol{p}_i\rvert^2} u(p_i, s_i) \\
+  & = - \overline{u}(p_f, s_f) \slashed{\varepsilon} \frac{i\hbar}{\slashed{p}_f + \slashed{k} - m_ec + i\varepsilon} \gamma^0 2\pi\hbar \operatorname{\delta}(E_f + \lvert\boldsymbol{k}\rvert c - E_i) \frac{4\pi\hbar}{\lvert\boldsymbol{q}\rvert^2} u(p_i, s_i) \\
+  & = - i\overline{u}(p_f, s_f) \slashed{\varepsilon} \frac{\slashed{p}_f + \slashed{k} + m_ec}{(p_f + k)^2 - m_e{}^2c^2} \gamma^0 2\pi\hbar \operatorname{\delta}(E_f + \lvert\boldsymbol{k}\rvert c - E_i) \frac{4\pi\hbar^2}{\lvert\boldsymbol{q}\rvert^2} u(p_i, s_i).
+\end{align*}
+右図は
+\begin{align*}
+  & \overline{u}(p_f, s_f) \int \frac{d^4p}{(2\pi\hbar)^4} \int d^4x\, e^{\frac{i}{\hbar}(p_f - p)x} \frac{1}{\lvert\boldsymbol{x}\rvert} i \gamma^0 \frac{i\hbar}{\slashed{p} - m_ec + i\varepsilon} i\slashed{\varepsilon} \int d^4y\, e^{\frac{i}{\hbar}(p \mp k - p_i)y} u(p_i, s_i) \\
+  & = -\overline{u}(p_f, s_f) \int \frac{d^4p}{(2\pi\hbar)^4} 2\pi\hbar \operatorname{\delta}(E_f - E) \frac{4\pi\hbar}{\lvert\boldsymbol{p}_f - \boldsymbol{p}\rvert^2} \gamma^0 \frac{i\hbar}{\slashed{p} - m_ec + i\varepsilon} \slashed{\varepsilon} (2\pi\hbar)^4 \operatorname{\delta}(p \mp k - p_i) u(p_i, s_i) \\
+  & = - \overline{u}(p_f, s_f) \gamma^0 \frac{i\hbar}{\slashed{p}_i - \slashed{k} - m_ec + i\varepsilon} \slashed{\varepsilon} 2\pi\hbar \operatorname{\delta}(E_f + \lvert\boldsymbol{k}\rvert c - E_i) \frac{4\pi\hbar}{\lvert\boldsymbol{q}\rvert^2} u(p_i, s_i) \\
+  & = - i\overline{u}(p_f, s_f) \gamma^0 \frac{\slashed{p}_i - \slashed{k} + m_ec + i\varepsilon}{(p_i - k)^2 - m_e{}^2c^2 + i\varepsilon} \slashed{\varepsilon} 2\pi\hbar \operatorname{\delta}(E_f + \lvert\boldsymbol{k}\rvert c - E_i) \frac{4\pi\hbar^2}{\lvert\boldsymbol{q}\rvert^2} u(p_i, s_i).
+\end{align*}
+
+\paragraph{(15.10)}
+$\lvert 1 + \tilde{F}_1(q^2) \rvert^2$は通常散乱，真空偏極，頂点補正の断面積．$\int\cdots dk$は制動放射．
+
+
+% (15.17)．わからん
+% (15.23)最後の項．わからん．$F_2(q^2)=\alpha/2\pi+Aq^2$のうち$Aq^2$が消えるのは分かるが...
+
+\paragraph{(15.25)}
+\begin{align*}
+  \int \overline{\psi} \gamma_0 \boldsymbol{\gamma} \cdot \boldsymbol{\nabla} A^0 \psi\, d^3x & = \int
+  \begin{pmatrix}
+    \varphi^\dagger & \chi^\dagger
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & \boldsymbol{\sigma} \cdot \boldsymbol{\nabla} \\
+    -\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} & 0 \\
+  \end{pmatrix}
+  A^0
+  \begin{pmatrix}
+    \varphi \\
+    \chi
+  \end{pmatrix}
+  \,d^3x\\
+  & = \int d^3x\, [\varphi^\dagger (\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} A^0) \chi - \chi^\dagger (\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} A^0) \varphi] \\
+  & = -\frac{i\hbar}{2m_ec}\int d^3x\, [\varphi^\dagger (\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} A^0) (\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} \varphi) + (\boldsymbol{\nabla} \varphi^\dagger \cdot \boldsymbol{\sigma}) (\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} A^0) \varphi] \\
+  & = -\frac{i\hbar}{2m_ec}\int d^3x\, [\varphi^\dagger (\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} A^0) (\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} \varphi) - \varphi^\dagger \boldsymbol{\sigma} \cdot \boldsymbol{\nabla} \{(\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} A^0) \varphi\}].
+\end{align*}
+$[\cdots]$の中身は
+\begin{align*}
+  & \varphi^\dagger (\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} A^0) (\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} \varphi) - \varphi^\dagger \boldsymbol{\sigma} \cdot \boldsymbol{\nabla} \{(\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} A^0) \varphi\} \\
+  & = \varphi^\dagger[(\boldsymbol{\nabla} A^0) \cdot (\boldsymbol{\nabla} \varphi) + i\boldsymbol{\sigma} \cdot (\boldsymbol{\nabla} A^0) \times (\boldsymbol{\nabla} \varphi)] \\
+  & \quad - \varphi^\dagger[\{(\boldsymbol{\nabla}^2 + i\boldsymbol{\sigma} \cdot \boldsymbol{\nabla} \times \boldsymbol{\nabla}) A^0\}\varphi + \{(\boldsymbol{\nabla} \varphi) \cdot (\boldsymbol{\nabla} A^0) + i\boldsymbol{\sigma} \cdot (\boldsymbol{\nabla} \varphi) \times (\boldsymbol{\nabla} A^0)\}] \\
+  & = -\varphi^\dagger (\boldsymbol{\nabla}^2 A^0)\varphi + 2i\varphi^\dagger \boldsymbol{\sigma} \cdot (\boldsymbol{\nabla} A^0) \times (\boldsymbol{\nabla} \varphi) \\
+  & = -\varphi^\dagger (\boldsymbol{\nabla}^2 A^0)\varphi + 2i\varphi^\dagger \boldsymbol{\sigma} \cdot \left(\frac{dA^0}{dr} \frac{\boldsymbol{r}}{r}\right) \times (\boldsymbol{\nabla} \varphi) \\
+  & = -\varphi^\dagger (\boldsymbol{\nabla}^2 A^0)\varphi - \frac{2}{\hbar} \varphi^\dagger \frac{1}{r} \frac{dA^0}{dr} \boldsymbol{\sigma} \cdot \boldsymbol{L} \varphi.
+\end{align*}

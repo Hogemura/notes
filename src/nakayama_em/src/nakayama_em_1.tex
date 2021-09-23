@@ -1,0 +1,489 @@
+\setcounter{chapter}{7}
+\chapter{物質と電磁波}
+\setcounter{section}{1}
+\section{誘電関数}
+\paragraph{複素感受率の時間発展}
+分極の固有振動について考える．物質に対し，外から電場
+\begin{align}
+  \boldsymbol{E} = \boldsymbol{E}_0\exp(-i\omega{}t)
+\end{align}
+をかける．微視的分極に対する運動方程式は，
+\begin{align}
+  m\langle\ddot{\boldsymbol{p}}\rangle = -K\langle\dot{\boldsymbol{p}}\rangle - m\gamma\langle\dot{\boldsymbol{p}}\rangle + q^2\boldsymbol{E}.
+  \label{adm_dev_eom}
+\end{align}
+$K$は復元力の定数，$\gamma$は衝突による抵抗を表す定数．これは力学における強制振動に対応している．
+\begin{align}
+  \boldsymbol{P} = n\langle\dot{\boldsymbol{p}}\rangle = \varepsilon_0\chi(\omega)\boldsymbol{E}_0\exp(-i\omega{}t)
+\end{align}
+によって複素感受率を導入すると，
+\begin{align}
+  \chi(\omega) = \dfrac{nq^2}{\varepsilon_0m[{\omega_0}^2-\omega^2-i\gamma\omega]} = \dfrac{{\omega_p}^2[({\omega_0}^2-{\omega}^2)+i\gamma\omega]}{({\omega_0}^2-{\omega}^2)^2+\gamma^2\omega^2}. \label{adm_dev_xw}
+\end{align}
+ただし，$\omega_0$は固有角振動数，$\omega_p$はプラズマ角振動数で，
+\begin{align}
+  {\omega_0}^2 &= \dfrac{K}{m}\\
+  {\omega_p}^2 &= \dfrac{nq^2}{\varepsilon_0m}
+\end{align}
+のように定義される．また，この$\chi(\omega)$を複素感受率という．
+
+以上で見たように周期的な電場に応答する物質の電気感受率は角振動数$\omega$に依存する．
+ある時刻$t'$における電場の作用によって発生した電気分極は，その固有の運動にしたがって変化する．
+その変化の様子は，観察時刻$t$と発生時刻$t'$との時間$t-t'$で評価される．よって，時刻$t$における分極は，
+\begin{align}
+  \boldsymbol{P}(t)=\varepsilon_0\int^t_{-\infty} \chi(t-t')\boldsymbol{E}(t') \, dt' \label{adm_dev_Pt}
+\end{align}
+で与えられる．積分上限が$t$なのは，$\chi(t-t')$が$t-t' < 0$では0だから．
+これは，ある時刻に起こった変化は，それより前の事象に影響を与えないという因果律を表している．
+ここで，
+\begin{align}
+  \boldsymbol{E}(t)=\dfrac{1}{2\pi}\int^\infty_{-\infty}\boldsymbol{E}(\omega)\exp(-i\omega{}t) \, d\omega
+\end{align}
+でFourier変換すると，
+\begin{align}
+  \boldsymbol{P}(\omega) &= \int^\infty_{-\infty}\boldsymbol{P}(t)\exp(i\omega{}t) \, dt\notag \\
+  &= \int^\infty_{-\infty}\left[\int^t_{-\infty}dt'\varepsilon_0\chi(t-t')\boldsymbol{E}(t')\right]\exp(i\omega{}t) \, dt\notag \\
+  &= \varepsilon_0\chi(\omega)\boldsymbol{E}(\omega)
+\end{align}
+となる．$\chi$の逆変換は，
+\begin{align}
+  \chi(\tau)=\dfrac{1}{2\pi}\int^\infty_{-\infty}\chi(\omega)\exp(-i\omega\tau) \, d\omega. \label{adm_dev_xt}
+\end{align}
+ただし，$\tau < 0$では$\chi=0$．
+
+次に，\eqref{adm_dev_xw}を\eqref{adm_dev_xt}に代入して，積分値を求める．
+
+\eqref{adm_dev_xw}から，被積分関数の極は
+\begin{align}
+  p_+ &= \beta-\dfrac{i\gamma}{2}, \label{adm_dev_pole+}\\
+  p_- &= -\beta-\dfrac{i\gamma}{2}. \label{adm_dev_pole-}
+\end{align}
+で与えられる．
+ただし，$\beta=\sqrt{{\omega_0}^2-\dfrac{\gamma^2}{4}}$は減衰振動子の固有各振動数．
+よって，$\chi(\omega)\exp(-i\omega\tau)$の極は1位で$\Im \omega < 0$の領域に存在する．
+
+積分経路は本文図8-3のように選ぶ．
+
+$\tau < 0$の場合は実線の経路で積分する．
+この経路は極を含まないので，積分は$0$である．
+円弧の半径を十分大きくすれば，円弧上での積分は$0$となり，結局，実軸上での積分も$0$となる．
+
+$\tau > 0$の場合は破線の経路（右回り！）で積分する．
+\eqref{adm_dev_pole+}と\eqref{adm_dev_pole-}を使って積分を書きなおすと，
+\begin{align}
+  \dfrac{1}{2\pi} \oint \dfrac{-{\omega_p}^2e^{-i\omega\tau}}{(\omega-p_+)(\omega-p_-)} \, d\omega
+  &= \frac{-2\pi i}{2\pi} (-\omega_p{}^2) \left( \frac{e^{-ip_+\tau}}{p_+ - p_-} + \frac{e^{-ip_-\tau}}{p_- - p_+} \right)\notag \\
+  &= -i\dfrac{{\omega_p}^2}{p_+ - p_-}\left(e^{-ip_-\tau} - e^{-ip_+\tau}\right). \label{adm_dev_Resx}
+\end{align}
+\eqref{adm_dev_Resx}に\eqref{adm_dev_pole+}と\eqref{adm_dev_pole-}を代入して，
+\begin{align}
+  \chi(\tau)=\dfrac{{\omega_p}^2}{\beta}\exp\left(-\dfrac{\gamma{t}}{2}\right)\sin\beta\tau \label{adm_dev_xtcon}
+\end{align}
+$\gamma > 0$であるので，これは$\chi(\tau)$が時間発展とともに減衰していくことを表している．
+
+\paragraph{Kramers-Kronigの関係式}
+正則関数$\chi(\Omega)$に対し，
+\begin{align}
+  \dfrac{\chi(\Omega)}{\Omega - \omega} \label{kra_kro_function}
+\end{align}
+を考える．\eqref{kra_kro_function}は，$\Omega=\omega$で1位の極を持つ．
+
+\begin{center}
+  \begin{tikzpicture}[>=stealth]
+    \draw[->] (-3, 0) -- (3, 0) node [right] {$\Re\Omega$};
+    \draw[->] (0, -0.5) -- (0, 3) node [above] {$\Im\Omega$};
+    \fill (1, 0) circle [radius=0.05] node [below] {$\omega$};
+    \begin{scope}[very thick, decoration={markings, mark=at position 0.6 with {\arrow{stealth}}}]
+      \draw[postaction={decorate}] (2.5, 0) arc [radius=2.5, start angle = 0, end angle=180];
+      \draw[postaction={decorate}] (-2.5, 0) -- (0.8, 0);
+      \draw[postaction={decorate}] (1.2, 0) -- (2.5, 0);
+      \draw (1.2, 0) arc [radius=0.2, start angle = 0, end angle=180];
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+上の経路で積分する．
+この経路の内側には特異点はないので，積分した値は$0$になる．
+十分大きな弧上では$\Omega$が非常に大きく，原子の分極が追い付かなくなり，$\chi=0$である．
+
+$\omega$近傍の積分経路は，半径$\delta$の半円$\Omega = \omega + \delta e^{i\theta}$である($\theta \colon \pi \to 0$)．
+その上での積分は，
+\[ \int \dfrac{\chi(\Omega)}{\Omega - \omega} \, d\Omega = \int^0_\pi \dfrac{\chi (\omega + \delta e^{i\theta})}{\omega+\delta e^{i\theta} - \omega} i\delta e^{i\theta}d\theta . \]
+よって，
+\begin{align}
+  0 &= \oint \dfrac{\chi(\Omega)}{\Omega - \omega} \, d\Omega\notag \\
+  &= \int_{-\infty}^{\omega-\delta} \dfrac{\chi(\Omega)}{\Omega - \omega} \, d\Omega
+  + \int_{\omega+\delta}^{\infty} \dfrac{\chi(\Omega)}{\Omega - \omega} \, d\Omega
+  + \int^0_\pi \dfrac{\chi (\omega + \delta e^{i\theta})}{\omega+\delta e^{i\theta} - \omega} i\delta e^{i\theta}d\theta \notag \\
+  &\sim \mathcal{P}\int^\infty_{ - \infty}\dfrac{\chi(\Omega)}{\Omega - \omega}d\Omega  -  i\pi\chi(\omega)
+  \label{kra_kro_int}
+\end{align}
+最後の式変形で$\delta \to 0$とした．$\mathcal{P}$は，$\omega\pm\delta$での積分をのぞいた主値積分．
+この式を実数部と虚数部に分けると，
+\begin{align}
+  \chi'(\omega) &= \dfrac{1}{\pi}\mathcal{P}\int^\infty_{ - \infty}\dfrac{\chi''(\Omega)}{\Omega - \omega} \, d\Omega \label{kra_kro_real} \\
+  \chi''(\omega) &=  - \dfrac{1}{\pi}\mathcal{P}\int^\infty_{ - \infty}\dfrac{\chi'(\Omega)}{\Omega - \omega} \, d\Omega \label{kra_kro_imaginary}
+\end{align}
+となる．$\chi'$は実数部，$\chi''$は虚数部を表す．これをKramers-Kronigの関係式という．
+これは，電気分極だけでなく，一般の多くの線形応答現象について成り立つ．
+
+次に，$\chi'$と$\chi''$の偶奇性について考える．
+\begin{align}
+  \chi(\tau) &= \dfrac{\chi(\tau)+\chi( - \tau)}{2} + \dfrac{\chi(\tau) - \chi( - \tau)}{2}\notag \\
+  &= \chi_e(\tau)+\chi_o(\tau)
+\end{align}
+ここで，$\chi_e$は偶関数，$\chi_o$は奇関数である．
+この関数のFourier変換を考えると，
+\begin{align}
+  \chi(\omega) &= \int^\infty_{ - \infty}\chi(\tau)\exp(i\omega\tau)d\tau\notag \\
+  &= \int^\infty_{ - \infty}\chi_e(\tau)\exp(i\omega\tau)d\tau + \int^\infty_{ - \infty}\chi_o(\tau)\exp(i\omega\tau)d\tau\notag \\
+  &= \int^\infty_{ - \infty}\chi_e(\tau)\left[\cos\omega\tau+i\sin\omega\tau\right]d\tau + \int^\infty_{ - \infty}\chi_o(\tau)\left[\cos\omega\tau+i\sin\omega\tau\right]d\tau\notag \\
+  &= \int^\infty_{ - \infty}\chi_e(\tau)\cos(\omega\tau)d\tau + i\int^\infty_{ - \infty}\chi_o(\tau)\sin(\omega\tau)d\tau\notag \\
+  &= \chi'(\omega)+i\chi''(\omega) \label{kra_kro_xtau}
+\end{align}
+3行目から4行目に移る時に，奇関数の$ - \infty$から$\infty$の積分が0になることを使った．
+\eqref{kra_kro_xtau}より，
+\begin{align}
+  \chi'(\omega) &= \chi'( - \omega)\label{kra_kro_even} \\
+  \chi''(\omega) &=  - \chi''( - \omega)\label{kra_kro_odd} \\
+  \chi(\omega) &= \chi^*( - \omega)
+\end{align}
+まずは\eqref{kra_kro_real}の変形を考える．
+\begin{align}
+  \chi'(\omega) &= \dfrac{1}{\pi}\mathcal{P}\int^\infty_{ - \infty}\dfrac{\chi''(\Omega)}{\Omega - \omega}d\Omega\notag \\
+  &= \dfrac{1}{\pi}\mathcal{P}\int^0_{ - \infty}\dfrac{\chi''(\Omega)}{\Omega - \omega}d\Omega + \dfrac{1}{\pi}\mathcal{P}\int^\infty_0\dfrac{\chi''(\Omega)}{\Omega - \omega}d\Omega\notag \\
+  &= \dfrac{1}{\pi}\mathcal{P}\int^\infty_0\dfrac{\chi''( - \Omega)}{ - \Omega - \omega}d\Omega + \dfrac{1}{\pi}\mathcal{P}\int^\infty_0\dfrac{\chi''(\Omega)}{\Omega - \omega}d\Omega\notag \\
+  &= \dfrac{1}{\pi}\mathcal{P}\int^\infty_0\dfrac{ - \chi''(\Omega)}{ - \Omega - \omega}d\Omega + \dfrac{1}{\pi}\mathcal{P}\int^\infty_0\dfrac{\chi''(\Omega)}{\Omega - \omega}d\Omega\notag \\
+  &= \dfrac{2}{\pi}\mathcal{P}\int^\infty_0\dfrac{\Omega\chi''(\Omega)}{\Omega^2 - \omega^2}d\Omega\label{kra_kro_real1} \\
+  &= \dfrac{1}{\pi}\mathcal{P}\int^\infty_{ - \infty}\dfrac{\Omega\chi''(\Omega)}{\Omega^2 - \omega^2}d\Omega\label{kra_kro_real2}
+\end{align}
+4行目から\eqref{kra_kro_real1}に移る時及び，\eqref{kra_kro_real1}から\eqref{kra_kro_real2}に移る時に，\eqref{kra_kro_odd}を使った．
+同様に，\eqref{kra_kro_imaginary}と\eqref{kra_kro_even}から，
+\begin{align}
+  \chi''(\omega) &=  - \dfrac{2\omega}{\pi}\mathcal{P}\int^\infty_0\dfrac{\chi'(\Omega)}{\Omega^2 - \omega^2}d\Omega\label{kra_kro_imaginary1} \\
+  &=  - \dfrac{\omega}{\pi}\mathcal{P}\int^\infty_{ - \infty}\dfrac{\chi'(\Omega)}{\Omega^2 - \omega^2}d\Omega\label{kra_kro_imaginary2}
+\end{align}
+\eqref{kra_kro_real1}と\eqref{kra_kro_imaginary1}もしくは\eqref{kra_kro_real2}と\eqref{kra_kro_imaginary2}でKramers-Kronigの関係式という場合もある．
+いずれにせよ，これは複素アドミッタンス（任意の外力による応答関数をFourier変換したもの）の実部と虚部の関係式を表す．
+
+さらに，複素平面上における$\chi(\omega)$の正則性についても議論する．正則であるためには，Cauchy-Riemannの式が成立すれば良い．
+\begin{align}
+  \chi(\omega) &= \chi(\omega'+i\omega'')\notag \\
+  &= \int^\infty_{ - \infty} \chi(\tau)e^{i\omega\tau}d\tau\notag \\
+  &= \int^\infty_{ - \infty} \chi(\tau)\exp( - \omega''\tau+i\omega'\tau)d\tau\notag \\
+  &= \int^\infty_{ - \infty} e^{ - \omega''\tau}\left[\chi'(\tau)+i\chi''(\tau)\right](\cos\omega'\tau+i\sin\omega'\tau)d\tau\notag \\
+  &= \int^\infty_{ - \infty} e^{ - \omega''\tau}\left[\chi'(\tau)\cos\omega'\tau - \chi''(\tau)\sin\omega'\tau\right]d\tau\notag \\
+  & \hspace{45pt} +i\int^\infty_{ - \infty} e^{ - \omega''\tau}\left[\chi''(\tau)\cos\omega'\tau+\chi'(\tau)\sin\omega'\tau\right]d\tau\label{kra_kro_chi_comp}
+\end{align}
+ここで，
+\begin{align}
+  \dfrac{\partial}{\partial{\omega'}}\int^\infty_{ - \infty} e^{ - \omega''\tau}&\left[\chi'(\tau)\cos\omega'\tau - \chi''(\tau)\sin\omega'\tau\right]d\tau\notag \\
+  &= \dfrac{\partial}{\partial{\omega''}}\int^\infty_{ - \infty} e^{ - \omega''\tau}\left[\chi''(\tau)\cos\omega'\tau+\chi'(\tau)\sin\omega'\tau\right]d\tau
+\end{align}
+及び，
+\begin{align}
+  \dfrac{\partial}{\partial{\omega''}}\int^\infty_{ - \infty} e^{ - \omega''\tau}&\left[\chi'(\tau)\cos\omega'\tau - \chi''(\tau)\sin\omega'\tau\right]d\tau\notag \\
+  &=  - \dfrac{\partial}{\partial{\omega'}}\int^\infty_{ - \infty} e^{ - \omega''\tau}\left[\chi''(\tau)\cos\omega'\tau+\chi'(\tau)\sin\omega'\tau\right]d\tau
+\end{align}
+となるので，確かに$\chi(\omega)$は正則である．次に，$\chi''(\omega)$に関する性質を見よう．
+
+\begin{center}
+  \begin{tikzpicture}[>=stealth]
+    \draw[->] (-3, 0) -- (3, 0) node [right] {$\Re\omega$};
+    \draw[->] (0, -1.2) -- (0, 3) node [above] {$\Im\omega$};
+    \fill (0, 1) circle [radius=0.05] node [right] {$i\xi$};
+    \fill (0, -1) circle [radius=0.05] node [right] {$-i\xi$};
+    \begin{scope}[very thick, decoration={markings, mark=at position 0.6 with {\arrow{stealth}}}]
+      \draw[postaction={decorate}] (2.5, 0) arc [radius=2.5, start angle = 0, end angle=180];
+      \draw[postaction={decorate}] (-2.5, 0) -- (2.5, 0);
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+実軸を弦として，上半分に存在する十分大きい半円経路での積分を計算する：
+\begin{align*}
+  \oint \dfrac{\omega\chi(\omega)}{\omega^2+\xi^2} \, d\omega
+  &= \dfrac{1}{2}\oint \dfrac{\chi(\omega)}{\omega - i\xi} \, d\omega + \dfrac{1}{2}\oint \dfrac{\chi(\omega)}{\omega+i\xi} \, d\omega
+  = \dfrac{1}{2}\oint \dfrac{\chi(\omega)}{\omega - i\xi} \, d\omega \\
+  &= \dfrac{2\pi i}{2} \chi(i\xi) = i \pi \chi(i\xi) .
+\end{align*}
+円弧における積分はその半径を十分大きく取ると0になるので，
+\begin{align}
+  \int_{ - \infty}^\infty \dfrac{\omega\chi(\omega)}{\omega^2+\xi^2} \, d\omega = i\pi\chi(i\xi) .
+\end{align}
+ところで，この式の左辺の被積分関数の実数部分は\eqref{kra_kro_even}より奇関数となるので，左辺の実数部は0となる．よって，
+\begin{align}
+  \int_{ - \infty}^\infty \dfrac{\omega{}i\chi''(\omega)}{\omega^2+\xi^2} \, d\omega = i\pi\chi(i\xi) \label{kra_kro_ima_part}
+\end{align}
+この式の左辺の被積分関数は\eqref{kra_kro_odd}より偶関数となるので，\eqref{kra_kro_ima_part}は
+\begin{align}
+  \chi(i\xi) = \dfrac{2}{\pi}\int^\infty_0 \dfrac{\omega\chi''(\omega)}{\omega^2+\xi^2} \, d\omega
+\end{align}
+となる．これを$0 < \xi < \infty$で積分すると，
+\begin{align}
+  \int^\infty_0 \chi(i\xi) \, d\xi &= \dfrac{2}{\pi}\int^\infty_0\left[\omega\chi''(\omega)\int^\infty_0 \dfrac{1}{\xi^2+\omega^2} \, d\xi\right] \, d\omega\notag \\
+  &= \dfrac{2}{\pi}\int_0^\infty\omega\chi''(\omega)\dfrac{\pi}{2\omega} \, d\omega\notag \\
+  &= \int^\infty_0\chi''(\omega) \, d\omega
+\end{align}
+となる．従って，
+\begin{align}
+  \int^\infty_0 \chi(i\omega) \, d\omega = \int^\infty_0\chi''(\omega) \, d\omega
+\end{align}
+が成立する．
+
+以上は誘電体の電気分極については成立するが，金属になると若干話が異なってくる．
+なぜならば， 振動子モデルにおいて$\omega_0=0$とすると，
+$\omega\to0$で$\chi(\omega)$が極を持ってしまうからだ．
+よって，金属の場合は，$\Omega$平面での積分において$\Omega=0$も避けるような経路にしなくてはならない．
+
+\begin{center}
+  \begin{tikzpicture}[>=stealth]
+    \draw[->] (-3, 0) -- (3, 0) node [right] {$\Re\Omega$};
+    \draw[->] (0, -0.5) -- (0, 3) node [above] {$\Im\Omega$};
+    \fill (1, 0) circle [radius=0.05] node [below] {$\omega$};
+    \fill (0, 0) circle [radius=0.05];
+    \begin{scope}[very thick, decoration={markings, mark=at position 0.6 with {\arrow{stealth}}}]
+      \draw[postaction={decorate}] (2.5, 0) arc [radius=2.5, start angle = 0, end angle=180];
+      \draw[postaction={decorate}] (-2.5, 0) -- (-0.2, 0);
+      \draw[postaction={decorate}] (0.2, 0) -- (0.8, 0);
+      \draw[postaction={decorate}] (1.2, 0) -- (2.5, 0);
+      \draw (1.2, 0) arc [radius=0.2, start angle = 0, end angle=180];
+      \draw (0.2, 0) arc [radius=0.2, start angle = 0, end angle=180];
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+この場合，\eqref{kra_kro_int}が原点回りでの積分だけ影響を受ける．
+$\omega$で変動する電場がかかっているときの物質中のMaxwell-Amp\`ereの法則は，
+\begin{align}
+  \rot \boldsymbol{H} = \boldsymbol{j} + \dfrac{\partial\boldsymbol{D}}{\partial{t}} = \boldsymbol{j} - i\omega\boldsymbol{D}
+\end{align}
+であり，これにOhmの法則
+\begin{align}
+  \boldsymbol{j} = \sigma\boldsymbol{E}
+\end{align}
+を代入すると，
+\begin{align}
+  \rot \boldsymbol{H} &= \boldsymbol{j}+ - i\omega\varepsilon\boldsymbol{E}\notag\\
+  &=  - i\omega\left(\varepsilon+\dfrac{i\sigma}{\omega}\right)
+\end{align}
+となる．$\sigma$は定常電流に対する電気伝導率である．これは，$\omega\to0$の極限で，電束密度の時間変動が定磁場に近付くことに由来する．
+例えば，誘電体では 静的な誘電率$\varepsilon_{\text{st}}$に近づく．
+よって，金属の誘電率は誘電体の誘電率に対し$\dfrac{i\sigma}{\omega}$の補正が必要なことが分かる．
+つまり，
+\begin{align}
+  \varepsilon_{m} = \varepsilon_{d} + \dfrac{i\sigma}{\omega}
+\end{align}
+と言うことだ．ただし，添字$_m$は金属，$_d$は誘電体の物理量であることを示す．これを電気感受率を用いて書き直すと，
+\begin{align}
+  \chi_m=\chi_d+\dfrac{i\sigma}{\varepsilon_0\omega}
+\end{align}
+感受率の実部，虚部に分けて考えると，
+\begin{align}
+  {\chi'}_m(\omega) &= {\chi'}_d(\omega)\\
+  {\chi''}_m(\omega) &= {\chi''}_d(\omega)+\dfrac{\sigma}{\varepsilon_0\omega}
+\end{align}
+これを\eqref{kra_kro_real}と\eqref{kra_kro_imaginary}に適用すると，金属に対する感受率は，
+\begin{align}
+  \chi'(\omega) &= \dfrac{1}{\pi}\mathcal{P}\int^\infty_{ - \infty}\dfrac{\chi''(\Omega)}{\Omega - \omega}d\Omega\\
+  \chi''(\omega) &=  - \dfrac{1}{\pi}\mathcal{P}\int^\infty_{ - \infty}\dfrac{\chi'(\Omega)}{\Omega - \omega}d\Omega+\dfrac{\sigma}{\varepsilon_0\omega}\label{kra_kro_metalimg}
+\end{align}
+となる．
+
+\paragraph{振動子モデル}
+4-10で議論した振動子モデルをもう一度考えてみる．
+
+等方的な物質の電気分極の固有振動について考える．物質に対し，外から電場
+\begin{align}
+  \boldsymbol{E}=\boldsymbol{E}_0\exp( - i\omega t)
+\end{align}
+をかける．微視的分極に対する運動方程式は，
+\begin{align}
+  m\langle\ddot{\boldsymbol{p}}\rangle = - K\langle\dot{\boldsymbol{p}}\rangle - m\gamma\langle\dot{\boldsymbol{p}}\rangle + q^2\boldsymbol{E}
+  \label{osc_model_eom}
+\end{align}
+である．$K$は復元力の定数，$\gamma$は衝突による抵抗を表す定数である．これは力学における強制振動に対応している．
+\begin{align}
+  \boldsymbol{P} = n\langle\dot{\boldsymbol{p}}\rangle = \varepsilon_0\chi(\omega)\boldsymbol{E}_0\exp( -i\omega t)
+\end{align}
+によって複素感受率を導入すると，
+\begin{align}
+  \chi(\omega) = \dfrac{nq^2}{\varepsilon_0m[{\omega_0}^2 - \omega^2 - i\gamma\omega]} = \dfrac{{\omega_p}^2}{{\omega_0}^2 - \omega^2 - i\gamma\omega}
+  \label{osc_model_xw}
+\end{align}
+となる．ただし，$\omega_0$は固有角振動数，$\omega_p$はプラズマ角振動数で，
+\begin{align}
+  {\omega_0}^2 &= \dfrac{K}{m}\\
+  {\omega_p}^2 &= \dfrac{nq^2}{\varepsilon_0m}
+\end{align}
+のように定義される．また，この$\chi(\omega)$を複素感受率という．さらに，複素誘電率$\varepsilon(\omega)$は，
+\begin{align}
+  \varepsilon(\omega) = \varepsilon_0(1+\chi(\omega)) \label{osc_model_comp_epsilon}
+\end{align}
+で与えられる．この$\varepsilon(\omega)$を誘電関数と呼ぶこともある．
+
+このモデル\eqref{osc_model_xw}で散逸$\gamma$が小さいときは，\eqref{osc_model_comp_epsilon}から，
+\begin{align}
+  \varepsilon(\omega) = \varepsilon_0\left[1+\dfrac{{\omega_p}^2}{{\omega_0}^2 - \omega^2}\right] \label{osc_model_oscillation}
+\end{align}
+となる．また，
+\begin{align}
+  \omega={\omega_l} = \sqrt{{\omega_0}^2+{\omega_p}^2}
+\end{align}
+のときは，
+\[\varepsilon(\omega) = 0\]
+となる．この$\omega_l$を縦波の振動数という．さらに，\eqref{osc_model_oscillation}において$\omega\ll\omega_0$としたときは，静的な誘電率
+\begin{align}
+  \varepsilon_{\text{st}}=\varepsilon_0+\dfrac{\varepsilon_0{\omega_p}^2}{{\omega_0}^2}\label{osc_model_st}
+\end{align}
+が得られる．これを図示すると本文図8-4のようになる．
+
+一般の物質には双極子以外にも，イオンや電子など外部の電場に応答するものがある．このようなものの寄与を考えると，誘電関数は本文図4-25のようになる．
+
+この図を見れば分かるように，固有角振動数$\omega_0$の近くでは，$\omega_0$より大きい固有角振動数を持つ分極の寄与はほぼ一定の正の誘電率を与える．
+例えば，イオン結晶のイオン変位による分極の共鳴領域では，それより角振動数が大きい電子(背景媒質)がこれに当たる．
+このような場合は，誘電率を一定な背景媒質による部分$\varepsilon_\text{b}$と共鳴部分に分けることができる．
+そのときは，\eqref{osc_model_xw}と\eqref{osc_model_comp_epsilon}から，
+\begin{align}
+  \varepsilon(\omega)=\varepsilon_\text{b}+\dfrac{\varepsilon_0}{{\omega_0}^2 - \omega^2 - i\gamma\omega}\dfrac{nq^2}{\varepsilon_0m}=\varepsilon_\text{b}+\dfrac{\varepsilon_0{\omega_p}^2}{{\omega_0}^2 - \omega^2 - i\gamma\omega}\label{osc_model_extended}
+\end{align}
+と表すことができる．これを拡張された振動子モデルという．
+この振動子モデルの考えは，多くの応答現象を考える基礎となる．
+
+\setcounter{section}{3}
+\section{異方性媒質中の光}
+\paragraph{(8.4.13)}
+等方的な物質であっても，外部から磁場をかけると異方的になる．まずは復元力を受けない荷電粒子の運動から調べる．
+
+等方性媒質中の荷電粒子$q$について考える．$\zeta$方向に対して静磁場が存在すると仮定する．この運動方程式は，
+\begin{align}
+  m\langle\ddot{\boldsymbol{r}}\rangle =  - m\gamma\langle\dot{\boldsymbol{r}}\rangle+q\langle\dot{\boldsymbol{r}}\rangle\times\boldsymbol{B}+q\boldsymbol{E}\exp( - i\omega t).
+  \label{charged_particle_eom}
+\end{align}
+$\gamma$は衝突による抵抗を表す．ただし，磁場の向きの条件から
+\begin{align}
+  \boldsymbol{B} = (0, 0, B). \label{charged_particle_B}
+\end{align}
+ここで，複素感受率テンソル$\chi$を導入する．$\chi$は2階のテンソル．$\chi$を使うと，$\langle\boldsymbol{r}\rangle$は
+\begin{align}
+  \langle\boldsymbol{r}\rangle = \dfrac{\varepsilon_0}{nq}\chi\boldsymbol{E}\exp( - i\omega t)
+  \label{charged_particle_r}
+\end{align}
+と表すことができる．\eqref{charged_particle_eom}\eqref{charged_particle_B}\eqref{charged_particle_r}から，
+\begin{align}
+  - \varepsilon_0\dfrac{m\omega^2}{q}\sum_{{j}}\chi_{\xi{j}}E_{{j}} &= i\varepsilon_0\dfrac{m\omega\gamma}{q}\sum_{{j}}\chi_{\xi{j}}E_{{j}} - i\varepsilon_0\omega B\sum_{{j}}\chi_{\eta{j}}E_{{j}}+nqE_\xi
+  \label{charged_particle_ba} \\
+  - \varepsilon_0\dfrac{m\omega^2}{q}\sum_{{j}}\chi_{\eta{j}}E_{{j}} &= i\varepsilon_0\dfrac{m\omega\gamma}{q}\sum_{{j}}\chi_{\eta{j}}E_{{j}}+i\varepsilon_0\omega B\sum_{{j}}\chi_{\xi{j}}E_{{j}}+nqE_\eta
+  \label{charged_particle_bb} \\
+  - \varepsilon_0\dfrac{m\omega^2}{q}\sum_{{j}}\chi_{\zeta{j}}E_{{j}} &= i\varepsilon_0\dfrac{m\omega\gamma}{q}\sum_{{j}}\chi_{\zeta{j}}E_{{j}}+nqE_\zeta
+  \label{charged_particle_bc}
+\end{align}
+\eqref{charged_particle_ba}\eqref{charged_particle_bb}から$E_\xi$と$E_\eta$について書き下せば，それぞれ
+\begin{align}
+  - \varepsilon_0\omega^2\chi_{\xi\xi} &= i\varepsilon_0\gamma\omega\chi_{\xi\xi} - i\varepsilon_0\omega\omega_c\chi_{\eta\xi}+\dfrac{nq^2}{m} \label{charged_particle_a} \\
+  - \varepsilon_0\omega^2\chi_{\xi\eta} &= i\varepsilon_0\gamma\omega\chi_{\xi\eta} - i\varepsilon_0\omega\omega_c\chi_{\eta\eta} \label{charged_particle_b} \\
+  - \varepsilon_0\omega^2\chi_{\eta\xi} &= i\varepsilon_0\gamma\omega\chi_{\eta\xi}+i\varepsilon_0\omega\omega_c\chi_{\xi\xi} \label{charged_particle_c} \\
+  - \varepsilon_0\omega^2\chi_{\eta\eta} &= i\varepsilon_0\gamma\omega\chi_{\eta\eta}+i\varepsilon_0\omega\omega_c\chi_{\xi\eta}+\dfrac{nq^2}{m} \label{charged_particle_d}
+\end{align}
+となる．ただし，ここで$\omega_c$サイクロトロン角振動数
+\begin{align}
+  \omega_c=\dfrac{qB}{m}
+\end{align}
+を導入した．\eqref{charged_particle_a}\eqref{charged_particle_b}\eqref{charged_particle_c}\eqref{charged_particle_d}から，
+\begin{align}
+  \chi_{\xi\xi}=\chi_{\eta\eta}=\dfrac{nq^2(\omega+i\gamma)}{m\varepsilon_0\omega[{\omega_c}^2 - (\omega+i\gamma)^2]} \\
+  \chi_{\xi\eta}= - \chi_{\eta\xi}=\dfrac{nq^2i\omega_c}{m\varepsilon_0\omega[{\omega_c}^2 - (\omega+i\gamma)^2]}
+\end{align}
+また，$\zeta$方向については，
+\begin{align}
+  \chi_{\xi\zeta}=\chi_{\eta\zeta}=\chi_{\zeta\xi}=\chi_{\zeta\eta}=0 \\
+  \chi_{\zeta\zeta}= - \dfrac{nq^2}{m\varepsilon_0\omega(\omega+i\gamma)}
+\end{align}
+以上をまとめると，
+\begin{align}
+  \chi =
+  \dfrac{nq^2}{m\varepsilon_0\omega}\left(
+  \begin{array}{ccc}
+    \dfrac{\omega+i\gamma}{{\omega_c}^2 - (\omega+i\gamma)^2} & \dfrac{i\omega_c}{{\omega_c}^2 - (\omega+i\gamma)^2} & 0 \\ \\
+    \dfrac{ - i\omega_c}{{\omega_c}^2 - (\omega+i\gamma)^2} & \dfrac{\omega+i\gamma}{{\omega_c}^2 - (\omega+i\gamma)^2} & 0 \\ \\
+    0 & 0 & \dfrac{ - 1}{\omega+i\gamma}
+  \end{array}
+  \right)
+  \label{charged_particle_tensor}
+\end{align}
+
+\eqref{charged_particle_tensor}において，$\omega_c=0$とすると，$\chi$は等しい対角成分のみを持ち，確かに等方的である．
+また，運動方程式\eqref{charged_particle_eom}に復元力の項$ - K\langle{r}\rangle$を付け足すと，電気分極に対する感受率を求めることができる．
+
+\paragraph{磁化した物質中の電気分極と比誘電率テンソル}
+電気双極子モーメント$\langle{\boldsymbol{p}}\rangle=q\langle{\boldsymbol{r}}\rangle$について考える．
+$\zeta$方向に対して静磁場が存在すると仮定する．この運動方程式は，
+\begin{align}
+  m\langle\ddot{\boldsymbol{p}}\rangle = - K\langle{\boldsymbol{p}}\rangle - m\gamma\langle\dot{\boldsymbol{p}}\rangle + \langle\dot{\boldsymbol{p}}\rangle\times\boldsymbol{B} + q^2\boldsymbol{E}\exp( - i\omega t).
+  \label{e_diople_in_m_eom}
+\end{align}
+$\gamma$は衝突による抵抗を表す．また，電気双極子モーメントには，復元力$ - K\langle{r}\rangle$が作用する．ただし，磁場の向きの条件から
+\begin{align}
+  \boldsymbol{B}=(0, 0, B).
+  \label{e_diople_in_m_B}
+\end{align}
+ここで，複素感受率テンソル$\chi$を導入する（$\chi$は2階のテンソル）．$\chi$を使うと，$\langle\boldsymbol{r}\rangle$は
+\begin{align}
+  \langle\boldsymbol{p}\rangle = \dfrac{\varepsilon_0}{n}\chi\boldsymbol{E}\exp( - i\omega t) = \dfrac{\boldsymbol{P}}{n}
+  \label{e_diople_in_m_r}
+\end{align}
+と表すことができる．\eqref{e_diople_in_m_eom}\eqref{e_diople_in_m_B}\eqref{e_diople_in_m_r}から，
+\begin{align}
+  - \varepsilon_0{m\omega^2}\sum_{{j}}\chi_{\xi{j}}E_{{j}} &=  - \varepsilon_0K\sum_{{j}}\chi_{\xi{j}}E_{{j}}+i\varepsilon_0{m\omega\gamma}\sum_{{j}}\chi_{\xi{j}}E_{{j}} - i\varepsilon_0\omega B\sum_{{j}}\chi_{\eta{j}}E_{{j}}+nq^2E_\xi
+  \label{e_diople_in_m_ba} \\
+  - \varepsilon_0{m\omega^2}\sum_{{j}}\chi_{\eta{j}}E_{{j}} &=  - \varepsilon_0K\sum_{{j}}\chi_{\eta{j}}E_{{j}}+i\varepsilon_0{m\omega\gamma}\sum_{{j}}\chi_{\eta{j}}E_{{j}}+i\varepsilon_0\omega B\sum_{{j}}\chi_{\xi{j}}E_{{j}}+nq^2E_\eta
+  \label{e_diople_in_m_bb} \\
+  - \varepsilon_0{m\omega^2}\sum_{{j}}\chi_{\zeta{j}}E_{{j}} &=  - \varepsilon_0K\sum_{{j}}\chi_{\zeta{j}}E_{{j}}+i\varepsilon_0{m\omega\gamma}\sum_{{j}}\chi_{\zeta{j}}E_{{j}}+nq^2E_\zeta
+  \label{e_diople_in_m_bc}
+\end{align}
+\eqref{e_diople_in_m_ba}\eqref{e_diople_in_m_bb}から$E_\xi$と$E_\eta$について書き下せば，それぞれ
+\begin{align}
+  - \varepsilon_0(\omega^2 - {\omega_0}^2)\chi_{\xi\xi} &= i\varepsilon_0\gamma\omega\chi_{\xi\xi} - i\varepsilon_0\omega\omega_c\chi_{\eta\xi}+\dfrac{nq^2}{m} \label{e_diople_in_m_a} \\
+  - \varepsilon_0(\omega^2 - {\omega_0}^2)\chi_{\xi\eta} &= i\varepsilon_0\gamma\omega\chi_{\xi\eta} - i\varepsilon_0\omega\omega_c\chi_{\eta\eta} \label{e_diople_in_m_b} \\
+  - \varepsilon_0(\omega^2 - {\omega_0}^2)\chi_{\eta\xi} &= i\varepsilon_0\gamma\omega\chi_{\eta\xi}+i\varepsilon_0\omega\omega_c\chi_{\xi\xi} \label{e_diople_in_m_c} \\
+  - \varepsilon_0(\omega^2 - {\omega_0}^2)\chi_{\eta\eta} &= i\varepsilon_0\gamma\omega\chi_{\eta\eta}+i\varepsilon_0\omega\omega_c\chi_{\xi\eta}+\dfrac{nq^2}{m} \label{e_diople_in_m_d}
+\end{align}
+となる．ただし，ここで双極子モーメントの固有振動数$\omega_0$とサイクロトロン角振動数$\omega_c$
+\begin{align}
+  \omega_0=\sqrt{\dfrac{K}{m}} \\
+  \omega_c=\dfrac{qB}{m}
+\end{align}
+を導入した．\eqref{e_diople_in_m_a}\eqref{e_diople_in_m_b}\eqref{e_diople_in_m_c}\eqref{e_diople_in_m_d}から，
+\begin{align}
+  \chi_{\xi\xi}=\chi_{\eta\eta}=\dfrac{nq^2(\omega^2 - {\omega_0}^2+i\gamma\omega)}{m\varepsilon_0\left[\omega^2{\omega_c}^2 - (\omega^2 - {\omega_0}^2+i\gamma\omega)^2\right]} \\
+  \chi_{\xi\eta}= - \chi_{\eta\xi}=\dfrac{nq^2i\omega\omega_c}{m\varepsilon_0\left[\omega^2{\omega_c}^2 - (\omega^2 - {\omega_0}^2+i\gamma\omega)^2\right]}
+\end{align}
+また，$\zeta$方向については，
+\begin{align}
+  \chi_{\xi\zeta}=\chi_{\eta\zeta}=\chi_{\zeta\xi}=\chi_{\zeta\eta}=0 \\
+  \chi_{\zeta\zeta}= - \dfrac{nq^2}{m\varepsilon_0(\omega^2 - {\omega_0}^2+i\gamma\omega)}
+\end{align}
+となる．以上をまとめると，
+\begin{align}
+  \chi =
+  \dfrac{nq^2}{m\varepsilon_0}\left(
+  \begin{array}{ccc}
+    \dfrac{\omega^2 - {\omega_0}^2+i\gamma\omega}{\omega^2{\omega_c}^2 - (\omega^2 - {\omega_0}^2+i\gamma\omega)^2} & \dfrac{i\omega\omega_c}{\omega^2{\omega_c}^2 - (\omega^2 - {\omega_0}^2+i\gamma\omega)^2} & 0 \\ \\
+    - \dfrac{i\omega\omega_c}{\omega^2{\omega_c}^2 - (\omega^2 - {\omega_0}^2+i\gamma\omega)^2} &  \dfrac{\omega^2 - {\omega_0}^2+i\gamma\omega}{\omega^2{\omega_c}^2 - (\omega^2 - {\omega_0}^2+i\gamma\omega)^2} & 0 \\ \\
+    0 & 0 &  - \dfrac{1}{\omega^2 - {\omega_0}^2+i\gamma\omega}
+  \end{array}
+  \right)
+  \label{e_diople_in_m_tensor}
+\end{align}
+
+以上のようにして感受率テンソル$\chi$が決定された．$\omega_c=0$では確かに等方性を満たしている．これが電気分極の感受率．これについては，
+\begin{align}
+  \boldsymbol{D} &= \varepsilon_0\boldsymbol{E}+\boldsymbol{P}\notag \\
+  &= \varepsilon_0\boldsymbol{E}+\varepsilon_0\chi\boldsymbol{E}\notag \\
+  &= \varepsilon_0(1+\chi)\boldsymbol{E} \label{e_diople_in_m_D}
+\end{align}
+が成り立つ．ただし，1は単位テンソル$\delta_{ij}$．\eqref{e_diople_in_m_tensor}\eqref{e_diople_in_m_D}から，
+\begin{align}
+  \tilde{\epsilon}_{ij}=\chi_{ij}+\delta_{ij}
+\end{align}
+ここで，$\tilde{\epsilon}$は物質の比誘電率テンソルである．

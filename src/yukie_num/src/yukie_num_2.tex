@@ -1,0 +1,658 @@
+\chapter{分岐と完備化}
+\setcounter{section}{1}
+\section{Dedekind環の完備化}
+\paragraph{命題1.2.13}~
+\begin{screen}
+  自然な写像$\phi\colon\mathfrak{p}^n/\mathfrak{p}^m \ni a + \mathfrak{p}^m \mapsto a + \mathfrak{p}^mA_\mathfrak{p} \in \mathfrak{p}^nA_\mathfrak{p}/\mathfrak{p}^mA_\mathfrak{p}$は単射
+\end{screen}
+\begin{proof}
+  $\ker(\phi) = (\mathfrak{p}^mA_\mathfrak{p}\cap\mathfrak{p}^n) + \mathfrak{p}^m$であるが，命題I-6.5.9(4)から$\mathfrak{p}^mA_\mathfrak{p}\cap\mathfrak{p}^n\subset\mathfrak{p}^mA_\mathfrak{p}\cap A = \mathfrak{p}^m$なので，$\ker(\phi)\subset 0 + \mathfrak{p}^m$．
+  $\ker(\phi)\supset 0 + \mathfrak{p}^m$は明らかなので，$\ker(\phi) = 0 + \mathfrak{p}^m$．
+\end{proof}
+
+\begin{screen}
+  自然な写像$\mathfrak{p}^n/\mathfrak{p}^m\to\mathfrak{p}^nA_\mathfrak{p}/\mathfrak{p}^mA_\mathfrak{p}$は全射
+\end{screen}
+\begin{proof}
+  $s\in A\setminus\mathfrak{p}$とすると，$b + cs = 1$となる$b\in\mathfrak{p}^{m-n}$，$c\in A$が存在する．
+  % <!-- COMBAK: ほんとに？ -->
+  $a\in\mathfrak{p}^n$とすれば，$a + \mathfrak{p}^m = (b + cs)(a + \mathfrak{p}^m) = (ab + acs) + \mathfrak{p}^m$となるが，$ab\in\mathfrak{p}^m$なので$a + \mathfrak{p}^m = acs + \mathfrak{p}^m$．つまり$a-acs\in\mathfrak{p}^m$．従って，$(a/s)-ca\in\mathfrak{p}^mA_\mathfrak{p}$．以上から，自然な写像は
+  \[\mathfrak{p}^n/\mathfrak{p}^m\ni ca + \mathfrak{p}^m\mapsto ca + \mathfrak{p}^mA_\mathfrak{p} = a/s + \mathfrak{p}^mA_\mathfrak{p}\in\mathfrak{p}^nA_\mathfrak{p}/\mathfrak{p}^mA_\mathfrak{p}.\]
+  と表すことができ，これは全射となる．
+\end{proof}
+
+\begin{screen}
+  準同型$\phi \colon A/\mathfrak{p}^{m-n} \ni a + \mathfrak{p}^{m-n} \mapsto ax + \mathfrak{p}^{m} \in \mathfrak{p}^{n}/\mathfrak{p}^{m} ~ (x \in \mathfrak{p}^n \setminus \mathfrak{p}^{n + 1})$は単射
+\end{screen}
+\begin{proof}
+  $\ker(\phi) = \set{b + \mathfrak{p}^{m-n}\in A/\mathfrak{p}^{m-n} | b\in A, bx\in\mathfrak{p}^m}$である．
+  $\ord_\mathfrak{p}(bx)\geq m$，$\ord_\mathfrak{p}(x) = n$なので，$\ord_\mathfrak{p}(b)\geq m-n$であり，$b\in\mathfrak{p}^{m-n}A_\mathfrak{p}$．
+  $b\in A$でもあるので，命題I-6.5.9(4)から$b\in A\cap\mathfrak{p}^{m-n}A_\mathfrak{p} = \mathfrak{p}^{m-n}$．
+  従って，$\ker(\phi) = 0 + \mathfrak{p}^{m-n}$．
+\end{proof}
+
+\paragraph{命題1.2.14}~
+\begin{screen}
+  Dedekind環$A$の全ての素イデアル$\mathfrak{p}$に対して$a\in A_\mathfrak{p}$なら$a\in A$
+\end{screen}
+\begin{proof}
+  命題I-8.3.12で$L$の部分$A$加群として$A$を取れば$A = \bigcap_\mathfrak{p}A_\mathfrak{p}A\supset\bigcap_\mathfrak{p}aA = aA$．よって$a\in A$．
+\end{proof}
+
+\section{分岐と完備化}
+\paragraph{注1.3.6(2)}~
+\begin{screen}
+  $\mathfrak{p}$がDedekind環$A$の素イデアル，Dedekind環$B$が$A$の整閉包，$P_1, \ldots, P_t\in B$を$\mathfrak{p}$の上にある全ての素イデアルとした場合，イデアル$\mathfrak{p}B$の素イデアル分解が，$\mathfrak{p}B = P_1{}^{e_1}\cdots P_t{}^{e_t}\ (e_i>0)$であり，これらが$\mathfrak{p}$の上にある$B$の全ての素イデアルである
+\end{screen}
+\begin{proof}
+  $\mathfrak{p}B$は$B$の零でないイデアルなので，命題I-8.3.12から$B$の適当な極大イデアル達$P'_i$によって$\mathfrak{p}B = \bigcap_i\mathfrak{p}BB_{P'_i}$．
+  Dedekind環に関する仮定から，$b\in\mathfrak{p}B$であれば$B/(b)$が有限である．
+  よって，（$b$を含み，$(b)$と異なるイデアルを作るには$B/(b)$の完全代表系からいくつかの生成元を選ぶことになるので）$b$を含む素イデアルの数は有限である．
+  従って，$\mathfrak{p}B$を含む素イデアルの数も有限である．
+
+  $P'_i\subset B$が素イデアルで$\mathfrak{p}B\nsubseteq P'_i$なら$s\in\mathfrak{p}B\setminus P'_i$とすると，$s$は$B_{P'_i}$の単元．
+  つまり，有限個の（$\mathfrak{p}B\subset P_i'$を満たす）素イデアル$P_i'$に対し，$\mathfrak{p}B_{P_i'} = B_{P_i'}$が成立する．
+  $P_1, \ldots, P_t$を$\mathfrak{p}B$を含む全ての素イデアルとする．
+  命題I-8.3.15により$\mathfrak{p}BB_{P_i} = P_i{}^{e_i}$なる$e_i\in\mathbb{Z}$が存在．
+  $\mathfrak{p}B\in P_i$なので命題I-8.3.12から
+  \[\mathfrak{p}B = \bigcap_i(\mathfrak{p}BB_{P_i}\cap B) = \bigcap_i(P_i{}^{e_i}B_{P_i}\cap B) = \bigcap_i P_i{}^{e_i} = P_1{}^{e_1}\cdots P_t{}^{e_t}\]
+  が命題I-6.5.9(4)と中国剰余定理から成立．
+  $\mathfrak{p}B\subset P_i$ならば$1\in B$を考え$\mathfrak{p}\subset P_i$．
+  逆に，$\mathfrak{p}\subset P_i$ならば両辺に$B$をかけて（$P_i$は$B$のイデアルなので）$\mathfrak{p}B\subset P_i$．
+  よって，$\mathfrak{p}\subset P_i$なる全ての素イデアル$P_1, \ldots, P_t$によって$\mathfrak{p}B = P_1{}^{e_1}\cdots P_t{}^{e_t} ~ (e_i>0)$．
+  補題1.3.3から$P_1, \ldots, P_t\in B$は$\mathfrak{p}$の上にある全ての素イデアルで，$\mathfrak{p}B = P_1{}^{e_1}\cdots P_t{}^{e_t}~ (e_i>0)$である．
+
+  上の結果により，$\mathfrak{p}B$の素イデアル分解に現れる素イデアルだけを分岐の考察対象にすれば良い事が分かる．
+\end{proof}
+
+\paragraph{例1.3.8}~
+\begin{screen}
+  $\mathbb{F}_2[x]/((x + 1)^2)$の極大イデアルを求める
+\end{screen}
+\begin{proof}
+  $((x + 1)^2)\subset(x + 1)\subset\mathbb{F}_2[x]$なので，定理I-6.1.34から
+  \[(\mathbb{F}[x]/((x + 1)^2))/((x + 1)/((x + 1)^2))\simeq\mathbb{F}_2[x]/(x + 1)\simeq\mathbb{F}_2.\]
+  $\mathbb{F}_2$は体なので，$(x + 1)/((x + 1)^2)$は$\mathbb{F}[x]/((x + 1)^2)$における極大イデアル（命題6.3.4）．
+\end{proof}
+
+\paragraph{定理1.3.23}~
+\begin{screen}
+  $B_\mathfrak{p}$が階数$n$の自由$A_\mathfrak{p}$加群なら，$A$加群として$B\otimes_A\widehat{A}_\mathfrak{p}\simeq\widehat{A}_\mathfrak{p}{}^n$である
+\end{screen}
+\begin{proof}
+  $A$加群の同型を構成すればよい：
+  \begin{align*}
+    B\otimes_A\widehat{A}_\mathfrak{p} \ni b \otimes a &\mapsto b \otimes 1 \otimes a \in B\otimes_A A_\mathfrak{p} \otimes_{A_\mathfrak{p}} \widehat{A}_\mathfrak{p} \\
+    &\mapsto b \otimes a \in B_\mathfrak{p} \otimes_{A_\mathfrak{p}} \widehat{A}_\mathfrak{p} \\
+    &\mapsto \left(\sum b_i\right) \otimes a \in \left(A_\mathfrak{p}{}^{\oplus n}\right)\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p} \\
+    &\mapsto \sum\left(b_i \otimes a\right) \in \left(A_\mathfrak{p}\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p}\right)^{\oplus n} \\
+    &\mapsto \sum\left(ab_i\right) \in \widehat{A}_\mathfrak{p}{}^{\oplus n} \\
+    &\mapsto (ab_1, \ldots, ab_n) \in \widehat{A}_\mathfrak{p}{}^n.
+  \end{align*}
+\end{proof}
+
+\begin{screen}
+  $A$加群として$(B\otimes_A\widehat{A}_\mathfrak{p})/\mathfrak{p}^m(B\otimes_A\widehat{A}_\mathfrak{p}) \simeq \widehat{A}_\mathfrak{p}{}^n/\mathfrak{p}^m\widehat{A}_\mathfrak{p}{}^n \simeq (\widehat{A}_\mathfrak{p}/\mathfrak{p}^m\widehat{A}_\mathfrak{p})^n$である
+\end{screen}
+\begin{proof}
+  1つめの同型は，上で示した同型によって自然に引き起こされる：
+  \[B\otimes_A\widehat{A}_\mathfrak{p}/\mathfrak{p}^m(B\otimes_A\widehat{A}_\mathfrak{p}) \ni b\otimes a + \mathfrak{p}^m(B\otimes_A\widehat{A}_\mathfrak{p}) \mapsto  (ab_1, \ldots, ab_n) + \mathfrak{p}^m\widehat{A}_\mathfrak{p}{}^n \in \widehat{A}_\mathfrak{p}{}^n/\mathfrak{p}^m\widehat{A}_\mathfrak{p}{}^n.\]
+  準同型$\phi\colon \widehat{A}_\mathfrak{p}{}^n\ni(a_1, \ldots, a_n)\mapsto(a_1 + \mathfrak{p}^mA_\mathfrak{p}, \ldots, a_n + \mathfrak{p}^mA_\mathfrak{p})\in(\widehat{A}_\mathfrak{p}/\mathfrak{p}^mA_\mathfrak{p})^n$の核は$\mathfrak{p}^mA_\mathfrak{p}{}^n$なので，準同型定理から$\widehat{A}_\mathfrak{p}{}^n/\mathfrak{p}^m\widehat{A}_\mathfrak{p}{}^n\simeq(\widehat{A}_\mathfrak{p}/\mathfrak{p}^m\widehat{A}_\mathfrak{p})^n$．
+\end{proof}
+
+\begin{screen}
+  $K\otimes_AB\simeq L$（$A$代数の環同型）
+\end{screen}
+\begin{proof}
+  $S = A\setminus\{0\}$とする．命題I-8.1.13から$S^{-1}B$は$S^{-1}A = K$上整で$K$は体なので，命題I-8.1.12から$K\otimes_AB = S^{-1}B$も体．
+  よって，$S^{-1}B$の元$b/a ~ (b\in B, a\in A\setminus\{0\})$に対し$c\in B, d\in A\setminus\{0\}$が存在し$bc/ad = 1$，つまり$bc = ad\in A$となる．
+  $b$は任意に選ぶことができるので，$\forall b\in B$に対し$bc\in A$となる$c\in A$が存在することが分かる．
+  よって，$L$の元$b_0/b_1\ (b_0, b_1\in B)$として$b_1c_1\in A$となる$c_1\in A$を選べば，$b_0/b_1 = b_0c_1/b_1c_1\in S^{-1}B$なので$L\subset S^{-1}B$．
+  $S^{-1}B\subset L$は明らか．よって，$S^{-1}B = L$．全射準同型
+  \[\phi\colon K\otimes_AB\ni a\otimes b\mapsto ab\in S^{-1}B = L\]
+  を考える．$\ker\phi = \{0\}$なので単射．よって$a\otimes b\mapsto ab$によって$K\otimes_AB\simeq L$．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \label{field_product_number}
+    体の直積は異なる数の体の直積と環同型にはなり得ない
+  \end{lem}
+\end{screen}
+\begin{proof}
+  同型$\phi\colon E_1\times\cdots E_m\to F_1\times\cdots\times F_n\ (m>n)$によって
+  \begin{align*}
+    \phi(1, 0, \ldots, 0) & =  (a_1^{(1)}, \ldots, a_n^{(1)})\\
+    \phi(0, 1, \ldots, 0) & =  (a_1^{(2)}, \ldots, a_n^{(2)})\\
+                       &\vdots\\
+    \phi(0, \ldots, 0, 1) & =  (a_1^{(m)}, \ldots, a_n^{(m)})\\
+  \end{align*}
+  に写るとする．右辺は$0$にならないので，$a_1^{(i)} = \cdots = a_n^{(i)} = 0$となることはない．
+  $i$番目の式と$j$番目の式をかけて$(0, \ldots, 0) = (a_1^{(i)}a_1^{(j)}, \ldots, a_n^{(i)}a_n^{(j)})$となる．
+  よって$a_1^{(i)}, a_1^{(j)}$のうち少なくとも片方は$0$．．
+  このような式が$m(m-1)/2$個得られ，これらを全て満たすには$a_1^{(1)}, \ldots, a_1^{(m)}$のうち$m-1$個が$0$である必要がある．
+  $a_2$などについても同様の議論を行えば，$1\leq i\leq n$に対し$a_i^{(1)}, \ldots, a_i^{(m)}$のうち$0$でないものは高々1個しかない．
+  $m>n$なので$a_1^{(j)} = \cdots = a_n^{(j)} = 0$となる$1\leq j\leq m$が必ず存在し，矛盾．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \label{field_product_iso}
+    体の直積が同型なら，構成する体の間で同型となるペアが存在する
+  \end{lem}
+\end{screen}
+\begin{proof}
+  同型$\phi\colon E_1\times\cdots E_n\to F_1\times\cdots\times F_n$とする．
+  先程と同様の議論から，必要ならば適当に$F_i$を並び替えることによって
+  \begin{align*}
+    \phi(1, 0, \ldots, 0) & =  (c_1, 0, \ldots, 0)\\
+    \phi(0, 1, \ldots, 0) & =  (0, c_2, \ldots, 0)\\
+                       &\vdots\\
+    \phi(0, \ldots, 0, 1) & =  (0, \ldots, 0, c_n)
+  \end{align*}
+  に写るとして良い．初めの式を$2$乗すれば
+  \[ (c_1{}^2, 0, \ldots, 0) = \phi(1, 0, \ldots, 0)^2 = \phi(1, 0, \ldots, 0) = (c_1, 0, \ldots, 0) \]
+  なので，$c_1{}^2 = c_1$．$E_1$は整域なので，$c_1 = 1$である．
+  他についても同様に，$c_1 = \ldots = c_n = 0$となる．
+
+  $\phi(a_1, \ldots) = (b_1, \ldots)$とする．
+  上の式とかければ$\phi(a_1, 0, \ldots, 0) = (b_1, 0, \ldots, 0)$となる．
+  これは写像$\varphi\colon E_1\to F_1$を引き起こす：
+  \[\varphi\colon E_1\ni a_1\mapsto \pi_1(\phi(a_1, 0, \ldots, 0))\in F_1.\]
+  ただし，$\pi_1$は$F_1\times\cdots F_n$の元の第1成分のみを取り出す射影．
+  $\varphi$が同型になることは容易に分かる．他についても同様．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \label{iso_field_integral_closure}
+    体$E$, $F$に対し$\phi \colon E \simeq F$とすれば，$\phi(\mathcal{O}_E) = \mathcal{O}_F$．
+  \end{lem}
+\end{screen}
+\begin{proof}
+  $x\in \mathcal{O}_E$とする．
+  $x$は$\mathbb{Z}$上整なので，$a_1, \ldots, a_n \in \mathbb{Z}$，$\psi\colon\mathbb{Z}\to E$があり
+  \[x^n + \psi(a_1)x^{n-1} + \cdots + \psi(a_n) = 0.\]
+  これを$\phi$でうつせば
+  \[\phi(x)^n + \phi\circ\psi(a_1)\phi(x)^{n-1} + \cdots + \phi\circ\psi(a_n) = 0\]
+  なので$F$上整となり，$\phi(x) \in \mathcal{O}_F$．
+
+  $y \in \mathcal{O}_F$とする．
+  $y$は$\mathbb{Z}$上整なので，$a_1, \ldots, a_n \in \mathbb{Z}$，$\psi\colon\mathbb{Z}\to F$があり
+  \[y^n + \psi(a_1)y^{n-1} + \cdots + \psi(a_n) = 0.\]
+  $y = \phi(x)$とすれば
+  \begin{align*}
+    0 &= \phi(x^n) + \phi\circ\phi^{-1}\circ\psi(a_1) \phi(x^{n-1}) + \cdots + \phi\circ\phi^{-1}\circ\psi(a_n) \\
+      &= \phi \left( x^n + \phi^{-1}\circ\psi(a_1) x^{n-1} + \cdots + \phi^{-1}\circ\psi(a_n) \right)
+  \end{align*}
+  なので，$x^n + \phi^{-1}\circ\psi(a_1) x^{n-1} + \cdots + \phi^{-1}\circ\psi(a_n) = 0$となり，$x \in \mathcal{O}_E$．
+  従って，$y = \phi(x) \in \phi(\mathcal{O}_E)$．
+\end{proof}
+
+\begin{screen}
+  \begin{thm}
+    \label{Thm_1_3_23_2}
+    定理1.3.23(2)の環同型について
+  \end{thm}
+\end{screen}
+p.24の最後らへんに書かれているように$\phi_i\colon B\hookrightarrow\widehat{B}_i$として，環同型
+\[B\otimes_A\widehat{A}_\mathfrak{p}\ni x \otimes y\mapsto(\phi_1(x)y, \ldots, \phi_g(x)y)\in\widehat{B}_1\times\cdots\times\widehat{B}_g\]
+によって$B\otimes_A\widehat{A}_\mathfrak{p}\simeq\widehat{B}_1\times\cdots\times\widehat{B}_g$．
+
+もしくは，逆極限によっても構成できる\footnote{参考：数論Iの命題6.50，補題6.69など}．
+$\mathfrak{p}^nB = P_1{}^{e_1} \cdots P_g{}^{e_g}$なので，中国式剰余定理から$B/\mathfrak{p}^nB \simeq \prod_{i = 1}^g B/P_i{}^{ne_i}$である．
+$A$はNoether環で$B$を有限生成$A$加群なので，
+\[ B \otimes_A \varprojlim (A/\mathfrak{p}^n) \simeq \varprojlim(B/\mathfrak{p}^nB) \simeq \prod_{i = 1}^g \varprojlim (B/P_i{}^{ne_i}). \]
+
+$K$代数としての環同型$L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{K}_1\times\cdots\times\widehat{K}_g$はp.26の最後らへんに書いてるように構成される：
+\begin{align*}
+  L\otimes_K\widehat{K}_\mathfrak{p}\ni a/b\otimes c &\mapsto a\otimes1/b\otimes c\in B\otimes_AK\otimes_K\widehat{K}_\mathfrak{p}\\
+  & =  a\otimes1\otimes c/b\in B\otimes_AK\otimes_K\widehat{K}_\mathfrak{p}\\
+  &\mapsto a\otimes c/b\in B\otimes_A\widehat{K}_\mathfrak{p}\\
+  &\mapsto a\otimes1\otimes c/b\in B\otimes_A\widehat{A}_\mathfrak{p}\otimes_{\widehat{A}_\mathfrak{p}}\widehat{K}_\mathfrak{p}\\
+  &\mapsto (\phi_1(a), \ldots, \phi_g(a))\otimes c/b\in\left(\widehat{B}_1\times\cdots\times\widehat{B}_g\right)\otimes_{\widehat{A}_\mathfrak{p}}\widehat{K}_\mathfrak{p}\\
+  &\mapsto (\phi_1(a)c/b, \ldots, \phi_g(a)c/b)\in\widehat{L}_1\times\cdots\times\widehat{L}_g.
+\end{align*}
+これは$K$加群としての同型であるが，$\widehat{K}_\mathfrak{p}$代数としての環同型にもなる．
+
+$L = K(\alpha)$，$\alpha$の$K$上最小多項式を$f(x)$，$f(x)$の$\widehat{K}_\mathfrak{p}$での因数分解を$f_1(x), \ldots, f_g(x)\in\widehat{K}_\mathfrak{p}[x]$とおく．
+$f_i(x)$の根を$\alpha_i$，$\phi_i(\alpha) = \alpha_i$とする．
+$K$はPIDで，$K_\mathfrak{p}$はtorsion-freeなので，$\widehat{K}_\mathfrak{p}$は$K$上平坦である．従って，
+\begin{align*}
+  L\otimes_K\widehat{K}_\mathfrak{p} &\simeq \left(K[x]/(f(x))\right)\otimes_K\widehat{K}_\mathfrak{p} \simeq \left(K[x]\otimes_K\widehat{K}_\mathfrak{p}\right)/(f(x)) \simeq \widehat{K}_\mathfrak{p}[x]/(f(x)) \\
+  &\simeq \widehat{K}_\mathfrak{p}[x]/(f_1(x))\times\cdots\times\widehat{K}_\mathfrak{p}[x]/(f_g(x)) \simeq \widehat{K}_\mathfrak{p}(\alpha_1)\times\cdots\times\widehat{K}_\mathfrak{p}(\alpha_g)
+\end{align*}
+となる．
+$L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$\widehat{K}_\mathfrak{p}$代数の同型
+\[\widehat{L}_1\simeq\widehat{K}_\mathfrak{p}(\alpha_1), \ldots, \widehat{L}_g\simeq\widehat{K}_\mathfrak{p}(\alpha_g)\]
+を得る．
+
+\begin{screen}
+  $[L:K] = 1$ならば$L = K$
+\end{screen}
+\begin{proof}
+  $L\supset K$は明らか．$L$の$K$基底として$\{v\}$が取れる．
+  $L$の任意の元は$kv\ (k\in K, v\in L)$と表すことができる．
+  特に，$1 = kv$なので$v = k^{-1}\in K$．
+  よって，$L$の任意の元は$K$の元の積となるので$K$の元：$L\subset K$．
+\end{proof}
+
+\begin{screen}
+  $\widehat{B}_i$は$\widehat{A}_\mathfrak{p}$上整
+\end{screen}
+\begin{proof}
+  $\widehat{B}_i$は有限生成$\widehat{A}_\mathfrak{p}$加群．
+  $\forall x\in\widehat{B}_i$に対し，$\widehat{A}_\mathfrak{p}[x]$はやはり$\widehat{A}_\mathfrak{p}$加群$\widehat{B}_i$の元となる．
+  つまり$\widehat{A}_\mathfrak{p}[x]\subset\widehat{B}_i$．
+  命題I-8.1.3から$x$は$\widehat{A}_\mathfrak{p}$上整である．
+  よって，$\widehat{B}_i$は$\widehat{A}_\mathfrak{p}$上整．
+\end{proof}
+
+\paragraph{定理1.3.26}~
+\begin{screen}
+  \begin{lem}\label{sigmaB}
+    $L/K$がGalois拡大なら，$\forall\sigma\in\Gal(L/K)$に対し$\sigma(B) = B$である
+  \end{lem}
+\end{screen}
+\begin{proof}
+  $b\in B\subset L$とすれば$b$は$A$上整なので，系I-8.1.11から，$b$の$L$における$K$上の共軛は全て$A$上整となる．
+  つまり，$B$の元である．
+  $\Gal$は共軛の置換であることに注意して，$\forall\sigma\in\Gal(L/K)$に対し$\sigma(B)\subset B$．
+  両辺に$\sigma$をかけて$\sigma^2(B)\subset\sigma(B)\subset B$．
+  これを繰り返せば，$B = \sigma^{[L:K]}(B)\subset\cdots\subset B$となる．従って，$\sigma B = B$．
+\end{proof}
+
+\section{Hilbertの理論と分岐・不分岐}
+\paragraph{命題1.4.4}~
+\begin{screen}
+  $\N_{L_D/K}(x)$を考えるときに$\sigma\in\Hom_K^\text{al}(L_D, L)$が出てくる理由
+\end{screen}
+\begin{proof}
+  $\Hom_K^\text{al}(L_D, \overline{K})$は$\Hom_K^\text{al}(K, \overline{K})$に延長できるが，$\Hom_K^\text{al}(K, \overline{K}) = \Aut_K^\text{al}L\colon L\to L$なので，$\Hom_K^\text{al}(L_D, \overline{K})$は$L_D\to L$．
+  従ってこれを$\Hom_K^\text{al}(L_D, L)$と書くことができる．
+\end{proof}
+
+\begin{screen}
+  包含写像$\phi\colon \mathbb{F}_K\hookrightarrow\mathbb{F}_D$によって$\mathbb{F}_K\simeq\mathbb{F}_D$である
+\end{screen}
+\begin{proof}
+  $\phi$は包含写像なので単射．証明の前半で示したように，$\forall x\in B_D$に対し，$y\in A$が存在し$x\equiv y\bmod P_D$とできる．
+  \[\phi\colon \mathbb{F}_K = A/\mathfrak{p}\ni y + \mathfrak{p}\mapsto y + P_D = x + P_D\in B_D/P_D = \mathbb{F}_D\]
+  であるので，$\phi$は全射となる．よって$\phi$により$\mathbb{F}_K\simeq\mathbb{F}_D$．
+\end{proof}
+
+\paragraph{定理1.4.5}~
+\begin{screen}
+  $\phi_L$の構成
+\end{screen}
+\begin{proof}
+  $\sigma\in D_P\subset\Gal(L/K)$に対し，自然な準同型$\phi_L(\sigma)\colon\mathbb{F}_L = B/P\ni b + P\mapsto\sigma(b) + P\in\mathbb{F}_L$が定まる．
+  $a + \mathfrak{p}\in\mathbb{F}_K$に対し，$\phi_L(\sigma)(a + \mathfrak{p}) = \sigma(a) + \mathfrak{p} = a + \mathfrak{p}$なので，$\phi_L(\sigma)$は$\mathbb{F}_K$の元に対し恒等的．
+  すなわち，$\phi_L(\sigma)\in\Gal(\mathbb{F}_L/\mathbb{F}_K)$であり，$\phi_L\colon\Gal(L/K)\supset D_P\to\Gal(\mathbb{F}_L/\mathbb{F}_K)$となる．
+  $\ker(\phi_L)$は$\phi_L(\sigma)$が恒等的になるような$\sigma$，すなわち$\forall b\in B$に対し$\sigma(b) + P = b + P$となるような$D_P$の元である（$I_P$の定義）．
+\end{proof}
+
+\begin{screen}
+  Hilbertの理論
+\end{screen}
+\begin{proof}
+  $D_P/I_P\simeq\Gal(\mathbb{F}_L/\mathbb{F}_K)$である．この同型は
+  \[\overline{\phi}_L\colon D_P/I_P\ni\sigma \circ I_P\mapsto (b + P\mapsto\sigma(b) + P) \in \Gal(\mathbb{F}_L/\mathbb{F}_K)\]
+  で与えられる．
+\end{proof}
+
+\paragraph{例1.4.9}~
+\begin{screen}
+  $\mathcal{O}_K$での素イデアル分解
+\end{screen}
+\begin{proof}
+  \begin{align*}
+    \mathcal{O}_K/(2) &\simeq \mathbb{F}_2[x, y]/(x^2-2, y^2-y-1) \\
+    &\simeq \mathbb{F}_2[x, y]/(x^2, y^2 + y + 1) \\
+    &\simeq\mathbb{F}_4[x]/(x^2)
+  \end{align*}
+  $\mathbb{F}_4$は$\mathbb{F}_2[\omega] = \{0, 1, \omega, \omega + 1\}$である．
+  $\mathbb{F}_4[x]/(x^2)$において，$0, x, \omega x, (1 + \omega)x$以外の元は可逆（６乗すれば$1$になる）．
+  すなわち，$(x)/(x^2)$以外の元が可逆であるので，命題I-6.5.8から$\mathbb{F}_4[x]/(x^2)$は$(x)/(x^2)$を極大イデアルとする局所環である．
+  先程の同型による$(x)/(x^2) = \{0, x, \omega x, \omega x + x\} + (x^2)$の逆像を求める：
+  \begin{align*}
+    \mathbb{F}_4[x]/(x^2) \supset \{0, x, \omega x, \omega x + x\} + (x^2) &\mapsto \{0, x, xy, xy + x\} + (x^2, y^2 + y + 1) \in \mathbb{F}_2[x, y]/(x^2, y^2 + y + 1) \\
+    & =  (x) + (x^2, y^2 + y + 1) \in \mathbb{F}_2[x, y]/(x^2, y^2 + y + 1) \\
+    &\mapsto (\sqrt{2}) + (2) \subset \mathcal{O}_K/(2).
+  \end{align*}
+  従って，$\mathbb{F}_4[x]/(x^2)$の極大イデアルは$(x)/(x^2)$で，これに対応する$\mathcal{O}_K/(2)$の極大イデアルは$(\sqrt{2})/(2)$となる．よって，
+  \begin{align*}
+    \mathbb{F}_4 &\simeq \mathbb{F}_4[x]/(x) \\
+    &\simeq (\mathbb{F}_4[x]/(x^2))/((x)/(x^2)) \\
+    &\simeq (\mathcal{O}_K/(2))/(\sqrt{2}/(2)) \\
+    &\simeq \mathcal{O}_2/(\sqrt{2}).
+  \end{align*}
+  従って$(\sqrt{2})$は$2\mathbb{Z}$の上にある$\mathcal{O}_K$の素イデアルで，$2\mathcal{O}_K = (\sqrt{2})^2$であるので，分岐指数は$e((\sqrt{2})/2\mathbb{Z}) = 2$である．
+\end{proof}
+
+\begin{screen}
+  $\mathbb{F}_{25}(y)/((y-3)^2)$は$(y-3)/((y-3)^2)$を極大イデアルとする局所環
+\end{screen}
+\begin{proof}
+  $\mathbb{F}_{25}(y)/((y-3)^2)$から$(y-3)/((y-3)^2)$を除いた集合の元$a(y-3) + b\ (a, b\in\mathbb{F}_5, b\neq 0)$を考える．
+  $(a(y-3) + b)^{120}\equiv b^{120} = (b^{24})^{10} = 1^{10} = 1$なので，命題I-6.5.8から$\mathbb{F}_{25}[x]/((y-3)^2)$は$(y-3)/((y-3)^2)$を極大イデアルとする局所環である．
+\end{proof}
+
+\begin{screen}
+  $K$を体，$f(x)$を$K$のモニック既約多項式，$f(x)$の根を$\alpha\in\overline{K}\setminus K$として，$K[x]/(f(x))\simeq K[\alpha]$
+\end{screen}
+\begin{proof}
+  系I-6.6.14から$K(x)/(f(x))$は体．準同型$\phi\colon K[x]/(f(x))\ni g(x) + (f(x))\mapsto g(\alpha)\in K[\alpha]$を考える．系I-6.1.28から$\phi$は単射である．全射性は明らか．よって，$K[x]/(f(x))\simeq K$．
+
+  例えば$x^2-x-1$が既約となる$\mathbb{F}_p$（実際には$p\equiv 1, 4\bmod5$）として，$\mathbb{F}_p[x]/(x^2-x-1)\simeq\mathbb{F}_p[\phi]\simeq\mathbb{F}_{p^2}$．
+\end{proof}
+
+\begin{screen}
+  $K$を体，$f(x)$を$K$の1次モニック多項式として，$K[x]/(f(x))\simeq K$
+\end{screen}
+\begin{proof}
+  $\alpha\in K$を$f(x)$の根として，$\phi\colon K[x]/(f(x))\ni a + (f(x))\mapsto a\in K$．明らかに全単射．
+\end{proof}
+
+\begin{screen}
+  $K$を体，$f(x)$を$K$の2次モニック可約多項式として，$K[x]/(f(x))\simeq K\times K$
+\end{screen}
+\begin{proof}
+  $\alpha, \beta\in K$を$f(x)$の異なる根として，準同型
+    \[\phi\colon K[x]/(f(x))\ni ax + b + (f(x))\mapsto(a\alpha + \beta, a\beta + b)\in K\times K\]
+    を考える．
+    $a\alpha + b = a\beta + b = 0$であれば$a = 0, b = 0$となるので$\ker(\phi) = 0$となり$\phi$は単射である．
+    $\forall c, d\in K\times K$に対し，$a = (c-d)(\alpha-\beta)^{-1}, b = c-\alpha(c-d)(\alpha-\beta)^{-1}$とすれば$\phi(a + bx + (f(x))) = (c, d)$となるので$\phi$は全射．
+\end{proof}
+
+\paragraph{命題1.4.11}~
+\begin{screen}
+  不分岐性はGalois群の作用で不変
+\end{screen}
+\begin{proof}
+  $L/K$をGalois拡大，$M$を中間体とする．
+  $M/K$が不分岐拡大であれば，任意の$A$の素イデアル$\mathfrak{p}$と，$\mathfrak{p}$の上にある$B\cap M$の素イデアル$P_1, P_2, \ldots$について，$\mathfrak{p}(B\cap M) = P_1P_2\cdots$が成立する．
+  これに$\sigma\in\Gal(L/K)$を作用させれば$\sigma(\mathfrak{p})\sigma(B\cap M) = \sigma(P_1)\cdots$．
+  $\mathfrak{p}\subset A\subset K$なので$\sigma(\mathfrak{p}) = \mathfrak{p}$．
+  追加補題\ref{sigmaB}(p.\pageref{sigmaB})から，$\sigma(P_i\cap B) = \sigma(P_i)\cap\sigma(B) = \sigma(P_i)\cap B$．
+  以上まとめて，$\mathfrak{p}B\cap\sigma(M) = \sigma(P_1)\cdots$．
+  ところで，$P_i$は$M\cap B$の素イデアルなので$\sigma^{-1}(a), \sigma^{-1}(b)\in M\cap B$に対し$\sigma^{-1}(a)\sigma^{-1}(b)\in P_i$ならば$\sigma^{-1}(a)\in P_i$もしくは$\sigma^{-1}(b)\in P_i$．
+  これに$\sigma$を作用させて$a, b\in\sigma{M}\cap B$に対し$\sigma(\sigma^{-1}(a)\sigma^{-1}(b)) = ab\in\sigma(P_i)$ならば$a\in\sigma{P_i}$もしくは$b\in\sigma{P_i}$．
+  よって$\sigma(P_i)$は$B\cap\sigma(M)$の素イデアル．
+  よって，$\sigma(P_1), \ldots$は$\mathfrak{p}$の上にある$B\cap\sigma(M)$の全ての素イデアルで，分岐指数は$e(\sigma(P_i)/\mathfrak{p}) = 1$．
+  よって$\sigma(M)$は$K$の不分岐拡大．
+
+  上の話で$M = L\ (B\cap M = B)$とすれば$\mathfrak{p}$の上にある$B$の素イデアル$P_1, P_2, \ldots$は$\Gal(L/K)$によって互いに写りあう（このうち$P_i\to P_i$になるのが$P_i$の分解群）．
+  定理1.3.26から$P_i = \sigma(P_j)$なる$\sigma\in\Gal(L/K)$は存在するので，$\forall{\sigma}\in\Gal(L/K)$によって$P_i$は$P_1, P_2, \ldots$に写る．
+  つまり，$\Gal(L/K)$は$\mathfrak{p}$の上にある$B$の素イデアルに推移的に作用する．
+\end{proof}
+
+\paragraph{命題1.4.12}~
+\begin{screen}
+  $L/K$がGalois拡大なら$\widehat{L}_1/\widehat{K}_\mathfrak{p}$もGalois拡大である
+\end{screen}
+\begin{proof}
+  $\sigma\in D_1$は$P_1$進距離を変えないので，$(x_n)$が$L$のCauchy列であれば$(\sigma(x_n))$も$L$のCauchy列．
+  さらに$\sigma\in\Gal(L/K)$は$\widehat{K}_\mathfrak{p}$を不変にする．
+  よって群準同型$\phi\colon D_1\to\Aut_{\widehat{K}_\mathfrak{p}}^\text{al}(\widehat{L}_1)$を考えることができる．
+  ここで，$\sigma$が$\widehat{L}_1$に自明に作用するなら，$\sigma$は$L$にも自明に作用するので，$\ker\phi = 1$，つまり$\phi$は単射である．
+  よって，$|D_1|\leq|\Aut_{\widehat{K}_\mathfrak{p}}^\text{al}(\widehat{L}_1)|$．
+  $L/K$はGalois拡大であるので，命題1.4.7から$|D_1| = ef$．命題I-7.4.3(1)から$|\Aut_{\widehat{K}_\mathfrak{p}}^\text{al}(\widehat{L}_1)|\leq[\widehat{L}_1:\widehat{K}_\mathfrak{p}]$．
+  さらに定理1.3.23(4)から$[\widehat{L}_1:\widehat{K}_\mathfrak{p}] = ef$．
+  以上から$ef = |D_1|\leq|\Aut_{\widehat{K}_\mathfrak{p}}^\text{al}(\widehat{L}_1)|\leq[\widehat{L}_1:\widehat{K}_\mathfrak{p}] = ef$．
+  よって$\phi$は全単射で$|\Aut_{\widehat{K}_\mathfrak{p}}^\text{al}(\widehat{L}_1)| = [\widehat{L}_1:\widehat{K}_\mathfrak{p}]$．
+  命題I-7.4.3(2)から$\widehat{L}_1/\widehat{K}_\mathfrak{p}$はGalois拡大である．
+  さらに，$\Gal(\widehat{L}_1/\widehat{K}_\mathfrak{p})$の元を$L$に制限すれば$D_1\simeq\Gal(\widehat{L}_1/\widehat{K}_\mathfrak{p})$．
+\end{proof}
+
+\section{局所体}
+\paragraph{定理1.5.6}~
+\begin{screen}
+  $\alpha\in\mathbb{F}_{q^n}$に対し，$h(\alpha_0)\equiv0\bmod P$となる$ \alpha_0\in\mathcal{O}_K$が存在し，異なる$\alpha$に対しては異なる$\alpha_0$が定まる（Henselの補題を使うにはこれを示す必要がある）
+\end{screen}
+\begin{proof}
+  同型を$\phi\colon\mathbb{F}_{q^n}\to\mathcal{O}_{K^n}/P$と表す．
+  $(\mathbb{F}^{q^n-1})^\times$は位数$q^n-1$の群なので，$\{\phi(\alpha)\}^{q^n-1} = \phi(\alpha^{q^n-1}) = \phi(1) = 1$．
+  従って，$\phi(\alpha)\in\mathcal{O}_{K^n}/P$は$x^{q^n-1}-1$の根である．
+  $\phi(\alpha)$の代表元を$\alpha_0$とすれば，これは$(\alpha_0 + P)^{q^n-1} = \alpha_0{}^{q^n-1} + P = 1 + P$を意味する．
+  従って，$\alpha_0\in\mathcal{O}_K$は$h(\alpha_0)\equiv0\bmod P$となる．
+  $\phi$は単射なので異なる$\alpha$に対しては異なる$\phi(\alpha)$が対応し，その代表元も当然異なる．
+\end{proof}
+
+\setcounter{section}{6}
+\section{絶対判別式}
+\paragraph{系1.7.5}~
+\begin{screen}
+  代数体$K$の整数環$\mathcal{O}_K$の$\mathbb{Z}$基底$\boldsymbol{v} = \{v_1, \ldots, v_n\}, \boldsymbol{w} = \{w_1, \ldots, w_n\}$について$\boldsymbol{w} = A\boldsymbol{b}$となる$A\in\GL_n(\mathbb{Z})$があり，$\det{A} = \pm 1$である
+\end{screen}
+\begin{proof}
+  系I-8.1.25から$\mathcal{O}_K$は$\mathbb{Z}$加群．
+  $w_1, \ldots, w_n\in\mathcal{O}_K$なので，$B\in M_n(\mathbb{Z})$が存在し$\boldsymbol{w} = B\boldsymbol{v}$．
+  同様に，$C\in\ M_n(\mathbb{Z})$が存在し$\boldsymbol{v} = C\boldsymbol{w}$．
+  よって$B, C$は互いの逆行列になっていて，主張の$A\in\GL_n(\mathbb{Z})$が存在する．
+  系I-6.7.9(1)から$\det A\in\mathbb{Z}^\times = \{\pm 1\}$．
+\end{proof}
+
+\begin{screen}
+  代数体$K$の$\mathbb{Q}$基底のうち$K$の整数環$\mathcal{O}_K$に含まれるものを$\boldsymbol{v} = \{v_1, \ldots, v_n\}$として，$V$を$\boldsymbol{v}$で生成される$\mathbb{Z}$加群とする．
+  $K$の整数環$\mathcal{O}_K$の$\mathbb{Z}$基底を$\boldsymbol{w} = \{w_1, \ldots, w_n\}$として$v_i = \sum_ja_{ij}w_j$, $A = (a_{ij})$とすれば，$|\det A| = |\mathcal{O}_K/V|$である
+\end{screen}
+\begin{proof}
+  $\mathcal{O}_K$は$\boldsymbol{w}$を基底とする$\mathbb{Z}$加群なので，命題I-6.8.26から，$\mathcal{O}_K\simeq\bigoplus_{\boldsymbol{w}}\mathbb{Z}\simeq\mathbb{Z}^n$（$\mathbb{Z}$加群としての同型）．また，
+  \[V = v_1\mathbb{Z} + \cdots + v_n\mathbb{Z} = \sum_ia_{1i}w_i\mathbb{Z} + \cdots + \sum_ia_{ni}w_i\mathbb{Z} = \left(\sum_ia_{i1}\mathbb{Z}\right)w_1 + \cdots + \left(\sum_ia_{in}\mathbb{Z}\right)w_n\]
+  であることに注意して，次の準同型を考える：
+  \[\phi\colon {}^tA\mathbb{Z}^n \ni \left(\sum_ia_{i1}t_i, \ldots, \sum_ia_{in}t_i\right) \mapsto \left(\sum_ia_{i1}t_i\right)w_1 + \cdots + \left(\sum_ia_{in}t_i\right)w_n \in V.\]
+  $\phi$は明らかに全射．
+  $V\subset\mathcal{O}_K$で，$\boldsymbol{w}$は$\mathcal{O}_K$の$\mathbb{Z}$基底なので$\mathbb{Z}$上1次独立．
+  $v_i\in\mathcal{O}_K$で$\boldsymbol{w}$は$\mathcal{O}_K$の$\mathbb{Z}$基底であるので，$a_{ij}\in\mathbb{Z}$．
+  よって，$(\sum_ia_{i1}t_i)w_1 + \cdots + (\sum_ia_{in}t_i)w_n = 0$ならば$\mathbb{Z}\ni\sum_ia_{i1}t_i = \cdots = \sum_ia_{in}t_n = 0$．
+  つまり，$\ker\phi = 0$なので$\phi$は単射．以上から，$V\simeq{}^tA\mathbb{Z}^n$．
+  よって系1.6.3で$A = \mathbb{Z}, P = {}^tA$とすれば，$|\mathbb{Z}/(\det A)| = |\mathbb{Z}^n/{}^tA\mathbb{Z}^n|$．
+  $\phi$の延長によって$\mathbb{Z}^n\simeq\mathcal{O}_K$，$\phi\colon{}^tA\mathbb{Z}^n\simeq V$なので，$|\mathbb{Z}^n/{}^tA\mathbb{Z}^n| = |\mathcal{O}_K/V|$．
+  よって，$|\det A| = |\mathcal{O}_K/V|$．
+\end{proof}
+
+\section{相対判別式}
+\paragraph{補題1.8.3}~
+\begin{screen}
+  $\det P\in A_\mathfrak{p}^\times$
+\end{screen}
+\begin{proof}
+  $\ord_\mathfrak{p}(\varDelta_{L/K}(v_1, \ldots, v_n))\leq 1$なので，加法的付値の性質（命題I-8.4.5(1)）から，
+  \[\ord_\mathfrak{p}((\det P)^2\varDelta_{L/K}(w_1, \ldots, w_n)) = 2\ord_\mathfrak{p}(\det P) + \ord_\mathfrak{p}(\varDelta_{L/K}(w_1, \ldots, w_n))\leq 1.\]
+  よって，$\ord_\mathfrak{p}(\det P) = 0$であり，$\det P\in A_\mathfrak{p}^\times$．
+\end{proof}
+
+\paragraph{補題1.8.7}~
+\begin{screen}
+  $s\in\mathfrak{p}^n$をかける写像$I/J\to I/J$が全単射ならば自然な写像$\mathfrak{p}^nI/\mathfrak{p}^nJ\to I/J$が全射
+\end{screen}
+\begin{proof}
+  自然な写像$\mathfrak{p}^nI/\mathfrak{p}^nJ\ni a + \mathfrak{p}^nJ\mapsto a + J\in I/J$はwell-defined．
+  $s$をかける写像$I/J\to I/J$が全単射であるので，$a + J\in I/J$に対し$a's + J = a + J$となる$a'\in J$が存在する．
+  従って，自然な写像は次のように書ける：
+  \[\mathfrak{p}^nI/\mathfrak{p}^nJ\ni a's + \mathfrak{p}^nJ\mapsto a's + J = a + J\in I/J.\]
+  従って自然な写像は全射．
+\end{proof}
+
+\paragraph{命題1.8.6}~
+\begin{screen}
+  $I/J\simeq I/\mathfrak{a}_1I\oplus\cdots\oplus I/\mathfrak{a}_tI$
+\end{screen}
+\begin{proof}
+  $\mathfrak{a}_1\cdots\mathfrak{a}_t(I/J) = \{0\}$なので$I/J\simeq (I/J)/((\mathfrak{a}_1\cdots\mathfrak{a}_t)(I/J))$．
+  $\mathfrak{a}_i + \mathfrak{a}_j = A\ (i\neq j)$なので命題I-6.8.27から$\simeq (I/J)/(\mathfrak{a}_1I/J)\oplus\cdots\oplus(I/J)/(\mathfrak{a}_tI/J)$．
+  命題I-6.8.22から$(I/J)/(\mathfrak{a}_iI/J)\simeq I/\mathfrak{a}_iI$．
+\end{proof}
+
+\begin{screen}\label{order_prime_power}
+  $|A/\mathfrak{p}_1{}^a| = |A/\mathfrak{p}_1|^a$
+\end{screen}
+\begin{proof}
+  $A\supset\mathfrak{p}_1{}^{a-1}\supset\mathfrak{p}_1{}^a$なので命題I-6.8.22から，$(A/\mathfrak{p}_1{}^a)/(\mathfrak{p}_1{}^{a-1}/\mathfrak{p}_1{}^a)\simeq A/\mathfrak{p}_1{}^{a-1}$．
+  命題1.2.13(1)から$\mathfrak{p}_1{}^{a-1}/\mathfrak{p}_1{}^a\simeq A/\mathfrak{p}_1$なので，$(A/\mathfrak{p}_1{}^a)/(A/\mathfrak{p}_1)\simeq A/\mathfrak{p}_1{}^{a-1}$となり，$((A/\mathfrak{p}_1{^a}):(A/\mathfrak{p}_1)) = |A/\mathfrak{p}_1{}^{a-1}|$．
+  Lagrangeの定理から，
+  \[|A/\mathfrak{p}_1{}^a| = ((A/\mathfrak{p}_1{^a}):(A/\mathfrak{p}_1))|A/\mathfrak{p}_1| = |A/\mathfrak{p}_1{}^{a-1}||A/\mathfrak{p}_1|.\]
+  これを繰り返して，$|A/\mathfrak{p}_1{}^a| = |A/\mathfrak{p}_1|^a$．
+\end{proof}
+
+\paragraph{命題1.8.9}~
+\begin{screen}
+  $I(B_\mathfrak{p}/M\otimes_AA_\mathfrak{p}) = \{0\}$，$B_\mathfrak{p} = M \otimes_A A_\mathfrak{p}$
+\end{screen}
+\begin{proof}
+  1つ目については， $IB_\mathfrak{p} \subset M \otimes_A A_\mathfrak{p}$を示せばよい．
+  $B \otimes_A A_\mathfrak{p} = B \otimes_A S^{-1}A \simeq S^{-1}B = B_\mathfrak{p}$なので（補題1.3.22），$IB_\mathfrak{p} \simeq I(B \otimes_A A_\mathfrak{p})$．ここで$I\subset A$なので，$A$上テンソル積の双線形性から右辺は$(IB) \otimes_A A_\mathfrak{p}$に等しい．
+  $I$の定義から$IB \subset M$なので，$IB_\mathfrak{p} \simeq (IB) \otimes_A A_\mathfrak{p} \subset M \otimes_A A_\mathfrak{p}$となる．さらに，$I$は$A_\mathfrak{p}$の単元を含むので，$B_\mathfrak{p} = IB_\mathfrak{p} \subset M \otimes_A A_\mathfrak{p}$．
+  $M \otimes_A A_\mathfrak{p} \subset B \otimes_A A_\mathfrak{p} \simeq B_\mathfrak{p}$なので，$B_\mathfrak{p} = M \otimes_A A_\mathfrak{p}$となる．
+\end{proof}
+
+\begin{screen}
+  $s\phi(\pi_1(c)) = \phi(s\pi_1(c)) = \phi(\pi_1(b)) = \pi_2(b/1) = s\pi_2(b/s)$
+\end{screen}
+\begin{proof}
+  自然な写像$\psi\colon B\hookrightarrow B_\mathfrak{p}$, $\psi$が引き起こす準同型$\phi\colon B/(\mathfrak{p}^aB + M)\to B_\mathfrak{p}/(\mathfrak{p}^aB_\mathfrak{p} + S^{-1}M)$，
+  自然な写像$\pi_1\colon B\to B/(\mathfrak{p}^aB + M)$，
+  $\pi_2\colon B_\mathfrak{p}\to B_\mathfrak{p}/(\mathfrak{p}^aB_\mathfrak{p} + S^{-1}M)$に対し，次のような図式：
+  \[
+  \begin{tikzcd}
+    B \ni b \arrow[r, "\psi", mapsto]\arrow[d, "\pi_1", mapsto] & b/1\in B_\mathfrak{p}\arrow[d, "\pi_2", mapsto] \\
+    B/(\mathfrak{p}^aB + M) \ni [b] \arrow[r, "\phi", mapsto] & {[b/1]}\in B_\mathfrak{p}/(\mathfrak{p}^aB_\mathfrak{p} + S^{-1}M)
+  \end{tikzcd}
+  \]
+  が得られる．
+  $\pi_1(c) = b' + (\mathfrak{p}^aB + M)$とすれば，
+  \begin{align*}
+    & s\phi(\pi_1(c)) = s\phi(b' + (\mathfrak{p}^aB + M)) = s[b'/1 + (\mathfrak{p}^aB_\mathfrak{p} + S^{-1}M)] = sb'/1 + (\mathfrak{p}^aB_\mathfrak{p} + S^{-1}M) \\
+    & =  \phi(sb' + (\mathfrak{p}^aB + M)) = \phi(s(b' + (\mathfrak{p}^aB + M))) = \phi(s\pi_1(c)).
+  \end{align*}
+
+  $s\pi_1(c) = \pi_1(b)$なので$\phi(s\pi_1(c)) = \phi(\pi_1(b)) = \pi_2(\psi(b)) = \pi_2(b/1)$．さらに，
+  \[\pi_2(b/1) = b/1 + (\mathfrak{p}^aB_\mathfrak{p} + S^{-1}M) = s[b/s + (\mathfrak{p}^aB_\mathfrak{p} + S^{-1}M)] = s\pi_2(b/s).\]
+\end{proof}
+
+\begin{screen}
+  $\phi(\pi_1(b)) = 0$であれば$c\in\mathfrak{p}^aB + M$と$s\in S$があり，$b/1\in c/s$
+\end{screen}
+\begin{proof}
+  $\phi(\pi_1(b)) = b/1 + (\mathfrak{p}^aB_\mathfrak{p} + S^{-1}M)$なので，$b/1\in(\mathfrak{p}^aB_\mathfrak{p} + S^{-1}M)$である．
+  よって，$b/1 = c/s\in B_\mathfrak{p}$となる$c, s$が存在する．
+\end{proof}
+
+\begin{screen}
+  $N$は有限生成・自由$A_\mathfrak{p}$加群
+\end{screen}
+\begin{proof}
+  補題I-8.3.3から$A_\mathfrak{p}$はDedekind環（つまりNoether環でもある）．
+  $A_\mathfrak{p}$の商体は$K$で，命題I-8.1.14から$A_\mathfrak{p}$の$L$における整閉包は$B_\mathfrak{p}$．
+  よって命題I-8.1.24から$B_\mathfrak{p}$は有限生成$A_\mathfrak{p}$加群．
+  $A_\mathfrak{p}$はNoether環なので，命題I-6.8.36から$N\subset B_\mathfrak{p}$は有限生成$A_\mathfrak{p}$加群．
+  $N$は有限生成$A_\mathfrak{p}$加群でねじれがないので，自由$A_\mathfrak{p}$加群である（定理I-6.8.38）．
+\end{proof}
+
+\begin{screen}
+  $(B_\mathfrak{p}:N)<\infty$ならば$N$と$B_\mathfrak{p}$の階数は等しい
+\end{screen}
+\begin{proof}
+  $N$は$B_\mathfrak{p}$の部分加群なので，$N$の$A_\mathfrak{p}$基底として$\{\boldsymbol{x}_1, \ldots, \boldsymbol{x}_n\}$, $B_\mathfrak{p}$の$A_\mathfrak{p}$基底として$\{\boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\}$を取ることができる．
+  写像$\phi\colon B_\mathfrak{p}\ni a_1\boldsymbol{x}_1 + \cdots + a_m\boldsymbol{x}_m\mapsto(a_1, \ldots, a_m)\in A_\mathfrak{p}{}^m$によって$B_\mathfrak{p}\simeq A_\mathfrak{p}{}^m$となる．
+  $N$の元は$a_{n + 1} = \cdots = a_m = 0$となる$B_\mathfrak{p}$の元と見做すことによって，$\phi$を制限すれば$N\simeq A_\mathfrak{p}{}^n$となる．
+  よって$\phi$は同型$B_\mathfrak{p}/N\simeq A_\mathfrak{p}{}^m/A_\mathfrak{p}{}^n$を引き起こす．
+  右辺の代表元として$\{(0, \ldots, 0, a_{n + 1}, \ldots, a_m)\mid a_i\in A_\mathfrak{p}\}$を取ることができ，これが有限個となるのは$n = m$の時だけ．
+\end{proof}
+
+\begin{screen}
+  $(B_\mathfrak{p}:N) = |A_\mathfrak{p}/(\det P)A_\mathfrak{p}|$
+\end{screen}
+\begin{proof}
+  $B_\mathfrak{p}$は自由$A_\mathfrak{p}$加群であるので，自由基底$\{\boldsymbol{x}_1, \ldots, \boldsymbol{x}_n\}$があり，$B_\mathfrak{p} = \boldsymbol{x}_1A_\mathfrak{p} + \cdots + \boldsymbol{x}_nA_\mathfrak{p}$．準同型
+  \[\phi\colon B_\mathfrak{p}\ni\boldsymbol{x}_1a_1 + \cdots + \boldsymbol{x}_na_n\mapsto (a_1, \ldots, a_n)\in A_\mathfrak{p}{}^n\]
+  は全単射なので，$\phi$によって$B_\mathfrak{p}\simeq A_\mathfrak{p}{}^n$となる．
+  $N$が自由基底$\{\boldsymbol{y}_1, \ldots, \boldsymbol{y}_n\}$で生成されるとする．
+  $\boldsymbol{y}_i = \sum_{j}\boldsymbol{x}_jp_{ji}$とすれば，
+  \begin{align*}
+    \phi & \colon N = \boldsymbol{y}_1A_\mathfrak{p} + \cdots + \boldsymbol{y}_nA_\mathfrak{p}\ni\boldsymbol{y}_1a_1 + \cdots + \boldsymbol{y}_na_n = \sum_ip_{1i}a_i\boldsymbol{x}_1 + \cdots + \sum_ip_{ni}a_i\boldsymbol{x}_n \\
+    & \mapsto \left(\sum_ip_{1i}a_i, \ldots, \sum_ip_{ni}a_i\right)\in PA_\mathfrak{p}{}^n
+  \end{align*}
+  によって$N\simeq PA_\mathfrak{p}{}^n$．以上から，$\phi$は写像
+  \[B_\mathfrak{p}/N\ni b + N\mapsto \phi(b) + PA_\mathfrak{p}{}^n\in A_\mathfrak{p}{}^n/PA_\mathfrak{p}{}^n\]
+  を引き起こし，これによって$B_\mathfrak{p}/N\simeq A_\mathfrak{p}{}^n/PA_\mathfrak{p}{}^n$．よって，系1.6.3から
+  \[(B_\mathfrak{p}:N) = (A_\mathfrak{p}{}^n:PA_\mathfrak{p}{}^n) = |A_\mathfrak{p}{}/(\det P)A_\mathfrak{p}|.\]
+\end{proof}
+
+\begin{screen}
+  $(B_\mathfrak{p}\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p}:N\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p}) = |A_\mathfrak{p}/(\det P)A_\mathfrak{p}|$
+\end{screen}
+\begin{proof}
+  先に示した写像$\phi\colon B_\mathfrak{p}\simeq A_\mathfrak{p}{}^n$，例1.3.13，命題1.3.15を使えば，
+  \[
+  \begin{tikzcd}
+    B_\mathfrak{p}\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p} \arrow[r, "\phi\otimes\id"]\arrow[d, phantom, "\ni" sloped] & A_\mathfrak{p}{}^n\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p} \arrow[r, "\simeq"]\arrow[d, phantom, "\ni" sloped] & \widehat{A}_\mathfrak{p}{}^n \arrow[d, phantom, "\ni" sloped] \\
+    (\boldsymbol{x}_1a_1 + \cdots + \boldsymbol{x}_na_n)\otimes a \arrow[r, mapsto] & (a_1, \ldots, a_n)\otimes a \arrow[r, mapsto] & (a_1a, \ldots, a_na)
+  \end{tikzcd}
+  \]
+  によって同型$B_\mathfrak{p}\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p}\simeq \widehat{A}_\mathfrak{p}{}^n$が得られる（$\widehat{A}_\mathfrak{p}$は平坦$A$加群）．これを制限して，
+  \[
+  \begin{tikzcd}
+    N\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p} \arrow[r, "\phi\otimes\id"]\arrow[d, phantom, "\ni" sloped] & PA_\mathfrak{p}{}^n\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p} \arrow[r, "\simeq"]\arrow[d, phantom, "\ni" sloped] & P\widehat{A}_\mathfrak{p}{}^n \arrow[d, phantom, "\ni" sloped] \\
+    (\boldsymbol{y}_1a_1 + \cdots + \boldsymbol{y}_na_n)\otimes a \arrow[r, mapsto] & \left(\sum_ip_{1i}a_i, \ldots, \sum_ip_{ni}a_i\right)\otimes a \arrow[r, mapsto] & \left(\sum_ip_{1i}a_ia, \ldots, \sum_ip_{ni}a_ia\right)
+  \end{tikzcd}
+  \]
+  となる．よって，2つの同型$B_\mathfrak{p}\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p}\simeq\widehat{A}_\mathfrak{p}{}^n$及び$N\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p}\simeq P\widehat{A}_\mathfrak{p}{}^n$は同じ写像で構成される．
+  さらに，この写像は同型$B_\mathfrak{p}\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p}/N\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p}\simeq\widehat{A}_\mathfrak{p}{}^n/P\widehat{A}_\mathfrak{p}{}^n$を引き起こす．
+  系1.6.3から$(B_\mathfrak{p}\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p}:N\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p}) = |A_\mathfrak{p}/(\det P)A_\mathfrak{p}|$．
+\end{proof}
+
+\paragraph{命題1.8.11}~
+\begin{screen}
+  $\displaystyle W/V\simeq \bigoplus_{i = 1}^tB_i{}^n/(\mathfrak{p}_i{}^{a_i}B_i{}^n + {}^tPB_i{}^n)$
+\end{screen}
+\begin{proof}
+  準同型$W/JW\ni w + JW\mapsto w + V\in W/V$の$\ker$は$V/JW$なので$(W/JW)/(V/JW)\simeq W/V$．準同型$\phi\colon W = w_1A + \cdots + w_nA\ni w_1a_1 + \cdots + w_na_n\mapsto(a_1, \ldots, a_n)\in A^n$によって$W/JW\simeq A^n/JA^n$．中国式剰余定理から準同型
+  \[\varphi\colon A^n/JA^n\ni(a_1, \ldots, a_n) + JA^n\mapsto \left((a_1, \ldots, a_n) + \mathfrak{p}_i{}^{a_i}A^n\right)_{1\leq i\leq t} \in\bigoplus_{i = 1}^tA^n/\mathfrak{p}_i{}^{a_i}A^n\]
+  によって$A^n/JA^n\simeq\bigoplus_{i = 1}^tA^n/\mathfrak{p}_i{}^{a_i}A^n$．命題1.2.13から準同型
+  \[\psi_i\colon A^n/\mathfrak{p}_i{}^{a_i}A^n\ni (a_1, \ldots, a_n) + \mathfrak{p}_i{}^{a_i}A^n\mapsto(a_1/s, \ldots, a_n/s) + \mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n\in A_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n\]
+  によって$\bigoplus_{i = 1}^t A^n/\mathfrak{p}_i{}^{a_i}A^n\simeq\bigoplus_{i = 1}^tA_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n$．これらを制限して，
+  \begin{align*}
+    \phi \colon V = v_1A + \cdots + v_nA &\ni v_1a_1 + \cdots + v_na_n = \sum_jp_{1j}w_ja_1 + \cdots + \sum_jp_{nj}w_ja_n \\
+    & =  \sum_ip_{i1}a_iw_1 + \cdots\sum_ip_{in}a_iw_n \mapsto \left(\sum_ip_{i1}a_i, \ldots, \sum_ip_{in}a_i\right)\in{}^tPA^n
+  \end{align*}
+  によって$V/JW\simeq{}^tPA^n/JA^n$．
+  \begin{align*}
+    \varphi &\colon {}^tPA^n/JA^n\ni\left(\sum_jp_{j1}a_i, \ldots, \sum_jp_{jn}a_i\right) + JA^n \\
+    & \mapsto \left( \left(\sum_jp_{j1}a_i, \ldots, \sum_jp_{jn}a_i\right) + \mathfrak{p}_i{}^{a_i}A^n \right)_{1\leq i\leq t} \in\bigoplus_{i = 1}^t{}^tPA^n/\mathfrak{p}_i{}^{a_i}A^n
+  \end{align*}
+  によって$^tPA^n/JA^n\simeq\bigoplus_{i = 1}^t{}^tPA^n/\mathfrak{p}_i{}^{a_i}A^n$．
+  \begin{align*}
+    \psi_i &\colon {}^tPA^n/\mathfrak{p}_i{}^{a_i}A^n\ni\left(\sum_jp_{j1}a_i, \ldots, \sum_jp_{jn}a_i\right) + \mathfrak{p}_i{}^{a_i}A^n \\
+    &\mapsto \left(\sum_jp_{j1}a_i/s, \ldots, \sum_jp_{jn}a_i/s\right) + \mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n\in{}^tPA_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n
+  \end{align*}
+  によって$\bigoplus_{i = 1}^t{}^tPA^n/\mathfrak{p}_i{}^{a_i}A^n\simeq\bigoplus_{i = 1}^t{}^tPA_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n$．以上から，2つの同型
+  \[W/JW\simeq\bigoplus_{i = 1}^tA_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n, \quad V/JW\simeq\bigoplus_{i = 1}^t{}^tPA_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n\]
+  は同じ写像によって構成される．よって，
+  \[W/V\simeq(W/JW)/(V/JW)\simeq\bigoplus_{i = 1}^t(A_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n)/(^tPA_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n).\]
+  ところで，自然な準同型
+  \[A_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n\to A_{\mathfrak{p}_i}{}^n/(\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n + {}^tPA_{\mathfrak{p}_i}{}^n)\]
+  の$\ker$は
+  \[(\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n + {}^tPA_{\mathfrak{p}_i}{}^n)/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n = {}^tPA_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n\]
+  なので，準同型定理から
+  \[(A_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n)/(^tPA_{\mathfrak{p}_i}{}^n/\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n)\simeq A_{\mathfrak{p}_i}{}^n/(\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n + {}^tPA_{\mathfrak{p}_i}{}^n).\]
+  以上から，$W/V\simeq \bigoplus_{i = 1}^tA_{\mathfrak{p}_i}{}^n/(\mathfrak{p}_i{}^{a_i}A_{\mathfrak{p}_i}{}^n + {}^tPA_{\mathfrak{p}_i}{}^n)$．
+\end{proof}
+
+\section{判別式と終結式}
+\paragraph{定理1.9.3}~
+\begin{screen}
+  $(\alpha_i-\beta_j)$は$L[a_0, \alpha_1, \ldots, \beta_m]$の素イデアルである
+\end{screen}
+\begin{proof}
+  準同型
+  \begin{align*}
+    \phi\colon L[a_0, \alpha_1, \ldots, \beta_m]/(\alpha_i-\beta_j)\ni f(a_0, \alpha_1, \ldots, \alpha_{i-1}, \alpha_{i + 1}, \ldots, \beta_m) + (\alpha_i-\beta_j) \\
+    \mapsto f(a_0, \alpha_1, \ldots, \alpha_{i-1}, \alpha_{i + 1}, \ldots, \beta_m)\in L[a_0, \alpha_1, \ldots, \alpha_{i-1}, \alpha_{i + 1}, \ldots, \beta_m)]
+  \end{align*}
+
+  を考える．
+  $ab\in(\alpha_i-\beta_j)$とする．
+  $0 = \phi(ab) = \phi(a)\phi(b)$で$L[a_0, \alpha_1, \ldots, \alpha_{i-1}, \alpha_{i + 1}, \ldots, \beta_m)]$は体上の多項式環なので一意分解環であり（命題I-6.6.23），整域である．よって，$\phi(a) = 0$もしくは$\phi(b) = 0$である．よって，$a\in(\alpha_i-\beta_j)$もしくは$b\in(\alpha_i-\beta_j)$なので$(\alpha_i-\beta_j)$は素イデアルである．
+\end{proof}

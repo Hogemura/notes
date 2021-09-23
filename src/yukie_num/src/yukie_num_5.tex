@@ -1,0 +1,493 @@
+\chapter{Minkowskiの定理とその応用}
+\setcounter{section}{1}
+\section{判別式の評価と類数の有限性}
+\paragraph{例3.2.13}
+素数$p$が$p\mathcal{O}_K=P_1\cdots P_g$と素イデアル分解できたとする．
+命題1.10.15から$\mathcal{N}((p))=\mathcal{N}(P_1\cdots P_g)=\mathcal{N}(P_1)\cdots\mathcal{N}(P_g)$．
+命題1.10.17(2)から$\mathcal{N}((p))=\N_{K/\mathbb{Q}}(p)=p^4$なので，$\mathcal{N}(P_i)$は$p$の冪乗．
+$\mathcal{O}_K$の素イデアル$P$の下にある素数$p$は一意的に定まるので，今の議論から，$\mathcal{N}(P)$は素数$p$の冪乗であり，$p$の上にある．
+よって，$\mathcal{O}_K$の素イデアル$P$が$\mathcal{N}(P)=2$を満たすならば$2\mathbb{Z}$の上にある．
+
+\paragraph{例3.2.14}
+素数$p$について，命題1.10.17(2)から$\mathcal{N}((p))=\lvert\N_{K/\mathbb{Q}}(p)\rvert=p^2$．
+$(p)=\mathfrak{p}_1\cdots\mathfrak{p_t}$と素イデアル分解されるとする．
+命題1.10.15から$\mathcal{N}((p))=\mathcal{N}(\mathfrak{p}_1)\cdots\mathcal{N}(\mathfrak{p}_t)$．
+よって，$t=2$で$\mathcal{N}(\mathfrak{p}_1)=\mathcal{N}(\mathfrak{p}_2)=p$．
+よって，ノルム$2$の素イデアルは$(2)$の素イデアル分解に現れる物だけ．
+
+$\mathcal{O}_K=\mathbb{Z}[\alpha]$のイデアル$(2)$を素イデアル分解する．準同型
+\[ \mathcal{O}_K\ni a+b\alpha \mapsto \overline{a}+\overline{b}\alpha+(2)\in\mathcal{O}_K/(2) \]
+は全射．$\overline{a},\overline{b}$を$a,b$を$2$で割った余りとする．準同型
+\begin{align*}
+  \mathcal{O}_K/(2)\ni\overline{a}+\overline{b}\alpha+(2) &\mapsto \overline{a}+\overline{b}x+(x(x+1))\in\mathbb{F}_2[x]/(x(x+1))\\
+  &\mapsto(\overline{a}+\overline{b}x+(x),\overline{a}+\overline{b}x+(x+1))\in\mathbb{F}_2[x]/(x)\times\mathbb{F}_2[x]/(x+1)\\
+  &\mapsto(\overline{a},\overline{a}-\overline{b})\in\mathbb{F}_2\times\mathbb{F}_2
+\end{align*}
+は同型．
+従って，$(2)=\mathfrak{p}_1\mathfrak{p}_2$となる．
+特に，$\mathfrak{p}_1,\mathfrak{p}_2$は$2$の上にある．中国式剰余定理から，
+\[\mathcal{O}_K/(2)\ni\overline{a} + \overline{b}\alpha+(2) \mapsto (\overline{a} + \overline{b}\alpha + \mathfrak{p}_1, \overline{a} + \overline{b}\alpha + \mathfrak{p}_2) \in\mathcal{O}_K/\mathfrak{p}_1 \times \mathcal{O}_K/\mathfrak{p}_2\]
+は同型．以上をまとめて，
+\[
+\begin{tikzcd}
+  \mathcal{O}_K \arrow[r, twoheadrightarrow]\arrow[d, phantom, "\ni" sloped]
+  & \mathcal{O}_K/\mathfrak{p}_1\times\mathcal{O}_K/\mathfrak{p}_2 \arrow[r, equal]\arrow[d, phantom, "\ni" sloped]
+  & \mathcal{O}_K/\mathfrak{p}_1\times\mathcal{O}_K/\mathfrak{p}_2 \arrow[r, "\simeq"]\arrow[d, phantom, "\ni" sloped]
+  & \mathbb{F}_2\times\mathbb{F}_2 \arrow[d, phantom, "\ni" sloped]\\
+  a+b\alpha \arrow[r, mapsto] & (a+b\alpha+\mathfrak{p}_1,a+b\alpha+\mathfrak{p}_2) \arrow[r, equal]
+  & (\overline{a}+\overline{b}\alpha+\mathfrak{p}_1,\overline{a}+\overline{b}\alpha+\mathfrak{p}_2) \arrow[r, mapsto]
+  & (\overline{a},\overline{a}-\overline{b})
+\end{tikzcd}
+\]
+となる．最後の同型を$\phi\colon\mathcal{O}_K/\mathfrak{p}_1\times\mathcal{O}_K/\mathfrak{p}_2\to\mathbb{F}_2\times\mathbb{F}_2$とする．
+$\phi$が同型なことに注意して，
+\[a+b\alpha\in\mathfrak{p}_1\Leftrightarrow(0,\bullet)\in\mathcal{O}_K/\mathfrak{p}_1\times\mathcal{O}_K/\mathfrak{p}_2\Leftrightarrow(0,\bullet)\in\mathbb{F}_2\times\mathbb{F}_2\Leftrightarrow\overline{a}=0\Leftrightarrow a+b\alpha\in(2,\alpha)\]
+なので$\mathfrak{p}_1=(2,\alpha)$．同様に，
+\[a+b\alpha\in\mathfrak{p}_2\Leftrightarrow(\bullet,0)\in\mathcal{O}_K/\mathfrak{p}_1\times\mathcal{O}_K/\mathfrak{p}_2\Leftrightarrow(\bullet,0)\in\mathbb{F}_2\times\mathbb{F}_2\Leftrightarrow\overline{a}-\overline{b}=0\Leftrightarrow a+b\alpha\in(2,1+\alpha)\]
+なので$\mathfrak{p}_2=(2,1+\alpha)$．
+
+\paragraph{例3.2.22}
+% <p style="margin-left: 1em; text-indent: 1em;}
+$f(\mathfrak{p}_2/p\mathbb{Z})=1$なので，
+$[\mathcal{O}_K/\mathfrak{p}_2:\mathbb{F}_p]=1$．つまり，$\mathcal{O}_K/\mathfrak{p}_2$の完全代表系として$\{0,\ldots,p-1\}$が取れる．
+$\alpha\equiv k\bmod\mathfrak{p}_2\ (k\in\{0,\ldots,p-1\})$とする．
+$\alpha$が$\mathfrak{p}_2$を法として平方非剰余なので$\alpha\not\equiv l^2\bmod\mathfrak{p}_2 ~ (\forall l\in\{0,\ldots,p-1\})$．
+よって$k-l^2\not\in\mathfrak{p}_2$．
+$\mathfrak{p}_2$は$p\mathbb{Z}$の上にあり，$k,l\in\mathbb{Z}$なので$k-l^2\not\in p\mathbb{Z}$．つまり$p$を法として$k$は平方非剰余．
+$-\alpha$が$\mathfrak{p}_2$を法として平方非剰余なので，同様にして，$p$を法として$-k$は平方非剰余．系I-1.11.5から$-1$は$p$を法として$-1$は平方剰余．
+
+\section*{離散部分群}
+Dirichletの単数定理の証明に使う．\footnote{\verb|https://mathematics-pdf.com/pdf/dirichlet_unit_theorem.pdf|から必要な部分を取ってきた}
+
+\begin{dfn}
+  $m\in\mathbb{Z}_{>0}$とする．
+  $\mathbb{R}^m$の部分集合$S$が離散的とは，任意の$C\in\mathbb{R}_{>0}$に対し
+  \[\#\Set{(x_1,\ldots,x_m)\in S\mid\max_{1\leq j\leq m}\lvert x_j\rvert\leq C}<\infty\]
+  が成立することである．定義から明らかに，離散的集合の有界部分集合は有限集合となる．
+\end{dfn}
+
+\begin{screen}
+  \begin{lem}
+    \label{discrete_subgroup_lemma_1}
+    $\mathbb{R}$の任意の離散的部分群$\Gamma$は$\exists\gamma\in\Gamma$によって$\Gamma=\mathbb{Z}\gamma$となる．
+  \end{lem}
+\end{screen}
+\begin{proof}
+  $\Gamma=\{\boldsymbol{0}\}$なら$\gamma=\mathbb{0}$とすればよい．
+  $\Gamma\neq\{\boldsymbol{0}\}$とする．$\lvert\gamma_1\rvert>0$となる$\gamma_1\in\Gamma$を取る．
+  $\Gamma$は離散的なので，$\lvert x\rvert\leq C$となる$x\in\Gamma$は有限個しかない．
+  $\gamma=\min\{\,\lvert x\rvert\mid x\in\Gamma,\quad 0<\lvert x\rvert\leq C\,\}$とおく．
+  $\mathbb{Z}\gamma$が$\Gamma$の部分群であることは明らかなので$\mathbb{Z}\gamma\subset\Gamma$．
+
+  $\forall x\in\Gamma$に対し，$q_0=\min\{\,q\in\mathbb{Z}\mid q>0,\quad\lvert x\rvert\leq q\lvert\gamma\rvert\}$が存在する．
+  $0\leq q_0\lvert\gamma\rvert-\lvert x\rvert<\lvert\gamma\rvert$は明らか．
+  $x,\gamma\in\Gamma$で$-x,-\gamma\in\Gamma$なので$\lvert x\rvert,\lvert\gamma\rvert\in\Gamma$．
+  よって$q_0\lvert\gamma\rvert-\lvert x\rvert\in\Gamma$．
+  $\gamma$の最小性から，$q_0\lvert\gamma\rvert-\lvert x\rvert=0$．
+  よって，$\lvert x\rvert\in\mathbb{Z}\gamma$なので$x=\pm\lvert x\rvert\in\mathbb{Z}\gamma$となり$\Gamma\subset\mathbb{Z}\gamma$．
+  以上から$\Gamma=\mathbb{Z}\gamma$．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \label{discrete_subgroup_lemma_2}
+    $\Gamma\neq\{\boldsymbol{0}\}$を$\mathbb{R}^m$の離散的部分群とすれば，$\exists\gamma\in\Gamma\setminus\{\boldsymbol{0}\}$によって$\mathbb{R}\gamma\cap\Gamma=\mathbb{Z}\gamma$となる．
+  \end{lem}
+\end{screen}
+\begin{proof}
+  $\gamma_0\in\Gamma\setminus\{\boldsymbol{0}\}$として，$M=\{u\gamma_0\in\mathbb{R}^m\mid0< u\leq1\}$とおくと，$M$は有界集合．
+  $\gamma_0\in\Gamma\cap M$なので，$\Gamma\cap M\neq\varnothing$．
+  よって，$\{\,u\in\mathbb{R}\mid u\gamma_0\in\Gamma,\quad 0< u\leq1\,\}$も空でない有限集合となり，最小元$u_0$が存在する．
+  $\gamma=u_0\gamma_0$とおく．
+
+  $\alpha\in\Gamma\cap\mathbb{R}\gamma$とおくと，$\alpha=u\gamma\ (u\in\mathbb{R})$と表される．
+  $\alpha-\lfloor u\rfloor\gamma\in\Gamma$は$(u-\lfloor u\rfloor)u_0\gamma_0$となるが，$0\leq u-\lfloor u\rfloor< 1$なので$0\leq(u-\lfloor u\rfloor)u_0\gamma_0< u_0$．
+  $u_0$の最小性から，$u-\lfloor u\rfloor=0$なので，$\alpha=\lfloor u\rfloor\gamma\in\mathbb{Z}\gamma$となり，$\Gamma\cap\mathbb{R}\gamma\subset\mathbb{Z}\gamma$．
+  $\Gamma\cap\mathbb{R}\gamma\supset\mathbb{Z}\gamma$は明らかなので，$\Gamma\cap\mathbb{R}\gamma=\mathbb{Z}\gamma$．
+\end{proof}
+
+
+$\Gamma$を$\mathbb{R}^m$の離散的部分群で$\gamma\in\Gamma\setminus\{\boldsymbol{0}\}$とする．
+$\boldsymbol{b}_1,\ldots,\boldsymbol{b}_m\in\mathbb{R}^m$を，$\{\gamma,\boldsymbol{b}_2,\ldots,\boldsymbol{b}_m\}$が$\mathbb{R}^m$の$\mathbb{R}$基底になるように取る．
+$m\geq2$に対し，$\mathbb{R}$線形写像$L_\gamma$を
+\[L_\gamma\colon\mathbb{R}^m\ni x_1\gamma+x_2\boldsymbol{b}_2+\cdots+x_m\boldsymbol{b}_m\mapsto(x_2,\ldots,x_m)\in\mathbb{R}^{m-1}\]
+とおく．
+
+\begin{screen}
+  \begin{lem}
+    \label{discrete_subgroup_lemma_3}
+    $\gamma\in\Gamma\setminus\{\boldsymbol{0}\}$に対し，$\ker L_\gamma=\mathbb{R}\gamma$．
+  \end{lem}
+\end{screen}
+\begin{proof}
+  $\alpha\in\ker L_\gamma$とし，$x_1,\ldots,x_m\in\mathbb{R}$によって$\alpha=x_1\gamma+x_2\boldsymbol{b}_2+\cdots+x_m\boldsymbol{b}_m$とすれば，$(x_2,\ldots,x_m)=\boldsymbol{0}$．
+  つまり，$\alpha=x_1\gamma\in\mathbb{R}\gamma$なので，$\ker L_\gamma\subset\mathbb{R}\gamma$．
+  $\ker L_\gamma\supset\mathbb{R}\gamma$は明らかなので，$\ker L_\gamma=\mathbb{R}\gamma$．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \label{discrete_subgroup_lemma_4}
+    $\forall\gamma\in\Gamma\setminus\{\boldsymbol{0}\}$に対し，$\Gamma'=L_\gamma(\Gamma)$は$\mathbb{R}^{m-1}$の離散的部分群．
+  \end{lem}
+\end{screen}
+\begin{proof}
+  $L_\gamma$は線形写像なので，$\mathbb{R}^m$から$\mathbb{R}^{m-1}$への（加群の）準同型．よって$\Gamma'$は$\mathbb{R}^{m-1}$の部分群．
+  $C\in\mathbb{R}_{>0}$とする．$(x_2,\ldots,x_m)\in\Gamma'$とし，
+  \begin{align}
+    \max_{2\leq j\leq m}\lvert x_j\rvert\leq C\label{lem4eq1}
+  \end{align}
+  であるとする．$\Gamma'=L_\gamma(\Gamma)$なので，$\exists x_1\in\mathbb{R}$によって$x_1\gamma+x_2\boldsymbol{b}_2+\cdots+x_m\boldsymbol{b}_m\in\Gamma$となる．
+  $\gamma\in\Gamma$なので
+  \[(x_1-\lfloor x_1\rfloor)\gamma+x_2\boldsymbol{b}_2+\cdots+x_m\boldsymbol{b}_m=(x_1\gamma+x_2\boldsymbol{b}_2+\cdots+x_m\boldsymbol{b}_m)-\lfloor x_1\rfloor\gamma\in\Gamma.\]
+  $0\leq x_1-\lfloor x_1\rfloor< 1$で，$(x_1-\lfloor x_1\rfloor)\gamma+x_2\boldsymbol{b}_2+\cdots+x_m\boldsymbol{b}_m$の$L_\gamma$による像は$(x_2,\ldots,x_m)$．
+  よって，\eqref{lem4eq1}を満たす$(x_2,\ldots,x_m)$の個数は，
+  \begin{align}
+    x_1\gamma+x_2\boldsymbol{b}_2+\cdots+x_m\boldsymbol{b}_m\ (0\leq x_1< 1)\label{lem4eq2}
+  \end{align}
+  となる$\Gamma$の元の個数以下．
+
+  一方，$\gamma,\boldsymbol{b}_2,\ldots,\boldsymbol{b}_m\in\mathbb{R}^m$の各成分の絶対値の最大値を$C'$とすれば，\eqref{lem4eq2}の形の元を$(y_1,\ldots,y_m)$で表すとき，$\lvert y_j\rvert\ (1\leq j\leq m)$の最大値は$C'+(m-1)CC'$以下．
+  $\Gamma$は離散的なので，\eqref{lem4eq2}の形の元は有限個しかない．
+  したがって，\eqref{lem4eq1}を満たす$(x_2,\ldots,x_m)\in\Gamma'$も有限個，つまり$\Gamma'$は離散的．
+\end{proof}
+
+\begin{screen}
+  \begin{thm}
+    \label{discrete_subgroup_theorem}
+    $\mathbb{R}^m$の任意の離散的部分群$\Gamma$に対し，$\Gamma\simeq\mathbb{Z}^{\oplus s}\ (s\leq m)．$
+  \end{thm}
+\end{screen}
+\begin{proof}
+  $\Gamma=\{\boldsymbol{0}\}$なら明らかなので，$\Gamma\neq\{\boldsymbol{0}\}$の場合について，$\Gamma$の$\mathbb{Z}$基底$\{\gamma_1,\ldots,\gamma_s\}$の存在を$m$に関する数学的帰納法によって証明する．
+
+  $m=1$の時は追加補題\ref{discrete_subgroup_lemma_1}から従う．
+
+  $m\geq2$とし，$\mathbb{R}^{m-1}$の任意の離散的部分群に対し，定理の主張が成立すると仮定する．
+  追加補題\ref{discrete_subgroup_lemma_2}から，$\mathbb{R}\gamma_1\cap\Gamma=\mathbb{Z}\gamma_1$を満たす$\gamma_1\in\Gamma\setminus\{\boldsymbol{0}\}$が存在する．
+  $L=L_{\gamma_1}$，$\Gamma'=L(\Gamma)$とおく．追加補題\ref{discrete_subgroup_lemma_4}から，$\Gamma'$は$\mathbb{R}^{m-1}$の離散的部分群．
+  よって，仮定から，$\Gamma'$の$\mathbb{Z}$基底$\{\gamma_2',\ldots,\gamma_s'\}~ (s\leq m)$が存在する．
+  $\Gamma'=L(\Gamma)$なので$L(\gamma_j)=\gamma_j'$となる$\gamma_1,\ldots,\gamma_s\in\Gamma$が存在する．
+  $n_1,\ldots,n_s\in\mathbb{Z}$とし，$n_1\gamma_1+\cdots+n_s\gamma_s=\boldsymbol{0}$と仮定する．
+  この時，$n_2\gamma_2'+\cdots+n_s\gamma_s'=L(n_1\gamma_1+\cdots+n_s\gamma_s)=\boldsymbol{0}$．
+  $\{\gamma_2',\ldots,\gamma_s'\}$は$\Gamma'$の$\mathbb{Z}$基底なので，$n_2=\cdots=n_s=0$．
+  さらに，$\gamma_1\neq\boldsymbol{0}$なので，$n_1=0$．
+  よって，$\{\gamma_1,\ldots,\gamma_s\}$は$\mathbb{Z}$上一次独立．
+
+  $\alpha\in\Gamma$とすると，$L(\alpha)\in\Gamma'$なので$\exists n_2,\ldots,n_s\in\mathbb{Z}$によって$L=n_2\gamma_2'+\cdots+n_s\gamma_s'=L(n_2\gamma_2+\cdots+n_s\gamma_s)$．
+  よって，$L(\alpha-(n_2\gamma_2+\cdots+n_s\gamma_s))=\boldsymbol{0}$，つまり$\alpha-(n_2\gamma_2+\cdots+n_s\gamma_s)\in\ker L\cap\Gamma$．
+  追加補題\ref{discrete_subgroup_lemma_3}から，$\ker L=\mathbb{R}\gamma_1$なので，$\ker L\cap\Gamma=\mathbb{R}\gamma_1\cap\Gamma=\mathbb{Z}\gamma_1$（追加補題\ref{discrete_subgroup_lemma_3}）．
+  よって，$\exists n_1\in\mathbb{Z}$によって$\alpha-(n_2\gamma_2+\cdots+n_s\gamma_s)=n_1\gamma_1$，つまり$\alpha=n_1\gamma_1+\cdots+n_s\gamma_s$．
+  よって，$\{\gamma_1,\ldots,\gamma_s\}$は$\Gamma$の$\mathbb{Z}$基底．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \label{place_restricted_is_finite}
+    $\forall i=1,\ldots,n$に対し$\lvert\sigma_i(\alpha)\rvert< C$となるような$\alpha\in\mathcal{O}_K$は有限個しかない
+  \end{lem}
+\end{screen}
+\begin{proof}
+  $\{w_1,\ldots,w_n\}$を$\mathcal{O}_K$の整基底とする．
+  $\forall\alpha\in\mathcal{O}_K$は$x_1,\ldots,x_n\in\mathbb{Z}$によって$\alpha=x_1w_1+\cdots+x_nw_n$と表すことができる．
+  \[P=
+  \begin{pmatrix}
+    \sigma_1(w_1) & \cdots & \sigma_1(w_n)\\
+    \vdots & \ddots & \vdots \\
+    \sigma_n(w_1) & \cdots & \sigma_n(w_n)\\
+  \end{pmatrix}
+  ,\quad\boldsymbol\alpha=
+  \begin{pmatrix}
+    \sigma_1(\alpha)\\
+    \vdots\\
+    \sigma_1(\alpha)\\
+  \end{pmatrix}
+  ,\quad\boldsymbol x=
+  \begin{pmatrix}
+    x_1\\
+    \vdots\\
+    x_n\\
+  \end{pmatrix}
+  \]
+  とすれば，$\boldsymbol\alpha=P\boldsymbol x$．
+  $P$は正則なので，$\boldsymbol x=P^{-1}\boldsymbol\alpha$．
+  $P^{-1}=(p_{ij})$とおき，$C_1$を$p_{ij}$のうち最大のものとする．
+  $i=1,\ldots,n$に対して
+  \[\lvert x_i\rvert=\lvert p_{i1}\sigma_1(\alpha)+\cdots+p_{in}\sigma_n(\alpha)\rvert\leq\lvert p_{i1}\rvert\lvert\sigma_1(\alpha)\rvert+\cdots+\lvert p_{in}\rvert\lvert\sigma_n(\alpha)\rvert\leq nc_1C\]
+  なので，このような$x_i$は有限個しか存在しない．
+\end{proof}
+
+\section{Dirichletの単数定理}
+\paragraph{定理3.3.1}
+$\phi$の構成．
+$\phi\colon\mathcal{O}_K^\times\to H$は積を和にする：$\phi(\varepsilon_1\varepsilon_2)=\phi(\varepsilon_1)+\phi(\varepsilon_2)$．
+$\mathcal{O}_K^\times$は乗法群で$H$は$\mathbb{R}$加群．
+
+p.163の真ん中らへんの段落から．
+$r=r_1+r_2-1\leq1$とする．
+$\phi(\varepsilon_1),\ldots,\phi(\varepsilon_r)$が一次独立な条件の元で$\phi(\mathcal{O}_K^\times)$が$\mathbb{R}^r$の離散的部分群であることを証明する．
+$\phi(\mathcal{O}_K^\times)$が$\mathbb{R}^r$の部分加群なのは明らか．
+$C\in\mathbb{R}_{>0}$を考える．$\varepsilon\in\mathcal{O}_K$を$\lvert\log\sigma_i(\varepsilon)\rvert\ (1\leq j\leq r)$の最大値が$C$以下になるように取る．
+この条件は$i=1,\ldots,r$に対し$e^{-C}\leq\lvert\sigma_i(\varepsilon)\leq e^C$が成立することと同値．
+$r_2>0$の時，$j=1,\ldots,r_2$に対し$\lvert\sigma_{r_1+r_2+j}(\varepsilon)\rvert=\lvert\sigma_{r_1+j}(\varepsilon)\rvert$なので，$i\neq r_1+r_2,n$に対し$e^{-C}\leq\lvert\sigma_i(\varepsilon)\leq e^C$が成立する．
+$1=\left\lvert\N_{K/\mathbb{Q}}(\varepsilon)\right\rvert=\prod_{i=1}^n\lvert\sigma_i(\varepsilon)\rvert$なので，
+\[\lvert\sigma_{r_1+r_2}(\varepsilon)\rvert\lvert\sigma_n(\varepsilon)\rvert=\prod_{\substack{1\leq j\leq n\\ i\neq r_1+r_2,n}}\frac{1}{\lvert\sigma_i(\varepsilon)\rvert}< e^{(n-2)C}.\]
+よって，$\lvert\sigma_{r_1+r_2}(\varepsilon)\rvert=\lvert\sigma_n(\varepsilon)\rvert< e^{(n-2)C/2}$．
+したがって，$r_2>0$なら$i=1,\ldots,r$に対して$\lvert\sigma_i(\varepsilon)\rvert< e^{C}$が成立．
+
+$r_2=0$なら$r=r_1-1=n-1$なので$i=1,\ldots,n-1$に対して$e^{-C}\leq\lvert\sigma_i(\varepsilon)\leq e^C$．
+$1=\left\lvert\N_{K/\mathbb{Q}}(\varepsilon)\right\rvert=\prod_{i=1}^n\lvert\sigma_i(\varepsilon)\rvert$なので，
+\[\lvert\sigma_n(\varepsilon)\rvert=\prod_{i=1}^{n-1}\frac{1}{\lvert\sigma_i(\varepsilon)\rvert}< e^{(n-1)C}.\]
+よって$r_2=0$でも$i=1,\ldots,r$に対して$\lvert\sigma_i(\varepsilon)\rvert< e^{C}$が成立．
+
+$\forall i=1,\ldots,n$に対し$\lvert\sigma_i(\alpha)\rvert< e^C$を満たす$\mathcal{O}_K$の元は有限個しかない（追加補題\ref{place_restricted_is_finite}）．
+よって，$\phi(\mathcal{O}_K^\times)$は離散的．
+よって，離散部分群の追加定理\ref{discrete_subgroup_theorem}から，$\phi(\mathcal{O}_K^\times)\simeq\mathbb{Z}^{\oplus s}\ (s\leq r)$．
+また，$\{\phi(\varepsilon_1),\ldots,\phi(\varepsilon_r)\}$は$\mathbb{R}$上一次独立なので，$\mathbb{Z}$上一次独立．
+よって，$s=r$となり，$\phi(\mathcal{O}_K^\times)\simeq\mathbb{Z}^{\oplus r}$．
+
+また，$K$に含まれる$1$の冪根を$R_K$とすれば，$\ker\phi=R_K$なので，$\mathcal{O}_K^\times=\mathbb{Z}^{\oplus r}\oplus R_K$．
+つまり，$\mathcal{O}_K^\times$の元は$1$の冪根と基本単数$\varepsilon_1,\ldots,\varepsilon_r$の冪乗の積の形になる．
+
+\chapter{円分体}
+\section{円分体の整数環II}
+
+\begin{screen}
+  \begin{lem}
+    \label{disc_diff}
+    判別式について
+  \end{lem}
+\end{screen}
+\begin{proof}
+  $f(x)$の根を$\alpha_1,\ldots,\alpha_n$とする．
+  $f(x)=(x-\alpha_1)\cdots(x-\alpha_n)$となる．
+  \[f'(\alpha_i)=(\alpha_i-\alpha_1)\cdots(\alpha_i-\alpha_{i-1})(\alpha_i-\alpha_{i+1})\cdots(\alpha_i-\alpha_n)\]
+  なので，
+  \[\varDelta(f)=\prod_{i< j}(\alpha_i-\alpha_j)^2=\prod_{i\neq j}(-1)^{n(n-1)/2}(\alpha_i-\alpha_j)=\prod_{i=1}^nf'(\alpha_i).\]
+\end{proof}
+
+\paragraph{命題4.1.1}~
+\begin{screen}
+  $f_k(x)$の判別式は$\text{単数} \times \prod (\zeta_{p^k}{}^{i-j} - 1)$（ただし，$0 < i \neq j < p^k$, $p \nmid i, j$）
+  % p.172下らへんの式変形
+\end{screen}
+\begin{proof}
+  \[S=\Set{i | 0< i< p^k, \gcd(i,p)=1 } = \Set{i+jp | 1\leq i\leq p-1; 0\leq j\leq p^{k-1}-1}\]
+  とおく．$\#S=(p-1)p^{k-1}$．
+  $f_k(x)$の判別式は
+  \begin{align*}
+    \prod_{i< j\in S}\left(\zeta_{p^k}{}^i-\zeta_{p^k}{}^j\right)^2 &= (-1)^{\#S(\#S-1)/2}\prod_{i\neq j\in S}\zeta_{p^k}{}^j\left(\zeta_{p^k}{}^{i-j}-1\right) \\
+    &= (-1)^{\#S(\#S-1)/2}\prod_{i\neq j\in S}\zeta_{p^k}{}^j\prod_{i\neq j\in S}\left(\zeta_{p^k}{}^{i-j}-1\right).
+  \end{align*}
+  まず，1つ目の積から考える．
+  $\zeta_{p^k}{}^j\ (j\in S)$は$f_k(x)$の異なる根なので，これらの積は$f_k(x)$の定数項と（符号を除いて）等しい．よって，
+  \[\zeta:=\prod_{j\in S}\zeta_{p^k}{}^j=(-1)^{\#S}.\]
+  また，$\prod_{i\neq j\in S}\zeta_{p^k}{}^j$を計算する際は，$i,j\in S$の条件で積を求めてから，$i=j\in S$の項で割れば良い：
+  \[\prod_{i\neq j\in S}\zeta_{p^k}{}^j=\left(\prod_{i=j\in S}\zeta_{p^k}{}^j\right)^{-1}\prod_{i,j\in S}\zeta_{p^k}{}^j=\zeta^{-1}\prod_{i\in S}\prod_{j\in S}\zeta_{p^k}{}^j=\zeta^{-1}\prod_{i\in S}\zeta=\zeta^{\#S-1}=(-1)^{\#S(\#S -1)}=1.\]
+  よって，
+  \[\varDelta(f_k)=(-1)^{\#S(\#S-1)/2}\prod_{i\neq j\in S}\left(\zeta_{p^k}{}^{i-j}-1\right).\]
+\end{proof}
+
+\begin{screen}
+  $f_k$の判別式は$p$の冪
+\end{screen}
+\begin{proof}
+  \[f_k(x)=x^{(p-1)p^{k-1}}+x^{(p-2)p^{k-1}}+\cdots+x^{p^{k-1}}+1=\frac{x^{p^k-1}}{x^{p^{k-1}}-1}\]
+  なので，
+  \[t_i := f'_k(\zeta_{p^k}{}^i)=p^k\frac{\zeta_{p^k}{}^{i(p^k-1)}}{\zeta_{p^k}{}^{ip^{k-1}}-1}=p^k\frac{\zeta_{p^k}{}^{i(p^k-1)}}{\zeta_p{}^i-1}.\]
+  $f_k(x)$の判別式は$(-1)^{\#S(\#S-1)/2}\prod_{i\in S}t_i$に等しい（追加補題\ref{disc_diff}）．
+  まず，$\prod_{i\in S}p^k=p^{k(p-1)p^{k-1}}$．
+  $\prod_{i\in S}\zeta_{p^k}{}^{i(p^k-1)}=\zeta^{p^k-1}=(-1)^{(p^k-1)\#S}=1$．
+  $\zeta_p{}^i-1\ (i=1,\ldots,p-1)$は$x^{p-1}+px^{p-2}+\cdots+p$の異なる根なので，$\prod_{i=1}^{p-1}(\zeta_p{}^i-1)=(-1)^{p-1}p=p$．
+  よって，$\prod_{i\in S}\zeta_p{}^i-1=\prod_{i=1}^{p-1}(\zeta_p{}^i-1)^{p^{k-1}}=p^{p^{k-1}}$．
+
+  以上から，
+  \[\varDelta(f_k)=(-1)^{\#S(\#S-1)/2}p^{(kp-k-1)p^{k-1}}.\]
+  $\varDelta(f_k)>0$となるのは，$\#S=(p-1)p^{k-1}$が$4$の倍数のとき．
+  これは，奇素数$p$に対しては，$p\equiv1\bmod4$のとき．$p=2$に対しては$2^k = 8, 16, \ldots$．
+\end{proof}
+
+\setcounter{section}{3}
+\section{Kronecker-Weberの定理}
+\paragraph{補題4.4.3}~
+\begin{screen}
+  $\mathbb{Q}(\zeta_{p^n})$の$p$の上にある素イデアル$\mathfrak{p}$による完備化は$\mathbb{Q}_p(\zeta_{p^n})$
+\end{screen}
+\begin{proof}
+  % <!-- p.172のはじめらへんに書いてあった -->
+  円分多項式$\Phi_p(x)$の$x^{p-1}$係数は$1$，定数項は$p$．
+  $1\leq s\leq p-2$に対し，$x^s$の係数は
+  \begin{align*}
+    \sum_{k=0}^{p-1-s}\binom{s+k}{s} &= \sum_{k=0}^{p-1-s}\binom{s+k-1}{s-1}+\sum_{k=0}^{p-1-s}\binom{s+k-1}{s}\\
+    &= -\binom{p-1}{s-1}+\sum_{k=0}^{p-1-(s-1)}\binom{(s-1)+k}{s-1}+\sum_{k=0}^{p-2-s}\binom{s+k}{s}
+  \end{align*}
+  であるので，
+  \[\sum_{k=0}^{p-1-(s-1)}\binom{(s-1)+k}{s-1}=\binom{p-1}{s-1}+\binom{p-1}{s}=\binom{p}{s}.\]
+  この式の左辺が$x^{s-1}$の係数であることに注意すれば，$x^s$の係数は$\binom{p}{s+1}$と分かる．
+  また，$s=0,p-1$でもこの式は成立するので，
+  \[\Phi_p(x+1)=\sum_{k=0}^{p-1}\binom{p}{s+1}x^s.\]
+  特に，$\Phi_p(x+1)$はEisenstein多項式．I-p.282から
+  \[\Phi_{p^n}(x) = \frac{x^{p^n}-1}{\Phi_1\cdots\Phi_{p^{n-1}}} = \frac{x^{p^{n-1}}-1}{\Phi_1(x)\cdots\Phi_{p^{n-2}}}\frac{x^{p^n}-1}{(x^{p^{n-1}}-1)\Phi_{p^{n-1}}}
+  = \Phi_{p^{n-1}}\frac{\Phi_p(x^{p^{n-1}})}{\Phi_{p^{n-1}}(x)} = \Phi_p(x^{p^{n-1}}).\]
+  上の結果と合わせて，$\Phi_{p^n}(x+1)$は$p$についてのEisenstein多項式．
+  したがって，$\mathbb{Q}_p$上でも既約であり，$[\mathbb{Q}_p(\zeta_{p^n}):\mathbb{Q}_p]=p^n-p^{n-1}$．
+
+  p.172の議論と同様に進める．
+  $N=p^n-p^{n-1}=[\mathbb{Q}(\zeta_{p^n}):\mathbb{Q}]$，$\mathfrak{p}=(\zeta_{p^n}-1)$とおく．
+  $p\mathcal{O}=\mathfrak{p}^N$なので，$\mathfrak{p}$は$p$の上にある素イデアルで，$e(\mathfrak{p}/p)=N$で$f(\mathfrak{p}/p)=1$．
+  また，$\mathfrak{p}$は$p$の上にある唯一の素イデアル（定理1.3.23）．
+  $\mathbb{Q}(\zeta_{p^n})$の$\mathfrak{p}$による完備化を$\widehat{\mathbb{Q}}(\zeta_{p^n})$とおく．先程の議論から，
+  \[[\widehat{\mathbb{Q}}(\zeta_{p^n}):\mathbb{Q}_p]=N,\quad f(\widehat{\mathbb{Q}}(\zeta_{p^n})/\mathbb{Q}_p)=1,\quad e(\widehat{\mathbb{Q}}(\zeta_{p^n})/\mathbb{Q}_p)=N.\]
+  $\widehat{\mathbb{Q}}(\zeta_{p^n})/\mathbb{Q}_p$は$\mathbb{Q}_p$の上にあり，$\zeta_{p^n}$を含むので，$[\widehat{\mathbb{Q}}(\zeta_{p^n}):\mathbb{Q}_p(\zeta_{p^n})]\geq1$．
+  上の結果と併せて，$[\widehat{\mathbb{Q}}(\zeta_{p^n}):\mathbb{Q}_p(\zeta_{p^n})]=1$．よって示せた．
+
+  これを使えば，$\mathbb{Q}_p(\zeta_{p^{e_p}})$における$\mathbb{Q}_p$の最大不分岐拡大は$\mathbb{Q}_p$（p.181，2段落目）なので，
+  $\mathbb{Q}(\zeta_{p^{e_p}})$における$\mathbb{Q}$の最大不分岐拡大は$\mathbb{Q}$となる．
+\end{proof}
+
+\begin{screen}
+  $\mathbb{Q}_p(\zeta_{n})/\mathbb{Q}_p$で$p\nmid n$は不分岐
+\end{screen}
+\begin{proof}
+  定理4.1.2(2)から$\mathbb{Q}(\zeta_{n})$の判別式は$p$で割り切れない．
+  よって，Dedekindの判別定理から$p$は$\mathbb{Q}(\zeta_{n})/\mathbb{Q}$で不分岐．
+  $p$の上にある$\mathbb{Z}[\zeta_n]$の素イデアルで$\mathbb{Q}(\zeta_n)$を完備化した体を$\widehat{K}$をとすれば，$\widehat{K}/\mathbb{Q}_p$で$p$は不分岐（定理1.3.23(6)）．
+  $\mathbb{Q}_p(\zeta_n)\subset\widehat{K}$なので，$\mathbb{Q}_p(\zeta_n)/\mathbb{Q}_p$でも$p$は不分岐（命題1.3.5(1)）．
+\end{proof}
+
+\paragraph{定理4.4.2}~
+\begin{screen}
+  有限次Abel拡大は次数が素数冪の巡回拡大の合成である
+\end{screen}
+\begin{proof}
+  $L/K$を有限次Abel拡大，有限Abel群の基本定理から位数が素数冪の巡回群$C_1,\ldots,C_r$があり，$\Gal(L/K)\simeq C_1\times\cdots\times C_r$．
+  $G_i=C_1\times\cdots C_{i-1}\times\{1\}\times C_{i+1}\times\cdots\times C_r$，$G_i$の不変体を$L_i$とする．
+  $L_1\cdots L_r$は$L_1,\ldots,L_r$を含む最小の$L$の部分体．
+  Galoisの基本定理から，これに対応する$\Gal(L/K)$の部分群は$G_1,\ldots,G_r$に含まれる最大のもの．
+  これは$G_1\cap\cdots\cap G_r=\{1_G\}$．従って，$L_1\cdots L_r=L$となる．
+  $[L:L_1]=\# G_i=\# C_1\cdots \#C_{i-1}\# C_{i+1}\cdots\# C_r$なので，$[L_1:K]=\# C_1$．従って$L_i$は$K$の素数冪次の巡回拡大．
+\end{proof}
+
+\begin{screen}
+  $\Gal(N/\mathbb{Q}_2)\simeq(\mathbb{Z}/2\mathbb{Z})^4$となる$N$は存在しない
+\end{screen}
+\begin{proof}
+  $[N:\mathbb{Q}_2]=16$なので，$[N:M]=8$となる中間体$M$が存在する．
+  $\Gal(N/M)$と同型な$(\mathbb{Z}/2\mathbb{Z})^4$の部分群は位数が$8$であり，
+  このような部分群は次の$15$個存在する\footnote{\verb|https://github.com/Hogemura/python_calc/blob/master/Zmod2Z.py|}．
+  したがって，$\mathbb{Q}_2$の$2$次拡大が15個存在することになり矛盾（命題2.4.2）．
+\end{proof}
+
+\begin{screen}
+  $H$と$H_1$の構成（Galois群が$(\mathbb{Z}/4\mathbb{Z})^3$と同型になる$\mathbb{Q}_2$の有限次拡大$N$が存在しないことを証明する部分）
+\end{screen}
+\begin{proof}
+  Galois群$\Gal(N/\mathbb{Q}_2(\sqrt{-1}))$を同型で写した，$(\mathbb{Z}/4\mathbb{Z})^3$の部分群を$H$とする．
+  $[N:\mathbb{Q}_2(\sqrt{-1})]=32$なので$\lvert H\rvert=32$．
+  $H$は位数$4$の元2つと位数$2$の元1つで生成されることが容易に分かる．
+  $\alpha$，$\beta$，$\gamma$を位数$4$の元として，$H$の生成系は$\{\alpha,\beta,2\gamma\}$と表すことができる．
+  $H$の任意の元は自然数$a, b, c$によって$a\alpha+b\beta+2c\gamma$と書ける．
+
+  $a\alpha+b\beta+2c\gamma=0$，$A=(\alpha,\beta,2\gamma)\in\M_3(\mathbb{Z})$とする．
+  $\det A=0$なら$\{\alpha,\beta,2\gamma\}$は線形従属となり，$\langle\alpha,\beta,2\gamma\rangle$は位数が$32$未満となるので矛盾．
+  従って$\det A\neq0$であり，$(a,b,c)=(0,0,0)$．
+  つまり，$\{\alpha,\beta,2\gamma\}$は線形独立．
+  従って$\forall h\in H$に対し，$h=a\alpha+b\beta+2c\gamma$となる$(a,b,c)$が一意に定まる．
+  これを$(a,b,2c)$と表すことにする．
+  $(a,b,4c)$で表される元は$a\alpha+b\beta+4c\gamma=a\alpha+b\beta$なので，$\langle\alpha,\beta\rangle\simeq(\mathbb{Z}/4\mathbb{Z})^2$．
+  これを$H_1$と書けば，$(\mathbb{Z}/4\mathbb{Z})^4/H_1\simeq\mathbb{Z}/4\mathbb{Z}$．
+\end{proof}
+
+\chapter{Gauss和・Jacobi和と有限体上の方程式}
+\setcounter{section}{1}
+\section{Gauss和の応用}
+\paragraph{補題5.2.6}~
+\begin{screen}
+  $N(x^n=a)=\lvert G/G_1\rvert$
+\end{screen}
+\begin{proof}
+  定理I-7.4.10から$\mathbb{F}_p^\times$巡回群であるので，$g$で生成されるとする．
+  $n\nmid p-1$なら$\mathbb{F}_p^\times=(\mathbb{F}_p^\times)^n$．
+  実際，$i=g^\alpha$，$j=g^\beta$，$1\leq\alpha <\beta\leq p-1$，$i^n = j^n$とすれば，$g^{n\beta}-g^{n\alpha}=g^{n\alpha}(g^{n(\beta-\alpha)} - 1)=0$となるが，$p-1\nmid n(\beta-\alpha)$なので，$i= j$となる．
+  従って，$N(x^n=1)=1$．
+
+  他方，$n\mid p-1$，$p-1=nk$とする．$(\mathbb{F}_p^\times)^k=\{1,g^k,\ldots,g^{(n-1)k}\}$である．
+  $i,j$を$x^n=a$の解，さらに，$i=g^\alpha$，$j=g^\beta$，$0\leq\alpha <\beta\leq p-1$とする．
+  $a = i^n = j^n$なので，$g^{n(\beta-\alpha)} =1$，従って$(p-1)l = n(\beta-\alpha)$となる$l$が存在する．
+  $kl=\beta-\alpha$なので，$j=i^{\beta/\alpha}=i^{1+kl/\alpha}=i\times g^{kl}\in i(\mathbb{F}_p^\times)^k$．
+  従って，$x^n=a$の解は全て$\mathbb{F}_p^\times/(\mathbb{F}_p^\times)^k$の同値類に属する．
+
+  逆に，$i^n=a$ならば，$i(\mathbb{F}_p^\times)^k$の全ての元は$x^n=a$を満たす．
+  従って，$N(x^n=a)=\lvert(\mathbb{F}_p^\times)^k\rvert=n$．
+\end{proof}
+
+\setcounter{section}{4}
+\section{不定方程式$3x^3 + 4y^3 + 5z^3 = 0$}
+\paragraph{定理5.5.1}~
+\begin{screen}
+  $P\mid I_1, I_2$ならば$P=P_2$もしくは$P=P_3$
+\end{screen}
+\begin{proof}
+  $\mathcal{O}_K$の類数は$1$なので，$P=(\beta)$となる$\beta\in\mathcal{O}_K$があり，$\beta\mid 3\alpha^2x^2, 12y^2$となる．
+  $x^2, y^2$は互いに素なので，$ax^2+by^2=1$となる整数$a, b$が存在するので，$\beta\mid 12\alpha^2$であることが分かる．
+  従って，$\beta=2-\alpha$，$\beta=3+2\alpha+\alpha^2$もしくは$\beta=\alpha$である．
+  $(\alpha)=\mathfrak{p}_1{}\cdots\mathfrak{p}_t$と素イデアル分解されたとする．
+  $p_i\mathbb{Z}=\mathfrak{p}_i\cap\mathbb{Z}$とおく．
+  命題1.10.13，命題1.0.14から$\N_{K/\mathbb{Q}}((\alpha))=p_1^{f_1}\cdots p_t{}^{f_t}=(\N_{K/\mathbb{Q}}(\alpha))=(6)$．
+  したがって，$p_1=2$, $p_2=3$となり，$2$の上にある唯一の素イデアル，$P_3$は$3$の上にある唯一の素イデアルなので，$(\alpha)=P_2P_3$．
+\end{proof}
+
+\chapter{$2$次体の整数論}
+\section{$2$次体の基本単数}
+\paragraph{定理6.1.4}
+$D>1$（ただし$\equiv 0, 1 \bmod 4$）を与えると，Pell方程式$x^2-Dy^2=\pm4$及び$\theta$が決まる．
+$b,c$を$\theta^2+b\theta+c=0$となるように定める．
+$\theta$は簡約な$2$次実無理数なので（命題6.1.33），連分数展開が可能（命題6.1.29）：$\theta=[k_0,k_1,\ldots,k_{n-1},\theta]$．
+これによって最小整数解$\varepsilon = (x_1 + y_1\sqrt{D})/2$を定める（命題6.1.33）．
+$\varepsilon^l$はPell方程式の解であり（命題6.1.35），Pell方程式の解は$\varepsilon^l$の形である（系6.1.39）．
+
+\paragraph{系6.1.39}~
+\begin{screen}
+  $t=u$の場合
+\end{screen}
+\begin{proof}
+  $(x, y)$がPell方程式の解で
+  \[
+  \begin{pmatrix}
+    \frac{x-by}{2} & -cy \\
+    y & \frac{x+by}{2}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    r & s \\
+    t & u
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    s+1 & s \\
+    1 & 1
+  \end{pmatrix}
+  \]
+  であるとする．$x=s+2$，$y=1$，$b=-s$なので$\theta=(-b+\sqrt{D})/2=(s+\sqrt{D})/2$となる．
+  $\theta=[s,1,\theta]$なので，$q_0=0$，$q_1=1$，$q_2=1$である，従って，
+  \[\frac{x_1+y_1\sqrt{D}}{2} = q_2\theta + q_1 = \theta + 1 = \frac{s+2+\sqrt{D}}{2} = \frac{x+y\sqrt{D}}{2}\]
+  となり，主張が従う．
+\end{proof}
+
+\section{$2$次体の類数}
+\paragraph{定理6.2.1}
+虚$2$次体では狭義のイデアル類とイデアル類が一致するので，イデアル類と$\Sym_{\mathrm{prim}, D}^2(\mathbb{Z}^2)$の正の同値類は
+\[\alpha=(\alpha_1, \alpha_2) \mapsto f_\alpha,\quad ax^2 + bxy + cy^2 \mapsto \left\langle a, \frac{-b + \sqrt{D}}{2} \right\rangle\]
+によって1対1に対応する（定理6.2.14）．
+系6.2.29から$\Sym_{\mathrm{prim}, D}^2(\mathbb{Z}^2)$の異なる簡約$2$次形式は対等にならない．
+また，証明から$\Sym_{\mathrm{prim}, D}^2(\mathbb{Z}^2)$の任意の元は簡約$2$次形式と正に対等であることが分かる．
+従って，$\Sym_{\mathrm{prim}, D}^2(\mathbb{Z}^2)$の正の同値類の完全代表系として簡約$2$次形式を取ることができる．
+よって，$K$の類数は簡約$2$次形式の係数の組み合わせの数に等しい．
+
+\paragraph{定理6.2.2}
+イデアル類群と判別式$D$の$2$次実無理数の対等による同値類$Y_D$と1対1に対応する（定理6.2.19）．
+判別式$D$の$2$次実無理数は$(-b+\sqrt{D})/2a$の形である．
+全ての判別式$D$の$2$次実無理数は判別式$D$の簡約な$2$次実無理数と対等である（系）ので，$Y_D$の完全代表系を判別式$D$の簡約な$2$次実無理数から選ぶことができる．
+あとは，判別式$D$の簡約な$2$次実無理数のうち，対等である（すなわち連分数展開に於いて循環節が一致する：命題6.2.31）ものを同一視すれば，$Y_D$の完全代表系が得られる．
+また，判別式$D$の$2$次実無理数$(-b+\sqrt{D})/2a$が簡約であることは，これを第1根に持つ$2$次形式$ax^2+bxy+cy^2$が簡約形式であることと同値（命題6.2.21）．
+従って，類数を求める際は，判別式$D$の簡約$2$次形式の係数のみを考えれば良い．

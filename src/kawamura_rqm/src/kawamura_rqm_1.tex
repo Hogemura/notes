@@ -1,0 +1,511 @@
+\chapter*{相対論的量子力学（川村）}
+使用しているのは第１版第１刷．
+\chapter{Dirac方程式の導出}
+小さい一様磁場$\boldsymbol{B}$に対し$(\boldsymbol{\nabla} + ie/2\hbar(\boldsymbol{B}\times\boldsymbol{x}))^2=\boldsymbol{\nabla}^2 + ie/\hbar(\boldsymbol{B}\times\boldsymbol{x})\cdot\boldsymbol{\nabla}$．
+（$\boldsymbol{\nabla}(\boldsymbol{B}\times\boldsymbol{x})=0$，$\boldsymbol{B}^2$は無視）なので，
+結局$\boldsymbol{\nabla}^2 + ie/\hbar\boldsymbol{B}\cdot(\boldsymbol{x}\times\boldsymbol{\nabla})$で角運動量が出てくる．
+
+\chapter{Dirac方程式のLorentz共変性}
+$S^{ - 1}(\Lambda)\sigma^{\mu\nu}S(\Lambda)=\Lambda^\alpha{}_\mu\Lambda^\beta{}_\nu\sigma^{\mu\nu}$の証明：(2.16)と(2.23)から従う．
+% Dirac方程式$(i\hbar\gamma^\mu\partial_mu - m)\psi=0$の$\gamma^\mu$はClifford代数を満たせば何でもいい．例えばDirac表示とかカイラル表示とか．
+
+\chapter{$\gamma$行列に関する基本定理，カイラル表示}
+\paragraph{$\Gamma_i$の性質(1)〜(5)}
+電子のスピンに関するPauli行列は次の式で与えられる：
+\[\sigma^1 =
+\begin{pmatrix}
+  0 & 1 \\
+  1 & 0
+\end{pmatrix}
+,\quad\sigma^2 =
+\begin{pmatrix}
+  0 &  - i \\
+  i & 0
+\end{pmatrix}
+,\quad\sigma^3 =
+\begin{pmatrix}
+  1 & 0 \\
+  0 &  - 1
+\end{pmatrix}
+.\]
+さらに，$\gamma$行列
+\[\gamma^0=
+\begin{pmatrix}
+  I & 0 \\
+  0 &  - I
+\end{pmatrix}
+,\quad\gamma^i =
+\begin{pmatrix}
+  0 & \sigma^i \\
+   - \sigma^i & 0
+\end{pmatrix}
+\]
+と$\tilde{\Gamma}$行列
+\begin{align*}
+  \tilde{\Gamma}_1 &= I, & \tilde{\Gamma}_2 &= \gamma^0, \\
+  \tilde{\Gamma}_3 &= i\gamma^1, & \tilde{\Gamma}_4 &= i\gamma^2, & \tilde{\Gamma}_5 &= i\gamma^3, \\
+  \tilde{\Gamma}_6 &=  - \gamma^0\gamma^1, & \tilde{\Gamma}_7 &=  - \gamma^0\gamma^2, & \tilde{\Gamma}_8 &=  - \gamma^0\gamma^3, \\
+  \tilde{\Gamma}_9 &= i\gamma^1\gamma^2, & \tilde{\Gamma}_{10} &= i\gamma^2\gamma^3, & \tilde{\Gamma}_{11} &= i\gamma^3\gamma^1, \\
+  \tilde{\Gamma}_{12} &= i\gamma^0\gamma^1\gamma^2\gamma^3, & \tilde{\Gamma}_{13} &= \gamma^1\gamma^2\gamma^3, \\
+  \tilde{\Gamma}_{14} &=  - i\gamma^0\gamma^2\gamma^3, & \tilde{\Gamma}_{15} &=  - i\gamma^0\gamma^1\gamma^3, & \tilde{\Gamma}_{16} &=  - i\gamma^0\gamma^1\gamma^2, \\
+\end{align*}
+を考える．$\tilde{\Gamma}$行列について次のような性質が成り立つ：
+\begin{enumerate}
+  \item 全ての$n$に対し$(\tilde{\Gamma}_n)^2 = I$．
+  \item 全ての$n,m$に対し$\tilde{\Gamma}_n\tilde{\Gamma}_m=\xi_{nm}\tilde{\Gamma}_l$となる$l=L_{nm}$が存在し，$\xi_{nm}\in\{\pm1,\pm i\}$．$n\neq m$ならば$L_{nm}\neq 1$．さらに，$L_{nm}$の各行には$1,\ldots 16$が１回ずつ出現する．
+  \item $\tilde{\Gamma}_n\tilde{\Gamma}_m=\pm\tilde{\Gamma}_m\tilde{\Gamma}_n$．
+  \item $n\neq 1$に対して$\tilde{\Gamma}_n\tilde{\Gamma}_m= - \tilde{\Gamma}_m\tilde{\Gamma}_n$となる$m$が存在する．
+  \item $n\neq 1$に対して$\operatorname{Tr}(\tilde{\Gamma}_n)=0$．
+\end{enumerate}
+
+pythonでコード\footnote{\verb|https://github.com/Hogemura/python_calc/blob/master/gamma.py|}を書いて確かめる．
+まず，$\xi$は
+\[\xi =
+\begin{pmatrix}
+  1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+  1 & 1 &  - i &  - i &  - i &  + i &  + i &  + i &  - 1 &  - 1 & 1 &  + i &  - i &  - 1 & 1 &  - 1 \\
+  1 &  + i & 1 &  + i &  - i &  - i &  - 1 &  - 1 &  - i &  - 1 &  + i &  - i &  - 1 &  + i &  - 1 &  - 1 \\
+  1 &  + i &  - i & 1 &  + i & 1 &  - i &  - 1 &  + i &  - i &  - 1 &  + i &  - 1 &  - 1 &  - i & 1 \\
+  1 &  + i &  + i &  - i & 1 & 1 & 1 &  - i &  - 1 &  + i &  - i &  - i &  - 1 & 1 & 1 &  + i \\
+  1 &  - i &  + i & 1 & 1 & 1 &  + i &  - i &  - i &  - 1 &  + i &  - 1 &  + i &  - i & 1 & 1 \\
+  1 &  - i &  - 1 &  + i & 1 &  - i & 1 &  + i &  + i &  - i &  - 1 &  - 1 &  - i & 1 &  + i &  - 1 \\
+  1 &  - i &  - 1 &  - 1 &  + i &  + i &  - i & 1 &  - 1 &  + i &  - i &  - 1 &  + i &  - 1 &  - 1 &  - i \\
+  1 &  - 1 &  + i &  - i &  - 1 &  + i &  - i &  - 1 & 1 &  + i &  - i &  - 1 &  - 1 &  - i &  + i &  - 1 \\
+  1 &  - 1 &  - 1 &  + i &  - i &  - 1 &  + i &  - i &  - i & 1 &  + i &  - 1 &  - 1 &  - 1 &  - i &  + i \\
+  1 & 1 &  - i &  - 1 &  + i &  - i &  - 1 &  + i &  + i &  - i & 1 &  - 1 &  - 1 &  - i & 1 &  + i \\
+  1 &  - i &  + i &  - i &  + i &  - 1 &  - 1 &  - 1 &  - 1 &  - 1 &  - 1 & 1 &  + i &  - i &  + i &  - i \\
+  1 &  + i &  - 1 &  - 1 &  - 1 &  - i &  + i &  - i &  - 1 &  - 1 &  - 1 &  - i & 1 &  + i &  - i &  + i \\
+  1 &  - 1 &  - i &  - 1 & 1 &  + i & 1 &  - 1 &  + i &  - 1 &  + i &  + i &  - i & 1 &  - i &  - i \\
+  1 & 1 &  - 1 &  + i & 1 & 1 &  - i &  - 1 &  - i &  + i & 1 &  - i &  + i &  + i & 1 &  - i \\
+  1 &  - 1 &  - 1 & 1 &  - i & 1 &  - 1 &  + i &  - 1 &  - i &  - i &  + i &  - i &  + i &  + i & 1
+\end{pmatrix}
+\]
+となる．$L$は
+\[L =
+\begin{pmatrix}
+  1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 \\
+  2 & 1 & 6 & 7 & 8 & 3 & 4 & 5 & 16 & 14 & 15 & 13 & 12 & 10 & 11 & 9 \\
+  3 & 6 & 1 & 9 & 11 & 2 & 16 & 15 & 4 & 13 & 5 & 14 & 10 & 12 & 8 & 7 \\
+  4 & 7 & 9 & 1 & 10 & 16 & 2 & 14 & 3 & 5 & 13 & 15 & 11 & 8 & 12 & 6 \\
+  5 & 8 & 11 & 10 & 1 & 15 & 14 & 2 & 13 & 4 & 3 & 16 & 9 & 7 & 6 & 12 \\
+  6 & 3 & 2 & 16 & 15 & 1 & 9 & 11 & 7 & 12 & 8 & 10 & 14 & 13 & 5 & 4 \\
+  7 & 4 & 16 & 2 & 14 & 9 & 1 & 10 & 6 & 8 & 12 & 11 & 15 & 5 & 13 & 3 \\
+  8 & 5 & 15 & 14 & 2 & 11 & 10 & 1 & 12 & 7 & 6 & 9 & 16 & 4 & 3 & 13 \\
+  9 & 16 & 4 & 3 & 13 & 7 & 6 & 12 & 1 & 11 & 10 & 8 & 5 & 15 & 14 & 2 \\
+  10 & 14 & 13 & 5 & 4 & 12 & 8 & 7 & 11 & 1 & 9 & 6 & 3 & 2 & 16 & 15 \\
+  11 & 15 & 5 & 13 & 3 & 8 & 12 & 6 & 10 & 9 & 1 & 7 & 4 & 16 & 2 & 14 \\
+  12 & 13 & 14 & 15 & 16 & 10 & 11 & 9 & 8 & 6 & 7 & 1 & 2 & 3 & 4 & 5 \\
+  13 & 12 & 10 & 11 & 9 & 14 & 15 & 16 & 5 & 3 & 4 & 2 & 1 & 6 & 7 & 8 \\
+  14 & 10 & 12 & 8 & 7 & 13 & 5 & 4 & 15 & 2 & 16 & 3 & 6 & 1 & 9 & 11 \\
+  15 & 11 & 8 & 12 & 6 & 5 & 13 & 3 & 14 & 16 & 2 & 4 & 7 & 9 & 1 & 10 \\
+  16 & 9 & 7 & 6 & 12 & 4 & 3 & 13 & 2 & 15 & 14 & 5 & 8 & 11 & 10 & 1 \\
+\end{pmatrix}
+\]
+となる．可換・反可換性については
+\[
+\begin{pmatrix}
+   +  &  +  &  +  &  +  &  +  &  +  &  +  &  +  &  +  &  +  &  +  &  +  &  +  &  +  &  +  &  +  \\
+   +  &  +  &  -  &  -  &  -  &  -  &  -  &  -  &  +  &  +  &  +  &  -  &  -  &  +  &  +  &  +  \\
+   +  &  -  &  +  &  -  &  -  &  -  &  +  &  +  &  -  &  +  &  -  &  -  &  +  &  -  &  +  &  +  \\
+   +  &  -  &  -  &  +  &  -  &  +  &  -  &  +  &  -  &  -  &  +  &  -  &  +  &  +  &  -  &  +  \\
+   +  &  -  &  -  &  -  &  +  &  +  &  +  &  -  &  +  &  -  &  -  &  -  &  +  &  +  &  +  &  -  \\
+   +  &  -  &  -  &  +  &  +  &  +  &  -  &  -  &  -  &  +  &  -  &  +  &  -  &  -  &  +  &  +  \\
+   +  &  -  &  +  &  -  &  +  &  -  &  +  &  -  &  -  &  -  &  +  &  +  &  -  &  +  &  -  &  +  \\
+   +  &  -  &  +  &  +  &  -  &  -  &  -  &  +  &  +  &  -  &  -  &  +  &  -  &  +  &  +  &  -  \\
+   +  &  +  &  -  &  -  &  +  &  -  &  -  &  +  &  +  &  -  &  -  &  +  &  +  &  -  &  -  &  +  \\
+   +  &  +  &  +  &  -  &  -  &  +  &  -  &  -  &  -  &  +  &  -  &  +  &  +  &  +  &  -  &  -  \\
+   +  &  +  &  -  &  +  &  -  &  -  &  +  &  -  &  -  &  -  &  +  &  +  &  +  &  -  &  +  &  -  \\
+   +  &  -  &  -  &  -  &  -  &  +  &  +  &  +  &  +  &  +  &  +  &  +  &  -  &  -  &  -  &  -  \\
+   +  &  -  &  +  &  +  &  +  &  -  &  -  &  -  &  +  &  +  &  +  &  -  &  +  &  -  &  -  &  -  \\
+   +  &  +  &  -  &  +  &  +  &  -  &  +  &  +  &  -  &  +  &  -  &  -  &  -  &  +  &  -  &  -  \\
+   +  &  +  &  +  &  -  &  +  &  +  &  -  &  +  &  -  &  -  &  +  &  -  &  -  &  -  &  +  &  -  \\
+   +  &  +  &  +  &  +  &  -  &  +  &  +  &  -  &  +  &  -  &  -  &  -  &  -  &  -  &  -  &  +
+\end{pmatrix}
+\]
+となる．
+
+\chapter{Dirac方程式の解}
+% <! -  -  (4.10)の変形：MQM(x.x.x3)使う．（どれだっけ）  -  - >
+
+\paragraph{(4.17)}
+慣性系Iでの４元運動量は$\varepsilon_sp_\mu$になってる，として計算すればいい（エネルギーも運動量も負）．
+$\gamma^0 S(\Lambda)^\dagger \gamma^0 = S^{ - 1}(\Lambda)$~(2.45)．
+
+\paragraph{(4.70)}
+(4.6)(4.11)（$u$と$w(\boldsymbol{p})$の対応は(4.28)）から分かる．
+
+\paragraph{(4.73)}
+(4.70)と同様．
+$\psi=S(\Lambda)w^s(0)\exp( - i\varepsilon_sp_\mu x^\mu/\hbar)$．
+入射粒子の運動量は$\boldsymbol{p}=(0,0,\hbar k)$なので(4.11)から定まる$S(\Lambda)$の$(1,2)$成分は$c\hbar k\sigma^3/(E + mc^2)$．
+$w^s(0)$については今回は正エネルギーの粒子を考えているので(4.73)では$w^1(0)$．
+(4.74)では反射なので$\boldsymbol{p}=(0,0, - \hbar k)$．
+第１項はスピン正なので$w^1(0)$，第２項はスピン負なので$w^2(0)$．
+
+\paragraph{(4.81)}
+確率流れはp.29の最後らへんから$j^\mu=c\bar{\psi}\gamma^\mu\psi=c\psi^\dagger\gamma^0\gamma^\mu\psi=c\psi^\dagger\gamma^0\gamma^0\alpha^\mu\psi=c\psi^\dagger\alpha^\mu\psi$．$b_r=b_t=0$なんで結局作用するのは$\alpha^3$だけ．
+
+\chapter{Dirac方程式の非相対論的極限}
+\paragraph{(5.10)}
+(1.10)使えば
+\[\begin{pmatrix}
+0 & \sigma^ip_i\\
+ - \sigma^ip_i & 0
+\end{pmatrix}^2= - |\boldsymbol{p}|^2I\]
+なので
+\begin{align*}
+  U & =\sum_{n=0}^\infty\frac{1}{n!}(\beta\boldsymbol{\alpha}\cdot\boldsymbol{p}\theta)^n=\sum_{n=0}^\infty\frac{1}{n!}
+  \begin{pmatrix}
+    0 & \sigma^ip_i\\
+     - \sigma^ip_i & 0
+  \end{pmatrix}
+  ^n\theta^n\\
+  & = I\left[1 - \frac{(|\boldsymbol{p}|\theta)^2}{2!} + \frac{(|\boldsymbol{p}|\theta)^4}{4!} - \cdots\right] +
+  \begin{pmatrix}
+    0 & \frac{\sigma^ip_i}{|\boldsymbol{p}|}\\
+     - \frac{\sigma^ip_i}{|\boldsymbol{p}|} & 0
+  \end{pmatrix}
+  \left[\frac{(|\boldsymbol{p}|\theta)}{1!} - \frac{(|\boldsymbol{p}|\theta)^3}{3!} + \frac{(|\boldsymbol{p}|\theta)^5}{5!} - \cdots\right]\\
+  & = \cos(|\boldsymbol{p}|\theta) + \frac{\beta\boldsymbol{\alpha}\cdot\boldsymbol{p}}{|\boldsymbol{p}|}\sin(|\boldsymbol{p}|\theta).
+\end{align*}
+
+\paragraph{(5.11)}
+$\cos$の方は
+\[\cos(|\boldsymbol{p}|\theta)(c\boldsymbol{\alpha}\cdot\boldsymbol{p} + \beta mc^2)=(c\boldsymbol{\alpha}\cdot\boldsymbol{p} + \beta mc^2)\cos(|\boldsymbol{p}|\theta).\]
+$\sin$は$\beta(\boldsymbol{\alpha}\cdot\boldsymbol{p})= - (\boldsymbol{\alpha}\cdot\boldsymbol{p})\beta$使って
+\[\frac{\beta\boldsymbol{\alpha}\cdot\boldsymbol{p}}{|\boldsymbol{p}|}\sin(|\boldsymbol{p}|\theta)(c\boldsymbol{\alpha}\cdot\boldsymbol{p} + \beta mc^2)= - (c\boldsymbol{\alpha}\cdot\boldsymbol{p} + \beta mc^2)\frac{\beta\boldsymbol{\alpha}\cdot\boldsymbol{p}}{|\boldsymbol{p}|}\sin(|\boldsymbol{p}|\theta)\]
+なので(5.11)で$e^{iS}H= - He^{iS}$になる．
+
+\chapter{水素原子}
+\paragraph{(6.11)}
+要はスピン角運動量と起動角運動量の合成．正確に書くと$C\times(1, 0)\otimes Y_{l, m - 1/2} + D\times(0, 1)\otimes Y_{l, m + 1/2}$．
+$C, D$はClebsh - Gordonの表で求まる．JJSakurai(3.8.64)とか．
+
+\paragraph{(6.32)}
+$ - 1/2$乗を３次まで展開．
+
+% 6.1の計算詳細は<a href="./hydrogen_atom.html" target="_blank">これ</a>
+
+\paragraph{(6.42)}
+合流型超幾何函数が$1$なので積分とっても楽．
+
+\paragraph{(6.46)}
+$\partial_1\partial_2 r^{ - 1}$みたいな項が無くなるのは，1sを考えてるから．
+つまり，波動関数が完全球対称なので，$xy/r^5$をかけて（まず$x$で）積分したら$0$になる．
+
+\section*{6.1の計算詳細}
+原子番号$Z$の原子内に存在する電子のDirac方程式は
+\begin{align}
+  \left( - i\hbar c\boldsymbol{\alpha}\cdot\boldsymbol{\nabla} + \beta m_ec^2 - k_0\frac{Ze^2}{r}\right)\psi=E\psi
+  \label{Dirac_eq}
+\end{align}
+で与えられる．全角運動量の２乗$\boldsymbol{J}^2$，$J_z$，軌道角運動量の２乗$\boldsymbol{L}^2$の固有関数は，$j=l\pm 1/2$に対応して
+\begin{align}
+  \varphi_{jm}^{( + )} =
+  \begin{pmatrix}
+    \sqrt{\frac{j + m}{2j}}Y_{j - \frac{1}{2},m - \frac{1}{2}}\\
+    \sqrt{\frac{j - m}{2j}}Y_{j - \frac{1}{2},m - \frac{1}{2}}
+  \end{pmatrix}
+  ,\quad\varphi_{jm}^{( - )} =
+  \begin{pmatrix}
+    \sqrt{\frac{j - m + 1}{2j + 2}}Y_{j + \frac{1}{2},m - \frac{1}{2}}\\
+     - \sqrt{\frac{j + m + 1}{2j + 2}}Y_{j + \frac{1}{2},m + \frac{1}{2}}
+  \end{pmatrix}
+  \label{eigenfunc}
+\end{align}
+で与えられ，
+\[\varphi_{jm}^{( + )} = \boldsymbol{\sigma}\cdot\hat{\boldsymbol{r}}\varphi_{jm}^{( - )}, \quad\hat{\boldsymbol{r}} = \frac{\boldsymbol{r}}{r}\]
+が成立する．球面調和関数$Y_{lm}$のパリティは$( - 1)^l$なので，これらの関数のパリティはそれぞれ$( - 1)^{j - 1/2}$と$( - 1)^{j + 1/2}$で与えられる．
+1, 2成分と3, 4成分が異なるパリティを持つスピノルは次の様に構成できる：
+\begin{align}
+  \psi_{jm}^{j - \frac{1}{2}}=
+  \begin{pmatrix}
+    \dfrac{iG_{j - 1/2,j}(r)}{r}\varphi_{jm}^{( + )} \\
+    \dfrac{F_{j - 1/2,j}(r)}{r}\varphi_{jm}^{( - )}
+  \end{pmatrix}
+  ,\quad\psi_{jm}^{j + \frac{1}{2}}=
+  \begin{pmatrix}
+    \dfrac{iG_{j + 1/2,j}(r)}{r}\varphi_{jm}^{( - )} \\
+    \dfrac{F_{j + 1/2,j}(r)}{r}\varphi_{jm}^{( + )}
+  \end{pmatrix}
+  .
+\end{align}
+$l=j\mp1/2$に対し，$\varphi_{jm}^{(l)}$は$j=l + 1/2$である$\varphi_{jm}^{( + )}$，$j=l - 1/2$である$\varphi_{jm}^{( - )}$を表す様に約束すれば
+\begin{align}
+  \psi_{jm}^{(l)}=
+  \begin{pmatrix}
+    \dfrac{iG_{lj}(r)}{r}\varphi_{jm}^{(l)} \\
+    \dfrac{F_{lj}(r)}{r}(\boldsymbol{\sigma}\cdot\hat{\boldsymbol{r}})\varphi_{jm}^{(l)}
+  \end{pmatrix}
+  .\label{spinor_parity_l}
+\end{align}
+$(\boldsymbol{\sigma}\cdot\boldsymbol{a})(\boldsymbol{\sigma}\cdot\boldsymbol{b}) = (\boldsymbol{a}\cdot\boldsymbol{b})I + i\boldsymbol{\sigma}\cdot(\boldsymbol{a}\times\boldsymbol{b})$を使えば，
+\begin{align*}
+  (\boldsymbol{\sigma}\cdot\boldsymbol{p})f(r)\varphi_{jm}^{(l)}
+  &=(\boldsymbol{\sigma}\cdot\hat{\boldsymbol{r}})(\boldsymbol{\sigma}\cdot\hat{\boldsymbol{r}})(\boldsymbol{\sigma}\cdot\boldsymbol{p})f(r)\varphi_{jm}^{(l)}\\
+  &= \frac{\boldsymbol{\sigma}\cdot\hat{\boldsymbol{r}}}{r}(\boldsymbol{r}\cdot\boldsymbol{p} + i\boldsymbol{\sigma}\cdot\boldsymbol{L})f(r)\varphi_{jm}^{(l)}\\
+  &=  - i\hbar\frac{\boldsymbol{\sigma}\cdot\hat{\boldsymbol{r}}}{r}\left[r\frac{df(r)}{dr} + \left\{1\mp\left(j + \frac{1}{2}\right)\right\}f(r)\right]\varphi_{jm}^{(l)}\\
+  (\boldsymbol{\sigma}\cdot\boldsymbol{p})(\boldsymbol{\sigma}\cdot\hat{\boldsymbol{r}})f(r)\varphi_{jm}^{(l)}
+  &= \frac{1}{r}(\boldsymbol{r}\cdot\boldsymbol{p} - i\boldsymbol{\sigma}\cdot\boldsymbol{L})f(r)\varphi_{jm}^{(l)}\\
+  &= i\hbar\frac{1}{r}\left[r\frac{df(r)}{dr} + \left\{1\pm\left(j + \frac{1}{2}\right)\right\}f(r)\right]\varphi_{jm}^{(l)}
+\end{align*}
+となるので，\eqref{spinor_parity_l}を\eqref{Dirac_eq}に代入して
+\begin{align}
+  \left(\frac{E}{\hbar c} - \frac{m_ec}{\hbar} + \frac{Z\alpha}{r}\right)G_{lj}(r) &=  - \frac{dF_{lj}(r)}{dr}\mp\left(j + \frac{1}{2}\right)\frac{F_{lj}(r)}{r}\label{r_eq1}\\
+  \left(\frac{E}{\hbar c} + \frac{m_ec}{\hbar} + \frac{Z\alpha}{r}\right)F_{lj}(r) &= \frac{dG_{lj}(r)}{dr}\mp\left(j + \frac{1}{2}\right)\frac{G_{lj}(r)}{r}.\label{r_eq2}
+\end{align}
+ここで，
+\begin{align}
+  \tilde{\lambda} &= \sqrt{\left(\frac{m_ec}{\hbar}\right)^2 - \left(\frac{E}{c\hbar}\right)^2},\quad\rho=2\tilde{\lambda}r\label{lambda_def}\\
+  G(r) &= \sqrt{1 + \frac{E}{m_ec^2}}e^{ - \rho/2}(F_1(\rho) + F_2(\rho))\label{G_F1_F2}\\
+  F(r) &= \sqrt{1 - \frac{E}{m_ec^2}}e^{ - \rho/2}(F_1(\rho) - F_2(\rho))\label{F_F1_F2}
+\end{align}
+によって$F_1(\rho)$と$F_2(\rho)$を定義する．添字$l,j$は省略する．
+\eqref{r_eq1}に\eqref{G_F1_F2}\eqref{F_F1_F2}を代入して
+\begin{align*}
+  &\left(\frac{E}{\hbar c} - \frac{m_ec}{\hbar} + \frac{2\tilde{\lambda}Z\alpha}{\rho}\right)\sqrt{\frac{m_ec^2 + E}{m_ec^2 - E}}e^{ - \rho/2}(F_1 + F_2)\\
+  &=  - 2\tilde{\lambda}\frac{d}{d\rho}\left[e^{ - \rho/2}(F_1 - F_2)\right]\mp\left(j + \frac{1}{2}\right)\frac{2\tilde{\lambda}}{\rho}e^{ - \rho/2}(F_1 - F_2)\\
+  &=  - 2\tilde{\lambda}\left[ - \frac{1}{2}e^{ - \rho/2}(F_1 - F_2) + e^{ - \rho/2}\left(\frac{dF_1}{d\rho} - \frac{dF_2}{d\rho}\right)\right]\mp\left(j + \frac{1}{2}\right)\frac{2\tilde{\lambda}}{\rho}e^{ - \rho/2}(F_1 - F_2)\\
+\end{align*}
+となるので，
+\[\left(\frac{E}{\hbar c} - \frac{m_ec}{\hbar} + \frac{2\tilde{\lambda}Z\alpha}{\rho}\right)\sqrt{\frac{m_ec^2 + E}{m_ec^2 - E}}(F_1 + F_2)=\tilde{\lambda}(F_1 - F_2) - 2\tilde{\lambda}\left(\frac{dF_1}{d\rho} - \frac{dF_2}{d\rho}\right)\mp\left(j + \frac{1}{2}\right)\frac{2\tilde{\lambda}}{\rho}(F_1 - F_2).\]
+これに
+\[\sqrt{\frac{m_ec^2 + E}{m_ec^2 - E}}=\frac{\tilde{\lambda}}{m_ec/\hbar - E/\hbar c}\]
+を代入して
+\begin{align}
+   - \rho F_1 + \frac{Z\alpha\tilde{\lambda}}{m_ec/\hbar - E/\hbar c}(F_1 + F_2)= - \rho\left(\frac{dF_1}{d\rho} - \frac{dF_2}{d\rho}\right)\mp\left(j + \frac{1}{2}\right)(F_1 - F_2).\label{r_eq1_subs}
+\end{align}
+同様に，\eqref{r_eq2}に\eqref{G_F1_F2}\eqref{F_F1_F2}を代入して，
+\[ \left(\frac{E}{\hbar c} + \frac{m_ec}{\hbar} + \frac{2\tilde{\lambda}Z\alpha}{\rho}\right)\sqrt{\frac{m_ec^2 - E}{m_ec^2 + E}}e^{ - \rho/2}(F_1 - F_2)= 2\tilde{\lambda}\frac{d}{d\rho}\left[e^{ - \rho/2}(F_1 + F_2)\right]\mp\left(j + \frac{1}{2}\right)\frac{2\tilde{\lambda}}{\rho}e^{ - \rho/2}(F_1 + F_2)\]
+となるので，
+\[\tilde{\lambda}(F_1 - F_2) + \frac{2\tilde{\lambda}Z\alpha}{\rho}\frac{\tilde{\lambda}}{m_ec/\hbar - E/\hbar c}(F_1 - F_2)= - \tilde{\lambda}(F_1 + F_2) + 2\tilde{\lambda} + 2\tilde{\lambda}\left(\frac{dF_1}{d\rho} + \frac{dF_2}{d\rho}\right)\mp\left(j + \frac{1}{2}\right)(F_1 + F_2)\]
+となり，
+\begin{align}
+  \rho F_1 + \frac{Z\alpha\tilde{\lambda}}{m_ec/\hbar + E/\hbar c}(F_1 - F_2)=\rho\left(\frac{dF_1}{d\rho} + \frac{dF_2}{d\rho}\right)\mp\left(j + \frac{1}{2}\right)(F_1 + F_2).\label{r_eq2_subs}
+\end{align}
+\eqref{r_eq1_subs}\eqref{r_eq2_subs}を両辺足し引きして
+\begin{align}
+  \rho\frac{dF_1}{d\rho} &= \left(\rho - \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}\right)F_1 + \left[ - \frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)\right]F_2\label{r_eq_dif_1}\\
+  \rho\frac{dF_2}{d\rho} &= \left[\frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)\right]F_1  +  \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}F_2\label{r_eq_dif_2}
+\end{align}
+\eqref{r_eq_dif_1}を両辺微分して
+\[\frac{dF_1}{d\rho} + \rho\frac{d^2F_1}{d\rho^2}=F_1 + \left(\rho - \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}\right)\frac{dF_1}{d\rho} + \left[ - \frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)\right]\frac{dF_2}{d\rho}\]
+\eqref{r_eq_dif_2}を代入して
+\begin{align*}
+  &= F_1 + \left(\rho - \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}\right)\frac{dF_1}{d\rho} + \left[ - \frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)\right]\left[\frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)\right]\frac{F_1}{\rho} \\
+  & \qquad + \left[ - \frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)\right]\frac{E}{\hbar c}\frac{Z\alpha}{\rho\tilde{\lambda}}F_2
+\end{align*}
+となり，\eqref{r_eq_dif_1}を代入すれば
+\begin{align*}
+  &= F_1 + \left(\rho - \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}\right)\frac{dF_1}{d\rho} + \left[\left(j + \frac{1}{2}\right)^2 - \left(\frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\right)^2\right]\frac{F_1}{\rho} + \frac{E}{\hbar c}\frac{Z\alpha}{\rho\tilde{\lambda}}\left[\rho\frac{dF_1}{d\rho} - \left(\rho - \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}\right)F_1\right]\\
+  &= F_1 - \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}F_1 + \rho\frac{dF_1}{d\rho} + \left[\left(j + \frac{1}{2}\right)^2 - (Z\alpha)^2\right]\frac{F_1}{\rho}
+\end{align*}
+となる．
+\begin{align}
+  \gamma=\sqrt{\left(j + \frac{1}{2}\right)^2 - (Z\alpha)^2}\label{gamma_def}
+\end{align}
+を導入すれば
+\begin{align}
+  \rho\frac{d^2F_1}{d\rho^2} + (1 - \rho)\frac{dF_1}{d\rho} + \left(\frac{Z\alpha}{c\hbar\tilde{\lambda}} - 1 - \frac{\gamma^2}{\rho}\right)F_1=0.\label{r_eq_2dif_1}
+\end{align}
+\eqref{r_eq_dif_2}を微分して
+\[\frac{dF_2}{d\rho} + \rho\frac{d^2F_2}{d\rho^2}=\left[\frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)\right]\frac{dF_1}{d\rho} + \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}\frac{dF_2}{d\rho}\]
+\eqref{r_eq_dif_1}を代入して
+\begin{align*}
+  &= \left[\frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)\right]\left(1 - \frac{E}{\hbar c}\frac{Z\alpha}{\rho\tilde{\lambda}}\right)F_1 + \left[\frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)\right]\left[ - \frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)\right]\frac{F_2}{\rho} \\
+  & \qquad + \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}\frac{dF_2}{d\rho}
+\end{align*}
+\eqref{r_eq_dif_2}を代入すれば，
+\begin{align*}
+  &=\left(1 - \frac{E}{\hbar c}\frac{Z\alpha}{\rho\tilde{\lambda}}\right)\left[\rho\frac{dF_2}{d\rho} - \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}F_2\right] + \left[\left(j + \frac{1}{2}\right)^2 - \left(\frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\right)^2\right]\frac{F_2}{\rho} + \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}\frac{dF_2}{d\rho}\\
+  &=\rho\frac{dF_2}{d\rho} - \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}F_2 + \left[\left(j + \frac{1}{2}\right)^2 - (Z\alpha)^2\right]\frac{F_2}{\rho}
+\end{align*}
+となるので，
+\begin{align}
+  \rho\frac{d^2F_2}{d\rho^2} + (1 - \rho)\frac{dF_2}{d\rho} + \left(\frac{Z\alpha E}{c\hbar\tilde{\lambda}} - \frac{\gamma^2}{\rho}\right)F_2=0.\label{r_eq_2dif_2}
+\end{align}
+
+$F_1=\rho^\gamma\tilde{F}_1$とおいて，
+\[\frac{d\tilde{F}_1}{d\rho}=\gamma\rho^{\gamma - 1}\tilde{F}_1 + \rho^\gamma\frac{d\tilde{F}_1}{d\rho},\quad\frac{d^2\tilde{F}_2}{d\rho^2}=\gamma(\gamma - 1)\rho^{\gamma - 2}\tilde{F}_1 + 2\gamma\rho^{\gamma - 1}\frac{d\tilde{F}_1}{d\rho} + \rho^\gamma\frac{d^2\tilde{F}_1}{d\rho^2}\]
+を\eqref{r_eq_2dif_1}に代入すれば
+\[\gamma(\gamma - 1)\rho^{\gamma - 1}\tilde{F}_1 + 2\gamma\rho^\gamma\frac{d\tilde{F}_1}{d\rho} + \rho^{\gamma + 1}\frac{d^2\tilde{F}_1}{d\rho^2} + (1 - \rho)\left(\gamma\rho^{\gamma - 1}\tilde{F}_1 + \rho^\gamma\frac{d\tilde{F}_1}{d\rho}\right) + \left(\frac{Z\alpha E}{c\hbar\tilde{\lambda}} - 1 - \frac{\gamma^2}{\rho}\right)\rho^{\gamma + 1}\tilde{F}_1\]
+となり
+\[\rho\frac{d^2\tilde{F}_1}{d\rho^2} + \{(1 + 2\gamma) - \rho\}\frac{d\tilde{F}_1}{d\rho} - \left(\gamma + 1 - \frac{Z\alpha E}{c\hbar\tilde{\lambda}}\right)\tilde{F}_1.\]
+この方程式の解は合流型超幾何函数で
+\begin{align}
+  F_1=A\rho^\gamma F\left(\gamma + 1 - \frac{Z\alpha E}{c\hbar\tilde{\lambda}}, 2\gamma + 1; \rho\right)\label{F_1_CHGF}
+\end{align}
+となる．$F_2=\rho^\gamma\tilde{F}_2$に\eqref{r_eq_2dif_2}を代入すれば
+\[\rho\frac{d^2\tilde{F}_2}{d\rho^2} + \{(1 + 2\gamma) - \rho\}\frac{d\tilde{F}_2}{d\rho} - \left(\gamma - \frac{Z\alpha E}{c\hbar\tilde{\lambda}}\right)\tilde{F}_2.\]
+となり
+\begin{align}
+  F_2=B\rho^\gamma F\left(\gamma - \frac{Z\alpha E}{c\hbar\tilde{\lambda}}, 2\gamma + 1; \rho\right).\label{F_2_CHGF}
+\end{align}
+
+合流型超幾何函数は
+\[F(a,c;z)=1 + \frac{a}{c}z + \cdots\]
+となるので，\eqref{F_1_CHGF}\eqref{F_2_CHGF}から
+\[F_1=A\rho^\gamma\left[1 + \left(\gamma + 1 - \frac{Z\alpha E}{c\hbar\tilde{\lambda}}\right)\frac{\rho}{2\gamma + 1} + \cdots\right],\quad F_2=B\rho^\gamma\left[1 + \left(\gamma - \frac{Z\alpha E}{c\hbar\tilde{\lambda}}\right)\frac{\rho}{2\gamma + 1} + \cdots\right]\]
+となる．これを\eqref{r_eq_dif_2}に代入して$\rho^\gamma$の係数を比較すれば
+\[B\gamma=\left[\frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)\right]A + \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}B\quad\therefore\frac{A}{B}=\dfrac{\gamma - \frac{E}{\hbar c}\frac{Z\alpha}{\tilde{\lambda}}}{\frac{m_ec}{\hbar}\frac{Z\alpha}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)}.\]
+よって，
+\begin{align}
+  F_1 &= \dfrac{\gamma - \frac{E}{\hbar c}\frac{Z\alpha }{\tilde{\lambda}}}{\frac{m_ec}{\hbar}\frac{Z\alpha E}{\tilde{\lambda}}\pm\left(j + \frac{1}{2}\right)}\rho^\gamma F\left(\gamma + 1 - \frac{Z\alpha E}{c\hbar\tilde{\lambda}}, 2\gamma + 1; \rho\right)\label{F_1_CHGF_coef}\\
+  F_2 &= \rho^\gamma F\left(\gamma - \frac{Z\alpha E}{c\hbar\tilde{\lambda}}, 2\gamma + 1; \rho\right).\label{F_2_CHGF_coef}
+\end{align}
+となる（$B=1$として，後から規格化する）．また，以下で
+\begin{align}
+  n=\frac{Z\alpha E}{c\hbar\tilde{\lambda}} - \gamma + \left(j + \frac{1}{2}\right)
+\end{align}
+を定義する．無限遠点で波動関数が$0$になる必要がある（p.84に書いてある）ので
+\begin{align}
+  E=m_ec^2\left[1 + \frac{Z^2\alpha^2}{\left\{n - j - \frac{1}{2} + \sqrt{(j + \frac{1}{2})^2 - Z^2\alpha^2}\right\}^2}\right]^{ - 1/2}.\label{E}
+\end{align}
+
+$n=1,j=1/2,m=1/2$の時．\eqref{gamma_def}から$\gamma=\sqrt{1 - Z^2\alpha^2}$，\eqref{lambda_def}から$\tilde{\lambda}=m_ecZ\alpha/\hbar$，\eqref{E}から$E=\gamma m_ec^2$．
+\eqref{F_1_CHGF_coef}\eqref{F_2_CHGF_coef}から$F_1=0,\quad F_2=\rho^\gamma F(0,2\gamma + 1;\rho)=\rho^\gamma$．
+\eqref{G_F1_F2}\eqref{F_F1_F2}から
+\begin{align}
+  G_{l,1/2}=\sqrt{1 + \gamma}e^{ - \rho/2}\rho^\gamma,\quad F_{l,1/2}= - \sqrt{1 - \gamma}e^{ - \rho/2}\rho^\gamma.\label{FG_ + 1/2}
+\end{align}
+\eqref{eigenfunc}\eqref{spinor_parity_l}に代入すると1, 2成分に関しては$j=l + 1/2$から$l=0$，3, 4成分に関しては$j=l - 1/2$から$l=1$となることに注意して，
+\begin{align}
+  \psi_{j=1/2,m=1/2}=N
+  \begin{pmatrix}
+    \frac{iG_{0,1/2}}{r}Y_{0,0}\\
+    0\\
+    \frac{F_{1,1/2}}{r}\sqrt{\frac{1}{3}}Y_{1,0}\\
+     - \frac{F_{1,1/2}}{r}\sqrt{\frac{2}{3}}Y_{1,1}
+  \end{pmatrix}
+  .\label{spinor_m_ + 1/2}
+\end{align}
+規格化条件は
+\[\int r^2\sin\theta\lvert\psi\rvert^2\,drd\theta d\phi = N^2\int G^2 + F^2\,dr=1\]
+で，\eqref{FG_ + 1/2}を代入すれば，
+\[\frac{N^2(1 + \gamma)}{2\tilde{\gamma}}\int_0^\infty e^{ - \rho}\rho^{2\gamma}\,d\rho + \frac{N^2(1 - \gamma)}{2\tilde{\gamma}}\int_0^\infty e^{ - \rho}\rho^{2\gamma}\,d\rho=1\]
+となり，ガンマ函数の定義
+\[\Gamma(z)=\int_0^\infty t^{z - 1}e^{ - t}\,dt\]
+から
+\[N=\left(\frac{\tilde{\lambda}}{\Gamma(2\gamma + 1)}\right)^{1/2}=\left(\frac{1}{\Gamma(2\gamma + 1)}\right)^{1/2}\left(\frac{m_ecZ\alpha}{\hbar}\right)^{1/2}.\]
+\eqref{spinor_m_ + 1/2}に代入して$ - i$をかければ
+\begin{align*}
+  & \psi_{j=1/2,m=1/2} =  - i\left(\frac{1}{\Gamma(2\gamma + 1)}\right)^{1/2}\left(\frac{m_ecZ\alpha}{\hbar}\right)^{1/2}
+  \begin{pmatrix}
+    \frac{iG_{0,1/2}}{r}Y_{0,0}\\
+    0\\
+    \frac{F_{1,1/2}}{r}\sqrt{\frac{1}{3}}Y_{1,0}\\
+     - \frac{F_{1,1/2}}{r}\sqrt{\frac{2}{3}}Y_{1,1}
+  \end{pmatrix}
+  \\
+  & \qquad = \frac{1}{\sqrt{4\pi}}\left(\frac{2m_ecZ\alpha}{\hbar}\right)^{3/2}\left(\frac{\gamma + 1}{2\Gamma(2\gamma + 1)}\right)^{1/2}\left(\frac{2m_ecZ\alpha}{\hbar}r\right)^{\gamma - 1}\exp\left( - \frac{m_ecZ\alpha}{\hbar}r\right)
+  \begin{pmatrix}
+    1\\
+    0\\
+    i\frac{1 - \gamma}{Z\alpha}\cos\theta\\
+    i\frac{1 - \gamma}{Z\alpha}\sin\theta e^{i\phi}
+  \end{pmatrix}
+  .
+\end{align*}
+
+$n=1,j=1/2,m= - 1/2$のとき．$N$は共通で3, 4成分の符号が逆なので
+\begin{align*}
+  & \psi_{j=1/2,m= - 1/2} \\
+  & \qquad = \frac{1}{\sqrt{4\pi}}\left(\frac{2m_ecZ\alpha}{\hbar}\right)^{3/2}\left(\frac{\gamma + 1}{2\Gamma(2\gamma + 1)}\right)^{1/2}\left(\frac{2m_ecZ\alpha}{\hbar}r\right)^{\gamma - 1}\exp\left( - \frac{m_ecZ\alpha}{\hbar}r\right)
+  \begin{pmatrix}
+    0\\
+    1\\
+    i\frac{1 - \gamma}{Z\alpha}\sin\theta e^{ - i\phi}\\
+     - i\frac{1 - \gamma}{Z\alpha}\cos\theta
+  \end{pmatrix}
+  .
+\end{align*}
+
+\chapter{空孔理論}
+\paragraph{(7.14)}
+$\gamma^0\slashed{p} ^*=\gamma^0\gamma^\mu p_\mu^*=\gamma^0\gamma^0p_0^* + \sum_{i=1}^3\gamma^0\gamma^{i}{}^*p_i^*=p_0^* - \sum_{i=1}^3 \gamma^{i}{}^*p_i^*\gamma^0$．$\gamma^i{}^*$が$\gamma^i$と符号逆なのは$i=2$だけ．
+$\slashed{p} ^T\gamma^0=\gamma^0p_0\gamma^0 + \sum_{i=1}^3p_i\gamma^i{}^T\gamma^0$．$\gamma^i{}^T$が$\gamma^i$と符号逆になるのは$i=1,3$．以上から$\gamma^0\slashed{p} ^*=\slashed{p} ^T\gamma^0$．
+上と同様にして$\gamma^0\slashed{s}^*=\slashed{s}^T\gamma^0$なんで$\gamma^0(\gamma_5\slashed{s})^*=\gamma^0\gamma_5\slashed{s}^*= - \gamma_5\gamma^0\slashed{s}^*= - \gamma^5\slashed{s}^T\gamma^0$．
+$\gamma^\mu$のうち転置で符号変化するのは$1,3$で，$C$との交換で符号変化するのが$0,2$なので$C\slashed{p} ^T= - \slashed{p} C$
+
+\paragraph{(7.28)}
+\[T\slashed{p} ^*=i\gamma^1\gamma^3(\gamma^0p_0 - \gamma_1p_1 + \gamma^2p_2 - \gamma^3p_3)=\gamma_0p_0i\gamma^1\gamma^3 + \gamma^1p_1i\gamma^1\gamma^3 + \gamma^2p_2i\gamma^1\gamma^3 + \gamma^3p_3i\gamma^1\gamma^3=\slashed{p} 'T.\]
+
+
+\setcounter{chapter}{8}
+\chapter{伝播理論　 ---相対論的電子 ---}
+\paragraph{(9.16)}
+射影演算子を$\sum_{r=1,2}w^r\overline{w}^r$とするやつ：p.50の$w$の完全性と直交性から，$w\overline{w}$を$w$で展開した波動関数に作用させれば分かる
+
+
+\setcounter{chapter}{10}
+\chapter{Coulomb散乱}
+
+11.2.2のはじめ「$\lvert\boldsymbol{J}_i\boldsymbol\lvert=\lvert\overline{\psi}_ic\gamma\psi_i\rvert$...」：(4.56)と同じ話．確率流れは2.2.3参照．
+
+\paragraph{(11.20)の証明}
+まず，
+\[\boldsymbol{p}\cdot\boldsymbol\sigma=
+\begin{pmatrix}
+  p_z & p_x - ip_y\\
+  p_x + ip_y &  - p_z
+\end{pmatrix}
+.\]
+$r=1$なら
+\[S(\Lambda)w^1(0)=\sqrt{\frac{E + m_ec^2}{2m_ec^2}}
+\begin{pmatrix}
+  1\\
+  0\\
+  \frac{cp_z}{E + m_ec^2}\\
+  \frac{c(p_x + ip_y)}{E + m_ec^2}
+\end{pmatrix}
+\]
+及び
+\[\overline{w}^1(0)S^{ - 1}(\Lambda)=\sqrt{\frac{E + m_ec^2}{2m_ec^2}}\left(1,0, - \frac{cp_z}{E + m_ec^2}, - \frac{c(p_x - ip_y)}{E + m_ec^2}\right). \]
+
+$r=2$なら
+\[S(\Lambda)w^2(0)=\sqrt{\frac{E + m_ec^2}{2m_ec^2}}
+\begin{pmatrix}
+  0\\
+  1\\
+  \frac{c(p_x - ip_y)}{E + m_ec^2}
+   - \frac{cp_z}{E + m_ec^2}\\
+\end{pmatrix}
+\]
+及び
+\[\overline{w}^2(0)S^{ - 1}(\Lambda)=\sqrt{\frac{E + m_ec^2}{2m_ec^2}}\left(0,1, - \frac{c(p_x + ip_y)}{E + m_ec^2},\frac{cp_z}{E + m_ec^2}\right). \]
+$\sum_{r=1,2}(S(\Lambda)w^r(0))_\beta(\overline{w}^r(0)S^{ - 1}(\Lambda))_\gamma$を$(\beta,\gamma)$成分とする行列は
+\[
+\begin{pmatrix}
+  \frac{E + m_ec^2}{2m_ec^2} & 0 &  - \frac{p_z}{2m_ec} &  - \frac{p_x - ip_y}{2m_ec}\\
+  0 & \frac{E + m_ec^2}{2m_ec^2} &  - \frac{p_x + ip_y}{2m_ec} &  - \frac{p_z}{2m_ec}\\
+  \frac{p_z}{2m_ec} & \frac{p_x - ip_y}{2m_ec} &  - \frac{p^2}{2m}\frac{1}{E + m_ec^2} & 0\\
+  \frac{p_x + ip_y}{2m_ec} & \frac{p_z}{2m_ec} & 0 &  - \frac{p^2}{2m}\frac{1}{E + m_ec^2}\\
+\end{pmatrix}
+\]
+となる．
+\[\slashed{p} =\gamma^\mu p_\mu=\frac{E}{c}
+\begin{pmatrix}
+I & \\
+& I
+\end{pmatrix}
+ -
+\begin{pmatrix}
+  \boldsymbol{p}\cdot\boldsymbol\sigma & \\
+  & \boldsymbol{p}\cdot\boldsymbol\sigma
+\end{pmatrix}
+\]
+なので，
+\[\frac{\slashed{p}  + m_ec}{2m_ec}=
+\begin{pmatrix}
+  \frac{m_ec^2 + E}{2m_ec^2}I &  - \frac{\boldsymbol{p}\cdot\boldsymbol\sigma}{2m_ec}\\
+  \frac{\boldsymbol{p}\cdot\boldsymbol\sigma}{2m_ec} & \frac{m_ec^2 - E}{2m_ec^2}I
+\end{pmatrix}
+.\]
+２つの行列は実際に等しくなる．
+
+\paragraph{(11.32)}
+(7.6)と(7.10)．
+
+\paragraph{(11.36)}
+Griffithsのp.250参照．
+より一般には，$[\overline{u}(a)\Gamma_1 u(b)][\overline{u}(d)\Gamma_2 u(b)]^*=[\overline{u}(a)\Gamma_1 u(b)][\overline{u}(d)\overline{\Gamma}_2 u(c)]$となる．

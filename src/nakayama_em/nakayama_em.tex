@@ -1,0 +1,25 @@
+\documentclass[a4paper]{ltjsreport}
+\usepackage[hiragino-pro]{luatexja-preset}
+\usepackage{../hogehoge}
+\graphicspath{{./src/fig/}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{\rightmark}
+\rhead{}
+\renewcommand{\paragraphmark}[1]{\markright{#1}}
+\renewcommand{\chaptermark}[1]{}
+\renewcommand{\sectionmark}[1]{}
+\begin{document}
+\chapter*{物質の電磁気学（中山）}
+使用しているのは第14刷．
+
+異方性媒質の部分はLandau-LifshitzのElectrodynamics of Continuous Mediaを参考にした．
+
+\input{src/nakayama_em_1.tex}
+\input{src/nakayama_em_2.tex}
+\input{src/nakayama_em_3.tex}
+\input{src/nakayama_em_4.tex}
+\input{src/nakayama_em_5.tex}
+
+\end{document}

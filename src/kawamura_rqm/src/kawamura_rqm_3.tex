@@ -1,0 +1,553 @@
+\chapter{Appendix C}
+Runge-Lenz-Pauliベクトル：
+\begin{align}
+  \boldsymbol{R}=\frac{1}{2m}(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L}) + k_0Ze^2\frac{\boldsymbol{r}}{r}
+\end{align}
+の性質を調べる\footnote{\verb|https://adhara.hatenadiary.jp/entry/2016/04/14/141203|を大変参考にした}．
+まずは，エルミート性について，
+\begin{align*}
+  (\boldsymbol{L}\times\boldsymbol{p})^\dagger
+  & = \sum_{ijk}(L_ip_j\boldsymbol{e}_k\varepsilon_{ijk})^\dagger\\
+  & = \sum_{ijk}(p_jL_i\boldsymbol{e}_k\varepsilon_{ijk})\\
+  & = \sum_{ijk}(p_iL_j\boldsymbol{e}_k\varepsilon_{jik})\\
+  & = - \sum_{ijk}(p_iL_j\boldsymbol{e}_k\varepsilon_{ijk})\\
+  & = - \boldsymbol{p}\times\boldsymbol{L}
+\end{align*}
+から，
+\begin{align}
+  \boldsymbol{R}^\dagger=\boldsymbol{R}.
+\end{align}
+
+次に，ハミルトニアン$H$と可換であることを示す．
+\begin{align*}
+  \boldsymbol{L}\times\boldsymbol{p}
+  & = \sum_{ijk}L_ip_j\boldsymbol{e}_k\varepsilon_{ijk}\\
+  & = \sum_{ijk}\sum_{mn}r_mp_n\varepsilon_{mni}p_j\boldsymbol{e}_k\varepsilon_{ijk}\\
+  & = \sum_{ijk}\sum_{mn}r_mp_np_j\boldsymbol{e}_k\varepsilon_{imn}\varepsilon_{ijk}\\
+  & = \sum_{ijk}\sum_{mn}r_mp_np_j\boldsymbol{e}_k(\varepsilon_{ijk})^2(\delta_{jm}\delta_{kn} - \delta_{jn}\delta_{km})\\
+  & = \sum_{ijk}(r_jp_jp_k - r_kp_j{}^2)\boldsymbol{e}_k(\varepsilon_{ijk})^2,
+\end{align*}
+\begin{align*}
+  \boldsymbol{p}\times\boldsymbol{L}
+  & = \sum_{ijk}p_iL_j\boldsymbol{e}_k\varepsilon_{ijk}\\
+  & = \sum_{ijk}\sum_{mn}p_ir_mp_n\varepsilon_{mnj}\boldsymbol{e}_k\varepsilon_{ijk}\\
+  & = \sum_{ijk}\sum_{mn}p_ir_mp_n\boldsymbol{e}_k\varepsilon_{njm}\varepsilon_{ijk}\\
+  & = \sum_{ijk}\sum_{mn}p_ir_mp_n\boldsymbol{e}_k(\varepsilon_{ijk})^2(\delta_{in}\delta_{km} - \delta_{im}\delta_{kn})\\
+  & = \sum_{ijk}p_i(r_kp_i - r_ip_k)\boldsymbol{e}_k(\varepsilon_{ijk})^2
+\end{align*}
+から，
+\begin{align}
+  \boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L}
+  & = \sum_{ijk}(r_jp_jp_k - r_kp_j{}^2 - r_kp_i{}^2 + p_ir_ip_k)\boldsymbol{e}_k(\varepsilon_{ijk})^2\notag\\
+  & = \sum_{ijk}(p_ir_ip_k + r_jp_jp_k + r_kp_kp_k - r_kp_i{}^2 - r_kp_j{}^2 - r_kp_k{}^2)\boldsymbol{e}_k(\varepsilon_{ijk})^2\notag\\
+  & = \sum_{ijk}(r_ip_ip_k + r_jp_jp_k + r_kp_kp_k - i\hbar p_k - r_k\boldsymbol{p}^2)\boldsymbol{e}_k(\varepsilon_{ijk})^2\notag\\
+  & = \sum_{ijk}\left[(\boldsymbol{r}\cdot\boldsymbol{p})p_k - i\hbar p_k - r_k\boldsymbol{p}^2\right]\boldsymbol{e}_k(\varepsilon_{ijk})^2.\label{Lp-pL}
+\end{align}
+よって，
+\begin{align}
+  \left[\boldsymbol{R},H\right]
+  & = \left[\frac{1}{2m}(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L}) + k_0Ze^2\frac{\boldsymbol{r}}{r},\frac{\boldsymbol{p}^2}{2m} - k_0Ze^2\frac{1}{r}\right]\notag\\
+  & = \frac{1}{(2m)^2}[\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L},\boldsymbol{p}^2] + \frac{k_0Ze^2}{2m}\left[\frac{\boldsymbol{r}}{r},\boldsymbol{p}^2\right] - \frac{k_0Ze^2}{2m}\left[\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L},\frac{1}{r}\right]\label{RH}
+\end{align}
+\eqref{RH}の第１項は，\eqref{Lp-pL}から，
+\begin{align}
+  [\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L},\boldsymbol{p}^2] = \sum_{ijk}\left[[(\boldsymbol{r}\cdot\boldsymbol{p})p_k,\boldsymbol{p}^2] - [r_k\boldsymbol{p}^2,\boldsymbol{p}^2]\right]\boldsymbol{e}_k\label{RH_1}
+\end{align}
+となるが，例えば，
+\[[r_1,p_1{}^2]=r_1p_1p_1 - p_1p_1r_1=2i\hbar p_1,\]
+\[[p_i,p_j]=0\]
+などから，
+\begin{align*}
+  & [(\boldsymbol{r}\cdot\boldsymbol{p})p_k,\boldsymbol{p}^2] \\
+  & = (r_1p_1p_k + r_2p_3p_k + r_3p_3p_k)(p_1{}^2 + p_2{}^2 + p_3{}^2) - (p_1{}^2 + p_2{}^2 + p_3{}^2)(r_1p_1p_k + r_2p_3p_k + r_3p_3p_k)\\
+  & = [r_1,p_1{}^2]p_1p_k + [r_2,p_2{}^2]p_2p_k + [r_3,p_3{}^2]p_3p_k\\
+  & = 2i\hbar\boldsymbol{p}^2p_k
+\end{align*}
+となる．一方，
+\begin{align*}
+  [r_k\boldsymbol{p}^2,\boldsymbol{p}^2]
+  & = r_k\boldsymbol{p}^4 - \boldsymbol{p}^2r_k\boldsymbol{p}^2\\
+  & = r_k\boldsymbol{p}^4 - (r_k\boldsymbol{p}^2 - 2i\hbar p_k)\boldsymbol{p}^2\\
+  & = 2i\hbar\boldsymbol{p}^2p_k
+\end{align*}
+なので，\eqref{RH_1}に代入して，
+\[[\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L},\boldsymbol{p}^2]=0.\]
+次に，\eqref{RH}第２項は
+\begin{align*}
+  \left[\frac{\boldsymbol{r}}{r},\boldsymbol{p}^2\right]
+  & = ( - \hbar^2)\sum_i\left(\frac{\boldsymbol{r}}{r}\partial_i{}^2 - \partial_i{}^2\frac{\boldsymbol{r}}{r}\right)\\
+  & = ( - \hbar^2)\sum_i\left[\frac{\boldsymbol{r}}{r}\partial_i{}^2 - \partial_i\left(\frac{\boldsymbol{e}_i}{r} - \frac{r_i}{r^3}\boldsymbol{r} + \frac{\boldsymbol{r}}{r}\partial_i\right)\right]\\
+  & = ( - \hbar^2)\sum_i\left[ - 2\left(\frac{\boldsymbol{e}_i}{r} - \frac{r_i}{r^3}\boldsymbol{r}\right)\partial_i - \left\{\partial_i\left(\frac{\boldsymbol{e}_i}{r} - \frac{r_i}{r^3}\boldsymbol{r}\right)\right\}\right]\\
+  & = ( - \hbar^2)\sum_i\left[ - 2\frac{\boldsymbol{e}_i}{r}\partial_i + 2\frac{\boldsymbol{r}}{r^3}r_i\partial_i - \left( - 2\frac{r_i}{r^3}\boldsymbol{e}_i - \frac{\boldsymbol{r}}{r^3} + 3\frac{r_i{}^2}{r^5}\boldsymbol{r}\right)\right]\\
+  & = ( - \hbar^2)\left[ - \frac{2}{r}\boldsymbol{\partial} + \frac{2\boldsymbol{r}}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial}) - \left( - 2\frac{\boldsymbol{r}}{r^3} - \frac{3\boldsymbol{r}}{r^3} + 3\frac{\boldsymbol{r}}{r^3}\right)\right]\\
+  & = 2\hbar^2\left[\frac{\boldsymbol{\partial}}{r} - \frac{\boldsymbol{r}}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial}) - \frac{\boldsymbol{r}}{r^3}\right].
+\end{align*}
+\eqref{RH}第３項は，
+\begin{align}
+  \left[\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L},\frac{1}{r}\right]
+  & = \sum_{ijk}(\varepsilon_{ijk})^2\left[\left[(\boldsymbol{r}\cdot\boldsymbol{p})p_k,\frac{1}{r}\right] - i\hbar\left[p_k,\frac{1}{r}\right] - \left[r_k\boldsymbol{p}^2,\frac{1}{r}\right]\right]\boldsymbol{e}_k\notag\\
+  & = 2\sum_k\left[\left[(\boldsymbol{r}\cdot\boldsymbol{p})p_k,\frac{1}{r}\right] - i\hbar\left[p_k,\frac{1}{r}\right] - \left[r_k\boldsymbol{p}^2,\frac{1}{r}\right]\right]\boldsymbol{e}_k\label{RH_3}
+\end{align}
+となる．\eqref{RH_3}の$\boldsymbol{e}_k$の係数の第１項は，
+\begin{align*}
+  \left[(\boldsymbol{r}\cdot\boldsymbol{p})p_k,\frac{1}{r}\right]
+  & = (\boldsymbol{r}\cdot\boldsymbol{p})p_k\frac{1}{r} - \frac{1}{r}(\boldsymbol{r}\cdot\boldsymbol{p})p_k\\
+  & = - \hbar^2(\boldsymbol{r}\cdot\boldsymbol{\partial})\partial_k\frac{1}{r} + \hbar^2\frac{1}{r}(\boldsymbol{r}\cdot\boldsymbol{\partial})\partial_k\\
+  & = - \hbar^2(\boldsymbol{r}\cdot\boldsymbol{\partial})\frac{1}{r}\partial_k + \hbar^2(\boldsymbol{r}\cdot\boldsymbol{\partial})\frac{r_k}{r^3} + \frac{\hbar^2}{r}(\boldsymbol{r}\cdot\boldsymbol{\partial})\partial_k\\
+  & = - \hbar^2\sum_ir_i\partial_i\frac{1}{r}\partial_k + \hbar^2\sum_ir_i\partial_i\frac{r_k}{r^3} + \frac{\hbar^2}{r}(\boldsymbol{r}\cdot\boldsymbol{\partial})\partial_k\\
+  & = - \hbar^2\sum_ir_i\left(\frac{1}{r}\partial_i - \frac{r_i}{r^3}\right)\partial_k + \hbar^2\sum_ir_i\left(\frac{\delta_{ki}}{r^3} - r_k\frac{3r_i}{r^5}\right) + \hbar^2\frac{r_k}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial}) + \frac{\hbar^2}{r}(\boldsymbol{r}\cdot\boldsymbol{\partial})\partial_k\\
+  & = - \hbar^2\frac{1}{r}\sum_ir_i\partial_i\partial_k + \frac{\hbar^2}{r^3}\sum_ir^i{}^2\partial_k + \frac{\hbar^2}{r^3}\sum_ir_i\delta_{ki} \\
+  & - \hbar^2r_k\sum_i\frac{3r_i{}^2}{r^5} + \hbar^2\frac{r_k}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial}) + \frac{\hbar^2}{r}(\boldsymbol{r}\cdot\boldsymbol{\partial})\partial_k\\
+  & = - \frac{\hbar^2}{r}(\boldsymbol{r}\cdot\boldsymbol{\partial})\partial_k + \frac{\hbar^2}{r}\partial_k + \hbar^2\frac{r_k}{r^3} - \hbar^2\frac{3r_k}{r^3} + \hbar^2\frac{r_k}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial}) + \frac{\hbar^2}{r}(\boldsymbol{r}\cdot\boldsymbol{\partial})\partial_k\\
+  & = - 2\hbar^2\frac{r_k}{r^3} + \frac{\hbar^2}{r}\partial_k + \hbar^2\frac{r_k}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial}),
+\end{align*}
+\eqref{RH_3}の$\boldsymbol{e}_k$の係数の第２項は，
+\begin{align*}
+  \left[p_k,\frac{1}{r}\right]
+  & = p_k\frac{1}{r} - \frac{1}{r}p_k\\
+  & = - i\hbar\left(\partial_k\frac{1}{r} - \frac{1}{r}\partial_k\right)\\
+  & = - i\hbar\left(\frac{1}{r}\partial_k - \frac{r_k}{r^3} - \frac{1}{r}\partial_k\right)\\
+  & = i\hbar\frac{r_k}{r^3},
+\end{align*}
+\eqref{RH_3}の$\boldsymbol{e}_k$の係数の第３項は，
+\begin{align*}
+  \left[r_k\boldsymbol{p}^2,\frac{1}{r}\right]
+  & = r_k\boldsymbol{p}^2\frac{1}{r} - \frac{1}{r}r_k\boldsymbol{p}^2\\
+  & = - \hbar^2r_k\sum_i\partial_i{}^2\frac{1}{r} + \hbar^2\frac{r_k}{r}\sum_i\partial_i{}^2\\
+  & = - \hbar^2r_k\sum_i\partial_i\left(\frac{1}{r}\partial_i - \frac{r_i}{r^3}\right) + \hbar^2\frac{r_k}{r}\sum_i\partial_i{}^2\\
+  & = - \hbar^2r_k\sum_i\left( - 2\frac{r_i}{r^3}\partial_i - \frac{1}{r^3} + 3\frac{r_i{}^2}{r^5}\right)\\
+  & = - \hbar^2r_k\left( - \frac{2}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial}) - \frac{3}{r^3} + 3\frac{1}{r^3}\right)\\
+  & = \hbar^2\frac{2r_k}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial})
+\end{align*}
+となる．よって，\eqref{RH_3}は，
+\begin{align*}
+  \left[\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L},\frac{1}{r}\right]
+  & = 2\sum_k\left[ - 2\hbar^2\frac{r_k}{r^3} + \frac{\hbar^2}{r}\partial_k + \hbar^2\frac{r_k}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial}) + \hbar^2\frac{r_k}{r^3} - \hbar^2\frac{2r_k}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial})\right]\boldsymbol{e}_k\\
+  & = 2\hbar^2\sum_k\left[\frac{\partial_k}{r} - \frac{r_k}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial}) - \frac{r_k}{r^3}\right]\boldsymbol{e}_k\\
+  & = 2\hbar^2\left[\frac{\boldsymbol{\partial}}{r} - \frac{\boldsymbol{r}}{r^3}(\boldsymbol{r}\cdot\boldsymbol{\partial}) - \frac{\boldsymbol{r}}{r^3}\right]
+\end{align*}
+となり，\eqref{RH}第２項と第3項の和は$0$．以上から，
+\begin{align}
+  [\boldsymbol{R},H]=0.
+\end{align}
+
+次に，角運動量$\boldsymbol{L}$とRunge-Lenz-Pauliベクトル$\boldsymbol{R}$の交換関係，$[L_i,R_j]$を調べよう．
+その準備として，まずは角運動量の交換関係を求める．$L_i=\sum_{kl}\varepsilon_{ikl}r_kp_l$から，
+\begin{align}
+  [L_i,L_j] & = \sum_{klmn}\varepsilon_{ikl}\varepsilon_{jmn}(r_kp_lr_mp_n - r_mp_nx_kp_l)\notag\\
+  & = \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})r_kp_lr_mp_n\notag\\
+  & = \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})r_k\left(r_mp_l - i\hbar\delta_{lm}\right)p_n\notag\\
+  & = - i\hbar\sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\delta_{lm}r_kp_n + \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})r_kr_mp_lp_n\notag\\
+  & = - i\hbar\sum_{kmn}(\varepsilon_{ikm}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkm})r_kp_n + \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn}r_kr_mp_lp_n - \varepsilon_{ikl}\varepsilon_{jmn}r_mr_kp_np_l)\notag\\
+  & = - i\hbar\sum_{m}(\varepsilon_{ijm}\varepsilon_{jmi}r_jp_i - \varepsilon_{imj}\varepsilon_{jim}r_ip_j)\notag\\
+  & = i\hbar\sum_m(\varepsilon_{ijm})^2(r_ip_j - r_jp_i)\notag\\
+  & = i\hbar\sum_k\varepsilon_{ijk}L_k\label{LL}.
+\end{align}
+さらに，角運動量と運動量については，
+\begin{align}
+  [L_i,p_j] & = L_ip_j - p_jL_i\notag\\
+  & = \sum_{kl}\varepsilon_{ikl}(r_kp_lp_j - p_jr_kp_l)\notag\\
+  & = \sum_l\varepsilon_{ijl}(r_jp_j - p_jr_j)p_l\notag\\
+  & = i\hbar\sum_k\varepsilon_{ijk}p_k\label{Lp}.
+\end{align}
+また，次の交換関係も示しておく：
+\begin{align}
+  \left[L_i,\frac{r_j}{r}\right]
+  & = \sum_{kl}\varepsilon_{ikl}\left[r_kp_l,\frac{r_j}{r}\right]\notag\\
+  & = - i\hbar\sum_{kl}\varepsilon_{ikl}\left[r_k\partial_l,\frac{r_j}{r}\right]\notag\\
+  & = - i\hbar\sum_{kl}\varepsilon_{ikl}\left(r_k\partial_l\frac{r_j}{r} - \frac{r_j}{r}r_k\partial_l\right)\notag\\
+  & = - i\hbar\sum_{kl}\varepsilon_{ikl}\left[r_k\left(\frac{\delta_{lj}}{r} - \frac{r_jr_l}{r^3}\right) + r_k\frac{r_j}{r}\partial_l - \frac{r_j}{r}r_k\partial_l\right]\notag\\
+  & = - i\hbar\sum_{kl}\varepsilon_{ikl}\delta_{lj}\frac{r_k}{r} + i\hbar\sum_{kl}\varepsilon_{ikl}\frac{r_jr_kr_l}{r^3}\notag\\
+  & = - i\hbar\sum_{k}\varepsilon_{ikj}\frac{r_k}{r} + i\hbar\varepsilon_{i\ i + 1\ i + 2}\frac{r_jr_{i + 1}r_{i + 2}}{r^3} + i\hbar\varepsilon_{i\ i + 2\ i + 1}\frac{r_jr_{i + 2}r_{i + 1}}{r^3}\notag\\
+  & = i\hbar\sum_k\varepsilon_{ijk}\frac{r_k}{r}\label{Lr/r}.
+\end{align}
+以上の式を使えば，
+\begin{align}
+  [L_i,(\boldsymbol{L}\times\boldsymbol{p})_j]
+  & = \sum_{mn}\varepsilon_{jmn}[L_i,L_mp_n]\notag\\
+  & = \sum_{mn}\varepsilon_{jmn}(L_iL_mp_n - L_mp_nL_i)\notag\\
+  & = \sum_{kmn}\varepsilon_{jmn}[(L_mL_i + i\hbar\varepsilon_{imk}L_k)p_n - L_m(L_ip_n - i\hbar\varepsilon_{ink}p_k)]\notag\\
+  & = i\hbar\sum_{kmn}(\varepsilon_{jmn}\varepsilon_{imk}L_kp_n + \varepsilon_{jmn}\varepsilon_{ink}L_mp_k)\notag\\
+  & = i\hbar\sum_{kmn}(\varepsilon_{jmn}\varepsilon_{imk}L_kp_n + \varepsilon_{jnm}\varepsilon_{imk}L_np_k)\notag\\
+  & = i\hbar\sum_{kmn}\varepsilon_{jmn}\varepsilon_{imk}(L_kp_n - L_np_k)\notag\\
+  & = i\hbar\sum_m\varepsilon_{jmi}\varepsilon_{imj}(L_jp_i - L_ip_j)\notag\\
+  & = - i\hbar\sum_m(\varepsilon_{mji})^2(L_jp_i - L_ip_j)\notag\\
+  & = i\hbar\sum_k\varepsilon_{ijk}(\boldsymbol{L}\times\boldsymbol{p})_k.\label{LLp}
+\end{align}
+同様に，
+\begin{align}
+  [L_i,(\boldsymbol{p}\times\boldsymbol{L})_j]
+  & = \sum_{mn}\varepsilon_{jmn}[L_i,p_mL_n]\notag\\
+  & = \sum_{mn}\varepsilon_{jmn}(L_ip_mL_n - p_mL_nL_i)\notag\\
+  & = \sum_{mnk}\varepsilon_{jmn}[(p_mL_i + i\hbar\varepsilon_{iml}p_k)L_n - p_m(L_iL_n + i\hbar\varepsilon_{nik}L_k)]\notag\\
+  & = i\hbar\sum_{mnk}(\varepsilon_{jmn}\varepsilon_{imk}p_kL_n - \varepsilon_{jmn}\varepsilon_{nik}p_mL_k)\notag\\
+  & = i\hbar\sum_{mnk}(\varepsilon_{jmn}\varepsilon_{imk}p_kL_n - \varepsilon_{jnm}\varepsilon_{mik}p_nL_k)\notag\\
+  & = i\hbar\sum_{mnk}\varepsilon_{jmn}\varepsilon_{imk}(p_kL_n - p_nL_k)\notag\\
+  & = i\hbar\sum_m\varepsilon_{jmi}\varepsilon_{imj}(p_jL_i - p_iL_j)\notag\\
+  & = - i\hbar\sum_m(\varepsilon_{mji})^2(p_jL_i - p_iL_j)\notag\\
+  & = - i\hbar\sum_k\varepsilon_{ijk}(\boldsymbol{p}\times\boldsymbol{L})_k.\label{LpL}
+\end{align}
+よって，\eqref{Lr/r}\eqref{LLp}\eqref{LpL}から，
+\begin{align}
+  [L_i,R_j] & = \left[L_i,\frac{1}{2m}(\boldsymbol{L}\times\boldsymbol{p})_j - \frac{1}{2m}(\boldsymbol{p}\times\boldsymbol{L})_j + k_0Ze^2\frac{r_j}{r}\right]\notag\\
+  & = \frac{1}{2m}[L_i,(\boldsymbol{L}\times\boldsymbol{p})_j] - \frac{1}{2m}[L_i,(\boldsymbol{p}\times\boldsymbol{L})_j] + k_0Ze^2\left[L_i,\frac{r_j}{r}\right]\notag\\
+  & = i\hbar\sum_k\varepsilon_{ijk}\left[\frac{1}{2m}(\boldsymbol{L}\times\boldsymbol{p})_k - \frac{1}{2m}(\boldsymbol{p}\times\boldsymbol{L})_k + k_0Ze^2\frac{r_k}{r}\right]\notag\\
+  & = i\hbar\sum_k\varepsilon_{ijk}R_k.
+\end{align}
+
+$\boldsymbol{R}$と$\boldsymbol{R}$の交換関係$[R_i,R_j]$を調べる．
+\begin{align*}
+  & [(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_j] \\
+  & = \left[\sum_{kl}\varepsilon_{ikl}(L_kp_l - p_kL_l),\sum_{mn}\varepsilon_{jmn}(L_mp_n - p_mL_n)\right]\\
+  & = \sum_{klmn}[\varepsilon_{ikl}\varepsilon_{jmn}(L_kp_l - p_kL_l)(L_mp_n - p_mL_n) - \varepsilon_{ikl}\varepsilon_{jmn}(L_mp_n - p_mL_n)(L_kp_l - p_kL_l)]\\
+  & = \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})(L_kp_l - p_kL_l)(L_mp_n - p_mL_n)\\
+  & = \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})(L_kp_lL_mp_n - L_kp_lp_mL_n - p_kL_lL_mp_n + p_kL_lp_mL_n)\\
+  & = \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\left(p_lL_k + i\hbar\sum_s\varepsilon_{kls}p_s\right)\left(p_nL_m + i\hbar\sum_t\varepsilon_{mnt}p_t\right)\quad(\because\eqref{Lp})\\
+  & \qquad - \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\left(p_lL_k + i\hbar\sum_s\varepsilon_{kls}p_s\right)p_mL_n\\
+  & \qquad - \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_kL_l\left(p_nL_m + i\hbar\sum_t\varepsilon_{mnt}p_t\right)\\
+  & \qquad  + \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_kL_lp_mL_n\\
+  & = \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_lL_kp_nL_m + i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{kls}p_sp_nL_m\\
+  & \qquad  + i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{mns}p_lL_kp_s - \hbar^2\sum_{klmnst}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{kls}\varepsilon_{mnt}p_sp_t\\
+  & \qquad - \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_lL_kp_mL_n - i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{kls}p_sp_mL_n\\
+  & \qquad - \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_kL_lp_nL_m - i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{mns}p_kL_lp_s\\
+  & \qquad  + \sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_kL_lp_mL_n
+\end{align*}
+となり，最後に得られた式の１項目で$l$と$k$及び$m$と$n$を入れ替え（$\varepsilon_{ikl}\varepsilon_{jmn}=\varepsilon_{ilk}\varepsilon_{jnm}$などに注意），
+２項目で$l$と$k$を入れ替え，３項目で$m$と$n$を入れ替えると，
+\begin{align*}
+  [(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_j]
+  & = 4\sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_kL_lp_mL_n\\
+  & \qquad  + i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{kls}p_s(p_nL_m - p_mL_n)\\
+  & \qquad  + i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{mns}(p_lL_k - p_kL_l)p_s\\
+  & \qquad - \hbar^2\sum_{klmnst}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{kls}\varepsilon_{mnt}p_sp_t
+\end{align*}
+が得られる．右辺第２項で$(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_mL_n$の添字$m$と$n$を入れ替えれば，
+$ - (\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_nL_m$となるので，
+\begin{align}
+  [(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_j]
+  & = 4\sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_kL_lp_mL_n\notag\\
+  & \qquad  + 2i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{kls}p_sp_nL_m\notag\\
+  & \qquad  + 2i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{mns}p_lL_kp_s\notag\\
+  & \qquad - \hbar^2\sum_{klmnst}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{kls}\varepsilon_{mnt}p_sp_t\label{LppL_4000}\\
+\end{align}
+\eqref{LppL_4000}の第２項について，
+\begin{align*}
+  2i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{kls}p_sp_nL_m
+  & = 2i\hbar\sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn}\varepsilon_{kli}p_ip_nL_m - \varepsilon_{imn}\varepsilon_{jkl}\varepsilon_{klj}p_jp_nL_m)\\
+  & = 4i\hbar\sum_{mn}(\varepsilon_{jmn}p_ip_nL_m - \varepsilon_{imn}p_jp_nL_m)\\
+  & = 4i\hbar[p_j(\boldsymbol{p}\times\boldsymbol{L})_i - p_i(\boldsymbol{p}\times\boldsymbol{L})_j].
+\end{align*}
+さらに，第２項について同様に，
+\begin{align*}
+  2i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{mns}p_lL_kp_s
+  & = 2i\hbar\sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn}\varepsilon_{mnj}p_lL_kp_j - \varepsilon_{imn}\varepsilon_{jkl}\varepsilon_{mni}p_lL_kp_i)\\
+  & = 4i\hbar\sum_{kl}(\varepsilon_{ikl}p_lL_kp_j - \varepsilon_{jkl}p_lL_kp_i)\\
+  & = 4i\hbar[(\boldsymbol{p}\times\boldsymbol{L})_jp_i - (\boldsymbol{p}\times\boldsymbol{L})_ip_j].
+\end{align*}
+ここで，次の関係式に注目する：
+\begin{align*}
+  [p_i,(\boldsymbol{p}\times\boldsymbol{L})_j]
+  & = \sum_{mn}\varepsilon_{jmn}[p_i,p_mL_n]\\
+  & = \sum_{mn}\varepsilon_{jmn}(p_ip_mL_n - p_mL_np_i)\\
+  & = \sum_{mn}\varepsilon_{jmn}\left[p_mp_iL_n - p_m\left(p_iL_n + i\hbar\sum_k\varepsilon_{nik}p_k\right)\right]\\
+  & = - i\hbar\sum_{mnk}\varepsilon_{jmn}\varepsilon_{nik}p_mp_k\\
+  & = - i\hbar\sum_{n}\varepsilon_{jin}\varepsilon_{nij}p_ip_j\\
+  & = i\hbar\sum_n(\varepsilon_{jin})^2p_ip_j.
+\end{align*}
+よって，\eqref{LppL_4000}の第２項と第３項の和は，
+\begin{align*}
+  & 2i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{kls}p_sp_nL_m + 2i\hbar\sum_{klmns}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{mns}p_lL_kp_s \\
+  & = 4i\hbar[p_j(\boldsymbol{p}\times\boldsymbol{L})_i - p_i(\boldsymbol{p}\times\boldsymbol{L})_j] + 4i\hbar[(\boldsymbol{p}\times\boldsymbol{L})_jp_i - (\boldsymbol{p}\times\boldsymbol{L})_ip_j]\\
+  & = 4i\hbar[p_j,(\boldsymbol{p}\times\boldsymbol{L})_i] - 4i\hbar[p_i,(\boldsymbol{p}\times\boldsymbol{L})_j]\\
+  & = 0.
+\end{align*}
+さらに，\eqref{LppL_4000}の第４項について，
+\begin{align*}
+  \sum_{klmnst}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})\varepsilon_{kls}\varepsilon_{mnt}p_sp_t
+  & = \sum_{klmnst}(\varepsilon_{ikl}\varepsilon_{jmn}\varepsilon_{kls}\varepsilon_{mnt}p_sp_t - \varepsilon_{imn}\varepsilon_{jkl}\varepsilon_{kls}\varepsilon_{mnt}p_sp_t)\\
+  & = \sum_{klmnst}(\varepsilon_{ikl}\varepsilon_{jmn}\varepsilon_{kls}\varepsilon_{mnt}p_sp_t - \varepsilon_{ikl}\varepsilon_{jmn}\varepsilon_{mnt}\varepsilon_{kls}p_tp_s)\\
+  & = 0.
+\end{align*}
+以上から，\eqref{LppL_4000}の３つの項は$0$となり，
+\[[(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_j]=4\sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_kL_lp_mL_n.\]
+ここで，$\varepsilon_{ikl}=\varepsilon_{ijl}\delta_{jk} + \varepsilon_{ikj}\delta_{jl}$と変換する
+（他の部分についても同様．$i$が添字に含まれていれば，それ以外の部分を$j$に変えて，もともとあった文字と$\delta$を作る）．
+この変換が，表式を変えないことを確認しておこう．
+\begin{itemize}
+  \item $l=k=j$の時：$\varepsilon_{ikl}=\varepsilon_{ijl}\delta_{jk} + \varepsilon_{ikj}\delta_{jl}=0$
+  \item $l=k=\neq j$の時：$\varepsilon_{ikl}=\varepsilon_{ijl}\delta_{jk} + \varepsilon_{ikj}\delta_{jl}=0$
+  \item $l=j$,$k\neq j$の時：$\varepsilon_{ikl}=\varepsilon_{ijl}\delta_{jk} + \varepsilon_{ikj}\delta_{jl}=\varepsilon_{ikj}$
+  \item $l\neq j$,$k=j$の時：$\varepsilon_{ikl}=\varepsilon_{ijl}\delta_{jk} + \varepsilon_{ikj}\delta_{jl}=\varepsilon_{ijl}$
+  \item $l\neq k\neq j$の時：$\varepsilon_{ijl}\delta_{jk} + \varepsilon_{ikj}\delta_{jl}=0$．$i=j$で，$(k,l)=(i + 1,i + 2),(i + 2,1 + 1)$の時は，
+  $\varepsilon_{ikl}$が非零となるが，$\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl}=0$なので，
+  変換しても結局得られる結果は同じ$0$なので問題ない．
+\end{itemize}
+以上のことを踏まえて，先ほど得られた式を変換すると，
+\begin{align}
+  & [(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_j] \\
+  & = 4\sum_{klmn}(\varepsilon_{ikl}\varepsilon_{jmn} - \varepsilon_{imn}\varepsilon_{jkl})p_kL_lp_mL_n\notag\\
+  & = 4\sum_{klmn}[(\varepsilon_{ijl}\delta_{jk} + \varepsilon_{ikj}\delta_{jl})(\varepsilon_{jin}\delta_{im} + \varepsilon_{jmi}\delta_{in}) - (\varepsilon_{ijn}\delta_{jm} + \varepsilon_{imj}\delta_{jn})(\varepsilon_{jil}\delta_{ik} + \varepsilon_{jki}\delta_{il})]p_k \\
+  & \qquad \qquad \times \left(p_mL_l + i\hbar\sum_s\varepsilon_{lms}p_s\right)L_n\notag\\
+  & = 4\sum_{klmn}(\varepsilon_{ijl}\varepsilon_{jin}\delta_{jk}\delta_{im} + \varepsilon_{ijl}\varepsilon_{jmi}\delta_{jk}\delta_{in} + \varepsilon_{ikj}\varepsilon_{jin}\delta_{jl}\delta_{im} + \varepsilon_{ikj}\varepsilon_{jmi}\delta_{jl}\delta_{in}\notag\\
+  & \qquad - \varepsilon_{ijn}\varepsilon_{jil}\delta_{jm}\delta_{ik} - \varepsilon_{ijn}\varepsilon_{jki}\delta_{jm}\delta_{il} - \varepsilon_{imj}\varepsilon_{jil}\delta_{jn}\delta_{ik} - \varepsilon_{imj}\varepsilon_{jki}\delta_{jn}\delta_{il})\notag\\
+  & \qquad \times\left(p_kp_mL_lL_n + i\hbar\sum_s\varepsilon_{lms}p_kp_sL_n\right)\label{LppLLppL}
+\end{align}
+\eqref{LppLLppL}の第１項は，
+\begin{align}
+  & 4\sum_{klmn}(\varepsilon_{ijl}\varepsilon_{jin}\delta_{jk}\delta_{im} + \varepsilon_{ijl}\varepsilon_{jmi}\delta_{jk}\delta_{in} + \varepsilon_{ikj}\varepsilon_{jin}\delta_{jl}\delta_{im} + \varepsilon_{ikj}\varepsilon_{jmi}\delta_{jl}\delta_{in}\notag\\
+  & \qquad - \varepsilon_{ijn}\varepsilon_{jil}\delta_{jm}\delta_{ik} - \varepsilon_{ijn}\varepsilon_{jki}\delta_{jm}\delta_{il} - \varepsilon_{imj}\varepsilon_{jil}\delta_{jn}\delta_{ik} - \varepsilon_{imj}\varepsilon_{jki}\delta_{jn}\delta_{il})p_kp_mL_lL_n\notag\\
+  & = 4\sum_{m}(\varepsilon_{ijm})^2( - p_jp_iL_m{}^2 + p_mp_jL_mL_i + p_mp_iL_jL_m - p_m{}^2L_jL_i\notag\\
+  & \qquad  + p_ip_jL_m{}^2 - p_mp_jL_iL_m - p_ip_mL_mL_j + p_m{}^2L_iL_j)\notag\\
+  & = 4\sum_m(\varepsilon_{ijm})^2p_m(p_i[L_j,L_m] + p_j[L_m,L_i] + p_m[L_i,L_j])\notag\\
+  & = 4i\hbar\sum_m(\varepsilon_{ijm})^2p_m\left(p_i\sum_s\varepsilon_{jms}L_s + p_j\sum_s\varepsilon_{mis}L_s + p_m\sum_s\varepsilon_{ijs}L_s\right)\quad(\because\eqref{LL})\notag\\
+  & = 4i\hbar\sum_m\varepsilon_{ijm}p_m(p_iL_i + p_jL_j + p_mL_m)\label{LppLLppL_1}.
+\end{align}
+\eqref{LppLLppL}の第２項は，
+\begin{align}
+  & 4\sum_{klmn}(\varepsilon_{ijl}\varepsilon_{jin}\delta_{jk}\delta_{im} + \varepsilon_{ijl}\varepsilon_{jmi}\delta_{jk}\delta_{in} + \varepsilon_{ikj}\varepsilon_{jin}\delta_{jl}\delta_{im} + \varepsilon_{ikj}\varepsilon_{jmi}\delta_{jl}\delta_{in}\notag\\
+  & \qquad - \varepsilon_{ijn}\varepsilon_{jil}\delta_{jm}\delta_{ik} - \varepsilon_{ijn}\varepsilon_{jki}\delta_{jm}\delta_{il} - \varepsilon_{imj}\varepsilon_{jil}\delta_{jn}\delta_{ik} - \varepsilon_{imj}\varepsilon_{jki}\delta_{jn}\delta_{il})i\hbar\sum_s\varepsilon_{lms}p_kp_sL_n\notag\\
+  & = 4i\hbar\sum_{kls}\varepsilon_{ijl}\varepsilon_{jin}\varepsilon_{lis}p_jp_sL_n + 4i\hbar\sum_{lms}\varepsilon_{ijl}\varepsilon_{jmi}\varepsilon_{lms}p_jp_sL_i \\
+  & \qquad + 4i\hbar\sum_{kns}\varepsilon_{ikj}\varepsilon_{jin}\varepsilon_{jis}p_kp_sL_n + 4i\hbar\sum_{kms}\varepsilon_{ikj}\varepsilon_{jmi}\varepsilon_{jms}p_kp_sL_i\notag\\
+  & \qquad - 4i\hbar\sum_{lns}\varepsilon_{ijn}\varepsilon_{jil}\varepsilon_{ljs}p_ip_sL_n - 4i\hbar\sum_{kns}\varepsilon_{ijn}\varepsilon_{jki}\varepsilon_{ijs}p_kp_sL_n \\
+  & \qquad- 4i\hbar\sum_{lms}\varepsilon_{imj}\varepsilon_{jil}\varepsilon_{lms}p_ip_nL_j - 4i\hbar\sum_{kms}\varepsilon_{imj}\varepsilon_{jki}\varepsilon_{ims}p_kp_sL_j\notag\\
+  & = 4i\hbar\sum_m( - \varepsilon_{ijm}p_j{}^2L_m + 0 - \varepsilon_{ijm}p_m{}^2L_m - \varepsilon_{ijm}p_mp_iL_i - \varepsilon_{ijm}p_i{}^2L_m - \varepsilon_{ijm}p_m{}^2L_m - 0 - \varepsilon_{ijm}p_mp_jL_j)\notag\\
+  & = - 4i\hbar\sum_m\varepsilon_{ijm}[p_m(p_iL_i + p_jL_j) + (p_i{}^2 + p_j{}^2 + 2p_m{}^2)L_m]\label{LppLLppL_2}.
+\end{align}
+よって，\eqref{LppLLppL}\eqref{LppLLppL_1}\eqref{LppLLppL_2}から，
+\begin{align}
+  [(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_j]= - 4i\hbar\boldsymbol{p}^2\sum_m\varepsilon_{ijm}L_m.\label{LppLLppL_done}
+\end{align}
+次に，
+\begin{align}
+  \left[(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,\frac{r_j}{r}\right]
+  & = \sum_{kl}\varepsilon_{ikl}\left[(L_kp_l - p_kL_l),\frac{r_j}{r}\right]\notag\\
+  & = \sum_{kl}\varepsilon_{ikl}\left[(L_kp_l + p_lL_k),\frac{r_j}{r}\right]\notag\\
+  & = 2\sum_{kl}\varepsilon_{ikl}\left[p_lL_k,\frac{r_j}{r}\right] + i\hbar\sum_{kls}\varepsilon_{ikl}\varepsilon_{kls}\left[p_s,\frac{r_j}{r}\right]\label{LppLr/r}
+\end{align}
+\eqref{LppLr/r}第１項は，
+\begin{align}
+  & \sum_{kl}\varepsilon_{ikl}\left[p_lL_k,\frac{r_j}{r}\right] \\
+  & = \sum_{klmn}\varepsilon_{ikl}\varepsilon_{kmn}\left[p_lr_mp_n,\frac{r_j}{r}\right]\notag\\
+  & = \sum_{klmn}\varepsilon_{ikl}\varepsilon_{kmn}\left(p_lr_mp_n\frac{r_j}{r} - \frac{r_j}{r}p_lr_mp_n\right)\notag\\
+  & = - \hbar^2\sum_{klmn}\varepsilon_{ikl}\varepsilon_{kmn}\left(\partial_lr_m\partial_n\frac{r_j}{r} - \frac{r_j}{r}\partial_lr_m\partial_n\right)\notag\\
+  & = - \hbar^2\sum_{klmn}\varepsilon_{ikl}\varepsilon_{kmn}\left[\partial_lr_m\left(\frac{r_j}{r}\partial_n + \frac{\delta_{nj}}{r} - \frac{r_jr_n}{r^3}\right) - \frac{r_j}{r}\partial_lr_m\partial_n\right]\notag\\
+  & = - \hbar^2\sum_{klmn}\varepsilon_{ikl}\varepsilon_{kmn}\left[\frac{r_j}{r}\partial_lr_m\partial_n + \left(\frac{\delta_lj}{r} - \frac{r_lr_j}{r^3}\right)r_m\partial_n + \partial_lr_m\left(\frac{\delta_{nj}}{r} - \frac{r_jr_n}{r^3}\right) - \frac{r_j}{r}\partial_lr_m\partial_n\right]\notag\\
+  & = - \hbar^2\sum_{klmn}\varepsilon_{ikl}\varepsilon_{kmn}\left[\left(\frac{\delta_lj}{r} - \frac{r_lr_j}{r^3}\right)r_m\partial_n + \partial_lr_m\left(\frac{\delta_{nj}}{r} - \frac{r_jr_n}{r^3}\right)\right]\notag\\
+  & = - i\hbar\sum_{kl}\varepsilon_{ikl}\left(\frac{\delta_{lj}}{r} - \frac{r_lr_j}{r^3}\right)L_k - i\hbar\sum_{klmn}\varepsilon_{ikl}\varepsilon_{kmn}p_l\frac{r_m}{r}\delta_{nj} + i\hbar\sum_{klmn}\varepsilon_{ikl}\varepsilon_{kmn}\partial_l\frac{r_mr_jr_n}{r^3}\notag\\
+  & = - i\hbar\sum_{k}\varepsilon_{ikj}\frac{L_k}{r} + i\hbar\frac{r_j}{r^3}(\boldsymbol{L}\times\boldsymbol{r})_i - i\hbar\sum_{kl}\varepsilon_{ikl}\sum_m\varepsilon_{kmj}p_l\frac{r_m}{r}.\label{LppLr/r_1}
+\end{align}
+最後の式変形で，$\sum_{mn}\varepsilon_{kmn}r_mr_n=(\boldsymbol{r}\times\boldsymbol{r})_k=0$を使った．\eqref{LppLr/r}第２項は，
+\begin{align}
+  i\hbar\sum_{kls}\varepsilon_{ikl}\varepsilon_{kls}\left[p_s,\frac{r_j}{r}\right]
+  & = - \hbar^2\sum_{kls}\varepsilon_{ikl}\varepsilon_{kls}\left(\partial_s\frac{r_j}{r} - \frac{r_j}{r}\partial_s\right)\notag\\
+  & = - \hbar^2\sum_{kls}\varepsilon_{ikl}\varepsilon_{kls}\left(\frac{\delta_{sj}}{r} - \frac{r_jr_s}{r^3}\right)\notag\\
+  & = - \hbar^2\sum_{kl}(\varepsilon_{ikl})^2\left(\frac{\delta_{ij}}{r} - \frac{r_ir_j}{r^3}\right)\notag\\
+  & = - 2\hbar^2\left(\frac{\delta_{ij}}{r} - \frac{r_ir_j}{r^3}\right)\label{LppLr/r_2}
+\end{align}
+よって，\eqref{LppLr/r}\eqref{LppLr/r_1}\eqref{LppLr/r_2}から，
+\begin{align*}
+  & \left[(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,\frac{r_j}{r}\right] \\
+  & \qquad \qquad = - 2i\hbar\sum_{k}\varepsilon_{ikj}\frac{L_k}{r} + 2i\hbar\frac{r_j}{r^3}(\boldsymbol{L}\times\boldsymbol{r})_i - 2i\hbar\sum_{kl}\varepsilon_{ikl}\sum_m\varepsilon_{kmj}p_l\frac{r_m}{r} + 2\hbar^2\left(\frac{\delta_{ij}}{r} - \frac{r_ir_j}{r^3}\right).
+\end{align*}
+さらに，
+\begin{align}
+  & \left[(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,\frac{r_j}{r}\right] + \left[(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_j,\frac{r_i}{r}\right]\notag\\
+  & = - 2i\hbar\sum_k\varepsilon_{ikj}\frac{L_k}{r} + 2i\hbar\sum_k\varepsilon_{jki}\frac{L_k}{r} + 2i\hbar\frac{r_j}{r^3}(\boldsymbol{L}\times\boldsymbol{r})_i - 2i\hbar\frac{r_i}{r^3}(\boldsymbol{L}\times\boldsymbol{r})_j\notag\\
+  & \qquad - 2i\hbar\sum_{kl}\varepsilon_{ikl}\sum_m\varepsilon_{kmj}p_l\frac{r_m}{r} + 2i\hbar\sum_{km}\varepsilon_{ikm}\sum_l\varepsilon_{klj}p_m\frac{r_l}{r}\notag\\
+  & = 4i\hbar\sum_k\varepsilon_{ijk}\frac{L_k}{r} - 2i\hbar\frac{1}{r^3}[r_i(\boldsymbol{L}\times\boldsymbol{r})_j - r_j(\boldsymbol{L}\times\boldsymbol{r})_i] - 2i\hbar\sum_{klm}\varepsilon_{ikl}\varepsilon_{kmj}(p_lr_m - p_mr_l)\frac{1}{r}.\label{LppLr/rLppLr/r}
+\end{align}
+\eqref{LppLr/rLppLr/r}の第２項は，
+\begin{align*}
+  \frac{1}{r^3}[r_i(\boldsymbol{L}\times\boldsymbol{r})_j - r_j(\boldsymbol{L}\times\boldsymbol{r})_i]
+  & = \frac{1}{r^3}\sum_l(\varepsilon_{ijl})^2[r_i(\boldsymbol{L}\times\boldsymbol{r})_j - r_j(\boldsymbol{L}\times\boldsymbol{r})_i]\\
+  & = \frac{1}{r^3}\sum_l\varepsilon_{ijl}[\boldsymbol{r}\times(\boldsymbol{L}\times\boldsymbol{r})]_l\\
+  & = \frac{1}{r^3}\sum_l\varepsilon_{ijl}[\boldsymbol{r}\times(\boldsymbol{r}^2\boldsymbol{p} - (\boldsymbol{r}\cdot\boldsymbol{p})\boldsymbol{r})]_l\\
+  & = \frac{1}{r}\sum_l\varepsilon_{ijl}L_l,
+\end{align*}
+\eqref{LppLr/rLppLr/r}の第３項は，
+\begin{align*}
+  \sum_{klm}\varepsilon_{ikl}\varepsilon_{kmj}(p_lr_m - p_mr_l)\frac{1}{r}
+  & = - \sum_k(\varepsilon_{ijk})^2(p_jr_i - p_ir_j)\frac{1}{r}\\
+  & = - \sum_k(\varepsilon_{ijk})^2(r_ip_j - r_jp_i)\frac{1}{r}\\
+  & = - \sum_k\varepsilon_{ijk}L_k\frac{1}{r}\\
+  & = - \frac{1}{r}\sum_k\varepsilon_{ijk}L_k
+\end{align*}
+となるので，\eqref{LppLr/rLppLr/r}は，
+\begin{align}
+  \left[(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,\frac{r_j}{r}\right] + \left[(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_j,\frac{r_i}{r}\right]= 4i\hbar\sum_k\varepsilon_{ijk}\frac{L_k}{r}.\label{LppLr/rLppLr/r_done}
+\end{align}
+以上から，\eqref{LppLLppL_done}と\eqref{LppLr/rLppLr/r_done}を使えば，
+\begin{align}
+  [R_i,R_j] & = \left[\frac{1}{2m}(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i + k_0Ze^2\frac{r_i}{r},\frac{1}{2m}(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_j + k_0Ze^2\frac{r_j}{r}\right]\notag\\
+  & = \frac{1}{4m^2} [(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_j] \\
+  & \qquad + \frac{k_0Ze^2}{2m}\left[ \left[(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_i,\frac{r_j}{r}\right] + \left[(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})_j,\frac{r_i}{r}\right]\right]\notag\\
+  & = - i\hbar\frac{\boldsymbol{p}^2}{m^2}\sum_k\varepsilon_{ijk}L_k + 2i\hbar\frac{k_0Ze^2}{m}\sum_k\varepsilon_{ijk}\frac{L_k}{r}\notag\\
+  & = - \frac{2i\hbar}{m}\sum_k\varepsilon_{ijk}\left(\frac{\boldsymbol{p}^2}{2m} - k_0Ze^2\frac{1}{r}\right)L_k\notag\\
+  & = - \frac{2i\hbar}{m}\sum_k\varepsilon_kHL_k
+\end{align}
+が得られる．
+
+角運動量$\boldsymbol{L}$とRunge-Lenz-Pauliベクトル$\boldsymbol{R}$の内積を調べる．\eqref{Lp-pL}から
+\begin{align}
+  & \boldsymbol{L}\cdot(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})\\
+  & = \left[\sum_{lmn}\varepsilon_{lmn}r_lp_m\boldsymbol{e}_n\right]\cdot\left[\sum_{ijk}[(\boldsymbol{r}\cdot\boldsymbol{p})p_k - i\hbar p_k - r_k\boldsymbol{p}^2]\boldsymbol{e}_k(\varepsilon_{ijk})^2\right]\notag\\
+  & = \sum_{ijklmn}\delta_{kn}\varepsilon_{lmn}(\varepsilon_{ijk})^2r_lp_m[(\boldsymbol{r}\cdot\boldsymbol{p})p_k - i\hbar p_k - r_k\boldsymbol{p}^2]\notag\\
+  & = \sum_{ijklm}\varepsilon_{lmk}(\varepsilon_{ijk})^2r_lp_m[(\boldsymbol{r}\cdot\boldsymbol{p})p_k - i\hbar p_k - r_k\boldsymbol{p}^2]\notag\\
+  & = \sum_{ijk}(\varepsilon_{ijk})^2[r_ip_j\varepsilon_{ijk} + r_jp_i\varepsilon_{jik}][(\boldsymbol{r}\cdot\boldsymbol{p})p_k - i\hbar p_k - r_k\boldsymbol{p}^2]\notag\\
+  & = \sum_{ijk}(\varepsilon_{ijk})^3(r_ip_j - r_jp_i)[(\boldsymbol{r}\cdot\boldsymbol{p})p_k - i\hbar p_k - r_k\boldsymbol{p}^2]\notag\\
+  & = 2\sum_{ijk}\varepsilon_{ijk}r_ip_j[(\boldsymbol{r}\cdot\boldsymbol{p})p_k - i\hbar p_k - r_k\boldsymbol{p}^2]\notag\\
+  & = 2\sum_i r_i[p_{i + 1}(\boldsymbol{r}\cdot\boldsymbol{p})p_{i - 1} - p_{i - 1}(\boldsymbol{r}\cdot\boldsymbol{p})p_{i + 1}] - 2i\hbar\sum_i r_i(p_{i + 1}p_{i - 1} - p_{i - 1}p_{i + 1})\notag\\
+  & \qquad - 2i\hbar\sum_i r_i(p_{i + 1}r_{i - 1} - p_{i - 1}r_{i + 1})\boldsymbol{p}^2\notag\\
+  & = 2\sum_i r_i[p_{i + 1}(\boldsymbol{r}\cdot\boldsymbol{p})p_{i - 1} - p_{i - 1}(\boldsymbol{r}\cdot\boldsymbol{p})p_{i + 1}] - 2i\hbar\sum_i(r_ir_{i - 1}p_{i + 1}\boldsymbol{p}^2 - r_ir_{i + 1}p_{i - 1}\boldsymbol{p}^2)\notag\\
+  & = 2\sum_{is}[r_ip_{i + 1}r_sp_sp_{i - 1} - r_ip_{i - 1}r_sp_sp_{i + 1}] - 2i\hbar\sum_i(r_ir_{i - 1}p_{i + 1}\boldsymbol{p}^2 - r_{i - 1}r_ip_{i + 1}\boldsymbol{p}^2)\notag\\
+  & = 2\sum_{is}[r_i(r_sp_{i + 1} - i\hbar\delta_{s,i + 1})p_sp_{i - 1} - r_i(r_sp_{i - 1} - i\hbar\delta_{s,i - 1})p_sp_{i + 1}]\notag\\
+  & = - 2i\hbar\sum_{is}[r_i\delta_{s,i + 1}p_sp_{i - 1} - r_i\delta_{s,i - 1}p_sp_{i + 1}]\notag\\
+  & = - 2i\hbar\sum_i[r_ip_{i + 1}p_{i - 1} - r_ip_{i - 1}p_{i + 1}]\notag\\
+  & =0.\label{LpL-Lp}
+\end{align}
+\eqref{LLp}\eqref{LpL}から
+\[[L_i,(\boldsymbol{L}\times\boldsymbol{p})_i]=[L_i,(\boldsymbol{p}\times\boldsymbol{L})_i]=0\]
+なので，\eqref{LpL-Lp}と合わせて
+\begin{align}
+  (\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})\cdot\boldsymbol{L}=0.\label{pL-LpL}
+\end{align}
+$\boldsymbol{R}$の第２項に関しては
+\begin{align}
+  \boldsymbol{L}\cdot\frac{\boldsymbol{r}}{r} & = \left(\sum_{ijk}r_jp_k\boldsymbol{e}_i\right)\cdot\left(\sum_l\boldsymbol{e}_l\frac{r_l}{r}\right)\notag\\
+  & = \sum_{ijkl}\varepsilon_{ijk}\delta_{il}r_jp_k\frac{r_l}{r}\notag\\
+  & = \sum_{ijk}\varepsilon_{ijk}r_ir_jp_k\frac{1}{r}\notag\\
+  & = \frac{i\hbar}{r^2}\sum_{ijk}\varepsilon_{ijk}r_ir_jr_k\notag\\
+  & = \frac{i\hbar}{r^2}\sum_ir_i(r_{i + 1}r_{i - 1} - r_{i - 1}r_{i + 1})\notag\\
+  & = 0.\label{Lrr}
+\end{align}
+さらに，
+\begin{align}
+  \frac{\boldsymbol{r}}{r}\cdot\boldsymbol{L} & = \left(\sum_l\boldsymbol{e}_l\frac{r_l}{r}\right)\cdot\left(\sum_{ijk}r_jp_k\boldsymbol{e}_i\right)\notag\\
+  & = \sum_{ijkl}\varepsilon_{ijk}\delta_{li}\frac{r_l}{r}r_jp_k\notag\\
+  & = \sum_{ijk}\varepsilon_{ijk}\frac{r_ir_j}{r}p_k\notag\\
+  & = \sum_k\frac{r_{k + 1}r_{k - 1} - r_{k - 1}r_{k + 1}}{r}p_k\notag\\
+  & = 0.\label{rrL}
+\end{align}
+\eqref{LpL-Lp}\eqref{Lrr}から
+\[\boldsymbol{L}\cdot\boldsymbol{R}=0.\]
+\eqref{pL-LpL}\eqref{rrL}から
+\[\boldsymbol{R}\cdot\boldsymbol{L}=0.\]
+
+最後に，$\boldsymbol{R}^2$を計算する．まずは三重積について：
+\begin{align}
+  \boldsymbol{A}\cdot(\boldsymbol{B}\times\boldsymbol{C})
+  & = \sum_{ijk}A_i(\varepsilon_{ijk}B_jC_k)\notag\\
+  & = \sum_{ijk}(\varepsilon_{kij}A_iB_j)C_k\notag\\
+  & = (\boldsymbol{A}\times\boldsymbol{B})\cdot\boldsymbol{C}.\label{triple}
+\end{align}
+\eqref{Lp}から
+\begin{align*}
+  (\boldsymbol{p}\times\boldsymbol{L})_i & = \sum_{jk}\varepsilon_{ijk}p_jL_k\\
+  & = \sum_{jk}\varepsilon_{ijk}\left[L_kp_j - i\hbar\sum_l\varepsilon_{kjl}p_l\right]\\
+  & = \sum_{jk}\varepsilon_{ijk}L_kp_j - i\hbar\sum_{jkl}\varepsilon_{ijk}\varepsilon_{kjl}p_l\\
+  & = - \sum_{jk}\varepsilon_{ikj}L_kp_j + i\hbar\sum_{jkl}\varepsilon_{ijk}\varepsilon_{ljk}p_l\\
+  & = - (\boldsymbol{L}\times\boldsymbol{p})_i + i\hbar\sum_{jk}(\varepsilon_{ijk})^2p_i\\
+  & = - (\boldsymbol{L}\times\boldsymbol{p})_i + 2i\hbar p_i
+\end{align*}
+となるので，
+\begin{align}
+  \boldsymbol{p}\times\boldsymbol{L}= - \boldsymbol{L}\times\boldsymbol{p} + 2i\hbar\boldsymbol{p}.\label{pLLp_langrange}
+\end{align}
+\eqref{triple}\eqref{pLLp_langrange}から，
+\begin{align}
+  \boldsymbol{p}\cdot(\boldsymbol{p}\times\boldsymbol{L})
+  & = (\boldsymbol{p}\times\boldsymbol{p})\cdot\boldsymbol{L}\notag\\
+  & = 0.\label{ppL}\\
+  \boldsymbol{p}\cdot(\boldsymbol{L}\times\boldsymbol{p})
+  & = \boldsymbol{p}\cdot( - \boldsymbol{p}\times\boldsymbol{L} + 2i\hbar\boldsymbol{p})\notag\\
+  & = 2i\hbar\boldsymbol{p}^2.\label{pLp}
+\end{align}
+\eqref{Lp}\eqref{triple}から
+\begin{align}
+  (\boldsymbol{p}\times\boldsymbol{L})\cdot(\boldsymbol{p}\times\boldsymbol{L})
+  & = \left(\sum_{ijk}\varepsilon_{ijk}p_iL_j\boldsymbol{e}_k\right)\left(\sum_{lmn}\varepsilon_{lmn}p_lL_m\boldsymbol{e}_n\right)\notag\\
+  & = \sum_{ijklmn}\varepsilon_{ijk}\varepsilon_{lmn}\delta_{kn}p_iL_jp_lL_m\notag\\
+  & = \sum_{ijklm}\varepsilon_{ijk}\varepsilon_{lmk}p_iL_jp_lL_m\notag\\
+  & = \sum_{ijlm}(\delta_{il}\delta_{jm} - \delta_{im}\delta_{jl})p_iL_jp_lL_m\notag\\
+  & = \sum_{ij}(p_iL_jp_iL_j - p_iL_jp_jL_i)\notag\\
+  & = \sum_{ij}p_i\left(p_iL_j + i\hbar\sum_k\varepsilon_{jik}p_k\right)L_j - \sum_ip_i(\boldsymbol{L}\cdot\boldsymbol{p})L_i\notag\\
+  & = \sum_{ij}p_i\left(p_iL_j - i\hbar\sum_k\varepsilon_{ikj}p_k\right)L_j - \sum_ip_i[(\boldsymbol{r}\times\boldsymbol{p})\cdot\boldsymbol{p}]\notag\\
+  & = \boldsymbol{p}^2\boldsymbol{L}^2 + i\hbar\sum_{ijk}\varepsilon_{ikj}p_ip_kL_j - \sum_ip_i[\boldsymbol{r}\cdot(\boldsymbol{p}\times\boldsymbol{p})]\notag\\
+  & = \boldsymbol{p}^2\boldsymbol{L}^2 + i\hbar\sum_{ijk}\varepsilon_{ikj}p_ip_kL_j\notag\\
+  & = \boldsymbol{p}^2\boldsymbol{L}^2 + i\hbar(\boldsymbol{p}\times\boldsymbol{p})\cdot\boldsymbol{L}\notag\\
+  & = \boldsymbol{p}^2\boldsymbol{L}^2.\label{pxLpxL}
+\end{align}
+\eqref{pLLp_langrange}\eqref{ppL}\eqref{pLp}\eqref{pxLpxL}から
+\begin{align}
+  (\boldsymbol{p}\times\boldsymbol{L})\cdot(\boldsymbol{L}\times\boldsymbol{p})
+  & = (\boldsymbol{p}\times\boldsymbol{L})\cdot( - \boldsymbol{p}\times\boldsymbol{L} + 2i\hbar\boldsymbol{p})\notag\\
+  & = - \boldsymbol{p}^2\boldsymbol{L}^2 + 2i\hbar(\boldsymbol{p}\times\boldsymbol{L})\cdot\boldsymbol{p}\notag\\
+  & = - \boldsymbol{p}^2\boldsymbol{L}^2 + 2i\hbar\boldsymbol{p}\cdot(\boldsymbol{L}\times\boldsymbol{p})\notag\\
+  & = - \boldsymbol{p}^2\boldsymbol{L}^2 - 4\hbar^2\boldsymbol{p}^2,\label{pxLLxp}\\
+  (\boldsymbol{L}\times\boldsymbol{p})\cdot(\boldsymbol{p}\times\boldsymbol{L})
+  & = ( - \boldsymbol{p}\times\boldsymbol{L} + 2i\hbar\boldsymbol{p})\cdot(\boldsymbol{p}\times\boldsymbol{L})\notag\\
+  & = - \boldsymbol{p}^2\boldsymbol{L}^2 + 2i\hbar\boldsymbol{p}\cdot(\boldsymbol{p}\times\boldsymbol{L})\notag\\
+  & = - \boldsymbol{p}^2\boldsymbol{L}^2,\label{LxppxL}\\
+  (\boldsymbol{L}\times\boldsymbol{p})\cdot(\boldsymbol{L}\times\boldsymbol{p})
+  & = ( - \boldsymbol{p}\times\boldsymbol{L} + 2i\hbar\boldsymbol{p})\cdot( - \boldsymbol{p}\times\boldsymbol{L} + 2i\hbar\boldsymbol{p})\notag\\
+  & = \boldsymbol{p}^2\boldsymbol{L}^2 - 2i\hbar(\boldsymbol{p}\times\boldsymbol{L})\cdot\boldsymbol{p} - 2i\hbar\boldsymbol{p}\cdot(\boldsymbol{p}\times\boldsymbol{L}) - 4\hbar^2\boldsymbol{p}^2\notag\\
+  & = \boldsymbol{p}^2\boldsymbol{L}^2 - 2i\hbar\boldsymbol{p}\cdot(\boldsymbol{L}\times\boldsymbol{p}) - 4\hbar^2\boldsymbol{p}^2\notag\\
+  & = \boldsymbol{p}^2\boldsymbol{L}^2.\label{LxpLxp}
+\end{align}
+また，
+\begin{align*}
+  \boldsymbol{L}\frac{1}{r} & = \sum_{ijk}r_ip_j\boldsymbol{e}_k\varepsilon_{ijk}\frac{1}{r} + \frac{1}{r}\boldsymbol{L}\\
+  & = - i\hbar\sum_{ijk}\varepsilon_{ijk}r_i\boldsymbol{e}_k\partial_j\frac{1}{r} + \frac{1}{r}\boldsymbol{L}\\
+  & = \frac{i\hbar}{r^3}\sum_{ijk}\varepsilon_{ijk}r_ir_j\boldsymbol{e}_k + \frac{1}{r}\boldsymbol{L}\\
+  & = \frac{i\hbar}{r^2}\sum_k(r_{k + 1}r_{k - 1} - r_{k - 1}r_{k + 1})\boldsymbol{e}_k + \frac{1}{r}\boldsymbol{L}\\
+  & = \frac{1}{r}\boldsymbol{L}
+\end{align*}
+となるので，
+\begin{align}
+  \boldsymbol{L}^2\frac{1}{r} & = \boldsymbol{L}\left(\boldsymbol{L}\frac{1}{r}\right)\notag\\
+  & = \boldsymbol{L}\left(\frac{1}{r}\boldsymbol{L}\right)\notag\\
+  & = \boldsymbol{L}\frac{1}{r} + \frac{1}{r}\boldsymbol{L}^2\notag\\
+  & = \frac{1}{r}\boldsymbol{L}^2.\label{LLr}
+\end{align}
+\eqref{triple}\eqref{pLLp_langrange}\eqref{LLr}から
+\begin{align}
+  (\boldsymbol{L}\times\boldsymbol{p})\cdot\frac{\boldsymbol{r}}{r}
+  & = \boldsymbol{L}\cdot(\boldsymbol{p}\times\boldsymbol{r})\frac{1}{r}\\
+  & = - \boldsymbol{L}^2\frac{1}{r}\notag\\
+  & = - \frac{1}{r}\boldsymbol{L}^2,\label{Lprr}\\
+  (\boldsymbol{p}\times\boldsymbol{L})\cdot\frac{\boldsymbol{r}}{r}
+  & = ( - \boldsymbol{L}\times\boldsymbol{p} + 2i\hbar\boldsymbol{p})\cdot\frac{\boldsymbol{r}}{r}\notag\\
+  & = \boldsymbol{L}^2\frac{1}{r} + 2i\hbar\boldsymbol{p}\cdot\boldsymbol{r}\frac{1}{r}\notag\\
+  & = \frac{1}{r}\boldsymbol{L}^2 + 2i\hbar(\boldsymbol{r}\cdot\boldsymbol{p} - 3i\hbar)\frac{1}{r}\notag\\
+  & = \frac{1}{r}\boldsymbol{L}^2 + \frac{6\hbar^2}{r} + 2\hbar^2\boldsymbol{r}\cdot\boldsymbol{\nabla}\frac{1}{r}\notag\\
+  & = \frac{1}{r}\boldsymbol{L}^2 + \frac{6\hbar^2}{r} + 2\hbar^2\frac{\boldsymbol{r}}{r}\cdot\boldsymbol{\nabla} - \frac{2\hbar^2}{r}\notag\\
+  & = \frac{1}{r}\boldsymbol{L}^2 + \frac{4\hbar^2}{r} + \frac{2i\hbar}{r}\boldsymbol{r}\cdot\boldsymbol{p},\label{pLrr}\\
+  \frac{\boldsymbol{r}}{r}\cdot(\boldsymbol{p}\times\boldsymbol{L})
+  & = \frac{1}{r}(\boldsymbol{r}\times\boldsymbol{p})\cdot\boldsymbol{L}\notag\\
+  & = \frac{1}{r}\boldsymbol{L}^2,\label{rrpL}\\
+  \frac{\boldsymbol{r}}{r}\cdot(\boldsymbol{L}\times\boldsymbol{p})
+  & = \frac{\boldsymbol{r}}{r}\cdot( - \boldsymbol{p}\times\boldsymbol{L} + 2i\hbar\boldsymbol{p})\notag\\
+  & = - \frac{1}{r}\boldsymbol{r}\cdot(\boldsymbol{p}\times\boldsymbol{L}) + \frac{2i\hbar}{r}\boldsymbol{r}\cdot\boldsymbol{p}\notag\\
+  & = - \frac{1}{r}(\boldsymbol{r}\times\boldsymbol{p})\cdot\boldsymbol{L} + \frac{2i\hbar}{r}\boldsymbol{r}\cdot\boldsymbol{p}\notag\\
+  & = - \frac{1}{r}\boldsymbol{L}^2 + \frac{2i\hbar}{r}\boldsymbol{r}\cdot\boldsymbol{p}.\label{rrLp}
+\end{align}
+\eqref{pxLLxp}\eqref{pxLpxL}\eqref{LxppxL}\eqref{LxpLxp}から
+\begin{align}
+  (\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})^2
+  & = (\boldsymbol{L}\times\boldsymbol{p})\cdot(\boldsymbol{L}\times\boldsymbol{p}) - (\boldsymbol{L}\times\boldsymbol{p})\cdot(\boldsymbol{p}\times\boldsymbol{L}) - (\boldsymbol{p}\times\boldsymbol{L})\cdot(\boldsymbol{L}\times\boldsymbol{p}) - (\boldsymbol{p}\times\boldsymbol{L})\cdot(\boldsymbol{p}\times\boldsymbol{L})\notag\\
+  & = 4\boldsymbol{p}^2\boldsymbol{L}^2 + 4\hbar^2\boldsymbol{p}^2.\label{LppL_square}
+\end{align}
+\eqref{Lprr}\eqref{pLrr}\eqref{rrpL}\eqref{rrLp}から
+\begin{align}
+  (\boldsymbol{L}\times\boldsymbol{p})\cdot\frac{\boldsymbol{r}}{r} - (\boldsymbol{p}\times\boldsymbol{L})\cdot\frac{\boldsymbol{r}}{r} + \frac{\boldsymbol{r}}{r}\cdot(\boldsymbol{L}\times\boldsymbol{p}) - \frac{\boldsymbol{r}}{r}\cdot(\boldsymbol{p}\times\boldsymbol{L}) = - \frac{4}{r}\boldsymbol{L}^2 - \frac{4\hbar^2}{r}.\label{rrLP_quad}
+\end{align}
+\eqref{LppL_square}\eqref{rrLP_quad}から
+\begin{align}
+  & \boldsymbol{R}^2 \\
+  & = \frac{1}{4m}(\boldsymbol{L}\times\boldsymbol{p} - \boldsymbol{p}\times\boldsymbol{L})^2 + \frac{k_0Ze^2}{2m}\left[(\boldsymbol{L}\times\boldsymbol{p})\cdot\frac{\boldsymbol{r}}{r} - (\boldsymbol{p}\times\boldsymbol{L})\cdot\frac{\boldsymbol{r}}{r} + \frac{\boldsymbol{r}}{r}\cdot(\boldsymbol{L}\times\boldsymbol{p}) - \frac{\boldsymbol{r}}{r}\cdot(\boldsymbol{p}\times\boldsymbol{L})\right] + (k_0Ze^2)^2\notag\\
+  & = \frac{2}{m}\left(\frac{\boldsymbol{p}^2}{2m} - \frac{k_0Ze^2}{r}\right)(\boldsymbol{L}^2 + \hbar^2) + (k_0Ze^2)^2\notag\\
+  & = \frac{2}{m}H(\boldsymbol{L}^2 + \hbar^2) + (k_0Ze^2)^2
+\end{align}
+が得られる．
+
+\end{document}
