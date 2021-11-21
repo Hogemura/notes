@@ -1,10 +1,12 @@
 \ProvidesPackage{hogehoge}
 \usepackage{amsmath, amssymb, amscd, amsthm}
 \usepackage{mathrsfs}
+\usepackage{ascmac}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
 \usepackage{braket}
 \usepackage{slashed}
-\usepackage{ascmac}
-\usepackage{enumitem}
+\usepackage{simpler-wick}
 \usepackage{tikz}
 \usetikzlibrary{cd}
 \usepackage[compat=1.1.0]{tikz-feynman}
@@ -34,15 +36,18 @@
 %
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\Cl}{Cl}
 \DeclareMathOperator{\Coker}{Coker}
 \DeclareMathOperator{\Coim}{Coim}
 \DeclareMathOperator{\dive}{div}
 \DeclareMathOperator{\Disc}{Disc}
 \DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Frac}{Frac}
 \DeclareMathOperator{\Gal}{Gal}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\height}{ht}
 \DeclareMathOperator{\id}{id}
 \let\Im\relax\DeclareMathOperator{\Im}{Im}
 \DeclareMathOperator{\M}{M}
@@ -57,6 +62,7 @@
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Tor}{Tor}
 \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\trdeg}{trdeg}
 %
 \theoremstyle{definition}
 \newtheorem{dfn}[equation]{追加定義}
@@ -66,13 +72,12 @@
 \newtheorem{exm}[equation]{追加例}
 \newtheorem{prop}[equation]{追加命題}
 \renewcommand{\proofname}{証明}
-\makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
 \normalfont
 \topsep6\p@\@plus6\p@ \trivlist
 \item[\hskip\labelsep{\bfseries #1}\@addpunct{\bfseries}]\ignorespaces
 }{\hfill\qed\endtrivlist}
 %
+\renewcommand\theequation{\arabic{chapter}.\arabic{section}.\arabic{equation}}
 \def\tagform@#1{\maketag@@@{[\ignorespaces#1\unskip\@@italiccorr]}}
-% 
 \allowdisplaybreaks

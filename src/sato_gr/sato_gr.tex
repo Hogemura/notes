@@ -1,6 +1,13 @@
 \documentclass[a4paper]{ltjsreport}
 \usepackage[hiragino-pro]{luatexja-preset}
 \usepackage{../hogehoge}
+\pagestyle{fancy}
+\lhead{}
+\chead{\rightmark}
+\rhead{}
+\renewcommand{\paragraphmark}[1]{\markright{#1}}
+\renewcommand{\prechaptername}{Chapter}
+\renewcommand{\postchaptername}{}
 \begin{document}
 \chapter*{相対性理論（佐藤）}
 使用しているのは第17刷．
@@ -20,9 +27,9 @@ Riemannの曲率テンソルを$4$階共変で表すと，
   \partial_j\Gamma_{m, ni} + {\Gamma^a}_{ni}\partial_jg_{ma} + g_{mk}{\Gamma^a}_{nj}{\Gamma^k}_{ai} - g_{mk}{\Gamma^a}_{ni}{\Gamma^k}_{aj}\notag\\
   &= \partial_i\Gamma_{m, nj} - \partial_j\Gamma_{m, ni}\label{R1}\\
   &\quad + {\Gamma^a}_{nj}\left(g_{mk}{\Gamma^k}_{ai} - \partial_ig_{ma}\right)\label{R2}\\
-  &\qquad - {\Gamma^a}_{ni}\left(g_{mk}{\Gamma^k}_{aj} - \partial_jg_{ma}\right)\label{R3}
+  &\qquad - {\Gamma^a}_{ni}\left(g_{mk}{\Gamma^k}_{aj} - \partial_jg_{ma}\right) . \label{R3}
 \end{align}
-となる．ここで，Christoffel記号の定義
+Christoffel記号の定義
 \begin{align*}
   {\Gamma^k}_{ij}=\dfrac{1}{2}g^{kl}\left(\partial_ig_{jl} + \partial_jg_{li} - \partial_lg_{ij}\right)
 \end{align*}
@@ -31,78 +38,79 @@ Riemannの曲率テンソルを$4$階共変で表すと，
   \Gamma_{m, ij} &= g_{mk}{\Gamma^k}_{ij}\notag\\
   &= \dfrac{1}{2}g_{mk}g^{kl}\left(\partial_ig_{jl} + \partial_jg_{li} - \partial_lg_{ij}\right)\notag\\
   &= {\delta^l}_m\left(\partial_ig_{jl} + \partial_jg_{li} - \partial_lg_{ij}\right)\notag\\
-  &= \dfrac{1}{2}\left(\partial_ig_{jm} + \partial_jg_{mi} - \partial_mg_{ij}\right)\label{3cov}
+  &= \dfrac{1}{2}\left(\partial_ig_{jm} + \partial_jg_{mi} - \partial_mg_{ij}\right) . \label{3cov}
 \end{align}
-となる．よって，
+まず
 \begin{align}
   \eqref{R1} &= \partial_i\Gamma_{m, nj} - \partial_j\Gamma_{m, ni}\notag\\
   &= \dfrac{1}{2}\partial_i\left(\partial_ng_{jm} + \partial_jg_{mn} - \partial_mg_{nj}\right) - \dfrac{1}{2}\partial_j\left(\partial_ng_{im} + \partial_ig_{mn} - \partial_mg_{ni}\right)\notag\\
   &= \dfrac{1}{2}\left(\partial_n\partial_ig_{mj} + \partial_m\partial_jg_{ni} - \partial_m\partial_ig_{nj} - \partial_n\partial_jg_{mi}\right).\label{R1cov}
 \end{align}
-次に，\eqref{R2}は，
+次に
 \begin{align}
-  {\Gamma^a}_{nj}\left(g_{mk}{\Gamma^k}_{ai} - \partial_ig_{ma}\right) &= {\Gamma^a}_{nj}\left(\Gamma_{m, ai} - \partial_ig_{ma}\right)\notag\\
+  \eqref{R2} &= {\Gamma^a}_{nj}\left(g_{mk}{\Gamma^k}_{ai} - \partial_ig_{ma}\right) \\
+  &= {\Gamma^a}_{nj}\left(\Gamma_{m, ai} - \partial_ig_{ma}\right)\notag\\
   &= {\Gamma^a}_{nj}\left[\dfrac{1}{2}\left(\partial_ag_{im} + \partial_ig_{ma} - \partial_mg_{ai}\right) - \partial_ig_{ma}\right]\notag\\
   &= -  \dfrac{1}{2}{\Gamma^a}_{nj}\left(\partial_mg_{ai} + \partial_ig_{ma} - \partial_ag_{im}\right)\notag\\
   &= -  {\Gamma^a}_{nj}\Gamma_{a, im}\notag\\
-  &= -  g^{rs}\Gamma_{r, mi}\Gamma_{s, nj}\label{R2cov}
+  &= -  g^{rs}\Gamma_{r, mi}\Gamma_{s, nj} . \label{R2cov}
 \end{align}
-と書くことができる．\eqref{R3}はこの計算で$i$と$j$を入れ替えて，
+\eqref{R3}はこの計算で$i$と$j$を入れ替えて，
 \begin{align}
-  {\Gamma^a}_{ni}\left(g_{mk}{\Gamma^k}_{aj} - \partial_jg_{ma}\right) = -  g^{rs}\Gamma_{r, mj}\Gamma_{s, ni}\label{R3cov}
+  \eqref{R3} = {\Gamma^a}_{ni}\left(g_{mk}{\Gamma^k}_{aj} - \partial_jg_{ma}\right)
+  = -  g^{rs}\Gamma_{r, mj}\Gamma_{s, ni} . \label{R3cov}
 \end{align}
-となる．\eqref{R1cov}\eqref{R2cov}\eqref{R3cov}から，
+\eqref{R1cov}\eqref{R2cov}\eqref{R3cov}から
 \begin{align*}
   R_{mnij} &= \dfrac{1}{2}\left(\partial_n\partial_ig_{mj} + \partial_m\partial_jg_{ni} - \partial_m\partial_ig_{nj} - \partial_n\partial_jg_{mi}\right)\notag\\
-  &\qquad + g^{rs}\left(\Gamma_{r, mj}\Gamma_{s, ni} - \Gamma_{r, mi}\Gamma_{s, nj}\right)
+  &\qquad + g^{rs}\left(\Gamma_{r, mj}\Gamma_{s, ni} - \Gamma_{r, mi}\Gamma_{s, nj}\right) .
 \end{align*}
-となる．
 
 \chapter{一般相対論}
 \setcounter{section}{1}
 \section{電磁場の共変形式}
-まずは特殊相対論が扱うEuclid空間での電磁場の共変形式を考える．この時，場のラグランジアン密度は，
+\paragraph{Maxwell方程式（特殊相対論）}
+特殊相対論が扱うEuclid空間での電磁場の共変形式を考える．場のラグランジアン密度は，
 \begin{align}
   \mathcal{L} &= \mathcal{L}_\text{int} + \mathcal{L}_\text{em}\notag\\
   &=  - \dfrac{1}{4\mu_0}f^{ij}f_{ij} + A_ij^i\label{spc_L}
 \end{align}
-で与えられる．この時，作用$S$は，
-\begin{align}
+で与えられ，作用$S$は，
+\begin{align*}
   S &= \dfrac{1}{c}\int\left( - \dfrac{1}{4\mu_0}f^{ij}f_{ij} + A_ij^i\right)\,d^4x\notag\\
   &= \dfrac{1}{c}\int\left( - \dfrac{1}{4\mu_0}\eta^{ik}\eta^{jl}f_{kl}f_{ij} + A_ij^i\right)\,d^4x\notag\\
-  &= \dfrac{1}{c}\int\left[ - \dfrac{1}{4\mu_0}\eta^{ik}\eta^{jl}\left(\partial_kA_l - \partial_lA_k\right)\left(\partial_iA_j - \partial_jA_i\right) + A_ij^i\right]\,d^4x
-\end{align}
-である．計量は$( - , + , + , + )$としておこう．
-$A_i$を力学変数として作用$S$を極小にする変分を考えると，
-\begin{align}
-  \dfrac{\partial{\mathcal{L}}}{\partial{}A_i} - \partial_j\dfrac{\partial{\mathcal{L}}}{\partial\partial_jA_i}=0
-\end{align}
-が得られる．これを計算すると，
+  &= \dfrac{1}{c}\int\left[ - \dfrac{1}{4\mu_0}\eta^{ik}\eta^{jl}\left(\partial_kA_l - \partial_lA_k\right)\left(\partial_iA_j - \partial_jA_i\right) + A_ij^i\right]\,d^4x .
+\end{align*}
+Euler-Lagrangeの方程式（$A_i$を力学変数とする）
+\[
+\dfrac{\partial{\mathcal{L}}}{\partial{}A_i} - \partial_j\dfrac{\partial{\mathcal{L}}}{\partial\partial_jA_i} = 0
+\]
+から
 \begin{align}
   \partial_jf^{ij}=\mu_0j^i \label{spc_Maxwell}
 \end{align}
 もしくは，Maxwell方程式
 \[ \partial^k\partial_kA^i = \partial_j\left(\eta^{jk}\partial_kA^i\right) =  - \mu_0j^i \]
-となる．
+を得る．
 
-次にRiemann空間での共変形式に拡張する．まず，電磁テンソルは，
+\paragraph{Maxwell方程式（一般相対論）}
+電磁テンソルを
 \begin{align}
   f_{ij}=A_{j;\,i} - A_{i;\,j}
 \end{align}
-になる．ちなみに，Christoffel記号の下添字は可換なのでこれは特殊相対論での表式と変わらない．２階反変テンソルは，
+と定義する（Christoffel記号の下添字は可換なのでこれは特殊相対論での表式と変わらない）．2階反変テンソルは，
 \begin{align*}
   f^{ij} &= g^{ik}g^{jl}f_{kl}\\
   &= g^{ik}g^{jl}\left(A_{l;\,k} - A_{k;\,l}\right)\\
   &= g^{ik}{A^j}_{;\,k} - g^{jl}{A^i}_{;\,l}\\
-  &= A^{j;\,i} - A^{i;\,j}
+  &= A^{j;\,i} - A^{i;\,j} .
 \end{align*}
-となる．最後の式は反変微分を使った：
+最後の式は反変微分
 \[\,A^{;\,i}\equiv{g}^{ij}A_{;\,j}.\]
-さて，\eqref{spc_Maxwell}を一般相対論に拡張すると，
+を使った．\eqref{spc_Maxwell}を一般相対論に拡張すると，
 \begin{align}
-  \label{gen_Maxwell}
   \begin{split}
-     - \mu_0j^i &=  - {f^{ij}}_{;\,j}\\
+    - \mu_0j^i &\stackrel{?}{=}  - {f^{ij}}_{;\,j}\\
     &= {A^{i;\,j}}_{;\,j} - {A^{j;\,i}}_{;\,j}\\
     &= {A^{i;\,j}}_{;\,j} - {A^{j;\,i}}_{;\,j} + {{A^j}_{;\,j}}^{;\,i} - {{A^j}_{;\,j}}^{;\,i}\\
     &= {A^{i;\,j}}_{;\,j} - g^{ik}\left({A^j}_{;k\,;\,j} - {A^j}_{;j\,;\,k}\right) - {{A^j}_{;\,j}}^{;\,i}\\
@@ -111,58 +119,57 @@ $A_i$を力学変数として作用$S$を極小にする変分を考えると，
     &= {A^{i;\,j}}_{;\,j} - {{A^j}_{;\,j}}^{;\,i} - g^{ik}{R^j}_{ljk}A^l\\
     &= {A^{i;\,j}}_{;\,j} - {{A^j}_{;\,j}}^{;\,i} - g^{ik}{R}_{lk}A^l
   \end{split}
+  \label{gen_Maxwell}
 \end{align}
 になると予想される．
 
-一般相対論での作用$S$を求めて，この変分から\eqref{gen_Maxwell}を証明しよう．
-一般相対論では，体積要素が一般座標変換に対し不変である必要がある．
-計量$g_{ij}(x)$のRiemann空間から$\eta_{ij}(x')$のEuclid空間に移ることを考えると，
-\[
-\eta_{ij}(x')=\partial'_i{x^k}\partial'_j{x^l}g_{kl}(x)
-\]
-なので，これの行列式を取って，
-\[ - 1=\left|\dfrac{\partial(x)}{\partial(x')}\right|^2g\]
-となる．ただし，$g=\det{g_{kl}}$である．よって，体積要素について，
-\begin{align*}
-  dx'^4 &= \left|\dfrac{\partial(x')}{\partial(x)}\right|d^4x\\
-  &= \sqrt{ - g}\,d^4x
-\end{align*}
-となる．このように微小体積を選べば作用は一般座標変換に対し不変となる．従って，作用は
-\begin{align}
-  S = \dfrac{1}{c}\int{}\mathcal{L}\sqrt{ - g}\,d^4x
-\end{align}
-となる．ここでも同様に力学変数$A_i$の変分を取って（$g$は座標系に固有の値なので変分を取らない），
-\begin{align}
-  \dfrac{\partial{\sqrt{ - g}\mathcal{L}}}{\partial{}A_i} - \partial_j\dfrac{\partial{\sqrt{ - g}\mathcal{L}}}{\partial\partial_jA_i}=0
-\end{align}
-を解けばよい．ラグランジアン密度は\eqref{spc_L}と同じである．この式の左辺は，
-\begin{align*}
-  \sqrt{ - g}\dfrac{\partial{\mathcal{L}}}{\partial{}A_i} - \partial_j\dfrac{\sqrt{ - g}\partial{\mathcal{L}}}{\partial\partial_jA_i}
-  &= \sqrt{ - g}\dfrac{\partial{\mathcal{L}}}{\partial{}A_i} - \sqrt{ - g}\partial_j\dfrac{\partial{\mathcal{L}}}{\partial\partial_jA_i}
-   - \partial_j\sqrt{ - g}\dfrac{\partial{\mathcal{L}}}{\partial\partial_jA_i}\\
-  &= \sqrt{ - g}\mu_0j^i - \sqrt{ - g}\partial_jf^{ij} - \partial_j\sqrt{ - g}\,f^{ij}
-\end{align*}
-なので，
-\begin{align}
-   - \mu_0j^i= - \partial_jf^{ij} - \dfrac{1}{\sqrt{ - g}}\partial_j\sqrt{ - g}\,f^{ij}\label{Sgen_Maxwell}
-\end{align}
-となる．電磁テンソルの発散は，
-\begin{align*}
-  {f^{ij}}_{;\,j} &= \partial_jf^{ij} + {\Gamma^i}_{rj}f^{rj} + {\Gamma^j}_{rj}f^{ir}\\
-  &= \partial_jf^{ij} + {\Gamma^i}_{rj}f^{rj} + \dfrac{1}{\sqrt{ - g}}\partial_j\sqrt{ - g}\,f^{ij}
-\end{align*}
-となる．ここで，$f^{ij}$は反対称テンソル，${\Gamma^i}_{rj}$は$r$，$j$について対称なので，縮約をあらわに書けば，
-\begin{align*}
-  \sum_{r,j}{\Gamma^i}_{rj}f^{rj} &= \sum_{r>j}\left({\Gamma^i}_{rj}f^{rj} + {\Gamma^i}_{jr}f^{jr}\right) + \sum_{r}{\Gamma^i}_{rr}f^{rr}\\
-  &= \sum_{r>j}{\Gamma^i}_{rj}\left(f^{rj} + f^{jr}\right)\\
-  &= \sum_{r>j}{\Gamma^i}_{rj}\left(f^{rj} - f^{rj}\right)\\
-  &= 0
-\end{align*}
-である．よって，${f^{ij}}_{;\,j}$の第２項は$0$なので，
-\[\partial_jf^{ij} + \dfrac{1}{\sqrt{ - g}}\partial_j\sqrt{ - g}\,f^{ij}={f^{ij}}_{;\,j}\]
-となる．\eqref{Sgen_Maxwell}に代入して，
-\[  - \mu_0j^i =  - {f^{ij}}_{;\,j} \]
-となり，\eqref{gen_Maxwell}が得られた．
+\begin{proof}
+  一般相対論での作用$S$を求めて，この変分から\eqref{gen_Maxwell}を証明する．
+  一般相対論では，体積要素が一般座標変換に対し不変である必要がある．
+  計量$g_{ij}(x)$のRiemann空間から$\eta_{ij}(x')$のEuclid空間に移ることを考えると，
+  \[ \eta_{ij}(x')=\partial'_i{x^k}\partial'_j{x^l}g_{kl}(x) \]
+  なので，これの行列式を取って，
+  \[ - 1=\left|\dfrac{\partial(x)}{\partial(x')}\right|^2g .\]
+  ただし，$g=\det{g_{kl}}$である．よって，体積要素について，
+  \begin{align*}
+    dx'^4 &= \left|\dfrac{\partial(x')}{\partial(x)}\right|d^4x\\
+    &= \sqrt{ - g}\,d^4x .
+  \end{align*}
+  このように微小体積を選べば作用は一般座標変換に対し不変となる．従って，作用は
+  \[ S = \dfrac{1}{c}\int{}\mathcal{L}\sqrt{ - g}\,d^4x . \]
+  ここでも同様に力学変数$A_i$の変分を取って（$g$は座標系に固有の値なので変分を取らない），
+  \[
+  \dfrac{\partial{\sqrt{ - g}\mathcal{L}}}{\partial{}A_i} - \partial_j\dfrac{\partial{\sqrt{ - g}\mathcal{L}}}{\partial\partial_jA_i} = 0
+  \]
+  を解けばよい．ラグランジアン密度は\eqref{spc_L}と同じである．この式の左辺は，
+  \begin{align*}
+    \sqrt{ - g}\dfrac{\partial{\mathcal{L}}}{\partial{}A_i} - \partial_j\dfrac{\sqrt{ - g}\partial{\mathcal{L}}}{\partial\partial_jA_i}
+    &= \sqrt{ - g}\dfrac{\partial{\mathcal{L}}}{\partial{}A_i} - \sqrt{ - g}\partial_j\dfrac{\partial{\mathcal{L}}}{\partial\partial_jA_i}
+    - \partial_j\sqrt{ - g}\dfrac{\partial{\mathcal{L}}}{\partial\partial_jA_i}\\
+    &= \sqrt{ - g}\mu_0j^i - \sqrt{ - g}\partial_jf^{ij} - \partial_j\sqrt{ - g}\,f^{ij}
+  \end{align*}
+  なので，
+  \begin{align}
+    - \mu_0j^i= - \partial_jf^{ij} - \dfrac{1}{\sqrt{ - g}}\partial_j\sqrt{ - g}\,f^{ij} . \label{Sgen_Maxwell}
+  \end{align}
+  電磁テンソルの発散は，
+  \begin{align*}
+    {f^{ij}}_{;\,j} &= \partial_jf^{ij} + {\Gamma^i}_{rj}f^{rj} + {\Gamma^j}_{rj}f^{ir}\\
+    &= \partial_jf^{ij} + {\Gamma^i}_{rj}f^{rj} + \dfrac{1}{\sqrt{ - g}}\partial_j\sqrt{ - g}\,f^{ij} .
+  \end{align*}
+  ここで，$f^{ij}$は反対称テンソル，${\Gamma^i}_{rj}$は$r$，$j$について対称なので，縮約をあらわに書けば，
+  \begin{align*}
+    \sum_{r,j}{\Gamma^i}_{rj}f^{rj} &= \sum_{r>j}\left({\Gamma^i}_{rj}f^{rj} + {\Gamma^i}_{jr}f^{jr}\right) + \sum_{r}{\Gamma^i}_{rr}f^{rr}\\
+    &= \sum_{r>j}{\Gamma^i}_{rj}\left(f^{rj} + f^{jr}\right)\\
+    &= \sum_{r>j}{\Gamma^i}_{rj}\left(f^{rj} - f^{rj}\right)\\
+    &= 0 .
+  \end{align*}
+  ${f^{ij}}_{;\,j}$の第2項は$0$なので，
+  \[ \partial_jf^{ij} + \dfrac{1}{\sqrt{ - g}}\partial_j\sqrt{ - g}\,f^{ij}={f^{ij}}_{;\,j} . \]
+  \eqref{Sgen_Maxwell}に代入して，
+  \[  - \mu_0j^i =  - {f^{ij}}_{;\,j} . \]
+\end{proof}
+
 
 \section{場の運動方程式，エネルギー運動量テンソル}
 \paragraph{特殊相対論でのエネルギー運動量テンソル}
@@ -170,23 +177,20 @@ $A_i$を力学変数として作用$S$を極小にする変分を考えると，
 \begin{align}
   S=\iint{\mathcal{L}}\left(q,\partial_iq\right)\,dx^3d\tau=\frac{1}{c}\int{}\mathcal{L}\,d^4x
 \end{align}
-で与えられるのであった．ただし，$q$は固有時間$\tau$と座標$x^{1,2,3}$を引数にとる力学変数である．
-この時，最小作用の原理から，
-\[\delta{S}=0\]
+で与えられる．ただし，$q$は固有時間$\tau$と座標$x^{1,2,3}$を引数にとる力学変数である．
+最小作用の原理$\delta{S}=0$
 を解けば，
 \begin{align}
   \frac{\partial{\mathcal{L}}}{\partial{q}} - \partial_i\frac{\partial{\mathcal{L}}}{\partial\partial_iq}=0\label{EL_eom}
 \end{align}
-が得られる．これは運動方程式に相当するものである（解析力学で言うところのEuler-Lagrangeの運動方程式）．これより，
+が得られる．これより，
 \begin{align*}
   \partial_iL &= \frac{\partial{\mathcal{L}}}{\partial{q}}\partial_iq + \frac{\partial{\mathcal{L}}}{\partial\partial_k{q}}\partial_i\partial_kq\\
   &= \partial_k\frac{\partial{\mathcal{L}}}{\partial\partial_kq}\,\partial_iq + \frac{\partial{\mathcal{L}}}{\partial\partial_k{q}}\partial_k\partial_iq\\
-  &= \partial_k\left(\partial_iq\frac{\partial{\mathcal{L}}}{\partial\partial_kq}\right)
+  &= \partial_k\left(\partial_iq\frac{\partial{\mathcal{L}}}{\partial\partial_kq}\right) .
 \end{align*}
-となる．さらに，$\partial_i={\delta^k}_i\partial_k$によって左辺を書き直すと
-\[
-\partial_k\left(\partial_iq\frac{\partial{\mathcal{L}}}{\partial\partial_kq} - {\delta^k}_i\mathcal{L}\right)=0
-\]
+$\partial_i={\delta^k}_i\partial_k$によって左辺を書き直すと
+\[ \partial_k\left(\partial_iq\frac{\partial{\mathcal{L}}}{\partial\partial_kq} - {\delta^k}_i\mathcal{L}\right) = 0 \]
 となるので，
 \begin{align}
   {T^k}_i={\delta^k}_i\mathcal{L} - \partial_iq\frac{\partial{\mathcal{L}}}{\partial\partial_kq}\label{spe_T_mixed}
@@ -197,30 +201,29 @@ $A_i$を力学変数として作用$S$を極小にする変分を考えると，
 \end{align}
 と表すことができる．
 $q$がいくつかあるときは，$\partial_i\mathcal{L}\left(q^{(r)},\partial_kq^{(r)}\right)$の展開で全ての$q^{(t)}$及び$\partial_kq^{(r)}$についての微分の和に書き直せばよいので，
-\[{T^k}_i=\partial_iq^{(r)}\frac{\partial{\mathcal{L}}}{\partial\partial_kq^{(r)}} - {\delta^k}_i\mathcal{L}\]
-となる．
+\[ {T^k}_i=\partial_iq^{(r)}\frac{\partial{\mathcal{L}}}{\partial\partial_kq^{(r)}} - {\delta^k}_i\mathcal{L} . \]
 
-次に，テンソル${T^k}_i$が表すものについて考えよう．ここで，$3$次元でのGaussの定理の拡張として，
+次に，テンソル${T^k}_i$が表すものについて考える．ここで，$3$次元でのGaussの定理の拡張として，
 \begin{align}
   \int\partial_k{T^k}_i\,d^4x=\int{}{T^k}_i\,dS_k
 \end{align}
 を使う．これから，\eqref{spe_T}はあるベクトル
 \[p^i=\int{T^{ki}}\,dS_k=\int\eta^{li}{{T^k}_l}\,dS_k\]
 が保存することを表している（積分範囲は任意の閉超曲面）．
-ここで，我々は力学場を扱いたいので，$p^i$が$4$元運動量と同じ表式になるようにしよう．
+我々は力学場を扱いたいので，$p^i$が$4$元運動量と同じ表式になるようにしよう．
 考えやすいように，積分範囲は$x^0=$(一定)とする．$i=0$では，
 \begin{align}
-  p^0=\int{T^{k0}}\,dS_k=\int{T^{00}}\,dV
+  p^0=\int{T^{k0}}\,dS_k=\int{T^{00}}\,dV .
 \end{align}
-となる．２つ目の式変形については，３次元空間で$z=$(一定)で面積分すればベクトルの$z$成分と面素$dxdy$のみを考えればよいことからの類推で分かるだろう．
-ところで，\eqref{spe_T_mixed}から，
-\[T^{00}={T^0}_l\eta^{l0}=\dot{q}\frac{\partial{\mathcal{L}}}{\partial\dot{q}} - \mathcal{L}\]
-となる．これはエネルギー（ハミルトニアン）密度である．
+2つ目の式変形については，3次元空間で$z=$(一定)で面積分すればベクトルの$z$成分と面素$dxdy$のみを考えればよいことからの類推で分かるだろう．
+\eqref{spe_T_mixed}から，
+\[ T^{00}={T^0}_l\eta^{l0}=\dot{q}\frac{\partial{\mathcal{L}}}{\partial\dot{q}} - \mathcal{L} . \]
+これはエネルギー（ハミルトニアン）密度である．
 $p^0=E/c$なので，改めて
 \begin{align}
   p^i=\frac{1}{c}\int{T^{ki}}\,dS_k\label{spe_p}
 \end{align}
-とすれば$p^i$は４元運動量となる．
+とすれば$p^i$は4元運動量となる．
 
 \eqref{spe_T_mixed}で定義された${T^k}_i$もしくは$T^{ik}$は対称でない．
 ところで，\eqref{spe_T}を満たすものは\eqref{spe_T_mixed}以外にも無数にある．
@@ -231,11 +234,11 @@ $\partial_kT^{ki}=0$をある$T^{ki}$がみたすのであれば，
 もこの方程式を満たす．実際に代入すれば，
 \begin{align*}
   \partial_k\left(T^{ki} + \partial_l\varphi^{lki}\right) &= \partial_k\partial_l\varphi^{lki}\\
-  &=  - \partial_l\partial_k\varphi^{kli}
+  &=  - \partial_l\partial_k\varphi^{kli} .
 \end{align*}
-となる．添字$k$，$l$を入れ替えても同じ値になる：
+添字$k$，$l$を入れ替えても同じ値になる：
 \[\partial_l\left(T^{li} + \partial_k\varphi^{kli}\right)=\partial_l\partial_k\varphi^{kli}.\]
-この２式を比べて，$\partial_k\partial_l\varphi^{lki}=0$である．よって，証明された．
+この2式を比べて，$\partial_k\partial_l\varphi^{lki}=0$である．よって，証明された．
 $\varphi^{lki}$を加えて$T^{ki}$を対称にすることを考えるが，これによって運動量の表式が変わってはいけない．
 \eqref{spe_p}について，
 \begin{align*}
@@ -243,59 +246,50 @@ $\varphi^{lki}$を加えて$T^{ki}$を対称にすることを考えるが，こ
   &= \frac{1}{2}\int\left(\partial_l\varphi^{lki}\,dS_k - \partial_k\varphi^{lki}\,dS_l\right)\\
   &= \frac{1}{2}\int\varphi^{lki}df_{kl}
 \end{align*}
-ただし，$df_{kl}$は超曲面を囲む通常の２次元曲面の積分要素である．
-この積分を無限遠で行えば，無限遠では粒子もポテンシャルも存在しないため，この積分は0である．
-よって，\eqref{T_transform}を満たせば運動量に関する要請は自動的に満たされる．
-よってこれ以外に$T^{ki}$への要請が必要である．
+ただし，$df_{kl}$は超曲面を囲む通常の2次元曲面の積分要素である．
+この積分を無限遠で行えば，無限遠では粒子もポテンシャルも存在しないため，この積分は$0$である．
+\eqref{T_transform}を満たせば運動量に関する要請は自動的に満たされるので，これ以外に$T^{ki}$への要請が必要である．
 
-ここで，要請としてテンソル$T^{ki}$から角運動量テンソルの密度\footnote{場古典とか}を求められることを採用しよう．具体的には，\eqref{spe_p}と比べて，
-\begin{align}
-  M^{ki}=\sum\left(x^kp^i - x^ip^k\right)=\frac{1}{c}\int\left(x^kT^{ri} - x^iT^{rk}\right)\,dS_r
-\end{align}
-とするのがよいだろう．さて，\eqref{spe_T}以降の運動量に関する議論と同様にして，角運動量$M^{ki}$が保存される条件は，
-\begin{align}
-  \partial_r\left(x^kT^{ri} - x^iT^{rk}\right)=0
-\end{align}
-である．$\partial_ix^k={\delta^k}_i$，\eqref{spe_T}から，この式は
-\[{\delta^k}_rT^{ri} - {\delta^i}_rT^{rk}=0\]
-となり，結局
-\begin{align}
-  T^{ik}=T^{ki}
-\end{align}
-となることが分かる．結局，我々は$T^{ki}$が対称テンソルになるように$\varphi^{lki}$を選べばよいのだ．
+ここで，要請としてテンソル$T^{ki}$から角運動量テンソルの密度\footnote{場古典とか}を求められることを採用しよう．
+具体的には，\eqref{spe_p}と比べて，
+\[ M^{ki}=\sum\left(x^kp^i - x^ip^k\right)=\frac{1}{c}\int\left(x^kT^{ri} - x^iT^{rk}\right)\,dS_r \]
+とするのがよいだろう．\eqref{spe_T}以降の運動量に関する議論と同様にして，角運動量$M^{ki}$が保存される条件は，
+\[ \partial_r\left(x^kT^{ri} - x^iT^{rk}\right) = 0 . \]
+$\partial_ix^k={\delta^k}_i$と\eqref{spe_T}から，この式は${\delta^k}_rT^{ri} - {\delta^i}_rT^{rk} = 0$となり，
+\[ T^{ik} = T^{ki} . \]
+結局，我々は$T^{ki}$が対称テンソルになるように$\varphi^{lki}$を選べばよい．
 
-ここで$T^{ki}$から求まる量について再び記しておく：
-\begin{align}
-  p^i=\frac{1}{c}\int{T^{ki}}\,dS_k,\quad{}M^{ki}=\frac{1}{c}\int\left(x^kT^{ri} - x^iT^{rk}\right)\,dS_r.
-\end{align}
+$T^{ki}$から求まる量について再び記しておく：
+\[ p^i=\frac{1}{c}\int{T^{ki}}\,dS_k,\quad{}M^{ki}=\frac{1}{c}\int\left(x^kT^{ri} - x^iT^{rk}\right)\,dS_r. \]
 これらの量が保存することから$T^{ki}$に課せられる条件は，
-\begin{align}
-  \partial_k{T^{ki}}=0,\quad{}T^{ik}=T^{ki}.
-\end{align}
+\[ \partial_k{T^{ki}}=0,\quad{}T^{ik}=T^{ki}. \]
 $p$について，$k=0$の超曲面で積分すれば，$i=0$及び$i=1,2,3$について，
 \[\frac{E}{c}=\frac{1}{c}\int{T^{00}}\,dV,\quad{}p^1=\frac{1}{c}\int{T^{01}}\,dV,\ldots\]
 となるので，
 $T^{00}=W$はエネルギー密度，$T^{01}/c=T^{10}/c$，$T^{02}/c=T^{20}/c$，$T^{02}/c=T^{20}/c$は運動量密度である．
 ここで，流量について考えるために，$T^{ki}$の発散の式で時間成分と空間成分を分けると，
-\[\frac{1}{c}\frac{\partial{T^{00}}}{\partial{t}} + \frac{\partial{T^{0a}}}{\partial{x^a}}=0,\quad\frac{1}{c}\frac{\partial{T^{b0}}}{\partial{t}} + \frac{\partial{T^{ba}}}{\partial{x^a}}=0\]
-が得られる．第１の式を積分すると，
-\[\frac{1}{c}\frac{\partial}{\partial{t}}\int_{\Omega}{T^{00}}\,dV + \int_{\Omega}\frac{\partial{T^{0a}}}{\partial{x^a}}\,dV=0\]
-左辺第２項にGaussの定理を適用して，
-\[\frac{\partial}{\partial{t}}\int_{\Omega}{T^{00}}\,dV + \int_{\partial\Omega}cT^{0a}\,df_a=0\]
-となる．ただし，$\partial\Omega$は積分領域$\Omega$の表面であり，$df_\alpha$は$\partial\Omega$の面素の各軸成分である．
+\[
+\frac{1}{c}\frac{\partial{T^{00}}}{\partial{t}} + \frac{\partial{T^{0a}}}{\partial{x^a}}=0 , \quad
+\frac{1}{c}\frac{\partial{T^{b0}}}{\partial{t}} + \frac{\partial{T^{ba}}}{\partial{x^a}}=0
+\]
+が得られる．第1の式を積分すると，
+\[ \frac{1}{c}\frac{\partial}{\partial{t}}\int_{\Omega}{T^{00}}\,dV + \int_{\Omega}\frac{\partial{T^{0a}}}{\partial{x^a}}\,dV = 0 . \]
+左辺第2項にGaussの定理を適用して，
+\[ \frac{\partial}{\partial{t}}\int_{\Omega}{T^{00}}\,dV + \int_{\partial\Omega}cT^{0a}\,df_a = 0 . \]
+ただし，$\partial\Omega$は積分領域$\Omega$の表面であり，$df_\alpha$は$\partial\Omega$の面素の各軸成分である．
 この式はエネルギーが単位時間当たり単位面積当たり$a$の向きに$cT^{0a}=S^a$だけ流出していることを表す．
-先程の結果と合わせれば，運動量とはエネルギーの流れであることが分かる．第２の式についても同様にすると，
-\[\frac{\partial}{\partial{t}}\int_{\Omega}\frac{T^{b0}}{c}{}\,dV + \int_{\partial\Omega}T^{ba}\,df_a=0\]
-となる．$T^{b0}/c=T^{0b}/c=S^b/c^2$で，これを体積分すれば運動量になるので，この式は，
-\[\int_{\partial\Omega}T^{ba}\,df_a= - \frac{\partial{}p^b}{\partial{t}}= - F^{b}\]
-となる．これはいわゆる応力テンソル$\sigma^{ba}$であり，$x^a$に垂直な面から$x^b$の向きに流れ出る運動量を表す．よって，$T^{ij}$は，
+先程の結果と合わせれば，運動量とはエネルギーの流れであることが分かる．第2の式についても同様にすると，
+\[ \frac{\partial}{\partial{t}}\int_{\Omega}\frac{T^{b0}}{c}{}\,dV + \int_{\partial\Omega}T^{ba}\,df_a=0 . \]
+$T^{b0}/c=T^{0b}/c=S^b/c^2$で，これを体積分すれば運動量になるので，この式は，
+\[ \int_{\partial\Omega}T^{ba}\,df_a= - \frac{\partial{}p^b}{\partial{t}} = - F^{b} . \]
+これはいわゆる応力テンソル$\sigma^{ba}$であり，$x^a$に垂直な面から$x^b$の向きに流れ出る運動量を表す．よって，$T^{ij}$は，
 \begin{align}
   T^{ij}=
   \begin{pmatrix}
-    W & \frac{S^x}{c} & \frac{S^y}{c} & \frac{S^z}{c}\\
-    \frac{S^x}{c} &  - \sigma^{xx} &  - \sigma^{xy} &  - \sigma^{xz}\\
-    \frac{S^y}{c} &  - \sigma^{yx} &  - \sigma^{yy} &  - \sigma^{yz}\\
-    \frac{S^z}{c} &  - \sigma^{zx} &  - \sigma^{zy} &  - \sigma^{zz}
+    W & {S^x}/{c} & {S^y}/{c} & {S^z}/{c}\\
+    {S^x}/{c} &  - \sigma^{xx} &  - \sigma^{xy} &  - \sigma^{xz}\\
+    {S^y}/{c} &  - \sigma^{yx} &  - \sigma^{yy} &  - \sigma^{yz}\\
+    {S^z}/{c} &  - \sigma^{zx} &  - \sigma^{zy} &  - \sigma^{zz}
   \end{pmatrix}
 \end{align}
 となる．これをエネルギー運動量テンソルと呼ぶ．
@@ -304,22 +298,22 @@ $T^{00}=W$はエネルギー密度，$T^{01}/c=T^{10}/c$，$T^{02}/c=T^{20}/c$�
 先程とは別の考え方によって一般相対論でのエネルギー運動量テンソルを求めることにする．
 電磁場で調べたように，作用は
 \begin{align}
-  S = \frac{1}{c}\int{}\mathcal{L}\sqrt{ - g}\,d^4x
+  S = \frac{1}{c}\int{}\mathcal{L}\sqrt{ - g}\,d^4x .
 \end{align}
-となる．ここでも同様に変分を取るが，物質場の変数$A_i$だけでなく，計量$g_{ij}$についても変分をとる必要がある．つまり，
+ここでも同様に変分を取るが，物質場の変数$A_i$だけでなく，計量$g_{ij}$についても変分をとる必要がある．つまり，
 \[\delta{S}_{\text{tot}}(A_i,g_{ij})=0\]
 を解けば，$A_i$，$g_{ij}$に関する条件が分かる\footnote{この先の大まかな流れは次のような感じ：
 先ほどの全体の作用変分は$A$を固定した時の作用変分と$g$を固定した時の作用変分の和に等しい．
 更に，運動方程式から$g$を固定させた時の作用変分は0，最小作用の原理から全体の作用変分は0である．
 よって，$g$を変数とした時の作用変分も0となる．これによって，時空の変化に対する方程式も立てることができる．
-この時，この方程式の中にある２階のテンソルをエネルギー運動量テンソルと定義する．（詳しくは本文(5.54)など）}．
+この時，この方程式の中にある2階のテンソルをエネルギー運動量テンソルと定義する．（詳しくは本文(5.54)など）}．
 
-結局，
+変分を取れば
 \begin{align}
   T_{ij}=\frac{2}{\sqrt{ - g}}\left[\partial_k\left(\frac{\partial{}(\mathcal{L}\sqrt{ - g})}{\partial(\partial_k{g^{ij}})}\right) - \frac{\partial(\mathcal{L}\sqrt{ - g})}{\partial{g^{ij}}}\right]
   \label{em_ep_tensor}
 \end{align}
-となる．ところで，テンソル$g^{ij}$による$G$（計量と適当な対称テンソル$X_{ij}$の積）の偏微分は，
+を得る．ところで，テンソル$g^{ij}$による$G$（計量と適当な対称テンソル$X_{ij}$の積）の偏微分は，
 \begin{align}
   dG=\frac{\partial{G}}{\partial{g^{ij}}}dg^{ij}
 \end{align}
@@ -342,9 +336,8 @@ $T^{00}=W$はエネルギー密度，$T^{01}/c=T^{10}/c$，$T^{02}/c=T^{20}/c$�
   &= \frac{2}{\sqrt{ - g}}\left[\frac{\sqrt{ - g}}{2\mu_0}g^{bl}f_{ib}f_{jl} - \frac{\partial{\sqrt{ - g}}}{\partial{g^{ij}}}\mathcal{L}\right]\\
   &= \frac{1}{\mu_0}g^{kl}f_{ik}f_{jl} - \frac{2}{\sqrt{ - g}}\frac{\partial{\sqrt{ - g}}}{\partial{g^{ij}}}\mathcal{L}\\
   &= \frac{1}{\mu_0}g^{kl}f_{ik}f_{jl} - \frac{2}{\sqrt{ - g}}\frac{\partial\sqrt{ - g}}{\partial{g}}\frac{\partial{g}}{\partial{g^{ij}}}\mathcal{L}\\
-  &= \frac{1}{\mu_0}g^{kl}f_{ik}f_{jl} + \frac{1}{g}\frac{\partial{g}}{\partial{g^{ij}}}\mathcal{L}
+  &= \frac{1}{\mu_0}g^{kl}f_{ik}f_{jl} + \frac{1}{g}\frac{\partial{g}}{\partial{g^{ij}}}\mathcal{L} .
 \end{align*}
-となる．
 % ここで，$g=\det{g_{ij}}$であるので，
 % \[dg=\frac{\partial{g}}{\partial{g^{ij}}}dg^{ij}\]
 % である．
@@ -352,18 +345,13 @@ $g_{ij}$の余因子を$\Delta_{ij}$などと表すと，
 \[g=\sum_jg^{ij}\Delta_{ji}\]
 のように表すことができる．$g^{ij}$で偏微分し，
 \begin{align}
-  \frac{\partial{g}}{\partial{g^{ij}}}=\Delta_{ji}\label{par1}
+  \frac{\partial{g}}{\partial{g^{ij}}}=\Delta_{ji}\label{par1} .
 \end{align}
-が得られる．
-ところで，行列式について$i$についても和を取るようにすれば，
-\[g=\frac{1}{4}g^{ij}\Delta_{ij}\]
-となる．更に，
-\[{\delta^i}_ig=g^{ij}\Delta_{ij}\]
-と変形し，
-\[g^{ij}g_{ij}g=g^{ij}\Delta_{ij}\]
-となる．よって，
-\[gg_{ij}=\Delta_{ij}\]
-となる．これを\eqref{par1}に代入すれば，
+行列式の余因子展開で$i$についても和を取れば，
+\[ g^{ij}\Delta_{ij} = 4g = \delta^i{}_i g = g^{ij}g_{ij} g \]
+なので，
+\[ gg_{ij}=\Delta_{ij} . \]
+これを\eqref{par1}に代入すれば，
 \[\frac{\partial{g}}{\partial{g^{ij}}}=gg^{ij}\]
 となる．よって，電磁場のエネルギー運動量テンソルは，
 \begin{align*}
@@ -375,70 +363,66 @@ $g_{ij}$の余因子を$\Delta_{ij}$などと表すと，
 \chapter{球対称な重力場の真空解と粒子の運動}
 \section*{演習問題6.1}
 \paragraph{Schwarzschild解}
-原点にのみ質点が存在し，周りは球対称で静的な真空空間の計量を求めよう．計量$g_{ij}$を，
-\[ds^2= - e^{\nu(r)}(cdt)^2 + e^{\lambda(r)}dr^2 + r^2(d\theta^2 + \sin^2\theta{}d\phi^2)\]
-とする．このとき，Christoffel記号は，
-\[{\Gamma^k}_{ij}=\frac{1}{2}g^{kl}\left(\partial_ig_{jl} + \partial_jg_{li} - \partial_lg_{ij}\right)\]
-で与えられる．Christoffel記号のうち，0でない条件について考えよう．まず，直ちに，()の$g^{kl}$から，$k=l$であることが分かろう．
+原点にのみ質点が存在し，周りは球対称で静的な真空の計量を求める．計量$g_{ij}$は
+\[ ds^2= - e^{\nu(r)}(cdt)^2 + e^{\lambda(r)}dr^2 + r^2(d\theta^2 + \sin^2\theta{}d\phi^2) . \]
+Christoffel記号
+\[ {\Gamma^k}_{ij}=\frac{1}{2}g^{kl}\left(\partial_ig_{jl} + \partial_jg_{li} - \partial_lg_{ij}\right) \]
+が0でない条件を考える．
+$g^{kl} \neq 0$となるの必要があるので，$k=l$．
 さらに，()の中が0でないためには，$j=k(=l), i=k(=l), i=j$のいずれかが成立する必要がある．
-最後の場合については，$\partial_l=\partial_k$が含まれるので，$i=j=0, 1, 2$の場合は$k=1$，$i=j=3$の場合は$k=1, 2$が可能である．よって，
+最後の場合については，$\partial_l=\partial_k$が含まれるので，$i=j=0, 1, 2$の場合は$k=1$，そして$i=j=3$の場合は$k=1, 2$が可能である．よって，
 \begin{align}
   \begin{split}
     {\Gamma^0}_{10}={\Gamma^0}_{01}=\frac{\nu'}{2}, \quad{}{\Gamma^1}_{00}=\frac{\nu'}{2}e^{\nu - \lambda}\\
     {\Gamma^1}_{11}=\frac{\lambda'}{2}, \quad{}{\Gamma^1}_{22}= - re^{ - \lambda}, \quad{}{\Gamma^1}_{33}= - r\sin^2\theta{}e^{ - \lambda}\\
     {\Gamma^2}_{12}={\Gamma^2}_{21}=\frac{1}{r}, \quad{\Gamma^2}_{33}= - \sin\theta\cos\theta\\
-    {\Gamma^3}_{13}={\Gamma^3}_{31}=\frac{1}{r}, \quad{\Gamma^3}_{23}={\Gamma^3}_{32}=\cot\theta
+    {\Gamma^3}_{13}={\Gamma^3}_{31}=\frac{1}{r}, \quad{\Gamma^3}_{23}={\Gamma^3}_{32}=\cot\theta .
   \end{split}
 \end{align}
-である．$'$は$r$による微分を表す．
+$\bullet'$は$r$による微分を表す．
 
 先程の計量をEinstein方程式
-\[ {R^i}_j - \frac{1}{2}{\delta^i}_j=\frac{8\pi{}G}{c^4}{T^i}_j \]
-に代入して，各関数$\nu, \lambda$を求めよう．このために，Ricciテンソル
+\[ {R^i}_j - \frac{1}{2} R {\delta^i}_j = \frac{8\pi{}G}{c^4}{T^i}_j \]
+に代入して，各函数$\nu, \lambda$を求める\footnote{この時点で方程式の縮約を取って$R$を$T$に変えると若干手間が少なくなる}．
+Ricciテンソル
 \[R_{mj}={R^i}_{mij}=\partial_i{\Gamma^i}_{mj} - \partial_j{\Gamma^i}_{mi} + {\Gamma^a}_{mj}{\Gamma^i}_{ai} - {\Gamma^a}_{mi}{\Gamma^i}_{aj}\]
-及びRicciスカラー
-\[R={R^i}_{i}\]
-を求める
-（この時点で上の方程式の縮約を取って$R$を$T$に変えると手間が少なくなるが，折角なので$R$も明らかな形にしておこう）．
+は
 \begin{align*}
   {R^0}_0 &= g^{0i}R_{i0}\\
   &= g^{00}R_{00}\\
   &= -  e^{ - \nu}\left[\partial_i{\Gamma^i}_{00} - \partial_0{\Gamma^i}_{0i} + {\Gamma^a}_{00}{\Gamma^i}_{ai} - {\Gamma^a}_{0i}{\Gamma^i}_{a0}\right]\\
   &= -  e^{ - \nu}\left[\partial_1{\Gamma^1}_{00} + {\Gamma^1}_{00}\left({\Gamma^0}_{10} + {\Gamma^1}_{11} + {\Gamma^2}_{12} + {\Gamma^3}_{13}\right) - \left({\Gamma^0}_{01}{\Gamma^1}_{00} + {\Gamma^1}_{00}{\Gamma^0}_{10}\right)\right]\\
-  &= -  \frac{1}{2}\nu''e^{ - \lambda} - \frac{1}{4}\nu'(\nu' - \lambda')e^{ - \lambda} - \frac{\nu'}{r}e^{ - \lambda}
-\end{align*}
-\begin{align*}
+  &= -  \frac{1}{2}\nu''e^{ - \lambda} - \frac{1}{4}\nu'(\nu' - \lambda')e^{ - \lambda} - \frac{\nu'}{r}e^{ - \lambda}, \\
+  %
   {R^1}_1 &= g^{1i}R_{i1}\\
   &= g^{11}R_{11}\\
   &= e^{ - \lambda}\left[\partial_i{\Gamma^i}_{11} - \partial_1{\Gamma^i}_{1i} + {\Gamma^a}_{11}{\Gamma^i}_{ai} - {\Gamma^a}_{1i}{\Gamma^i}_{a1}\right]\\
   &= e^{ - \lambda}\left[\partial_1{\Gamma^1}_{11} - \partial_1{\Gamma^i}_{1i} + {\Gamma^1}_{11}{\Gamma^i}_{1i} - \left({\Gamma^0}_{10}{\Gamma^0}_{01} + {\Gamma^1}_{11}{\Gamma^1}_{11} + {\Gamma^2}_{12}{\Gamma^2}_{21} + {\Gamma^3}_{13}{\Gamma^3}_{31}\right)\right]\\
-  &= -  \frac{1}{2}\nu''e^{ - \lambda} - \frac{1}{4}\nu'(\nu' - \lambda')e^{ - \lambda} + \frac{\lambda'}{r}e^{ - \lambda}
-\end{align*}
-\begin{align*}
+  &= -  \frac{1}{2}\nu''e^{ - \lambda} - \frac{1}{4}\nu'(\nu' - \lambda')e^{ - \lambda} + \frac{\lambda'}{r}e^{ - \lambda} , \\
+  %
   {R^2}_2 &= g^{2i}R_{i2}\\
   &= g^{22}R_{22}\\
   &= \frac{1}{r^2}\left[\partial_i{\Gamma^i}_{22} - \partial_2{\Gamma^i}_{2i} + {\Gamma^a}_{22}{\Gamma^i}_{ai} - {\Gamma^a}_{2i}{\Gamma^i}_{a2}\right]\\
   &= \frac{1}{r^2}\left[\partial_1{\Gamma^1}_{22} - \partial_2{\Gamma^3}_{23} + {\Gamma^1}_{22}{\Gamma^i}_{1i} - \left({\Gamma^1}_{22}{\Gamma^2}_{12} + {\Gamma^2}_{21}{\Gamma^1}_{22} - {\Gamma^3}_{23}{\Gamma^3}_{23}\right)\right]\\
-  &= \frac{1}{r^2}\left[1 - e^{ - \lambda} - re^{ - \lambda}\left(\frac{\nu'}{2} - \frac{\lambda'}{2}\right)\right]
-\end{align*}
-\begin{align*}
+  &= \frac{1}{r^2}\left[1 - e^{ - \lambda} - re^{ - \lambda}\left(\frac{\nu'}{2} - \frac{\lambda'}{2}\right)\right] , \\
+  %
   {R^3}_3 &= g^{3i}R_{i3}\\
   &= g^{33}R_{33}\\
   &= \frac{1}{r^2\sin^2\theta}\left[\partial_i{\Gamma^i}_{33} - \partial_3{\Gamma^i}_{3i} + {\Gamma^a}_{33}{\Gamma^i}_{ai} - {\Gamma^a}_{3i}{\Gamma^i}_{a3}\right]\\
   &= \frac{1}{r^2\sin^2\theta}\left[\left(\partial_1{\Gamma^1}_{33} + \partial_2{\Gamma^2}_{33}\right) + \left({\Gamma^1}_{33}{\Gamma^i}_{1i} + {\Gamma^2}_{33}{\Gamma^i}_{2i}\right) \right.\\
   & \qquad \qquad \qquad \left. - \left({\Gamma^1}_{33}{\Gamma^3}_{13} + {\Gamma^2}_{33}{\Gamma^3}_{23} + {\Gamma^3}_{13}{\Gamma^1}_{33} + {\Gamma^3}_{23}{\Gamma^2}_{33}\right)\right]\\
-  &= \frac{1}{r^2}\left[1 - e^{ - \lambda} - re^{ - \lambda}\left(\frac{\nu'}{2} - \frac{\lambda'}{2}\right)\right]
+  &= \frac{1}{r^2}\left[1 - e^{ - \lambda} - re^{ - \lambda}\left(\frac{\nu'}{2} - \frac{\lambda'}{2}\right)\right] .
 \end{align*}
 
-さて，空間は真空なので，エネルギー運動量テンソルが0であるので，重力場の方程式は，
-\[{R^i}_j - \frac{1}{2}R{\delta^i}_j=0\]
-となる．$(0, 0)$成分は，
-\[0=\frac{1}{2}\left({R^0}_0 - {R^1}_1 - {R^2}_2 - {R^3}_3\right)=e^{ - \lambda}\left(\frac{1}{r^2} - \frac{\lambda'}{r}\right) - \frac{1}{r^2}\]
-となる．$(1, 1)$成分は，
-\[0=\frac{1}{2}\left( - {R^0}_0 + {R^1}_1 - {R^2}_2 - {R^3}_3\right)=e^{ - \lambda}\left(\frac{1}{r^2} + \frac{\nu'}{r}\right) - \frac{1}{r^2}\]
-となる．$(2, 2)$及び$(3, 3)$成分は，
-\[0=\frac{1}{2}\left( - {R^0}_0 - {R^1}_1 + {R^2}_2 - {R^3}_3\right)=e^{ - \lambda}\left(\nu'' + \frac{\nu'^2}{2} + \frac{\nu' - \lambda'}{r} - \frac{\nu'\lambda'}{2}\right)\]
-となる．上の式を，$r\to\infty$で
+真空ではエネルギー運動量テンソルが0なので，重力場の方程式は，
+\[ {R^i}_j - \frac{1}{2}R{\delta^i}_j=0 . \]
+$(0, 0)$成分は，
+\[0=\frac{1}{2}\left({R^0}_0 - {R^1}_1 - {R^2}_2 - {R^3}_3\right)=e^{ - \lambda}\left(\frac{1}{r^2} - \frac{\lambda'}{r}\right) - \frac{1}{r^2} . \]
+$(1, 1)$成分は，
+\[0=\frac{1}{2}\left( - {R^0}_0 + {R^1}_1 - {R^2}_2 - {R^3}_3\right)=e^{ - \lambda}\left(\frac{1}{r^2} + \frac{\nu'}{r}\right) - \frac{1}{r^2}.\]
+$(2, 2)$及び$(3, 3)$成分は，
+\[0=\frac{1}{2}\left( - {R^0}_0 - {R^1}_1 + {R^2}_2 - {R^3}_3\right)=e^{ - \lambda}\left(\nu'' + \frac{\nu'^2}{2} + \frac{\nu' - \lambda'}{r} - \frac{\nu'\lambda'}{2}\right).\]
+上の式を，$r\to\infty$で
 \[g_{00}= - 1 - \frac{2}{c^2}\phi= - 1 + \frac{2GM}{rc^2}\]
 に一致するという静的な弱い重力場に対する境界条件の下で解くと，
 \[ds^2= - \left(1 - \frac{2GM}{rc^2}\right)(cdt)^2 + \frac{1}{1 - \frac{2GM}{rc^2}}dr^2 + r^2(d\theta^2 + \sin^2\theta{}d\phi^2)\]
@@ -447,16 +431,22 @@ $g_{ij}$の余因子を$\Delta_{ij}$などと表すと，
 \paragraph{Birkhoffの定理}
 先程は空間が静的という条件を課したが，実はこれを課さなくても，同じ答えが得られる．これをBirkhoffの定理と言う．
 空間が静的でなくなったので，$\partial_0$の項が無視できなくなっている．その結果増えるChristoffel記号は，
-\[{\Gamma^0}_{00}=\frac{\dot{\nu}}{2c}, \quad{\Gamma^0}_{11}=\frac{\dot{\lambda}}{2c}e^{\lambda - \nu}, \quad{\Gamma^1}_{01}={\Gamma^1}_{10}=\frac{\dot{\lambda}}{2c}\]
-である．$\dot{}$は時間微分を表す．この結果，Ricciテンソルには，次の項が加わる．
+\[{\Gamma^0}_{00}=\frac{\dot{\nu}}{2c}, \quad{\Gamma^0}_{11}=\frac{\dot{\lambda}}{2c}e^{\lambda - \nu}, \quad{\Gamma^1}_{01}={\Gamma^1}_{10}=\frac{\dot{\lambda}}{2c}.\]
+$\dot\bullet$は時間微分を表す．この結果，Ricciテンソルには，次の項が加わる：
 \begin{align*}
-  {R^0}_0 &\colon -  e^{ - \nu}\left[\partial_0{\Gamma^0}_{00} - (\partial_0{\Gamma^0}_{00} + \partial_0{\Gamma^1}_{01})\right]= - e^{ - \nu}\left[ - \frac{\ddot{\lambda}}{2c^2} + \frac{\dot{\lambda}\dot{\nu}}{4c^2} - \frac{\dot{\lambda}^2}{4c^2}\right]\\
-  {R^1}_1 &\colon -  e^{ - \nu}\left[\partial_0{\Gamma^0}_{11} + {\Gamma^0}_{11}{\Gamma^i}_{0i} - \left({\Gamma^0}_{11}{\Gamma^1}_{01} + {\Gamma^1}_{10}{\Gamma^0}_{11}\right)\right]= - e^{ - \nu}\left[ - \frac{\ddot{\lambda}}{2c^2} + \frac{\dot{\lambda}\dot{\nu}}{4c^2} - \frac{\dot{\lambda}^2}{4c^2}\right]\\
+  {R^0}_0 &\colon -  e^{ - \nu}\left[\partial_0{\Gamma^0}_{00} - (\partial_0{\Gamma^0}_{00} + \partial_0{\Gamma^1}_{01})\right]
+  = - e^{ - \nu}\left[ - \frac{\ddot{\lambda}}{2c^2} + \frac{\dot{\lambda}\dot{\nu}}{4c^2} - \frac{\dot{\lambda}^2}{4c^2}\right]\\
+  %
+  {R^1}_1 &\colon -  e^{ - \nu}\left[\partial_0{\Gamma^0}_{11} + {\Gamma^0}_{11}{\Gamma^i}_{0i} - \left({\Gamma^0}_{11}{\Gamma^1}_{01} + {\Gamma^1}_{10}{\Gamma^0}_{11}\right)\right]
+  = - e^{ - \nu}\left[ - \frac{\ddot{\lambda}}{2c^2} + \frac{\dot{\lambda}\dot{\nu}}{4c^2} - \frac{\dot{\lambda}^2}{4c^2}\right] .
 \end{align*}
 ${R^2}_2, {R^3}_3$は変わらない．よって，先程の式は，
-\[0=e^{ - \lambda}\left(\frac{1}{r^2} - \frac{\lambda'}{r}\right) - \frac{1}{r^2}\]
-\[0=e^{ - \lambda}\left(\frac{1}{r^2} + \frac{\nu'}{r}\right) - \frac{1}{r^2}\]
-\[0=e^{ - \lambda}\left(\nu'' + \frac{\nu'^2}{2} + \frac{\nu' - \lambda'}{r} - \frac{\nu'\lambda'}{2}\right) + e^{ - \nu}\left[ - \frac{\ddot{\lambda}}{c^2} + \frac{\dot{\lambda}\dot{\nu}}{2c^2} - \frac{\dot{\lambda}^2}{2c^2}\right]\]
+\begin{align*}
+  0 &= e^{ - \lambda}\left(\frac{1}{r^2} - \frac{\lambda'}{r}\right) - \frac{1}{r^2}
+  0 &= e^{ - \lambda}\left(\frac{1}{r^2} + \frac{\nu'}{r}\right) - \frac{1}{r^2}
+  0 &= e^{ - \lambda}\left(\nu'' + \frac{\nu'^2}{2} + \frac{\nu' - \lambda'}{r} - \frac{\nu'\lambda'}{2}\right)
+  + e^{ - \nu}\left[ - \frac{\ddot{\lambda}}{c^2} + \frac{\dot{\lambda}\dot{\nu}}{2c^2} - \frac{\dot{\lambda}^2}{2c^2}\right]
+\end{align*}
 となる．さらに，${R^1}_0$について，
 \begin{align*}
   0 &= {R^1}_0\\
@@ -498,25 +488,28 @@ $r\geq{}r_\text{g}$の場合のSchwarzschild計量の表式を調べよう．こ
 \end{align*}
 両辺微分すれば，
 \begin{align*}
-  2u\frac{\partial{u}}{\partial{r}} &= \frac{r}{{r_\text{g}}^2}\exp\left(\frac{r}{r_\text{g}}\right)\cosh^2\left(\frac{ct}{2r_\text{g}}\right)\\
-  2u\frac{\partial{u}}{\partial{t}} &= \frac{c}{r_\text{g}}\left(\frac{r}{r_\text{g}} - 1\right)\exp\left(\frac{r}{r_\text{g}}\right)\cosh\left(\frac{ct}{2r_\text{g}}\right)\sinh\left(\frac{ct}{2r_\text{g}}\right)\\
-  2v\frac{\partial{v}}{\partial{r}} &= \frac{r}{{r_\text{g}}^2}\exp\left(\frac{r}{r_\text{g}}\right)\sinh^2\left(\frac{ct}{2r_\text{g}}\right)\\
-  2v\frac{\partial{v}}{\partial{t}} &= \frac{c}{r_\text{g}}\left(\frac{r}{r_\text{g}} - 1\right)\exp\left(\frac{r}{r_\text{g}}\right)\cosh\left(\frac{ct}{2r_\text{g}}\right)\sinh\left(\frac{ct}{2r_\text{g}}\right)\\
+  2u\frac{\partial{u}}{\partial{r}} &= \frac{r}{{r_\text{g}}^2}\exp\left(\frac{r}{r_\text{g}}\right)\cosh^2\left(\frac{ct}{2r_\text{g}}\right) , \\
+  %
+  2u\frac{\partial{u}}{\partial{t}} &= \frac{c}{r_\text{g}}\left(\frac{r}{r_\text{g}} - 1\right)\exp\left(\frac{r}{r_\text{g}}\right)\cosh\left(\frac{ct}{2r_\text{g}}\right)\sinh\left(\frac{ct}{2r_\text{g}}\right) , \\
+  %
+  2v\frac{\partial{v}}{\partial{r}} &= \frac{r}{{r_\text{g}}^2}\exp\left(\frac{r}{r_\text{g}}\right)\sinh^2\left(\frac{ct}{2r_\text{g}}\right) , \\
+  %
+  2v\frac{\partial{v}}{\partial{t}} &= \frac{c}{r_\text{g}}\left(\frac{r}{r_\text{g}} - 1\right)\exp\left(\frac{r}{r_\text{g}}\right)\cosh\left(\frac{ct}{2r_\text{g}}\right)\sinh\left(\frac{ct}{2r_\text{g}}\right) .
 \end{align*}
-となる．よって，Schwarzschild計量の立体角$r^2(d\theta^2 + \sin^2\theta{d\phi^2})$を含まない部分を次のように表す：
+よって，Schwarzschild計量の立体角$r^2(d\theta^2 + \sin^2\theta{d\phi^2})$を含まない部分を次のように表す：
 \begin{align*}
-  Adu^2 - Bdv^2 &= A\left(\frac{\partial{u}}{\partial{t}}dt + \frac{\partial{u}}{\partial{r}}dr\right)^2 - B\left(\frac{\partial{v}}{\partial{t}}dt + \frac{\partial{v}}{\partial{r}}dr\right)^2\\
-  &= \frac{r - r_\text{g}}{4{r_\text{g}}^3}\exp\left(\frac{r}{r_\text{g}}\right)\left[A\sinh^2\left(\frac{ct}{2r_\text{g}}\right) - B\cosh^2\left(\frac{ct}{2r_\text{g}}\right)\right](cdt)^2\\
-  &\qquad + \frac{r^2}{4{r_\text{g}}^3(r - r_\text{g})}\exp\left(\frac{r}{r_\text{g}}\right)\left[A\cosh^2\left(\frac{ct}{2r_\text{g}}\right) - B\sinh^2\left(\frac{ct}{2r_\text{g}}\right)\right]dr^2\\
+  Adu^2 - Bdv^2 &= A\left(\frac{\partial{u}}{\partial{t}}dt + \frac{\partial{u}}{\partial{r}}dr\right)^2 - B\left(\frac{\partial{v}}{\partial{t}}dt + \frac{\partial{v}}{\partial{r}}dr\right)^2 \\
+  &= \frac{r - r_\text{g}}{4{r_\text{g}}^3}\exp\left(\frac{r}{r_\text{g}}\right)\left[A\sinh^2\left(\frac{ct}{2r_\text{g}}\right) - B\cosh^2\left(\frac{ct}{2r_\text{g}}\right)\right](cdt)^2 \\
+  &\qquad + \frac{r^2}{4{r_\text{g}}^3(r - r_\text{g})}\exp\left(\frac{r}{r_\text{g}}\right)\left[A\cosh^2\left(\frac{ct}{2r_\text{g}}\right) - B\sinh^2\left(\frac{ct}{2r_\text{g}}\right)\right]dr^2 \\
   &\qquad + \frac{rc}{4{r_\text{g}}^3}(A - B)\exp\left(\frac{r}{r_\text{g}}\right)\cosh\left(\frac{ct}{2r_\text{g}}\right)\sinh\left(\frac{ct}{2r_\text{g}}\right)drdt.
 \end{align*}
 これをSchwarzschild計量の該当部分
 \[ - \left(1 - \frac{r_\text{g}}{r}\right)(cdt)^2 + \left(1 - \frac{r_\text{g}}{r}\right)^{ - 1}dr^2\]
 と比較すると，
-\[A=B=f^2=\frac{4{r_\text{g}}^3}{r}\exp\left( - \frac{r}{r_\text{g}}\right)>0\]
-である．よって，$(u,v)$座標系でのSchwarzschild計量は，
-\[ds^2=f^2( - dv^2 + du^2) + r^2(d\theta^2 + \sin^2\theta{d\phi^2})\]
-で表される．$r<{r_\text{g}}$の場合も同様にすれば，同じ形になることがわかる．この座標系をKruskal座標系と呼ぶ（本文図7-5）．
+\[ A=B=f^2=\frac{4{r_\text{g}}^3}{r}\exp\left( - \frac{r}{r_\text{g}}\right) > 0 .\]
+よって，$(u,v)$座標系でのSchwarzschild計量は，
+\[ ds^2=f^2( - dv^2 + du^2) + r^2(d\theta^2 + \sin^2\theta{d\phi^2}) . \]
+$r<{r_\text{g}}$の場合も同様にすれば，同じ形になることがわかる．この座標系をKruskal座標系と呼ぶ（本文図7-5）．
 
 極限について記すと，
 \begin{align*}
@@ -532,9 +525,9 @@ Kruskal座標系をさらに，
 によって変換する．各領域の式は，
 \begin{align*}
   \text{I} &\colon u>0, - v<{}u<{}v\\
-  \text{I}\hspace{ - .1em}\text{I} &\colon u<{}v<\sqrt{1 + u^2}\quad(u>0),\qquad - u<{}v<\sqrt{1 + u^2}\quad(u<{}0)\\
-  \text{I}\hspace{ - .1em}\text{I}\hspace{ - .1em}\text{I} &\colon u<{}0,v<{}u<{} - v\\
-  \text{I}\hspace{ - .1em}\text{V} &\colon  - \sqrt{1 + u^2}<{}v<{} - u\quad(u>0),\qquad - \sqrt{1 + u^2}<{}v<{}u\quad(u<{}0)
+  \text{I}\hspace{-.1em}\text{I} &\colon u<{}v<\sqrt{1 + u^2}\quad(u>0),\qquad - u<{}v<\sqrt{1 + u^2}\quad(u<{}0)\\
+  \text{I}\hspace{-.1em}\text{I}\hspace{-.1em}\text{I} &\colon u<{}0,v<{}u<{} - v\\
+  \text{I}\hspace{-.1em}\text{V} &\colon  - \sqrt{1 + u^2}<{}v<{} - u\quad(u>0),\qquad - \sqrt{1 + u^2}<{}v<{}u\quad(u<{}0)
 \end{align*}
 である．
 これによってPenrose図（本文図7-7）が得られる．
@@ -562,7 +555,7 @@ Kruskal座標系をさらに，
 \[\partial_{j}T'^{ij}=0\]
 と言うように，今までと同様の形式になる（例えば，力学場でのテンソルなど）．
 
-このテンソルは他の座標系ではどのように表現されるだろうか？流体が４元速度$u^i$で動いて見える座標系を考える．
+このテンソルは他の座標系ではどのように表現されるだろうか？流体が4元速度$u^i$で動いて見える座標系を考える．
 簡単のため，流体は$x$軸方向に運動しているとする．考えている座標系と流体に固定された座標系のLorentz変換は，
 \[
 \begin{pmatrix}
@@ -587,12 +580,12 @@ Kruskal座標系をさらに，
 \]
 で与えられる．$x=vt$を代入すれば，
 \[dt=\frac{d\tau}{\sqrt{1 - (v/c)^2}}\]
-が分かる．これは固有時間についての式である．これを使って４元速度を具体的に求めれば，
+が分かる．これは固有時間についての式である．これを使って4元速度を具体的に求めれば，
 \begin{align}
   u^0 &= \frac{cdt}{d\tau} = \frac{c}{\sqrt{1 - (v/c)^2}}\\
   u^1 &= \frac{dx}{d\tau} = \frac{v}{\sqrt{1 - (v/c)^2}} = \sqrt{\left(u^0\right)^2 - c^2}
 \end{align}
-が得られる．よって，Lorentz変換は４元速度を使えば，
+が得られる．よって，Lorentz変換は4元速度を使えば，
 \begin{align}
   \frac{\partial{x^i}}{\partial{x'^j}}=
   \begin{pmatrix}
@@ -607,9 +600,9 @@ Kruskal座標系をさらに，
 と変換されるので，先程の式を代入すれば，
 \begin{align}
   T^{00} &= \left(\frac{u^0}{c}\right)^2 T'^{00} + \left(\frac{u^1}{c}\right)^2 T'^{11}\notag\\
-  &= \rho\left(u^0\right)^2 + \left(\frac{u^0}{c}\right)^2p - p
+  &= \rho\left(u^0\right)^2 + \left(\frac{u^0}{c}\right)^2p - p .
 \end{align}
-となる．他の成分についても同様に計算すればエネルギー運動量テンソルが求まる．
+他の成分についても同様に計算すればエネルギー運動量テンソルが求まる．
 
 これを一般相対論に拡張してみよう．
 流体に固定した座標系の計量は$\eta^{ab}$（瞬間的に流体と速度が一致している慣性系を考えている）で，我々の座標系の計量は$g^{ij}$なので，
@@ -617,15 +610,15 @@ Kruskal座標系をさらに，
 と変換される．時間成分と空間成分に分ければ，
 \begin{align*}
   g^{ij} &=  - \frac{1}{c^2}\frac{\partial{x^i}}{\partial{\tau}}\frac{\partial{x^j}}{\partial{\tau}} + \sum_{a=1}^{3}\frac{\partial{x^i}}{\partial{x'^a}}\frac{\partial{x^j}}{\partial{x'^a}}\\
-  &=  - \frac{1}{c^2}u^iu^j + \sum_{a=1}^{3}\frac{\partial{x^i}}{\partial{x'^a}}\frac{\partial{x^j}}{\partial{x'^a}}
+  &=  - \frac{1}{c^2}u^iu^j + \sum_{a=1}^{3}\frac{\partial{x^i}}{\partial{x'^a}}\frac{\partial{x^j}}{\partial{x'^a}} .
 \end{align*}
-となる．さらに，エネルギー運動量テンソルの変換も全く同様に，
+さらに，エネルギー運動量テンソルの変換も全く同様に，
 \[T^{ij}= - \rho{}u^iu^j + p\sum_{a=1}^{3}\frac{\partial{x^i}}{\partial{x'^a}}\frac{\partial{x^j}}{\partial{x'^a}}\]
-と表すことができる．以上２式から，
+と表すことができる．以上2式から，
 \begin{align}
-  T^{ij} &= \left(\rho + \frac{p}{c^2}\right)u^iu^j + pg^{ij}
+  T^{ij} &= \left(\rho + \frac{p}{c^2}\right)u^iu^j + pg^{ij} .
 \end{align}
-と求まる．もしも我々の座標系が慣性系なら計量を$g^{ij}$から$\eta^{ij}$にしてやればよい．
+もしも我々の座標系が慣性系なら計量を$g^{ij}$から$\eta^{ij}$にしてやればよい．
 
 \section{Friedmannモデル}
 \paragraph{(8.13), (8.14)}
@@ -655,38 +648,37 @@ Kruskal座標系をさらに，
 \]
 である．
 
-まずは，$k=1$の時のChristoffel記号を求めよう．
+$k=1$の時のChristoffel記号を求める．
 \[{\Gamma^k}_{ij}=\frac{1}{2}g^{kl}\left(\partial_ig_{jl} + \partial_jg_{li} - \partial_lg_{ij}\right)\]
-にRobertson - Walker計量を代入すれば，
+にRobertson-Walker計量を代入すれば，
 \begin{align*}
   {\Gamma^0}_{11}=\frac{a\dot{a}}{c}, \quad{\Gamma^0}_{22}=\frac{a\dot{a}}{c}\sin^2\chi, \quad{\Gamma^0}_{33}=\frac{a\dot{a}}{c}\sin^2\chi\sin^2\theta\\
   {\Gamma^1}_{01}=\frac{1}{c}\frac{\dot{a}}{a}, \quad{\Gamma^1}_{22}= - \sin\chi\cos\chi, \quad{\Gamma^1}_{33}= - \sin\chi\cos\chi\sin^2\theta\\
   {\Gamma^2}_{02}=\frac{1}{c}\frac{\dot{a}}{a}, \quad{\Gamma^2}_{12}=\cot\chi, \quad{\Gamma^2}_{33}= - \sin\theta\cos\theta\\
   {\Gamma^3}_{03}=\frac{1}{c}\frac{\dot{a}}{a}, \quad{\Gamma^3}_{13}=\cot\chi, \quad{\Gamma^3}_{23}=\cot\theta
 \end{align*}
-となる（下添字を入れ替えたものについては省略した）．この時，Ricciテンソルは，
+となる（下添字を入れ替えたものについては省略した）．Ricciテンソルは，
 \begin{align*}
   R_{00} &= -  \partial_0{\Gamma^i}_{0i} - {\Gamma^a}_{0i}{\Gamma^i}_{a0}\\
-  &= -  \frac{3}{c^2}\frac{\ddot{a}}{a}\\
+  &= -  \frac{3}{c^2}\frac{\ddot{a}}{a} , \\
   R_{11} &= \partial_i{\Gamma^i}_{11} - \partial_1{\Gamma^i}_{1i} + {\Gamma^a}_{11}{\Gamma^i}_{ai} - {\Gamma^a}_{1i}{\Gamma^i}_{a1}\\
-  &= \frac{a\ddot{a}}{c^2} + 2\frac{\dot{a}^2}{c^2} + 2
+  &= \frac{a\ddot{a}}{c^2} + 2\frac{\dot{a}^2}{c^2} + 2 .
 \end{align*}
-である．よって，混合形式にすれば，
-\[{R^0}_0=\frac{3}{c^2}\frac{\ddot{a}}{a}, \quad{R^1}_1=\frac{1}{c^2}\frac{\ddot{a}}{a} + \frac{2}{c^2}\left(\frac{\dot{a}}{a}\right)^2 + \frac{2}{a^2}\]
-となる．
+混合形式にすれば，
+\[ {R^0}_0=\frac{3}{c^2}\frac{\ddot{a}}{a}, \quad{R^1}_1=\frac{1}{c^2}\frac{\ddot{a}}{a} + \frac{2}{c^2}\left(\frac{\dot{a}}{a}\right)^2 + \frac{2}{a^2} . \]
 
 Einstein方程式は，
-\[{R^i}_j - \frac{1}{2}R{\delta^i}_j + \Lambda{\delta^i}_j=\frac{8\pi{G}}{c^4}{T^i}_j\]
-である．両辺縮約すれば，
-\[R=4\Lambda - \frac{8\pi{G}}{c^4}T\]
-が得られる．$T$はエネルギー運動量テンソルのトレース${T^i}_i$である．上の２式から$R$を消去すれば，
+\[ {R^i}_j - \frac{1}{2}R{\delta^i}_j + \Lambda{\delta^i}_j=\frac{8\pi{G}}{c^4}{T^i}_j .\]
+両辺を縮約すれば，
+\[ R=4\Lambda - \frac{8\pi{G}}{c^4}T . \]
+$T$はエネルギー運動量テンソルのトレース${T^i}_i$である．上の2式から$R$を消去すれば，
 \[{R^i}_j - \Lambda{\delta^i}_j + \frac{4\pi{G}}{c^4}T{\delta^i}_j=\frac{8\pi{G}}{c^4}{T^i}_j\]
 となり，完全流体であれば$T=3p - \rho{c^2}$なので，
 \begin{align}
-  {R^i}_j - \Lambda{\delta^i}_j + \frac{4\pi{G}}{c^4}\left(3p - \rho{c^2}\right){\delta^i}_j=\frac{8\pi{G}}{c^4}{T^i}_j
+  {R^i}_j - \Lambda{\delta^i}_j + \frac{4\pi{G}}{c^4}\left(3p - \rho{c^2}\right){\delta^i}_j=\frac{8\pi{G}}{c^4}{T^i}_j .
   \label{ein_field_eq}
 \end{align}
-となる．$k=1$でのRicciテンソルを代入すれば，$(0, 0)$及び$(1, 1)$成分について，それぞれ，
+$k=1$でのRicciテンソルを代入すれば，$(0, 0)$及び$(1, 1)$成分について，それぞれ，
 \[
 \begin{cases}
   \dfrac{\ddot{a}}{a} = -  \dfrac{4\pi{G}}{3}\rho - \dfrac{4\pi{G}}{c^2}p + \dfrac{\Lambda}{3}c^2 \\[10pt]
@@ -716,37 +708,34 @@ $k= - 1$では，
 \setcounter{section}{2}
 \section{重力波のエネルギー}
 \paragraph{エネルギー運動量擬テンソル}
-一般相対論において，無限小変換を考えれば，エネルギー・運動量が保存される条件は次のようになる：
+一般相対論において，無限小変換を考えれば，エネルギー・運動量が保存される条件は
 \begin{align}
   {{T^j}_i}_{;j}=0.\label{T;=0}
 \end{align}
-さて，この条件式をそのまま共変微分すると，左辺は
+この条件式をそのまま共変微分すると，左辺は
 \begin{align*}
   {{T^j}_i}_{;j} &= \partial_j{T^j}_i + {\Gamma^j}_{rj}{T^r}_i - {\Gamma^r}_{ij}{T^j}_r\\
   &= \partial_j{T^j}_i + \frac{1}{\sqrt{ - g}}\partial_r\sqrt{ - g}\cdot{T^r}_i - {\Gamma^r}_{ij}{T^j}_r\\
   &= \frac{1}{\sqrt{ - g}}\partial_j\left(\sqrt{ - g}\cdot{T^j}_i\right) - \frac{1}{2}g^{rl}\left(\partial_ig_{jl} + \partial_jg_{li} - \partial_lg_{ij}\right){T^j}_r\\
-  &= \frac{1}{\sqrt{ - g}}\partial_j\left(\sqrt{ - g}\cdot{T^j}_i\right) - \frac{1}{2}\partial_ig_{jl}\cdot{}T^{jl} - \frac{1}{2}\left(T^{jl}\partial_jg_{li} - T^{jl}\partial_lg_{ij}\right)
+  &= \frac{1}{\sqrt{ - g}}\partial_j\left(\sqrt{ - g}\cdot{T^j}_i\right) - \frac{1}{2}\partial_ig_{jl}\cdot{}T^{jl} - \frac{1}{2}\left(T^{jl}\partial_jg_{li} - T^{jl}\partial_lg_{ij}\right) .
 \end{align*}
-となる．ところで，最後の括弧は２項目の$j, l$を入れ替えると0になることが分かる．よって，条件式\eqref{T;=0}は
+ところで，最後の括弧は2項目の$j, l$を入れ替えると0になることが分かる．よって，条件式\eqref{T;=0}は
 \begin{align}
-  \frac{1}{\sqrt{ - g}}\partial_j\left(\sqrt{ - g}\cdot{T^j}_i\right) - \frac{1}{2}\partial_ig_{jl}\cdot{}T^{jl}=0\label{T;=0??}
+  \frac{1}{\sqrt{ - g}}\partial_j\left(\sqrt{ - g}\cdot{T^j}_i\right) - \frac{1}{2}\partial_ig_{jl}\cdot{}T^{jl}=0 . \label{T;=0??}
 \end{align}
-と表される．ところで，力学場でのエネルギー運動量テンソルは，
+ところで，力学場でのエネルギー運動量テンソルは，
 \begin{align}
   T_{ij}=\frac{2}{\sqrt{ - g}}\left[\partial_k\left(\frac{\partial{}(\mathcal{L}\sqrt{ - g})}{\partial(\partial_k{g^{ij}})}\right) - \frac{\partial(\mathcal{L}\sqrt{ - g})}{\partial{g^{ij}}}\right]
   \label{ep_tensor}
 \end{align}
 のように表され，このエネルギー・運動量が保存される条件は
 \begin{align}
-  \partial_j\left(\sqrt{ - g}\cdot{T^j}_i\right)=0\label{div_trueT}
+  \partial_j\left(\sqrt{ - g}\cdot{T^j}_i\right)=0 . \label{div_trueT}
 \end{align}
-である．これは明らかに\eqref{T;=0??}と矛盾する．
-よって，\eqref{T;=0??}ないしは\eqref{T;=0}の${T^j}_i$は力学場\eqref{ep_tensor}以外のものを含んでいると考えるのがよさそうだ．
-そして，これを${t^j}_i$と表すことにしよう．つまり，エネルギー・運動量が保存される条件は，\eqref{div_trueT}改め
-\begin{align}
-  \partial_k\left[\sqrt{ - g}({T^j}_i + {t^j}_i)\right]=0
-\end{align}
-である．これは\eqref{T;=0}と両立可能なので，${t^j}_i$には次の条件が課せられる：
+これは明らかに\eqref{T;=0??}と矛盾するので，\eqref{T;=0??}ないしは\eqref{T;=0}の${T^j}_i$は力学場\eqref{ep_tensor}以外の量${t^j}_i$を含んでいると考えられる．
+すなわち，エネルギー・運動量が保存される条件は，\eqref{div_trueT}改め
+\[ \partial_k\left[\sqrt{ - g}({T^j}_i + {t^j}_i)\right]=0 . \]
+これは\eqref{T;=0}と両立可能なので，${t^j}_i$には次の条件が課せられる：
 \begin{align}
   \frac{1}{\sqrt{ - g}}\partial_j\left(\sqrt{ - g}\cdot{t^j}_i\right) + \frac{1}{2}\partial_ig_{jl}\cdot{}T^{jl}=0.\label{pseudo_Eptenosr}
 \end{align}
@@ -768,7 +757,7 @@ $k= - 1$では，
   &= \frac{c^4}{32\pi{G}}\left[\partial_s(\partial_i\phi_{kl}\cdot{}\eta^{st}\partial_t\phi^{kl}) - \partial_s\partial_i\phi_{kl}\cdot{}\eta^{st}\partial_t\phi^{kl}\right]\\
   &\qquad - \frac{c^4}{64\pi{G}}\left[\partial_s\left(\eta^{st}\partial_i\phi\cdot\partial_t\phi\right) - \eta^{st}\partial_s\partial_i\phi\cdot\partial_t\phi\right]
 \end{align*}
-が求まる．[]内の２項目について，
+が求まる．[]内の2項目について，
 \begin{align*}
   \partial_s\partial_i\phi_{kl}\cdot{}\eta^{st}\partial_t\phi^{kl}
   &= \frac{1}{2}\partial_s\partial_i\phi_{kl}\cdot{}\eta^{st}\partial_t\phi^{kl} + \frac{1}{2}\partial_s\partial_i\phi_{kl}\cdot{}\eta^{st}\partial_t\phi^{kl}\\
@@ -779,11 +768,15 @@ $k= - 1$では，
   &= \partial_j\left[\frac{1}{2}{\delta^j}_{i}\left(\partial_s\phi_{kl}\cdot{}\eta^{st}\partial_t\phi^{kl}\right)\right]
 \end{align*}
 などとなるので，先程の計算結果に代入し，
-\begin{align*}
-  \partial_j{t^j}_i = \frac{c^4}{64\pi{G}}\partial_j\left[2\partial_i\phi_{kl}\cdot{}\eta^{jt}\partial_t\phi^{kl} - \eta^{jt}\partial_i\phi\cdot\partial_t\phi + {\delta^j}_i\left(\frac{1}{2}\eta^{st}\partial_s\phi\cdot\partial_t\phi - \partial_s\phi_{kl}\cdot{}\eta^{st}\partial_t\phi^{kl}\right)\right]
-\end{align*}
-となる．よって，
-\[{t^j}_i=\frac{c^4}{64\pi{G}}\left[2\partial_i\phi_{kl}\cdot{}\eta^{jt}\partial_t\phi^{kl} - \eta^{jt}\partial_i\phi\cdot\partial_t\phi + {\delta^j}_i\left(\frac{1}{2}\eta^{st}\partial_s\phi\cdot\partial_t\phi - \partial_s\phi_{kl}\cdot{}\eta^{st}\partial_t\phi^{kl}\right)\right]\]
-と求まる．
+\[
+\partial_j{t^j}_i = \frac{c^4}{64\pi{G}}\partial_j
+\left[2\partial_i\phi_{kl}\cdot{}\eta^{jt}\partial_t\phi^{kl} - \eta^{jt}\partial_i\phi\cdot\partial_t\phi
++ {\delta^j}_i\left(\frac{1}{2}\eta^{st}\partial_s\phi\cdot\partial_t\phi - \partial_s\phi_{kl}\cdot{}\eta^{st}\partial_t\phi^{kl}\right)\right] .
+\]
+よって，
+\[ {t^j}_i=\frac{c^4}{64\pi{G}}
+\left[2\partial_i\phi_{kl}\cdot{}\eta^{jt}\partial_t\phi^{kl} - \eta^{jt}\partial_i\phi\cdot\partial_t\phi
++ {\delta^j}_i\left(\frac{1}{2}\eta^{st}\partial_s\phi\cdot\partial_t\phi - \partial_s\phi_{kl}\cdot{}\eta^{st}\partial_t\phi^{kl}\right)\right] .
+\]
 
 \end{document}
