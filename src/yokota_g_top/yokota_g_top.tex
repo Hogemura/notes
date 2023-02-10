@@ -1,0 +1,441 @@
+\documentclass[a4paper, leqno]{ltjsreport}
+\usepackage[hiragino-pro]{luatexja-preset}
+\usepackage{../hogehoge}
+\renewcommand{\prechaptername}{}
+\renewcommand{\postchaptername}{}
+\begin{document}
+\chapter*{群と位相（横田一郎）}
+使用しているのは第17版第17刷．
+
+\chapter{射影空間と古典群の定義}
+\paragraph{記号等}
+\begin{itemize}
+  \item $\mathfrak{J}(n, K)$，$\mathfrak{J}_+(n, K)$．(p.51)
+  \item $KP(n-1) = \{\, X \in M(n, K) \mid X^\ast=X, X^2=X, \Tr(X)=1 \,\}$．(p.58)\par
+  補題27から$X\in KP(n-1)$は$A\in G(n, K)$によって$X=AE_nA^\ast$と表すことができる．
+  これによって，積を導入する．すなわち，$X, Y\in KP(n-1)$を$A, B\in G(n, K)$を用いて$X=AE_nA^\ast$，$Y=BE_nB^\ast$とした時，$X$と$Y$の積を$(AB)E_n(AB)^\ast$とする．
+  \item $S_d=\{\, (\xi, x) \in \mathbb{R} \times K \mid \xi(\xi - 1) = \lvert x\rvert^2 \,\}$．(p.58)
+\end{itemize}
+
+\chapter{射影空間と古典群の位相}
+\paragraph{記号等}
+\begin{itemize}
+  \item $D_{\boldsymbol{a}}\in M(n, K)~ (\boldsymbol{a} \in S_K{}^{n-1})$：$D_{\boldsymbol{a}}\boldsymbol{a}=-\boldsymbol{a}$；$(\boldsymbol{x}, \boldsymbol{a}) = 0\ (\boldsymbol{x}\in K^n)$なら$D\boldsymbol{x}=\boldsymbol{x}$．(p.123)
+\end{itemize}
+
+\chapter{射影空間と古典群の胞体分割}
+\paragraph{記号等}
+\begin{itemize}
+  \item $D_{(\kappa, \boldsymbol{a})} = (\delta_{ij} + (\kappa - 1) a_i \overline{a}_j)_{i,j=1,\ldots,n} \in M(n, \mathbb{C})$；$\boldsymbol{a} \in S_\mathbb{C}^0$，$\boldsymbol{a} \in S_\mathbb{C}^{n-1}$．(p.151)
+\end{itemize}
+
+\paragraph{定理30}
+$h\colon S_d \cup V_K{}^2 \to KP(2)$は$f\colon S_d \to KP(2)$，$\varphi_2\colon V_K{}^2 \to KP(2)$で構成される．
+$f$は$S_d\to KP(1)$の同相写像であり（定理28の証明），$\varphi_2$の制限は同相写像$E_K{}^2\to e^{2d}=KP(2)-KP(1)$と，$S_K{}^1\to KP(1)$（定理29の証明）である．
+従って，$h\colon S_d \cup V_K{}^2 \to KP(2)$が全射であることは明らか．
+ここで，$p,p'\in S_d \cup V_K{}^2$に対し，次の同値関係を定義する：
+\[p \sim p' \Leftrightarrow p = p', \quad f(p) = \varphi_2(p'), \quad f(p') = \varphi_2(p).\]
+$(\xi, z) \in S_d$，$(x, y) \in S_K{}^1$として，$f(\xi, z) = \varphi_2(x, y)$とおく．
+実際に計算すれば，これは$\nu_K(x, y) = (\xi, z)$であることが分かる．すなわち，上の同値関係は
+\[p \sim p' \Leftrightarrow p = p', \quad p = \nu_K(p'), \quad p' = \nu_K(p).\]
+この同値関係による等化集合は$S_d \cup_\nu e^{2d}$である．
+ところで，これは$S_d$の元を$f$で写したものと$S_K{}^1$の元を$h$で写したものが等しければ，それらの元を同一視しているので，全単射$\tilde{h}\colon S_d \cup_\nu e^{2d} \to KP(2)$が誘導される．
+
+\paragraph{補題112}~
+\begin{screen}
+  準備のための写像
+\end{screen}
+\begin{proof}
+  $p_k\colon O(k) \ni A \mapsto A\boldsymbol{e}_k \in S^{k-1}$は定理15の証明(p.104)で与えられている．
+  $h_k\colon V^{k-1} \ni \boldsymbol{x} \mapsto (-2\boldsymbol{x}\sqrt{1-\lVert\boldsymbol{x}\rVert^2}, 2\lVert\boldsymbol{x}\rVert^2 - 1)$は定理27(p.136)で与えられた$e^{k-1}=S^{k-1}-e^0=S^{k-1}-\boldsymbol{e}_k$の特性写像で，同相写像$h_K\colon E^{k-1}\to e^{k-1}=S^{k-1}-\boldsymbol{e}_k$を誘導する．
+  $\varphi_k\colon V^{k-1} \ni \boldsymbol{x} \mapsto (x_i \overline{x}_j)_{1\leq i, j \leq k}$は定理31(p.140)で与えられた$e^{k-1}$の特性写像で，同相写像$E^{k-1}\to e^{k-1}$を誘導する．
+\end{proof}
+
+\paragraph{定理32}~
+\begin{screen}
+  $O(n)$の胞体分割
+\end{screen}
+\begin{proof}
+  $\mathbb{R}P(n-1)$の胞体$e^{k-1} = \mathbb{R}P(k-1) - \mathbb{R}P(k-2)$（定理31，p.140）は$\mathbb{R}P(k-1)$のうち，$(n, n)$成分が$0$で無いもの．
+  定理25の単射$f \colon \mathbb{R}P(k-1) \ni X \mapsto E-2X \in O(k)$によって$e^{k-1}$を写せば，$O(n)$のうち$(n, n)$成分が$1$で無いものに含まれる．
+  すなわち，$e^{k-1} \subset O(k) - (k-1)$である．
+\end{proof}
+
+\paragraph{補題127}~
+\begin{screen}
+  (3) $\overline{e^3} = e^0 \cup e^3 = S_\mathbb{H}{}^0 = Sp(1)$
+\end{screen}
+\begin{proof}
+  $\psi_1 \colon V^3 \times V_\mathbb{H}{}^0 \ni (q, 0) \mapsto 1 + 2\sqrt{1-\lvert q\rvert^2}(q - \sqrt{1-\lvert q\rvert^2}) \in Sp(1)$によって，$\psi_1(V^3 \times V_\mathbb{H}{}^0) = \overline{e^3} = e^0 \cup e^3 \subset Sp(1) = S_\mathbb{H}{}^0$である（補題127(1)）．
+  $a + b \in S_\mathbb{H}{}^0 \ (a \in \mathbb{R}, b \in V^3)$とする．
+  $a=1$なら$a + b = 1 \in \overline{e^3}$なので，$a \neq 1$とする．
+  $q = b / \sqrt{2 - 2a}$とおけば，$a + b = \psi_1(q, 0) \in \overline{e^3}$である．従って，$S_\mathbb{H}{}^0 \subset \overline{e^3}$．
+\end{proof}
+
+\begin{screen}
+  四元数$\mathbb{H}^3$での外積．
+\end{screen}
+\begin{proof}
+  $\boldsymbol{x}, \boldsymbol{y} \in \mathbb{H}^3$は$\mathbb{H}$上右線型独立であるとする．
+  \[a_1x_1 + a_2x_2 + a_3x_3 = 0,\quad a_1y_1 + a_2y_2 + a_3y_3 = 0\]
+  を満たす$\boldsymbol{a} = (a_1, a_2, a_3) \neq (0, 0, 0) \in \mathbb{H}^3$を見つけたい．
+
+  $\boldsymbol{x}$の成分２つが$0$のとき．$\boldsymbol{x}=(x_1, 0, 0)$とする．
+  $y_2=y_3=0$なら$\boldsymbol{x}$と$\boldsymbol{y}$が線形従属となるので矛盾．
+  $y_2=0$なら$\boldsymbol{a} = (0, 1, 0)$とする．
+  $y_3=0$なら$\boldsymbol{a} = (0, 0, 1)$とする．
+  $y_2, y_3 \neq 0$なら$\boldsymbol{a} = (0, y_2{}^{-1}, -y_3{}^{-1})$とする．
+
+  $\boldsymbol{x}$の成分１つが$0$のとき．$\boldsymbol{x} = (x_1, x_2, 0)$とする．
+  $y_3 = 0$なら$\boldsymbol{a} = (0, 0, 1)$とする．
+  $y_3 \neq 0$なら$a_1 = x_1{}^{-1}$，$a_2 = -x_2{}^{-1}$，$a_3 = (x_2{}^{-1} y_2 - x_1{}^{-1} y_1) y_3{}^{-1}$とする．
+
+  $\boldsymbol{x}, \boldsymbol{y}$共に成分が非零のとき．
+  $x_1 x_3{}^{-1} - y_1 y_3{}^{-1} = 0$なら$\boldsymbol{a} = (x_1{}^{-1}, 0, -x_3{}^{-1})$とする．
+  $x_1 x_3{}^{-1} - y_1 y_3{}^{-1} \neq 0$なら$y_3 y_1{}^{-1} - x_3 x_1{}^{-1} \neq 0$となるので，
+  \begin{align*}
+    a_1 &= a_2 (y_2 {y_3}^{-1} - x_2 {x_3}^{-1}) (x_1 x_3{}^{-1} - y_1 y_3{}^{-1})^{-1},\\
+    a_3 &= a_2 (x_2 {x}_1^{-1} - y_2 {y}_1^{-1}) (y_3 y_1{}^{-1} - x_3 x_1{}^{-1})^{-1}
+  \end{align*}
+  とすればよい．実際，これを変形して
+  \begin{align*}
+    (a_1x_1 + a_2x_2){x_3}^{-1} &= (a_1y_1 + a_2y_2){y_3}^{-1} \\
+    (a_2x_2 + a_3x_3){x}_1^{-1} &= (a_2y_2 + a_3y_3){y}_1^{-1}
+  \end{align*}
+  となる．
+  $a_1x_1 + a_2x_2 + a_3x_3 = s$，$a_1y_1 + a_2y_2 + a_3y_3 = t$とすれば，$s{x_3}^{-1} = t{y_3}^{-1}$，$s{x}_1^{-1} = t{y}_1^{-1}$となる．
+  $s \neq 0$とすれば$t \neq 0$となるので，２つ目の両辺の逆元を取って$x_1s^{-1} = y_1t^{-1}$．１つ目の式とかけて，$x_1{x_3}^{-1} = y_1{y_3}^{-1}$となり矛盾．従って$s=t=0$．
+\end{proof}
+
+\begin{screen}
+  $A \in Sp(k-1)$の構成
+\end{screen}
+\begin{proof}
+  $\boldsymbol{x}, \boldsymbol{y} \in V_\mathbb{H}{}^{k-1}$が（右$\mathbb{H}$加群の基底として）一次独立であるとする．
+  $W = \boldsymbol{x}\mathbb{H} + \boldsymbol{y}\mathbb{H}$とすればこれは階数$2$の自由右$\mathbb{H}$加群．
+  まず，$A\boldsymbol{x}, A\boldsymbol{y} \in \mathbb{H}^{k-1}$の第$3 \sim k-1$成分が$0$となるような$A \in Sp(k-1)$が存在する．実際，
+  \[A_{k-1} = \begin{pmatrix} \boldsymbol{a}_1^\ast \\ \vdots \\ \boldsymbol{a}_{k-1}^\ast \end{pmatrix}\]
+  とした際に，$(\boldsymbol{a}_{k-1}, \boldsymbol{x}) = (\boldsymbol{a}_{k-1}, \boldsymbol{y}) = 0$となるような$\boldsymbol{a}_k \in \mathbb{H}$を選ぶことができる．
+  $\{\boldsymbol{a}_1, \ldots, \boldsymbol{a}_{k-1}\}$が正規直交系となるように選べば$A_{k-1} \in Sp(k-1)$であり（補題19，p.44），$A_{k-1}\boldsymbol{x}, A_{k-1}\boldsymbol{y}$は第$k-1$成分が$0$である．従って，$A_{k-1}\boldsymbol{x}, A_{k-1}\boldsymbol{y}$は$\mathbb{H}^{k-2}$の元とみなすことができる．上と同様にして，
+  \[A_{k-2} = \begin{pmatrix} A_{k-2}' & \\ & 1 \end{pmatrix}\quad (A_{k-2}' \in Sp(k-2))\]
+  によって$A_{k-2}A_{k-1}\boldsymbol{x}, A_{k-2}A_{k-1}\boldsymbol{y}$は第$k-2, k-1$成分が$0$となる．これを繰り返せば，
+  \[A\boldsymbol{x} = \begin{pmatrix} x_1 \\ x_2 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, \quad A\boldsymbol{y} = \begin{pmatrix} y_1 \\ y_2 \\ 0 \\ \vdots \\ 0 \end{pmatrix}\]
+  となる$A \in Sp(k-1)$の存在が証明される．
+
+  $1 \leq r < k-1$を，$\boldsymbol{x}, \boldsymbol{y}$の$s+1 \sim k-1$成分を取ったベクトルが線形従属となるような$s$のうち最大のものとする．
+  $\boldsymbol{z} = \boldsymbol{x}a + \boldsymbol{y}b$の$r+1 \sim k-1$が全て$0$であるような$a, b\in\mathbb{H}$が存在する．
+  $W_r = \boldsymbol{z}\mathbb{H}$とすればこれは階数$1$の$W$の部分加群となる．あとは，$A\boldsymbol{z}$が第$1$成分のみ非零であるように$A$を再構成すればよい．
+  \[A\boldsymbol{z} = \begin{pmatrix} z_1 = x_1a + y_1b \\ z_2 = x_2a + y_2b \\ 0 \\ \vdots \\ 0 \end{pmatrix}\]
+  となるが，$z_1 = z_2 = 0$なら$\boldsymbol{z} = 0$となり，$\boldsymbol{x}, \boldsymbol{y}$が線形従属となるので矛盾．
+  $z_2 = 0$ならそれでよい．$z_1 = 0$なら
+  \[
+  \begin{pmatrix}
+    & 1 &   &        & \\
+    1 &   &   &        & \\
+    &   & 1 &        & \\
+    &   &   & \ddots & \\
+    &   &   &        & 1
+  \end{pmatrix}
+  A \in Sp(k-1)
+  \]
+  を改めて$A$とすればよい．
+  $z_1, z_2 \neq 0$なら
+  \[
+  \begin{pmatrix}
+    1          &             &   &        & \\
+    s{z}_1^{-1} & -s{z}_2^{-1} &   &        & \\
+    &             & 1 &        & \\
+    &             &   & \ddots & \\
+    &             &   &        & 1
+  \end{pmatrix}
+  A\in Sp(k-1),\quad s = \frac{1}{\sqrt{\lvert {z}_1^{-1} \rvert^2 + \lvert {z}_2^{-1} \rvert^2 }}
+  \]
+  を改めて$A$とすればよい．
+
+  $A\boldsymbol{x}, A\boldsymbol{y}$が線形従属とすれば，$\boldsymbol{x}, \boldsymbol{y}$が線形従属となるので矛盾．
+  従って$A\boldsymbol{x}, A\boldsymbol{y}$は線形独立．
+\end{proof}
+
+\chapter{射影空間と古典群の基本群と被覆空間}
+\paragraph{補題146}~
+\begin{screen}
+  $p^{-1}(h(\tau))$が離散空間
+\end{screen}
+\begin{proof}
+  ファイバー空間の定義(p.176)の直後に書かれているように，$x\in X$に対し，$p^{-1}(x)$と$F$は同相である．
+\end{proof}
+
+\paragraph{補題149}~
+\begin{screen}
+  $u(I) \subset X$がコンパクト
+\end{screen}
+\begin{proof}
+  $I$は$\mathbb{R}$の有界閉集合なのでコンパクト．
+  連続な全射$u\colon I \twoheadrightarrow u(I)$に対し命題59を適用すればよい．
+\end{proof}
+
+\begin{screen}
+  $v_i$が全単射
+\end{screen}
+\begin{proof}
+  まず$p^{-1}(x_{i+1}) \cap U(b_{i\lambda})$が唯1点からなることを示す．
+  $p$の制限によって$U(b_{i\lambda})$と$U(x_i) \ni x_{i+1}$は同相なので$p^{-1}(x_{i+1}) \cap U(b_{i\lambda}) \neq \varnothing$．
+  $b, b' \in p^{-1}(x_{i+1}) \cap U(b_{i\lambda})$とする．
+  $p(b) = p(b')$で，$p$は$U(b_{i\lambda})$上で単射なので$b=b'$．
+  よって，写像
+  \[
+    v_i\colon p^{-1}(x_i) \ni b_{i\lambda} \mapsto p^{-1}(x_{i+1}) \cap U(b_{i\lambda}) \in p^{-1}(x_{i+1})
+  \]
+  が得られる．
+
+  $x_{i+1} \in U(x_i)$なので$p^{-1}(x_{i+1}) \subset p^{-1}(U(x_i)) = \bigcup_{\lambda} U(b_{i\lambda})$．
+  したがって，全ての$b\in p^{-1}(x_{i+1})$に対して$b \in U(b_{i\lambda})$となる$\lambda$が存在する．
+  よって，$v_i(b) = b$となり，$v_i$は全射．
+
+  $U(b_{i\lambda}) \cap U(b_{i\mu}) = \varnothing$なので$v_i$は単射．
+\end{proof}
+
+\paragraph{命題152}~
+\begin{screen}
+  \((B', \tilde{h}, B)\)は被覆空間の性質(3)を満たす
+\end{screen}
+\begin{proof}
+  \(b \in B\), \(x = p(b) \in X\)とする．
+
+  \(\tilde{h}^{-1}(b) = p'^{-1}(x)\)を示す．
+  \(b' \in \tilde{h}^{-1}(b)\)とする．\(b = \tilde{h}(b')\)なので\(x = p(b) = p\circ\tilde{h}(b') = p'(b')\)．
+  従って\(b' \in p'^{-1}(x)\)なので\(\tilde{h}^{-1}(b) \subset p'^{-1}(x)\)．
+  逆に\(b' \in p'^{-1}(x)\)とする．補題150より\(b = \tilde{h}(b')\)なので\(b' \in\tilde{h}^{-1}(b)\)．
+  従って\(p'^{-1}(x) \subset\tilde{h}^{-1}(b)\)．
+
+  \(b' \in \tilde{h}^{-1}(b) = p'^{-1}(x)\)とする．標準近傍\(V \ni x\), \(U(b)\ni b\), \(U'(b')\ni b'\)を取る．
+  \(\tilde{h}\)の制限により\(U'(b') \simeq U(b)\)となることを示す．
+  \[
+  \begin{tikzcd}[column sep=small]
+    B' \arrow[rrrr, "\tilde{h}", twoheadrightarrow]\arrow[rrddd, "p'", twoheadrightarrow, bend right] &&&& B \arrow[llddd, "p", twoheadrightarrow, bend left] \\
+    & U'(b') \arrow[lu, "i'", hookrightarrow] \arrow[rr] \arrow[rd, "\phi'"] && U(b) \arrow[ru, "i", hookrightarrow] \arrow[ld, "\phi"]& \\
+    && V \arrow[d, "j", hookrightarrow] && \\
+    && X &&
+  \end{tikzcd}
+  \]
+  標準近傍の性質より\(\phi\), \(\phi'\)は同相で，\(p'\circ i' = j\circ\phi'\), \(p\circ i = j\circ\phi\)である．よって
+  \[
+    p\circ i\circ\phi^{-1}\circ\phi' = j\circ\phi\circ\phi^{-1}\circ\phi' = j\circ\phi' = p'\circ i' = p\circ\tilde{h}\circ i' .
+  \]
+  \(p\circ i = j\circ\phi\)は単射なので
+  \[
+    \phi^{-1}\circ\phi' = (p\circ i)^{-1}\circ p\circ i\circ\phi^{-1}\circ\phi' = (p\circ i)^{-1}\circ p\circ\tilde{h}\circ i'
+    = i^{-1}\circ p^{-1} \circ p \circ\tilde{h}\circ i' .
+  \]
+  したがって
+  \[ i\circ\phi^{-1}\circ\phi' = p^{-1} \circ p \circ\tilde{h}\circ i' = \tilde{h}\circ i' . \]
+
+  さらに標準近傍の性質から
+  \[
+    \tilde{h}^{-1}(U(b)) = p'^{-1}(V) = \bigcup_{b_\lambda' \in p'^{-1}(x)} U'(b'_\lambda) = \bigcup_{b_\lambda' \in \tilde{h}^{-1}(b)} U'(b'_\lambda) .
+  \]
+\end{proof}
+
+\paragraph{命題155}~
+\begin{screen}
+  \(v_1\), \(v_2\), \(v_3\)の構成
+\end{screen}
+\begin{proof}
+  \(v_1\), \(v_2\)は\(\alpha_\ast\), \(\beta_\ast\)の定義から存在する．
+  \(b_0\), \(b_\beta\)を結ぶ道\(v_2\)に対し，\(\alpha_\ast(b_0)\)を始点とし，\(pv_2\)を被覆する道を\(v_3\)とする．
+  \(\alpha_\ast\)の定義から\(v_3(1) = \alpha_\ast(b_\beta)\)．
+  \(pv_2 = pv_3\)なので，\([pv_3]=\beta\)．
+\end{proof}
+
+\begin{screen}
+  \((v_1\cdot v_3)(1) = (\alpha\beta)_\ast(b_0)\)
+\end{screen}
+\begin{proof}
+  \(\alpha=[pv_1]\), \(\beta=[pv_3]\)なので\(\alpha\cdot\beta \in \pi_1(X, x_0)\)の代表元として\(p(v_1\cdot v_3)\)を取れる．
+  \( (\alpha\beta)_\ast(b_0)\)は\(v_1\cdot v_3\)の終点なので，\((v_1\cdot v_3)(1) = (\alpha\beta)_\ast(b_0)\)．
+\end{proof}
+
+\begin{screen}
+  \((\alpha\beta)_\ast = \alpha_\ast\circ\beta_\ast\)
+\end{screen}
+\begin{proof}
+  \((\alpha\beta)_\ast(b_0) = \alpha_\ast\circ\beta_\ast(b_0)\)なので，命題152を使うためには\(p\circ(\alpha\beta)_\ast = p\circ\alpha_\ast\circ\beta_\ast\)を示せばよい．
+  \[
+  \begin{tikzcd}
+    B \arrow[rr]\arrow[rd, "p"'] & & B \arrow[ld, "p"] \\
+    & X &
+  \end{tikzcd}
+  \]
+  \(\alpha_\ast\)の定義から，
+  \[
+    p(\alpha_\ast(\beta_\ast(b))) = p(\beta_\ast(b)) = p(b) = p((\alpha\beta)_\ast(b)) .
+  \]
+\end{proof}
+
+\begin{screen}
+  被覆写像\(p\colon B\twoheadrightarrow X\)は開写像
+\end{screen}
+\begin{proof}
+  \(V\)を\(B\)の開集合とする．\(x \in p(V)\)を任意にとる．\(b \in p^{-1}(x) \cap V\)とする．
+  標準近傍\(U \ni x\), \(U(b) \ni b\)を取る．
+  \(V \cap U(b)\)は\(U(b)\)の開集合であり，\(p\)は\(U(b)\)と\(U\)の同相写像なので，\(p(V\cap U(b))\)は\(U\)の開集合．
+  従って，\(p(V\cap U(b))\)は\(X\)の開集合．
+  \(x \in p(V\cap U(b)) \subset p(V)\)なので，\(p(V)\)は開集合．
+\end{proof}
+
+\chapter*{付録}
+\paragraph{命題182}~
+\begin{screen}
+  \(\ker\varphi = \{\pm E\}\)
+\end{screen}
+\begin{proof}
+  \(A \in \ker\varphi\)とすれば，任意のHermite行列\(X \in \mathfrak{J}(3, K)\)に対し\(AX = XA\)となる．
+  ここで，
+  \[
+  X =
+  \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+  \end{pmatrix}
+  \]
+  とすれば，
+  \[
+  \begin{pmatrix}
+    a_{11} & 0 & 0 \\
+    a_{21} & 0 & 0 \\
+    a_{31} & 0 & 0
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    a_{11} & a_{12} & a_{13} \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+  \end{pmatrix}
+  .
+  \]
+  よって\(a_{12} = a_{21} = a_{13} = a_{31} = 0\)．
+  \[
+  X =
+  \begin{pmatrix}
+    0 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 0
+  \end{pmatrix}
+  \]
+  とすれば\(a_{23} = a_{32} = 0\)．以上から，\(A\)は対角行列．
+  \[
+  X =
+  \begin{pmatrix}
+    0 & 1 & 0 \\
+    1 & 0 & 0 \\
+    0 & 0 & 0
+  \end{pmatrix}
+  \]
+  とすれば\(a_{11} = a_{22}\)．
+  \[
+  X =
+  \begin{pmatrix}
+    0 & 0 & 1 \\
+    0 & 0 & 0 \\
+    1 & 0 & 0
+  \end{pmatrix}
+  \]
+  とすれば\(a_{11} = a_{33}\)．
+  よって，\(A = a E\) (\(\lvert a\rvert^2 = 1\))と表せる．
+
+  \(K = \mathbb{R}\)なら\(a=\pm 1\)．
+  \(K = \mathbb{C}\)なら\(a=e^{i\theta}\)．
+
+  \(K = \mathbb{H}\)の場合を考える．
+  \[
+  X =
+  \begin{pmatrix}
+    0 & i & 0 \\
+    -i & 0 & 0 \\
+    0 & 0 & 0
+  \end{pmatrix}
+  \]
+  とすれば\(ai = ia\)．
+  \(a = a_0 + a_1 i + a_2 j + a_3 k\) (\(a_i \in \mathbb{R}\))とすれば\(a_2 = a_3 = 0\)．
+  \[
+  X =
+  \begin{pmatrix}
+    0 & j & 0 \\
+    -j & 0 & 0 \\
+    0 & 0 & 0
+  \end{pmatrix}
+  \]
+  とすれば\(a_1 = a_3 = 0\)．
+  以上から\(a \in \mathbb{R}\)なので\(a = \pm 1\)．
+\end{proof}
+
+\begin{screen}
+  \(\Tr \alpha(E_i) = 1\)，\(U E_i U^\ast = \alpha(E_i)\)
+\end{screen}
+\begin{proof}
+  \(\alpha(E_i \circ E_i) = \alpha(E_i) \circ \alpha(E_i)\)なので\(\alpha(E_i)\alpha(E_i) = \alpha(E_i)\)．
+  \(i \neq j\)ならば\(E_i E_j = 0\)なので\(\alpha(E_i) \alpha(E_j) = 0\)．
+  \(E_1 + E_2 + E_3 = 1\)なので\(\alpha(E_1) + \alpha(E_2) + \alpha(E_3) = 1\)．
+
+  冪等行列\(\alpha(E_i)\)の固有ベクトル\(\boldsymbol{v}_i\)の張る部分空間\(W_i\)を考えれば\footnote{佐武線型代数p.131--132}
+  \[ \Tr \alpha(E_i) = \rank \alpha(E_i) = \dim W_i = 1 . \]
+  さらに\(\boldsymbol{v}_i\)の固有値は\(1\)．
+
+  \(\boldsymbol{v}_2 \not\in W_1\)なので\(\alpha(E_1) \boldsymbol{v}_2 = \boldsymbol{0}\)．
+  よって\(\boldsymbol{v}_1^\ast \alpha(E_1) \boldsymbol{v}_2 = \boldsymbol{0}\)．
+  したがって
+  \[
+  0 = \boldsymbol{v}_2^\ast \alpha(E_1)^\ast \boldsymbol{v}_1
+  = \boldsymbol{v}_2^\ast \alpha(E_1) \boldsymbol{v}_1 = \boldsymbol{v}_2^\ast \boldsymbol{v}_1 .
+  \]
+  同様にして\(\boldsymbol{v}_i^\ast \boldsymbol{v}_j = \delta_{ij}\)となるので
+  \[
+  U =
+  \begin{pmatrix}
+    \boldsymbol{v}_1 & \boldsymbol{v}_2 & \boldsymbol{v}_3
+  \end{pmatrix}
+  \in G(3, K) .
+  \]
+  したがって，
+  \[
+  U^\ast \alpha(E_1) U =
+  \begin{pmatrix}
+    \boldsymbol{v}_1^\ast \\ \boldsymbol{v}_2^\ast \\ \boldsymbol{v}_3^\ast
+  \end{pmatrix}
+  \begin{pmatrix}
+    \boldsymbol{v}_1 & \boldsymbol{0} & \boldsymbol{0}
+  \end{pmatrix}
+  = E_1 .
+  \]
+  よって，\(U E_i U^\ast = \alpha(E_i)\)．
+\end{proof}
+
+\begin{screen}
+  \(E_i \circ F_i{}^x = 0\)および\(2E_i \circ F_j{}^x = F_j{}^x\) (\(i\neq j\))を満たす\(F_i{}^x \in \mathfrak{J}(3, K)\)は
+  \[
+  F_1{}^x =
+  \begin{pmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & x \\
+    0 & \bar{x} & 0
+  \end{pmatrix}
+  , \quad
+  F_2{}^x =
+  \begin{pmatrix}
+    0 & 0 & \bar{x} \\
+    0 & 0 & 0 \\
+    x & 0 & 0
+  \end{pmatrix}
+  , \quad
+  F_3{}^x =
+  \begin{pmatrix}
+    0 & x & 0 \\
+    \bar{x} & 0 & 0 \\
+    0 & 0 & 0
+  \end{pmatrix}
+  \]
+  のみ．
+\end{screen}
+
+\end{document}

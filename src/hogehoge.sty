@@ -8,7 +8,7 @@
 \usepackage{slashed}
 \usepackage{simpler-wick}
 \usepackage{tikz}
-\usetikzlibrary{cd}
+\usetikzlibrary{cd, calc}
 \usepackage[compat=1.1.0]{tikz-feynman}
 \tikzfeynmanset{double distance=1.5pt}
 \tikzfeynmanset{doublefermion/.style={
@@ -37,9 +37,12 @@
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\ch}{ch}
 \DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\cok}{cok}
+\DeclareMathOperator{\Cok}{Cok}
 \DeclareMathOperator{\Coker}{Coker}
 \DeclareMathOperator{\Coim}{Coim}
 \DeclareMathOperator{\dive}{div}
+\DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Disc}{Disc}
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Frac}{Frac}
@@ -50,15 +53,19 @@
 \DeclareMathOperator{\height}{ht}
 \DeclareMathOperator{\id}{id}
 \let\Im\relax\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\M}{M}
 \DeclareMathOperator{\Mor}{Mor}
 \DeclareMathOperator{\N}{N}
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\rank}{rank}
 \let\Re\relax\DeclareMathOperator{\Re}{Re}
+\DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\rot}{rot}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Tor}{Tor}
 \DeclareMathOperator{\Tr}{Tr}
@@ -81,3 +88,29 @@
 \renewcommand\theequation{\arabic{chapter}.\arabic{section}.\arabic{equation}}
 \def\tagform@#1{\maketag@@@{[\ignorespaces#1\unskip\@@italiccorr]}}
 \allowdisplaybreaks
+%
+\newcommand\NoOr[1]{\mathop{\mathord{:}#1\mathord{:}}}
+\newcommand\hollowcolon{\substack{\scalebox{0.6}{\circ}\\[-.5pt]\scalebox{0.6}{\circ}}}
+\newcommand\acOr[1]{\mathop{\mathord{\hollowcolon}#1\mathord{\hollowcolon}}}
+%
+\newenvironment{thebibliography*}[1]{%
+  \global\let\presectionname\relax
+  \global\let\postsectionname\relax
+  % \chapter*{\bibname}\@mkboth{\bibname}{}%
+  % \addcontentsline{toc}{chapter}{\bibname}%
+   \list{\@biblabel{\@arabic\c@enumiv}}%
+        {\settowidth\labelwidth{\@biblabel{#1}}%
+         \leftmargin\labelwidth
+         \advance\leftmargin\labelsep
+         \@openbib@code
+         \usecounter{enumiv}%
+         \let\p@enumiv\@empty
+         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+   \sloppy
+   \clubpenalty4000
+   \@clubpenalty\clubpenalty
+   \widowpenalty4000%
+   \sfcode`\.\@m}
+  {\def\@noitemerr
+    {\@latex@warning{Empty `thebibliography' environment}}%
+   \endlist}
