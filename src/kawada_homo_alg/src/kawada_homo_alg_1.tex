@@ -1,0 +1,354 @@
+\chapter{加群}
+\section{加群}
+\paragraph{直極限}~
+\begin{screen}
+  $\varinjlim M_\lambda=M$の元$\tilde{x}$に対して，或る十分大きな$\lambda\in\Lambda$と$x_\lambda\in M_\lambda$が存在して$\tilde{x} = \tilde{p} \circ i_\lambda (x_\lambda)$と表される（p.25）．
+\end{screen}
+\begin{proof}
+  $\tilde{p}\colon \tilde{M} \to M$は全射なので，$\tilde{x} = \tilde{p}(y)$となる$y \in \tilde{M} = \bigoplus M_\lambda$が存在する．
+  直和の定義から，$y$の第$\lambda$成分が非零のものは有限個である．
+  $\Lambda$は有向順序を持つので，このような任意の$\lambda$に対して$\lambda < \lambda'$となるような$\lambda' \in \Lambda$が存在し，
+  \[y = \sum_{\lambda \leq \lambda'} i_\lambda (y_\lambda) \quad (y_\lambda \in M_\lambda)\]
+  と表すことが出来る．ここで，$R$準同型$g_{\lambda'\lambda}\colon M_\lambda \to M_{\lambda'}$を
+  \[g_{\lambda'\lambda}=
+  \begin{cases}
+    f_{\lambda'\lambda} & \lambda \leq \lambda' \\
+    (\bullet \mapsto 0) & \text{(otherwise)}
+  \end{cases}
+  \]
+  と定める．直和の普遍性（例1.12, p.23）から$g\colon \tilde{M} \to M_{\lambda'}$で任意の$\lambda \in \Lambda$に対し$g_{\lambda'\lambda} = g \circ i_\lambda$となるものが一意に存在する．
+  $x_{\lambda'} = g(y)$とすれば，$\tilde{x} = \tilde{p} \circ i_{\lambda'} (x_{\lambda'})$となる．実際，
+  \begin{align*}
+    \tilde{p} \circ i_{\lambda'} (x_{\lambda'})
+    &= \tilde{p} \circ i_{\lambda'} \circ g (y) = \tilde{p} \circ i_{\lambda'} \circ g \left( \sum_{\lambda \leq \lambda'} i_\lambda (y_\lambda) \right)
+    = \tilde{p} \circ i_{\lambda'} \left( \sum_{\lambda \leq \lambda'} g \circ i_\lambda (y_\lambda) \right) \\
+    %
+    & = \tilde{p} \circ i_{\lambda'} \left( \sum_{\lambda \leq \lambda'} g_{\lambda'\lambda} (y_\lambda) \right)
+    = \tilde{p} \circ i_{\lambda'} \left( \sum_{\lambda \leq \lambda'} f_{\lambda'\lambda} (y_\lambda) \right)
+    = \sum_{\lambda \leq \lambda'} \tilde{p} ( i_{\lambda'} \circ f_{\lambda'\lambda} (y_\lambda) ).
+  \end{align*}
+  ここで，$i_{\lambda'} \circ f_{\lambda'\lambda} (y_\lambda) - i_\lambda (y_\lambda) \in \tilde{N} = \ker\tilde{p}$なので，
+  \[= \sum_{\lambda \leq \lambda'} \tilde{p} ( i_{\lambda} (y_\lambda) ) = \tilde{p} \left( \sum_{\lambda \leq \lambda'} i_{\lambda} (y_\lambda)\right) = \tilde{p}(y) = \tilde{x}.\]
+\end{proof}
+
+\begin{screen}
+  上の状況で$\tilde{x}=0$となることと，十分大きな$\mu\ (>\lambda)$が存在して$f_{\mu\lambda}(x_\lambda) = 0$となることは同値である（p.25）．
+\end{screen}
+\begin{proof}
+  $\tilde{x}=0$とする．
+  $\lambda \in \Lambda$が存在し，$\tilde{p} \circ i_\lambda (x_\lambda) = 0$となる．
+  $i_\lambda (x_\lambda) \in \ker\tilde{p} = \tilde{N}$なので，
+  \[ i_\lambda (x_\lambda) = \sum_{i\leq n} r_i \left( i_{\mu_i} \circ f_{\mu_i \lambda_i} (x_{\lambda_i}) - i_{\lambda_i} (x_{\lambda_i}) \right) \quad (r_i \in R,\quad \mu_i > \lambda_i,\quad x_{\lambda_i} \in M_{\lambda_i}) \]
+  と表すことが出来る．明らかに$\lambda \in \{\lambda_1, \ldots, \lambda_n,\mu_1, \ldots, \mu_n\} = \Lambda'$である．
+  $\Lambda'$は有限集合で$\Lambda$は有向順序を持つので，十分大きい$\mu\in\Lambda$が存在して，任意の$\mu_i, \lambda_i \in \Lambda'$に対し$\mu_i, \lambda_i \leq \mu$となる．ここで，$R$準同型$g_{\mu\lambda} \colon M_\lambda \to M_\mu$を
+  \[g_{\mu\lambda}=
+  \begin{cases}
+    f_{\mu\lambda} & \lambda \in \Lambda'\\
+    (\bullet \mapsto 0) & \text{(otherwise)}
+  \end{cases}
+  \]
+  と定める．直和の普遍性（例1.12, p.23）から$g\colon \tilde{M} \to M_\mu$で任意の$\lambda \in \Lambda$に対し$g_{\mu\lambda} = g \circ i_\lambda$となるものが一意に存在する．
+  $\lambda \in \Lambda'$に注意すれば，$f_{\mu\lambda}(x_\lambda)=0$となる，実際，
+  \begin{align*}
+    f_{\mu\lambda} (x_\lambda) &= g_{\mu\lambda} (x_\lambda) = g \circ i_\lambda (x_\lambda) = g \left( \sum_{i\leq n} r_i \left( i_{\mu_i} \circ f_{\mu_i \lambda_i} (x_{\lambda_i}) - i_{\lambda_i} (x_{\lambda_i}) \right) \right) \\
+    &= \sum_{i\leq n} r_i \left( g \circ i_{\mu_i} \circ f_{\mu_i \lambda_i} (x_{\lambda_i}) - g \circ i_{\lambda_i} (x_{\lambda_i}) \right) = \sum_{i\leq n} r_i \left( g_{\mu\mu_i} \circ f_{\mu_i \lambda_i} (x_{\lambda_i}) - g_{\mu\lambda_i} (x_{\lambda_i}) \right) \\
+    &= \sum_{i\leq n} r_i \left( f_{\mu\mu_i} \circ f_{\mu_i \lambda_i} (x_{\lambda_i}) - f_{\mu\lambda_i} (x_{\lambda_i}) \right) = \sum_{i\leq n} r_i \left( f_{\mu\lambda_i} (x_{\lambda_i}) - f_{\mu\lambda_i} (x_{\lambda_i}) \right) = 0.
+  \end{align*}
+  逆に，$f_{\mu\lambda} (x_\lambda) = 0$となる$\mu > \lambda$が存在すれば，$-i_\mu \circ f_{\mu\lambda} (x_\lambda) + i_\lambda (x_\lambda) = i_\lambda (x_\lambda) \in \tilde{N} = \ker\tilde{p}$なので，$\tilde{x} = \tilde{p} \circ i_\lambda (x_\lambda) = 0$．
+\end{proof}
+
+\paragraph{例1.13}~
+\begin{screen}
+  (i) 有限生成加群の直極限
+\end{screen}
+\begin{proof}
+  $\varphi_\lambda\colon M_\lambda \hookrightarrow M$を使って，次の図式を得る．
+  % \[
+  % \begin{CD}
+  %   \bigoplus M_\lambda @<{i_\lambda}<< M_\lambda \\
+  %   @V{\tilde{p}}VV @VV{\varphi_\lambda}V \\
+  %   \varinjlim M_\lambda @>>{\tilde{\varphi}}> \bigcup M_\lambda
+  % \end{CD}
+  % \]
+  \[
+  \begin{tikzcd}
+    \bigoplus M_\lambda\arrow[d, "\tilde{p}"] & M_\lambda \arrow[l, "i_\lambda"']\arrow[d, "\varphi_\lambda"] \\
+    \varinjlim M_\lambda \arrow[r, "\tilde{\varphi}", dotted] & \bigcup M_\lambda
+  \end{tikzcd}
+  \]
+  % <!-- ここで，直和の普遍性から$\varphi\colon \bigoplus M_\lambda \to M$で任意の$\lambda \in \Lambda$に対し$\varphi_\lambda = \varphi \circ i_\lambda$となるものが一意に存在する． -->
+  % <!-- $\varphi$は単射である． -->
+  $\tilde{x} \in \varinjlim M_\lambda$に対し，$\tilde{p} \circ i_\lambda (x_\lambda)$となる$\lambda \in \Lambda$と$x_\lambda \in M_\lambda$が存在する．これによって，
+  $\tilde{\varphi}\colon \varinjlim M_\lambda \to \bigcup M_\lambda$を$\tilde{\varphi}(\tilde{x}) = \varphi_\lambda(x_\lambda)$と定める．
+  $\tilde{\varphi}$は$\lambda$の取り方に依らない．実際，$\lambda < \mu$に対し$\tilde{p} \circ i_\lambda (x_\lambda) = \tilde{p} \circ i_\mu (x_\mu)$であるとする．
+  $i_\lambda (x_\lambda) - i_\mu (x_\mu) \in \ker \tilde{p} = \tilde{N}$となるので，$i_\mu (x_\mu) = i_\mu \circ i_{\mu\lambda} (x_\lambda)$となる．
+  $i_\mu$は単射なので$x_\mu = i_{\mu\lambda} (x_\lambda)$である．
+  $\varphi_\mu(x_\mu) = \varphi_\mu \circ i_{\mu\lambda} (x_\lambda) = \varphi_\lambda(x_\lambda)$となる．以上から，$\varphi_\lambda = \tilde{\varphi} \circ \tilde{p} \circ i_\lambda$である．
+  $\tilde{\varphi}$が全単射であることは容易に分かる．従って，$\varinjlim M_\lambda \simeq \bigcup M_\lambda$．
+  % $\bigcup M_\lambda = M$になる？
+\end{proof}
+
+\begin{screen}
+  (iii) 直極限の準同型
+\end{screen}
+\begin{proof}
+  まず，次の図式を可換にするような$\varphi\colon \varinjlim L_\lambda \to \varinjlim M_\lambda$が唯一存在することを証明する．
+  % \[
+  % \begin{CD}
+  %   \bigoplus L_\lambda @>{\tilde{p}}>> \varinjlim L_\lambda \\
+  %   @V{\varphi_\lambda^\oplus}VV @VV{\varphi}V \\
+  %   \bigoplus M_\lambda @>{\tilde{p}'}>> \varinjlim M_\lambda \\
+  % \end{CD}
+  % \]
+  \[
+  \begin{tikzcd}
+    \bigoplus L_\lambda \arrow[r, "\tilde{p}"]\arrow[d, "\varphi_\lambda^\oplus"] & \varinjlim L_\lambda \arrow[d, "\varphi", dotted] \\
+    \bigoplus M_\lambda \arrow[r, "\tilde{p}'"] & \varinjlim M_\lambda \\
+  \end{tikzcd}
+  \]
+  ここで，$R$準同型
+  \[ \varphi_\lambda^\oplus\colon \bigoplus L_\lambda \ni (x_\lambda \mid \lambda \in \Lambda) \mapsto (\varphi_\lambda(x_\lambda) \mid \lambda \in \Lambda) \in \bigoplus M_\lambda \]
+  を定義した．また，$\ker\tilde{p} = \tilde{N}$，$\ker\tilde{p}' = \tilde{N'}$とする：
+  \[ \varinjlim L_\lambda = \left( \bigoplus L_\lambda \right) / \tilde{N},\quad \varinjlim M_\lambda = \left( \bigoplus M_\lambda \right) / \tilde{N}'. \]
+  $\varphi$はwell-definedである．実際，$x, y \in \bigoplus L_\lambda$，$\tilde{p}(x) = \tilde{p}(y)$とすれば，$x - y \in \ker \tilde{p} = \tilde{N}$なので
+  \begin{align*}
+    \tilde{p}' \circ \varphi_\lambda^\oplus (x-y) &= \tilde{p}' \circ \varphi_\lambda^\oplus \left[\sum_i r_i \left( i_{\mu_i} \circ f_{\mu_i \lambda_i} (x_{\lambda_i}) - i_{\lambda_i} (x_{\lambda_i}) \right) \right] \\
+    &= \tilde{p}' \left(\sum_i r_i \left( \varphi_{\mu_i} \circ f_{\mu_i \lambda_i} (x_{\lambda_i}) - \varphi_{\lambda_i} (x_{\lambda_i}) \right) \right) \\
+    &= \sum_i r_i \tilde{p}' \left( \varphi_{\mu_i} \circ f_{\mu_i \lambda_i} (x_{\lambda_i}) - \varphi_{\lambda_i} (x_{\lambda_i}) \right) \\
+    &= \sum_i r_i \tilde{p}' \left( f_{\mu_i \lambda_i}' \circ \varphi_{\lambda_i} (x_{\lambda_i}) - \varphi_{\lambda_i} (x_{\lambda_i}) \right) \\
+  \end{align*}
+  となる．$f_{\mu_i \lambda_i}' \circ \varphi_{\lambda_i} (x_{\lambda_i}) - \varphi_{\lambda_i} (x_{\lambda_i}) \in \tilde{N}' = \ker \tilde{p}'$なので，これは$0$であり，$\varphi$は代表元の取り方に依らない．
+  また，上の図式が可換となることから，$\varphi$の一意性も従う．
+
+  次に，以下の図式を考える．
+  \[
+  \begin{CD}
+    L_\lambda  @>{i_\lambda}>> \bigoplus L_\lambda @>{\tilde{p}}>> \varinjlim L_\lambda \\
+    @V{\varphi_\lambda}VV  @V{\varphi_\lambda^\oplus}VV  @VV{\varphi}V \\
+    L_\lambda  @>{i_\lambda'}>> \bigoplus M_\lambda @>{\tilde{p}'}>> \varinjlim M_\lambda \\
+  \end{CD}
+  \]
+  左の図式の可換性は明らかなので，$\varphi \circ \tilde{p} \circ i_\lambda = \tilde{p}' \circ i_\lambda' \circ \varphi_\lambda$である．
+
+  最後に，次の図式を可換にするような$\varphi$は初めの図式を可換にする，すなわち$\varphi \circ \tilde{p} = \tilde{p}' \circ \varphi_\lambda^\oplus$となることを示す．
+  \[
+  \begin{CD}
+    L_\lambda  @>{\tilde{p} \circ i_\lambda}>> \varinjlim L_\lambda \\
+    @V{\varphi_\lambda}VV   @VV{\varphi}V \\
+    L_\lambda  @>{\tilde{p}' \circ i_\lambda'}>> \varinjlim M_\lambda \\
+  \end{CD}
+  \]
+  このような$\varphi$が存在すれば，
+  \begin{align*}
+    \varphi \circ \tilde{p} \left( \sum i_\lambda(x_\lambda) \right) &= \sum \varphi \circ \tilde{p} \circ i_\lambda (x_\lambda) = \sum \tilde{p}' \circ i_\lambda' \circ \varphi_\lambda (x_\lambda) = \tilde{p}' \left( \sum i_\lambda' \circ \varphi_\lambda (x_\lambda) \right) \\
+    &= \tilde{p}' \left( \sum \varphi_\lambda^\oplus \circ i_\lambda' (x_\lambda) \right) = \tilde{p}' \circ \varphi_\lambda^\oplus \left( \sum i_\lambda' (x_\lambda) \right)
+  \end{align*}
+  なので，$\varphi \circ \tilde{p} = \tilde{p}' \circ \varphi_\lambda^\oplus$となる．
+  先程の結果と合わせて，$\varphi$が初めの図式を可換にすることと上の図式を可換にすることは同値．
+  初めの図式を可換にする$\varphi$は唯一なので，上の図式を可換にする図式も唯一である．
+\end{proof}
+
+\begin{screen}
+  (iv) 直極限の準同型
+\end{screen}
+\begin{proof}
+  記号は(iii)と同じものを使う．
+  $\{\ker \varphi_\lambda\}$は$f_{\mu \lambda}$の制限によって直族となることが容易に分かる．
+  自然な単射$R$準同型
+  \[\imath\colon \varinjlim (\ker \varphi_\lambda) \ni x + \ker \tilde{\pi} \mapsto x + \ker \tilde{p} \in \varinjlim L_\lambda\]
+  によって$\varinjlim (\ker \varphi_\lambda) \subset \varinjlim L_\lambda$とみなす．
+
+  \[
+  \begin{CD}
+    \ker \varphi_\lambda @>{f_{\mu \lambda}}>> \ker \varphi_\mu @>{i_\mu}>> \bigoplus \ker \varphi_\lambda @>{\tilde{\pi}}>> \varinjlim (\ker \varphi_\lambda) \\
+    @V{\hookrightarrow}VV @V{\hookrightarrow}VV @V{\hookrightarrow}VV @VV{\imath}V \\
+    L_\lambda @>{f_{\mu \lambda}}>> L_\mu @>{i_\mu}>> \bigoplus L_\lambda @>{\tilde{p}}>> \varinjlim L_\lambda \\
+    @V{\varphi_\lambda}VV @V{\varphi_\mu}VV @V{\varphi_\lambda^\oplus}VV @VV{\varinjlim \varphi}V \\
+    M_\lambda @>{f_{\mu \lambda}'}>> M_\mu @>{i_\mu'}>> \bigoplus M_\lambda @>{\tilde{p}'}>> \varinjlim M_\lambda
+  \end{CD}
+  \]
+
+  $x \in \ker(\varinjlim \varphi) \subset \varinjlim L_\lambda$とする．十分大きな$\lambda \in \Lambda$と$x_\lambda = L_\lambda$によって$x = \tilde{p} \circ i_\lambda (x_\lambda)$と表せる．
+  ここで$y_\lambda = \varphi_\lambda (x_\lambda) \in M_\lambda$とおけば，
+  \[0 = (\varinjlim \varphi) (x) =  \varinjlim \varphi \circ \tilde{p} \circ i_\lambda (x_\lambda) = \tilde{p}' \circ i_\lambda' \circ \varphi_\lambda (x_\lambda) = \tilde{p}' \circ i_\lambda' (y_\lambda) \]
+  なので，$\mu > \lambda$によって$0 = f_{\mu \lambda}' (y_\lambda) = f_{\mu \lambda}' \circ \varphi_\lambda (x_\lambda) = \varphi_\mu \circ f_{\mu \lambda} (x_\lambda)$となる．
+  $x_\mu = f_{\mu \lambda} (x_\lambda) \in L_\mu$とおけば，$\varphi_\mu (x_\mu) = 0$すなわち$x_\mu \in \ker \varphi_\mu$である．
+  $x = \tilde{p} \circ i_\lambda (x_\lambda) = \tilde{p} \circ i_\mu \circ f_{\mu \lambda} (x_\lambda) = \tilde{p} \circ i_\mu (x_\mu) = \imath \circ \tilde{\pi} \circ i_\mu (x_\mu) \in \imath \left( \varinjlim (\ker \varphi_\lambda) \right)$であり，$\ker (\varinjlim \varphi) \subset \varinjlim (\ker \varphi_\lambda)$．
+
+  \[
+  \begin{CD}
+    \ker \varphi_\lambda @>{i_\lambda}>> \bigoplus \ker \varphi_\lambda @>{\tilde{\pi}}>> \varinjlim (\ker \varphi_\lambda) \\
+    @V{\hookrightarrow}VV @V{\hookrightarrow}VV @VV{\imath}V \\
+    L_\lambda @>{i_\lambda}>> \bigoplus L_\lambda @>{\tilde{p}}>> \varinjlim L_\lambda \\
+    @V{\varphi_\lambda}VV @V{\varphi_\lambda^\oplus}VV @VV{\varinjlim \varphi}V \\
+    M_\lambda @>{i_\lambda'}>> \bigoplus M_\lambda @>{\tilde{p}'}>> \varinjlim M_\lambda
+  \end{CD}
+  \]
+
+  逆に，$x \in \varinjlim (\ker \varphi_\lambda)$とする．
+  十分大きな$\lambda \in \Lambda$と$x_\lambda \in \ker \varphi_\lambda$によって$x = \tilde{\pi} \circ i_\lambda (x_\lambda)$と表せる．
+  $\imath(x) = \imath \circ \tilde{\pi} \circ i_\lambda (x_\lambda) = \tilde{p} \circ i_\lambda (x_\lambda)$なので，$(\varinjlim \varphi) \circ \imath (x) = (\varinjlim \varphi) \circ \tilde{p} \circ i_\lambda (x_\lambda) = \tilde{p}' \circ i_\mu' \circ \varphi_\lambda (x_\mu) = 0$となる．従って，$\imath(x) \in \ker (\varinjlim \varphi)$であり，$\varinjlim (\ker \varphi_\lambda) \subset \ker (\varinjlim \varphi)$．
+
+  \[
+  \begin{CD}
+    L_\lambda @>{i_\lambda}>> \bigoplus L_\lambda @>{\tilde{p}}>> \varinjlim L_\lambda \\
+    @V{\varphi_\lambda}VV @V{\varphi_\lambda^\oplus}VV @VV{\varinjlim \varphi}V \\
+    M_\lambda @>{i_\lambda'}>> \bigoplus M_\lambda @>{\tilde{p}'}>> \varinjlim M_\lambda \\
+    @A{\hookrightarrow}AA @A{\hookrightarrow}AA @AA{\jmath}A \\
+    \Im \varphi_\lambda @>{i_\lambda'}>> \bigoplus \Im \varphi_\lambda @>{\tilde{\pi}'}>> \varinjlim (\Im \varphi_\lambda)
+  \end{CD}
+  \]
+
+  $y \in \Im (\varinjlim \varphi)$とする．
+  $y = (\varinjlim \varphi)(x)$となる$x \in \varinjlim L_\lambda$が存在する．
+  直極限の性質から$\lambda \in \Lambda$と$x_\lambda \in L_\lambda$によって$x = \tilde{p} \circ i_\lambda (x_\lambda)$と表せる．従って，
+  \[y = (\varinjlim \varphi)(x) = (\varinjlim \varphi) \circ \tilde{p} \circ i_\lambda (x_\lambda) = \tilde{p}' \circ i_\lambda' \circ \varphi_\lambda (x_\lambda) = \jmath \circ \tilde{\pi}' \circ i_\lambda' \circ \varphi_\lambda (x_\lambda) \in \jmath \left( \varinjlim (\Im \varphi_\lambda) \right) \]
+  であり，$\Im (\varinjlim \varphi) \subset \varinjlim (\Im \varphi_\lambda)$．
+
+  逆に，$y \in \varinjlim (\Im \varphi_\lambda)$とする．
+  $\lambda \in \Lambda$と$y_\lambda \in \Im \varphi_\lambda$によって$y = \tilde{\pi}' \circ i_\lambda' (y_\lambda)$と表せる．
+  $y_\lambda = \varphi_\lambda (x_\lambda)$となる$x_\lambda \in L_\lambda$が存在するので，
+  \[\jmath (y) = \jmath \circ \tilde{\pi}' \circ i_\lambda' \circ \varphi_\lambda (x_\lambda) = \tilde{p}' \circ i_\lambda' \circ \varphi_\lambda (x_\lambda) = (\varinjlim \varphi) \circ \tilde{p} \circ i_\lambda (x_\lambda) \in \Im (\varinjlim \varphi).\]
+  従って，$\varinjlim (\Im \varphi_\lambda) \subset \Im (\varinjlim \varphi)$．
+\end{proof}
+
+\section{$\Hom$と$\otimes$}
+\paragraph{例1.17}~
+\begin{screen}
+  (v) 直極限の準同型
+\end{screen}
+\begin{proof}
+  $\{M_\lambda\}$を直族とする．$\lambda < \mu$に対し$R$準同型
+  \[ {}^\# f_{\lambda\mu} \colon \Hom_R(M_\mu, N) \ni f \mapsto f \circ f_{\mu\lambda} \in \Hom_R(M_\lambda, N) \]
+  を定義することによって$\{\Hom_R(M_\lambda, N)\}$は逆族となる．実際，$\lambda < \mu < \nu$，$f \in \Hom_R(M_\nu, N)$とすれば，${}^\# f_{\lambda\mu} \circ {}^\# f_{\mu\nu} (f) = f \circ f_{\nu\mu} \circ f_{\mu\lambda} = f \circ f_{\nu\lambda} = {}^\# f_{\lambda\nu} (f)$である．
+  $h \in \Hom_R\left(\varinjlim M_\lambda, N\right)$とすれば，$(h \circ \tilde{p} \circ i_\lambda \mid \lambda \in \Lambda) \in \varprojlim \Hom_R\left(M_\lambda, N\right)$である．実際，直極限の構成から$h \circ \tilde{p} \in \Hom_R\left(\bigoplus M_\lambda, N\right)$となり，(iii)の証明から，$(h \circ \tilde{p} \circ i_\lambda \mid \lambda \in \Lambda) \in \prod \Hom_R\left(M_\lambda, N\right)$となる．
+  ${}^\# f_{\lambda\mu} \circ p_\mu ((h \circ \tilde{p} \circ i_\lambda)) = h \circ \tilde{p} \circ i_\mu \circ f_{\mu\lambda} = h \circ \tilde{p} \circ i_\lambda = p_\lambda ((h \circ \tilde{p} \circ i_\lambda))$であるので，逆極限の構成から，$(h \circ \tilde{p} \circ i_\lambda) \in \varprojlim \Hom_R\left(M_\lambda, N\right)$となる．以上から，$R$準同型
+  \[\psi\colon \Hom_R\left(\varinjlim M_\lambda, N\right) \ni h \mapsto (h \circ \tilde{p} \circ i_\lambda \mid \lambda \in \Lambda) \in \varprojlim \Hom_R\left(M_\lambda, N\right)\]
+  が得られた．
+  $\psi$は単射である．実際，$(h \circ \tilde{p} \circ i_\lambda) = (0,\ldots, 0)$とすれば，全ての$\lambda \in \Lambda$と$x_\lambda \in M_\lambda$に対し$h \circ \tilde{p} \circ i_\lambda (x_\lambda) = 0$となる．ところで，$\varinjlim M_\lambda$の任意の元は十分大きな$\lambda \in \Lambda$と$x_\lambda \in M_\lambda$によって$\tilde{p} \circ i_\lambda (x_\lambda)$と表せる．従って，$h=0$である．
+  \[
+  \begin{CD}
+    M_\lambda @>{i_\lambda}>> \bigoplus M_\lambda \\
+    % @V{f_\lambda}VV \quad\swarrow{\scriptsize f} @VV{\tilde{p}}V \\
+    @V{f_\lambda}VV @VV{\tilde{p}}V \\
+    N @<<{h}< \varinjlim M_\lambda
+  \end{CD}
+  \]
+  最後に，$\psi$が全射であることを示す．
+  $(f_\lambda \mid \lambda \in \Lambda) \in \varprojlim\Hom_R\left(M_\lambda, N\right)$とする．直和の普遍性から，$R$準同型$f\colon \bigoplus M_\lambda \to N$で，全ての$\lambda \in \Lambda$に対して$f_\lambda = f \circ i_\lambda$となるものが一意に存在する．
+  $R$準同型
+  \[ h \colon \varinjlim M_\lambda \ni \tilde{x} \mapsto f_\lambda(x_\lambda) \in N \quad \tilde{x} = \tilde{p} \circ i_\lambda (x_\lambda),\quad x_\lambda \in M_\lambda\]
+  を考える．これは$x_\lambda \in M_\lambda$及び$\lambda \in \Lambda$の取り方に依らない．実際，$\tilde{x} = \tilde{p} \circ i_\lambda (x_\lambda) = \tilde{p} \circ i_\lambda (y_\lambda)$とすれば，$\tilde{p} \circ i_\lambda (x_\lambda - y_\lambda) = 0$となるので，ある$\mu > \lambda$が存在して$f_{\mu\lambda}(x_\lambda - y_\lambda)$となる．
+  $f_\lambda(x_\lambda) = f_\mu \circ f_{\mu\lambda} (x_\lambda) = f_\mu \circ f_{\mu\lambda} (y_\lambda) = f_\lambda(y_\lambda)$なので，$h$は$x_\lambda \in M_\lambda$の取り方に依らない．
+  $\tilde{x} = \tilde{p} \circ i_\lambda (x_\lambda) = \tilde{p} \circ i_\mu (y_\mu)$とする．
+  $\mu > \lambda$なら$\tilde{p} \circ i_\lambda (x_\lambda) = \tilde{p} \circ i_\mu \circ f_{\mu\lambda} (x_\lambda) = \tilde{p} \circ i_\mu (y_\mu)$となり，先程の場合に帰着される．これで$\psi$が全射であることが示せた．
+\end{proof}
+
+\begin{screen}
+  (vi) 直極限の準同型
+\end{screen}
+\begin{proof}
+  $\{N_\lambda\}$を逆族とする．$\lambda < \mu$に対し$R$準同型
+  \[g_{\lambda\mu}^\# \colon \Hom_R(M, N_\mu) \ni g \mapsto g_{\lambda\mu} \circ g \in \Hom_R(M, N_\lambda) \]
+  によって$\{\Hom_R(M, N_\lambda)\}$は逆族となる．実際，$\lambda < \mu < \nu$，$f \in \Hom_R(M, N_\nu)$として，$g_{\lambda\mu}^\# \circ g_{\mu\nu}^\# (f) = g_{\lambda\mu} \circ g_{\mu\nu} \circ f = g_{\lambda\nu} \circ f = g_{\lambda\nu}^\#(f)$である．
+  $f \in \Hom_R(M, \varprojlim N_\lambda)$に対し，$(p_\lambda \circ f \mid \lambda \in \Lambda) \in \varprojlim \Hom_R(M, N_\lambda)$となる．実際，容易に分かるように$(p_\lambda \circ f \mid \lambda \in \Lambda) \in \prod \Hom_R(M, N_\lambda)$である．
+  $g_{\lambda\mu}^\# \circ p_\mu ((p_\lambda \circ f)) = g_{\lambda\mu} \circ p_\mu \circ f$となるが，$f$の値域は$\varprojlim N_\lambda$なので，$g_{\lambda\mu} \circ p_\mu \circ f = p_\lambda \circ f = p_\lambda ((p_\lambda \circ f))$となる．
+  以上から，$R$準同型
+  \[\psi\colon \Hom_R\left(M, \varprojlim N_\lambda\right) \ni h \mapsto (p_\lambda \circ h \mid \lambda \in \Lambda) \in \varprojlim \Hom_R(M, N_\lambda) \subset \prod \Hom_R(M, N_\lambda)\]
+  が得られた．$\psi$は単射である．実際，$(p_\lambda \circ h) = (0, \ldots)$とすると，全ての$\lambda \in \Lambda$と$x \in M$に対し$p_\lambda \circ h (y) = 0$となる．従って，$h=0$となる．最後に，$\psi$が全射であることを示す．$(h_\lambda \mid \lambda \in \Lambda) \in \varprojlim \Hom_R(M, N_\lambda)$とすれば，$g_{\lambda\mu}^\# \circ p_\mu ((h_\lambda)) = p_\lambda ((h_\lambda))$なので$g_{\lambda\mu} \circ h_\mu = h_\lambda$．従って，$(h_\lambda) \in \Hom_R\left(M, \varprojlim N_\lambda\right)$であり，$\psi((h_\lambda)) = (h_\lambda)$．
+\end{proof}
+
+\paragraph{例1.19}~
+\begin{screen}
+  (v) 直極限とテンソル積
+\end{screen}
+\begin{proof}
+  $\{M_\lambda\}$を直族とする．$\lambda < \mu$に対し$R$準同型
+  \[f_{\mu\lambda} \otimes 1 \colon M_\lambda \otimes_R N \ni x_\lambda \otimes y \mapsto f_{\mu\lambda}(x_\lambda) \otimes y \in M_\mu \otimes_R N\]
+  によって$\{M_\lambda \otimes_R N\}$は直族となる．実際，$\lambda < \mu < \nu$，$x_\lambda \in M_\lambda$，$y \in N$に対し$(f_{\nu\mu} \otimes 1) \circ (f_{\mu\lambda} \otimes 1) (x_\lambda \otimes y) = (f_{\nu\mu} \otimes 1)(f_{\mu\lambda}(x_\lambda) \otimes y) = f_{\nu\mu} \circ f_{\mu\lambda} (x_\lambda) \otimes y = f_{\nu\lambda}(x_\lambda) \otimes y = (f_{\nu\lambda} \otimes 1)(x_\lambda \otimes y)$となる．
+  $R$同型$\phi\colon (\bigoplus M_\lambda) \otimes_R N \simeq \bigoplus(M_\lambda \otimes_R N)$によって，包含写像
+  \[\phi \circ (i_\lambda \otimes 1)\colon M_\lambda \otimes_R N \ni x_\lambda \otimes y \mapsto \phi \circ (i_\lambda \otimes 1)(x_\lambda \otimes y) = \phi (i_\lambda(x_\lambda) \otimes y) \in \bigoplus(M_\lambda \otimes_R N)\]
+  を構成する．
+  $\tilde{N} = \langle i_\mu \circ f_{\mu\lambda} (x_\lambda) - i_\lambda (x_\lambda) \rangle$とすれば，直極限は$\varinjlim M_\lambda = \left( \bigoplus M_\lambda \right) / \tilde{N}$となる．
+  $\{M_\lambda \otimes_R N\}$の直極限$\varinjlim \left( M_\lambda \otimes_R N \right)$を構成する際の$\ker$は
+  \[\langle \phi \circ (i_\mu \otimes 1)(f_{\mu\lambda} \otimes 1)(x_\lambda \otimes y) - \phi \circ (i_\lambda \otimes 1)(x_\lambda \otimes y) \rangle = \langle \phi (i_\mu \circ f_{\mu\lambda}(x_\lambda) \otimes y) - \phi (i_\lambda (x_\lambda) \otimes y) \rangle = \phi (\tilde{N} \otimes N) \]
+  とかける．従って，
+  \begin{align*}
+    \varinjlim \left( M_\lambda \otimes_R N \right) &= \bigoplus \left( M_\lambda \otimes_R N \right) / \phi (\tilde{N} \otimes N) \simeq \left( \bigoplus M_\lambda \right) \otimes_R N / (\tilde{N} \otimes_R N) \\
+    & \simeq \left( \bigoplus M_\lambda / \tilde{N} \right) \otimes_R N = (\varinjlim M_\lambda) \otimes_R N.
+  \end{align*}
+  １つ目の同型は$\psi = \phi^{-1} \colon \bigoplus(M_\lambda \otimes_R N) \simeq (\bigoplus M_\lambda) \otimes_R N$から自然に誘導される：
+  \[ \bigoplus \left( M_\lambda \otimes_R N \right) / \phi (\tilde{N} \otimes N) \ni x + \phi (\tilde{N} \otimes N) \mapsto \psi(x) + \tilde{N} \otimes N \in \left( \bigoplus M_\lambda \right) \otimes_R N / (\tilde{N} \otimes_R N).\]
+  ２つ目の同型は
+  \[\left( \bigoplus M_\lambda \right) \otimes_R N / (\tilde{N} \otimes_R N) \ni (x \otimes y) + \tilde{N} \otimes_R N \mapsto (x + \tilde{N}) \otimes y \in \left( \bigoplus M_\lambda / \tilde{N} \right) \otimes_R N \]
+  で与えられる．
+\end{proof}
+
+\paragraph{例1.20}
+(i)の$\Hom_R(L, \Hom_S(M ,N))$は正しくは$\Hom_S(L, \Hom_R(M ,N))$．
+(ii)も同様の修正．
+
+\section{射影的加群，単射的加群，平坦加群}
+\paragraph{補題1.4}~
+\begin{screen}
+  (v) $\Phi^\wedge \circ \Psi = 1$
+\end{screen}
+\begin{proof}
+  先ずは記号を整理しておく．(iv)で与えられた単射
+  \[ \Phi \colon M \ni x \mapsto \Phi_x = (M^\wedge \ni \varphi \mapsto \varphi(x) \in \mathbb{Q}/\mathbb{Z}) \in M^{\wedge\wedge} \]
+  及びその双対：
+  \[\Phi^\wedge \colon M^{\wedge\wedge\wedge} \ni \xi \mapsto \xi \circ \Phi \in M^\wedge.\]
+  $M^\wedge$に対して(iv)を考えた写像単射：
+  \[ \Psi \colon M^\wedge \ni \varphi \mapsto \Psi_\varphi = (M^{\wedge\wedge} \ni \chi \mapsto \chi(\varphi) \in \mathbb{Q}/\mathbb{Z}) \in M^{\wedge\wedge\wedge}. \]
+  先ず，$\Psi(\varphi) = \Psi_\varphi = (M^{\wedge\wedge} \ni \chi \mapsto \chi(\varphi) \in \mathbb{Q}/\mathbb{Z}) \in M^{\wedge\wedge\wedge}$とおく．
+  $\varphi \in M^\wedge$に対し
+  \[ (\Phi^\wedge \circ \Psi)(\varphi) = \Phi^\wedge(\Psi(\varphi)) = \Phi^\wedge(\Psi_\varphi) = \Psi_\varphi \circ \Phi \in M^\wedge\]
+  なので，$x \in M$に対し，
+  \[ (\Phi^\wedge \circ \Psi)(\varphi)(x) = (\Psi_\varphi \circ \Phi)(x) = \Psi_\varphi(\Phi(x)) = \Psi_\varphi(\Phi_x) = \Phi_x(\varphi) = \varphi(x). \]
+  従って，$(\Phi^\wedge \circ \Psi)(\varphi) = \varphi$であり，$\Phi^\wedge \circ \Psi = 1$．
+\end{proof}
+
+\paragraph{補題1.5}~
+\begin{screen}
+  $f^{\wedge\wedge}$の$L$への制限
+\end{screen}
+\begin{proof}
+  先ずは記号を整理しておく．(iv)で与えられた単射
+  \[ \Phi \colon L \ni x \mapsto \Phi_x = (L^\wedge \ni \varphi \mapsto \varphi(x) \in \mathbb{Q}/\mathbb{Z}) \in L^{\wedge\wedge} \]
+  と
+  \[ \Phi' \colon M \ni y \mapsto \Phi_y' = (M^\wedge \ni \varphi' \mapsto \varphi'(y) \in \mathbb{Q}/\mathbb{Z}) \in M^{\wedge\wedge} .\]
+  $f\colon L \to M$の双対
+  \[ f^\wedge \colon M^\wedge \ni \varphi' \mapsto \varphi' \circ f \in L^\wedge \]
+  とその双対
+  \[ f^{\wedge\wedge} \colon L^{\wedge\wedge} \ni \chi \mapsto \chi \circ f^\wedge \in M^{\wedge\wedge}. \]
+  $f^{\wedge\wedge}$の$L$への制限を考えるが，$\Phi$によって$L \subset L^{\wedge\wedge}$とみなしているので，正確には$f^{\wedge\wedge}$の$\{\, \Phi_x \mid x \in L \,\}$への制限を考える．
+  $f^{\wedge\wedge}(\Phi_x) = \Phi_x \circ f^\wedge \in M^{\wedge\wedge}$なので，これが$\Phi'_{f(x)}$と等しいことを示せばよい．
+  $\varphi' \in M^\wedge$として，
+  \[ (\Phi_x \circ f^\wedge)(\varphi') = \Phi_x(f^\wedge(\varphi')) = \Phi_x(\varphi' \circ f) = (\varphi' \circ f)(x) = \varphi'(f(x)) = \Phi'_{f(x)}(\varphi'). \]
+  従って，$f^{\wedge\wedge}(\Phi_x) = \Phi'_{f(x)}$となり，$f^{\wedge\wedge}$の$L$への制限は$f$となる．
+  \[
+  \begin{CD}
+    L @>{f}>> M \\
+    @V{\Phi}VV  @VV{\Phi'}V \\
+    L^{\wedge\wedge} @>>{f^{\wedge\wedge}}> M^{\wedge\wedge}
+  \end{CD}
+  \]
+\end{proof}
+
+\begin{screen}
+  $g^{\ast\wedge}$の$L$への制限
+\end{screen}
+\begin{proof}
+  先ずは記号を整理しておく．(iv)で与えられた単射
+  \[ \Phi \colon R \ni a \mapsto \Phi_a = (R^\wedge \ni \varphi \mapsto \varphi(a) \in \mathbb{Q}/\mathbb{Z}) \in R^{\wedge\wedge} \]
+  と
+  \[ \Phi' \colon L \ni x \mapsto \Phi_x' = (L^\wedge \ni \varphi' \mapsto \varphi'(x) \in \mathbb{Q}/\mathbb{Z}) \in L^{\wedge\wedge}. \]
+  $g \colon L \to R^\wedge$の双対
+  \[ g^\wedge \colon R^{\wedge\wedge} \ni \chi \mapsto \chi \circ g \in L^\wedge. \]
+  $g^\ast = g^\wedge \circ \Phi \colon R \to L^\wedge$の双対
+  \[ g^{\ast\wedge} \colon L^{\wedge\wedge} \ni \chi' \mapsto \chi' \circ g^\ast = \chi' \circ g^\wedge \circ \Phi \in R^\wedge. \]
+  $g^{\ast\wedge}$の$L$への制限を考えるが，$\Phi'$によって$L \subset L^{\wedge\wedge}$とみなしているので，正確には$g^{\ast\wedge}$の$\{\, \Phi'_x \mid x \in L \,\}$への制限を考える．
+  $g^{\ast\wedge}(\Phi_x') = \Phi_x' \circ g^\wedge \circ \Phi \in R^\wedge$なので，$a \in R$として
+  \[ (\Phi_x' \circ g^\wedge \circ \Phi)(a) = \Phi_x'(g^\wedge(\Phi(a))) = \Phi_x'(g^\wedge(\Phi_a)) = \Phi_x'(\Phi_a \circ g) = (\Phi_a \circ g)(x) = \Phi_a(g(x)) = g(x)(a).\]
+  従って，$g^{\ast\wedge}(\Phi_x') = g(x)$となり，$g^{\ast\wedge}$の$L$への制限は$g$となる．
+\end{proof}

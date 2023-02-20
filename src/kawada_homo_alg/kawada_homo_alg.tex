@@ -1,0 +1,23 @@
+\documentclass[a4paper, leqno]{ltjsreport}
+\usepackage[hiragino-pro]{luatexja-preset}
+\usepackage{../hogehoge}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{\rightmark}
+\rhead{}
+\renewcommand{\paragraphmark}[1]{\markright{#1}}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{4}
+\begin{document}
+\chapter*{ホモロジー代数（河田敬義）}
+使用しているのは第６刷．
+
+\tableofcontents
+
+\input{src/kawada_homo_alg_1.tex}
+\input{src/kawada_homo_alg_2.tex}
+\input{src/kawada_homo_alg_3.tex}
+\input{src/kawada_homo_alg_4.tex}
+
+\end{document}

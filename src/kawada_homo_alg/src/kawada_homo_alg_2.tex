@@ -1,0 +1,524 @@
+\chapter{複体とホモロジー}
+\setcounter{section}{1}
+\section{2重複体}
+\paragraph{例2.8}~
+\begin{screen}
+  \textbf{平坦加群の定義}．
+  左$R$加群$L$に対し，以下の2つは同値である：
+  \begin{enumerate}[label=(\roman*)]
+    \item $L$は平坦加群である（定義1.5，p.46）
+    \item 任意の右$R$加群の完全列$ \cdots \longrightarrow M_1 \longrightarrow M_2 \longrightarrow \cdots$に対し$ \cdots \longrightarrow M_1 \otimes_R L \longrightarrow M_2 \otimes_R L \longrightarrow \cdots$が完全である．
+  \end{enumerate}
+\end{screen}
+\begin{proof}
+  (ii)が成立すれば(i)が成立することは明らか（$0$からはじまる適当な完全列を考えればよい）．
+
+  (i)が成立しているときに(ii)が成立することを示すには，(i)のもとで右$R$加群の完全系列
+  \[
+  \begin{CD}
+    M_1 @>{f}>> M_2 @>{g}>> M_3
+  \end{CD}
+  \]
+  に対し
+  \[
+  \begin{CD}
+    M_1 \otimes_R L @>{f \otimes 1}>> M_2 \otimes_R L @>{g \otimes 1}>> M_3 \otimes_R L
+  \end{CD}
+  \]
+  が完全となること，すなわち$\Im(f \otimes 1) = \ker (g \otimes 1)$を証明すればよい．
+
+  $g \colon M_2 \to M_3$に対し，$R$加群の準同型
+  \[ g' \colon M_2 \ni m_2 \mapsto g(m_2) \in \Im g \]
+  と包含写像$\imath \colon \Im g \hookrightarrow M_3$を考えれば，明らかに$g = \imath \circ g'$となる．
+  $g'$は全射なので
+  \[
+  \begin{CD}
+    M_1 @>{f}>> M_2 @>{g'}>> \Im g' @>>> 0
+  \end{CD}
+  \]
+  は完全列で，テンソル積は右完全なので
+  \[
+  \begin{CD}
+    M_1 \otimes_R L @>{f \otimes 1}>> M_2 \otimes_R L @>{g' \otimes 1}>> \Im g' \otimes_R L @>>> 0
+  \end{CD}
+  \]
+  も完全である：$\Im(f \otimes 1) = \ker (g' \otimes 1)$．
+
+  $\imath \colon \Im g \hookrightarrow M_3$は単射であるので，(i)から$\imath \otimes 1 \colon \Im g' \otimes_R L \to M_3 \otimes_R L$も単射である：
+  % \[
+  % \begin{CD}
+  %   M_1 \otimes_R L @>{f \otimes 1}>> M_2 \otimes_R L @>{g' \otimes 1}>> \Im g' \otimes_R L @>>> 0 \\
+  %   @. @V{g \otimes 1}VV  @VV{\imath \otimes 1}V \\
+  %   @. M_3 \otimes_R L @= M_3 \otimes_R L @.
+  % \end{CD}
+  % \]
+  \[
+  \begin{tikzcd}
+    M_1 \otimes_R L \arrow[r, "f \otimes 1"] & M_2 \otimes_R L \arrow[rr, "g' \otimes 1"]\arrow[rd, "g \otimes 1" description] &[-20pt]&[-20pt] \Im g' \otimes_R L \arrow[r]\arrow[ld, "\imath \otimes 1" description] & 0 \\[8pt]
+    & & M_3 \otimes_R L
+  \end{tikzcd}
+  \]
+
+  $\ker (g' \otimes 1) = \ker (g \otimes 1)$を示せば証明は完了する．
+  $\sum x_i \otimes y_i \in \ker (g'\otimes 1)$とすれば，$(g \otimes 1)(\sum x_i \otimes y_i) = (\imath \otimes 1) \circ (g' \otimes 1)(\sum x_i \otimes y_i) = 0$なので，$\sum x_i \otimes y_i \in \ker(g \otimes 1)$である．
+  従って$\ker (g' \otimes 1) \subset \ker (g \otimes 1)$．
+  $\sum x_i \otimes y_i \in \ker (g\otimes 1)$とすれば，$0 = (g \otimes 1)(\sum x_i \otimes y_i) = (\imath \otimes 1) \circ (g' \otimes 1)(\sum x_i \otimes y_i)$である．
+  $\imath \otimes 1$は単射なので，$(g' \otimes 1)(\sum x_i \otimes y_i) = 0$すなわち$\sum x_i \otimes y_i \in \ker(g' \otimes 1)$であり，$\ker (g \otimes 1) \subset \ker (g' \otimes 1)$．
+\end{proof}
+
+\paragraph{例2.10}~
+\begin{screen}
+  \textbf{単射的加群の定義}．
+  左$R$加群$I$に対し，以下の2つは同値である：
+  \begin{enumerate}[label=(\roman*)]
+    \item $I$は単射的加群である（定義1.2，p.40）
+    \item 任意の左$R$加群の完全列$ \cdots \longrightarrow M_1 \longrightarrow M_2 \longrightarrow \cdots$に対し$ \cdots \longrightarrow \Hom_R(M_2, I) \longrightarrow \Hom_R(M_1, I) \longrightarrow \cdots$が完全である．
+  \end{enumerate}
+\end{screen}
+\begin{proof}
+  (ii)が成立すれば(i)が成立することは定理1.7(p.49)から明らか．
+
+  (i)が成立しているときに(ii)が成立することを示すには，(i)のもとで左$R$加群の完全系列
+  \[
+  \begin{CD}
+    M_1 @>{f}>> M_2 @>{g}>> M_3
+  \end{CD}
+  \]
+  に対し
+  \[
+  \begin{CD}
+    \Hom_R(M_3, I) @>{^\#g}>> \Hom_R(M_2, I) @>{^\#f}>> \Hom_R(M_1, I)
+  \end{CD}
+  \]
+  が完全となること，すなわち$\Im(^\#g) = \ker (^\#f)$を証明すればよい．
+  $g \colon M_2 \to M_3$に対し，$R$加群の準同型
+  \[ g' \colon M_2 \ni m_2 \mapsto g(m_2) \in \Im g \]
+  と包含写像$\imath \colon \Im g \hookrightarrow M_3$を考えれば，明らかに$g = \imath \circ g'$となる．
+  $g'$は全射なので
+  \[
+  \begin{CD}
+    M_1 @>{f}>> M_2 @>{g'}>> \Im g @>>> 0
+  \end{CD}
+  \]
+  は完全列で，$\Hom_R$は左完全なので
+  \[
+  \begin{CD}
+    0 @>>> \Hom_R(\Im g, I) @>{^\#g'}>> \Hom_R(M_2, I) @>{^\#f}>> \Hom_R(M_1, I)
+  \end{CD}
+  \]
+  も完全である：$\Im(^\#g') = \ker (^\#f)$．
+  $\imath \colon \Im g \hookrightarrow M_3$は単射なので，(i)の仮定から$\varphi \in \Hom_R(\Im g, I)$に対し，$\varphi = \tilde{\varphi} \circ \imath = {}^\#\imath (\tilde\varphi)$となる$\tilde{\varphi} \in \Hom_R(M_3, I)$が存在する：
+  % \[
+  % \begin{CD}
+  %   0 @>>> \Hom_R(\Im g, I) @>{^\#g'}>> \Hom_R(M_2, I) @>{^\#f}>> \Hom_R(M_1, I) \\
+  %   @. @A{^\#\imath}AA  @AA{^\# g}A \\
+  %   @. \Hom_R(M_3, I) @= \Hom_R(M_3, I) @.
+  % \end{CD}
+  % \]
+  \[
+  \begin{tikzcd}
+    0 \arrow[r] & \Hom_R(\Im g, I) \arrow[rr, "^\#g'"] &[-30pt]&[-30pt] \Hom_R(M_2, I) \arrow[r, "^\#f"] & \Hom_R(M_1, I) \\[8pt]
+    & & \Hom_R(M_3, I)\arrow[ul, "^\#\imath" description]\arrow[ur, "^\# g" description]
+  \end{tikzcd}
+  \]
+
+  $\Im(^\# g') = \Im(^\# g)$を示せば証明は完了する．
+  $\Im(^\# g')$の元は$\varphi \in \Hom_R(\Im g, I)$によって$^\# g'(\varphi)$と表すことができ，
+  \[^\# g'(\varphi) = \varphi \circ g' = \tilde{\varphi} \circ \imath \circ g' = \tilde\varphi \circ g ={} ^\# g (\varphi) \in \Im(^\# g)\]
+  となるので，$\Im(^\# g') \subset \Im(^\# g)$．
+  $\Im(^\# g)$の元は$\tilde\varphi \in \Hom_R(M_3, I)$によって$^\# g(\tilde\varphi)$と表すことができ，
+  \[^\# g(\tilde\varphi) = \tilde\varphi \circ g = \tilde{\varphi} \circ \imath \circ g' = \varphi \circ g' ={} ^\# g' (\varphi) \in \Im(^\# g')\]
+  となるので，$\Im(^\# g) \subset \Im(^\# g')$．
+\end{proof}
+
+\begin{screen}
+  \textbf{射影的加群の定義}．
+  左$R$加群$P$に対し，以下の2つは同値である：
+  \begin{enumerate}[label=(\roman*)]
+    \item $P$は射影的加群である（定義1.1，p.36）
+    \item 任意の左$R$加群の完全列$ \cdots \longrightarrow M_1 \longrightarrow M_2 \longrightarrow \cdots$に対し$ \cdots \longrightarrow \Hom_R(P, M_1) \longrightarrow \Hom_R(P, M_2) \longrightarrow \cdots$が完全である．
+  \end{enumerate}
+\end{screen}
+\begin{proof}
+  (ii)が成立すれば(i)が成立することは定理1.3(p.37)から明らか．
+
+  (i)が成立しているときに(ii)が成立することを示すには，(i)のもとで左$R$加群の完全系列
+  \[
+  \begin{CD}
+    M_1 @>{f}>> M_2 @>{g}>> M_3
+  \end{CD}
+  \]
+  に対し
+  \[
+  \begin{CD}
+    \Hom_R(P, M_1) @>{f^\#}>> \Hom_R(P, M_2) @>{g^\#}>> \Hom_R(P, M_3)
+  \end{CD}
+  \]
+  が完全となること，すなわち$\Im f^\# = \ker g^\#$を証明すればよい．
+  $f \colon M_1 \to M_2$に対し，$R$加群の準同型
+  \[ f' \colon \Coim f = M_1 / \ker f \ni m_1 + \ker f \mapsto f(m_1) \in M_2 \]
+  と射影$\pi \colon M_1 \to \Coim f$を考えれば，明らかに$f = f' \circ \pi$となる．
+  $f'$は単射なので
+  \[
+  \begin{CD}
+    0 @>>> \Coim f @>{f'}>> M_2 @>{g}>> M_3
+  \end{CD}
+  \]
+  は完全列で，$\Hom_R$は左完全なので
+  \[
+  \begin{CD}
+    0 @>>> \Hom_R(P, \Coim f) @>{f'^\#}>> \Hom_R(P, M_2) @>{g^\#}>> \Hom_R(P, M_3)
+  \end{CD}
+  \]
+  も完全である：$\Im f'^\# = \ker g^\#$．
+  $\pi \colon M_1 \to \Coim f$は全射なので，(i)の仮定から$\varphi \in \Hom_R(P, \Coim f)$に対し，$\varphi = \pi \circ \tilde{\varphi} = \pi^\# (\tilde\varphi)$となる$\tilde{\varphi} \in \Hom_R(P, M_1)$が存在する：
+  % \[
+  % \begin{CD}
+  %   0 @>>> \Hom_R(P, \Coim f) @>{f'^\#}>> \Hom_R(P, M_2) @>{g^\#}>> \Hom_R(P, M_3) \\
+  %   @. @A{\pi^\#}AA  @AA{f^\#}A \\
+  %   @. \Hom_R(P, M_1) @= \Hom_R(P, M_1) @.
+  % \end{CD}
+  % \]
+  \[
+  \begin{tikzcd}
+    0 \arrow[r] & \Hom_R(P, \Coim f) \arrow[rr, "f'^\#"] &[-30pt] &[-30pt] \Hom_R(P, M_2) \arrow[r, "g^\#"] & \Hom_R(P, M_3) \\[8pt]
+    & & \Hom_R(P, M_1) \arrow[ul, "\pi^\#"]\arrow[ur, "f^\#"']
+  \end{tikzcd}
+  \]
+
+  $\Im(f'^\#) = \Im(f^\#)$を示せば証明は完了する．
+  $\Im(f'^\#)$の元は$\varphi \in \Hom_R(P, \Coim f)$によって$f'^\# (\varphi)$と表すことができ，
+  \[f'^\# (\varphi) = f' \circ \varphi = f' \circ \pi \circ \tilde{\varphi} = f \circ \tilde\varphi = f^\# (\tilde\varphi) \in \Im(f^\#)\]
+  となるので，$\Im(f'^\#) \subset \Im(f^\#)$．
+  $\Im(f^\#)$の元は$\tilde\varphi \in \Hom_R(P, M_1)$によって$f^\#(\tilde\varphi)$と表すことができ，
+  \[f^\#(\tilde\varphi) = f \circ \tilde\varphi = f' \circ \pi \circ \tilde{\varphi} = f' \circ \varphi = f'^\# (\varphi) \in \Im(f'^\#)\]
+  となるので，$\Im(f^\#) \subset \Im(f'^\#)$．
+\end{proof}
+
+\begin{screen}
+  $\boldsymbol{H}(\Hom_R(A, \boldsymbol{Y})) \simeq \boldsymbol{H}(\Hom_R(\boldsymbol{X}, \boldsymbol{Y}))$
+\end{screen}
+\[
+\begin{CD}
+  @. @. 0 @. 0 @. 0 \\
+  @. @. @VVV @VVV @VVV \\
+  @. @. \Hom_R(X_0, B) @>{^\#(\partial_1')}>> \Hom_R(X_1, B) @>{^\#(\partial_2')}>> \Hom_R(X_2, B) \\
+  @. @. @V{(\varepsilon'')^\#}VV @V{(\varepsilon'')^\#}VV @V{(\varepsilon'')^\#}VV \\
+  0 @>>> \Hom_R(A, Y^0) @>{^\#(\varepsilon')}>> \Hom_R(X_0, Y^0) @>{^\#(\partial_1')}>> \Hom_R(X_1, Y^0) @>{^\#(\partial_2')}>> \Hom_R(X_2, Y^0) \\
+  @. @V{-(d''^0)^\#}VV @V{-(d''^0)^\#}VV @V{-(d''^0)^\#}VV @V{-(d''^0)^\#}VV \\
+  0 @>>> \Hom_R(A, Y^1) @>{^\#(\varepsilon')}>> \Hom_R(X_0, Y^1) @>{^\#(\partial_1')}>> \Hom_R(X_1, Y^1) @>{^\#(\partial_2')}>> \Hom_R(X_2, Y^1) \\
+  @. @V{(d''^1)^\#}VV @V{(d''^1)^\#}VV @V{(d''^1)^\#}VV @V{(d''^1)^\#}VV \\
+  0 @>>> \Hom_R(A, Y^2) @>{^\#(\varepsilon')}>> \Hom_R(X_0, Y^2) @>{^\#(\partial_1')}>> \Hom_R(X_1, Y^2) @>{^\#(\partial_2')}>> \Hom_R(X_2, Y^2)
+\end{CD}
+\]
+\begin{proof}
+  ふちどり双対鎖複体，全双対鎖複体は次のように定義される：
+  \begin{align*}
+    \boldsymbol{A} & = \Set{ \Hom_R(A, Y^q) \mid (-1)^{q+1}(d''^q)^\# }, \\
+    \boldsymbol{B} & = \Set{ \Hom_R(X_p, B) \mid {}^\#(\partial_{p+1}') }, \\
+    \boldsymbol{W} & = \Set{\left. \bigoplus_{p+q=n} \Hom_R(X_p, Y^q) ~\middle|~ \sum_{p+q=n} {}^\#(\partial_{p+1}') + (-1)^{n+1}(d''^q)^\# \right.} .
+  \end{align*}
+  ここで，$W^n \to W^{n+1}$の$n$次双対境界作用素は次のようになる($1 \leq k \leq n$)：
+  \[ \tilde{f}_W^n \colon W^n \ni
+  \begin{pmatrix}
+    f^{n, 0} \\
+    f^{n-1, 1} \\
+    \vdots \\
+    f^{0, n}
+  \end{pmatrix}
+  \mapsto
+  \begin{pmatrix}
+    f^{n, 0} \circ \partial_{n+1}' \\[10pt]
+    f^{n-1, 1} \circ \partial_n + (-1)^{n+1} d''^0 \circ f^{n, 0}) \\
+    \vdots \\
+    f^{{n-k}, k}\circ \partial_{n-k+1}' + (-1)^{n+1}d''^{k-1} \circ f^{n-k+1, k-1} \\
+    \vdots \\
+    (-1)^{n+1} d''^n \circ f^{0, n}
+  \end{pmatrix}
+  \in W^{n+1}.
+  \]
+  準同型$\boldsymbol\varphi\colon \boldsymbol A \to \boldsymbol W$を
+  \[
+  \begin{CD}
+    \varphi^n \colon \Hom_R(A, Y^n) @>{^\#(\varepsilon')}>> \Hom_R(X_0, Y^n) @>{i_n}>> W_n = \bigoplus_{p+q=n}\Hom_R(X_p, Y^q)
+  \end{CD}
+  \]
+  によって定める．
+
+  $\boldsymbol\varphi$が鎖準同型であることを証明する．そのためには次の図式が可換であることを示せばよい．
+  \[
+  \begin{CD}
+    \Hom_R(A, Y^n) @>{i_n \circ{} ^\#(\varepsilon')}>> \bigoplus_{p+q=n}\Hom_R(X_p, Y^q) \\
+    @V{(-1)^{n+1}(d''^n)^\#}VV @VV{\tilde{f}_W^n}V \\
+    \Hom_R(A, Y^{n+1}) @>>{i_{n+1} \circ{} ^\#(\varepsilon')}> \bigoplus_{p+q=n+1}\Hom_R(X_p, Y^q)
+  \end{CD}
+  \]
+  $f^n \in \Hom_R(A, Y^n)$とすれば，
+  \begin{align*}
+    \tilde{f}_W^n \circ i_n \circ{} ^\#(\varepsilon') (f^n) & = \tilde{f}_W^n ((0, \ldots, 0, f^n \circ \varepsilon')) = (0, \ldots, 0, (-1)^{n+1}(d''^n)^\#(f^n \circ \varepsilon')) \\
+    & = (0, \ldots, 0, (-1)^{n+1} d''^n \circ f^n \circ \varepsilon') \\
+    & = i_{n+1} \circ{} ^\#(\varepsilon') \circ (-1)^{n+1}(d''^n)^\# (f^n)
+  \end{align*}
+  となるので，$\tilde{f}_W^n \circ i_n \circ{} ^\#(\varepsilon') = i_{n+1} \circ{} ^\#(\varepsilon') \circ (-1)^{n+1}(d''^n)^\#$．従って，鎖準同型
+  \[ \varphi^{n*} \colon H^n(\boldsymbol{A}) = \ker (d''^n)^\# / \Im (d''^{n-1})^\# \to H^n(\boldsymbol{W}) = \ker \tilde{f}_W^n / \Im \tilde{f}_W^{n-1}  \]
+  が引き起こされる．
+
+  \begin{lem}\label{lem1.1}
+    $f^{p, q} \in \Hom_R(X_p, Y^q)~(p+q=n)$に対し，$\sum_{p+q=n} f^{p, q} \in \ker \tilde{f}_W^n \subset W^n$とする：
+    \begin{align}
+      \begin{split}
+        & f^{n, 0} \circ \partial_{n+1}' = 0, \\
+        & f^{n-1, 1} \circ \partial_n' + (-1)^{n+1} d''^0 \circ f^{n, 0} = 0, \\
+        & \qquad\qquad\qquad \vdots \\
+        & f^{{n-k}, k} \circ \partial_{n-k+1}' + (-1)^{n+1} d''^{k-1} \circ f^{n-k+1, k-1} = 0, \\
+        & \qquad\qquad\qquad \vdots \\
+        & (-1)^{n+1} d''^n f^{0, n} = 0.
+      \end{split}
+      \label{exm2_10_eq_1}
+    \end{align}
+    このとき，$f^{p, q} \in \Hom_R(X_p, Y^q)~(p+q=n-1)$が存在し，$\tilde{f}_W^{n-1}(f^{n-1, 0} + \cdots + f^{0, n-1})$のはじめの$n-1$成分を$(f^{n, 0}, \ldots, f^{1, n-1})$と等しくできる：
+    \begin{align}
+      \begin{split}
+        & f^{n-1, 0} \circ \partial_{n}' = f^{n, 0}, \\
+        & f^{n-2, 1} \circ \partial_{n-1}' + (-1)^{n}d''^0 \circ f^{n-1, 0} = f^{n-1, 1}, \\
+        & \qquad\qquad\qquad \vdots \\
+        & f^{n-k-1, k} \circ \partial_{n-k}' + (-1)^{n} d''^{k-1} f^{n-k, k-1} = f^{n-k, k}, \\
+        & \qquad\qquad\qquad \vdots \\
+        & f^{0, n-1} \circ \partial_1' + (-1)^{n} d''^{n-2} f^{1, n-2} = f^{1, n-1} .
+      \end{split}
+      \label{exm2_10_eq_2}
+    \end{align}
+  \end{lem}
+  \begin{proof}
+    まず$f^{n-1, 0}$の存在を証明する．
+    \[
+    \begin{CD}
+      \Hom_R(X_{n-1}, Y^0) @>{^\#(\partial_n')}>> \Hom_R(X_n, Y^0) @>{^\#(\partial_{n+1}')}>> \Hom_R(X_{n+1}, Y^0)
+    \end{CD}
+    \]
+    が完全なので，
+    \eqref{exm2_10_eq_1}１番目の式から$f^{n, 0} \in \ker {}^\#(\partial_{n+1}') = \Im {}^\#(\partial_n')$なので，\eqref{exm2_10_eq_2}１番目の式を満たす$f^{n-1, 0}$の存在が分かる．
+    \eqref{exm2_10_eq_1}2番目の式と\eqref{exm2_10_eq_2}１番目の式から
+    \[ 0 = f^{n-1, 1} \circ \partial_n' + (-1)^{n+1} d''^0 \circ f^{n-1, 0} \circ \partial_{n}' = {}^\#(\partial_n') \left\{ f^{n-1, 1} + (-1)^{n+1} d''^0 \circ f^{n-1, 0} \right\} \]
+    なので，
+    \[ f^{n-1, 1} + (-1)^{n+1} d''^0 \circ f^{n-1, 0} \in \ker {}^\#(\partial_n') = \Im {}^\#(\partial_{n-1}').  \]
+    従って，\eqref{exm2_10_eq_2}2番目の式を満たす$f^{n-1, 1}$の存在が分かる．以下同様にして$f^{n-2, 1}, \ldots, f^{0, n-1}$が構成できる．
+  \end{proof}
+
+  \begin{lem}\label{lem1.4}
+    上の補題の状況で，
+    \begin{align}
+      f^{0, n} + (-1)^{n+1} d''^{n-1} \circ f^{0, n-1} = a^n \circ \varepsilon' \label{exm2_10_eq_3}
+    \end{align}
+    となる$a^n \in \ker (d''^n)^\# \subset \Hom_R(A, X^n)$が存在する．
+  \end{lem}
+  \begin{proof}
+    \eqref{exm2_10_eq_2}の最後の式に$d''^{n-1}$を作用させ（$d''^{n-1} \circ d''^{n-2} = 0$）
+    \[ d''^{n-1} \circ f^{0, n-1} \circ \partial_1' = d''^{n-1} \circ f^{1, n-1}.\]
+    従って，
+    \begin{align*}
+      ^\#(\partial_1') (f^{0, n} + (-1)^{n+1} d''^{n-1} \circ f^{0, n-1} ) & = f^{0, n} \circ \partial_1' + (-1)^{n+1} d''^{n-1} \circ f^{0, n-1}  \circ \partial_1' \\
+      & = f^{0, n} \circ \partial_1' + (-1)^{n+1} d''^{n-1} \circ f^{1, n-1} \\
+      & = 0.
+    \end{align*}
+    最後に\eqref{exm2_10_eq_1}で$k=n$とした式を用いた．従って，
+    \[ f^{0, n} + (-1)^{n+1} d''^{n-1} \circ f^{0, n-1} \in \ker {}^\#(\partial_1') = \Im {}^\#(\varepsilon'). \]
+    これで\eqref{exm2_10_eq_3}を満足する$a^n \in \Hom_R(A, X^n)$の存在が証明された．あとは$a^n \in \ker (d''^n)^\#$を示せばよい．
+    \eqref{exm2_10_eq_1}最後の式から$f^{0, n} \in \ker (d''^n)^\#$なので，\eqref{exm2_10_eq_3}に$d''^n$を作用させて，$d''^n \circ a^n \circ \varepsilon' = 0$．
+    すなわち$d''^n \circ a^n \circ \varepsilon'(X_0) = 0$．
+    $\varepsilon'\colon X_0 \to A$は全射なので，$d''^n \circ a^n (A) = 0$となり，$a^n \in \ker (d''^n)^\#$．
+  \end{proof}
+
+  $\varphi^{n\ast}$が全射であることを証明する．
+  $H^n(\boldsymbol{W}) = \ker \tilde{f}_W^n / \Im \tilde{f}_W^{n-1}$の任意の元は$(f^{n, 0}, \ldots, f^{1, n-1}, f^{0,n}) + \Im \tilde{f}_W^{n-1}$と表せる．
+  % <a exm2-10-lem-1">補題１</a>
+  追加補題\ref{lem1.1}から$f^{n-1, 0}, \ldots, f^{0, n-1}$が存在して，
+  \[ \tilde{f}_W^{n-1}(f^{n-1, 0}, \ldots, f^{0, n-1}) = (f^{n, 0}, \ldots, f^{1, n-1}, (-1)^n d''^{n-1} \circ f^{0, n-1}) \in \Im \tilde{f}_W^{n-1}\]
+  となる．従って，
+  \[ (f^{n, 0}, \ldots, f^{0,n}) + \Im \tilde{f}_W^{n-1} = (0, \ldots, 0, f^{0, n} - (-1)^n d''^{n-1} \circ f^{0, n-1}) + \Im \tilde{f}_W^{n-1}. \]
+  さらに，追加補題\ref{lem1.4}から$f^{0, n} - (-1)^n d''^{n-1} \circ f^{0, n-1} = a^n \circ \varepsilon'$ならしめる$a^n \in \ker (d'')^\# \subset \Hom_R(A, Y^n)$が存在するので，
+  \[ \varphi^{n\ast}(a^n + \Im (d''^{n-1})^\#) = (0, \ldots, 0, a^n \circ \varepsilon') + \Im \tilde{f}_W^{n-1} = (f^{n, 0}, \ldots, f^{1, n-1}, f^{0,n}) + \Im \tilde{f}_W^{n-1}. \]
+
+  $\varphi^{n\ast}$が単射であることを証明する．
+  $a^n \in \Hom_R(A, Y^n)$が$\varphi^{n\ast}(a^n + \Im (d''^{n-1})^\#) = 0$とする．
+  これは$\varphi^n(a^n) \in \Im \tilde{f}_W^{n-1}$と同値．すなわち，$f^{p, q} \in \Hom_R(X_p, Y^q)~(p+q=n-1)$が存在し，
+  \begin{align}
+    \begin{split}
+      & 0 = f^{n-1, 0} \circ \partial_n' \\
+      & \qquad \vdots \\
+      & 0 = f^{n-k-1, k} \circ \partial_{n-k}' + (-1)^n d''^{k-1} \circ f^{n-k, k-1} \\
+      & \qquad \vdots \\
+      & a^n \circ \varepsilon' = (-1)^n d''^{n-1} \circ f^{0, n-1}
+    \end{split}
+    \label{exm2_10_eq_4}
+  \end{align}
+  となる．$a^n + \Im (d''^{n-1})^\# \in \ker \varphi^{n\ast}$と仮定したので，$a^n + \Im (d''^{n-1})^\# = 0$，すなわち$a^n \in \Im (d''^{n-1})^\# \subset \Hom_R(A, Y^n)$を示せばよい．
+
+  \eqref{exm2_10_eq_4}１番目の式から$0 = {}^\# (\partial_n')(f^{n-1, 0})$なので，$a^n \in \ker ^\# (\partial_n') = \Im ^\# (\partial_{n-1}')$．
+  従って，$g^{n-2, 0} \in \Hom_R(X_{n-2}, Y^0)$によって$f^{n-1, 0} = {}^\# (\partial_{n-1}')(g^{n-2, 0}) = g^{n-2, 0} \circ \partial_{n-1}'$と表せる．
+
+  \eqref{exm2_10_eq_4}で$k=1$として，
+  \begin{align*}
+    0 & = f^{n-2, 1} \circ \partial_{n-1}' + (-1)^n d''^{0} \circ f^{n-1, 0} \\
+    & = f^{n-2, 1} \circ \partial_{n-1}' + (-1)^n d''^{0} \circ g^{n-2, 0} \circ \partial_{n-1}' \\
+    & = {}^\#(\partial_{n-1}') \left( f^{n-2, 1} + (-1)^n d''^{0} \circ g^{n-2, 0} \right).
+  \end{align*}
+  従って，$f^{n-2, 1} + (-1)^n d''^{0} \circ g^{n-2, 0} \in \ker ^\#(\partial_{n-1}') = \Im ^\#(\partial_{n-2}')$なので，$g^{n-3, 1} \in \Hom_R(X_{n-3}, Y^1)$によって，
+  \[ f^{n-2, 1} + (-1)^n d''^{0} \circ g^{n-2, 0} = {}^\#(\partial_{n-2}')(g^{n-3, 1}) = g^{n-3, 1} \circ \partial_{n-2}' \]
+  となる．よって，
+  \[ f^{n-2, 1} = g^{n-3, 1} \circ \partial_{n-2}' - (-1)^n d''^{0} \circ g^{n-2, 0}. \]
+
+  \eqref{exm2_10_eq_4}で$k=2$として，
+  \begin{align*}
+    0 & = f^{n-3, 2} \circ \partial_{n-2}' + (-1)^n d''^{1} \circ f^{n-2, 1} \\
+    & = f^{n-3, 2} \circ \partial_{n-2}' + (-1)^n d''^{1} \circ g^{n-3, 1} \circ \partial_{n-2}' \\
+    & = {}^\#(\partial_{n-2}') \left( f^{n-3, 2} + (-1)^n d''^{1} \circ g^{n-3, 1} \right).
+  \end{align*}
+  従って，$f^{n-3, 2} + (-1)^n d''^{1} \circ g^{n-3, 1} \in \ker ^\#(\partial_{n-2}') = \Im ^\#(\partial_{n-3}')$なので，$g^{n-4, 2} \in \Hom_R(X_{n-4}, Y^2)$によって，
+  \[ f^{n-3, 2} + (-1)^n d''^{1} \circ g^{n-3, 1} = {}^\#(\partial_{n-3}')(g^{n-4, 2}) = g^{n-4, 2} \circ \partial_{n-3}' \]
+  となる．よって，
+  \[ f^{n-3, 2} = g^{n-4, 2} \circ \partial_{n-3}' - (-1)^n d''^{1} \circ g^{n-3, 1}. \]
+
+  以降同様に繰り返して，$k=n-2$から$f^{1, n-2} = g^{0, n-2} \circ \partial_1' - (-1)^n d''^{n-3} \circ g^{1, n-3}$が得られる．
+
+  \eqref{exm2_10_eq_4}で$k=n-1$として，
+  \begin{align*}
+    0 & = f^{0, n-1} \circ \partial_{1}' + (-1)^n d''^{n-2} \circ f^{1, n-2} \\
+    & = f^{0, n-1} \circ \partial_{1}' + (-1)^n d''^{n-2} \circ g^{0, n-2} \circ \partial_1' \\
+    & = {}^\#(\partial_1') \left( f^{0, n-1} + (-1)^n d''^{n-2} \circ g^{0, n-2} \right).
+  \end{align*}
+  従って，$f^{0, n-1} + (-1)^n d''^{n-2} \circ g^{0, n-2} \in \ker ^\#(\partial_{1}') = \Im ^\#(\varepsilon')$なので，$a^{n-1} \in \Hom_R(A, Y^{n-1})$によって，
+  \[ f^{0, n-1} + (-1)^n d''^{n-2} \circ g^{0, n-2} = {}^\#(\varepsilon')(a^{n-1}) = a^{n-1} \circ \varepsilon' \]
+  となる．よって，
+  \[ f^{0, n-1} = a^{n-1} \circ \varepsilon' - (-1)^n d''^{n-2} \circ g^{0, n-2}. \]
+
+  \eqref{exm2_10_eq_4}最後の式から
+  \[ a^n \circ \varepsilon' = (-1)^n d''^{n-1} \circ f^{0, n-1} = (-1)^n d''^{n-1} \circ a^{n-1} \circ \varepsilon' \]
+  なので，$0 = {}^\# (\varepsilon') \left( a^n - (-1)^n d''^{n-1} \circ a^{n-1} \right)$である．
+  $^\# (\varepsilon') \colon \Hom_R(A, Y^n) \to \Hom_R(X_0, Y^n)$は単射なので，$a^n = (-1)^n d''^{n-1} \circ a^{n-1}$．
+  すなわち$a^n \in \Im (d''^{n-1})^\# $．
+\end{proof}
+
+\section{係数加群を持つホモロジー}
+\begin{screen}
+  $A$が射影的$R$加群なら$H^n (\Hom_R(A, \boldsymbol{X})) \simeq \Hom_R{}(A, H^n(\boldsymbol{X}))$（p.94）．
+\end{screen}
+\begin{proof}
+  $R$加群の完全系列
+  \[
+  \begin{CD}
+    0 @>>> B^n @>{i}>> Z^n @>{p}>> Z^n/B^n @>>> 0 \\
+  \end{CD}
+  \]
+  に対し，
+  \[
+  \begin{CD}
+    0 @>>> \Hom_R (A, B^n) @>{i^\#}>> \Hom_R (A, Z^n) @>{p^\#}>> \Hom_R (A, Z^n/B^n) @>>> 0
+  \end{CD}
+  \]
+  は完全系列となる（定理1.3, p.37）．従って，
+  \begin{align}
+    \Hom_R (A, Z^n/B^n) \simeq \Hom_R (A, Z^n) / \ker p^\# = \Hom_R (A, Z^n) / i^\# \Hom_R (A, B^n). \label{HnHom_HomHn_eq1}
+  \end{align}
+  % <!-- well-definedな全射
+  % \[ X^n/B^n \ni x^n + B^n \mapsto d^n(x^n) \in B^{n+1}\]
+  % によって
+  % \[
+  % \begin{CD}
+  %   0 @>>> Z^n/B^n @>>> X^n/B^n @>>> B^{n+1} @>>> 0
+  % \end{CD}
+  % \]
+  % および
+  % \[
+  % \begin{CD}
+  %   0 @>>> \Hom_R (A, Z^n/B^n) @>>> \Hom_R (A, X^n/B^n) @>>> \Hom_R (A, B^{n+1}) @>>> 0
+  % \end{CD}
+  % \]
+  % は完全系列となる（定理1.3, p.37）． -->
+  $\Hom_R (A, \boldsymbol{X}) = \{ \Hom_R (A, X^n), (d^n)^\# \}$において，
+  \[ \ker (d^n)^\# = \left\{\, f^n \in \Hom_R (A, X^n) \mid d^n \circ f^n = 0 \,\right\} \simeq \Hom_R (A, Z^n)\]
+  である．実際，$f^n \in \ker (d^n)^\#$とすれば，$d^n \circ f^n = 0$なので$\Im f^n \subset \ker d^n = Z^n$．
+  従って，値域を制限することで$\ker (d^n)^\#$の元から一意に$\Hom_R (A, Z^n)$の元が定まる．
+  $\Hom_R (A, Z^n)$の任意の元に対応する$\ker (d^n)^\#$の元が存在するので，$ \ker (d^n)^\# \simeq \Hom_R (A, Z^n)$．
+
+  また，
+  \[ \Im (d^{n-1})^\# = \left\{\, d^{n-1} \circ f^{n-1} \mid f^{n-1} \in \Hom_R (A, X^{n-1}) \,\right\} \simeq \Hom_R (A, B^n) \]
+  である．実際，次の図式：
+  % \[
+  % \begin{CD}
+  %   A @= A \\
+  %   @V{f^{n-1}}VV @VV{f^n}V \\
+  %   X^{n-1} @>>{d^{n-1}}> B^n @>>> 0
+  % \end{CD}
+  % \]
+  \[
+  \begin{tikzcd}
+    & A \arrow[ld, "f^{n-1}"']\arrow[rd, "f^n"] \\[8pt]
+    X^{n-1} \arrow[rr, "d^{n-1}"] &[-20pt] & B^n \arrow[r] & 0
+  \end{tikzcd}
+  \]
+  において$A$は射影的であることから従う．
+  % \[
+  % \begin{CD}
+  %   \Im (d^{n-1})^\# @>{\subset}>> \ker (d^n)^\# \\
+  %   @V{\simeq}VV @VV{\simeq}V \\
+  %   \Hom_R (A, B^n) @>>{i^\#}> \Hom_R (A, Z^n)
+  % \end{CD}
+  % \]
+  \[
+  \begin{tikzcd}
+    \Im (d^{n-1})^\# \arrow[r, phantom, "\subset"]\arrow[d, "\simeq"] & \ker (d^n)^\# \arrow[d, "\simeq"] \\
+    \Hom_R (A, B^n) \arrow[r, "i^\#"] & \Hom_R (A, Z^n)
+  \end{tikzcd}
+  \]
+  \eqref{HnHom_HomHn_eq1}と併せて
+  \[ H^n (\Hom_R(A, \boldsymbol{X})) = \ker (d^n)^\# / \Im (d^{n-1})^\# \simeq \Hom_R (A, Z^n) / i^\# \Hom_R (A, B^n) \simeq \Hom_R (A, Z^n/B^n). \]
+\end{proof}
+
+\paragraph{例2.21}~
+\begin{screen}
+  $H_n(\varinjlim \boldsymbol{X}_\nu) = \varinjlim H_n(\boldsymbol{X}_\nu)$
+\end{screen}
+\begin{proof}
+  例1.13(iii)から$\tilde\partial_n = \varinjlim \partial_{\nu, n} \colon \varinjlim X_{\nu, n} \to \varinjlim X_{\nu, n-1}$が存在し，以下の図式が可換となる．
+  \[
+  \begin{CD}
+    X_{\lambda, n} @>{f_{\mu\lambda, n}}>> X_{\mu, n} @>{i_{\mu, n}}>> \bigoplus_{\lambda \in \Lambda} X_{\lambda, n} @>{\tilde{p}_n}>> \varinjlim X_{\nu, n} \\
+    @V{\partial_{\lambda, n}}VV  @V{\partial_{\mu, n}}VV  @V{\oplus \partial_{\lambda, n}}VV  @VV{\tilde{\partial}_n}V \\
+    X_{\lambda, n-1} @>>{f_{\mu\lambda, n-1}}> X_{\mu, n-1} @>>{i_{\mu, n-1}}> \bigoplus_{\lambda \in \Lambda} X_{\lambda, n-1} @>>{\tilde{p}_{n-1}}> \varinjlim X_{\nu, n-1}
+  \end{CD}
+  \]
+  まず，$\varinjlim \boldsymbol{X}_\nu = \{ \varinjlim X_{\nu, n}, \tilde\partial_n \}$が鎖複体であること，すなわち$\tilde\partial_{n-1} \circ \tilde\partial_n = 0$を証明する．
+  \[
+  \begin{CD}
+    X_{\lambda, n}  @>{\tilde{p}_n \circ i_{\lambda, n}}>> \varinjlim X_{\nu, n} \\
+    @V{\partial_{\lambda, n}}VV  @VV{\tilde\partial_n}V \\
+    X_{\lambda, n-1}  @>{\tilde{p}_{n-1} \circ i_{\lambda, n-1}}>> \varinjlim X_{\nu, n-1} \\
+    @V{\partial_{\lambda, n-1}}VV  @VV{\tilde\partial_{n-1}}V \\
+    X_{\lambda, n-2}  @>>{\tilde{p}_{n-2} \circ i_{\lambda, n-2}}> \varinjlim X_{\nu, n-2}
+  \end{CD}
+  \]
+  $\tilde{x}_n \in \varinjlim X_{\nu, n}$に対し，$\tilde{x}_n = \tilde{p}_n \circ i_{\lambda, n}(x_{\lambda, n})$となる$x_{\lambda, n} \in X_{\lambda, n}$が存在する．
+  従って，
+  \[ \tilde\partial_{n-1} \circ \tilde\partial_n (\tilde{x}_n) = \tilde\partial_{n-1} \circ \tilde\partial_n \circ \tilde{p}_n \circ i_{\lambda, n}(x_{\lambda, n}) = \tilde{p}_{n-2} \circ i_{\lambda, n-2} \circ \partial_{\lambda, n-1} \circ \partial_{\lambda, n}(x_{\lambda, n}) = 0. \]
+  例1.13(iv)から
+  \begin{align}
+    H_n (\varinjlim \boldsymbol{X}_\nu) = \ker \tilde\partial_n / \Im \tilde\partial_{n+1} = \varinjlim (\ker \partial_{\lambda, n}) / \varinjlim (\Im \partial_{\lambda, n+1}). \label{Hnlim_limHn_eq1}
+  \end{align}
+  さらに，各行が完全な可換図式
+  \[
+  \begin{CD}
+    0 @>>> \Im \partial_{\lambda, n+1} @>>> \ker \partial_{\lambda, n} @>>> H_n (\boldsymbol{X}_\lambda) @>>> 0 \\
+    @. @VVV  @VVV  @VVV \\
+    0 @>>> \Im \partial_{\mu, n+1} @>>> \ker \partial_{\mu, n} @>>> H_n (\boldsymbol{X}_\mu) @>>> 0
+  \end{CD}
+  \]
+  に対し例1.13(v)を適用して，完全系列
+  \[
+  \begin{CD}
+    0 @>>> \varinjlim (\Im \partial_{\lambda, n+1}) @>>> \varinjlim (\ker \partial_{\lambda, n}) @>>> \varinjlim (H_n(\boldsymbol{X}_\lambda)) @>>> 0
+  \end{CD}
+  \]
+  が得られる．従って\eqref{Hnlim_limHn_eq1}から
+  \[ \varinjlim (H_n(\boldsymbol{X}_\lambda)) \simeq \varinjlim (\ker \partial_{\lambda, n}) / \varinjlim (\Im \partial_{\lambda, n+1}) = H_n (\varinjlim \boldsymbol{X}_\nu). \]
+\end{proof}

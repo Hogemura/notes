@@ -1,0 +1,441 @@
+\setcounter{chapter}{5}
+\chapter{関手}
+\setcounter{section}{3}
+\section{随伴関手}
+\paragraph{例6.11}
+(vii)．$F \colon S\text{-}\mathbf{Mod} \to R\text{-}\mathbf{Mod}$を$F(L) = M \otimes_S L$，$G \colon R\text{-}\mathbf{Mod} \to S\text{-}\mathbf{Mod}$を$F(N) =\Hom_R(M, N)$に修正．
+例1.20 (p.34)から$\Hom_R(M \otimes_S L, N) \simeq \Hom_S(L, \Hom_R(M, N))$なので，$F \dashv G$．
+
+\paragraph{(II)$_3$}~
+\begin{screen}
+  $(\delta \circ F)_X = \delta_{F(X)}$, $(F \circ \varepsilon)_X = F(\varepsilon_X)$,
+  $(G \circ \delta)_Y = G(\delta_Y)$, $(\varepsilon \circ G)_Y = \varepsilon_{G(Y)}$
+\end{screen}
+\begin{proof}
+  $f \colon X' \to X$とする．関手$F$を作用させて$F(f) \colon F(X') \to F(X)$を得る．
+  (II)$_1$右の図式で$Y = F(X')$, $Y' = F(X)$, $g = F(f)$とすれば，
+  \[
+  \begin{tikzcd}
+    X' \arrow[d, "f"] & F \circ G \circ F (X') \arrow[r, "\delta_{F(X')}"] \arrow[d, "F \circ G \circ F (f)"] & F(X') \arrow[d, "F(f)"] \\
+    X & F \circ G \circ F (X) \arrow[r, "\delta_{F(X)}"] & F(X)
+  \end{tikzcd}
+  \]
+  を得る．従って，$(\delta \circ F)_X := \delta_{F(X)}$とすれば，自然変換$\delta \circ F \colon F \circ G \circ F \to F$を得る．
+
+  (II)$_1$左の図式に関手$F$を作用させれば，
+  \[
+  \begin{tikzcd}
+    X' \arrow[d, "f"] & F (X') \arrow[r, "F(\varepsilon_{X'})"] \arrow[d, "F(f)"] & F \circ G \circ F(X') \arrow[d, "F \circ G \circ F (f)"] \\
+    X & F (X) \arrow[r, "F(\varepsilon_X)"] & F \circ G \circ F(X)
+  \end{tikzcd}
+  \]
+  を得る．従って，$(F \circ \varepsilon)_X := F(\varepsilon_X)$とすれば，自然変換$F \circ \varepsilon \colon F \to F \circ G \circ F$を得る．
+
+  $G \circ \delta$, $\varepsilon \circ G$についても同様．
+\end{proof}
+
+\chapter{層}
+\section{前層，層}
+\paragraph{例7.7}
+$\{U_i\}_{i \in I}$を$U$の開被覆，$X = \bigcup_{i \in I} (U_i{}^{n+1}) \subset U^{n+1}$とする．
+$s \colon U^{n+1} \to \mathbb{R}$を，
+\[s(x) =
+\begin{cases}
+  0 & (x \in X) \\
+  1 & (x \not\in X)
+\end{cases}
+\]
+と定める．任意の$x \in U$に対し，$x \in U_i$となる$i \in I$が存在する．
+$\rho_{V, U}(s) = s|_{U_i{}^n} = 0$なので，$\lvert s \rvert = \varnothing$である．
+よって，A.S.層は既約でない．
+
+\paragraph{(IV)}~
+\begin{screen}
+  前層$\mathscr{F}$に対して，$\mathscr{G}$が$\mathscr{F}$の局所零部分前層，$\mathscr{F}/\mathscr{G}$が既約前層ならば，$\mathscr{G} = \mathscr{F}_0$
+\end{screen}
+\begin{proof}
+  $U$を$X$の開集合，$s \in \mathscr{F}_0(U)$，$s' = s + \mathscr{G}(U) \in \mathscr{F}_0 / \mathscr{G} (U)$とする．
+  $\mathscr{F}_0$は局所零なので$\lvert s \rvert = \varnothing$．
+  従って，任意の$x \in U$に対し，$x$の開近傍$V \subset U$が存在し$\rho^\mathscr{F}_{UV}(s) = 0 \in \mathscr{G}(U)$．
+  $\rho^{F/\mathscr{G}}_{UV}(s') = \rho^\mathscr{F}_{UV}(s) + \mathscr{G}(V) = 0$なので$\lvert s' \rvert = \varnothing$．
+  $\mathscr{F}/\mathscr{G}$は既約なので$s' = 0$，すなわち$s \in \mathscr{G}(U)$である．
+  よって$\mathscr{F}_0(U) \subset \mathscr{G}(U)$となる．
+\end{proof}
+
+\paragraph{(XVII)}~
+\begin{screen}
+  $\rho_{VW}^\mathscr{G} \circ \varphi_V = \varphi_W \circ \rho_{VW}^\mathscr{F}$
+\end{screen}
+\begin{proof}
+  $V \subset U$に対し$\rho_{VV_i}^\mathscr{G} \circ \varphi_V = \varphi_{V_i}^{(i)} \circ \rho_{VV_i}^\mathscr{F}$によって$\varphi(V) \colon \mathscr{F}(V) \to \mathscr{G}(V)$を定義する．
+  $V_i = V \cap U_i$及び$W_i = W \cap U_i$とする．
+  \[
+  \begin{tikzcd}
+    \mathscr{F}(V_i) \arrow[r, "\varphi_{V_i}^{(i)}"]\arrow[d, "\rho_{V_iW_i}^\mathscr{F}"'] & \mathscr{G}(V_i)\arrow[d, "\rho_{V_iW_i}^\mathscr{G}"] \\
+    \mathscr{F}(W_i) \arrow[r, "\varphi_{W_i}^{(i)}"] & \mathscr{G}(W_i)
+  \end{tikzcd}
+  \]
+  $s \in \mathscr{F}(V)$とする．証明する式の左辺を$W_i$に制限すれば
+  \begin{align*}
+    \rho_{WW_i}^\mathscr{G} \circ \rho_{VW}^\mathscr{G} \circ \varphi_V(s)
+    &= \rho_{VW_i}^\mathscr{G} \circ \varphi_V(s)
+    = \rho_{V_iW_i}^\mathscr{G} \circ \rho_{VV_i}^\mathscr{G} \circ \varphi_V(s)
+    = \rho_{V_iW_i}^\mathscr{G} \circ \varphi_{V_i}^{(i)} \circ \rho_{VV_i}^\mathscr{F}(s) \\
+    & = \varphi_{W_i}^{(i)} \circ \rho_{V_iW_i}^\mathscr{F} \circ \rho_{VV_i}^\mathscr{F}(s)
+    = \varphi_{W_i}^{(i)} \circ \rho_{VW_i}^\mathscr{F}(s)
+    = \varphi_{W_i}^{(i)} \circ \rho_{WW_i}^\mathscr{F} \circ \rho_{VW}^\mathscr{F}(s) \\
+    & = \rho_{WW_i}^\mathscr{G} \circ \varphi_W \circ \rho_{VW}^\mathscr{F}(s) ,
+  \end{align*}
+  すなわち右辺の$W_i$への制限になる．$\set{W_i}$は$W$の開被覆で$\mathscr{G}$は層なので，$\rho_{VW}^\mathscr{G} \circ \varphi_V(s) = \varphi_W \circ \rho_{VW}^\mathscr{F}(s)$．
+\end{proof}
+
+\section{前層の圏，層の圏}
+\paragraph{(VIII)}~
+\begin{screen}
+  $\Gamma(\Im\varphi) = \mathscr{G}$，$t \in \mathscr{G}(U)$なら$U$のある開被覆$\set{U_i}$が存在して$\rho_{UU_i}^\mathscr{G}(t) \in (\Im\varphi)(U_i)$
+\end{screen}
+\begin{proof}
+  $t \in \Gamma(\Im\varphi)(U) = \Gamma(U, \Im\varphi)$の代表を$\set{t_i, U_i}_{i\in I}$とする($t_i \in (\Im\varphi)(U_i) \subset \mathscr{G}(U_i)$)．
+  切断面の代表の定義から$\rho_{U_i, U_{ij}}^\mathscr{G}(t_i) = \rho_{U_j, U_{ij}}^\mathscr{G}(t_j)$．
+  $t$の$U_i$への制限$\rho_{UU_i}^{\Gamma(\Im\varphi)}(t)$の代表は，補題7.5から
+  \[
+  \Set{U_{ij}, \rho_{U_j, U_{ij}}^{\Im\varphi}(t_j)}_{j\in I} = \Set{U_{ij}, \rho_{U_j, U_{ij}}^\mathscr{G}(t_j)}_{j\in I}
+  \]
+  で与えられる．$t_i \in (\Im\varphi)(U_i)$の$\Gamma(\Im\varphi)(U_i)$への埋め込み$\imath_{U_i}(t_i)$は補題7.6から$\set{U_i, t_i}$で代表され，
+  $\set{U_{ij}, \rho_{U_j, U_{ij}}^\mathscr{G}(t_j)}_{j\in I} \sim \set{U_i, t_i}$．
+  以上から，$\rho_{UU_i}^{\Gamma(\Im\varphi)}(t) = \imath_{U_i}(t_i)$が示された．
+\end{proof}
+
+\paragraph{(IX)}~
+\begin{screen}
+  層の準同型$\varphi\colon\mathscr{F}\to\mathscr{G}$が単射なら$\varphi = \ker\psi$となる$\psi\colon\mathscr{G}\to\mathscr{H}$が存在する
+\end{screen}
+\begin{proof}
+  $\pi\colon\mathscr{G}\to\mathscr{G}/\varphi(\mathscr{F})$（前層の準同型），$\mathscr{H} = \varGamma(\mathscr{G}/\varphi(\mathscr{F}))$及び$\psi = \varGamma\circ\pi$とする．
+  \[
+  \begin{tikzcd}
+    (\Ker\psi)(U) \arrow[r] & \mathscr{G}(U) \arrow[r, "\psi(U)"]\arrow[d, "\pi(U)"] & \varGamma(\mathscr{G}/\varphi(\mathscr{F}))(U) \\
+    & (\mathscr{G}/\varphi(\mathscr{F}))(U) \arrow[ru, "\imath_U"'] &
+  \end{tikzcd}
+  \]
+  補題7.6より$\varGamma(U) = \imath_U$は単射なので
+  \[
+  (\Ker^\ast\psi)(U) = (\Ker\psi)(U) = \Ker(\psi(U)) = \Ker(\imath_U \circ \pi(U))
+  = \Ker(\pi(U)) = \varphi(U)(\mathscr{F}(U)) .
+  \]
+\end{proof}
+
+\begin{screen}
+  層の準同型$\varphi\colon\mathscr{F}\to\mathscr{G}$が全射なら$\varphi = \cok^\ast\psi$となる$\psi\colon\mathscr{H}\to\mathscr{F}$が存在する
+\end{screen}
+\begin{proof}
+  準同型$\varphi$が全射なので(VIII)より$\varSigma(\Im\varphi) = \mathscr{G}$．
+  前層の準同型$\bar\varphi\colon\mathscr{F}\to\Im\varphi$によって$\varphi = \varSigma\circ\bar\varphi$となる．
+  $\mathscr{H} = \Ker\bar\varphi$及び$\psi = \ker\bar\varphi$とする．
+  \[
+  \begin{tikzcd}
+    \Ker\bar\varphi \arrow[r, "\psi"] & \mathscr{F} \arrow[r, "\bar\varphi"] & \Im\varphi \arrow[r, "\varSigma"] & \mathscr{G}
+  \end{tikzcd}
+  \]
+  $(\Cok\psi)(U) = \Cok(\psi(U)) = \mathscr{F}(U)/\Im\psi(U) = \mathscr{F}(U)/\Ker\bar\varphi(U) = \Im \bar\varphi(U) = \bar\varphi(U)(\mathscr{F}(U))$なので
+  \begin{align*}
+    (\Cok^\ast\psi)(U) &= \varSigma(U)(\Cok\psi(U)) = \varSigma(U) \circ \bar\varphi(U)(\mathscr{F}(U)) = \varphi(U)(\mathscr{F}(U)) .
+  \end{align*}
+\end{proof}
+
+\paragraph{(XI)}~
+\begin{screen}
+  $\mathscr{F}$が軟弱層なら$\psi(U) \colon \mathscr{G}(U) \to \mathscr{H}(U)$は全射
+\end{screen}
+\begin{proof}
+  $u \in \mathscr{H}(U)$とする．
+  $\psi\colon\mathscr{G} \to \mathscr{H}$が全射なので(VIII)より，$U$のある開被覆$\{U_i\}_{i\in I}$と$t_i \in \mathscr{G}(U_i)$が存在して，$\rho^\mathscr{H}_{UU_i}(u) = \psi(U_i)(t_i)$．
+  \[
+  \rho^\mathscr{H}_{UU_{ij}}(u) = \rho^\mathscr{H}_{U_i U_{ij}} \circ \rho^\mathscr{H}_{UU_i}(u)
+   = \rho^\mathscr{H}_{U_i U_{ij}} \circ \psi(U_i)(t_i) = \psi(U_{ij}) \circ \rho^\mathscr{G}_{U_iU_{ij}}(t_i)
+  \]
+  なので，$\psi(U_{ij}) \circ \rho^\mathscr{G}_{U_iU_{ij}}(t_i) = \psi(U_{ij}) \circ \rho^\mathscr{G}_{U_jU_{ij}}(t_j)$．
+  すなわち$\rho^\mathscr{G}_{U_iU_{ij}}(t_i) - \rho^\mathscr{G}_{U_jU_{ij}}(t_j) \in \ker\psi(U_{ij}) = \Im\varphi(U_{ij})$．
+  よって，$s_{ij} \in \mathscr{F}(U_{ij})$が存在して，$\rho^\mathscr{G}_{U_iU_{ij}}(t_i) - \rho^\mathscr{G}_{U_jU_{ij}}(t_j) = \varphi(U_{ij})(s_{ij})$となる．
+
+  $s_{ij}$が補題7.7の条件を満たすことを確かめる．
+  まず，$\varphi(U_{ij})(s_{ij}) = - \varphi(U_{ij})(s_{ji})$で$\varphi(U_{ij})$は単射なので$s_{ij} = - s_{ji}$．
+  さらに
+  \begin{align*}
+    \varphi(U_{ijk}) \circ \rho^\mathscr{F}_{U_{ij}U_{ijk}}(s_{ij})
+    &= \rho^\mathscr{G}_{U_{ij}U_{ijk}} \circ \varphi(U_{ij})(s_{ij})
+    = \rho^\mathscr{G}_{U_{ij}U_{ijk}} \circ \rho^\mathscr{G}_{U_iU_{ij}}(t_i)
+    - \rho^\mathscr{G}_{U_{ij}U_{ijk}} \circ \rho^\mathscr{G}_{U_iU_{ij}}(t_i) \\
+    &= \rho^\mathscr{G}_{U_iU_{ijk}}(t_i) - \rho^\mathscr{G}_{U_jU_{ijk}}(t_j)
+  \end{align*}
+  なので
+  \[
+  \varphi(U_{ijk}) \circ \rho^\mathscr{F}_{U_{ij}U_{ijk}}(s_{ij})
+  + \varphi(U_{ijk}) \circ \rho^\mathscr{F}_{U_{jk}U_{ijk}}(s_{jk})
+  + \varphi(U_{ijk}) \circ \rho^\mathscr{F}_{U_{ki}U_{ijk}}(s_{ki})
+  = 0 .
+  \]
+  $\varphi(U_{ijk})$は単射なので(iii)が満足される．
+  従って，$s_i \in \mathscr{F}(U_i)$が存在して$s_{ij} = \rho^\mathscr{F}_{U_jU_{ij}}(s_j) - \rho^\mathscr{F}_{U_iU_{ij}}(s_i)$．
+  これより
+  \begin{align*}
+    \rho^\mathscr{G}_{U_iU_{ij}}(t_i) - \rho^\mathscr{G}_{U_jU_{ij}}(t_j) &= \varphi(U_{ij})(s_{ij})
+    = \varphi(U_{ij}) \circ \rho^\mathscr{F}_{U_jU_{ij}}(s_j) - \varphi(U_{ij}) \circ \rho^\mathscr{F}_{U_iU_{ij}}(s_i) \\
+    &= \rho^\mathscr{G}_{U_jU_{ij}} \circ \varphi(U_j)(s_j) - \rho^\mathscr{G}_{U_iU_{ij}} \circ \varphi(U_i)(s_i) .
+  \end{align*}
+  $t'_i = t_i + \varphi(U_i)(s_i)$とすれば$\rho^\mathscr{G}_{U_iU_{ij}}(t_i') = \rho^\mathscr{G}_{U_jU_{ij}}(t_j')$．
+  従って，$t \in \mathscr{G}(U)$が存在して$\rho^\mathscr{G}_{UU_i}(t) = t_i'$．
+  以上から
+  \begin{align*}
+    \rho^\mathscr{H}_{UU_i} \circ \psi(U)(t) &= \psi(U_i) \circ \rho^\mathscr{G}_{UU_i}(t)
+    = \psi(U_i)(t_i') = \psi(U_i)(t_i) + \psi(U_i)\circ\varphi(U_i)(s_i) \\
+    &= \psi(U_i)(t_i) = \rho^\mathscr{H}_{UU_i}(u) .
+  \end{align*}
+  $\mathscr{H}$は層なので$u = \psi(U)(t)$となる．
+\end{proof}
+
+\section{層の茎}
+\paragraph{補題7.12}
+$\tilde{c} = \set{c_x | x\in U}$とする．
+$\varPhi_+^{-1}(\tilde{c})$が$\varDelta[\mathscr{F}]$の開集合であることを示す．
+$(a_x, b_x) \in \varPhi_+^{-1}(\tilde{c})$とする．
+定義より$a_x + b_x = c_x \in \mathscr{F}_x$である．
+本文から，ある$x \in W \subset U$と$a', b'\in \mathscr{F}(W)$が存在し，$\rho_{Wx}(a')=a_x$などとなる．
+$S = \set{(a'_y, b'_y) | y \in W}$とする．$(a_x, b_x) \in S$である．
+$S = \varDelta[\mathscr{F}] \cap (\tilde{a} \times \tilde{b})$なので，$S$は$\varDelta[\mathscr{F}]$の開集合．
+さらに，任意の$y \in W$に対して$a'_y + b'_y = c_y \in \tilde{c}$となるので，$S \subset \varPhi_+^{-1}(\tilde{c})$．
+\begin{screen}
+  $U \subset X$が開集合であるためには，任意の$x\in U$に対し，$U$に含まれる$x$の開近傍が存在することが必要十分
+\end{screen}
+なので，$\varPhi_+^{-1}(\tilde{c})$は$\varDelta[\mathscr{F}]$の開集合．
+
+\chapter{スペクトル系列}
+\section{定義と基本的性質}
+\paragraph{\((8.12)'\)}~
+\begin{screen}
+  \('E_2{}^{p, q} \simeq{} 'H^p({}''H^q(K))\)
+\end{screen}
+\begin{proof}
+  p.279はじめに与えられた写像を
+  \[
+  \tilde{d}^{\prime p} \colon \ker d^{''p,q} / \Im d^{''p, q-1} \ni [x^{p,q}]
+  \mapsto [d'(x^{p,q})] \in \ker d^{''p+1, q} / \Im d^{''p+1, q-1}
+  \]
+  とする．
+  \[
+  \begin{tikzcd}
+    'E_2{}^{p,q} \arrow[r, "\phi"]\arrow[d, phantom, sloped, "\ni"] & \ker\tilde{d}^{\prime p} \arrow[r, twoheadrightarrow, "\pi"]\arrow[d, phantom, sloped, "\ni"] & 'H^p({}''H^q(K)) = \ker\tilde{d}^{\prime p}/\Im\tilde{d}^{\prime p-1} \arrow[d, phantom, sloped, "\ni"] \\
+    {[x^{p,q}+x^{p+1,q-1}]} \arrow[r, mapsto] & x^{p,q}+\Im d^{'' p, q-1} \arrow[r] & (x^{p,q}+\Im d^{'' p, q-1}) + \Im\tilde{d}^{\prime p-1}
+  \end{tikzcd}
+  \]
+
+  (8.10)から\(d''(x^{p, q}) = 0\)なので，\(\Im\phi \subset \ker\tilde{d}^{\prime p}\)．
+
+  \(\pi\circ\phi\)がwell-definedであることを示す（\(\phi\)は\(x^{p,q}\)の取り方に依存）．
+  \([x]=[x^{p,q}+x^{p+1,q-1}]\)が\('E_2\)の零元とする．
+  (8.11)から，ある\(y^{p, q-1} \in K^{p, q-1}\)と\(y^{p-1, q} \in K^{p-1, q}\)が存在し
+  \[ d''(y^{p, q-1}) + d'(y^{p-1, q}) = x^{p, q} , \quad d''(y^{p-1, q}) = 0 . \]
+  よって，
+  \[ \phi([x]) = x^{p, q} + \Im d^{''p, q-1} = d'(y^{p-1, q}) + \Im d^{''p, q-1} . \]
+  \(d'(y^{p-1, q}) \in d'(\ker d^{''p-1, q})\)なので\(\phi([x]) \in \Im\tilde{d}^{\prime p-1}\)．
+  よって，\(\pi\circ\phi([x]) = 0\)となる．
+
+  \(\pi\circ\phi([x^{p,q}+x^{p+1,q-1}])=0\)とする．
+  \(x^{p,q} + \Im d^{''p, q-1} \in \Im\tilde{d}^{\prime p-1}\)なので，ある\(y^{p-1, q} \in \ker d^{''p-1, q}\)が存在し，
+  \[ x^{p,q} + \Im d^{''p, q-1} = d'(y^{p-1, q}) + \Im d^{''p, q-1} . \]
+  よって，ある\(y^{p, q-1} \in K^{p, q-1}\)が存在し，
+  \[ x^{p, q} - d'(y^{p-1, q}) = d''(y^{p, q-1}) . \]
+  (8.11)から\([x^{p,q}+x^{p+1,q-1}] = 0\)なので\(\pi\circ\phi\)は単射．
+
+  \((x^{p,q}+\Im d^{'' p, q-1}) + \Im\tilde{d}^{\prime p-1} \in \ker\tilde{d}^{\prime p}/\Im\tilde{d}^{\prime p-1}\)とする．
+  \[
+  x^{p,q}+\Im d^{'' p, q-1} \in \ker\tilde{d}^{\prime p-1} \subset \ker d^{''p,q} / \Im d^{''p, q-1}
+  \]
+  なので\(x^{p,q} \in \ker d^{''p, q}\)．
+  さらに\(\tilde{d}^{\prime p}(x^{p,q}+\Im d^{'' p, q-1}) = 0 \)なので，\(d'(x^{p,q}) \in \Im d^{''p+1, q-1}\)．
+  従って，ある\(x^{p+1, q-1}\)が存在して\(d'(x^{p, q}) = - d''(x^{p+1, q-1})\)となる．
+  よって，(8.10)を満たし，\(\pi\circ\phi\)は全射．
+\end{proof}
+
+\paragraph{(III)}
+図式
+\[
+\begin{tikzcd}
+  \vdots & \vdots & \vdots \\
+  K^{2, 0} \arrow[u, "d^{'2, 0}"]\arrow[r, "d^{''2, 0}"] & K^{2, 1} \arrow[u, "d^{'2, 1}"]\arrow[r, "d^{''2, 1}"] & K^{2, 2} \arrow[u, "d^{'2, 2}"]\arrow[r, "d^{''2, 2}"] & \cdots \\
+  K^{1, 0} \arrow[u, "d^{'1, 0}"]\arrow[r, "d^{''1, 0}"] & K^{1, 1} \arrow[u, "d^{'1, 1}"]\arrow[r, "d^{''1, 1}"] & K^{1, 2} \arrow[u, "d^{'1, 2}"]\arrow[r, "d^{''1, 2}"] & \cdots \\
+  K^{0, 0} \arrow[u, "d^{'0, 0}"]\arrow[r, "d^{''0, 0}"] & K^{0, 1} \arrow[u, "d^{'0, 1}"]\arrow[r, "d^{''0, 1}"] & K^{0, 2} \arrow[u, "d^{'0, 2}"]\arrow[r, "d^{''0, 2}"] & \cdots \\
+\end{tikzcd}
+\]
+の各列・行が完全とする．
+\[ A^p = \ker d^{''p, 0} , \quad B^p = \ker d^{'0, p} \]
+とする．\(d^{'p, 0}\)と\(d^{''0, p}\)の適当な制限により
+\[ d^{'p, 0} \colon A^p \to A^{p+1} , \quad d^{''0, p} \colon B^p \to B^{p+1} \]
+となる．
+(II)\((8.12)'\)から
+\[ 'E_2{}^{p, q} = {}'H^p(\ker d^{''p,q} / \Im d^{''p, q-1}) . \]
+\(q\geq1\)に対しては，図式の完全性から\('E_2{}^{p, q} = {}'H^p(0) = 0\)．
+\(q<0\)に対しては，\(K\)がコホモロジー的スペクトル系列であることから，\('E_2{}^{p, q} = 0\)．
+\(q=0\)の場合，\(d^{''p, -1} = 0\)とすれば，\(\ker d^{''p, 0} / \Im d^{''p, -1} = A^p\)なので，\('E_2{}^{p, q} = H^p(\boldsymbol{A})\)．
+
+\(q\neq0\)なら\('E_2{}^{p, q} = 0\)．
+\[
+\begin{tikzcd}[column sep = large]
+  'E_2{}^{p-2, q+1} \arrow[r, "d_2{}^{p-2, q+1}"] & 'E_2{}^{p, q} = 0 \arrow[r, "d_2{}^{p, q}"] & 'E_2{}^{p+2, q-1}
+\end{tikzcd}
+\]
+よって，SP III (8.3)から
+\[ 'E_3{}^{p, q} \simeq \ker d_2{}^{p, q} / \Im d_2{}^{p-2, q+1} = 0 . \]
+これを繰り返せば\('E_2{}^{p, q} \simeq \dots \simeq {}'E_\infty{}^{p, q} = 0\)．
+
+\(q=0\)なら\('E_2{}^{p, 0} = H^p(\boldsymbol{A})\)．
+\[
+\begin{tikzcd}[column sep = large]
+  'E_2{}^{p-2, 1} = 0 \arrow[r, "d_2{}^{p-2, 1}"] & 'E_2{}^{p, 0} = H^p(\boldsymbol{A}) \arrow[r, "d_2{}^{p, 0}"] & 'E_2{}^{p+2, -1} = 0
+\end{tikzcd}
+\]
+よって，SP III (8.3)から
+\[ 'E_3{}^{p, 0} \simeq \ker d_2{}^{p, 0} / \Im d_2{}^{p-2, 1} = H^p(\boldsymbol{A}) . \]
+これを繰り返せば\('E_2{}^{p, 0} \simeq \dots \simeq {}'E_\infty{}^{p, 0} = H^p(\boldsymbol{A})\)．
+
+(8.6)から
+\[
+E_\infty{}^{p, q} \simeq G_p(H^{p+q}(K)) = F_p(H^{p+q}(K)) / F_{p+1}(H^{p+q})K = H^{p+q}(K)_p / H^{p+q}(K)_{p+1} .
+\]
+\(q=0\)なら\(H^p(K)_p / H^p(K)_{p+1} \simeq E_\infty{}^{p, 0} \simeq H^p(\boldsymbol{A})\)である．
+補題8.1から\(H^p(K)_{p+1} = F_{p+1}(H^p(K)) = 0\)なので\(H^p(K)_p \simeq H^p(\boldsymbol{A})\)．
+
+\(q\geq1\)なら\(H^p(K)_{p-q} / H^p(K)_{p-q+1} \simeq E_\infty{}^{p-q, q} = 0\)である．
+よって\(H^p(K)_{p-q} \simeq H^p(K)_{p-q+1}\)．
+これを繰り返せば，\(H^p(K) = H^p(K)_0 \simeq H^p(K)_p \simeq H^p(\boldsymbol{A})\)．
+
+\section{Grothendieckスペクトル系列}
+\paragraph{(I)}~
+\begin{screen}
+  \[
+  (8.19)\colon
+  \begin{tikzcd}
+    0 \arrow[r] & K^{r, s} \arrow[r] & J^{r, s} \arrow[r] & L^{r+1, s} \arrow[r] & 0
+  \end{tikzcd}
+  \]
+\end{screen}
+\begin{proof}
+  \(Z^0 = \ker F(d^0)\), \(B^1 = \Im F(d^0)\)の単射的分解を
+  \[
+  \begin{tikzcd}
+    0 \arrow[r] & Z^0 \arrow[r, "\varepsilon"] & K^{0, 0} \arrow[r, "\varepsilon^0"] & K^{0, 1} \arrow[r, "\varepsilon^1"] & \cdots \\
+    0 \arrow[r] & B^1 \arrow[r, "\varepsilon''"] & L^{0, 0} \arrow[r, "\varepsilon^{''0}"] & L^{0, 1} \arrow[r, "\varepsilon^{''1}"] & \cdots
+  \end{tikzcd}
+  \]
+  とする．\(J^{0, 0} = K^{0, 0} \times L^{1, 0}\)とする．
+  \(\imath^{0, 0}\), \(\pi^{0, 0}\)は標準的写像とする．
+  \[
+  \begin{tikzcd}
+    & 0 \arrow[d] & 0 \arrow[d] \\
+    0 \arrow[r] & Z^0 \arrow[r, "\varepsilon"]\arrow[d, "\imath^0"] & K^{0, 0} \arrow[d, "\imath^{0, 0}", shift left] \\
+    A \arrow[r, "g"]\arrow[ru, "g'", dashed] & F^0 \arrow[r, "\varepsilon'", dashed]\arrow[d, "\pi^0"]\arrow[ru, "f^0", dashed] & J^{0, 0} \arrow[d, "\pi^{0, 0}", shift left]\arrow[u, "p^{0, 0}"] \\
+    0 \arrow[r] & B^1 \arrow[r, "\varepsilon''"]\arrow[d] & L^{1, 0} \arrow[d]\arrow[u, "i^{''0, 0}"] \\
+    & 0 & 0
+  \end{tikzcd}
+  \]
+
+  \(K^{0, 0}\)は単射的対象なので，\(\varepsilon = f^0 \circ \imath^0\)となる\(f^0\colon F^0 \to K^{0, 0}\)が存在する．
+  \[ \varepsilon' = \imath^{0, 0} \circ f^0 + i^{''0, 0} \circ \varepsilon'' \circ \pi^0 \colon F^0 \to J^{0, 0} \]
+  とする．\(\varepsilon'\)が単射であることを示す．
+  \(\boldsymbol{B}\)の対象\(A\)と\(g\colon A\to F^0\)について\(\varepsilon'\circ g = 0\)とする．
+  \(g=0\)を示せば良い．与式から
+  \[ \imath^{0, 0} \circ f^0 \circ g + i^{''0, 0} \circ \varepsilon'' \circ \pi^0 \circ g = 0 . \]
+  これに左から\(p^{0, 0}\), \(\pi^{0, 0}\)を作用させて\(f^0 \circ g = 0\), \(\varepsilon'' \circ \pi^0 \circ g = 0\)となる．
+  \(\varepsilon''\)は単射なので\(\pi^0 \circ g = 0\)．
+  \(\imath^0 = \ker\pi^0\)なので，\(g'\colon A \to Z^0\)によって\(g = \imath^0 \circ g'\)と一意に分解できる．
+  よって\(0 = f^0 \circ g = f^0 \circ \imath^0 \circ g' = \varepsilon \circ g'\)．
+  \(\varepsilon\)は全射なので\(g'=0\)．
+
+  \[
+  \begin{tikzcd}
+    & 0 \arrow[d] & 0 \arrow[d] \\
+    0 \arrow[r] & Z^0 \arrow[r, "\varepsilon"]\arrow[d, "\imath^0"] & K^{0, 0} \arrow[d, "\imath^{0, 0}"]\arrow[r] & \Cok\varepsilon \arrow[d, "\tilde\imath", dashed]\arrow[r] & 0 \\
+    0 \arrow[r] & F^0 \arrow[r, "\varepsilon'"]\arrow[d, "\pi^0"] & J^{0, 0} \arrow[d, "\pi^{0, 0}"]\arrow[r] & \Cok\varepsilon' \arrow[d, "\tilde\pi", dashed]\arrow[r] & 0 \\
+    0 \arrow[r] & B^1 \arrow[r, "\varepsilon''"]\arrow[d] & L^{1, 0} \arrow[d]\arrow[r] & \Cok\varepsilon''\arrow[r] & 0 \\
+    & 0 & 0
+  \end{tikzcd}
+  \]
+  双対核の定義から\(\tilde\imath \colon \Cok\varepsilon \to \Cok\varepsilon'\)と\(\tilde\pi \colon \Cok\varepsilon' \to \Cok\varepsilon''\)が存在し，上の図式は可換となる．
+  例5.3から
+  \[
+  \begin{tikzcd}
+    0 \arrow[r] & \Cok\varepsilon \arrow[r, "\tilde\imath"] & \Cok\varepsilon' \arrow[r, "\tilde\pi"] & \Cok\varepsilon''
+  \end{tikzcd}
+  \]
+  は完全．\(\tilde\pi\)が全射であることを示す．
+  \(\boldsymbol{B}\)の対象\(A\)と\(g\colon \Cok\varepsilon'' \to A\)について\(g\circ\tilde\pi = 0\)とする．
+  \(g=0\)を示せば良い．与式より
+  \[ 0 = g\circ\tilde\pi\circ\cok\varepsilon' = g\circ\cok\varepsilon''\circ\pi^{0, 0} . \]
+  \(\cok\varepsilon''\circ\pi^{0, 0}\)は全射なので\(g = 0\)．
+
+  \S5.3 (I)から\(\Cok\varepsilon = \Coim\varepsilon_0\)．
+  \S5.1 (VII)\(^\ast\)から\(\im\varepsilon^0\), \(\im\varepsilon^{''0}\)は単射．
+  \[
+  \begin{tikzcd}
+    & 0 \arrow[d] & \\
+    0 \arrow[r] & \Coim\varepsilon^0 \arrow[d]\arrow[r, "\im\varepsilon^0"] & K^{0, 1} \\
+    & \Cok\varepsilon' \arrow[d] & \\
+    0 \arrow[r] & \Coim\varepsilon^{''0} \arrow[d]\arrow[r, "\im\varepsilon^{''0}"] & L^{0, 1} \\
+    & 0 &
+  \end{tikzcd}
+  \]
+  はじめと同じ状況なので，同様の議論を繰り返せばよい．
+\end{proof}
+
+\begin{screen}
+  \('H^q(G(J^{\bullet, \bullet})) = G(K^{q, p}) / G(L^{q, p})\)
+\end{screen}
+\begin{proof}
+  (8.20)の可換図式
+  \[
+  \begin{tikzcd}[column sep = large]
+    K^{r, 1} \arrow[r, "\imath^{r, 1}", hookrightarrow] & J^{r, 1} \arrow[r, "\pi^{r, 1}", twoheadrightarrow] & L^{r+1, 1} \arrow[r, "\varphi^{r+1, 1}", hookrightarrow] & K^{r+1, 1} \arrow[r, "\imath^{r+1, 1}", hookrightarrow] & J^{r+1, 1} \\
+    K^{r, 0} \arrow[u, "\varepsilon^{r, 0}"]\arrow[r, "\imath^{r, 0}", hookrightarrow] & J^{r, 0} \arrow[u, "\varepsilon^{'r, 0}"]\arrow[r, "\pi^{r, 0}", twoheadrightarrow] & L^{r+1, 0} \arrow[u, "\varepsilon^{''r+1, 0}"]\arrow[r, "\varphi^{r+1, 0}", hookrightarrow] & K^{r+1, 0} \arrow[u, "\varepsilon^{r+1, 0}"]\arrow[r, "\imath^{r+1, 0}", hookrightarrow] & J^{r+1, 0} \arrow[u, "\varepsilon^{'r+1, 0}"] \\
+    Z^r \arrow[u, "\varepsilon^r"]\arrow[r, "\imath^r", hookrightarrow] & F^r \arrow[u, "\varepsilon^{'r}"]\arrow[r, "\pi^r", twoheadrightarrow] & B^{r+1} \arrow[u, "\varepsilon^{''r+1}"]\arrow[r, "\varphi^{r+1}", hookrightarrow] & Z^{r+1} \arrow[u, "\varepsilon^{r+1}"]\arrow[r, "\imath^{r+1}", hookrightarrow] & F^{r+1} \arrow[u, "\varepsilon^{'r+1}"] \\
+    0 \arrow[u] & 0 \arrow[u] & 0 \arrow[u] & 0 \arrow[u] & 0 \arrow[u] \\
+  \end{tikzcd}
+  \]
+  に左完全函手\(G\)を作用させる．
+  (8.19)から
+  \[
+  \begin{tikzcd}
+    0 \arrow[r] & K^{r, s} \arrow[r, "\imath^{r, s}"] & J^{r, s} \arrow[r, "\pi^{r, s}"] & L^{r+1, s} \arrow[r] & 0
+  \end{tikzcd}
+  \]
+  は完全分裂系列なので，
+  \[
+  \begin{tikzcd}
+    0 \arrow[r] & G(K^{r, s}) \arrow[r, "G(\imath^{r, s})"] & G(J^{r, s}) \arrow[r, "G(\pi^{r, s})"] & G(L^{r+1, s}) \arrow[r] & 0
+  \end{tikzcd}
+  \]
+  も完全分裂系列．従って，次の可換図式を得る．
+  \[
+  \begin{tikzcd}[column sep = 1.5cm]
+    G(K^{r, 1}) \arrow[r, "G(\imath^{r, 1})", hookrightarrow] & G(J^{r, 1}) \arrow[r, "G(\pi^{r, 1})", twoheadrightarrow] & G(L^{r+1, 1}) \arrow[r, "G(\varphi^{r+1, 1})", hookrightarrow] & G(K^{r+1, 1}) \arrow[r, "G(\imath^{r+1, 1})", hookrightarrow] & G(J^{r+1, 1}) \\
+    G(K^{r, 0}) \arrow[u, "G(\varepsilon^{r, 0})"]\arrow[r, "G(\imath^{r, 0})", hookrightarrow] & G(J^{r, 0}) \arrow[u, "G(\varepsilon^{'r, 0})"]\arrow[r, "G(\pi^{r, 0})", twoheadrightarrow] & G(L^{r+1, 0}) \arrow[u, "G(\varepsilon^{''r+1, 0})"]\arrow[r, "G(\varphi^{r+1, 0})", hookrightarrow] & G(K^{r+1, 0}) \arrow[u, "G(\varepsilon^{r+1, 0})"]\arrow[r, "G(\imath^{r+1, 0})", hookrightarrow] & G(J^{r+1, 0}) \arrow[u, "G(\varepsilon^{'r+1, 0})"] \\
+  \end{tikzcd}
+  \]
+  ここで
+  \[
+  d^{'r, s} = G(\imath^{r+1, s}) \circ G(\varphi^{r+1, s}) \circ G(\pi^{r, s}) , \quad
+  d^{''r, s} = (-1)^r G(\varepsilon^{'r, s})
+  \]
+  とすれば，
+  \[ \Ker d^{'r, s} = G(K^{r, s}) , \quad \Im d^{'r-1, s} = G(L^{r, s}) . \]
+  \(d'\), \(d''\)により2重双対鎖複体\(G(J^{\bullet, \bullet})\)（必ずしも(8.16)(8.17)とは一致しない）が得られる．
+  \[
+  \begin{tikzcd}
+     & \vdots & \vdots & \\
+     \cdots \arrow[r] & G(J^{r, s+1}) \arrow[r, "d^{'r, s+1}"]\arrow[u] & G(J^{r+1, s+1}) \arrow[r]\arrow[u] & \cdots \\
+     \cdots \arrow[r] & G(J^{r, s}) \arrow[r, "d^{'r, s}"]\arrow[u, "d^{''r, s}"] & G(J^{r+1, s}) \arrow[r]\arrow[u, "d^{''r+1, s}"] & \cdots \\
+     & \vdots \arrow[u] & \vdots \arrow[u] &
+  \end{tikzcd}
+  \]
+  \(d'\)に関するコホモロジー群は
+  \[ 'H^q(G(J^{\bullet, \bullet})) = \Ker d^{'q, p} / \Im d^{'q-1, p} = G(K^{q, p}) / G(L^{q, p}) . \]
+\end{proof}
