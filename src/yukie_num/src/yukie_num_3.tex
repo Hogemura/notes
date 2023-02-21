@@ -1,748 +1,712 @@
-\section{イデアルの相対ノルム}
-\paragraph{補題1.10.6}~
+\chapter{整数環と判別式の例}
+\setcounter{section}{1}
+\section{Kummer理論}
+\paragraph{命題2.2.5}~
 \begin{screen}
-    $m(\alpha)$が基底$\{\alpha^iv_j\}$に関して$M_\alpha$が対角に$n/l$個並んだブロック行列となる
+  $G, H$の間のperfect pairingを$\phi$，$\sigma_g\colon H\ni h\mapsto\Phi(g, h)\in\mathbb{C}^1$とすれば，写像$\chi\colon G\ni g\mapsto\sigma_g\in H^\ast$は準同型
 \end{screen}
 \begin{proof}
-  $L$の元に$\alpha\ (\alpha^l+a_1\alpha^{l-1}+\cdots+a_l=0)$をかける写像は次のようになる：
+  $G$は加群，$\mathbb{C}^1$は乗法群．$\forall h\in H$に対し，
+  \[\left[\chi(g_1)\chi(g_2)\right](h)=\sigma_{g_1}(h)\sigma_{g_2}(h)=\Phi(g_1, h)\Phi(g_2, h)=\Phi(g_1+g_2, h)=\sigma_{g_1+g_2}(h)=\chi(g_1+g_2)(h).\]
+  よって，$\chi(g_1)\chi(g_2)=\chi(g_1+g_2)$となり$\chi$は準同型．
+\end{proof}
+
+\paragraph{定理2.2.8}~
+\begin{screen}
+  $R/(K^\times)^n$の完全代表系を$\{a_1, \ldots, a_t\}$とすれば，$K(\sqrt[n]{R})=K(\sqrt[n]{a_1}, \ldots, \sqrt[n]{a_t})$
+\end{screen}
+\begin{proof}
+  $\sqrt[n]{a_1}, \ldots, \sqrt[n]{a_t}\in\sqrt[n]{R}$なので$K(\sqrt[n]{a_1}, \ldots, \sqrt[n]{a_t})\subset K(\sqrt[n]{R})$．
+  $\forall a\in R$は$b\in K^\times$によって$a=a_ib^n$となるので$\sqrt[n]{a}=\sqrt[n]{a_i}b$，つまり$\sqrt[n]{R}=\set{\sqrt[n]{a_i}b | b\in K^\times}$．
+  よって，$\sqrt[n]{R}$の有限部分集合が生成する体は$K(\sqrt[n]{a_i}, \sqrt[n]{a_j}, \ldots)$という形になるので，$K(\sqrt[n]{R})\subset K(\sqrt[n]{a_1}, \ldots, \sqrt[n]{a_t})$．
+  以上から$K(\sqrt[n]{R})=K(\sqrt[n]{a_1}, \ldots, \sqrt[n]{a_t})$．
+\end{proof}
+
+\paragraph{例2.2.9}
+$a, b, c, d\in\mathbb{Z}$に対して$R=2^a3^b5^c7^d(\mathbb{Q}^\times)^2$とすれば，$\mathbb{Q}^\times\supset R\supset(\mathbb{Q}^\times)^2$が成立する．
+$K=\mathbb{Q}(\sqrt{R})=\mathbb{Q}(\sqrt{2}, \sqrt{3}, \sqrt{5}, \sqrt{7})$とする．
+$R/(\mathbb{Q}^\times)^2$の完全代表系として$2^i3^j5^k7^l\ (i, j, k, l=0, 1)$が取れる．
+準同型
+\begin{align*}
+  \phi\colon\mathbb{Z}^4\ni(a, b, c, d) &\mapsto 2^a3^b5^c7^d\in\mathbb{Q}^\times\\
+  &\mapsto 2^i3^j5^k7^l\in R/(\mathbb{Q}^\times)^2
+\end{align*}
+を考える．明らかに$\phi$は全射なので$\Im\phi=R/(\mathbb{Q}^\times)^2$．
+$R/(\mathbb{Q}^\times)^2$の単位元は$2^03^05^07^0=1$．
+$\phi(a, b, c, d)=1$となるのは$a, b, c, d$が偶数の時なので，$\ker\phi=(2\mathbb{Z})^4$．
+よって準同型定理から$R/(\mathbb{Q}^\times)^2\simeq\mathbb{Z}^4/(2\mathbb{Z})^4\simeq(\mathbb{Z}/2\mathbb{Z})^4$．
+命題2.2.3，定理2.2.8から$\Gal(K/\mathbb{Q})\simeq(R/(\mathbb{Q}^\times)^2)^\ast\simeq R/(\mathbb{Q}^\times)^2\simeq(\mathbb{Z}/2\mathbb{Z})^4$．
+
+\paragraph{例2.2.10}
+$\mu\in\mathbb{Z}$，$l$を素数，$\zeta$を$1$の原始$l$乗根，$F=\mathbb{Q}(\zeta)$とする．
+定理I-8.11.7から$\Gal(F/\mathbb{Q})\simeq(\mathbb{Z}/l\mathbb{Z})^\times$．
+命題I-7.4.3(2)から$\lvert\Gal(F/\mathbb{Q})\rvert=l-1=[F:\mathbb{Q}]$．
+よって，$\Hom_\mathbb{Q}^\text{al}(F, \overline{\mathbb{Q}})=\{\sigma_1, \ldots, \sigma_{l-1}\}$．
+
+$\mu=a^l\ (a\in F^\times)$と仮定する．命題I-8.1.18(2)から
+\[\N_{F/\mathbb{Q}}(\mu)=\N_{F/\mathbb{Q}}(a^l)=[\N_{F/\mathbb{Q}}(a)]^l=\prod_{i=1}^{l-1}\sigma_i(\mu)=\prod_{i=1}^{l-1}\mu=\mu^{l-1}=a^{l(l-1)}.\]
+補題I-8.1.17から$\N_{F/\mathbb{Q}}(a)\in\mathbb{Q}$なので互いに素な$b, c\in\mathbb{Z}$によって$\N_{F/\mathbb{Q}}(a)=c/b$．
+上の式に代入して$c^l=(ba^{l-1})^l$，よって$c=ba^{l-1}$となり矛盾．以上から$\mu\not\in(F^\times)^l$．
+
+$\mu$が属する$F^\times/(F^\times)^l$の代表元を$g$とする．
+$\mu^l\in(F^\times)^l$であり，$l$は素数なので$g$の位数は$l$．
+$1\leq i< j\leq l$に対し$g^i=g^j$とする．
+$g^{j-i}=1$となるが$1\leq j-i\leq l-1$なので矛盾．よって$\{1, g, \ldots, g^{l-1}\}$は位数$l$の$F^\times/(F^\times)^l$部分群．
+$F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)^l$とすれば$F(\sqrt[n]{R})=F(\sqrt[n]{\mu})$．命題2.2.3と定理2.2.8から
+\[\Gal(F(\sqrt[n]{\mu})/F)\simeq(R/(F^\times)^l)^\ast\simeq(R/(F^\times)^l)\simeq\{1, \mu, \ldots, \mu^{l-1}\}\]
+なので$[F(\sqrt[n]{\mu}):F]=l$．
+
+\paragraph{命題2.2.11}~
+\begin{screen}
+  $A$を仮定1.1.2を満たすDedekind環，$\mathfrak{p}$を$A$の素イデアル，$f(x)=x^e-\mu$，$e$は$A/\mathfrak{p}$の標数$p$で割り切れない，$\mu\in A\setminus\mathfrak{p}$とすれば，$f(x)$の判別式$\varDelta(f)$は$\mathfrak{p}$に含まれない
+\end{screen}
+\begin{proof}
+  系1.9.7から$\varDelta(f)=\pm\mu^{e-1}e^e$．仮定1.1.2から$A$の商体$K$の標数は$0$なので$\mathbb{Q}$を含み，$a/1\ (a\in\mathbb{Z})$という形の元を含む．
+  よって$\mathbb{Z}\subset A$．
+  $\mathfrak{p}$は$p\mathbb{Z}$の上にあり，$e \not\in p\mathbb{Z} = \mathfrak{p} \cap \mathbb{Z}$なので$e\not\in\mathfrak{p}$である．
+  よって，$\mu^{e-1}e^e\not\in\mathfrak{p}$となる．
+\end{proof}
+
+\begin{screen}
+  $L=K(\sqrt[e]{\mu})$，$g(x)\in A[x]$を$\sqrt[e]{\mu}$の$K$上最小多項式，$\varDelta(g)\in A\setminus\mathfrak{p}$とすれば$\mathfrak{p}$は$L$で不分岐
+\end{screen}
+\begin{proof}
+  $g(x)\in A[x]$なので$\sqrt[e]{\mu}\in L$は$A$上整，すなわち$B$の元となり$\varDelta_{L/K}(1, \sqrt[e]{\mu}, \ldots, \sqrt[e]{\mu}^{n-1})=\varDelta(g)\in A\setminus\mathfrak{p}\subset A_\mathfrak{p}^\times$（命題1.9.9）．
+  補題1.7.3(2)から$\{ 1, \sqrt[e]{\mu}, \ldots, \sqrt[e]{\mu}^{n-1} \}$は$B$に含まれる$L$の$K$基底となり，補題1.8.3から$\varDelta_{L/K, \mathfrak{p}}=A$．
+  $\varDelta_{L/K}$は$\mathfrak{p}$で割り切れないのでDedekindの判別定理から$\mathfrak{p}$は$L$で不分岐．
+\end{proof}
+
+\begin{screen}
+  $B\otimes_AA_\mathfrak{p}$の$A_\mathfrak{p}$基底が取れる
+\end{screen}
+\begin{proof}
+  命題I-6.5.9，補題I-8.3.3，補題I-8.3.13から$A_\mathfrak{p}$は単項イデアル整域．
+  命題I-8.1.14から$L$における$A_\mathfrak{p}$の整閉包は$B_\mathfrak{p}$．
+  命題I-8.1.24から$B_\mathfrak{p}$は階数$[L:K]=n$の自由$A_\mathfrak{p}$加群なので$n$個の$A_\mathfrak{p}$基底を取れる．
+  補題1.3.22から$B_\mathfrak{p}\simeq A_\mathfrak{p}\otimes_AB\simeq B\otimes_AA_\mathfrak{p}$
+  よって，$B_\mathfrak{p}$の$A_\mathfrak{p}$を上の同型によって写せば，$B\otimes_AA_\mathfrak{p}$の$A_\mathfrak{p}$基底となる．
+\end{proof}
+
+\section{$3$次体}
+よく使う命題を列挙しておく．
+\begin{itemize}
+  \item 系I-8.1.25．$\mathcal{O}_K$は階数$[K:\mathbb{Q}]$の自由$\mathbb{Z}$加群
+  \item 命題1.2.14．$\forall\mathfrak{p} \in \Spec A$に対し$a \in \widehat{A}_\mathfrak{p}$なら$a \in A$
+  \item 系1.7.5．$\varDelta_K(v_1, \ldots, v_n) = (\mathcal{O}_K:V)^2 \varDelta_K$
+  \item 命題1.8.9．$\displaystyle(B:M) = \prod_{\mathfrak{p} \in \Spec A} (B \otimes_A \widehat{A}_\mathfrak{p}:M \otimes_A \widehat{A}_\mathfrak{p})$
+  \item 命題1.9.9．$\varDelta(f) = \varDelta_{L/K}(1, \alpha, \ldots)$
+  \item 命題1.10.7．CDVRでのEisensteinと完全分岐
+  \item 命題1.11.1．$\varDelta_{B/A, \mathfrak{p}} = \displaystyle \prod_{i=1}^g \varDelta_{\widehat{B}_i/\widehat{A}_\mathfrak{p}}$
+\end{itemize}
+
+\paragraph{例2.3.3}~
+\begin{screen}
+  $t$の$\mathbb{Q}$上最小多項式$f(x)$の判別式が$49$ならば$(\mathcal{O}_K:\mathbb{Z}[t])=1, 7$
+\end{screen}
+\begin{proof}
+  命題1.9.9から$\varDelta_{K/\mathbb{Q}}(1, t, t^2)=\varDelta(f)=49$．
+  $\{1, t, t^2\}$は$K=\mathbb{Q}(t)$の$\mathbb{Q}$基底で，$\mathcal{O}_K$に含まれる．
+  よって系1.7.5(2)から$\varDelta_{K/\mathbb{Q}}(1, t, t^2)=(\mathcal{O}_K:\mathbb{Z}[t])^2\varDelta_K$となり従う．
+\end{proof}
+
+\begin{screen}
+  $(B_\mathfrak{p}:M\otimes_AA_\mathfrak{p})=1$，$\mathcal{O}_K=\mathbb{Z}[t]$，$\varDelta_K=49$
+\end{screen}
+\begin{proof}
+  $f(x+2) = g(x)$とする．$g(x)$はEisenstein多項式で，$\mathbb{Q}_7$上既約である．$\mathbb{Q}_7$は平坦$\mathbb{Q}$加群なので
+  \[ K \otimes_\mathbb{Q} \mathbb{Q}_7 \simeq \left( \frac{\mathbb{Q}[x]}{(g(x))} \right) \otimes_\mathbb{Q} \mathbb{Q}_7 \simeq \frac{\mathbb{Q}[x] \otimes_\mathbb{Q} \mathbb{Q}_7}{(g(x)) \otimes_\mathbb{Q} \mathbb{Q}_7} \simeq \frac{\mathbb{Q}_7[x]}{(g(x))} \simeq \mathbb{Q}_7(t). \]
+  従って，定理1.3.23から，$7\mathbb{Z}$の上にある$\mathcal{O}_K$の素イデアルは$1$個で，$K$の完備化は$\mathbb{Q}_7(t)$．
+  $\mathbb{Q}_7[t]$の整数環は$\mathbb{Z}_7[t]$なので，再び定理1.3.23から$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_7\simeq\mathbb{Z}_7[t]$．
+  さらに，$\mathbb{Z}[t]\otimes_\mathbb{Z}\mathbb{Z}_7 \simeq \mathbb{Z}_7[t]$で，これらの同型は同じ写像である（$a \otimes b \mapsto ab$）．
+  従って，命題1.8.9(3)から$(B_\mathfrak{p}:M\otimes_AA_\mathfrak{p}) = (B\otimes_A\widehat{A}_\mathfrak{p}:M\otimes_A\widehat{A}_\mathfrak{p}) = (\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_7:\mathbb{Z}[t]\otimes_\mathbb{Z}\mathbb{Z}_7) = 1$．
+
+  $\mathfrak{p}=p\mathbb{Z}\neq7\mathbb{Z}$に対しては$(B_\mathfrak{p}:M\otimes_AA_\mathfrak{p})$は命題1.8.9(2)から$p$の冪なので$7$の倍数では無い．よって命題1.8.9(1)から$(B:M)=(\mathcal{O}_K:\mathbb{Z}[t])=1$．上の話と合わせて$\varDelta_K=\varDelta_{K/\mathbb{Q}}(1, t, t^2)=49$．
+\end{proof}
+
+\begin{screen}
+  $t=2\cos2\pi/7$として$\mathbb{Q}(t)/\mathbb{Q}$はGalois拡大である
+\end{screen}
+\begin{proof}
+  例I-8.11.8から$t$の$\mathbb{Q}$上最小多項式は$x^3+x^2-2x+1$で，$t$の共軛は$2\cos4\pi/7$と$2\cos6\pi/7$．
+  $2\cos4\pi/7=4t^2-2$，$2\cos6\pi/7=-4t^2-t+1$なので$t$の共軛は全て$\mathbb{Q}(t)$に含まれる．
+  よって系I-7.3.10から$\mathbb{Q}(t)/\mathbb{Q}$は正規拡大．
+  $\mathbb{Q}$は完全体（系I-7.3.6）なので$\mathbb{Q}(t)/\mathbb{Q}$は分離拡大．
+\end{proof}
+
+\paragraph{命題2.3.4}~
+\begin{screen}
+  同型$\phi\colon\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\to\mathbb{Z}_p{}^n$が存在すれば，
+  $\mathcal{O}_K$の$\mathbb{Z}$基底を$\{1, \alpha, \ldots, \alpha^{n-1}\}$，
+  $\beta=\phi(\alpha)$として$\{1, \beta, \ldots, \beta^{n-1}\}$が$\mathbb{Z}_p{}^n$の$\mathbb{Z}_p$基底となる
+\end{screen}
+\begin{proof}
+  $\mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p$の$\mathbb{Z} \otimes_\mathbb{Z} \mathbb{Z}_p$基底として，$\{1 \otimes 1, \alpha \otimes 1, \ldots, \alpha^{n-1} \otimes 1\}$が取れることを示す．
+
+  先ず，$\mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p$の任意の元は
+  \[\xi = (a_0 \otimes b_0)(1 \otimes 1) + (a_1\otimes b_1)(\alpha \otimes 1) + \cdots + (a_{n-1} \otimes b_{n-1})(\alpha^{n-1} \otimes 1)\]
+  と表すことができるので，$\{1 \otimes 1, \alpha \otimes 1, \ldots, \alpha^{n-1} \otimes 1\}$は$\mathbb{Z} \otimes_\mathbb{Z} \mathbb{Z}_p$上$\mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p$を生成する．
+
+  $\{1, \alpha, \ldots, \alpha^{n-1}\}$は$\mathcal{O}_K$の$\mathbb{Z}$基底なので
+  \[ \mathbb{Z}^n \ni (a_0, \ldots, a_{n-1}) \mapsto a_0+a_1\alpha+\cdots+a_{n-1}\alpha^{n-1} \in \mathcal{O}_K \]
+  は全単射．$\mathbb{Z}_p$は平坦$\mathbb{Z}$加群なので，$(\mathbb{Z} \otimes_\mathbb{Z} \mathbb{Z}_p)^n \simeq \mathbb{Z}^n \otimes_\mathbb{Z} \mathbb{Z}_p \to \mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p$も全単射である．
+  従って，同型
   \begin{align*}
-    m(\alpha) \colon l = \sum_{j=1}^{n/l}\sum_{i=0}^{l-1}b_{ji}\alpha^iv_j \mapsto \sum_{j=1}^{n/l}\sum_{i=0}^{l-1}b_{ji}\alpha^{i+1}v_j = \sum_{j=1}^{n/l}\left(\sum_{i=0}^{l-2}b_{ji}\alpha^{i+1}v_j+b_{j,l-1}\alpha^lv_j\right) \\
-    = \sum_{j=1}^{n/l}\left(\sum_{i=1}^{l-1}b_{j, i-1}\alpha^iv_j-b_{j, l-1}\sum_{i=0}^{l-1}a_{l-i}\alpha^iv_j\right).
+    (\mathbb{Z} \otimes_\mathbb{Z} \mathbb{Z}_p)^n \ni \begin{pmatrix} a_0 \otimes b_0 \\ a_1 \otimes b_1 \\ \vdots \\ a_{n-1} \otimes b_{n-1} \end{pmatrix} & \mapsto a_0\begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix} \otimes b_0 + a_1\begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix} \otimes b_1 + \cdots + a_{n-1}\begin{pmatrix} 0 \\ \vdots \\ 0 \\ 1 \end{pmatrix} \otimes b_{n-1} \in \mathbb{Z}^n \otimes_\mathbb{Z} \mathbb{Z}_p \\[10pt]
+    & \mapsto a_0 \otimes b_0 + \cdots + a_{n-1}\alpha^{n-1} \otimes b_{n-1} \in \mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p
   \end{align*}
-  ある$j$に対し，$m(\alpha)(l)$の$\alpha^iv_j$成分は$i=0$に対し$-b_{j,l-1}a_l$であり，$i=1,\ldots,l-i$に対し$-b_{j, l-1}a_{l-i}+b_{j, i-1}$となり，これを行列で表せば
-  \[
-  \left(
-  \begin{array}{cccc}
-    & & & -a_l\\
-    1& & & -a_{l-1}\\
-    & \ddots & & \vdots\\
-    & & 1 & -a_1
-  \end{array}
-  \right)\left(
-  \begin{array}{c}
-    b_{j,0}\\
-    b_{j,1}\\
-    \vdots\\
-    b_{j, l-1}
-  \end{array}
-  \right)
-  \]
-  となる．よって，この行列をあらわに書けば
-  \[
-  \left(
-  \begin{array}{cccc|cccc|c|cccc}
-    & & & -a_l & & & & & & & &\\
-    1& & & -a_{l-1} & & & & & & & &\\
-    & \ddots & & \vdots & & & & & & & &\\
-    & & 1 & -a_1 & & & & & & & &\\
-    \hline
-    & & & & & & & -a_l & & & & &\\
-    & & & & 1& & & -a_{l-1} & & & & &\\
-    & & & & & \ddots & & \vdots & & & & &\\
-    & & & & & & 1 & -a_1 & & & & &\\
-    \hline
-    & & & & & &  &  & \ddots & & & &\\
-    \hline
-    & & & & & & & & & & & & -a_l\\
-    & & & & & & & & & 1 & & & -a_{l-1}\\
-    & & & & & & & & & & \ddots & & \vdots\\
-    & & & & & & & & & & & 1 & -a_1
-  \end{array}
-  \right).
-  \]
-\end{proof}
-
-\paragraph{命題1.10.7}~
-\begin{screen}
-    $\pi_B\in B$が$A$上整なら$\pi_B$の$K$上最小多項式$f(x)\in K[x]$は$A[x]$の元である
-\end{screen}
-\begin{proof}
-  $\pi_B$は$A$上整なので，$h(\pi_B)=0$なるモニック$h(x)\in A[x]$が存在し，さらに命題I-7.1.11(2)から$h(x)=g(x)f(x)$なる$g(x)\in K[x]$が存在する．
-  $\pi_B=\alpha_1,\alpha_2,\ldots,\alpha_n\in\overline{K}$を$f(x)$の根とすると，これらは$h(x)$の根なので$A$上整である．
-  $f(x)=\sum_{i=1}^na_ix^i$とおくと，係数$a_i$は$\alpha_i$の基本対称式となるので，やはり$A$上整である（$\overline{K}$は$A$の拡大環なので命題I-8.1.4(4)から従う）．
-  $f(x)\in K[x]$なので，$a_i\in K$．よって，$a_i\in K$は$A$上整となるが，$A$が整閉整域であることから，$a_i\in A$．よって$f(x)\in A[x]$.
+  が得られる．よって，$\xi = 0$なら$a_i \otimes b_i = 0$となるので，$\{1 \otimes 1, \alpha \otimes 1, \ldots, \alpha^{n-1} \otimes 1\}$は一次独立．
+  \begin{align*}
+    \phi(\xi) &= \phi((a_0 \otimes b_0)(1 \otimes 1)+(a_1 \otimes b_1)(\alpha \otimes 1)+\cdots+(a_{n-1} \otimes b_{n-1})(\alpha^{n-1} \otimes 1))\\
+    &= \phi((a_0 \otimes b_0)(1 \otimes 1))+\phi((a_1 \otimes b_1)(\alpha \otimes 1))+\cdots+\phi((a_{n-1} \otimes b_{n-1})(\alpha^{n-1} \otimes 1))\\
+    &= \phi(a_0 \otimes b_0)\phi(1 \otimes 1)+\phi(a_1 \otimes b_1)\phi(\alpha \otimes 1)+\cdots+\phi(a_{n-1} \otimes b_{n-1})\phi(\alpha^{n-1} \otimes 1)\\
+    &= \phi(a_0 \otimes b_0)\phi(1 \otimes 1)+\phi(a_1 \otimes b_1)\phi(\alpha \otimes 1)+\cdots+\phi(a_{n-1} \otimes b_{n-1})\phi(\alpha \otimes 1)^{n-1}.
+  \end{align*}
+  なので，
+  \[\phi(\xi) = 0 \Leftrightarrow \xi = 0 \Leftrightarrow a_i \otimes b_i = 0 \Leftrightarrow \phi(a_i \otimes b_i)=0\]
+  となるので，$\beta=\phi(\alpha \otimes 1)$として$\{1, \beta, \ldots, \beta^{n-1}\}$が$\mathbb{Z}_p{}^n$の$\mathbb{Z}_p$基底となる．
 \end{proof}
 
 \begin{screen}
-    $\pi_B\in P$, $\sigma\in\Hom^\text{al}_{K}(L,\overline{K})$に対し$\sigma(\pi_B)\in\mathcal{P}$
+  $\beta = (\beta_1, \ldots, \beta_n)\in\mathbb{Z}_p{}^n$として，$\mathbb{Z}_p{}^n$の$\mathbb{Z}_p$基底が$\{1, \beta, \ldots, \beta^{n-1}\}$であれば$\det(1, \beta, \ldots, \beta^{n-1})\in\mathbb{Z}_p^\times$
 \end{screen}
 \begin{proof}
-  $\tau\in\Hom^\text{al}_K(\tilde{L},\overline{K})=\Gal(\tilde{L}/K)$について，$\tau C=C$（追加補題\ref{sigmaB}, p.\pageref{sigmaB}）となる．
-  $\mathcal{P}$は$C$の素イデアルなので，$a,b\in\mathcal{P}$ならば$a+b\in\mathcal{P}$となる．
-  $a\in\mathcal{P}, \tau^{-1}(c)\in C\ (c\in C)$に対し$a\tau^{-1}(c)\in\mathcal{P}$．
-  よって，$\tau(a),\tau(b)\in\tau(\mathcal{P})$に対し$\tau(a)+\tau(b)=\tau(a+b)\in\tau(\mathcal{P})$, $\tau(a)\in\tau(\mathcal{P}), c\in C$に対し$\tau(a)c=\tau(a)\tau(\tau^{-1}(c))=\tau(a\tau^{-1}(c))\in\tau(\mathcal{P})$となるので，$\tau(\mathcal{P})$は$C$のイデアル．
-  $\mathcal{P}$は$C$の素イデアルなので$a,b\in C$について，$\tau^{-1}(a)\tau^{-1}(b)\in\mathcal{P}$ならば$\tau^{-1}(a)\in\mathcal{P}$もしくは$\tau^{-1}(b)\in\mathcal{P}$．
-  よって，$\tau(\tau^{-1}(a)\tau^{-1}(b))=ab\in\tau(\mathcal{P})$ならば$a\in\tau(\mathcal{P})$もしくは$b\in\tau(\mathcal{P})$となり，$\tau(\mathcal{P})$は$C$の素イデアル．
-  $C$の素イデアルは唯一なので，$\tau(\mathcal{P})=\mathcal{P}$．
-  命題I-8.1.4(2)から$C$は$B$上整．命題I-8.1.15から$P$の上にある$C$の素イデアルが存在し，これは$\mathcal{P}$．
-  よって$\pi_B\in P\subset\mathcal{P}$．以上から，$\tau(\pi_B)\in\mathcal{P}$．
-  $\tau$を$L$に制限すれば$\sigma\in\Hom^\text{al}_K(L,\overline{K})$になるので，$\sigma(\pi_B)\in\mathcal{P}$．
-\end{proof}
-
-\begin{screen}
-  $A, B$が離散付値環で$P$の$\mathfrak{p}$上の分岐指数を$e$とすれば．
-  $a\in K^\times$に対し，$\ord_P(a)=e\ord_\mathfrak{p}(a)$である
-\end{screen}
-\begin{proof}
-  $\mathfrak{p}=\pi_AA$とすれば，$c,d\in A$によって$a=c/d=(\pi_A{}^ic')/(\pi_A{}^jd')=\pi_A{}^{i-j}c'/d'\ (c',d'\notin A\setminus\mathfrak{p})$なので$a=\pi_A{}^ns$なる$s\in\set{c/d | c,d\in A\setminus\mathfrak{p}}=A_\mathfrak{p}^\times$が存在する．
-  $s^{-1}\in A_\mathfrak{p}$なので，$aA_\mathfrak{p}=\pi_A{}^nsA_\mathfrak{p}=\pi_A{}^nA_\mathfrak{p}$となり，$\ord_\mathfrak{p}(a)=n$．
-  また，分岐指数が$e$なので，$\pi_AB_P=\pi_B{}^eB_P$，つまり$\ord_P(\pi_A)=e$．
-  以上から$\ord_P(a)=\ord_P(\pi_A{}^ns)=n\ord(\pi_A)+\ord_P(s)$．
-  ここで，$P$が$\mathfrak{p}$の上にあることに注意して$s \in \set{c/d | c,d\in B\setminus P}$なので$\ord_P(s)=0$．
-  よって，$=n\ord(\pi_A)=en$．以上から，$\ord_P(a)=e\ord_\mathfrak{p}(a)$．
-\end{proof}
-
-\paragraph{補題1.10.10}~
-\begin{screen}
-  $\Tr_{L/K}(x)=\sum_i\Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(x)$
-\end{screen}
-\begin{proof}
-  $L$の$K$基底を$\{y_1, \ldots, y_n\}$とする．
-  \[L \otimes_K \widehat{K}_\mathfrak{p} \ni a \otimes t = \left(\sum_{i=1}^n a^{(i)} y_i\right) \otimes t \mapsto \sum_{i=1}^n a^{(i)}t y_i \in  \widehat{K}_\mathfrak{p}{}^{\oplus n}\]
-  によって$L \otimes_K \widehat{K}_\mathfrak{p}$は$\{y_1, \ldots, y_n\}$を基底とする階数$n$の自由$\widehat{K}_\mathfrak{p}$加群とみなせる（以下，この同型を顕には書かない）．
-  $L$の元に$x$をかける準同型
-  \[\phi\colon L\ni a = \sum_{i=1}^n a^{(i)} y_i \mapsto ax = \sum_{i=1}^n b^{(i)} y_i \in L \quad (a^{(i)},b^{(i)}\in K)\]
-  を考える．
-  $\phi$は$L\otimes_K\widehat{K}_\mathfrak{p}$の元に$x\otimes1$をかける準同型
-  \[\widehat{\phi} \colon L \otimes_K \widehat{K}_\mathfrak{p} \ni a \otimes t = \sum_{i=1}^n a^{(i)}t y_i \mapsto ax \otimes t = \sum_{i=1}^n b^{(i)}t y_i \in L\otimes_K\widehat{K}_\mathfrak{p}\]
-  を誘導する．
-  $\phi$を$K$基底$\{y_1, \ldots, y_n\}$で表現した行列と$\widehat{\phi}$を$\widehat{K}_\mathfrak{p}$基底$\{y_1, \ldots, y_n\}$で表した行列は同じなので，そのトレースは等しい：$\Tr_K(\phi)=\Tr_{\widehat{K}_\mathfrak{p}}(\widehat{\phi})$．
-  補題1.10.6から$\Tr_{L/K}(x)=\Tr_K(\phi)$なので，
-  \[\Tr_{L/K}(x)=\Tr_K(\phi)=\Tr_{\widehat{K}_\mathfrak{p}}(\widehat{\phi}).\]
-
-  定理1.3.23(2)から同型$\varphi \colon L \otimes_K \widehat{K}_\mathfrak{p} \to \widehat{L}_1 \times \cdots \times \widehat{L}_g$が存在するので，$\widehat{K}_\mathfrak{p}$準同型
-  \[\phi_x=\varphi\widehat{\phi}\varphi^{-1} \colon \widehat{L}_1\times\cdots\times\widehat{L}_g\to \widehat{L}_1\times\cdots\times\widehat{L}_g\]
-  が存在し，$\Tr_{\widehat{K}_\mathfrak{p}}(\widehat{\phi})=\Tr_{\widehat{K}_\mathfrak{p}}(\varphi\widehat{\phi}\varphi^{-1})=\Tr_{\widehat{K}_\mathfrak{p}}(\phi_x)$．
-  \[
-  \begin{CD}
-    \widehat{L}_1\times\cdots\times\widehat{L}_g @>{\phi_x}>> \widehat{L}_1\times\cdots\times\widehat{L}_g\\
-    @A{\varphi}AA  @A{\varphi}AA\\
-    L\otimes_K\widehat{K}_\mathfrak{p} @>>{\widehat{\phi}}> L\otimes_K\widehat{K}_\mathfrak{p}\\
-    @AAA @AAA\\
-    \widehat{K}_\mathfrak{p} @= \widehat{K}_\mathfrak{p}
-  \end{CD}
-  \]
-  $\varphi\widehat{\phi}=\phi_x\varphi$を$a\otimes t\in L\otimes_K\widehat{K}_\mathfrak{p}$に作用させて$\phi_x(\varphi(a\otimes t)) = \varphi(a\otimes t)\varphi(x\otimes1)$となる．
-  $\varphi_i \colon B\hookrightarrow\widehat{B}_i$として，$\varphi(x\otimes1) = (\varphi_1(x), \ldots, \varphi_g(x))$である（定理1.3.23(3)）ので，$\phi_x$は$L_1\times\cdots\times L_g$の元に$(\varphi_1(x), \ldots, \varphi_g(x))$をかける写像である：
-  \[\phi_x\colon\widehat{L}_1\times\cdots\times\widehat{L}_g\ni (c_1,\ldots,c_g)\mapsto(\varphi_1(x)c_1, \ldots, \varphi_g(x)c_g)\in \widehat{L}_1\times\cdots\times\widehat{L}_g.\]
-  $\phi_x$を$\widehat{L}_i$に制限した$\widehat{K}_\mathfrak{p}$準同型
-  \[\psi_{x,i}\colon\widehat{L}_i\ni c_i\mapsto \varphi_i(x)c_i\in\widehat{L}_i\]
-  を考える．
-  $[\widehat{L}_i:\widehat{K}_\mathfrak{p}]=n_i$とすれば，定理1.3.23(4)(5)から$n_1+\cdots+n_g=n$．
-  $\widehat{L}_i$の$\widehat{K}_\mathfrak{p}$基底を$\{z_i^{(1)},\ldots,z_i^{(n_i)}\}$とすれば$\widehat{L}_1\times\cdots\times\widehat{L}_g$の$\widehat{K}_\mathfrak{p}$基底として
-  \[\left\{(z_1^{(1)},\ldots,0),\ldots,(z_1^{(n_1)},\ldots,0);(0,z_2^{(1)},\ldots,0),\ldots,(0,z_2^{(n_2)},\ldots,0);\ldots;(0,\ldots,z_g^{(1)}),\ldots,(0,\ldots,z_g^{(n_g)})\right\}\]
-  を取ることができる．
-
-  $\psi_{x,i}$を$\{z_i^{(1)},\ldots,z_i^{(n_i)}\}$で表現した行列を$M_i$とすれば，$\phi_x$を$\{(z_1^{(1)},\ldots,0),\ldots,(0,\ldots,z_g^{(n_g)})\}$で表現した行列は
-  \[
+  $\{1, \beta, \ldots, \beta^{n-1}\}$は$\mathbb{Z}_p{}^n$の$\mathbb{Z}_p$基底なので
+  \[(1, 0, \ldots, 0)=(a_0^{(1)}, \ldots, a_{n-1}^{(1)})
   \begin{pmatrix}
-    M_1 &        & \\
-    & \ddots & \\
-    &        & M_g
+    1               & \cdots & 1\\
+    \beta_1         & \cdots & \beta_n\\
+    & \vdots & \\
+    \beta_1{}^{n-1} & \cdots & \beta_n{}^{n-1}
   \end{pmatrix}
   \]
-  となる．よって，$\Tr_{\widehat{K}_\mathfrak{p}}(\phi_x)=\sum_i\Tr_{\widehat{K}_\mathfrak{p}}(\psi_{x,i})$．補題1.10.6から$\Tr_{\widehat{K}_\mathfrak{p}}(\psi_{x,i})=\Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(x)$（包含写像$\varphi_i$は省略した）．
-  以上から，$\Tr_{L/K}(x)=\sum_i\Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(x)$となる．
-\end{proof}
-
-\paragraph{補題1.10.12}~
-\begin{screen}
-  完備化と加法的付値
-\end{screen}
-\begin{proof}
-  $x\in K^\times$に対し$A$での加法的付値は$xA_\mathfrak{p}=\mathfrak{p}^{\ord_\mathfrak{p}(x)}A_\mathfrak{p}$で定義される．
-  また，$\mathfrak{p}$進付値は$\lvert x\rvert_\mathfrak{p}=\lvert A/\mathfrak{p}\rvert^{-\ord_\mathfrak{p}(x)}$で定義される．
-  更に，$\mathfrak{p}$距離$d\colon K\times K\ni(x,y)\mapsto\lvert x-y\rvert_\mathfrak{p}\in\lvert A/\mathfrak{p}\rvert^a\ (a\in\mathbb{Z})$を定義する．
-  距離空間$(K,d)$を完備化して距離空間$(\widehat{K}_\mathfrak{p},\widehat{d})$が得られる．
-  補題1.2.6(1)から$\widehat{d}\colon\widehat{K}_\mathfrak{p}\times\widehat{K}_\mathfrak{p}\ni(\widehat{x},\widehat{y})\mapsto\lvert A/\mathfrak{p}\rvert^a\ (a\in\mathbb{Z})$．
-  完備化の定義から$x\in K$と$\vartheta\colon K\hookrightarrow\widehat{K}_\mathfrak{p}$によって
-  \[\widehat{d}(\vartheta(x),\vartheta(0))=d(x,0)=\lvert A/\mathfrak{p}\rvert^{-\ord_\mathfrak{p}(x)}=\lvert x\rvert_\mathfrak{p}.\]
-
-  ところで，定理1.2.8(7)から$\widehat{A}_\mathfrak{p}$は$\widehat{\mathfrak{p}}=\mathfrak{p}\widehat{A}_\mathfrak{p}$を極大イデアルとする離散付値環である．
-  ここで，$\widehat{x}\in\widehat{K}_\mathfrak{p}$に対し
-  \[\widehat{d}(\widehat{x},\vartheta(0))=\lvert\widehat{x}\rvert_{\widehat{\mathfrak{p}}}=\lvert\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\rvert^{-\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}\]
-  によって$\lvert\bullet\rvert_{\widehat{\mathfrak{p}}}$と$\ord_{\widehat{\mathfrak{p}}}(\bullet)$を定義する．
-  命題1.2.13(1)から$\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\simeq A/\mathfrak{p}$なので
-  \[\widehat{d}(\widehat{x},\vartheta(0))=\lvert\widehat{x}\rvert_{\widehat{\mathfrak{p}}}=\lvert\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\rvert^{-\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}=\lvert A/\mathfrak{p}\rvert^{-\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}.\]
-  $\vartheta(x)$に対しては，$\lvert\vartheta(x)\rvert_{\widehat{\mathfrak{p}}}=\lvert x\rvert_\mathfrak{p}$, $\ord_{\widehat{\mathfrak{p}}}(\vartheta(x))=\ord_\mathfrak{p}(x)$．
-  更に，定理1.2.8(6)から$\widehat{x}\in\widehat{K}_\mathfrak{p}$として，
-  \[\lvert\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\rvert^{-\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}\leq\lvert\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\rvert^{-n}\Leftrightarrow n\leq\ord_{\widehat{\mathfrak{p}}}(\widehat{x})\Leftrightarrow\widehat{x}\in\mathfrak{p}^n\widehat{A}_\mathfrak{p}=\widehat{\mathfrak{p}}^n\widehat{A}_\mathfrak{p}.\]
-  よって，$\widehat{x}\in\widehat{\mathfrak{p}}^{\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}\widehat{A}_\mathfrak{p}$, $\widehat{x}\notin\widehat{\mathfrak{p}}^{\ord_{\widehat{\mathfrak{p}}}(\widehat{x})+1}\widehat{A}_\mathfrak{p}$となるので，$\widehat{x}\widehat{A}_\mathfrak{p}=\widehat{\mathfrak{p}}^{\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}\widehat{A}_\mathfrak{p}$．
-  これは（離散付値環での）加法的付値の定義と一致している．
-
-  以上から，$\widehat{x}\in\widehat{K}_\mathfrak{p}$の加法的付値$\ord_{\widehat{\mathfrak{p}}}$と$\widehat{\mathfrak{p}}$進付値$\lvert\bullet\rvert_{\widehat{\mathfrak{p}}}$は
-  \[\widehat{x}\widehat{A}_\mathfrak{p}=\widehat{\mathfrak{p}}^{\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}\widehat{A}_\mathfrak{p},\quad\lvert\widehat{x}\rvert_{\widehat{\mathfrak{p}}}=\lvert\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\rvert^{-\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}\]
-  で定まり，$x\in K$に対しては（ほとんどの場合省略されるが）$\vartheta\colon K\hookrightarrow\widehat{K}_\mathfrak{p}$によって
-  \[\ord_\mathfrak{p}(x)=\ord_{\widehat{\mathfrak{p}}}(\vartheta(x)),\quad \lvert x\rvert_\mathfrak{p}=\lvert\vartheta(x)\rvert_{\widehat{\mathfrak{p}}}.\]
-\end{proof}
-
-\begin{screen}
-    $\pi\in B$に対し$\ord_{P_i}(\pi)=0\ (i=2,\ldots,g)$ならば，$\ord_\mathfrak{p}\left(\N_{L/K}(\pi)\right)=\ord_{\widehat{\mathfrak{p}}}\left(\N_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}(\pi)\right)$
-\end{screen}
-\begin{proof}
-  補題1.10.10から$\N_{L/K}(\pi)=\prod_i\N_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(\pi)$となる．命題1.1.13を使えば，
-  \[\ord_{\widehat{\mathfrak{p}}}(\vartheta(\N_{L/K}(\pi)))=\ord_\mathfrak{p}(\N_{L/K}(\pi))=\sum_i\ord_{\widehat{\mathfrak{p}}}\left(\N_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(\pi)\right).\]
-  $i=2,\ldots,g$に対し，$\ord_{P_i\widehat{B}_i}(\pi)=0$なので，$\pi\in\widehat{B}_i^\times$．
-  よって命題I-8.5.2から$\N_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(\pi)\in\widehat{A}_\mathfrak{p}^\times$となるので$i=2,\ldots,g$に対し$\ord_{\widehat{\mathfrak{p}}}\left(\N_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(\pi)\right)=0$．
-  以上から，$\ord_\mathfrak{p}\left(\N_{L/K}(\pi)\right)=\ord_{\widehat{\mathfrak{p}}}\left(\N_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}(\pi)\right)$．
-\end{proof}
-
-\begin{screen}
-    Dedekind環と完備化
-\end{screen}
-\begin{proof}
-  $A$をDedekind環，$K$を$A$の商体，$L$を$K$の有限次拡大，$B$を$L$の$A$における整閉包，$\mathfrak{p}$を$A$の素イデアルとする．この時，$B$はDedekind環で，$L$は$B$の商体となる（命題1.3.2）．
-  $\mathfrak{p}$の上にある$B$の素イデアルを$P_1,\ldots,P_g$とする．
+  となる$a_0^{(1)}, \ldots, a_{n-1}^{(1)}\in\mathbb{Z}_p$が存在する．同様にして
   \[
-  \begin{CD}
-    P_1            @<\text{PI}<< B @>\text{QF}>> L\\
-    @AA\text{aPI}A @AA\text{IC}A   @AA\text{FE}A \\
-    \mathfrak{p}   @<\text{PI}<< A @>\text{QF}>> K
-  \end{CD}
-  \]
-  （PI：素イデアル，QF：商体，aPI：上にある素イデアル，IC：整閉包，FE：有限次拡大）
-
-  $A$, $K$を$\mathfrak{p}$進距離で完備化すると位相環$\widehat{A}_\mathfrak{p}$，位相体$\widehat{K}_\mathfrak{p}$が得られる（系1.2.9）．
-  $\widehat{K}_\mathfrak{p}$は$\widehat{A}_\mathfrak{p}$の商体であり，$\widehat{A}_\mathfrak{p}$は$\mathfrak{p}\widehat{A}_\mathfrak{p}$を極大イデアルとする離散付値環である（定理1.2.8(7)）．更に，$B$, $L$を$P_1$進距離で完備化すると位相環$\widehat{B}_1$，位相体$\widehat{L}_1$が得られ，$\widehat{L}_1$は$\widehat{B}_1$の商体であり，$\widehat{B}_1$は$P_1\widehat{B}_1$を極大イデアルとする離散付値環である．
-  $P_1\widehat{B}_1$は$\mathfrak{p}\widehat{A}_\mathfrak{p}$の上にある素イデアルである（補題1.3.3）．この時，$\widehat{L}_1$は$\widehat{K}_\mathfrak{p}$の有限次拡大で$\widehat{B}_1$は$\widehat{L}_1$における$\widehat{A}_\mathfrak{p}$の整閉包である（定理1.3.23(3)）．
-  \[
-  \begin{CD}
-    P_1\widehat{B}_1                     @<\text{MI1}<< \widehat{B}_1            @>\text{QF}>> \widehat{L}_1\\
-    @AA\text{aPI}A                   @AA\text{IC}A                      @AA\text{FE}A \\
-    \mathfrak{p}\widehat{A}_\mathfrak{p} @<\text{MI1}<< \widehat{A}_\mathfrak{p} @>\text{QF}>> \widehat{K}_\mathfrak{p}
-  \end{CD}
-  \]
-  （MI1：唯一の極大イデアル）
-
-  $M$を$\widehat{L}_1/\widehat{K}_\mathfrak{p}$の中間体とする．
-  $M$と$\widehat{B}_1$は環なので$M\cap\widehat{B}_1$は環であり，$M\cap\widehat{B}_1$は$M$の$\widehat{A}_\mathfrak{p}$における整閉包である（命題I-8.1.4(3)）．
-  $x\in\widehat{L}_1$が$M\cap\widehat{B}_1$上整なら$\widehat{B}_1$上整となる．
-  $\widehat{B}_1$は整閉整域なので$x\in\widehat{B}_1$．
-  $x\in\widehat{B}_1$は$\widehat{A}_\mathfrak{p}$上整なので$M\cap\widehat{B}_1$上整である（命題I-8.1.4(2)）．以上から，$\widehat{L}_1$の$M\cap\widehat{B}_1$における整閉包は$\widehat{B}_1$である．
-  $M\cap\widehat{B}_1$はDedekind環で，$M\cap\widehat{B}_1$の商体は$M$である（命題1.3.2）．
-
-  $M\cap P_1\widehat{B}_1$が$M\cap\widehat{B}_1$の素イデアルであることは容易に示せる．
-
-  $M\supset\mathfrak{p}\widehat{A}_\mathfrak{p}$, $P_1\widehat{B}_1\supset\mathfrak{p}\widehat{A}_\mathfrak{p}$なので$M\cap P_1\widehat{B}_1$は$\mathfrak{p}A_\mathfrak{p}$の上にある素イデアルである（補題1.3.3）．
-  $P_1\widehat{B}_1\supset M\cap P_1\widehat{B}_1$なので$P_1\widehat{B}_1$は$M\cap P_1\widehat{B}_1$の上にある素イデアルである（補題1.3.3）．
-  $M\cap\widehat{B}_1$は$M\cap P_1\widehat{B}_1$を極大イデアルとする完備離散付値環である（命題1.5.3）．
-  \[
-  \begin{CD}
-    P_1\widehat{B}_1                     @<\text{MI}<< \widehat{B}_1            @>\text{QF}>> \widehat{L}_1\\
-    @AA\text{aPI}A                   @AA\text{IC}A                      @AA\text{FE}A \\
-    M\cap P_1\widehat{B}_1               @<\text{MI}<< M\cap\widehat{B}_1       @>\text{QF}>> M\\
-    @AA\text{aPI}A                   @AA\text{IC}A                      @AA\text{FE}A \\
-    \mathfrak{p}\widehat{A}_\mathfrak{p} @<\text{MI}<< \widehat{A}_\mathfrak{p} @>\text{QF}>> \widehat{K}_\mathfrak{p}
-  \end{CD}
-  \]
-
-  $A$が仮定1.1.2を満たせば，$\widehat{A}_\mathfrak{p}$も仮定1.1.2を満たす（命題1.2.13(4)）．
-  $M\cap\widehat{B}_1$と$\widehat{B}_1$も仮定1.1.2を満たす（命題1.3.2）．
-\end{proof}
-
-\begin{screen}
-  \begin{thm}\label{CDVR_unr}
-    上の状況で，剰余体$k=\widehat{A}_\mathfrak{p}/\mathfrak{p}\widehat{A}_\mathfrak{p}$, $l=\widehat{B}_1/P_1\widehat{B}_1$を考える．
-    $a\in l$に対し，$[k(a):k]=[\widehat{K}_\mathfrak{p}(\alpha):\widehat{K}_\mathfrak{p}]$となる$\alpha\in\widehat{B}_1$が存在し，$\widehat{K}_\mathfrak{p}(\alpha)/\widehat{K}_\mathfrak{p}$は不分岐拡大である
-  \end{thm}
-\end{screen}
-\[
-\begin{CD}
-  P_1\widehat{B}_1 @<\text{MI}<< \widehat{B}_1 @>\text{QF}>> \widehat{L}_1 @. l \\
-  @AA\text{aPI}A @AA\text{IC}A @AA\text{FE}A @AA\text{FE}A \\
-  \widehat{K}_\mathfrak{p}(\alpha)\cap P_1\widehat{B}_1 @<\text{MI}<< \widehat{K}_\mathfrak{p}(\alpha)\cap\widehat{B}_1 @>\text{QF}>> \widehat{K}_\mathfrak{p}(\alpha)\qquad @. \qquad k(a) \\
-  @AA\text{aPI}A @AA\text{IC}A @AA{\text{FE}, \Phi(x)}A @AA{\text{FE}, \phi(x)}A \\
-  \mathfrak{p}\widehat{A}_\mathfrak{p} @<\text{MI}<< \widehat{A}_\mathfrak{p} @>\text{QF}>> \widehat{K}_\mathfrak{p} @. k
-\end{CD}
-\]
-\begin{proof}
-  $\widehat{A}_\mathfrak{p}$は仮定1.1.2を満たすので，剰余体は有限体．
-  $a$の$k$上最小多項式を$\phi(x)\in k[x]$とする．
-  $k$は有限体なので完全体（系I-7.3.6）となり，$k(a)/k$は分離拡大である（定義I-7.3.1(5)）．
-  よって$\phi(x)$は分離多項式で，$\phi(a)=0$, $\phi'(a)\neq0$．
-  $\Phi(x)\equiv\phi(x)\bmod\mathfrak{p}\widehat{A}_\mathfrak{p}$となるモニック$\Phi(x)\in\widehat{A}_\mathfrak{p}[x]$及び$\alpha_0\equiv a\bmod P_1\widehat{B}_1$となる$\alpha_0\in\widehat{B}_1$を考える（$\alpha_0$は$a$の代表元）．
-  $\Phi(\alpha_0)\equiv 0\bmod P_1\widehat{B}_1$, $\Phi'(\alpha_0)\not\equiv 0\bmod P_1\widehat{B}_1$であるので，Henselの補題から$\Phi(\alpha)=0$となる$\alpha\in\widehat{B}_1\ (\alpha\equiv\alpha_0\bmod P_1\widehat{B}_1)$が存在する．
-  $\phi(x)$は$k$（$\widehat{A}_\mathfrak{p}/\mathfrak{p}\widehat{A}_\mathfrak{p}$の商体）上既約なので，命題I-8.2.1とp.I-233の注から$\Phi(x)$は$\widehat{K}_\mathfrak{p}$上既約．
-  よって，$\Phi(x)$は$\widehat{K}_\mathfrak{p}(\alpha)$の$\widehat{K}_\mathfrak{p}$上最小多項式となり，$[k(\alpha):k]=\deg (\phi(x))=\deg (\Phi(x))=[\widehat{K}_\mathfrak{p}(\alpha):\widehat{K}_\mathfrak{p}]$．
-
-  $\widehat{K}_\mathfrak{p}(\alpha)\cap\widehat{B}_1$の剰余体$m=\widehat{K}_\mathfrak{p}(\alpha)\cap\widehat{B}_1/\widehat{K}_\mathfrak{p}(\alpha)\cap P_1\widehat{B}_1$を考える．
-  $\alpha\in\widehat{K}_\mathfrak{p}(\alpha)\cap\widehat{B}_1$なので，$a\in m$である（$\vartheta\colon m \hookrightarrow l$について$a \in \Im \vartheta$）．
-  $k(a)$は$a$を含む最小の体なので$[m:k(a)]\geq 1$．先程の結果と定理1.3.23(4)から
-  \[[k(a):k]=[\widehat{K}_\mathfrak{p}(\alpha):\widehat{K}_\mathfrak{p}]\geq f(\widehat{K}_\mathfrak{p}(\alpha)\cap P_1\widehat{B}_1:\mathfrak{p}\widehat{A}_\mathfrak{p})=[m:k]\]
-  となるので，$[k(a):m]\geq 1$．以上から$[k(a):m]=1$，
-  \[[\widehat{K}_\mathfrak{p}(\alpha):\widehat{K}_\mathfrak{p}]=f(\widehat{K}_\mathfrak{p}(\alpha)\cap P_1\widehat{B}_1:\mathfrak{p}\widehat{A}_\mathfrak{p})=[m:k]=[k(a):k]\]
-  となるので，再び定理1.3.23(4)から分岐指数は$e(\widehat{K}_\mathfrak{p}(\alpha)\cap P_1\widehat{B}_1:\mathfrak{p}\widehat{A}_\mathfrak{p})=1$．つまり，$\widehat{K}_\mathfrak{p}(\alpha)/\widehat{K}_\mathfrak{p}$は不分岐拡大．
-\end{proof}
-
-\begin{screen}
-  $\pi$の$M$上最小多項式$f(x)$は$\widehat{B}_M = M\cap\widehat{B}_1$上のEisenstein多項式で，$\deg (f(x))=[\widehat{L}_1:M]$である
-\end{screen}
-\begin{proof}
-  $\ord_{P_1}(\pi)=1$より$\pi\widehat{B}_1=\widehat{P}_1\widehat{B}_1$となるので，$\pi$は$\widehat{B}_1$の素元．
-  $\widehat{L}_1/M$は完全分岐なので，命題1.10.7から$\pi$の$M$上最小多項式はEisenstein多項式で，その次数は$[\widehat{L}_1:M]$に等しい
-  （命題の主張には書かれていないが，証明されている：p.62）．
-  また，Eisenstein多項式の定義から$f(x)\in\widehat{B}_M[x]$（$M$に対応する離散付値環は$\widehat{B}_M$）．
-\end{proof}
-
-\paragraph{命題1.10.13}~
-\begin{screen}
-  $Q_1,\ldots,Q_g$が$P_1,\ldots,P_t$と互いに素
-\end{screen}
-\begin{proof}
-  $Q_i\cap A=\mathfrak{p}$, $P_j\cap A=\mathfrak{p}_j$に注意すれば，$Q_i=P_j \Rightarrow \mathfrak{p}=\mathfrak{p}_j$．
-  対偶をとって，$\mathfrak{p}\neq\mathfrak{p}_j \Rightarrow Q_i\neq P_j$．
-  $\mathfrak{p}\neq\mathfrak{p}_j$なので，$Q_i$と$P_j$は互いに素．
-\end{proof}
-
-\begin{screen}
-  $I$の相対イデアル$\N_{L/K}(I)$も$\mathfrak{p}$と互いに素
-\end{screen}
-\begin{proof}
-  相対イデアル$\N_{L/K}(I)$は$\Set{\N_{L/K}(b) | b\in I}$で生成される$A$のイデアル（定義1.10.1）なので，$A$の適当なイデアル$J$によって，$\N_{L/K}(I)=\left(\N_{L/K}(x)\right)+J$と書くことができる．
-  $\left(\N_{L/K}(x)\right)$は$\mathfrak{p}$と互いに素なので，素イデアル分解には$\mathfrak{p}$は現れない：$\left(\N_{L/K}(x)\right)=\mathfrak{p}^0\cdots$．
-  よって，定理I-8.3.17(3)から$\N_{L/K}(I)=\left(\N_{L/K}(x)\right)+J$の素イデアル分解は$\mathfrak{p}^0\cdots$となる，つまり$\N_{L/K}(I)$は$\mathfrak{p}$と互いに素．
-\end{proof}
-
-\begin{screen}
-  $\N_{L/K}(I)\supset\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}$
-\end{screen}
-\begin{proof}
-  $\N_{L/K}(I)\supset\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}J$なので，定理I-8.3.17(2)から$A$のイデアル$J'$があり，$J'\N_{L/K}(I)=\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}J$．
-  $J$の素イデアル分解を$\tilde{\mathfrak{p}}_1{}^{a_1}\cdots\tilde{\mathfrak{p}}_s{}^{a_s}$とすれば，$J'\N_{L/K}(I)=\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}\tilde{\mathfrak{p}}_1{}^{a_1}\cdots\tilde{\mathfrak{p}}_s{}^{a_s}$．
-  $\N_{L/K}(I)$が$J$と互いに素であることから，$\N_{L/K}(I)$の素イデアル分解には$\tilde{\mathfrak{p}}_1,\ldots,\tilde{\mathfrak{p}}_s$は現れない．
-  よって，$J'=\tilde{\mathfrak{p}}_1{}^{a_1}\cdots\tilde{\mathfrak{p}}_s{}^{a_s}J''$となるので，$\tilde{\mathfrak{p}}_1{}^{a_1}\cdots\tilde{\mathfrak{p}}_s{}^{a_s}J''\N_{L/K}(I)=\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}\tilde{\mathfrak{p}}_1{}^{a_1}\cdots\tilde{\mathfrak{p}}_s{}^{a_s}$．
-  よって，$J''\N_{L/K}(I)=\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}$．
-  定理I-8.3.17(2)から$\N_{L/K}(I)\supset\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}$．
-\end{proof}
-
-\begin{screen}
-  $I\widehat{B}_1=Q_{1,1}{}^{m_1}\widehat{B}_1=x\widehat{B}_1$
-\end{screen}
-\begin{proof}
-  $x_1,\ldots,x_{m_1}$の$Q_{1,1}=P_1=\cdots=P_{m_1}$に関する加法的付値が$1$，$x_{m_1+1},\ldots,x_t$の$P_1$に関する加法的付値が$0$となる．よって，$\ord_{Q_{1,1}}(x_1)=1$なので，$x_1\widehat{B}_1=Q_{1,1}\widehat{B}_1$．また，$\ord_{Q_{1,1}}(x_t)=0$なので$x_t\widehat{B}_1=\widehat{B}_1$，つまり$x_t\in\widehat{B}_1^\times$．以上から，$x_1,\ldots,x_{m_1}$は$Q_{1,1}\widehat{B}_1$を生成し，$x_{m_1+1},\ldots,x_t$は$\widehat{B}_1^\times$の元である．
-  $i\geq m_1+1$に対し$x_i \in P_i$，$x_i\in\widehat{B}_1^\times$なので$P_iP_1\widehat{B}_1=P_1\widehat{B}_1$．よって，$I=P_1\cdots P_t=Q_{1,1}{}^{m_1}P_{m_1+1}\cdots P_t$なので$I\widehat{B}_1=Q_{1,1}{}^{m_1}\widehat{B}_1$．
-  $x=x_1\cdots x_t$で$x_1\widehat{B}_1=\cdots=x_{m_1}\widehat{B}_1=Q_{1,1}\widehat{B}_1$，$x_{m_1+1},\ldots,x_t\in\widehat{B}_1^\times$なので$x\widehat{B}_1=Q_{1,1}{}^{m_1}\widehat{B}_1$．
-\end{proof}
-
-\begin{screen}
-  $I\widehat{B}_1=x\widehat{B}_1$，$y\in I$なら$z\in\widehat{B}_1$が存在して$y=zx$となる
-\end{screen}
-\begin{proof}
-  $x\widehat{B}_1=I\widehat{B}_1\supset y\widehat{B}_1$なので，定理I-8.3.17(2)から単項イデアル整域$\widehat{B}_1$のイデアル$z'\widehat{B}_1$が存在し$xz'\widehat{B}_1=y\widehat{B}_1$となる．
-  $y\in y\widehat{B}_1$なので$y\in xz'\widehat{B}_1$，つまり$b\in\widehat{B}_1$があり$y=xz'b$．
-  $z=z'b\in\widehat{B}_1$とすれば主張が従う．
-\end{proof}
-
-\paragraph{命題1.10.19}~
-\begin{screen}
-  $IA_\mathfrak{p}$が$\varDelta_{B/A,\mathfrak{p}}$を割り切る
-\end{screen}
-\begin{proof}
-  $I$の定義から$s^{2n}\varDelta_{L/K}(u_1,\ldots,u_n)=\varDelta_{L/K}(su_1,\ldots,su_n)A=Ia$となる$a\in A$が存在する．
-  よって，$aIA_\mathfrak{p}=s^{2n}\varDelta_{L/K}(u_1,\ldots,u_n)A_\mathfrak{p}$．
-  $s^{2n}\in A_\mathfrak{p}^\times$なので，$=\varDelta_{L/K}(u_1,\ldots,u_n)A_\mathfrak{p}=\varDelta_{B/A,\mathfrak{p}}A_\mathfrak{p}$となるので従う．
-\end{proof}
-
-\section{完備化とDedekindの判別定理}
-
-\begin{screen}
-  $B$の$A$基底は$B_\mathfrak{p}$の$A_\mathfrak{p}$基底であり，$L$の$K$基底である
-\end{screen}
-\begin{proof}
-  $B$の$A$基底を$\{w_1,\ldots,w_n\}$とする．$\forall b\in B$は$\sum y_iw_i\ (y_i\in A)$と表すことができる．
-  $B_\mathfrak{p}$の任意の元は$b\in B$と$s\in A\setminus\mathfrak{p}$で$b/s$と表せる．上の式を代入して$b/s=\sum_{i=1}^n(y_i/s)w_i,\quad (y_i/s\in A_\mathfrak{p})$．
-  $B_\mathfrak{p}$の任意の元は$\{w_1,\ldots,w_n\}$の$A_\mathfrak{p}$係数の線形結合で表すことができる．
-  $\sum (y_i/s_i)w_i=0\ (y_i\in A,\quad s_i\in A\setminus\mathfrak{p})$とする．
-  $\sum_{i=1}^n (y_is_1\cdots s_n/s_i)w_i=0$
-  となり，$w_i$の係数は$A$の元．
-  $\{w_1,\ldots,w_n\}$の$A$基底としての一時独立性から，$y_i=0$．よって$A_\mathfrak{p}$基底として一次独立．
-
-  $L/K$も同様．
-  $S=A\setminus\{0\}$として$L=S^{-1}B$と表せることを使う．
-\end{proof}
-
-\paragraph{命題1.11.1}~
-\begin{screen}
-  $\varDelta_{B/A,\mathfrak{p}}=\prod_{i=1}^g\varDelta_{\widehat{B}_i/\widehat{A}_\mathfrak{p}}$
-\end{screen}
-\begin{proof}
-  $\{w_1, \ldots, w_n\}$を$B$の$A$基底とする．
-  $m(w_i)$を$B$の元に$w_i \in B$をかける写像とする：
-  \[m(w_i) \colon B \ni a = \sum_{i=1}^n a^{(i)}w_i \mapsto aw_i = \sum_{i=1}^n b^{(i)}w_i \in B.\]
-  これは$B \otimes_A \widehat{A}_\mathfrak{p}$の元に$w_i \otimes 1 \in B \otimes_A \widehat{A}_\mathfrak{p}$をかける写像$\tilde{m}(w_i)$を誘導する：
-  \[\tilde{m}(w_i) \colon B \otimes_A \widehat{A}_\mathfrak{p} \ni a \otimes t = \sum_{i=1}^n a^{(i)}w_i \otimes t \mapsto aw_i \otimes t = \sum_{i=1}^n b^{(i)}w_i \otimes t \in B \otimes_A \widehat{A}_\mathfrak{p}.\]
-  定理1.3.23(2)から，$\phi_i\colon B\hookrightarrow\widehat{B}_i$として同型
-  \[\phi\colon B \otimes_A \widehat{A}_\mathfrak{p} \ni a\otimes t\rightarrow(\phi_1(a)t, \ldots, \phi_g(a)t) \in \widehat{B}_1 \times \cdots \times \widehat{B}_g\]
-  が得られる．$\phi$によって$\{w_i\}_{1 \leq i \leq n}$は$\{(\phi_1(w_i), \ldots, \phi_g(w_i))\}_{1 \leq i \leq g}$に写るので，$\{(\phi_1(w_i), \ldots, \phi_g(w_i))\}_{1 \leq i \leq g}$は$\widehat{B}_1 \times \cdots \times \widehat{B}_g$の$\widehat{A}_\mathfrak{p}$基底である．
-
-  $\widehat{m}=\phi \tilde{m} \phi^{-1}$として，
-  \[\widehat{m} \colon \widehat{B}_1\times\cdots\times\widehat{B}_g \ni \phi(a \otimes t) \mapsto \phi(aw_i \otimes t) \in \widehat{B}_1\times\cdots\times\widehat{B}_g\]
-  を構成する．
-  \[
-  \begin{CD}
-    \widehat{B}_1\times\cdots\times\widehat{B}_g @>{\widehat{m}}>> \widehat{B}_1\times\cdots\times\widehat{B}_g\\
-    @A{\phi}AA  @A{\phi}AA\\
-    B_\mathfrak{p}\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p} @>>{\tilde{m}}> B_\mathfrak{p}\otimes_{A_\mathfrak{p}}\widehat{A}_\mathfrak{p}\\
-  \end{CD}
-  \]
-  $\phi(a \otimes t)=(\phi_1(a)t, \ldots, \phi_g(a)t)$，$\phi(aw_i \otimes t)=(\phi(w_i)\phi_1(a)t, \ldots, \phi(w_i)\phi_g(a)t)$であるので，$\widehat{m}(w_i)$は$\widehat{B}_1\times\cdots\times\widehat{B}_g$の元に$(\phi_1(w_i), \ldots, \phi_g(w_i))$をかける写像である．
-  構成から（適当な基底を取ることによって）$\Tr(m)=\Tr(\tilde{m})=\Tr(\widehat{m})$であることが分かる．
-
-  $\{v_{i,1},\ldots,v_{i,N_i}\}$を$\widehat{B}_i$の$\widehat{A}_\mathfrak{p}$基底とする（$N_i=e_if_i$：定理1.3.23(4)）．
-  \begin{align*}
-    \overline{v}_1=(v_{1,1},0,\ldots,0),&\ldots,\overline{v}_{N_1}=(v_{1,N_1},0,\ldots,0)\\
-    \overline{v}_{N_1+1}=(0,v_{2,1},0,\ldots,0),&\ldots,\overline{v}_{N_1+N_2}=(0,v_{2,N_2},0,\ldots,0)\\
-    &\vdots\\
-    \overline{v}_{n-N_g+1}=(0,\ldots,0,v_{g,1}),&\ldots,\overline{v}_{n}=(0,\ldots,0,v_{g,N_g})
-  \end{align*}
-  とすれば，$\{\overline{v}_1,\ldots,\overline{v}_n\}$は$\widehat{B}_1\times\cdots\times\widehat{B}_g$の$\widehat{A}_\mathfrak{p}$基底となる．
-  $\{(\phi_1(w_i), \ldots, \phi_g(w_i))\}_{1 \leq i \leq g}$，$\{\overline{v}_1, \ldots, \overline{v}_n\}$は共に$\widehat{B}_1\times\cdots\times\widehat{B}_g$の$\widehat{A}_\mathfrak{p}$基底であるので，$A \in \GL_n(\widehat{A}_\mathfrak{p})$が存在し，
-  \[(\phi_1(w_i), \ldots, \phi_g(w_i)) = \sum_{j=1}^n A_{ij} \overline{v}_j.\]
-  補題1.10.6を使えば，
-  \begin{align*}
-    \Tr_{L/K}(w_iw_j) &= \Tr(m(w_i w_j)) = \Tr(\widehat{m}(w_i w_j)) = \Tr\left(\widehat{m}\left(\sum_{k=1}^n \sum_{l=1}^n A_{ik} A_{jl} \overline{v}_k \overline{v}_{l} \right) \right) \\
-                      & = \sum_{k=1}^n \sum_{l=1}^n A_{ik} A_{jl} \Tr(\widehat{m}(\overline{v}_k \overline{v}_{l})).
-  \end{align*}
-  $\Tr_{L/K}(w_iw_j)$を$(i,j)$成分とする$n\times n$行列を$W$，$\Tr(\widehat{m}(\overline{v}_i \overline{v}_{j}))$を$(i,j)$成分とする$n\times n$行列を$M$とすれば，これは$W=AM{}^tA$と書ける．
-
-  $M$の$(N_1+\cdots+N_{l-1}+i,N_1+\cdots+N_{l-1}+j)\ (1\leq i,j\leq N_l)$成分は$\widehat{B}_1\times\cdots\times\widehat{B}_g$に対して，
-  $\overline{v}_{N_1+\cdots+N_{l-1}+i}\overline{v}_{N_1+\cdots+N_{l-1}+j}=(0,\ldots,0,v_{l,i}v_{l,j},0,\ldots,0)$をかける線形写像のトレースであり，
-  これは$\widehat{B}_l$の元に$v_{l,i}v_{l,j}$をかける線形写像のトレース．
-  よって補題1.10.6からこれは$\Tr_{\widehat{L}_l/\widehat{K}_\mathfrak{p}}(v_{l,i}v_{l,j})$に等しい．
-  $i\neq j$であれば$v_{ik}v_{jl}=0$なので，$\Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(v_{ik}v_{il})$を$(k,l)$成分とする$N_i\times N_i$行列を$M_i$とすれば，
-  \[
-  M=
   \begin{pmatrix}
-    M_1 &        & \\
-    & \ddots & \\
-    &        & M_g
+    1 &   &        & \\
+    & 1 &        & \\
+    &   & \ddots & \\
+    &   &        & 1
   \end{pmatrix}
-  ,\quad \det M_i = \varDelta_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(v_{i,1},\ldots,v_{i,N_i}).\]
-  よって，
-  \[\varDelta_{L/K}(w_1,\ldots,w_n) = \det W = (\det A)^2 \det M = (\det A)^2 \prod_{i=1}^g \det M_i = (\det A)^2 \prod_{i=1}^g\varDelta_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(v_{i,1},\ldots,v_{i,N_i})\]
-  となり，系I-6.7.9(1)から$\det A \in \widehat{A}_\mathfrak{p}^\times$なので
-  \begin{align*}
-    \ord_{\mathfrak{p}}(\varDelta_{L/K}(w_1,\ldots,w_n)) &= \ord_{\mathfrak{p}\widehat{A}_\mathfrak{p}}\left(\prod_{i=1}^g\varDelta_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(v_{i,1},\ldots,v_{i,N_i})\right) \\
-    &= \sum_{i = 1}^g\ord_{\mathfrak{p}\widehat{A}_\mathfrak{p}}\left(\varDelta_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(v_{i,1},\ldots,v_{i,N_i})\right).
-  \end{align*}
-  $\widehat{A}_\mathfrak{p}$は離散付値環で$\mathfrak{p}\widehat{A}_\mathfrak{p}$が唯一の素イデアルなので
-  \[\varDelta_{B/A,\mathfrak{p}} = \mathfrak{p}^{\ord_{\mathfrak{p}}(\varDelta_{L/K}(w_1,\ldots,w_n))}\widehat{A}_\mathfrak{p} = \prod_{i = 1}^g\mathfrak{p}^{\ord_{\mathfrak{p}\widehat{A}_\mathfrak{p}}\left(\varDelta_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(v_{i,1},\ldots,v_{i,N_i})\right)}\widehat{A}_\mathfrak{p} = \prod_{i=1}^g\varDelta_{\widehat{B}_i/\widehat{A}_\mathfrak{p}}.\]
-\end{proof}
-
-\paragraph{命題1.11.4}~
-\begin{screen}
-  $y=s_1\cdots s_mx\in\delta(B/A)^{-1}$
-\end{screen}
-\begin{proof}
-  $a\in B$として，$\Tr_{L/K}(as_1\cdots s_mx)=s_1\cdots s_m\Tr_{L/K}(ax)$．
-  $a=b_1w_1+\cdots+b_mw_m\ (b_i\in A)$とすれば，
-  \[=s_1\cdots s_m\Tr_{L/K}\left(\sum_ib_iw_ix\right)=s_1\cdots s_m\sum_ib_i\Tr_{L/K}\left(w_ix\right)=s_1\cdots s_m\sum_ib_ia_i/s_i\]
-  なので$\Tr_{L/K}(as_1\cdots s_mx)\in A$．つまり，$s_1\cdots s_mx\in\delta(B/A)^{-1}$．
-\end{proof}
-
-\paragraph{命題1.11.6}~
-\begin{screen}
-  $x\in\delta(B/B_M)^{-1}(\delta(B_M/A)B)^{-1}$
-\end{screen}
-\begin{proof}
-  $x\delta(B_M/A)\subset\delta(B/B_M)^{-1}$は本文から容易に分かる．
-  $b\in\delta(B/B_M)^{-1}$であれば$\forall y\in B$に対し，定義から$by\in\delta(B/B_M)^{-1}$となるので，$bB\subset\delta(B/B_M)^{-1}$．
-  以上から$x\delta(B_M/A)B\subset\delta(B/B_M)^{-1}$．
-  $\delta(B_M/A)B$は$B$のイデアルなので有限生成（命題I-6.8.34）で，分数イデアル（Dedekind環のイデアルは分数イデアル．命題I-8.3.24からも分かる）．
-  よって，命題I-8.3.21から
-  \[xB=x\delta(B_M/A)B(\delta(B_M/A)B)^{-1}\subset\delta(B/B_M)^{-1}(\delta(B_M/A)B)^{-1}.\]
-  よって，$x\in\delta(B/B_M)^{-1}(\delta(B_M/A)B)^{-1}$．
-\end{proof}
-
-\paragraph{系1.11.11}~
-\begin{screen}
-  $\overline{g}(x)$の根が$A/\mathfrak{p}$上$M\cap B/M\cap P$を生成し，$g(x)$の根が$K$上$M$を生成する様な$g(x)$が存在し，$g(x)$は既約，$\overline{g}(x)$が既約・分離である
-\end{screen}
-\begin{proof}
-  $k=A/\mathfrak{p}$，$l=B/P$，$m=C/P_M$とする．
-  $M/K$は不分岐拡大なので$[m:k]=[M:K]=f$．
-  $k$は有限体なので完全体（系I-7.3.6）となり$m/k$は分離拡大（よって，$g$の存在を示せば$\overline{g}(x)$は分離多項式と分かる）で，$m=k(a)$となる$a\in l$が存在する．
-  これに対して追加定理\ref{CDVR_unr}(p.\pageref{CDVR_unr})の証明を適用すれば，$f$次の不分岐拡大$K(\alpha)/K\ (\alpha\in B)$が存在する．
-  $g$は$\Phi$，$\overline{g}$は$\phi$に対応するので，$g(x)$, $\overline{g}(x)$は既約多項式．
-  $M/K$は$f$次の最大不分岐拡大であったので$M=K(\alpha)$となる．
-\end{proof}
-
-\begin{screen}
-  $R(g,g')\in A^\times$，$\varDelta_{C/A}=A$
-\end{screen}
-\begin{proof}
-  $R(g,g')$を$\bmod\mathfrak{p}$で考えた$R(\overline{g},\overline{g}')$は$\overline{g}(x)$の判別式になる（系1.9.7）．
-  $\overline{g}(x)$は分離多項式なので$\overline{g}$と$\overline{g}'$は共通根を持たない．
-  よって系1.9.6から$R(\overline{g},\overline{g}')\neq 0$．
-  % 自然な写像$A\to A/\mathfrak{p}$の$\ker$は$\mathfrak{p}$なので，
-  従って$R(g,g')\in A\setminus\mathfrak{p}$で，命題I-6.5.8から$A\setminus\mathfrak{p}=A^\times$．
-  上で示したように，$g(x)\in A[x]$は$\alpha\in C$の$K$上最小多項式で，$\varDelta_{M/K}(1,\alpha,\cdots,\alpha^{f-1}) = R(g,g')$（命題1.9.9）なので$\varDelta_{M/K}(1,\alpha,\cdots,\alpha^{f-1})\in A^\times$．
-  すなわち$\ord_\mathfrak{p}(\varDelta_{M/K}(1,\alpha,\cdots,\alpha^{f-1}))=0$．
-  よって補題1.8.3から$\{1,\alpha,\ldots,\alpha^{f-1}\}$は$C$の$A$基底となる（補題の主張はアレ；p.49の上の方参照）ので，相対判別式の計算に$\{1,\alpha,\ldots,\alpha^{f-1}\}$を使用できる：
-  \[\varDelta_{C/A}=\varDelta_{C/A,\mathfrak{p}}=\mathfrak{p}^{\ord_\mathfrak{p}(\varDelta_{M/K}(1,\alpha,\ldots,\alpha^{f-1}))}=\mathfrak{p}^{0}=A.\]
-\end{proof}
-
-\paragraph{命題1.11.14}~
-\begin{screen}
-  $A$を離散付値環，$\{x_1,\ldots,x_l\}\ (l=[N:K])$を$B_N$の$A$基底，$\varDelta_{N/K}(x_1,\ldots,x_l)\in A^\times$とすれば，$\{x_1,\ldots,x_l\}$は$L$の$M$基底となる
-\end{screen}
-\begin{proof}
-  命題I-8.1.24から$B_N$は階数$l$の自由$A$加群（だから基底が$l$個）．
-  $\varDelta_{N/K}(x_1,\ldots,x_l)\neq 0$なので命題1.7.3(2)から$\{x_1,\ldots,x_l\}\subset N$は$K$上一次独立．
-  よって定理I-8.11.9(3)から$M$上一次独立．命題I-8.11.9(2)から$[L:M]=l$なので$\{x_1,\ldots,x_l\}$は$L$の$M$基底となる．
-\end{proof}
-
-\paragraph{定理1.11.16}~
-\begin{screen}
-  $A$が離散付値環なら，$B_M$の$A$基底を$\{v_1,\ldots,v_m\}$，$B_N$の$A$基底を$\{w_1,\ldots,w_n\}$とすれば，$\{v_1,\ldots,v_m\}$は$N$上一次独立で，$\{w_1,\ldots,w_n\}$は$K$上一次独立である
-\end{screen}
-\begin{proof}
-  I-p.241のはじめの話から，$\{v_1,\ldots,v_m\}$と$\{w_1,\ldots,w_n\}$は$K$上一次独立．さらに，定理I-8.11.9から$\{v_1,\ldots,v_m\}$は$N$上一次独立となる．
-\end{proof}
-
-\begin{screen}
-  上の状況で，$\Tr_{L/K}(v_iw_kv_jw_l)=\Tr_{M/K}(v_iv_j)\Tr_{N/K}(w_kw_l)$
-\end{screen}
-\begin{proof}
-  まず，
-  \[\Tr_{L/K}(v_iw_kv_jw_l)=\Tr_{L/K}(v_iv_jw_kw_l).\]
-  命題I-8.1.18(5)から
-  \[=\Tr_{M/K}\left(\Tr_{L/M}(v_iv_jw_kw_l)\right).\]
-  $v_iv_j\in M$なので，
-  \[=\Tr_{M/K}\left(v_iv_j\Tr_{L/M}(w_kw_l)\right).\]
-  (1.11.15)と同様の考察から$\Tr_{L/M}(w_kw_l)=\Tr_{N/K}(w_kw_l)$なので
-  \[=\Tr_{M/K}\left(v_iv_j\Tr_{N/K}(w_kw_l)\right).\]
-  補題I-8.1.17から$\Tr_{N/K}(w_kw_l)\in K$なので，
-  \[=\Tr_{M/K}(v_iv_j)\Tr_{N/K}(w_kw_l).\]
-\end{proof}
-
-\begin{screen}
-  上の状況で$\varDelta_L=\varDelta_M{}^n\varDelta_N{}^m$
-\end{screen}
-\begin{proof}
-  $B$の$A$基底として
-  \[\{v_1w_1,\ldots,v_1w_n;v_2w_1,\ldots,v_2w_n;\cdots;v_mw_1,\ldots,v_mw_n\}\]
-  をとれる（p.81の上の方）．
-  $G$を$(i,j)$成分を$g_{ij}=\Tr_{L/K}(v_iv_j)$とする$m$次行列，$H$を$(k,l)$成分を$\Tr_{L/K}(w_kw_l)$とする$n$次行列とする．
-  $((i-1)n+k,(j-1)n+l)$成分が$\Tr_{L/K}(v_iw_kv_jw_l)$の行列を$X$とする．
-  $\Tr_{L/K}(v_iw_kv_jw_l)=\Tr_{L/K}(v_iv_j)\Tr_{L/K}(w_kw_l)$なので，
-  \begin{align*}
-    X=
-    \begin{pmatrix}
-      g_{11}H & \cdots & g_{1m}H \\
-      g_{21}H & \cdots & g_{2m}H \\
-      & \vdots & \\
-      g_{m1}H & \cdots & g_{mm}H
-    \end{pmatrix}
-    =G\otimes H
-  \end{align*}
-  （行列のKronecker積）となる．線形代数で知られているように，$\det(G\otimes H)=(\det G)^n(\det H)^m$なので，
-  \[\varDelta_{L/K}(v_1w_1,\ldots)=\det X=\det(G\otimes H)=(\det G)^n(\det H)^m=\varDelta_{M/K}(v_1,\ldots,v_m){}^n\varDelta_{N/K}(w_1,\ldots,w_n){}^m.\]
-  $A=\mathbb{Z}$, $K=\mathbb{Q}$とすれば，主張が従う．
-\end{proof}
-
-% ここから未確認
-
-\section{積公式}
-\paragraph{補題1.12.1}
-$\Tr_{L/K}$じゃなくて$\Tr_{K/\mathbb{Q}}$じゃね？
-
-\paragraph{定理1.12.2}~
-\begin{screen}
-  $x\in\mathcal{O}_K$に対し積公式$\prod_{v\in\mathfrak{M}}\lvert x\rvert_v=1$が成立すれば$x\in K^\times$に対しても成立する
-\end{screen}
-\begin{proof}
-  まず$v\in\mathfrak{p}$については$\lvert x\rvert_\mathfrak{p}\lvert 1/x\rvert_\mathfrak{p}=1$．
-  $v\in\mathfrak{M}_\mathbb{R}$に対しては$\sigma_v\in\Hom^\text{al}_\mathbb{Q}(K,\mathbb{C})$について$\lvert\sigma_v(x)\rvert\lvert\sigma_v(1/x)\rvert=\lvert\sigma_v(1)\rvert=1$．
-  $v\in\mathfrak{M}_\mathbb{C}$に対しても同様に$\lvert\sigma_v(x)\rvert^2\lvert\sigma_v(1/x)\rvert^2=\lvert\sigma_v(1)\rvert^2=1$．
-  以上から，$x\in\mathcal{O}_K$に対し，$\lvert x\rvert_v=\lvert 1/x\rvert_v$なので，$1/x\in K\ (x\in\mathcal{O}_K)$に対しても積公式が成立．
-  $K$は$\mathcal{O}_K$の商体なので，$\forall x\in K$は$a/b\ (a,b\in\mathcal{O}_K)$と表すことができる．
-  $a$, $1/b$に対し積公式が成立するので，上の議論と同様にして$x=a/b$に対しても成立．
-\end{proof}
-
-\section{Krasnerの補題}
-
-\paragraph{定理1.13.1}~
-\begin{screen}
-  $A$, $B$を完備離散付値環，$L/K$をGalois拡大，$\tau\in\Gal(L/K(\beta))\ (\beta\in L)$として，$\lvert\tau(x)\rvert=\lvert x\rvert$
-\end{screen}
-\begin{proof}
-  $B$の極大イデアルを$P$とする．$\ord_P(x)=n$とすれば，$xB=P^nB$となり，$\tau(x) \tau(B) = \tau(P)^n$．
-  $\tau(B)=B$（追加補題\ref{sigmaB}, p.\pageref{sigmaB}），$\tau(P)=P$なので$\tau(x)B=P^n$．つまり，$\ord_P(\tau(x))=n$．
-\end{proof}
-
-\paragraph{系1.13.3}~
-\begin{screen}
-  局所体（$\mathbb{Q}_p$の有限次拡大）が代数体（$\mathbb{Q}$の有限次拡大）の完備化に同型である
-\end{screen}
-\begin{proof}
-  本文の証明の前半から，局所体$L=\mathbb{Q}_p(\beta)$，代数体$K=\mathbb{Q}(\beta)$と表すことができる．
-  $\mathcal{O}_L$を$L$の整数環，$P$を$\mathcal{O}_L$の素イデアルとする．この時，$\mathfrak{p}=P\cap\mathcal{O}_K$とする．
-  $\mathbb{Z} \subset \mathbb{Z}_p$，$K \subset L$なので$\mathcal{O}_K \subset \mathcal{O}_L$である．
-  $a,b\in\mathfrak{p}$，$x\in\mathcal{O}_K$とする．
-  $a,b\in\mathcal{O}_K,P$なので$a+b\in\mathcal{O}_K,P$，つまり$a+b\in\mathfrak{p}$．
-  $a,x\in\mathcal{O}_K$なので$ax\in\mathcal{O}_K$．
-  $a\in P$，$x\in\mathcal{O}_L$なので$ax\in P$．よって，$ax\in\mathfrak{p}$．以上から，$\mathfrak{p}$は$\mathcal{O}_K$のイデアル．
-  $a,b\in\mathcal{O}_K$で$ab\in \mathfrak{p}$とする．
-  $ab\in P$で$P$は$\mathcal{O}_L$の素イデアルなので$a\in P$（若しくは$b\in P$）となり，$a\in\mathfrak{p}$．よって，$\mathfrak{p}$は$\mathcal{O}_K$の素イデアル．
-  $\mathcal{O}_L$は完備離散付値環（命題I-9.1.31(4)，命題1.5.3(2)）なので$\mathfrak{p}\mathcal{O}_L=P^e\mathcal{O}_L$となる$e$が存在する（命題I-8.3.15）．
-  $\mathcal{O}_L/P$は$\mathcal{O}_K/\mathfrak{p}$の有限次拡大．
-  $\mathcal{O}_L$は単項イデアル整域なので$P$は単項イデアル．
-  $\mathcal{O}_L$は仮定1.1.2を満たす（命題I-1.5.3）ので，$\mathcal{O}_L/P$は有限体．
-  よって$\mathcal{O}_K/\mathfrak{p}$も有限体．よって，定理1.3.23(1)の証明と同様にして$K$（を$L$への包含）上では$P$進距離は$\mathfrak{p}$進距離の冪乗となる．
-  $P\supset p\mathbb{Z}_p$，$\mathcal{O}_K\supset\mathbb{Z}$なので$\mathfrak{p}\supset p\mathbb{Z}$．
-  よって補題1.3.3より$\mathfrak{p}$は$p\mathbb{Z}$の上にある素イデアル（$p\mathbb{Z}=\mathfrak{p}\cap\mathbb{Z}$）．
-  \[
-  \begin{CD}
-    \mathfrak{p} @<<< \mathcal{O}_K @>>> K \\
-    @AAA         @AAA               @AAA \\
-    p\mathbb{Z}  @<<< \mathbb{Z}    @>>> \mathbb{Q}
-  \end{CD}
+  =
+  \begin{pmatrix}
+    a_0^{(1)} & \cdots & a_{n-1}^{(1)} \\
+    & \vdots & \\
+    a_0^{(n)} & \cdots & a_{n-1}^{(n)} \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    1               & \cdots & 1\\
+    \beta_1         & \cdots & \beta_n\\
+    & \vdots & \\
+    \beta_1{}^{n-1} & \cdots & \beta_n{}^{n-1}
+  \end{pmatrix}
+  =:AX
   \]
-  完備化して
+  となるので，行列式をとって$1=\det A\det X$．よって$\det X\in\mathbb{Z}_p^\times$．
+\end{proof}
+
+\begin{screen}
+  $\beta_1, \ldots, \beta_n\in\mathbb{Z}_p\ (p< n)$とすれば$i\neq j$で$\beta_i\equiv\beta_j\bmod p\mathbb{Z}_p$
+\end{screen}
+\begin{proof}
+  命題I-9.1.31(1)から$\lvert\mathbb{Z}_p/p\mathbb{Z}_p\rvert=p$．
+  $\beta_1-\beta_2, \ldots, \beta_1-\beta_n$のうち少なくとも1つが$\equiv0$，もしくは1組が$\equiv$である．
+  後者の場合はその二つの差が$\equiv0$となり主張を満たす．
+\end{proof}
+
+\begin{screen}
+  $\alpha\in\mathcal{O}_K$，$K=\mathbb{Q}(\alpha)$で，$\mathcal{O}_K$が冪基底を持たなければ，$(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p:\mathbb{Z}_p[\alpha])\neq1$で，これは$p$の冪であり，$(\mathcal{O}_K:\mathbb{Z}[\alpha])$の約数になる
+\end{screen}
+\begin{proof}
+  $(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p:\mathbb{Z}[\alpha] \otimes_\mathbb{Z} \mathbb{Z}_p) = 1$とする．
+  完全系列
   \[
-  \begin{CD}
-    \mathfrak{p}\mathcal{O}_{\widehat{K}}   @<<< \mathcal{O}_{\widehat{K}} @>>> \widehat{K}\\
-    @AAA                              @AAA                     @AAA \\
-    p\mathbb{Z}_p                     @<<< \mathbb{Z}_p        @>>> \mathbb{Q}_p
-  \end{CD}
+  \begin{tikzcd}
+    0 \arrow[r] & \mathbb{Z}[\alpha] \arrow[r] & \mathcal{O}_K \arrow[r] & \mathcal{O}_K/\mathbb{Z}[\alpha] \arrow[r] & 0
+  \end{tikzcd}
   \]
-  $\beta\in K$なので$\beta\in\widehat{K}$．よって，$\widehat{K}\supset\mathbb{Q}_p(\beta)=L$．
-  $f,g$共に$\mathbb{Q}_p$上既約なので$[L:\mathbb{Q}_p]=\deg f=\deg g=[K:\mathbb{Q}]$．
-  定理1.3.23(3)(4)から$[\widehat{K}:\mathbb{Q}_p]\leq[K:\mathbb{Q}]$なので$[L:\mathbb{Q}_p]\geq[\widehat{K}:\mathbb{Q}_p]$．
-  以上から$\widehat{K}=L$．
+  に対し，$\mathbb{Z}_p$は平坦$\mathbb{Z}$加群なので，
+  \[
+  \begin{tikzcd}
+    0 \arrow[r] & \mathbb{Z}[\alpha] \otimes_\mathbb{Z} \mathbb{Z}_p \arrow[r] & \mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p \arrow[r] & (\mathcal{O}_K/\mathbb{Z}[\alpha]) \otimes_\mathbb{Z} \mathbb{Z}_p \arrow[r] & 0
+  \end{tikzcd}
+  \]
+  も完全．従って，
+  \begin{align*}
+    0 &= \mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p / \mathbb{Z}[\alpha] \otimes_\mathbb{Z} \mathbb{Z}_p \simeq (\mathcal{O}_K/\mathbb{Z}[\alpha]) \otimes_\mathbb{Z} \mathbb{Z}_p \\
+    &\simeq (\mathcal{O}_K/\mathbb{Z}[\alpha]) \otimes_{\mathbb{Z}_{(p)}} \mathbb{Z}_{(p)} \otimes_\mathbb{Z} \mathbb{Z}_p \simeq (\mathcal{O}_K/\mathbb{Z}[\alpha]) \otimes_{\mathbb{Z}_{(p)}} \mathbb{Z}_p
+  \end{align*}
+  となる．
+  $\mathbb{Z}_p \simeq \varprojlim (\mathbb{Z}/p^n\mathbb{Z}) \simeq \varprojlim (\mathbb{Z}_{(p)}/p^n\mathbb{Z}_{(p)})$なので，$\mathbb{Z}_p$は局所Noether環$\mathbb{Z}_{(p)}$の完備化であり，$\mathbb{Z}_{(p)}$上忠実平坦．
+  従って，$\mathcal{O}_K/\mathbb{Z}[\alpha] = 0$，すなわち$\mathcal{O}_K = \mathbb{Z}[\alpha]$となり矛盾．
+
+  例2.3.3と同様に，$A=\mathbb{Z}$，$B=\mathcal{O}_K$，$M=\mathbb{Z}[\alpha]$，$\mathfrak{p}=p\mathbb{Z}$とすれば
+  $(B_\mathfrak{p}:M\otimes_AA_\mathfrak{p})=(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p:\mathbb{Z}_p[\alpha])$．
+  命題1.8.9(2)からこれは$\mathcal{N}(\mathfrak{p})=p$の冪．主張の後半は命題1.8.9(1)から従う．
 \end{proof}
 
-\paragraph{命題1.13.5}~
+\paragraph{例2.3.5}~
 \begin{screen}
-  $L/K$を$\mathbb{Q}_p$の有限次拡大，$\mathfrak{p}$を$\mathcal{O}_K$の素イデアル，$P$を$\mathfrak{p}$の上にある$\mathcal{O}_L$の素イデアルとする．
-  $\mathcal{O}_L/P\simeq\mathcal{O}_K/\mathfrak{p}$ならば$u\in\mathcal{O}_L$に対し$u_0\equiv u\bmod P$となる$u_0\in\mathcal{O}_K$が存在する
+  $K=\mathbb{Q}(\alpha)$，$\alpha$の$\mathbb{Q}$上最小多項式を$f(x)\in\mathbb{Z}[x]$，$\mathbb{Q}_2$での$f(x)$の根を$\beta_1, \beta_2, \beta_3\in\mathbb{Z}_2$とする．
+  この時，$K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\mathbb{Q}_2{}^3$，$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_2\simeq\mathbb{Z}_2{}^3$で，$\alpha\mapsto\beta_1, \beta_2, \beta_3$と対応する
 \end{screen}
 \begin{proof}
-  $\mathcal{O}_K/\mathfrak{p}$の完全代表系を$\{a_1,a_2,\ldots\}$とする．
-  $a_1$と$a_2$は別の同値類に属するので$a_1-a_2\not\in\mathfrak{p}$，つまり$a_1-a_2\in\mathcal{O}_K\setminus\mathfrak{p}$．
-  よって$a_1-a_2\not\in P$．
-  $a_1, a_2$は$\mathcal{O}_L$の元としても異なる同値類に属する．
-  $\mathcal{O}_L/P$と$\mathcal{O}_K/\mathfrak{p}$の位数は等しいので，他の元についても同様にして$\mathcal{O}_L/P$の完全代表系として$\{a_1,a_2,\ldots\}$が取れる．
-  よって，$u\in\mathcal{O}_L$が含まれる同値類の代表元を$u_0$とすればよい．
+  $\mathbb{Q}_2$は平坦$\mathbb{Q}$加群なので，
+  \begin{align*}
+    K \otimes_\mathbb{Q} \mathbb{Q}_2 &= \mathbb{Q}(\alpha) \otimes_\mathbb{Q} \mathbb{Q}_2 \simeq \left( \frac{\mathbb{Q}[x]}{(f(x))} \right) \otimes_\mathbb{Q} \mathbb{Q}_2 \simeq \frac{\mathbb{Q}[x] \otimes_\mathbb{Q} \mathbb{Q}_2}{(f(x)) \otimes_\mathbb{Q} \mathbb{Q}_2} \simeq \mathbb{Q}_2[x]/(f(x)) \\
+    &= \mathbb{Q}_2[x]/((x - \beta_1)(x - \beta_2)(x - \beta_3)) \simeq \mathbb{Q}_2[x]/(x - \beta_1) \times \mathbb{Q}_2[x]/(x - \beta_2) \times \mathbb{Q}_2[x]/(x - \beta_3) \\
+    &\simeq \mathbb{Q}_2 \times \mathbb{Q}_2 \times \mathbb{Q}_2
+  \end{align*}
+  である．この同型によって，$\alpha \otimes 1 \mapsto [x] \otimes 1 \mapsto [x] \mapsto ([x], [x], [x]) \mapsto (\beta_1, \beta_2, \beta_3)$となる．
+
+  定理1.3.23から$2\mathbb{Z}$の上にある$\mathcal{O}_K$の素イデアルは$3$つであり，それらによる$K$の完備化を$\widehat{K}_1$，その整数環を$\widehat{\mathcal{O}}_1$などと表す．
+  この時，
+  \[
+  \begin{tikzcd}
+    K \otimes_\mathbb{Q} \mathbb{Q}_2 \arrow[r, "\simeq"]\arrow[d, phantom, "\ni" sloped] & \widehat{K}_1 \times \widehat{K}_2 \times \widehat{K}_3 \arrow[r, "\simeq"]\arrow[d, phantom, "\ni" sloped] & \mathbb{Q}_2{}^3\arrow[d, phantom, "\ni" sloped] \\
+    \alpha \otimes 1 \arrow[r, mapsto] & (\phi_1(\alpha), \phi_2(\alpha), \phi_3(\alpha)) \arrow[r, mapsto] & (\beta_1, \beta_2, \beta_3)
+  \end{tikzcd}
+  \]
+  が得られる．追加定理\ref{Thm_1_3_23_2}(p.\pageref{Thm_1_3_23_2})から，これを整数環に制限して
+  \[
+  \begin{tikzcd}
+    \mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_2 \arrow[r, "\simeq"]\arrow[d, phantom, "\ni" sloped] & \widehat{\mathcal{O}}_1 \times \widehat{\mathcal{O}}_2 \times \widehat{\mathcal{O}}_3 \arrow[r, "\simeq"]\arrow[d, phantom, "\ni" sloped] & \mathbb{Z}_2{}^3\arrow[d, phantom, "\ni" sloped] \\
+    \alpha \otimes 1 \arrow[r, mapsto] & (\phi_1(\alpha), \phi_2(\alpha), \phi_3(\alpha)) \arrow[r, mapsto] & (\beta_1, \beta_2, \beta_3)
+  \end{tikzcd}
+  \]
+  となる．
 \end{proof}
+% \begin{proof}
+%   \label{decomposition_of_K_Q2}
+%   まず，$\mathbb{Q}(\alpha)\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\mathbb{Q}_2{}^3$を証明する．環準同型：
+%   \begin{align*}
+%     \mathbb{Q}_2[x]/(f(x)) &\ni b_0x^2+\cdots+b_2+(f(x))\\
+%     &\mapsto x^2\otimes_\mathbb{Q}b_0+\cdots+1\otimes_\mathbb{Q}b_2+(f(x))\otimes_\mathbb{Q}\mathbb{Q}_2 &\in \mathbb{Q}[x]\otimes_\mathbb{Q}\mathbb{Q}_2/(f(x))\otimes_\mathbb{Q}\mathbb{Q}_2\\
+%     &\mapsto (x^2/(f(x)))\otimes_\mathbb{Q}b_0+\cdots+(1/(f(x)))\otimes_\mathbb{Q}b_2 &\in (\mathbb{Q}[x]/(f(x)))\otimes_\mathbb{Q}\mathbb{Q}_2\\
+%     &\mapsto \alpha^2\otimes_\mathbb{Q}b_0+\cdots+1\otimes_\mathbb{Q}b_2 &\in \mathbb{Q}(\alpha)\otimes_\mathbb{Q}\mathbb{Q}_2
+%   \end{align*}
+%   と
+%   \begin{align*}
+%     \mathbb{Q}_2[x]/(f(x)) &\ni b_0x^2+\cdots+b_2+(f(x))\\
+%     &\mapsto b_0x^2+\cdots+b_2+((x-\beta_1)(x-\beta_2)(x-\beta_3)) &\in \mathbb{Q}_2[x]/((x-\beta_1)(x-\beta_2)(x-\beta_3))\\
+%     &\mapsto \bigoplus_{i=1}^3(b_0x^2+\cdots+b_2+(x-\beta_i)) &\in \bigoplus_{i=1}^3\mathbb{Q}_2[x]/((x-\beta_i))\\
+%     &\mapsto \bigoplus_{i=1}^3(b_0{\beta_i}^2+\cdots+b_2) &\in \bigoplus_{i=1}^3\mathbb{Q}_2
+%   \end{align*}
+%   から環準同型
+%   \[\phi\colon\mathbb{Q}(\alpha)\otimes_\mathbb{Q}\mathbb{Q}_2\ni\alpha^2\otimes_\mathbb{Q}b_0+\cdots+1\otimes_\mathbb{Q}b_2\mapsto \bigoplus_{i=1}^3(b_0{\beta_i}^2+\cdots+b_2)\in\bigoplus_{i=1}^3\mathbb{Q}_2\]
+%   が得られる．$\forall(c_1, c_2, c_3)\in\mathbb{Q}_2{}^3$に対し，$b_0, b_1, b_2$を
+%   \[
+%   \begin{pmatrix}
+%     \beta_1{}^2 & \beta_1 & 1\\
+%     \beta_2{}^2 & \beta_2 & 1\\
+%     \beta_3{}^2 & \beta_3 & 1
+%   \end{pmatrix}^{-1}
+%   \begin{pmatrix}
+%     c_1\\
+%     c_2\\
+%     c_3
+%   \end{pmatrix}
+%   =
+%   \begin{pmatrix}
+%     b_0\\
+%     b_1\\
+%     b_2
+%   \end{pmatrix}
+%   \]
+%   と選ぶことができるので，$\phi$は全射．
+%   上の式から，$(c_1, c_2, c_3)=(0, 0, 0)$なら$(b_0, b_1, b_2)=(0, 0, 0)$なので$\ker\phi=\{0\}$．
+%   よって$\phi$は全単射となり（環として）同型：$K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\mathbb{Q}_2{}^3$．
+%   特に，$\phi$によって$\alpha\otimes_\mathbb{Q}1$は$(\beta_1, \beta_2, \beta_3)$に写る．
+%
+%   $2\mathbb{Z}$の上にある$\mathcal{O}_K$の素イデアルを$\mathfrak{p}_1, \ldots, \mathfrak{p}_g$とする．
+%   $\mathfrak{p}_i$によよる$K, \mathcal{O}_K$の完備化を$\widehat{K}_i, \widehat{B}_i$とする．
+%   定理1.3.23(2)から$K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\widehat{K}_1\times\cdots\times\widehat{K}_g$．
+%   上で示したように，$K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\mathbb{Q}_2{}^3$なので，$\widehat{K}_1\times\cdots\times\widehat{K}_g\simeq\mathbb{Q}_2{}^3$となる．
+%   体の直積は異なる数の体の直積と同型にはなり得ないので$g=3$．
+%   $\mathbb{Q}_2$の整数環は$\mathbb{Z}_2$なので，$\phi_i$の$\widehat{B}_i$への制限を$\overline{\phi}_i$とすれば補題</a>から$\overline{\phi}_i\colon\widehat{B}_i\simeq\mathbb{Z}_2$となる．
+%   定理1.3.23(2)から$K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\widehat{K}_1\times\widehat{K}_2\times\widehat{K}_3$．
+%   さらに，$\phi_1\times\phi_2\times\phi_3$によって$\widehat{K}_1\times\widehat{K}_2\times\widehat{K}_3\simeq\mathbb{Q}_2{}^3$．
+%   これを合成すれば，上で先程構成した$\phi$になり，$\alpha\otimes_\mathbb{Q}1\mapsto(\beta_1, \beta_2, \beta_3)$．
+%   Thm1.3.23から，上の同型を$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_2$に制限すれば，$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_2\simeq\mathbb{Z}_2{}^3$が得られ，やはり$\alpha \otimes 1\mapsto(\beta_1, \beta_2, \beta_3)$．
+%   （定理1.3.23(2)の同型と$\overline{\phi}_1\times\cdots\times\overline{\phi}_3$の合成）
+%
+%   $g=3$なので定理1.3.23(4)(5)から$[\widehat{K}_i:\mathbb{Q}_2]=1$となり，補題</a>から$\widehat{K}_i=\mathbb{Q}_2$．
+%   さらにその整数環は$\mathbb{Z}_2$．つまり上の$\phi$と$\overline{\phi}$は自己同型．
+% \end{proof}
 
 \begin{screen}
-  上の状況で，$L/K$が完全分岐で馴分岐，$F/L$の整数環$\mathcal{O}_F$の極大イデアルを$\mathcal{P}$，$\mathcal{P}$進距離を$\lvert\bullet\rvert$とする．
-  この時，$L/K$の分岐指数$e$について$\lvert e\rvert=1$
+  $\mathcal{O}_K\supset\mathbb{Z}[\alpha]$なら，奇素数$p$に対して$(\alpha^2-\alpha)/2\in\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$
 \end{screen}
 \begin{proof}
-  $F$は$\mathbb{Q}_p$の有限次拡大でもあるので，$\lvert\mathcal{O}_F/\mathcal{P}\rvert$は$\lvert\mathbb{Z}_p/p\mathbb{Z}_p\rvert$の倍数．
-  命題I-9.1.31(1)から$\lvert\mathbb{Z}_p/p\mathbb{Z}_p\rvert=\lvert\mathbb{Z}/p\mathbb{Z}\rvert=p$なので，$\lvert\mathcal{O}_F/\mathcal{P}\rvert$は$p$の倍数．
-  従って，$\mathcal{O}_F/\mathcal{P}$の標数は$p$（p.I-216とか参照）．
-  $L/K$が馴分岐なので$p \nmid e$となり，$\mathcal{O}_F$の元として$e$と$0$は異なる同値類に属する．よって$e\not\in\mathcal{P}$であり，$\lvert e\rvert=1$．
+  $\alpha^2-\alpha\in\mathcal{O}_K$である．
+  $\ord_p(1/2)=0$なので$\lvert1/2\rvert=1$，すなわち$1/2\in\mathbb{Z}_p$（定理I-9.1.26(5)）．
+  よって$(\alpha^2-\alpha) \otimes 1/2\in\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$．
+  % （定理1.3.23(2)により，これを$\widehat{\mathcal{O}}_1\times\cdots$にうつせば，$(\phi_1(\alpha^2-2)/2, \ldots)$となる）
 \end{proof}
 
-\section{$2$次の暴分岐}
-\paragraph{命題1.14.1}~
 \begin{screen}
-  \begin{lem}\label{basis_Q2_prime_element}
-    $K$を$\mathbb{Q}_2$の有限次拡大，$\mathfrak{p}$を$\mathcal{O}_K$の素イデアル，$F=K(\sqrt{\pi})$とする．
-    $\pi$が$\mathcal{O}_K$の素元であれば$\mathcal{O}_F$の$\mathcal{O}_K$上基底が$\{1,\sqrt{\pi}\}$である（命題1.7.3使った方が楽）
+  全ての素数$p$に対し$\gamma \otimes 1\in\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$であれば$\gamma\in\mathcal{O}_K$
+\end{screen}
+\begin{proof}
+  $p\mathbb{Z}$の上にある$\mathcal{O}_K$の素イデアルを$P_1, \ldots$，$P_i$進距離による$\mathcal{O}_K$の完備化を$\widehat{\mathcal{O}}_i$とする．
+  定理1.3.23(2)から$\phi_i\colon\mathcal{O}_K\hookrightarrow\widehat{\mathcal{O}}_i$として$\phi\colon\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\ni x\otimes y\mapsto(\phi_1(x)y, \ldots)\in\widehat{\mathcal{O}}_1\times\cdots$なので，$\phi_i(\gamma)\in\widehat{\mathcal{O}}_i$．
+  よって全ての$p$を考えれば，$\mathcal{O}_K$の全ての素イデアル$P$に対し，$P$進距離による完備化を$\widehat{\mathcal{O}}$とすれば$\gamma \in \widehat{\mathcal{O}}$．
+  よって命題1.2.14から$\gamma\in\mathcal{O}_K$．
+\end{proof}
+
+\begin{screen}
+  $K=\mathbb{Q}(\alpha)$，$\varDelta_K=-503$，$\alpha^3+6\alpha^2-\alpha+2=0$，$\mathcal{O}_K$の$\mathbb{Z}$基底を$\{1, \alpha, (\alpha^2-\alpha)/2\}$とすれば，$x\in\mathcal{O}_K$，$K=\mathbb{Q}(x)$として$(\mathcal{O}_K:\mathbb{Z}[x])$が$2$の倍数である
+\end{screen}
+\begin{proof}
+  % 任意の$x\in\mathcal{O}_K$に対し，$\mathbb{Q}(x)=\mathbb{Q}(\alpha)$となる．まず，$\mathbb{Q}(x)\subset\mathbb{Q}(\alpha)$は明らか．
+  % $a_0x^n+\cdots+a_{n-1}x+a_n\in\mathbb{Q}(x)$とする．
+  % $\mathcal{O}_K$の元は$a, b, c\in\mathbb{Z}$を使って，$x=a+b\alpha+c(\alpha^2-\alpha)/2$と表すことができる．
+  % $x^2$以上の次数の項に対し，$x=a+b\alpha+c(\alpha^2-\alpha)/2$を代入して，$\alpha^3=-6\alpha^2+\alpha-2$を使えば$a_0x^n+\cdots+a_{n-2}x^2=b_0\alpha^2+b_1\alpha+b_2$となる．よって
+  % \begin{align*}
+  %   a_0x^n+\cdots+a_{n-1}x+a_n &= b_0\alpha^2+b_1\alpha+b_2+a_{n-1}\left(a+b\alpha+c\frac{\alpha^2-\alpha}{2}\right)+a_n\\
+  %   &= \left(b_0+\frac{c}{2}a_{n-1}\right)\alpha^2+\left(b_1+ba_{n-1}-\frac{c}{2}a_{n-1}\right)+(b_2+aa_{n-1}+a_n)
+  % \end{align*}
+  % となる．ここで，適当に$a_{n-1}$と$a_n$を選べば$a_0x^n+\cdots+a_{n-1}x+a_n=d\alpha$となる．よって，$\alpha=a_0/dx^n+\cdots+a_n/d$となるので，$\mathbb{Q}(\alpha)\subset\mathbb{Q}(x)$．
+
+  p.106の真ん中の方法と同様に，$x$の最小多項式を求める．
+  \begin{lstlisting}
+    ? m = [a, b - c / 2, c / 2; -c, a + c / 2, b - 7 * c / 2; 7 * c - 2 * b, b - 9 * c / 2, a - 6 * b + 43 * c / 2]
+    ? charpoly(m)
+    ? poldisc(%2)
+  \end{lstlisting}
+  特性多項式$g(x)$は
+  \begin{align*}
+    x^3 &+ (-3a + (6b - 22c))x^2 + (3a^2 + (-12b + 44c)a + (-b^2 + 7cb - 9c^2))x \\
+        &+ (-a^3 + (6b - 22c)a^2 + (b^2 - 7cb + 9c^2)a + (2b^3 - 9cb^2 + 7c^2b - 2c^3))
+  \end{align*}
+  で，判別式は
+  \[\varDelta(g)=-2012b^6 + 30180cb^5 - 175547c^2b^4 + 487910c^3b^3 - 634283c^4b^2 + 311860c^5b - 50300c^6.\]
+  系1.7.5(2)，命題1.9.9から
+  \begin{align*}
+    (\mathcal{O}_K:\mathbb{Z}[x])^2 &= \frac{\varDelta(c)}{\varDelta_K} = 4b^6+60cb^5+349c^2b^4-970c^3b^3+1261c^4b^2-620c^5b+100c^6\\
+    &\equiv c^2b^2(349b^2+1261c^2)\equiv0\bmod4
+  \end{align*}
+  となる．
+\end{proof}
+
+\begin{screen}
+  $f(x)=x^3+6x^2-x+2$，$\alpha$を$f(x)$の根，$K=\mathbb{Q}(\alpha)$，$A=\mathbb{Z}[x]/(f(x))\simeq\mathbb{Z}[\alpha]$とした時，$A/503A\simeq\mathbb{F}_{503}[x]/((x-39)^2)\times\mathbb{F}_{503}[x]/(x+84)$
+\end{screen}
+\begin{proof}
+  $f(x)\equiv(x-39)^2(x+84)\bmod503$なので，$g(x)\in\mathbb{Z}[x]\ (\deg g\leq2)$として自然な全射準同型
+  \[A=\mathbb{Z}[x]/(f(x))\ni g(x)+(f(x))\mapsto \overline{g}(x)+((x-39)^2(x+84))\in\mathbb{F}_{503}[x]/((x-39)^2(x+84))\]
+  の$\ker$は$g(x)$のうち係数が$503$の倍数の物で代表される：$503A$．よって準同型定理から$A/503A\simeq\mathbb{F}_{503}[x]/((x-39)^2(x+84))$．
+  $-116(x-39)^2+116(x-6)(x+84)=-234900\equiv1$なので，$((x-39)^2)+(x+84)=\mathbb{F}_{503}[x]$．よって中国式剰余定理から
+  \[A/503A\simeq\mathbb{F}_{503}[x]/((x-39)^2(x+84))\simeq\mathbb{F}_{503}[x]/((x-39)^2)\times\mathbb{F}_{503}[x]/(x+84).\]
+  （$503$は$(\mathcal{O}_K:\mathbb{Z}[\alpha])$を割らないので，素イデアル分解に関する定理を使った方が早い）
+\end{proof}
+
+\paragraph{例2.3.6}
+\subparagraph{$n = 4$の場合}~
+
+\begin{screen}
+  $g(x+1)\in\mathbb{Z}_2[x]$がモニックなEisenstein多項式であれば$g(x)=x^2+cx+d\ (c\equiv4, \; d\equiv1\bmod8)$の根を$\gamma$，$F=\mathbb{Q}_2(\gamma)$とすれば$\mathcal{O}_F=\mathbb{Z}_2[\gamma]$
+\end{screen}
+\begin{proof}
+  $h(x)=g(x+1)$とすれば$h(x)$はEisenstein多項式で，その根は$\gamma-1$．
+  % $a_0\gamma^n+\cdots+a_n\in\mathbb{Q}_2[\gamma]$について$=a_0(\gamma-1)^n+(a_1-na_0)(\gamma-1)^{n-1}+\cdots$と変形できるので，$\in\mathbb{Q}_2[\gamma-1]$となり$\mathbb{Q}_2[\gamma]\subset\mathbb{Q}_2[\gamma-1]$．
+  % $a_0(\gamma-1)^n+\cdots+a_n\in\mathbb{Q}_2[\gamma-1]$について$=a_0\gamma^n+(a_1-na_0)\gamma^{n-1}$と変形できるので，$\in\mathbb{Q}_2[\gamma]$となり$\mathbb{Q}_2[\gamma]\supset\mathbb{Q}_2[\gamma-1]$．以上から
+  % $\mathbb{Q}_2[\gamma]=\mathbb{Q}_2[\gamma-1]$．命題I-7.1.11から
+  $\mathbb{Q}_2(\gamma)=\mathbb{Q}_2(\gamma-1)$は容易に分かる．
+  $\mathbb{Z}_2$, $\mathcal{O}_F$はともに完備離散付値環である．
+  従って命題1.10.7から$F/\mathbb{Q}_2$は完全分岐で，分岐指数は$2$．
+  $\mathcal{O}_F$の素イデアルを$P$とする．
+  $\ord_P(c+2)=2\ord_{2\mathbb{Z}_2}(c+2)=2$，同様に$\ord_P(c+d+1)=2$となる．命題1.1.3と$h(\gamma-1)=0$から
+  \[2=\ord_P((\gamma-1)^2+(c+2)(\gamma-1))\geq\min\{2\ord_P(\gamma-1), \ord_P(c+2)+\ord_P(\gamma-1)=2+\ord_P(\gamma-1)\}, \]
+  ただし$2\ord_P(\gamma-1)\neq2+\ord_P(\gamma-1)$すなわち$\ord_P(\gamma-1)\neq2$なら等号が成立．
+  $\gamma-1$は$\mathbb{Z}_2$上整（実際$h(x)$が存在する）なので，$\ord_P(\gamma-1)\geq0$．
+  $\ord_P(\gamma-1)=0$なら$2=0$で矛盾．
+  $\ord_P(\gamma-1)=1$は式を満たす．
+  $\ord_P(\gamma-1)\geq2$では右辺が$4$以上なので不適．よって$\ord_P(\gamma-1)=1$，つまり$\gamma-1$は$\mathcal{O}_F$の素元となり，再び命題1.10.7から$\mathcal{O}_F=\mathbb{Z}_2[\gamma-1]=\mathbb{Z}_2[\gamma]$となる．
+\end{proof}
+
+\begin{screen}
+  上の状況で$\varDelta_{F/\mathbb{Q}_2}=(4)$
+\end{screen}
+\begin{proof}
+  $h(x)=g(x+1)$は$\mathbb{Q}_2$上既約なので$g(x)$も$\mathbb{Q}_2$上既約である（対偶取る）．
+  よって，$F=\mathbb{Q}_2(\gamma)$で$\gamma$の$\mathbb{Q}_2$上最小多項式は$g(x)\in\mathbb{Z}_2[x]$で，$\mathcal{O}_F=\mathbb{Z}_2[\gamma]$．
+  $\varDelta(g)\equiv4\bmod8$，命題1.9.9から$\varDelta_{F/\mathbb{Q}_2}(1, \gamma)=\varDelta(g)$．
+  よって$\ord_P(\varDelta_{F/\mathbb{Q}_2}(1, \gamma)) = 2\ord_{2\mathbb{Z}_2}(\varDelta_{F/\mathbb{Q}_2}(1, \gamma)) = 4$．
+  % （補題I-8.1.17から$\ord_{2\mathbb{Z}_2}$が正当化される）．
+  $(2)=P^2$（分岐指数が$2$）なので，$\varDelta_{F/\mathbb{Q}_2}=\varDelta_{F/\mathbb{Z}_Q, P}=P^4=(2^2)=(4)$．
+\end{proof}
+
+\begin{screen}
+  $K=\mathbb{Q}(\alpha)$，$\alpha$の$\mathbb{Q}$上最小多項式を$f(x)\in\mathbb{Z}[x]$とする．
+  $f(x)$が$\mathbb{Q}_2$上$(x-\beta)(x^2+cx+d)$（$\beta\in\mathbb{Z}_2$，$x^2+cx+d$は$\mathbb{Q}_2$上既約）となり，
+  $x^2+cx+d$の根を$\gamma$，$F=\mathbb{Q}_2(\gamma)$とすれば，
+  $\mathbb{Q}_2$同型として$K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\mathbb{Q}_2\times F$で，$\varDelta_{\widehat{K}_1/\mathbb{Q}_2}=\varDelta_{\mathbb{Q}_2/\mathbb{Q}_2}$, $\varDelta_{\widehat{K}_2/\mathbb{Q}_2}=\varDelta_{F/\mathbb{Q}_2}$
+\end{screen}
+\begin{proof}
+  例2.3.5と同様に．
+  $\mathbb{Q}_2$同型
+  \[\mathbb{Q}(\alpha) \otimes_\mathbb{Q} \mathbb{Q}_2 \simeq \mathbb{Q}[x]/(x-\beta) \times \mathbb{Q}[x]/(x^2 + cx + d) \simeq \mathbb{Q}_2\times F\]
+  を得る．
+  従って，$2\mathbb{Z}$の上にある$\mathcal{O}_K$の素イデアルは$2$つ（$\mathfrak{p}_1$, $\mathfrak{p}_2$とする）で，それらによる$K$の完備化を$\widehat{K}_1, \widehat{K}_2$とする．
+  $\mathbb{Q}_2$同型$\widehat{K}_1\times\widehat{K}_2\simeq\mathbb{Q}_2\times F$から，$\mathbb{Q}_2$同型$\widehat{K}_1\simeq\mathbb{Q}_2$，$\widehat{K}_2\simeq F$が得られる．
+
+  以下の補題を使えば$\varDelta_{\widehat{K}_1/\mathbb{Q}_2}=\varDelta_{\mathbb{Q}_2/\mathbb{Q}_2}$, $\varDelta_{\widehat{K}_2/\mathbb{Q}_2}=\varDelta_{F/\mathbb{Q}_2}$が分かる．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \label{LF_iso_relative_disc}
+    $L/K$, $M/K$を局所体とする．
+    $K$同型$\phi\colon L\simeq M$があれば，$\varDelta_{L/K} = \varDelta_{M/K}$．
   \end{lem}
 \end{screen}
 \begin{proof}
-  $2=\pi^md\ (\ord_\mathfrak{p}(d)=0)$とする．
-  $\ord_\mathfrak{p}(\pi)=1$である．
-  $\alpha=a+b\sqrt{\pi}\in F\ (a,b\in K)$が$\mathcal{O}_K$上整であるとする．
-  \[A=\Tr_{F/K}(\alpha)=(a+b\sqrt{\pi})+(a-b\sqrt{\pi})=2a,\quad B=\N_{F/K}(\alpha)=(a+b\sqrt{\pi})(a-b\sqrt{\pi})=a^2-\pi b^2.\]
-  命題I-8.1.19から$A, B\in\mathcal{O}_K$．$4B=A^2-4\pi b^2\in 4\mathcal{O}_K$なので$4\pi b^2\in\mathcal{O}_K$，つまり$\ord_\mathfrak{p}(4\pi b^2)\geq 0$．
-  よって$2m+1+2\ord_\mathfrak{p}(b)\geq 0$（命題1.1.3(1)）なので$\ord_\mathfrak{p}(b)\geq -m$．
-  よって$b=c\pi^{-m}\ (c\in\mathcal{O}_K)$と表すことができる．
-  $\ord_\mathfrak{p}(b)< 0$とする．つまり$0\leq\ord_\mathfrak{p}(c)\leq m-1$．
-  $A^2-4\pi b^2=A^2-\pi c^2d^2\in 4\mathcal{O}_K$なので$A^2-\pi c^2d^2\equiv 0\bmod\mathfrak{p}^{2m}$．
-  $A=\pi^kt\ (\ord_\mathfrak{p}(t)=0)$，$c=\pi^{s-1}u\ (\ord_\mathfrak{p}(u)=0, s\leq m)$とおけば，この式は$\pi^{2k}t^2-\pi^{2s-1}u^2d^2=\pi^{2m}w\ (\ord_\mathfrak{p}(w)\geq0)$となる．
+  $L, M$における$\mathcal{O}_K =: A$の整閉包を$B, C$とする．
+  命題1.5.3(2)から$A$, $B$, $C$は完備離散付値環で，$\phi(B)=C$となる（追加補題\ref{iso_field_integral_closure}, p.\pageref{iso_field_integral_closure}）．
+  それぞれの素イデアルを$\mathfrak{p}, P, \mathcal{P}$とすると，$\phi(P)=\mathcal{P}$となることは容易に分かる．
+  命題I-6.5.8(2)から$S=A\setminus\mathfrak{p}$は$A^\times$に含まれ，$S \subset (B \setminus P) \subset B^\times$，$S\subset C^\times$が成立する．
+  よって$A_\mathfrak{p} = S^{-1}A = A$，$B_\mathfrak{p} = B$，$C_\mathfrak{p} = C$である．
 
-  $2k>2s-1$であれば$\pi^{2s-1}(\pi^{2k-2s+1}t^2-u^2d^2)=\pi^{2m}w$．命題1.1.3(3)から$\ord_\mathfrak{p}(\pi^{2k-2s+1}t^2-u^2d^2)=0$なので$2s-1\geq 2m$．
-  これは$s\leq m$に矛盾．
+  $\{v_1, \ldots, v_n\}$を$B$の$A$基底とする（命題I-8.1.24(3)）．$\phi$は$K$の元を不変にするので$A$の元も変えない．
+  $a_1v_1+\cdots+a_nv_n=0$ならば$a_1=\cdots=a_n=0$．
+  よって，$a_1\phi(v_1)+\cdots+a_n\phi(v_n)=0$ならば$a_1=\cdots=a_n=0$なので$\{\phi(v_1), \ldots, \phi(v_n)\}$は$A$上一次独立．
+  $\forall c\in C$に対し$\phi^{-1}(c)=a_1v_1+\cdots+a_nv_n$となる$a_1, \ldots\in A$が存在する．
+  これを$\phi$で写せば$c=a_1\phi(v_1)+\cdots+a_n\phi(v_n)$となるので，$\{\phi(v_1), \ldots, \phi(v_n)\}$は$C$の$A$基底となる．
 
-  $2k< 2s-1$であれば$\pi^{2k}(t^2-\pi^{2s-2k-1}u^2d^2)=\pi^{2m}w$．
-  命題1.1.3(3)から$\ord_\mathfrak{p}(t^2-\pi^{2s-2k-1}u^2d^2)=0$なので$k\geq m$となり，$2s-1>2k\geq2m$となり$s\leq m$に矛盾．
-  以上から$\ord_\mathfrak{p}(b)\geq 0$，つまり$b\in\mathcal{O}_K$．
-  $a^2-\pi b^2\in\mathcal{O}_K$なので$a^2\in\mathcal{O}_K$，よって$a\in\mathcal{O}_K$．
-  以上から$\mathcal{O}_F$は$\mathcal{O}_K+\mathcal{O}_K\sqrt{\pi}$．
-
-  逆に$a+b\sqrt{\pi}\ (a,b\in\mathcal{O}_K)$は$x^2-2ax+a^2-\pi b^2$の根なので$\mathcal{O}_K$上整．
+  $\Hom_K^\text{al}(M, \overline{K})$と$\Hom_K^\text{al}(L, \overline{K})$は$\phi$の合成によって1対1に対応する．
+  $\sigma_i \in \Hom_K^\text{al}(M, \overline{K})$とすれば，
+  \[\Tr_{M/K}(\phi(v_i)\phi(v_j))=\sum_i\sigma_i(\phi(v_i)\phi(v_j))=\sum_i\sigma_i\circ\phi(v_i)\sigma_i\circ\phi(v_j)=\Tr_{L/K}(v_iv_j).\]
+  よって$\varDelta_{L/K}(v_1, \ldots, v_n)=\varDelta_{M/K}(\phi(v_1), \ldots, \phi(v_n))$となり，$\varDelta_{L/K, \mathfrak{p}}=\varDelta_{M/K, \mathfrak{p}}$．
+  以上から，相対判別式は等しい：$\varDelta_{L/K}=\varDelta_{M/K}$．
 \end{proof}
 
 \begin{screen}
-  $K$を$\mathbb{Q}_2$の有限次拡大，$F=K(\sqrt{\pi'})$（$\pi'$は$\mathcal{O}_K$の素元），$\mathfrak{p}$を$\mathcal{O}_K$の素イデアルとするとき，$\varDelta_{F/K}=4\mathfrak{p}$
+  % $K=\mathbb{Q}(\alpha)$，$\alpha$の$\mathbb{Q}$上最小多項式を$f(x)\in\mathbb{Z}[x]$として
+  $\varDelta_{K/\mathbb{Q}, 2}=(4)$なら$\varDelta_K=\varDelta(f)=-436$で$\mathcal{O}_K = \mathbb{Z}[\alpha]$
 \end{screen}
 \begin{proof}
-  $\sqrt{\pi'}$の$K$上最小多項式は$x^2-\pi'$で，その判󠄁󠄁別式は$4\pi'$．命題1.9.9から$\varDelta_{F/K}(1,\sqrt{\pi'})=4\pi'$．
-  $\{1,\sqrt{\pi'}\}$が$\mathcal{O}_F$の$\mathcal{O}_K$基底（上で示した）．
-  $K$は局所体なので命題1.5.3から$\mathcal{O}_K$は完備離散付値環．
-  $\varDelta_{F/K}=\mathfrak{p}^{\ord_\mathfrak{p}(4\pi')}=4\pi'\mathcal{O}_K=4\mathfrak{p}$．
+  命題1.9.9から$\varDelta_{K/\mathbb{Q}}(1, \alpha, \alpha^2) = \varDelta(f) = -436$．
+  系1.7.5(2)から$\varDelta_{K/\mathbb{Q}}(1, \alpha, \alpha^2) = (\mathcal{O}_K:\mathbb{Z}[\alpha])^2\varDelta_K$．
+  命題1.8.5から$\varDelta_K$は$4$で割り切れるので，$\varDelta_K = -436$．
+  $(\mathcal{O}_K:\mathbb{Z}[\alpha]) = 1$となるので，$\mathcal{O}_K = \mathbb{Z}[\alpha]$．
+\end{proof}
+
+\subparagraph{$n = 6$の場合}
+前半は$n = 4$の場合と同様．
+$g(2y+1)$の根を$\gamma$と置いたので，$f(x)=(x-\beta)g(x)$の根は$\beta, 2\gamma+1$．
+
+写像$\phi$は$K\hookrightarrow K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\mathbb{Q}_2\times F$．
+この話から，これを整数環に制限すれば$\mathcal{O}_K\hookrightarrow\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_2\simeq\mathbb{Z}_2\times\mathcal{O}_F$．
+したがって，$a\in K$を$\phi$で写した物が$\mathbb{Z}_2\times\mathcal{O}_F$の元ならば$a\in\mathcal{O}_K$と言える．
+
+\subparagraph{$n = 14$の場合}
+$g(4y+1)/16 = y^2+(c+2)/4y+(c+d+1)/16$を$2\mathbb{Z}_2$（係数の$\ord_2$は$0$）を法として考えれば$x^2+x+1$となり，$\pm1$は根にならないので，命題I-8.1.10から$\mathbb{Z}_2/2\mathbb{Z}_2$上既約．
+命題I-8.2.1からこれは$\mathbb{Z}_2$上既約．
+
+$\mathcal{O}_F$を求める．
+$\alpha=a+b\gamma\in F~ (a, b\in\mathbb{Q}_2)$が$\mathbb{Z}_2$上整，すなわち$\alpha \in \mathcal{O}_F$とする．
+$\gamma$の$\mathbb{Q}_2$上共軛を$\overline{\gamma}$とすれば
+\[\Tr_{F/\mathbb{Q}_2}(\gamma)=\gamma+\overline{\gamma}=-(c+2)/4, \quad\N_{F/\mathbb{Q}_2}(\gamma)=\gamma\overline{\gamma}=(c+d+1)/16\]
+で$\ord_2(\Tr_{F/\mathbb{Q}_2})=0$，$\ord_2(\N_{F/\mathbb{Q}_2})=0$．また，
+\begin{align*}
+  A &:= \Tr_{F/\mathbb{Q}_2}(\alpha) = (a+b\gamma) + (a+b\overline{\gamma}) = 2a + b\Tr_{F/\mathbb{Q}_2}(\gamma), \\
+  B &:= \N_{F/\mathbb{Q}_2}(\alpha) = (a+b\gamma)(a+b\overline{\gamma}) = a^2 + ab\Tr_{F/\mathbb{Q}_2}(\gamma) + b^2\N_{F/\mathbb{Q}_2}(\gamma)
+\end{align*}
+とする．命題I-8.1.19から$A, B\in\mathbb{Z}_2$．
+$4B=A^2+b^2[4\N_{F/\mathbb{Q}_2}(\alpha)-\Tr_{F/\mathbb{Q}_2}(\alpha)^2]\in4\mathbb{Z}_2$なので$b^2[4\N_{F/\mathbb{Q}_2}(\alpha)-\Tr_{F/\mathbb{Q}_2}(\alpha)^2]\in\mathbb{Z}_2$．
+$\ord_2(4\N_{F/\mathbb{Q}_2}(\alpha)-\Tr_{F/\mathbb{Q}_2}(\alpha)^2)=0$なので$\ord_2(b)\geq0$，つまり$b\in\mathbb{Z}_2$（命題1.1.3，定理I-9.1.26(5)）．
+$B$の定義式で$\ord_2$を考えて$a\in\mathbb{Z}_2$．
+従って，$\mathcal{O}_F \subset \mathbb{Z}_2[\gamma]$であり，$\mathcal{O}_F = \mathbb{Z}_2[\gamma]$．
+
+$y^2+(c+2)/4y+(c+d+1)/16$の判別式は$\equiv1\bmod4$．
+よって命題1.9.9から$\varDelta_{F/\mathbb{Q}_2}(1, \gamma)$は$2$で割り切れないので，補題1.8.3から$\varDelta_{F/\mathbb{Q}_2, 2}$は$2\mathbb{Z}_2$で割り切れず，$\varDelta_{F/\mathbb{Q}_2}$も$2\mathbb{Z}_2$で割り切れない．
+よって，Dedekindの判別定理から$2\mathbb{Z}_2$は$F/\mathbb{Q}_2$で不分岐．
+定理I-9.1.26(7)から$2\mathbb{Z}_2$は$\mathbb{Z}_2$の唯一の素イデアルなので$F/\mathbb{Q}_2$は不分岐拡大．
+
+$\varDelta_{K/\mathbb{Q}, 2}=\varDelta_{\mathbb{Q}_2/\mathbb{Q}_2}\varDelta_{F/\mathbb{Q}_2}$は$2$で割り切れないので，$\varDelta_{K}$は$2$で割り切れない（命題1.8.5）．
+命題1.9.9から系1.7.5(2)から$\varDelta(f)=-5296=(\mathcal{O}_K:\mathbb{Z}[\alpha])^2\varDelta_K$なので$\varDelta_K=-331$，$(\mathcal{O}_K:\mathbb{Z}[\alpha])=4$．
+
+\paragraph{命題2.3.9}
+まず，$p\mid a$もしくは$p\mid b$について$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p= V\otimes_\mathbb{Z}\mathbb{Z}_p$を証明し，$(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p:V\otimes_\mathbb{Z}\mathbb{Z}_p)=1$．
+次に，$p\nmid 3, a, b$に対しても同じことが証明できる．
+
+\begin{itemize}
+  \item $a$が$3$の倍数なら素数$p$は上のいずれかに属する．よって命題1.8.9(1)(3)から$(\mathcal{O}_K:V)=1$
+  \item $a, b$が$3$の倍数でなければ，命題1.8.9(3)から，$p\neq3$については，命題1.8.9(1)の右辺の因子は$1$．よって命題1.8.9(1)から$(\mathcal{O}_K:V)=(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_3:V\otimes_\mathbb{Z}\mathbb{Z}_3)$
+  \begin{itemize}[label=•]
+    \item $a^2b^4\not\equiv1\bmod9$なら$(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_3:V\otimes_\mathbb{Z}\mathbb{Z}_3)=1$なので$(\mathcal{O}_K:V)=1$
+    \item $a^2b^4\equiv1\bmod9$なら，命題1.8.9(2)から$(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_3:V\otimes_\mathbb{Z}\mathbb{Z}_3)$は$3$の冪．
+    $\varDelta_{K/\mathbb{Q}, 3}=(3)$なので$\varDelta_K$の$\ord_3$は$1$．よって，$(\mathcal{O}_K:V)=3$
+  \end{itemize}
+\end{itemize}
+
+\begin{screen}
+  $a, b$を平方因子を持たない互いに素な整数，$\beta_1=\sqrt[3]{ab^2}$，$\beta_2=\sqrt[3]{a^2b}$，$K=\mathbb{Q}(\beta_1)$，
+  $V=\mathbb{Z}+\mathbb{Z}\beta_1+\mathbb{Z}\beta_2$として素数$p$が$a$を割り切れば，
+  $p$は$K/\mathbb{Q}$で完全分岐で$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p = V\otimes_\mathbb{Z}\mathbb{Z}_p$
+  % の証明．（p.111の上の方）
+\end{screen}
+\begin{proof}
+  $x^3-ab^2$はEisenstein多項式なので$\mathbb{Q}$上既約であり，$\beta_1$の$\mathbb{Q}$上最小多項式となる．
+  これは$\mathbb{Q}_p$上でもEisenstein多項式なので既約であり，$[\mathbb{Q}_p(\beta_1):\mathbb{Q}_p]=3$．
+  $p$の上にある$\mathcal{O}_K$の素イデアルによる$K$の完備化を$\widehat{K}_1, \ldots, \widehat{K}_g$とする．
+  $\beta_1 \in K \subset \widehat{K}_i$なので$\mathbb{Q}_p(\beta_1) \subset \widehat{K}_i$となり$[\widehat{K}_i:\mathbb{Q}_p(\beta_1)]\geq1$．
+  よって$[\widehat{K}_i:\mathbb{Q}_p]\geq3$．
+  定理1.3.23(4)(5)から$[\widehat{K}_1:\mathbb{Q}_p] + \cdots + [\widehat{K}_g:\mathbb{Q}_p] = 3$なので$g=1$．
+  すなわち，$p\mathbb{Z}$の上にある$\mathcal{O}_K$の素イデアルは1つ．
+  $\widehat{K}_1$を$\widehat{K}$と書けば，$[\widehat{K}:\mathbb{Q}_p]=3$で$[\widehat{K}:\mathbb{Q}_p(\beta_1)]=1$．
+  従って，$\widehat{K} = \mathbb{Q}_p(\beta_1)$．$\widehat{K}$の整数環を$\widehat{\mathcal{O}}_K$とする．
+  $\widehat{\mathcal{O}}_K$の極大イデアルを$P$とすると命題1.10.7から$\widehat{K}/\mathbb{Q}_p$は完全分岐で分岐指数は$e(P/p\mathbb{Z}_p)=3$．
+  % <a href="./3.htmlord_pP_e" target="_blank">
+  % この話</a>から，
+
+  よって$\ord_p(a)=1$，$\ord_p(b)=0$に注意して
+  \[3\ord_P(\beta_1)=\ord_P(\beta_1{}^3)=\ord_P(ab^2)=3\ord_p(ab^2)=3.\]
+  よって$\ord_P(\beta_1)=1$となり$\beta_1$は$\widehat{\mathcal{O}}_K$の素元．
+  再び命題1.10.7から$\widehat{\mathcal{O}}_K=\mathbb{Z}_p[\beta_1]$．
+  定理1.3.23(6)から$p\mathbb{Z}$の分岐指数は$3$なので，$K/\mathbb{Q}$で完全分岐．
+
+  $V \subset \mathcal{O}_K$なので，$V \otimes_\mathbb{Z} \mathbb{Z}_p \subset \mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p$．
+  $b \in \mathbb{Z}_p^\times$，$\beta_2 = \beta_1{}^2/b$に注意して，テンソル積の普遍性から加群準同型$\phi \colon V \otimes_\mathbb{Z} \mathbb{Z}_p \to \mathbb{Z}_p[\beta_1]$を得る（$\sigma \colon \mathcal{O}_K \hookrightarrow \widehat{\mathcal{O}}_K$）．
+  % $V = \mathbb{Z} + \mathbb{Z}\beta_1 + \mathbb{Z} \beta_2$なので，
+  \[
+  \begin{tikzcd}
+    V \times \mathbb{Z}_p \arrow[r]\arrow[d] & \mathbb{Z}_p[\beta_1] \\
+    V \otimes_\mathbb{Z} \mathbb{Z}_p \arrow[ur, "\phi"', dashed]
+  \end{tikzcd}
+  \quad
+  \begin{tikzcd}
+    (v, c) \arrow[r, mapsto]\arrow[d, mapsto] & \sigma(v)c \\
+    v \otimes c \arrow[ur, mapsto]
+  \end{tikzcd}
+  % \begin{tikzcd}
+  %   (a_0 + a_1 \beta_1 + a_2 \beta_2, c) \arrow[r, mapsto]\arrow[d, mapsto] & a_0c + a_1c \beta_1 + \dfrac{a_2c}{b} \beta_1{}^2 \\
+  %   (a_0 + a_1 \beta_1 + a_2 \beta_2) \otimes c \arrow[ur, mapsto]
+  % \end{tikzcd}
+  \]
+  % 明示的に書けば，
+  % \[\phi\colon V\otimes_\mathbb{Z}\mathbb{Z}_p\ni1\otimes_\mathbb{Z}b_0+\beta_1\otimes_\mathbb{Z}b_1+\beta_2\otimes_\mathbb{Z}b_2\mapsto b_0+\beta_1b_1+\beta_1{}^2b_2/b\in\mathbb{Z}_p[\beta_1]\]
+  % となる．
+  % \begin{align*}
+  %   \phi(1\otimes_\mathbb{Z}b_0+\beta_1\otimes_\mathbb{Z}b_1+\beta_2\otimes_\mathbb{Z}b_2) &= b_0+\beta_1b_1+\beta_1{}^2b_2/b\\
+  %   \phi(1\otimes_\mathbb{Z}b_0'+\beta_1\otimes_\mathbb{Z}b_1'+\beta_2\otimes_\mathbb{Z}b_2') &= b_0'+\beta_1b_1'+\beta_1{}^2b_2'/b
+  % \end{align*}
+  % とする．
+  % $\beta_1{}^2=b\beta_2$，$\beta_2{}^2=a\beta_1$，$\beta_1\beta_2=ab$から
+  % \begin{align*}
+  %   & (1\otimes_\mathbb{Z}b_0+\beta_1\otimes_\mathbb{Z}b_1+\beta_2\otimes_\mathbb{Z}b_2)(1\otimes_\mathbb{Z}b_0'+\beta_1\otimes_\mathbb{Z}b_1'+\beta_2\otimes_\mathbb{Z}b_2')\\
+  %   & = 1\otimes_\mathbb{Z}(b_0b_0'+abb_1b_2'+abb_2b_1')+\beta_1\otimes_\mathbb{Z}(b_0b_1'+b_1b_0'+ab_2b_2')+\beta_2\otimes_\mathbb{Z}(b_0b_2'+b_2b_0'+bb_1b_1')
+  % \end{align*}
+  % なのでこれを$\phi$で写せば
+  % \[(b_0b_0'+abb_1b_2'+abb_2b_1')+\beta_1(b_0b_1'+b_1b_0'+bb_2b_2')+\beta_1{}^2(b_0b_2'/b+b_2b_0'/b+b_1b_1').\]
+  % $\beta_1{}^3=ab^2$から
+  % \begin{align*}
+  %   &\phi(1\otimes_\mathbb{Z}b_0+\beta_1\otimes_\mathbb{Z}b_1+\beta_2\otimes_\mathbb{Z}b_2) \phi(1\otimes_\mathbb{Z}b_0'+\beta_1\otimes_\mathbb{Z}b_1'+\beta_2\otimes_\mathbb{Z}b_2')\\
+  %   &= (b_0+\beta_1b_1+\beta_1{}^2b_2/b)(b_0'+\beta_1b_1'+\beta_1{}^2b_2'/b)\\
+  %   &= (b_0b_0'+abb_1b_2'+abb_2b_1')+\beta_1(b_0b_1'+b_1b_0'+ab_2b_2')+\beta_1{}^2(b_0b_2'/b+b_2b_0'/b+b_1b_1')
+  % \end{align*}
+  % なので$\phi$が積を保つことも分かる．よって，$\phi$は環準同型．$\phi$は明らかに全射．$\ker\phi=\{0\}$なので単射．よって$\phi\colon V\otimes_\mathbb{Z}\mathbb{Z}_p\simeq\mathbb{Z}_p[\beta_1]$．
+  $\phi$が$\mathbb{Z}_p$代数の同型であることは容易に分かる．
+  定理1.3.23(2)から同型
+  \[ \mathcal{O}_k \otimes_\mathbb{Z} \mathbb{Z}_p \ni v \otimes c \mapsto \sigma(v)c \in \widehat{\mathcal{O}}_K = \mathbb{Z}_p[\beta_1] \]
+  の存在が分かるので，$\mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p = V \otimes_\mathbb{Z} \mathbb{Z}_p$．
+  % 定理1.3.23(2)から同型
+  % \[\mathbb{Z}_p[\beta_1]\ni b_0+\beta_1b_1+\beta_1{}^2b_2/b\mapsto1\otimes_\mathbb{Z}b_0+\beta_1\otimes_\mathbb{Z}b_1+\beta_1{}^2\otimes_\mathbb{Z}b_2/b\in\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\]
+  % が存在する．上の同型と合わせて，同型
+  % \[V\otimes_\mathbb{Z}\mathbb{Z}_p\ni1\otimes_\mathbb{Z}b_0+\beta_1\otimes_\mathbb{Z}b_1+\beta_2\otimes_\mathbb{Z}b_2\mapsto1\otimes_\mathbb{Z}b_0+\beta_1\otimes_\mathbb{Z}b_1+\beta_1{}^2\otimes_\mathbb{Z}b_2/b\in\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\]
+  % が得られる．$\beta_2\otimes_\mathbb{Z}b_2=\beta_1{}^2/b\otimes_\mathbb{Z}b_2/b\cdot b=\beta_1{}^2\otimes_\mathbb{Z}b_2$なので，これは$V\otimes_\mathbb{Z}\mathbb{Z}_p$と$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$の間の恒等写像．よって，$V\otimes_\mathbb{Z}\mathbb{Z}_p=\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$．
 \end{proof}
 
 \begin{screen}
-  $K$を$\mathbb{Q}_2$の有限次拡大，$F=K(\sqrt{\mu})\ (\mu\in\mathcal{O}_K^\times)$，$\mathcal{O}_K/\mathfrak{p}=\mathbb{F}$とする．
-  $n=\lvert\mathbb{F}\rvert$が偶数であれば$\mathbb{F}^\times\ni x\mapsto x^2\in\mathbb{F}^\times$が全単射である
+  $a, b$を平方因子を持たない互いに素な整数，$\beta_1=\sqrt[3]{ab^2}$，$\beta_2=\sqrt[3]{a^2b}$，$K=\mathbb{Q}(\beta_1)$，
+  $V=\mathbb{Z}+\mathbb{Z}\beta_1+\mathbb{Z}\beta_2$，$p\nmid3, a, b$なら$p$は$K$で不分岐で$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p = V\otimes_\mathbb{Z}\mathbb{Z}_p$
+  % の証明．（p.111上の方）
 \end{screen}
 \begin{proof}
-  定理I-7.4.10から$\mathbb{F}^\times$は位数$n-1$の巡回群：$\mathbb{F}^\times=\set{g^i | 0\leq i\leq n-2}$．
-  $g^{n-1}=1$である．$g^i\neq g^j$とする．
-  $1\leq\lvert i-j\rvert\leq n-2$なので$2\leq\lvert 2i-2j\rvert\leq 2n-4$．
-  $n-1$は奇数なので$2i-2j\neq n-1$．よって$g^{2i}\neq g^{2j}$となり，単射．
-  $g^1,g^2,\ldots,g^{n/2-1}$は$g^2,g^4,\ldots,g^{n-2}$に写る．$g^{n/2},g^{n/2+1},\ldots,g^{n-2}$は$g^{n-1+1},g^{n-1+3},\ldots,g^{n-1+n-3}$，つまり$g^1,g^3,\ldots,g^{n-3}$に写るので全射．
+  命題2.2.11から$\mathbb{Z}_{(p)}[\beta_1]=\mathcal{O}_{K_{(p)}}\simeq\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_{(p)}$．
+  よって，
+  \[\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\simeq\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_{(p)}\otimes_{\mathbb{Z}_{(p)}}\mathbb{Z}_p\simeq\mathbb{Z}_{(p)}[\beta_1]\otimes_{\mathbb{Z}_{(p)}}\mathbb{Z}_p\simeq\mathbb{Z}_p[\beta_1].\]
+  これは$v \otimes c \mapsto \sigma(v)c$で与えられるので，先程と同様に$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p = V\otimes_\mathbb{Z}\mathbb{Z}_p$．
+  % $b\in\mathbb{Z}_p^\times$なので，上と同様にして$\mathbb{Z}_p[\beta_1]\simeq V\otimes_\mathbb{Z}\mathbb{Z}_p$となり示された．
+  % （上と同様に恒等写像による同型で$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p=V\otimes_\mathbb{Z}\mathbb{Z}_p$）
 \end{proof}
 
 \begin{screen}
-  $\bmod\mathfrak{p}^l \to \bmod\mathfrak{p}^{l+1}, \bmod\mathfrak{p}^{l+2}, \ldots$の議論が成立していることの検証（p.91の真ん中らへん）
+  $\alpha_1{}^2 \equiv 1 \bmod 9$の場合．$\lambda$の行き先
 \end{screen}
 \begin{proof}
-  本文から，$\ord_\mathfrak{p}(\mu-1)=l\ (\mu\in\mathcal{O}_K^\times\setminus(\mathcal{O}_K^\times)^2)$に対し$l$が$2m$で以下の偶数であれば$\mu'=(1+\pi^{l_1}c)^{-2}\mu$があり，
-  $(1+\pi^{l_1}c)^{-2}\equiv 1+\pi^lu\bmod\mathfrak{p}^{l+1}$，$\mu'\equiv 1\bmod\mathfrak{p}^{l+1}$．
-  $(1+\pi^{l_1}c)^{-2}\in(\mathcal{O}_K^\times)^2$となる（背理法で容易に示せる）ので$\mu'\in\mathcal{O}_K^\times\setminus(\mathcal{O}_K^\times)^2$（対偶を考えれば明らか）．
-  $\ord_\mathfrak{p}(\mu'-1)\geq l+1$となり，これによって$l=2m$となるか$l$が奇数になるまで$l$を大きくすることができる．
+  $f(x) = (x - \gamma)(x + \gamma x + \gamma^2)$である．例2.3.5と同様にすれば，次の写像が得られる．
+  \[
+  \begin{tikzcd}
+    K \arrow[r, hookrightarrow]\arrow[d, phantom, "\ni" sloped] & K \otimes_\mathbb{Q} \mathbb{Q}_3 \arrow[r, "\simeq"]\arrow[d, phantom, "\ni" sloped] & \mathbb{Q}_3 \times \mathbb{Q}_3(\omega\gamma) \arrow[d, phantom, "\ni" sloped] \\
+    a_0 + a_1 \beta_1 + a_2 \beta_1{}^2 \arrow[r, mapsto] & (a_0 + a_1 \beta_1 + a_2 \beta_1{}^2) \otimes 1 \arrow[r, mapsto] & (a_0 + a_1 \gamma + a_2 \gamma^2, a_0 + a_1 \omega\gamma + a_2 \omega^2\gamma^2)
+  \end{tikzcd}
+  \]
+  これを整数環に制限すれば，$\phi \colon \mathcal{O}_K \hookrightarrow \mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_3 \simeq \mathbb{Z}_3 \times \mathbb{Z}_3[\omega\gamma]$である．
 \end{proof}
 
+\section{$\mathbb{Q}_p$の$2$次拡大}
+\paragraph{命題2.4.2}~
 \begin{screen}
-  $K$を$\mathbb{Q}_2$の有限次拡大，$\mathfrak{p}$を$\mathcal{O}_K$の素イデアル，$F=K(\sqrt{\mu})$とする．
-  $\mu\in\mathcal{O}_K^\times\setminus(\mathcal{O}_K^\times)^2$，$\mu=1+4u\ (u\in\mathcal{O}_K^\times)$であれば$F/K$が不分岐であることの証明．
-  （上の検証で$l$が$2m$になった場合．$l$が奇数になった場合も同様）
+  $K=\mathbb{Q}_2(\sqrt{3})$，$\alpha=\sqrt{3}-1$として，$\mathcal{O}_K=\mathbb{Z}_2[\alpha]$
 \end{screen}
 \begin{proof}
-  $\alpha=(1+\sqrt{\mu})/2\in F$とすれば，$\alpha$は$g(x)=x^2-x+(1-\mu)/4$の根．
-  $(1-\mu)/4\in\mathcal{O}_K$なので$g(x)\in\mathcal{O}_K[x]$であることから，$\alpha$は$\mathcal{O}_K$上モニックの根となる．
-  つまり，$\alpha\in\mathcal{O}_F$．また，命題1.9.9から$\varDelta_{F/K}(1,\alpha)=\mu\neq 0$．
-  よって，命題1.7.3(2)から，$\{1,\alpha\}$は$F$の$K$基底となり$\mathcal{O}_K$上一次独立．
-  $\{1,\alpha\}\in\mathcal{O}_F$なので，これは$\mathcal{O}_F$の$\mathcal{O}_K$基底になる．
-  よって，$\mathcal{O}_F=\mathcal{O}_K[\alpha]$で，$\varDelta_{F/K}$の計算に$\varDelta_{F/K}(1,\alpha)=\mu$を使える．
-  $K$は局所体なので命題1.5.3から$\mathcal{O}_K$は完備離散付値環．
-  $\varDelta_{F/K}=\mathfrak{p}^{\ord_\mathfrak{p}(\mu)}=\mu\mathcal{O}_K$．
-  $\mu\in\mathcal{O}_K^\times = \mathcal{O}_K \setminus \mathfrak{p}$（命題I-6.5.8）なので，$\varDelta_{F/K}$は$\mathfrak{p}$で割り切れない．よってDedekindの判別定理（定理1.11.12）から$F/K$は不分岐．
+  $\mathcal{O}_K$の素イデアルを$P$とする．
+  $\alpha$の$\mathbb{Q}_2$上最小多項式はEisenstein多項式なので，$\alpha$が$\mathcal{O}_K$の素元であることを証明すれば良い（命題1.10.7）．
+  $K/\mathbb{Q}_2$は完全分岐で$e(P/2\mathbb{Z}_2)=2$（命題1.10.7）なので$\ord_P(2)=2\ord_2(2)=2$．
+  $\ord_P(\alpha)=0$とする．命題1.1.3から$\ord_P(\alpha+2)=0$なので$\ord_P(\alpha(\alpha+2))=0$．
+  しかし，$\alpha(\alpha+2)=2$なので，$\ord_P(\alpha(\alpha+2))=2$．よって矛盾．
+  $\ord_P(\alpha)\geq2$とする．$\ord_P(\alpha+2)\geq2$なので$\ord_P(\alpha(\alpha+2))\geq4$．
+  先程と同様に矛盾．よって，$\ord_P(\alpha)=1$となり示された．
 \end{proof}
 
+\section{$\mathbb{Q}$の双$2$次拡大}
+\paragraph{命題2.5.2}~
 \begin{screen}
-  $F$を局所体，$\pi$を$\mathcal{O}_F$の素元，$F=K(\sqrt{\pi})$とすれば，$\sqrt{\pi}$が$\mathcal{O}_F$の素元である
+  $K=\mathbb{Q}(\sqrt{a}, \sqrt{b})$を双$2$次拡大，$M=\mathbb{Q}(\sqrt{a})$，$N=\mathbb{Q}(\sqrt{b})$，$p$が$N/\mathbb{Q}$で不分岐とする．
+  $\mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p$は$\mathbb{Z}_p$上$Q(\sqrt{a})$, $Q(\sqrt{b})$の整数環で生成され，
+  $\varDelta_{K/\mathbb{Q}, p}= \varDelta_{\mathbb{Q}(\sqrt{a})/\mathbb{Q}, p}{}^2 \varDelta_{\mathbb{Q}(\sqrt{b})/\mathbb{Q}, p}{}^2$
 \end{screen}
 \begin{proof}
-  追加補題\ref{basis_Q2_prime_element}(p.\pageref{basis_Q2_prime_element})から$\mathcal{O}_F=\mathcal{O}_K[\sqrt{\pi}]$，
-  つまり$\mathcal{O}_F=\set{a+b\sqrt{\pi} | a,b\in\mathcal{O}_K}$なので，
-  $\sqrt{\pi}\mathcal{O}_F=\{\pi b+a\sqrt{\pi}\mid a,b\in\mathcal{O}_K\}$．
-  $c,d\in\mathcal{O}_F\setminus\sqrt{\pi}\mathcal{O}_F$とする．
-  $c=c_1+c_2\sqrt{\pi}$，$d=d_1+d_2\sqrt{\pi}$とすれば，$c_1,d_1\not\in\pi\mathcal{O}_K$，つまり$\ord_\mathfrak{p}(c_1)=\ord_\mathfrak{p}(d_1)=0$．
-  $cd=(c_1d_1+c_2d_2\pi)+(c_1d_2+c_2d_1)\sqrt{\pi}$で，命題1.1.3(3)から$\ord_\mathfrak{p}(c_1d_1+c_2d_2\pi)=0$なので$cd\in\mathcal{O}_F\setminus\sqrt{\pi}\mathcal{O}_F$．
-  つまり，$\sqrt{\pi}\mathcal{O}_F$は素イデアル．
+  $S=\mathbb{Z}\setminus p\mathbb{Z}\subset\mathbb{Z}_p^\times$とする．命題1.3.7から$p$は$S^{-1}\mathcal{O}_N/S^{-1}\mathbb{Z}$でも不分岐．
+  \[
+  \begin{tikzcd}
+    &[-40pt] K=\mathbb{Q}(\sqrt{a}, \sqrt{b}) \arrow[ld, dash]\arrow[rd, dash] \\
+    M=\mathbb{Q}(\sqrt{a}) &[-40pt] &[-40pt] N=\mathbb{Q}(\sqrt{b})\\
+    &[-40pt] \mathbb{Q} \arrow[ul, dash]\arrow[ur, dash, "\text{unr}" description]
+  \end{tikzcd}
+  \]
+
+  $\mathbb{Z}_{(p)} = S^{-1}\mathbb{Z}$に対して命題1.11.14の適用を考えよう．
+  命題1.11.14(2)から$S^{-1}\mathcal{O}_K$は$S^{-1}\mathcal{O}_N, S^{-1}\mathcal{O}_M$で生成される．
+  定理1.11.16(2)の証明と同様に，$S^{-1}\mathcal{O}_N$の$S^{-1}\mathbb{Z}$基底を$\{v_1, v_2\}$，
+  $S^{-1}\mathcal{O}_M$の$S^{-1}\mathbb{Z}$基底を$\{w_1, w_2\}$とすれば，$S^{-1}\mathcal{O}_K$の$S^{-1}\mathbb{Z}$基底は$\{v_1w_1, \ldots, v_2w_2\}$．
+  同定理(4)の証明と同様に$\varDelta_{K/\mathbb{Q}, p}= \varDelta_{N/\mathbb{Q}, p}{}^2\varDelta_{M/\mathbb{Q}, p}{}^2$となる．
+
+  $\forall x\in S^{-1}\mathcal{O}_K$に対し，$x_{ij}\in S^{-1}\mathbb{Z}$が存在し，$x=\sum_{ij}x_{ij}v_iw_j$と表すことができる．
+  $y\in\mathbb{Z}_p$として，
+  \[S^{-1}\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\ni x \otimes y = \sum_{ij}(x_{ij} \otimes y)(v_iw_j \otimes 1)\]
+  と表すことができる．
+  $x=a/s\ (a\in\mathcal{O}_K, s\in S)$，
+  $v_i=\tilde{v}_i/s_i\ (\tilde{v}_i\in\mathcal{O}_M, s_i\in S)$，
+  $w_j=\tilde{w}_j/t_j\ (\tilde{w}_j\in\mathcal{O}_N, t_j\in S)$として，
+  \[\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\ni a \otimes y/s=\sum_{ij}(1 \otimes x_{ij}y)(\tilde{v}_i\tilde{w}_j \otimes 1/s_it_j)\]
+  となる．これは，$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$の$\mathbb{Z}\otimes_\mathbb{Z}\mathbb{Z}_p$基底である．
+  同様に，$\mathcal{O}_M\otimes_\mathbb{Z}\mathbb{Z}_p$の$\mathbb{Z}\otimes_\mathbb{Z}\mathbb{Z}_p$基底として$\{\tilde{v}_i \otimes 1/s_i\}$，
+  $\mathcal{O}_N\otimes_\mathbb{Z}\mathbb{Z}_p$の$\mathbb{Z}\otimes_\mathbb{Z}\mathbb{Z}_p$基底として$\{\tilde{w}_j \otimes 1/t_j\}$が取れる．
+
+  $\varDelta_{M/\mathbb{Q}}(1, \sqrt{a})=4a$なので，$\{1, \sqrt{a}\}$は$S^{-1}\mathcal{O}_M$の$S^{-1}\mathbb{Z}$基底（補題1.8.3）．
+  $S^{-1}\mathcal{O}_N$の$S^{-1}\mathbb{Z}$基底は$\{1, \sqrt{b}\}$となる．
+  この場合は，上での$s_i, t_j$は$1$として良い．
+
+  命題2.5.4(1)なら$\{1, (1+\sqrt{a})/2\}$が$S^{-1}\mathcal{O}_M$の$S^{-1}\mathbb{Z}$基底になる．
 \end{proof}
 
-\begin{screen}
-  $F$を局所体，$\pi$を$\mathcal{O}_F$の素元，$\mu=1+\pi^{2k+1}u\ (u\in\mathcal{O}_K^\times)$，$F=K(\sqrt{\mu})$とすれば$q=(1+\sqrt{\mu})/\pi^k$が$\mathcal{O}_F$の素元である
-\end{screen}
-\begin{proof}
-  $F=K(\sqrt{\mu})=K(q)$．
-  $q$はEisenstein多項式$g(x)=x^2-\pi^{m-k}x-\pi u$の根なので，$\mathcal{O}_K$上整となり$q\in\mathcal{O}_F$．
-  $g(x)$の判別式は$\pi^{2(m-k)}+4\pi u\neq 0$なので命題1.9.9，命題1.7.3から$\{1,q\}$は$F$の$K$基底で$\mathcal{O}_F$の$\mathcal{O}_K$基底：$\mathcal{O}_F=\mathcal{O}_K[q]$，つまり$\mathcal{O}_F=\set{a+bq | a,b\in\mathcal{O}_K}$．
-  $g(q)=0$なので$aq+bq^2=bu\pi+(a+b\pi^{m-k})q$．よって$q\mathcal{O}_F=\set{bu\pi+(a+b\pi^{m-k})q | a,b\in\mathcal{O}_K}$．
-  $c,d\in\mathcal{O}_F\setminus q\mathcal{O}_F$とする．
-  $c=c_1+c_2q$，$d=d_1+d_2q$とすれば$c_1,c_2\not\in\pi\mathcal{O}_K$，つまり$\ord_\mathfrak{p}(c_1)=\ord_\mathfrak{p}(d_1)=0$．
-  \[cd=c_1d_1+c_2d_2q^2+(c_1d_2+c_2d_1)q=(c_1d_1+c_2d_2\pi u)+(c_1d_2+c_2d_1+c_2d_2\pi^{m-k})q\]
-  で$\ord_\mathfrak{p}(c_1d_1+c_2d_2\pi u)=0$なので，$cd\in\mathcal{O}_F\setminus q\mathcal{O}_F$．
-  よって$q\mathcal{O}_F$は$\mathcal{O}_F$の素イデアル．
-\end{proof}
+\section{$4$次巡回体}
+\paragraph{命題2.6.4}
+$\{1, \alpha, \sqrt{d}, \beta\}$で生成される$\mathbb{Z}$加群を$V$とする．
+$\varDelta_{K/\mathbb{Q}}(1, \alpha, \sqrt{d}, \beta)=(\mathcal{O}_K:V)^2\varDelta_K=2^8d^3$が成立する（系1.7.5(2)）．
+$\forall p\mid d$に対し，$\varDelta{K/\mathbb{Q}, p}=(p^3)$なので$p^3\mid\varDelta_K$．
+よって$(\mathcal{O}_K:V)^2$は$2$の冪乗．
+命題1.8.9から$(\mathcal{O}_K:V)=\prod_p(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p:V\otimes_\mathbb{Z}\mathbb{Z}_p)$となるが，
+これが$2$の冪乗なので奇素数$p$に対しては$(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p:V\otimes_\mathbb{Z}\mathbb{Z}_p)=1$．
