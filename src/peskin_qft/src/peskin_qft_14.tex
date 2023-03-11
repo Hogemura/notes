@@ -1,0 +1,493 @@
+\chapter{Quantization of Spontaneously Broken Gauge Theories}
+\section{The $R_\xi$ Gauges}
+\subsection{(21.20)}
+(21.18)の相互作用項のうち，\(\varphi\)を含む項は(21.3)(21.5)より
+\[
+\bar\psi_L \phi \psi_R + \bar\psi_R \phi^\ast \psi_L
+= \bar\psi \frac{1+\gamma^5}{2} \psi \frac{i\varphi}{\sqrt{2}}
++ \bar\psi \frac{1-\gamma^5}{2} \psi \frac{-i\varphi}{\sqrt{2}}
+= - \frac{1}{\sqrt{2}} \varphi (\bar\psi\gamma^5\psi) .
+\]
+
+\subsection{(21.39)}
+\(SU(2) \times U_Y(1)\)基本表現に属する\(\phi\)の共変微分は(20.60)で与えられる：
+\begin{align*}
+  (D_\mu\phi)_i &= \partial_\mu\phi_i - igA^a_\mu (\tau^a)_{ij} \phi_j - i g' B_\mu \frac{1}{2} \phi_i \\
+  &= \partial_\mu\phi_i + gA^a_\mu \left[-i(\tau^a)_{ij}\right] \phi_j + g' B_\mu \left[-\frac{i}{2}\delta_{ij}\right] \phi_j .
+\end{align*}
+これを(21.33)の形に合わせる．
+\[ (D_\mu\phi)_i = \partial_\mu\phi_i + gA^a_\mu (T^a)_{ij} \phi_j \quad (a=1,2,3,Y) \]
+とすれば\(a=1,2,3\)に対しては
+\[ A^a_\mu = A^a_\mu , \quad T^a = -i \tau^a = T^a . \]
+\(a=Y\)の場合は\footnote{p.~742の\(g^2FF^T\)の計算の後ろに書かれているように\(g \to g'\)と解釈する}
+\[ A^Y_\mu = B_\mu , \quad T^Y = -\frac{i}{2} . \]
+ここで\eqref{20_27_TR4}の導出と同様にすれば\(T^Y\)の変換は
+\[
+T^Y
+\begin{pmatrix}
+  \phi^1 \\ \phi^2 \\ \phi^3 \\ h
+\end{pmatrix}
+= \frac{1}{2\sqrt{2}}
+\begin{pmatrix}
+  -i & \\ & -i
+\end{pmatrix}
+\begin{pmatrix}
+  -\phi^2 - i \phi^1 \\
+  h + i\phi^3
+\end{pmatrix}
+= \frac{1}{2\sqrt{2}}
+\begin{pmatrix}
+  -\phi^1 + i \phi^2 \\
+  \phi^3 - ih
+\end{pmatrix}
+=
+\begin{pmatrix}
+  -\phi^2 \\ \phi^1 \\ -h \\ \phi^3
+\end{pmatrix}
+\]
+なので
+\begin{align}
+  T^Y = \frac{1}{2}
+  \begin{pmatrix}
+    & -1 & & \\ 1 & & & \\ & & & -1 \\ & & 1 &
+  \end{pmatrix}
+  . \label{21_39_TY}
+\end{align}
+
+\(\mathbb{C}^2\)から\(\mathbb{R}^4\)に変換して計算する．
+\eqref{20_27_C2toR4}から
+\[
+\phi_0 = \frac{1}{\sqrt{2}}
+\begin{pmatrix}
+  0 \\ v
+\end{pmatrix}
+\mapsto
+\begin{pmatrix}
+  0 \\ 0 \\ 0 \\ v
+\end{pmatrix}
+\]
+である．\eqref{20_27_TR4}を使えば
+\[
+T^1\phi^0 = \frac{1}{2}
+\begin{pmatrix}
+  v \\ 0 \\ 0 \\ 0
+\end{pmatrix}
+, \quad
+T^2\phi^0 = \frac{1}{2}
+\begin{pmatrix}
+  0 \\ v \\ 0 \\ 0
+\end{pmatrix}
+, \quad
+T^3\phi^0 = \frac{1}{2}
+\begin{pmatrix}
+  0 \\ 0 \\ v \\ 0
+\end{pmatrix}
+, \quad
+T^Y\phi^0 = \frac{1}{2}
+\begin{pmatrix}
+  0 \\ 0 \\ -v \\ 0
+\end{pmatrix}
+.
+\]
+第4成分（真空期待値\(v\)とHiggs場\(h\)）が\(0\)なので無視できる．
+(21.36)の定義から
+\[
+F^a{}_i = T^a_{ij} \phi_{0j} = \frac{v}{2}
+\begin{pmatrix}
+  1 & & \\
+  & 1 & \\
+  & & 1 \\
+  & & -1 \\
+\end{pmatrix}
+, \quad
+(a = 1, 2, 3, Y; i = 1, 2, 3) .
+\]
+\(a=Y\)の場合は\(g \to g'\)とするので
+\[
+gF^a{}_i = \frac{v}{2}
+\begin{pmatrix}
+  g & & \\
+  & g & \\
+  & & g \\
+  & & -g' \\
+\end{pmatrix}
+.
+\]
+
+\section{The Goldstone Boson Equivalence Theorem}
+\subsection{(21.54)}
+Feynman-'t Hooft gauge (\(\xi=1\))とすれば
+\[
+\wick{ \c1{A^a_\mu}(k) \c1{A^b_\nu}(q) } =  \frac{-ig_{\mu\nu}}{k^2-m_W{}^2} \delta^{ab} (2\pi)^4 \mathop{\delta^{(4)}}(k+q) .
+\]
+(20.63)の定義から
+\begin{align*}
+  \wick{ \c1{W^+_\mu}(k) \c1{W^-_\nu}(q) } &= \frac{-ig_{\mu\nu}}{k^2-m_W{}^2} (2\pi)^4 \mathop{\delta^{(4)}}(k+q) , \\
+  \wick{ \c1{W^+_\mu}(k) \c1{W^+_\nu}(q) } &= \wick{ \c1{W^-_\mu}(k) \c1{W^-_\nu}(q) } = 0.
+\end{align*}
+
+\subsection{(21.56)}
+ゲージ群\(SU(2)\times U_Y(1)\)の基底\(T^a~(a=1, 2, 3, Y)\)に対応してghostは4つ存在する．
+ここで
+\begin{gather*}
+  c^+ = \frac{c^1+ic^2}{\sqrt{2}} , \quad c^- = \frac{c^1-ic^2}{\sqrt{2}} , \quad
+  c^Z = c^3 \cos\theta_w - c^Y \sin\theta_w , \quad c^A = c^3 \sin\theta_w + c^Y \cos\theta_w , \\
+  %
+  \bar{c}^+ = \frac{\bar{c}^1-i\bar{c}^2}{\sqrt{2}} , \quad \bar{c}^- = \frac{\bar{c}^1+i\bar{c}^2}{\sqrt{2}} , \quad
+  \bar{c}^Z = \bar{c}^3 \cos\theta_w - \bar{c}^Y \sin\theta_w , \quad \bar{c}^A = \bar{c}^3 \sin\theta_w + \bar{c}^Y \cos\theta_w
+\end{gather*}
+とする．Lagragianは(21.52)から
+\begin{align*}
+  \mathcal{L}_\text{ghost}
+  &= \bar{c}^a \left[ - (\partial_\mu D^\mu)^{ab} - g^2 (T^a\phi_0) \cdot (T^b\phi) \right] c^b \\
+  &= \bar{c}^a \left[ - \partial^2 \delta^{ac} - g f^{abc} \partial_\mu A^b_\mu - g^2 (T^a\phi_0) \cdot (T^c\phi) \right] c^c .
+\end{align*}
+
+\eqref{20_27_TR4}\eqref{21_39_TY}から構造定数を求めれば\(f^{12Y} = 1\)．
+これを使って計算すれば\footnote{\verb|./src/py/ghost.ipynb|}
+\begin{align}
+  \begin{split}
+    \wick{ \c1{c^+}(k) \c1{\bar{c}^+}(q) } &= \wick{ \c1{c^-}(k) \c1{\bar{c}^-}(q) } = \frac{i}{k^2-m_W{}^2} (2\pi)^4 \mathop{\delta^{(4)}}(k-q) , \\
+    \wick{ \c1{c^Z}(k) \c1{\bar{c}^Z}(q) } &= \frac{i}{k^2-m_Z{}^2} (2\pi)^4 \mathop{\delta^{(4)}}(k-q) , \\
+    \wick{ \c1{c^A}(k) \c1{\bar{c}^A}(q) } &= \frac{i}{k^2} (2\pi)^4 \mathop{\delta^{(4)}}(k-q) .
+  \end{split}
+  \label{21_56_eigen_ghost_propagator}
+\end{align}
+
+\subsection{Fig 21.8: Feynman rules of Goldstone bosons}
+Goldstone bosonのpropagatorは(21.55)から
+\[
+\wick{ \c1{\phi_i}(k) \c1{\phi_j}(q) } = \frac{i}{k^2-m^2} \delta_{ij} (2\pi)^4 \mathop{\delta^{(4)}}(k+q) .
+\]
+(21.79)の定義から
+\begin{align*}
+  \wick{ \c1{\phi_+}(k) \c1{\phi_-}(q) } &= \frac{i}{k^2-m_W{}^2} (2\pi)^4 \mathop{\delta^{(4)}}(k+q) , \\
+  \wick{ \c1{\phi_+}(k) \c1{\phi_+}(q) } &= \wick{ \c1{\phi_-}(k) \c1{\phi_-}(q) } = 0 .
+\end{align*}
+
+(21.38)(21.79)から\(SU(2)\) scalar場は
+\[
+\phi =
+\begin{pmatrix}
+  -i \phi^- \\
+  (v+h+i\phi^3)/\sqrt{2}
+\end{pmatrix}
+, \quad \phi^\dagger =
+\begin{pmatrix}
+  i\phi^+ & \dfrac{v+h-i\phi^3}{\sqrt{2}}
+\end{pmatrix}
+\]
+となる．
+
+(20.60)に(20.65)(20.66)の結果を適用(\(Y=1/2\))して
+\[
+D_\mu = \partial_\mu - i\frac{g}{\sqrt{2}} (W^+_\mu T^+ + W^-_\mu T^-)
+- i \frac{1}{\sqrt{g^2+g'^2}} Z^0_\mu (g^2T^3 - g'^2/2)
+- i\frac{gg'}{\sqrt{g^2+g'^2}}  A_\mu (T^3+1/2) .
+\]
+(20.68)を代入して
+\[
+D_\mu = \partial_\mu - i\frac{g}{\sqrt{2}} (W^+_\mu T^+ + W^-_\mu T^-)
+- i \frac{1}{\sqrt{g^2+g'^2}} Z^0_\mu (g^2T^3 - g'^2/2) - ie  A_\mu (T^3+1/2) .
+\]
+
+\(\phi\)の共変微分は
+\begin{align*}
+  D_\mu \phi &= \partial_\mu \phi - i\frac{g}{\sqrt{2}} (W^+_\mu T^+ + W^-_\mu T^-) \phi
+  - i \frac{1}{\sqrt{g^2+g'^2}} Z^0_\mu (g^2T^3 - g'^2/2) \phi - ie  A_\mu (T^3+1/2) \phi \\
+  %
+  &= \partial_\mu \phi - i\frac{g}{\sqrt{2}}
+  \begin{pmatrix}
+    & W^+_\mu \\ W^-_\mu &
+  \end{pmatrix}
+  \phi - \frac{i}{2} Z^0_\mu
+  \begin{pmatrix}
+    \frac{g^2-g'^2}{\sqrt{g^2+g'^2}} & \\ & - \sqrt{g^2+g'^2}
+  \end{pmatrix}
+  \phi
+  -i e A_\mu
+  \begin{pmatrix}
+    1 & \\ & 0
+  \end{pmatrix}
+  \phi \\
+  %
+  &=
+  \begin{pmatrix}
+    -i \partial_\mu\phi^- \\
+    \partial_\mu(h+i\phi^3)/\sqrt{2}
+  \end{pmatrix}
+  - i\frac{g}{\sqrt{2}}
+  \begin{pmatrix}
+    W^+_\mu (v+h+i\phi^3)/\sqrt{2} \\
+    -i W^-_\mu \phi^-
+  \end{pmatrix}
+  \\
+  &\quad - \frac{i}{2} Z^0_\mu
+  \begin{pmatrix}
+    -i \frac{g^2-g'^2}{\sqrt{g^2+g'^2}} \phi^- \\[5pt]
+    - \sqrt{g^2+g'^2} (v+h+i\phi^3)/\sqrt{2}
+  \end{pmatrix}
+  -i e A_\mu
+  \begin{pmatrix}
+    -i \phi^- \\ 0
+  \end{pmatrix}
+  .
+\end{align*}
+(20.70)より
+\begin{align*}
+  (D_\mu\phi)_1 &= - i\partial_\mu\phi^- - i\frac{g}{2} W^+_\mu (v+h+i\phi^3)
+  - \frac{1}{2} \frac{g^2-g'^2}{\sqrt{g^2+g'^2}} Z^0_\mu \phi^- - eA_\mu\phi^- \\
+  %
+  &= - i\partial_\mu\phi^- - i\frac{g}{2} W^+_\mu (v+h+i\phi^3)
+  - \frac{g}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right) Z^0_\mu \phi^- - eA_\mu\phi^- , \\
+  %%
+  (D_\mu\phi)_2 &= \frac{1}{\sqrt{2}} \partial_\mu(h+i\phi^3) - \frac{g}{\sqrt{2}} g W^-_\mu \phi^-
+  + \frac{i}{2\sqrt{2}} \sqrt{g^2+g'^2} Z^0_\mu (v+h+i\phi^3) \\
+  %
+  &= \frac{1}{\sqrt{2}} \partial_\mu(h+i\phi^3) - \frac{g}{\sqrt{2}} g W^-_\mu \phi^-
+  + \frac{i}{2\sqrt{2}} \frac{g}{\cos\theta_w} Z^0_\mu (v+h+i\phi^3) .
+\end{align*}
+(20.111)のLagrangianは(20.63)(20.112)(20.114)から
+\begin{align}
+  \begin{split}
+    \mathcal{L}_\text{Higgs} &= \lvert D_\mu\phi\rvert^2 + \mu^2 \phi^\dagger \phi - \lambda (\phi^\dagger\phi)^2 \\
+    &= (D_\mu\phi)_1(D^\mu\phi)_1^\dagger + (D_\mu\phi)_2(D^\mu\phi)_2^\dagger
+    + \frac{m_h{}^2}{2} \phi^\dagger \phi - \frac{g^2}{8} \frac{m_h{}^2}{m_W{}^2} (\phi^\dagger\phi)^2
+  \end{split}
+  \label{fig21.8_scalar_Lagrangian}
+\end{align}
+で与えられる．
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (in) at (-1.5, 0) {\(\phi^+\)};
+      \vertex (out) at (1.5, 0) {\(\phi^-\)};
+      \vertex (a) at (0, 1) {\(A^\mu\)};
+      \diagram*{
+        (in) -- [charged scalar, edge label=\(p\)] (o) -- [charged scalar, edge label=\(p'\)] (out),
+        (o) -- [photon] (a)
+      };
+      \draw (o) node [below left] {\(\phi^-\)};
+      \draw (o) node [below right] {\(\phi^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+頂点の\(\phi^-\)には運動量\(p\)が入る(\(e^{-ip\cdot x}\))ので，\(\partial^\mu\phi^- \to -ip^\mu\phi^-\)．
+よって\(\phi^-\phi^+A\)頂点は
+\begin{align}
+  \begin{split}
+    i\mathcal{L}_\text{Higgs} &= i (-i\partial^\mu\phi^-) (-eA_\mu\phi^+) + i (i\partial^\mu\phi^+) (-eA_\mu\phi^-) + \cdots \\
+    %
+    &\to i (-p^\mu) (-e) + i (-p'^\mu) (-e) \\
+    &= ie(p+p')^\mu .
+  \end{split}
+  \label{fig21.8_phi_phi_A}
+\end{align}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (in) at (-1.5, 0) {\(\phi^+\)};
+      \vertex (out) at (1.5, 0) {\(\phi^-\)};
+      \vertex (a) at (0, 1) {\(Z^{0\mu}\)};
+      \diagram*{
+        (in) -- [charged scalar, edge label=\(p\)] (o) [dot] -- [charged scalar, edge label=\(p'\)] (out),
+        (o) -- [boson] (a)
+      };
+      \draw (o) node [below left] {\(\phi^-\)};
+      \draw (o) node [below right] {\(\phi^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+頂点の\(\phi^-\)には運動量\(p\)が入る(\(e^{-ip\cdot x}\))ので，\(\partial^\mu\phi^- \to -ip^\mu\phi^-\)．
+よって\(\phi^-\phi^+Z^0\)頂点は
+\begin{align*}
+  i\mathcal{L}_\text{Higgs} &=
+  i (-i\partial^\mu\phi^-) \frac{-g}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right) Z^0_\mu \phi^+
+  + i (i\partial^\mu\phi^+) \frac{-g}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right) Z^0_\mu \phi^- + \cdots \\
+  %
+  &\to i (-p^\mu) \frac{-g}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right)
+  + i (-p'^\mu) \frac{-g}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right) \\
+  %
+  &= \frac{ig(p+p')^\mu}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right) .
+\end{align*}
+
+\subsection{(21.108)}
+\verb|./src/py/problem_21_2_LL.ipynb|から
+\begin{align*}
+  i\mathcal{M}(e^-_Le^+_R \to W^+_LW^-_L) &= \frac{i e^2 \left(- 2 E^2 - m_W{}^2\right) \sqrt{E^2 - m_W{}^2} \sin\theta}{E \left(4 E^2 \cos^2\theta_w - m_W{}^2\right)} \\
+  &\quad+ \frac{2 i E e^2 \sqrt{E^2 - m_W{}^2} \left(2 E^2 + m_W{}^2\right) \sin\theta}{m_W{}^2 \left(2 E^2 \cos2\theta_w + 2 E^2 - m_W{}^2\right) \tan^2\theta_w} \\
+  &\quad+ \frac{i E e^2 \left(2 E^3 \cos\theta - 2 E^2 \sqrt{E^2 - m_W{}^2} - m_W{}^2 \sqrt{E^2 - m_W{}^2}\right) \sin\theta}{m_W{}^2 \left(2 E^2 - 2 E \sqrt{E^2 - m_W{}^2} \cos\theta - m_W{}^2\right) \sin^2\theta_w} \\
+  %
+  &= \frac{i \beta e^2 \left(- 2 E^2 - m_W{}^2\right) \sin\theta}{4 E^2 \cos^2\theta_w - m_W{}^2}
+  + \frac{2 i \beta E^2 e^2 \left(2 E^2 + m_W{}^2\right) \sin\theta}{m_W{}^2 \left(4 E^2 \cos^2\theta_w - m_W{}^2\right) \tan^2\theta_w} \\
+  &\quad+ \frac{i E^2 e^2 \left(2 E^2 \cos\theta - 2 \beta E^2  - m_W{}^2 \beta \right) \sin\theta}{m_W{}^2 \left(2 E^2 - 2 \beta E^2 \cos\theta - m_W{}^2\right) \sin^2\theta_w}
+\end{align*}
+(20.73)から
+\begin{align*}
+  &= - \frac{i \beta e^2 \left(2 E^2 + m_W{}^2\right) m_Z{}^2 \sin\theta}{m_W{}^2 (4E^2 - m_Z{}^2)}
+  + \frac{2 i \beta E^2 e^2 \left(2 E^2 + m_W{}^2\right) \sin\theta}{m_W{}^2 \left(4 E^2 - m_Z{}^2\right) \sin^2\theta_w} \\
+  &\quad+ \frac{i E^2 e^2 \left(2 E^2 \cos\theta - 2 \beta E^2  - m_W{}^2 \beta \right) \sin\theta}{m_W{}^2 \left(2 E^2 - 2 \beta E^2 \cos\theta - m_W{}^2\right) \sin^2\theta_w} \\
+  %
+  &= - i\beta e^2 \sin\theta \frac{m_Z{}^2}{m_W{}^2} \frac{2 E^2 + m_W{}^2}{4E^2 - m_Z{}^2}
+  + i\beta e^2 \sin\theta \frac{1}{2\sin^2\theta_w} \frac{4E^2}{4E^2 - m_Z{}^2} \frac{m_W{}^2+2E^2}{m_W{}^2} \\
+  &\quad+ \frac{i e^2 \left(2 E^2 \cos\theta - 2 \beta E^2  - m_W{}^2 \beta \right) \sin\theta}{m_W{}^2 \left(1 + \beta^2 - 2\beta\cos\theta\right) \sin^2\theta_w} \\
+  %
+  &= - i\beta e^2 \sin\theta \frac{m_Z{}^2}{m_W{}^2} \frac{2 E^2 + m_W{}^2}{4E^2 - m_Z{}^2}
+  + i\beta e^2 \sin\theta \frac{1}{2\sin^2\theta_w} \frac{4E^2}{4E^2 - m_Z{}^2} \left( 1 + \frac{m_Z{}^2}{2m_W{}^2} + \frac{4E^2-m_Z{}^2}{2m_W{}^2} \right) \\
+  &\quad+ \frac{i e^2 \left(2 E^2 \cos\theta - 2 \beta E^2  - m_W{}^2 \beta \right) \sin\theta}{m_W{}^2 \left(1 + \beta^2 - 2\beta\cos\theta\right) \sin^2\theta_w} \\
+  %
+  &= - i\beta e^2 \sin\theta \frac{m_Z{}^2}{m_W{}^2} \frac{2 E^2 + m_W{}^2}{4E^2 - m_Z{}^2}
+  + i\beta e^2 \sin\theta \frac{1}{2\sin^2\theta_w} \frac{4E^2}{4E^2 - m_Z{}^2} \left( 1 + \frac{m_Z{}^2}{2m_W{}^2} \right) \\
+  &\quad + i\beta e^2 \sin\theta \frac{1}{\sin^2\theta_w} \frac{E^2}{m_W{}^2}
+  + \frac{i e^2 \left(2 E^2 \cos\theta - 2 \beta E^2  - m_W{}^2 \beta \right) \sin\theta}{m_W{}^2 \left(1 + \beta^2 - 2\beta\cos\theta\right) \sin^2\theta_w} \\
+  %
+  %
+  &= - i\beta e^2 \sin\theta \frac{m_Z{}^2}{m_W{}^2} \frac{s/2 + m_W{}^2}{s - m_Z{}^2}
+  + i\beta e^2 \sin\theta \frac{1}{2\sin^2\theta_w} \frac{s}{s - m_Z{}^2} \left( 1 + \frac{m_Z{}^2}{2m_W{}^2} \right) \\
+  &\quad + i\beta e^2 \sin\theta \frac{1}{2\sin^2\theta_w}
+  2 \left[ \frac{E^2}{m_W{}^2} + \frac{1}{\beta m_W{}^2} \frac{2 E^2 \cos\theta - 2 \beta E^2  - m_W{}^2 \beta}{1 + \beta^2 - 2\beta\cos\theta} \right] .
+\end{align*}
+第３項は
+\begin{align*}
+  [\cdots] &= \frac{E^2}{m_W{}^2} + \frac{1}{\beta m_W{}^2} \frac{2 E^2 \cos\theta - 2 \beta E^2  - m_W{}^2 \beta}{1 + \beta^2 - 2\beta\cos\theta} \\
+  &= \frac{\beta E^2(1 + \beta^2 - 2\beta\cos\theta) + (2E^2\cos\theta - 2\beta E^2 - \beta m_W{}^2)}{\beta m_W{}^2 (1 + \beta^2 - 2\beta\cos\theta)} \\
+  &= \frac{\beta E^2 + \beta^3 E^2 - 2\beta^2E^2\cos\theta + 2E^2\cos\theta - 2\beta E^2 - \beta m_W{}^2}{\beta m_W{}^2 (1 + \beta^2 - 2\beta\cos\theta)} \\
+  &= \frac{\beta^3 E^2 - \beta E^2  + 2(1-\beta^2)E^2\cos\theta - \beta m_W{}^2}{\beta m_W{}^2 (1 + \beta^2 - 2\beta\cos\theta)} \\
+  &= \frac{\beta^3 E^2 - \beta E^2 + 2m_W{}^2\cos\theta - \beta m_W{}^2}{\beta m_W{}^2 (1 + \beta^2 - 2\beta\cos\theta)} \\
+  &= \frac{-\beta(1-\beta^2) E^2 + m_W{}^2 / \beta - (1 + \beta^2 - 2\beta\cos\theta) m_W{}^2/\beta}{\beta m_W{}^2 (1 + \beta^2 - 2\beta\cos\theta)} \\
+  &= \frac{-\beta m_W{}^2 + m_W{}^2/\beta}{\beta m_W{}^2 (1 + \beta^2 - 2\beta\cos\theta)} - \frac{1}{\beta^2} \\
+  &= \frac{1 - \beta^2}{\beta^2 (1 + \beta^2 - 2\beta\cos\theta)} - \frac{1}{\beta^2} \\
+  &= \frac{m_W{}^2}{E^2\beta^2 (1 + \beta^2 - 2\beta\cos\theta)} - \frac{1}{\beta^2} \\
+  &= \frac{4m_W{}^2}{s\beta^2 (1 + \beta^2 - 2\beta\cos\theta)} - \frac{1}{\beta^2} .
+\end{align*}
+さらに
+\[ ie^2 \bar{v}_L (\slashed{k}_+-\slashed{k}_-) u_L \frac{1}{s} = - i\beta e^2 \sin\theta \]
+を併せれば，右辺を得る．
+
+\section{One-Loop Corrections to the Weak-Interaction Gauge Theory}
+\subsection{(21.153)}
+$\Pi_{WW} = g^2 \Pi_{11}$は
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}[small]
+      \vertex (ol) at (-1, 0);
+      \vertex (il) at (-0.5, 0);
+      \vertex (ir) at (0.5, 0);
+      \vertex (or) at (1, 0);
+      \draw (ol) node [left] {$W$};
+      \draw (or) node [right] {$W$};
+      \diagram*{
+      (il) -- [anti fermion, half right, edge label'=$b_L$] (ir);
+      (ol) -- [boson] (il) -- [fermion, half left, edge label=$t_L$] (ir) -- [boson] (or);
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+で与えられる．(20.79)(20.80)(21.150)から
+\[
+\Pi_{11}(q_X{}^2) = - \frac{3}{2} \frac{4}{(4\pi)^2}
+\left[\left(\frac{q_X{}^2}{6} - \frac{m_t{}^2+m_b{}^2}{4} \right) E - q_X{}^2 b_2(btX)
++ \frac{m_t{}^2b_1(btX)+m_b{}^2b_1(tbX)}{2} \right] .
+\]
+
+$\Pi_{\gamma Z} = (eg/\cos\theta_w)[\Pi_{3Q} - \sin^2\theta_w \Pi_{QQ}]$は
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}[small]
+      \vertex (ol) at (-1.2, 0) {\(Z\)};
+      \vertex (il) at (-0.5, 0);
+      \vertex (ir) at (0.5, 0);
+      \vertex (or) at (1.2, 0) {\(\gamma\)};
+      \draw (il) node [right] {\(L\)};
+      \diagram*{
+      (il) -- [anti fermion, half right, edge label'=$t$] (ir);
+      (ol) -- [boson] (il) -- [fermion, half left, edge label=$t$] (ir) -- [boson] (or);
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \begin{feynman}[small]
+      \vertex (ol) at (-1.2, 0) {\(Z\)};
+      \vertex (il) at (-0.5, 0);
+      \vertex (ir) at (0.5, 0);
+      \vertex (or) at (1.2, 0) {\(\gamma\)};
+      \draw (il) node [right] {\(R\)};
+      \diagram*{
+      (il) -- [anti fermion, half right, edge label'=$t$] (ir);
+      (ol) -- [boson] (il) -- [fermion, half left, edge label=$t$] (ir) -- [boson] (or);
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \begin{feynman}[small]
+      \vertex (ol) at (-1.2, 0) {\(Z\)};
+      \vertex (il) at (-0.5, 0);
+      \vertex (ir) at (0.5, 0);
+      \vertex (or) at (1.2, 0) {\(\gamma\)};
+      \draw (il) node [right] {\(L\)};
+      \diagram*{
+      (il) -- [anti fermion, half right, edge label'=$b$] (ir);
+      (ol) -- [boson] (il) -- [fermion, half left, edge label=$b$] (ir) -- [boson] (or);
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \begin{feynman}[small]
+      \vertex (ol) at (-1.2, 0) {\(Z\)};
+      \vertex (il) at (-0.5, 0);
+      \vertex (ir) at (0.5, 0);
+      \vertex (or) at (1.2, 0) {\(\gamma\)};
+      \draw (il) node [right] {\(R\)};
+      \diagram*{
+      (il) -- [anti fermion, half right, edge label'=$b$] (ir);
+      (ol) -- [boson] (il) -- [fermion, half left, edge label=$b$] (ir) -- [boson] (or);
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+で与えられる．(20.79)(20.80)から$(t, t, L)$のdiagramは
+\[ \frac{2}{3} \left( \frac{1}{2} - \frac{2}{3}\sin^2\theta_w \right) \times (\Pi_{LL} + \Pi_{LR}) \]
+となる．(21.149)(21.150)(21.151)から，全てのdiagramの合計は
+\begin{align*}
+  \Pi_{3Q} - \sin^2\theta_w \Pi_{QQ} &= \frac{2}{3} \left( \frac{1}{2} - \frac{2}{3} \sin^2\theta_w - \frac{2}{3} \sin^2\theta_w \right)
+  3[\Pi_{LL}(ttX) + \Pi_{LR}(ttX)] \\
+  & -\frac{1}{3} \left( -\frac{1}{2} + \frac{1}{3} \sin^2\theta_w + \frac{1}{3} \sin^2\theta_w \right)
+  3[\Pi_{LL}(bbX) + \Pi_{LR}(bbX)] \\
+  %
+  &= - \frac{12}{(4\pi)^2} \left( \frac{1}{3} - \frac{8}{9}\sin^2\theta_w \right) \left[\frac{q_X{}^2}{6}E - q_X{}^2 b_2(ttX) \right] \\
+  &\quad - \frac{12}{(4\pi)^2} \left( \frac{1}{6} - \frac{2}{9}\sin^2\theta_w \right) \left[\frac{q_X{}^2}{6}E - q_X{}^2 b_2(bbX) \right] \\
+  %
+  &= - \frac{6}{(4\pi)^2} \left[ \frac{q_X{}^2}{6}E - \frac{2}{3} q_X{}^2 b_2(ttX) - \frac{1}{3} q_X{}^2 b_2(bbX) \right] - \sin^2\theta_w \Pi_{QQ} .
+\end{align*}
+よって
+\[ \Pi_{3Q}(q_X{}^2) = - \frac{6}{(4\pi)^2} \left[ \frac{q_X{}^2}{6}E - \frac{2}{3} q_X{}^2 b_2(ttX) - \frac{1}{3} q_X{}^2 b_2(bbX) \right] . \]
+
+$\Pi_{ZZ} = (g/\cos\theta_w)^2[\Pi_{33} - 2\sin^2\theta_w \Pi_{3Q} + \sin^4\theta_w \Pi_{QQ}]$は
+\begin{align*}
+  & \Pi_{33} - 2\sin^2\theta_w \Pi_{3Q} + \sin^4\theta_w \Pi_{QQ} \\
+  &= \left[ \left( \frac{1}{2} - \frac{2}{3} \sin^2\theta_w \right)^2 + \left( -\frac{2}{3} \sin^2\theta_w \right)^2 \right] 3 \Pi_{LL}(ttX) \\
+  &\qquad + 2 \left( \frac{1}{2} - \frac{2}{3} \sin^2\theta_w \right) \left( -\frac{2}{3} \sin^2\theta_w \right) 3\Pi_{LR}(ttX) \\
+  &\quad + \left[ \left( -\frac{1}{2} + \frac{1}{3} \sin^2\theta_w \right)^2 + \left( \frac{1}{3} \sin^2\theta_w \right)^2 \right] 3 \Pi_{LL}(bbX) \\
+  &\qquad + 2 \left( -\frac{1}{2} + \frac{1}{3} \sin^2\theta_w \right) \left( \frac{1}{3} \sin^2\theta_w \right) 3\Pi_{LR}(bbX) \\
+  %
+  &= - \frac{12}{(4\pi)^2} \left( \frac{1}{4} - \frac{2}{3} \sin^2\theta_w + \frac{8}{9} \sin^4\theta_w \right)
+  \left[ \left( \frac{q_X{}^2}{6} - \frac{m_t{}^2}{2} \right)E - q_X{}^2 b_2(ttX) + m_t{}^2 b_1(ttX) \right] \\
+  &\qquad - \frac{12}{(4\pi)^2} \left( -\frac{1}{3} \sin^2\theta_w + \frac{4}{9} \sin^4\theta_w \right) [m_t{}^2 E - 2m_t{}^2 b_1(ttX)] \\
+  &\quad - \frac{12}{(4\pi)^2} \left( \frac{1}{4} - \frac{1}{3} \sin^2\theta_w + \frac{2}{9} \sin^4\theta_w \right)
+  \left[ \left( \frac{q_X{}^2}{6} - \frac{m_b{}^2}{2} \right)E - q_X{}^2 b_2(bbX) + m_b{}^2 b_1(bbX) \right] \\
+  &\qquad - \frac{12}{(4\pi)^2} \left( -\frac{1}{6} \sin^2\theta_w + \frac{1}{9} \sin^4\theta_w \right) [m_b{}^2 E - 2m_b{}^2 b_1(bbX)] \\
+  %
+  &= - \frac{6}{(4\pi)^2} \left[\left(\frac{q_X{}^2}{6} - \frac{m_t{}^2+m_b{}^2}{4} \right) E - q_X{}^2 \frac{b_2(ttX)+b_2(bbX)}{2}
+  + \frac{m_t{}^2b_1(ttX)+m_b{}^2b_1(bbX)}{2} \right] \\
+  &\quad - 2\sin^2\theta_w \Pi_{3Q} + \sin^4\theta_w \Pi_{QQ} .
+\end{align*}
+よって
+\[
+\Pi_{33}(q_X{}^2) = \frac{-6}{(4\pi)^2} \left[\left(\frac{q_X{}^2}{6} - \frac{m_t{}^2+m_b{}^2}{4} \right) E - q_X{}^2 \frac{b_2(ttX)+b_2(bbX)}{2}
++ \frac{m_t{}^2b_1(ttX)+m_b{}^2b_1(bbX)}{2} \right] .
+\]

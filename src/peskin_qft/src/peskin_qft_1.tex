@@ -1,0 +1,616 @@
+\subsection{Fourier変換}
+場のFourier変換はxxiのように
+\[
+\phi(x) = \int \frac{d^4k}{(2\pi)^4} e^{-ik\cdot x} \phi(k) , \quad
+\phi(k) = \int d^4x \, e^{ik\cdot x} \phi(x)
+\]
+と定める．Fermionの場合は
+\[
+\psi(p) = \int d^4x \, e^{ip\cdot x} \psi(x) , \quad
+\bar\psi(p) = \int d^4x \, e^{-ip\cdot x} \bar\psi(x)
+\]
+とする\footnote{\(\bar\psi(p)\)は\(\psi(p)\)のHermite共役に対し右から\(\gamma^0\)をかけたもの}．
+Propagatorは
+\begin{align*}
+    \wick{\c1{\psi}(p) \c1{\bar\psi}(q)}
+    &= \int d^4x \, e^{ip\cdot x} \int d^4y \, e^{-iq\cdot x} \wick{\c1{\psi}(x) \c1{\bar\psi}(y)} \\
+    &= \int d^4x \, e^{ip\cdot x} \int d^4y \, e^{-iq\cdot y} \int \frac{d^4k}{(2\pi)^4} \frac{i\slashed{k}}{k^2} e^{-ik\cdot(x-y)} \\
+    &= \frac{i\slashed{p}}{p^2} (2\pi)^4 \mathop{\delta^{(4)}}(p-q) .
+\end{align*}
+
+(4.47)より\(e^{-ipx}\)は位置\(x\)に運動量\(p\)が入るものとする(e.g.\@ (4.47), p.\@ 507)．
+
+\setcounter{chapter}{1}
+\chapter{The Klein-Gordon Field}
+\setcounter{section}{3}
+\section{The Klein-Gordon Field in spacetime}
+\subsection{(2.52)}
+積分
+\[ \int_{-\infty}^\infty dp \, \frac{p e^{ipr}}{\sqrt{p^2 + m^2}} \]
+を計算する．複素平面では，$1/\sqrt{p^2+m^2}$は$p = \pm im$に極をもち，$[\pm im, \pm\infty)$を載線(branch cut)に取れる．
+\begin{center}
+  \begin{tikzpicture}[>=stealth]
+    \draw[->] (-3, 0) -- (3, 0) node [right] {$\Re p$};
+    \draw[->] (0, -1) -- (0, 3) node [above] {$\Im p$};
+    \draw (0, 0) node [below left] {O};
+    \fill (0, 1) circle [radius=0.1] node [right] {$im$};
+    % \fill (0, -1) circle [radius=0.1] node [right] {$-im$};
+    \draw[decorate, decoration={zigzag, segment length=0.2cm}, thick] (0, 1) -- (0, 2.8);
+    % \draw[decorate, decoration={zigzag, segment length=0.2cm}, thick] (0, -1) -- (0, -2.8);
+    \draw[->] (0, 1)+(100:0.7) arc (100:440:0.7);
+  \end{tikzpicture}
+\end{center}
+branch cutの左右で$p^2+m^2$の偏角は$2\pi$異なるので，$\sqrt{p^2+m^2}$の偏角は$\pi$異なる．
+すなわち，左右で被積分函数の符号は入れ替わる．
+
+次の経路で，積分値は$0$．
+\begin{center}
+  \begin{tikzpicture}[>=stealth]
+    \draw[->] (-3, 0) -- (3, 0) node [right] {$\Re p$};
+    \draw[->] (0, -1) -- (0, 3) node [above] {$\Im p$};
+    \draw (0, 0) node [below left] {O};
+    \fill (0, 1) circle [radius=0.1];
+    % \fill (0, -1) circle [radius=0.1] node [right] {$-im$};
+    \draw[decorate, decoration={zigzag, segment length=0.2cm}, thick] (0, 1) -- (0, 2.8);
+    % \draw[decorate, decoration={zigzag, segment length=0.2cm}, thick] (0, -1) -- (0, -2.8);
+    \draw[very thick] (-0.2, 1) arc (180:360:0.2);
+    \begin{scope}[very thick, decoration={markings, mark=at position 0.6 with {\arrow{stealth}}}]
+      \draw[postaction={decorate}] (-0.2, 1) -- (-0.2, 2.5);
+      \draw[postaction={decorate}] (-0.2, 2.5) arc (90:180:2.5);
+      \draw[postaction={decorate}] (-2.7, 0) -- (2.7, 0);
+      \draw[postaction={decorate}] (2.7, 0) arc (0:90:2.5);
+      \draw[postaction={decorate}] (0.2, 2.5) -- (0.2, 1);
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+大きい円弧に沿った積分は$0$なので，結局，
+\begin{center}
+  \begin{tikzpicture}[>=stealth]
+    \draw[->] (-3, 0) -- (3, 0) node [right] {$\Re p$};
+    \draw[->] (0, -1) -- (0, 3) node [above] {$\Im p$};
+    \draw (0, 0) node [below left] {O};
+    \fill (0, 1) circle [radius=0.1];
+    % \fill (0, -1) circle [radius=0.1] node [right] {$-im$};
+    \draw[decorate, decoration={zigzag, segment length=0.2cm}, thick] (0, 1) -- (0, 2.8);
+    % \draw[decorate, decoration={zigzag, segment length=0.2cm}, thick] (0, -1) -- (0, -2.8);
+    % \draw[very thick] (-0.2, 1) arc (180:360:0.2);
+    \begin{scope}[very thick, decoration={markings, mark=at position 0.6 with {\arrow{stealth}}}]
+      % \draw[postaction={decorate}] (-0.2, 1) -- (-0.2, 2.5);
+      % \draw[postaction={decorate}] (-0.2, 2.5) arc (90:180:2.5);
+      \draw[postaction={decorate}] (-2.7, 0) -- (2.7, 0);
+      % \draw[postaction={decorate}] (2.7, 0) arc (0:90:2.5);
+      % \draw[postaction={decorate}] (0.2, 2.5) -- (0.2, 1);
+    \end{scope}
+  \end{tikzpicture}
+  \raisebox{2cm}{$=$}
+  \begin{tikzpicture}[>=stealth]
+    \draw[->] (-3, 0) -- (3, 0) node [right] {$\Re p$};
+    \draw[->] (0, -1) -- (0, 3) node [above] {$\Im p$};
+    \draw (0, 0) node [below left] {O};
+    \fill (0, 1) circle [radius=0.1];
+    % \fill (0, -1) circle [radius=0.1] node [right] {$-im$};
+    \draw[decorate, decoration={zigzag, segment length=0.2cm}, thick] (0, 1) -- (0, 2.8);
+    % \draw[decorate, decoration={zigzag, segment length=0.2cm}, thick] (0, -1) -- (0, -2.8);
+    \draw[very thick] (-0.2, 1) arc (180:360:0.2);
+    \begin{scope}[very thick, decoration={markings, mark=at position 0.6 with {\arrow{stealth}}}]
+      \draw[postaction={decorate}] (0.2, 1) -- (0.2, 2.5);
+      % \draw[postaction={decorate}] (-0.2, 2.5) arc (90:180:2.5);
+      % \draw[postaction={decorate}] (-2.7, 0) -- (2.7, 0);
+      % \draw[postaction={decorate}] (2.7, 0) arc (0:90:2.5);
+      \draw[postaction={decorate}] (-0.2, 2.5) -- (-0.2, 1);
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+左側と右側の積分は逆向きで，被積分函数の符号が逆なので，積分値は等しい．
+従って，$p = i\rho$とすれば，
+\[ \int_{-\infty}^\infty = 2 \int_{im}^{i\infty} dp = 2i \int_m^\infty d\rho \]
+となる．
+
+\chapter{The Dirac Field}
+\section*{Problems}\addcontentsline{toc}{section}{Problems}
+\subsection{Problem 3.4: The Quantized Majorana Field}
+Majoranaフェルミオンのモード展開は次式で与えられる：
+\begin{align*}
+    \chi & = \int \frac{d^3p}{(2\pi)^3} \sqrt{\frac{(p \sigma)}{2E_{\boldsymbol{p}}}} \sum_s \left( a_{\boldsymbol{p}}^s \xi^s e^{-ipx} - i \sigma^2 a_{\boldsymbol{p}}^{s\dagger} \xi^s e^{ipx} \right) , \\
+    % <!-- -->
+    \chi^\dagger & = \int \frac{d^3p}{(2\pi)^3} \sqrt{\frac{1}{2E_{\boldsymbol{p}}}} \sum_s \left( a_{\boldsymbol{p}}^{s\dagger} \xi^{s\dagger} e^{ipx} + i a_{\boldsymbol{p}}^{s} \xi^{s\dagger} \sigma^2 e^{-ipx} \right) \sqrt{(p \sigma)} , \\
+    % <!-- -->
+    \chi^\ast & = \int \frac{d^3p}{(2\pi)^3} \sqrt{\frac{(p\sigma^\ast)}{2E_{\boldsymbol{p}}}} \sum_s \left( a_{\boldsymbol{p}}^{s\dagger} \xi^s e^{ipx} - i \sigma^2 a_{\boldsymbol{p}}^{s} \xi^s e^{-ipx} \right) , \\
+    % <!-- -->
+    \chi^\top & = \int \frac{d^3p}{(2\pi)^3} \sqrt{\frac{1}{2E_{\boldsymbol{p}}}} \sum_s \left( a_{\boldsymbol{p}}^{s} \xi^{s\dagger} e^{-ipx} + i a_{\boldsymbol{p}}^{s\dagger} \xi^{s\dagger} \sigma^2 e^{ipx} \right) \sqrt{(p\sigma^\top)} , \\
+    % <!-- -->
+    (\boldsymbol{\sigma} \cdot \boldsymbol{\nabla})\chi & = \int \frac{d^3p}{(2\pi)^3} i (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sqrt{\frac{(p \sigma)}{2E_{\boldsymbol{p}}}} \sum_s \left( a_{\boldsymbol{p}}^s \xi^s e^{-ipx} + i \sigma^2 a_{\boldsymbol{p}}^{s\dagger} \xi^s e^{ipx} \right) .
+\end{align*}
+ハミルトニアンは
+\begin{align}
+  H_\text{Majorana} = \int d^3x \left( \frac{\partial \mathcal{L}}{\partial \dot{\chi}} \dot{\chi} - \mathcal{L} \right) = \int d^3x \left[ i \chi^\dagger \boldsymbol{\sigma} \cdot \boldsymbol{\nabla} \chi + \frac{im}{2} ( \chi^\dagger \sigma^2 \chi^\ast - \chi^\top \sigma^2 \chi ) \right] . \label{prob3_4_H}
+\end{align}
+
+\eqref{prob3_4_H}第１項（$e^{\pm p_0t}$は省略）は
+\begin{align*}
+  & \int d^3x \, i \chi^\dagger \boldsymbol{\sigma} \cdot \boldsymbol{\nabla} \chi \\
+  & = \int d^3x \int \frac{d^3p\, d^3q}{(2\pi)^6} \frac{-1}{\sqrt{2E_{\boldsymbol{p}} 2 E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( a_{\boldsymbol{p}}^{r\dagger} \xi^{r\dagger} e^{ipx} + i a_{\boldsymbol{p}}^{r} \xi^{r\dagger} \sigma^2 e^{-ipx} \right) \\
+  & \qquad \qquad \times \sqrt{(p \sigma)} (\boldsymbol{q} \cdot \boldsymbol{\sigma}) \sqrt{(q \sigma)}
+  \left( a_{\boldsymbol{q}}^s \xi^s e^{-iqx} + i \sigma^2 a_{\boldsymbol{q}}^{s\dagger} \xi^s e^{iqx} \right) \\
+  % <!-- 1, 1 -->
+  & = \int d^3x \int \frac{d^3p\, d^3q}{(2\pi)^6} \frac{-1}{\sqrt{2E_{\boldsymbol{p}} 2 E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( a_{\boldsymbol{p}}^{r\dagger} \xi^{r\dagger} e^{ipx} \right)
+  \sqrt{(p \sigma)} (\boldsymbol{q} \cdot \boldsymbol{\sigma}) \sqrt{(q \sigma)}
+  \left( a_{\boldsymbol{q}}^s \xi^s e^{-iqx} \right) \\
+  % <!-- 1, 2 -->
+  & \qquad + \int d^3x \int \frac{d^3p\, d^3q}{(2\pi)^6} \frac{-1}{\sqrt{2E_{\boldsymbol{p}} 2 E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( a_{\boldsymbol{p}}^{r\dagger} \xi^{r\dagger} e^{ipx} \right)
+  \sqrt{(p \sigma)} (\boldsymbol{q} \cdot \boldsymbol{\sigma}) \sqrt{(q \sigma)}
+  \left( i \sigma^2 a_{\boldsymbol{q}}^{s\dagger} \xi^s e^{iqx} \right) \\
+  % <!-- 2, 1 -->
+  & \qquad + \int d^3x \int \frac{d^3p\, d^3q}{(2\pi)^6} \frac{-1}{\sqrt{2E_{\boldsymbol{p}} 2 E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( i a_{\boldsymbol{p}}^{r} \xi^{r\dagger} \sigma^2 e^{-ipx} \right)
+  \sqrt{(p \sigma)} (\boldsymbol{q} \cdot \boldsymbol{\sigma}) \sqrt{(q \sigma)}
+  \left( a_{\boldsymbol{q}}^s \xi^s e^{-iqx}\right) \\
+  % <!-- 2, 2 -->
+  & \qquad + \int d^3x \int \frac{d^3p\, d^3q}{(2\pi)^6} \frac{-1}{\sqrt{2E_{\boldsymbol{p}} 2 E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( i a_{\boldsymbol{p}}^{r} \xi^{r\dagger} \sigma^2 e^{-ipx} \right)
+  \sqrt{(p \sigma)} (\boldsymbol{q} \cdot \boldsymbol{\sigma}) \sqrt{(q \sigma)}
+  \left( i \sigma^2 a_{\boldsymbol{q}}^{s\dagger} \xi^s e^{iqx} \right) \\
+  % <!-- 1, 1 -->
+  & = \int \frac{d^3p}{(2\pi)^3} \frac{-1}{2E_{\boldsymbol{p}}}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^s \times \xi^{r\dagger} \sqrt{(p \sigma)}
+  (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sqrt{(p \sigma)} \xi^s \\
+  % <!-- 1, 2 -->
+  & \qquad + \int \frac{d^3p}{(2\pi)^3} \frac{i}{2E_{\boldsymbol{p}}}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{-\boldsymbol{p}}^{s\dagger}
+  \times \xi^{r\dagger} \sqrt{(p \sigma)} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sqrt{(p \bar\sigma)} \sigma^2 \xi^s \\
+  % <!-- 2, 1 -->
+  & \qquad + \int \frac{d^3p}{(2\pi)^3} \frac{i}{2E_{\boldsymbol{p}}}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{-\boldsymbol{p}}^s
+  \times \xi^{r\dagger} \sigma^2 \sqrt{(p \sigma)} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sqrt{(p \bar\sigma)} \xi^s \\
+  % <!-- 2, 2 -->
+  & \qquad + \int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger}
+  \times \xi^{r\dagger} \sigma^2 \sqrt{(p \sigma)} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sqrt{(p \sigma)} \sigma^2 \xi^s
+\end{align*}
+である．$\sqrt{(p\sigma)}$などを明示的に書くと
+\[ \sqrt{(p \sigma)} = \frac{E_{\boldsymbol{p}} + m - \boldsymbol{p} \cdot \boldsymbol{\sigma}}{\sqrt{2 (E_{\boldsymbol{p}} + m)}} , \quad \sqrt{(p \bar\sigma)} = \frac{E_{\boldsymbol{p}} + m + \boldsymbol{p} \cdot \boldsymbol{\sigma}}{\sqrt{2 (E_{\boldsymbol{p}} + m)}} \]
+となるので，
+\begin{align*}
+  \sqrt{(p \sigma)} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sqrt{(p \sigma)} = E_{\boldsymbol{p}} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) - \lvert \boldsymbol{p} \rvert^2 , \\
+  % <!-- -->
+  \sqrt{(p \sigma)} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sqrt{(p \bar\sigma)} \sigma^2 = m (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sigma^2 , \\
+  % <!-- -->
+  \sigma^2 \sqrt{(p \sigma)} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sqrt{(p \bar\sigma)} = m \sigma^2 (\boldsymbol{p} \cdot \boldsymbol{\sigma}) , \\
+  % <!-- -->
+  \sigma^2 \sqrt{(p \sigma)} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sqrt{(p \sigma)} \sigma^2 = - E_{\boldsymbol{p}} (\boldsymbol{p} \cdot \boldsymbol{\sigma}^\ast) - \lvert \boldsymbol{p} \rvert^2 .
+\end{align*}
+従って，第１項を引き続き計算して
+\begin{align}
+  & = \int \frac{d^3p}{(2\pi)^3} \frac{-1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^s
+  \times \xi^{r\dagger} \left [E_{\boldsymbol{p}} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) - \lvert \boldsymbol{p} \rvert^2 \right ] \xi^s \label{prob3_4_H_1_1} \\
+  % <!-- 1, 2 -->
+  & + \int \frac{d^3p}{(2\pi)^3} \frac{i}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{-\boldsymbol{p}}^{s\dagger}
+  \times \xi^{r\dagger} \left[ m (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sigma^2 \right] \xi^s \label{prob3_4_H_1_2} \\
+  % <!-- 2, 1 -->
+  & + \int \frac{d^3p}{(2\pi)^3} \frac{i}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{-\boldsymbol{p}}^s
+  \times \xi^{r\dagger} \left [ m \sigma^2 (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \right ] \xi^s \label{prob3_4_H_1_3} \\
+  % <!-- 2, 2 -->
+  & + \int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger}
+  \times \xi^{r\dagger} \left [ - E_{\boldsymbol{p}} (\boldsymbol{p} \cdot \boldsymbol{\sigma}^\ast) - \lvert \boldsymbol{p} \rvert^2 \right ] \xi^s \label{prob3_4_H_1_4}
+\end{align}
+となる．
+
+\eqref{prob3_4_H}の第２項．
+\begin{align*}
+  & \frac{im}{2}\int d^3x \, \chi^\dagger \sigma^2 \chi^\ast \\
+  & = \frac{im}{2}\int d^3x \int \frac{d^3p\, d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( a_{\boldsymbol{p}}^{r\dagger} \xi^{r\dagger} e^{ipx} + i a_{\boldsymbol{p}}^{r} \xi^{r\dagger} \sigma^2 e^{-ipx} \right) \\
+  & \qquad \qquad \times \sqrt{(p \sigma)} \sigma^2 \sqrt{(q\sigma^\ast)} \left( a_{\boldsymbol{q}}^{s\dagger} \xi^s e^{iqx} - i \sigma^2 a_{\boldsymbol{q}}^{s} \xi^s e^{-iqx} \right) \\
+  & = \frac{im}{2}\int d^3x \int \frac{d^3p\, d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( a_{\boldsymbol{p}}^{r\dagger} \xi^{r\dagger} e^{ipx} + i a_{\boldsymbol{p}}^{r} \xi^{r\dagger} \sigma^2 e^{-ipx} \right) \\
+  & \qquad \qquad \times \sqrt{(p \sigma)} \sqrt{(q\bar\sigma)} \sigma^2 \left( a_{\boldsymbol{q}}^{s\dagger} \xi^s e^{iqx} - i \sigma^2 a_{\boldsymbol{q}}^{s} \xi^s e^{-iqx} \right) \\
+  % <!-- 1, 1 -->
+  & = \frac{im}{2}\int d^3x \int \frac{d^3p\, d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( a_{\boldsymbol{p}}^{r\dagger} \xi^{r\dagger} e^{ipx} \right) \sqrt{(p \sigma)} \sqrt{(q \bar\sigma)} \sigma^2 \left( a_{\boldsymbol{q}}^{s\dagger} \xi^s e^{iqx} \right) \\
+  % <!-- 1, 2 -->
+  & \qquad + \frac{im}{2}\int d^3x \int \frac{d^3p\, d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( a_{\boldsymbol{p}}^{r\dagger} \xi^{r\dagger} e^{ipx} \right) \sqrt{(p \sigma)} \sqrt{(q \bar\sigma)} \sigma^2 \left( - i \sigma^2 a_{\boldsymbol{q}}^{s} \xi^s e^{-iqx} \right) \\
+  % <!-- 2, 1 -->
+  & \qquad + \frac{im}{2}\int d^3x \int \frac{d^3p\, d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( i a_{\boldsymbol{p}}^{r} \xi^{r\dagger} \sigma^2 e^{-ipx} \right) \sqrt{(p \sigma)} \sqrt{(q \bar\sigma)} \sigma^2 \left( a_{\boldsymbol{q}}^{s\dagger} \xi^s e^{iqx} \right) \\
+  % <!-- 2, 2 -->
+  & \qquad + \frac{im}{2}\int d^3x \int \frac{d^3p\, d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( i a_{\boldsymbol{p}}^{r} \xi^{r\dagger} \sigma^2 e^{-ipx} \right) \sqrt{(p \sigma)} \sqrt{(q \bar\sigma)} \sigma^2 \left( - i \sigma^2 a_{\boldsymbol{q}}^{s} \xi^s e^{-iqx} \right) \\
+  % <!-- 1, 1 -->
+  & = \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{-\boldsymbol{p}}^{s\dagger}
+  \times \xi^{r\dagger} \sqrt{(p \sigma)} \sqrt{(p \sigma)} \sigma^2 \xi^s \\
+  % <!-- 1, 2 -->
+  & \qquad + \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{-i}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^{s}
+  \times \xi^{r\dagger} \sqrt{(p \sigma)} \sqrt{(p \bar\sigma)} \xi^s \\
+  % <!-- 2, 1 -->
+  & \qquad + \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{i}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger}
+  \times \xi^{r\dagger} \sigma^2 \sqrt{(p \sigma)} \sqrt{(p \bar\sigma)} \sigma^2 \xi^s \\
+  % <!-- 2, 2 -->
+  & \qquad + \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{-\boldsymbol{p}}^{s}
+  \times \xi^{r\dagger} \sigma^2 \sqrt{(p \sigma)} \sqrt{(p \sigma)} \xi^s
+\end{align*}
+に$\sqrt{(p \sigma)} \sqrt{(p \bar\sigma)} = m$などを代入して，
+\begin{align}
+  % <!-- 1, 1 -->
+  & = \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{-\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} \left[ (p \sigma)\sigma^2 \right] \xi^s \label{prob3_4_H_2_1} \\
+  % <!-- 1, 2 -->
+  & + \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{-im}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^{s} \times \xi^{r\dagger} \xi^s \label{prob3_4_H_2_2} \\
+  % <!-- 2, 1 -->
+  & + \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{im}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} \xi^s \label{prob3_4_H_2_3} \\
+  % <!-- 2, 2 -->
+  & + \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{-\boldsymbol{p}}^{s} \times \xi^{r\dagger} \sigma^2 (p \sigma) \xi^s \label{prob3_4_H_2_4}
+\end{align}
+を得る．
+
+\eqref{prob3_4_H}の第３項．
+\begin{align*}
+  & - \frac{im}{2}\int d^3x \, \chi^\top \sigma^2 \chi \\
+  & = - \frac{im}{2}\int d^3x \int \frac{d^3p\,d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( a_{\boldsymbol{p}}^{r} \xi^{r\dagger} e^{-ipx} + i a_{\boldsymbol{p}}^{r\dagger} \xi^{r\dagger} \sigma^2 e^{ipx} \right) \\
+  & \qquad \qquad \times \sqrt{(p\sigma^\top)} \sigma^2 \sqrt{(q \sigma)} \left( a_{\boldsymbol{q}}^s \xi^s e^{-iqx} - i \sigma^2 a_{\boldsymbol{q}}^{s\dagger} \xi^s e^{iqx} \right) \\
+  & = - \frac{im}{2}\int d^3x \int \frac{d^3p\,d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( a_{\boldsymbol{p}}^{r} \xi^{r\dagger} e^{-ipx} + i a_{\boldsymbol{p}}^{r\dagger} \xi^{r\dagger} \sigma^2 e^{ipx} \right) \\
+  & \qquad \qquad \times \sigma^2 \sqrt{(p\bar\sigma)} \sqrt{(q \sigma)} \left( a_{\boldsymbol{q}}^s \xi^s e^{-iqx} - i \sigma^2 a_{\boldsymbol{q}}^{s\dagger} \xi^s e^{iqx} \right) \\
+  % <!-- 1, 1 -->
+  & = - \frac{im}{2}\int d^3x \int \frac{d^3p\,d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( a_{\boldsymbol{p}}^{r} \xi^{r\dagger} e^{-ipx} \right) \sigma^2 \sqrt{(p\bar\sigma)} \sqrt{(q \sigma)} \left( a_{\boldsymbol{q}}^s \xi^s e^{-iqx}\right) \\
+  % <!-- 1, 2 -->
+  & \qquad - \frac{im}{2}\int d^3x \int \frac{d^3p\,d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( a_{\boldsymbol{p}}^{r} \xi^{r\dagger} e^{-ipx} \right) \sigma^2 \sqrt{(p\bar\sigma)} \sqrt{(q \sigma)} \left( - i \sigma^2 a_{\boldsymbol{q}}^{s\dagger} \xi^s e^{iqx} \right) \\
+  % <!-- 2, 1 -->
+  & \qquad - \frac{im}{2}\int d^3x \int \frac{d^3p\,d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( i a_{\boldsymbol{p}}^{r\dagger} \xi^{r\dagger} \sigma^2 e^{ipx} \right) \sigma^2 \sqrt{(p\bar\sigma)} \sqrt{(q \sigma)} \left( a_{\boldsymbol{q}}^s \xi^s e^{-iqx} \right) \\
+  % <!-- 2, 2 -->
+  & \qquad - \frac{im}{2}\int d^3x \int \frac{d^3p\,d^3q}{(2\pi)^6} \frac{1}{\sqrt{2E_{\boldsymbol{p}}2E_{\boldsymbol{q}}}}
+  \sum_{r, s} \left( i a_{\boldsymbol{p}}^{r\dagger} \xi^{r\dagger} \sigma^2 e^{ipx} \right) \sigma^2 \sqrt{(p\bar\sigma)} \sqrt{(q \sigma)} \left( - i \sigma^2 a_{\boldsymbol{q}}^{s\dagger} \xi^s e^{iqx} \right) \\
+  % <!-- 1, 1 -->
+  & = - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{-\boldsymbol{p}}^s
+  \times \xi^{r\dagger} \sigma^2 \sqrt{(p\bar\sigma)} \sqrt{(p \bar\sigma)} \xi^s \\
+  % <!-- 1, 2 -->
+  & \qquad - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{-i}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger}
+  \times \xi^{r\dagger} \sigma^2 \sqrt{(p\bar\sigma)} \sqrt{(p \sigma)} \sigma^2 \xi^s \\
+  % <!-- 2, 1 -->
+  & \qquad - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{i}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^s
+  \times \xi^{r\dagger} \sigma^2 \sigma^2 \sqrt{(p\bar\sigma)} \sqrt{(p \sigma)} \xi^s \\
+  % <!-- 2, 2 -->
+  & \qquad - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{-\boldsymbol{p}}^{s\dagger}
+  \times \xi^{r\dagger} \sigma^2 \sigma^2 \sqrt{(p\bar\sigma)} \sqrt{(p \bar\sigma)} \sigma^2 \xi^s
+\end{align*}
+となるので，
+\begin{align}
+  % <!-- 1, 1 -->
+  & = - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{-\boldsymbol{p}}^s
+  \times \xi^{r\dagger} \left[ \sigma^2 (p\bar\sigma) \right] \xi^s \label{prob3_4_H_3_1} \\
+  % <!-- 1, 2 -->
+  & \quad - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{-im}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} \xi^s \label{prob3_4_H_3_2} \\
+  % <!-- 2, 1 -->
+  & \quad - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{im}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^s \times \xi^{r\dagger} \xi^s \label{prob3_4_H_3_3} \\
+  % <!-- 2, 2 -->
+  & \quad - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{-\boldsymbol{p}}^{s\dagger}
+  \times \xi^{r\dagger} \left[ (p\bar\sigma) \sigma^2 \right] \xi^s \label{prob3_4_H_3_4}
+\end{align}
+を得る．
+
+% <!-- a+, a -->
+$a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^{s}$の項は次のようになる：
+\begin{align}
+  & \eqref{prob3_4_H_1_1} + \eqref{prob3_4_H_2_2} + \eqref{prob3_4_H_3_3} \notag \\
+  & = \int \frac{d^3p}{(2\pi)^3} \frac{-1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^s
+  \times \xi^{r\dagger} \left [E_{\boldsymbol{p}} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) - \lvert \boldsymbol{p} \rvert^2 \right ] \xi^s \notag \\
+  & \qquad + \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{-im}{2E_{\boldsymbol{p}}}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^{s} \times \xi^{r\dagger} \xi^s \notag \\
+  & \qquad - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{im}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^s \times \xi^{r\dagger} \xi^s \notag \\
+  & = \int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^s
+  \times \xi^{r\dagger} \left [ - E_{\boldsymbol{p}} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) + \lvert \boldsymbol{p} \rvert^2 \right ] \xi^s + \int \frac{d^3p}{(2\pi)^3} \frac{m^2}{2E_{\boldsymbol{p}}}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^{s} \times \xi^{r\dagger} \xi^s \notag \\
+  & = \int \frac{d^3p}{(2\pi)^3} \frac{\lvert \boldsymbol{p} \rvert^2 + m^2}{2E_{\boldsymbol{p}}}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^s \times \xi^{r\dagger} \xi^s - \int \frac{d^3p}{(2\pi)^3} \frac{1}{2}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^{s} \times \xi^{r\dagger} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \xi^s \notag \\
+  & = \int \frac{d^3p}{(2\pi)^3} \frac{E_{\boldsymbol{p}}}{2} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^s \delta^{rs} - \int \frac{d^3p}{(2\pi)^3} \frac{1}{2}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{\boldsymbol{p}}^{s} \times \xi^{r\dagger} (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \xi^s \notag \\
+  & = \int \frac{d^3p}{(2\pi)^3} \frac{E_{\boldsymbol{p}}}{2} \sum_{s} a_{\boldsymbol{p}}^{s\dagger} a_{\boldsymbol{p}}^s \label{prob3_4_ca}
+\end{align}
+（最後の式変形では被積分函数が奇函数であることを使った）．
+$a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger}$の項は次のようになる：
+\begin{align}
+  & \eqref{prob3_4_H_1_4} + \eqref{prob3_4_H_2_3} + \eqref{prob3_4_H_3_2} \notag \\
+  & = \int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger}
+  \times \xi^{r\dagger} \left [ - E_{\boldsymbol{p}} (\boldsymbol{p} \cdot \boldsymbol{\sigma}^\ast) - \lvert \boldsymbol{p} \rvert^2 \right ] \xi^s \notag \\
+  & \qquad + \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{im}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} \xi^s \notag \\
+  & - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{-im}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} \xi^s \notag \\
+  & = \int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger}
+  \times \xi^{r\dagger} \left [ - E_{\boldsymbol{p}} (\boldsymbol{p} \cdot \boldsymbol{\sigma}^\ast) - \lvert \boldsymbol{p} \rvert^2 \right ] \xi^s - \int \frac{d^3p}{(2\pi)^3} \frac{m^2}{2E_{\boldsymbol{p}}}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} \xi^s \notag \\
+  & = - \int \frac{d^3p}{(2\pi)^3} \frac{\lvert \boldsymbol{p} \rvert^2 + m^2}{2E_{\boldsymbol{p}}}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} \xi^s - \int \frac{d^3p}{(2\pi)^3} \frac{1}{2}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} (\boldsymbol{p} \cdot \boldsymbol{\sigma}^\ast) \xi^s \notag \\
+  & = - \int \frac{d^3p}{(2\pi)^3} \frac{E_{\boldsymbol{p}}}{2}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger} \delta^{rs} - \int \frac{d^3p}{(2\pi)^3} \frac{1}{2}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} (\boldsymbol{p} \cdot \boldsymbol{\sigma}^\ast) \xi^s \notag \\
+  & = - \int \frac{d^3p}{(2\pi)^3} \frac{E_{\boldsymbol{p}}}{2} \sum_{s} a_{\boldsymbol{p}}^{s} a_{\boldsymbol{p}}^{s\dagger} \label{prob3_4_ac}
+\end{align}
+（最後の式変形では被積分函数が奇函数であることを使った）．
+$a_{\boldsymbol{p}}^{r\dagger} a_{-\boldsymbol{p}}^{s\dagger}$の項は次のようになる：
+\begin{align}
+  & \eqref{prob3_4_H_1_2} + \eqref{prob3_4_H_2_1} + \eqref{prob3_4_H_3_4} \notag \\
+  & = \int \frac{d^3p}{(2\pi)^3} \frac{i}{2E_{\boldsymbol{p}}}
+  \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{-\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} \left[ m (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \sigma^2 \right] \xi^s \notag \\
+  & \qquad + \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{-\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} \left[ (p \sigma)\sigma^2 \right] \xi^s \notag \\
+  & \qquad - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r\dagger} a_{-\boldsymbol{p}}^{s\dagger} \times \xi^{r\dagger} \left[ (p\bar\sigma) \sigma^2 \right] \xi^s \notag \\
+  & = 0 . \label{prob3_4_cc}
+\end{align}
+$a_{\boldsymbol{p}}^{r} a_{-\boldsymbol{p}}^{s}$の項は次のようになる：
+\begin{align}
+  & \eqref{prob3_4_H_1_3} + \eqref{prob3_4_H_2_4} + \eqref{prob3_4_H_3_1} \notag \\
+  & = \int \frac{d^3p}{(2\pi)^3} \frac{i}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{-\boldsymbol{p}}^s \times \xi^{r\dagger} \left [ m \sigma^2 (\boldsymbol{p} \cdot \boldsymbol{\sigma}) \right ] \xi^s \notag \\
+  & \qquad + \frac{im}{2} \int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{-\boldsymbol{p}}^{s} \times \xi^{r\dagger} \sigma^2 (p \sigma) \xi^s \notag \\
+  & \qquad - \frac{im}{2}\int \frac{d^3p}{(2\pi)^3} \frac{1}{2E_{\boldsymbol{p}}} \sum_{r, s} a_{\boldsymbol{p}}^{r} a_{-\boldsymbol{p}}^s \times \xi^{r\dagger} \left[ \sigma^2 (p\bar\sigma) \right] \xi^s \notag \\
+  & = 0 . \label{prob3_4_aa}
+\end{align}
+\eqref{prob3_4_ca}\eqref{prob3_4_ac}\eqref{prob3_4_cc}\eqref{prob3_4_aa}から，
+\begin{align*}
+  H_\text{Majorana} & = \int \frac{d^3p}{(2\pi)^3} \frac{E_{\boldsymbol{p}}}{2} \sum_{s} a_{\boldsymbol{p}}^{s\dagger} a_{\boldsymbol{p}}^s - \int \frac{d^3p}{(2\pi)^3} \frac{E_{\boldsymbol{p}}}{2} \sum_{s} a_{\boldsymbol{p}}^{s} a_{\boldsymbol{p}}^{s\dagger} \\
+  & = \int \frac{d^3p}{(2\pi)^3} E_{\boldsymbol{p}} \sum_{s} a_{\boldsymbol{p}}^{s\dagger} a_{\boldsymbol{p}}^s
+\end{align*}
+となる（最後の計算では，発散する定数を無視した）．これはDirac場のハミルトニアン
+\[ H_\text{Dirac} = \int \frac{d^3p}{(2\pi)^3} E_{\boldsymbol{p}} \sum_{s} \left( a_{\boldsymbol{p}}^{s\dagger} a_{\boldsymbol{p}}^s + b_{\boldsymbol{p}}^{s\dagger} b_{\boldsymbol{p}}^s \right) \]
+の半分である．
+
+\chapter{Interacting Fields and Feynman Diagrams}
+\section*{Problems}\addcontentsline{toc}{section}{Problems}
+\subsection{Problem 4.2: Linear sigma model}
+\subsubsection{(d)}
+ポテンシャルは
+\[ V = -\frac{1}{2} \mu^2 \boldsymbol\Phi \cdot \boldsymbol\Phi + \frac{\lambda}{4} (\boldsymbol\Phi \cdot \boldsymbol\Phi)^2 - a \Phi^N  \]
+で与えられる．$V$が$\Phi^i = 0$で極小となる$v$を求める．
+\[ \frac{\partial V}{\partial \Phi^i} = (-\mu^2 + \lambda \boldsymbol\Phi \cdot \boldsymbol\Phi) \Phi^i - a \delta^{iN} \]
+に$\Phi^i = 0 ~ (1 \leq i \leq N-1)$, $\Phi^N = v$を代入して，
+\[ (-\mu^2 + \lambda v^2) v \delta^{iN} - a \delta^{iN} = 0 .\]
+$a$は十分小さいので，
+\[ v = \frac{\mu}{\sqrt{\lambda}} + \frac{a}{2\mu^2} \]
+であり，
+\[ \Phi^N = \frac{\mu}{\sqrt{\lambda}} + \sigma + \frac{a}{2\mu^2} . \]
+
+$V$の表式は
+\begin{align*}
+  V &= -\frac{1}{2} \mu^2 \boldsymbol\Phi \cdot \boldsymbol\Phi + \frac{\lambda}{4} (\boldsymbol\Phi \cdot \boldsymbol\Phi)^2 - a \Phi^N \\
+  &= -\frac{\mu^2}{2} \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma + \frac{a}{2\mu^2} \right)^2 \right\}
+  + \frac{\lambda}{4} \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma + \frac{a}{2\mu^2} \right)^2 \right\}^2
+  - a \left( \frac{\mu}{\sqrt{\lambda}} + \sigma + \frac{a}{2\mu^2} \right) \\
+  &\simeq -\frac{\mu^2}{2} \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 + 2 \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)\frac{a}{2\mu^2} \right\} \\
+  & \quad + \frac{\lambda}{4} \left[ \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 \right\}^2
+  + 2 \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 \right\} 2 \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)\frac{a}{2\mu^2} \right] \\
+  & \quad - a \left( \frac{\mu}{\sqrt{\lambda}} + \sigma \right).
+\end{align*}
+$a$を含まない項を先に計算する（これは(b)で計算した）：
+\begin{align*}
+  V_0 &= -\frac{\mu^2}{2} \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 \right\}
+  + \frac{\lambda}{4} \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 \right\}^2 \\
+  &= -\frac{\mu^2}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) - \frac{\mu^2}{2} \left( \frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right)
+  + \frac{\lambda}{4} \left\{ (\boldsymbol\pi \cdot \boldsymbol\pi) + \left( \frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right) \right\}^2 \\
+  &= -\frac{\mu^2}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) - \frac{\mu^2}{2} \left( \frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right) \\
+  &\quad + \frac{\lambda}{4} \left\{ (\boldsymbol\pi \cdot \boldsymbol\pi) + 2 (\boldsymbol\pi \cdot \boldsymbol\pi) \left( \frac{\mu^2}{\lambda}
+  + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right) + \left( \frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right)^2 \right\} \\
+  &= -\frac{\mu^2}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) - \frac{\mu^4}{2\lambda} - \frac{\mu^3}{\sqrt{\lambda}}\sigma - \frac{\mu^2}{2}\sigma^2 \\
+  &\quad + \frac{\lambda}{4}(\boldsymbol\pi \cdot \boldsymbol\pi)^2 + \frac{\mu^2}{2}(\boldsymbol\pi \cdot \boldsymbol\pi) + \sqrt{\lambda}\mu (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma + \frac{\lambda}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma^2 \\
+  &\quad + \frac{\mu^4}{4\lambda} + \mu^2\sigma^2 + \frac{\lambda}{4}\sigma^4 + \frac{\mu^3}{\sqrt{\lambda}}\sigma + \frac{1}{2}\mu^2\sigma^2 + \sqrt{\lambda}\mu\sigma^3 \\
+  &= - \frac{\mu^4}{4\lambda} + \sqrt{\lambda}\mu\sigma^3 + \mu^2\sigma^2 + \frac{\lambda}{4}\sigma^4 + \frac{\lambda}{4}(\boldsymbol\pi \cdot \boldsymbol\pi)^2
+  + \sqrt{\lambda}\mu (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma + \frac{\lambda}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma^2 .
+\end{align*}
+次に，$a$を含む項を計算する：
+\begin{align*}
+  V_a &= -\mu^2 \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)\frac{a}{2\mu^2}
+  + \lambda \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 \right\} \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)\frac{a}{2\mu^2}
+  - a \left( \frac{\mu}{\sqrt{\lambda}} + \sigma \right) \\
+  &= a \left( \frac{\mu}{\sqrt{\lambda}} + \sigma \right) \left\{ -\frac{3}{2} + \frac{\lambda}{2\mu^2} \left( \boldsymbol\pi \cdot \boldsymbol\pi + \frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right) \right\} \\
+  &= a \left( \frac{\mu}{\sqrt{\lambda}} + \sigma \right) \frac{\lambda}{2\mu^2} \left( \boldsymbol\pi \cdot \boldsymbol\pi - 2\frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right).
+\end{align*}
+以上から
+\begin{align*}
+  V &= V_0 + V_a \\
+  &= \frac{1}{2}\left( 2\mu^2 + \frac{3a\sqrt{\lambda}}{\mu} \right) \sigma^2 + \frac{1}{2} \frac{a\sqrt{\lambda}}{\mu} (\boldsymbol\pi \cdot \boldsymbol\pi) \\
+  &\quad + \left( \sqrt{\lambda}\mu + \frac{a\lambda}{2\mu^2} \right) (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma + \left( \sqrt{\lambda}\mu
+  + \frac{a\lambda}{2\mu^2} \right) \sigma^3 + \frac{\lambda}{4} (\boldsymbol\pi \cdot \boldsymbol\pi)^2 + \frac{\lambda}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma^2 + \frac{\lambda}{4} \sigma^4 \\
+  &\quad + \text{const}.
+\end{align*}
+
+質量は
+\[ m_\sigma{}^2 = 2\mu^2 + \frac{3a\sqrt{\lambda}}{\mu} , \quad m_\pi{}^2 = \frac{a\sqrt{\lambda}}{\mu} . \]
+propagatorは
+\begin{align*}
+  \feynmandiagram[horizontal=a to b]{a -- [doublefermion] b};
+  &= \int \frac{d^4p}{(2\pi)^4} \frac{i}{p^2 - m_\sigma{}^2 + i\epsilon} e^{-ip(x-y)} , \\
+  \feynmandiagram[horizontal=a to b]{a -- [fermion] b};
+  &= \int \frac{d^4p}{(2\pi)^4} \frac{i}{p^2 - m_\pi{}^2 + i\epsilon} e^{-ip(x-y)} \delta^{ij}.
+\end{align*}
+vertex factorは
+\begin{align*}
+  \feynmandiagram[vertical=a to b, inline=(b.base)]{i1 [particle=$j$] -- b -- i2 [particle=$i$] , a -- [double] b};
+  &= -2i \left( \sqrt{\lambda}\mu + \frac{a\lambda}{2\mu^2} \right) \delta^{ij} \\
+  %
+  \feynmandiagram[vertical=a to b, inline=(b.base)]{i1 -- [double] b -- [double] i2 , a -- [double] b};
+  &= -6i \left( \sqrt{\lambda}\mu + \frac{a\lambda}{2\mu^2} \right) \\
+  %
+  \feynmandiagram[horizontal=i1 to f1, inline=(c.base)]{i1 [particle=$k$] -- c [dot] -- i2 [particle=$j$], f1 [particle=$l$] -- c -- f2 [particle=$i$]};
+  &= -2i\lambda \left( \delta^{ij}\delta^{kl} + \delta^{il}\delta^{jk} + \delta^{ik}\delta^{jl} \right) \\
+  %
+  \feynmandiagram[horizontal=i1 to f1, inline=(c.base)]{i1 -- [double] c [dot] -- i2 [particle=$j$], f1 -- [double] c -- f2 [particle=$i$]};
+  &= -2i\lambda \delta^{ij} \\
+  %
+  \feynmandiagram[horizontal=i1 to f1, inline=(c.base)]{i1 -- [double] c [dot] -- [double] i2, f1 -- [double] c -- [double] f2};
+  &= -6i\lambda
+\end{align*}
+で与えられる．
+
+$T$行列要素
+\[ T = \Braket{ p_3^k p_4^l | T \exp\left( - \int d^4x\, \mathcal{H}_\text{int} \right) | p_1^i p_2^j } \]
+を計算する．
+
+まず，$2$次の展開を考える：
+\[ \sum_{m, n} \Braket{ 0 | a_{\boldsymbol{p_3}}^k a_{\boldsymbol{p_4}}^l \frac{(-i)^2}{2!} (\sqrt{\lambda}\mu)^2 \int d^4x d^4y\,
+N\{ \pi^m(y) \pi^m(y) \sigma(y) \pi^n(x) \pi^n(x) \sigma(x) \} a_{\boldsymbol{p_1}}^{i\dagger} a_{\boldsymbol{p_2}}^{j\dagger} | 0 } . \]
+
+\begin{center}
+  \feynmandiagram [vertical=b to a] {
+  i1 [particle=$j$] -- [momentum'=$p_2$] a, i2 [particle=$i$] -- [momentum=$p_1$] a,
+  a [label=270:$x$] -- [double,  momentum'=$q$] b [label=90:$y$],
+  b -- [momentum=$p_3$] f1 [particle=$k$], b -- [momentum'=$p_4$] f2 [particle=$l$]
+  };
+\end{center}
+上図に対応する項は$4$通り存在し，$x$と$y$の交換を考慮に入れて，
+\begin{align*}
+  &\quad -4\lambda\mu^2 \int d^4x d^4y \, e^{i(p_3+p_4)y} \int \frac{d^4q}{(2\pi^4)} \frac{ie^{iq(y-x)}}{q^2 - m_\sigma{}^2} e^{-i(p_1+p_2)x} \delta^{ij}\delta^{kl} \\
+  &= -4\lambda\mu^2 \int \frac{d^4q}{(2\pi^4)} \frac{1}{q^2 - m_\sigma{}^2} \int d^4y \, e^{i(p_3+p_4-q)y} \int d^4x \, e^{-i(p_1+p_2-q)x} \delta^{ij}\delta^{kl} \\
+  &= -(2\pi)^4 4i\lambda\mu^2 \int \frac{d^4q}{q^2 - m_\sigma{}^2} \mathop{\delta^{(4)}}(p_3+p_4-q) \mathop{\delta^{(4)}}(p_1+p_2-q) \delta^{ij}\delta^{kl} \\
+  &= \frac{-4\lambda\mu^2}{(p_1+p_2)^2 - m_\sigma{}^2} \delta^{ij}\delta^{kl} i(2\pi)^4 \mathop{\delta^{(4)}}(p_1+p_2-p_3-p_4).
+\end{align*}
+
+\begin{center}
+  \feynmandiagram [horizontal=a to b] {
+  i1 [particle=$i$] -- [momentum'=$p_1$] a -- [momentum'=$p_3$] i2 [particle=$k$],
+  a -- [double,  momentum'=$q$] b,
+  f2 [particle=$l$] -- [reversed momentum'=$p_4$] b -- [reversed momentum'=$p_2$] f1 [particle=$j$]
+  };
+\end{center}
+この場合は
+\[ \frac{-4\lambda\mu^2}{(p_1-p_3)^2 - m_\sigma{}^2} \delta^{ik}\delta^{jl} i(2\pi)^4 \mathop{\delta^{(4)}}(p_1+p_2-p_3-p_4). \]
+
+\begin{center}
+  \begin{tikzpicture}[arrowlabel/.style={/tikzfeynman/momentum/.cd, arrow shorten=0.37, arrow distance=1.5mm}, arrowlabel/.default=0.4]
+    \begin{feynman}
+      \vertex (a);
+      \vertex [right=of a] (b);
+      \vertex [below left=of a] (i1) {$i$};
+      \vertex [above left=of a] (f1) {$k$};
+      \vertex [below right=of b] (i2) {$j$};
+      \vertex [above right=of b] (f2) {$l$};
+      \diagram* {
+      (i1) -- [momentum'=$p_1$] (a), (i2) -- [momentum=$p_2$] (b),
+      (a) -- [double, momentum'=$q$] (b),
+      (a) -- [momentum={[arrowlabel]}, edge label=$p_4$, near end] (f2), (b) -- [momentum'={[arrowlabel]}, edge label'=$p_3$, near end] (f1)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+この場合は
+\[ \frac{-4\lambda\mu^2}{(p_1-p_4)^2 - m_\sigma{}^2} \delta^{il}\delta^{jk} i(2\pi)^4 \mathop{\delta^{(4)}}(p_1+p_2-p_3-p_4). \]
+
+\begin{center}
+  \feynmandiagram[horizontal=i1 to f1, inline=(c.base)]{i1 [particle=$k$] -- [rmomentum'=$p_3$] c [dot] -- [rmomentum=$p_2$] i2 [particle=$j$],
+  f1 [particle=$l$] -- [rmomentum'=$p_4$] c -- [rmomentum=$p_1$] f2 [particle=$i$]};
+\end{center}
+この場合は
+\[ -2i\lambda \left( \delta^{ij}\delta^{kl} + \delta^{il}\delta^{jk} + \delta^{ik}\delta^{jl} \right) i(2\pi)^4 \mathop{\delta^{(4)}}(p_1+p_2-p_3-p_4). \]
+
+$\Delta V$によって$m_\sigma{}^2 \neq 2\mu^2$となったので，$p_i \to 0$の極限でも，これらの和は$0$とならない．
+
+\chapter{Elementary Processes of Quantum Electrodynamics}
+\setcounter{section}{1}
+\section{$e^+e^- \to \mu^+\mu^-$: Helicity Structure}
+\subsection{(5.28)}
+Dirac方程式の解は(A.19)で与えられる：
+\[
+u^s(p) =
+\begin{pmatrix}
+  \sqrt{p \cdot \sigma} \xi^s \\[5pt]
+  \sqrt{p \cdot \overline\sigma} \xi^s
+\end{pmatrix}
+, \quad
+v^s(p) =
+\begin{pmatrix}
+  \sqrt{p \cdot \sigma} \eta^s \\[5pt]
+  - \sqrt{p \cdot \overline\sigma} \eta^s
+\end{pmatrix}
+.
+\]
+高エネルギー極限では(A.20)のように，
+\[
+u^s(p) \approx \sqrt{2E}
+\begin{pmatrix}
+  \frac{1}{2} (1 - \hat{p} \cdot \boldsymbol\sigma) \xi^s \\[5pt]
+  \frac{1}{2} (1 + \hat{p} \cdot \boldsymbol\sigma) \xi^s
+\end{pmatrix}
+, \quad
+v^s(p) \approx \sqrt{2E}
+\begin{pmatrix}
+  \frac{1}{2} (1 - \hat{p} \cdot \boldsymbol\sigma) \eta^s \\[5pt]
+  - \frac{1}{2} (1 + \hat{p} \cdot \boldsymbol\sigma) \eta^s
+\end{pmatrix}
+.
+\]
+
+\begin{screen}
+  電子のspinorは\(\xi={}^\top(1, 0)\)が\(+z\) (\(\sigma^3\xi=+\xi\))．
+  陽電子のspinorは\(\eta={}^\top(0, 1)\)が\(+z\)（電子と逆）(p.\@ 61)
+\end{screen}
+\begin{screen}
+  2成分のspinor $\xi$が$(\hat{p} \cdot \boldsymbol\sigma) \xi = + \xi$を満たすときhelicityを右と定義する．
+  陽電子の場合はspinorと粒子のspinが逆なので，helicityも逆になる(p.\@ 142, 144)
+\end{screen}
+
+電子は$z$方向のspin上向きなので，spinorは$\xi = {}^\top(1, 0)$．
+$\hat{p} = (0, 0, 1)$の向きに進むので，helicityは右．
+$\hat{p}\cdot\boldsymbol\sigma = \sigma^3$なので，
+\[
+u \approx \sqrt{2E}
+\begin{pmatrix}
+  \frac{1}{2} (1 - \hat{p} \cdot \boldsymbol\sigma) \xi \\[5pt]
+  \frac{1}{2} (1 + \hat{p} \cdot \boldsymbol\sigma) \xi
+\end{pmatrix}
+\\
+= \sqrt{2E}
+\begin{pmatrix}
+  0 \\
+  0 \\
+  1 \\
+  0
+\end{pmatrix}
+.
+\]
+
+陽電子は$z$方向の粒子spinが上向きなので，spinorは$\eta = {}^\top(0, 1)$．
+$\hat{p} = (0, 0, -1)$の向きに進むので，粒子helicityは左．
+$\hat{p}\cdot\boldsymbol\sigma = - \sigma^3$なので，
+\[
+v \approx \sqrt{2E}
+\begin{pmatrix}
+  \frac{1}{2} (1 - \hat{p} \cdot \boldsymbol\sigma) \eta \\[5pt]
+  - \frac{1}{2} (1 + \hat{p} \cdot \boldsymbol\sigma) \eta
+\end{pmatrix}
+= \sqrt{2E}
+\begin{pmatrix}
+  0 \\
+  0 \\
+  0 \\
+  -1
+\end{pmatrix}
+.
+\]
+
+\setcounter{section}{4}
+\section{Compton Scattering}
+\subsection{(5.99)}
+入射電子は$-z$の向きに進み，helicityは右とする．
+$z$方向のspin下向きなので
+\[
+\hat{p} = (0, 0, -1) ,\quad \xi =
+\begin{pmatrix}
+  0 \\
+  1
+\end{pmatrix}
+,\quad
+u(p) =
+\sqrt{2E}
+\begin{pmatrix}
+  0 \\
+  0 \\
+  0 \\
+  1
+\end{pmatrix}
+.
+\]
+(5.97)が非零となるのは散乱電子$u^\dagger(p')$の第3, 4成分が非零，すなわちhelicityが右の場合．
+さらに，電子は$+z$側に散乱される(Figure 5.6)ので，$\xi^\dagger = (1, 0)$である．

@@ -1,0 +1,442 @@
+\renewcommand\theequation{\arabic{chapter}.\arabic{section}.\arabic{equation}}
+\setcounter{chapter}{8}
+\chapter{Functional Methods}
+\setcounter{section}{4}
+\section{Functional Quantization of Spinor Fields}
+\subsection{Functional determinant}
+$i\slashed{D}-m$の固有値と固有ベクトルを
+\[ (i\slashed{D}-m)\psi_i = b_i \psi_i \]
+とする．(9.76)をWick回転して
+\begin{align*}
+  \int\mathcal{D}\bar\psi \, \mathcal{D}\psi \exp \left[ - \int d^4x \, \bar\psi (i\slashed{D}-m)\psi \right]
+  &= \int\mathcal{D}\bar\psi \, \mathcal{D}\psi \exp \left[ - \sum_i \int d^4x \, \bar\psi_i b_i \psi_i \right] \\
+  &= \prod_i \int\mathcal{D}\bar\psi_i \, \mathcal{D}\psi_i \exp \left[ - \int d^4x \, \bar\psi_i b_i \psi_i \right] \\
+  &= \prod_i \prod_x \int d\bar\psi_i(x) \, d\psi_i(x) \exp \left[ - \bar\psi_i(x) b_i(x) \psi_i(x) \right] \\
+  &= \prod_i \prod_x b_i(x) .
+\end{align*}
+最後に(9.67)を使った．これは$i\slashed{D}-m$の固有値の積なので，$\det(i\slashed{D}-m)$と表せる．
+
+\section*{Problems}\addcontentsline{toc}{section}{Problems}
+\subsection{Problem 9.1: Scalar QED}
+伝播函数を計算しておく．スカラー粒子は
+\begin{align*}
+  (-\partial^2 - m^2 + i\epsilon) D_F(x-y) &= (-\partial^2 - m^2 + i\epsilon) \int \frac{d^4p}{(2\pi)^4}
+  \frac{i}{p^2 - m^2 + i\epsilon} e^{-ip(x-y)} \\
+  &= i \int \frac{d^4p}{(2\pi)^4} e^{-ip(x-y)} \\
+  &= i \mathop{\delta^{(4)}} (x-y) .
+\end{align*}
+光子は(9.58)から
+% \footnote{(9.52)はLandauゲージの式なので成立しない}
+\begin{align*}
+  (\partial^2 g_{\mu\nu} - i\epsilon g_{\mu\nu})_x D_F^{\nu\rho}(x-y)
+  &= (\partial^2 g_{\mu\nu} - i\epsilon g_{\mu\nu})_x \int \frac{d^4k}{(2\pi)^4} \frac{-i}{k^2 + i\epsilon} g^{\nu\rho} e^{-ik(x-y)} \\
+  &= i \delta_\mu{}^\rho \mathop{\delta^{(4)}} (x-y) .
+\end{align*}
+
+相互作用を含むラグランジアンは
+\begin{align*}
+  \mathcal{L} &= - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + (D_\mu \phi)^\ast (D^\mu \phi) - m^2 \phi^\ast \phi \\
+  &= - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + (\partial_\mu \phi^\ast - ieA_\mu \phi^\ast) (\partial_\mu \phi + ieA_\mu \phi) - m^2 \phi^\ast \phi \\
+  &= - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + (\partial_\mu \phi^\ast) (\partial_\mu \phi) + ieA^\mu (\phi \partial_\mu \phi^\ast - \phi^\ast \partial_\mu \phi) - m^2 \phi^\ast \phi + e^2A^2 \lvert \phi \rvert^2 \\
+  &= - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \phi^\ast (\partial^2 + m^2) \phi + ieA^\mu (\phi \partial_\mu \phi^\ast - \phi^\ast \partial_\mu \phi) + e^2A^2 \lvert \phi \rvert^2
+\end{align*}
+（最後は部分積分を行い，表面項を無視した）．
+このうち，自由場は
+\[ \mathcal{L}_0 =  - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \phi^\ast (\partial^2 + m^2) \phi . \]
+自由場の生成函数を次のように定義する：
+\begin{align*}
+  Z_\text{free}[J_\text{em}, J_s, J_s^\ast] &= \int \mathcal{D} A \int \mathcal{D} \phi \int \mathcal{D} \phi^\ast
+  \exp \left[ i \int d^4x \left( \mathcal{L}_0 + A_\mu J_\text{em}^\mu - J_s^\ast \phi + \phi^\ast J_s \right) \right] \\
+  &= \int \mathcal{D} \phi \int \mathcal{D} \phi^\ast \exp \left[ i \int d^4x \left( \phi^\ast (-\partial^2 - m^2 + i\epsilon) \phi - J_s^\ast \phi + \phi^\ast J_s \right) \right] \\
+  & \quad \times \int \mathcal{D} A \exp \left[ i \int d^4x \left( - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + A_\mu J_\text{em}^\mu \right) \right] .
+\end{align*}
+第1項を計算する（$x$についての積分は省略）．(9.36)以降の計算と同様に
+\[ \phi(x) = \phi'(x) + i \int d^4 y \, D_F(x-y) J_s(y) \]
+とおけば，
+\begin{align*}
+  & \phi^\ast(x) (-\partial^2 - m^2 + i\epsilon) \phi(x) - J_sx(x)^\ast \phi(x) + \phi^\ast(x) J_s(x) \\
+  &= \left[ \phi^{\prime\ast}(x) - i \int d^4 y \, D_F(x-y) J_s^\ast(y) \right]
+  (-\partial^2 - m^2 + i\epsilon)_x \left[ \phi'(x) + i \int d^4 y \, D_F(x-y) J_s(y) \right] \\
+  & \quad - J_s^\ast (x) \left[ \phi'(x) + i \int d^4 y \, D_F(x-y) J_s(y) \right]
+  + J_s (x) \left[ \phi^{\prime\ast}(x) - i \int d^4 y \, D_F(x-y) J_s^\ast(y) \right] \\
+  %
+  &= \phi^{\prime\ast}(x) (-\partial^2 - m^2 + i\epsilon) \phi'(x)
+  - i \int d^4 y \, D_F(x-y) J_s^\ast(y) (-\partial^2 - m^2 + i\epsilon) \phi'(x) \\
+  & \quad - \left[ \phi^{\prime\ast}(x) - i \int d^4 y \, D_F(x-y) J_s^\ast(y) \right] \int d^4 y \mathop{\delta^{(4)}}(x-y) J_s(y) \\
+  & \quad - J_s^\ast(x) \phi'(x) + J_s(x) \phi^{\prime\ast}(x) - 2 i \int d^4 y \, J_s^\ast(x) D_F(x-y) J_s(y) \\
+  %
+  &= \phi^{\prime\ast}(x) (-\partial^2 - m^2 + i\epsilon) \phi'(x)
+  - i \int d^4 y \, \left[ (-\partial^2 - m^2 + i\epsilon)_x D_F(x-y) \right] J_s^\ast(y) \phi'(x) \\
+  & \quad - \left[ \phi^{\prime\ast}(x) - i \int d^4 y \, D_F(x-y) J_s^\ast(y) \right] J_s(x) \\
+  & \quad - J_s^\ast(x) \phi'(x) + J_s(x) \phi^{\prime\ast}(x) - 2 i \int d^4 y \, J_s^\ast(x) D_F(x-y) J_s(y) \\
+  %
+  &= \phi^{\prime\ast}(x) (-\partial^2 - m^2 + i\epsilon) \phi'(x)
+  + \int d^4 y \mathop{\delta^{(4)}}(x-y) J_s^\ast(y) \phi'(x) \\
+  & \quad - \left[ \phi^{\prime\ast}(x) - i \int d^4 y \, D_F(x-y) J_s^\ast(y) \right] J_s(x) \\
+  & \quad - J_s^\ast(x) \phi'(x) + J_s(x) \phi^{\prime\ast}(x) - 2 i \int d^4 y \, J_s^\ast(x) D_F(x-y) J_s(y) \\
+  %
+  &= \phi^{\prime\ast}(x) (-\partial^2 - m^2 + i\epsilon) \phi'(x) - i \int d^4 y \, J_s^\ast(x) D_F(x-y) J_s(y) .
+\end{align*}
+第2項を計算する（$x$についての積分は省略）．
+\[ A_\mu(x) = A_\mu'(x) + i \int d^4y \, D_{\mu\nu}^F (x-y) J_\text{em}^\nu (y) \]
+とおけば，
+\begin{align*}
+  & - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} + A_\mu J_\text{em}^\mu \\
+  &= \frac{1}{2} A_\mu(x) (\partial^2 g^{\mu\nu} - i\epsilon g^{\mu\nu}) A_\nu(x) + A_\mu(x) J_\text{em}^\mu(x) \\
+  %
+  &= \frac{1}{2} \left[ A_\mu'(x) + i \int d^4y \, D_{\mu\sigma}^F (x-y) J_\text{em}^\sigma (y) \right]
+  (\partial^2 g^{\mu\nu} - i\epsilon g^{\mu\nu})_x \left[ A_\nu'(x) + i \int d^4y \, D_{\nu\rho}^F (x-y) J_\text{em}^\rho (y) \right] \\
+  & \quad + \left[ A_\mu'(x) + i \int d^4y \, D_{\mu\nu}^F (x-y) J_\text{em}^\nu (y) \right] J_\text{em}^\mu(x) \\
+  %
+  &= \frac{1}{2} A_\mu'(x) (\partial^2 g^{\mu\nu} - i\epsilon g^{\mu\nu})  A_\nu'(x)
+  + \frac{i}{2} \int d^4y \, D_{\mu\sigma}^F (x-y) J_\text{em}^\sigma (y) (\partial^2 g^{\mu\nu} - i\epsilon g^{\mu\nu}) A_\nu'(x) \\
+  & \quad - \frac{1}{2} \left[ A_\mu'(x) + i \int d^4y \, D_{\mu\sigma}^F (x-y) J_\text{em}^\sigma (y) \right] J_\text{em}^\mu (x) \\
+  & \quad + \left[ A_\mu'(x) + i \int d^4y \, D_{\mu\nu}^F (x-y) J_\text{em}^\nu (y) \right] J_\text{em}^\mu(x) \\
+  %
+  &= \frac{1}{2} A_\mu'(x) (\partial^2 g^{\mu\nu} - i\epsilon g^{\mu\nu})  A_\nu'(x)
+  + \frac{i}{2} \int d^4y \, (\partial^2 g^{\mu\nu} - i\epsilon g^{\mu\nu})_x D_{\mu\sigma}^F (x-y) J_\text{em}^\sigma (y) A_\nu'(x) \\
+  & \quad - \frac{1}{2} \left[ A_\mu'(x) + i \int d^4y \, D_{\mu\sigma}^F (x-y) J_\text{em}^\sigma (y) \right] J_\text{em}^\mu (x) \\
+  & \quad + \left[ A_\mu'(x) + i \int d^4y \, D_{\mu\nu}^F (x-y) J_\text{em}^\nu (y) \right] J_\text{em}^\mu(x) \\
+  %
+  &= \frac{1}{2} A_\mu'(x) (\partial^2 g^{\mu\nu} - i\epsilon g^{\mu\nu})  A_\nu'(x)
+  - \frac{1}{2} \int d^4y \, \delta^\nu{}_\sigma \mathop{\delta^{(4)}}(x-y) J_\text{em}^\sigma (y) A_\nu'(x) \\
+  & \quad - \frac{1}{2} \left[ A_\mu'(x) + i \int d^4y \, D_{\mu\sigma}^F (x-y) J_\text{em}^\sigma (y) \right] J_\text{em}^\mu (x) \\
+  & \quad + \left[ A_\mu'(x) + i \int d^4y \, D_{\mu\nu}^F (x-y) J_\text{em}^\nu (y) \right] J_\text{em}^\mu(x) \\
+  %
+  &= \frac{1}{2} A_\mu'(x) (\partial^2 g^{\mu\nu} - i\epsilon g^{\mu\nu})  A_\nu'(x)
+  - \frac{1}{2}  J_\text{em}^\nu (x) A_\nu'(x) \\
+  & \quad - \frac{1}{2} \left[ A_\mu'(x) + i \int d^4y \, D_{\mu\sigma}^F (x-y) J_\text{em}^\sigma (y) \right] J_\text{em}^\mu (x) \\
+  & \quad + \left[ A_\mu'(x) + i \int d^4y \, D_{\mu\nu}^F (x-y) J_\text{em}^\nu (y) \right] J_\text{em}^\mu(x) \\
+  %
+  &= \frac{1}{2} A_\mu'(x) (\partial^2 g^{\mu\nu} - i\epsilon g^{\mu\nu})  A_\nu'(x) + \frac{i}{2} \int d^4y \, J_\text{em}^\mu(x) D_{\mu\nu}^F (x-y) J_\text{em}^\nu (y) .
+\end{align*}
+以上から，
+\begin{align*}
+  & Z_\text{free}[J_\text{em}, J_s, J_s^\ast] \\
+  &= Z_\text{free}[0, 0, 0] \exp \left[ \int d^4x \int d^4 y \left( J_s^\ast(x) D_F(x-y) J_s(y) - \frac{1}{2} J_\text{em}^\mu(x) D_{\mu\nu}^F (x-y) J_\text{em}^\nu (y) \right) \right]
+\end{align*}
+を得る．
+
+相互作用項
+\[ \mathcal{L}_\text{int} = ieA^\mu (\phi \partial_\mu \phi^\ast - \phi^\ast \partial_\mu \phi) + e^2A^2 \lvert \phi \rvert^2 \]
+を含めた生成函数は
+\begin{align*}
+  Z[J_\text{em}, J_s, J_s^\ast] &= Z_\text{free}[J_\text{em}, J_s, J_s^\ast] \int \mathcal{D} A \int \mathcal{D} \phi \int \mathcal{D} \phi^\ast \exp \left[ i \int d^4x \, \mathcal{L}_\text{int} \right] \\
+  %
+  &= Z_\text{free}[J_\text{em}, J_s, J_s^\ast] \int \mathcal{D} A \int \mathcal{D} \phi \int \mathcal{D} \phi^\ast
+  \exp \left[ i \int d^4x \, e^2A^2 \lvert \phi \rvert^2 \right] \\
+  & \quad \times \exp \left[ i \int d^4x \, ieA^\mu (\phi \partial_\mu \phi^\ast - \phi^\ast \partial_\mu \phi) \right] \\
+  %
+  &\approx Z_\text{free}[J_\text{em}, J_s, J_s^\ast] \int \mathcal{D} A \int \mathcal{D} \phi \int \mathcal{D} \phi^\ast
+  \left[ 1 + i e^2 \int d^4x \, A(x)^2 \lvert \phi(x) \rvert^2 \right] \\
+  & \quad \times \left[1 - e \int d^4x \, A^\mu(x) \left\{ \phi(x) \partial_\mu \phi^\ast(x) - \phi^\ast(x) \partial_\mu \phi(x) \right\} \right]
+\end{align*}
+となる．
+
+(9.35)と同様に汎函数微分をすれば伝播函数が求まる．
+例えば，
+\[
+\bra{0} T \phi(x_1) \phi^\ast(x_2) \ket{0} =
+\frac{1}{Z_\text{free}[0, 0, 0]} \left( + i\frac{\delta}{\delta J_s^\ast(x_2)} \right)
+\left( - i\frac{\delta}{\delta J_s(x_1)} \right) Z_\text{free}[J_\text{em}, J_s, J_s^\ast] \Bigl{|}_{J=0} .
+\]
+
+\chapter{Systematics of Renormalization}
+\setcounter{section}{2}
+\section{Renormalization of Quantum Electrodynamics}
+\subsection{(10.42)}
+(10.39)で定義したように，
+\begin{align*}
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[draw, circle] (o) at (0, 0) {1PI};
+      \vertex (a) at (1.5, 0);
+      \vertex (b) at (-1.5, 0);
+      \diagram*{
+      (a) -- [fermion] (o) -- [fermion] (b)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  &=
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (a) at (1.5, 0);
+      \vertex (b) at (0.5, 0);
+      \vertex (c) at (-0.5, 0);
+      \vertex (d) at (-1.5, 0);
+      \diagram*{
+      (a) -- (b) -- (c) -- [fermion] (d),
+      (b) -- [photon, half right, looseness=1.5] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[crossed dot] (o) at (0, 0) {};
+      \vertex (a) at (1.5, 0);
+      \vertex (b) at (-1.5, 0);
+      \diagram*{
+      (a) -- (o) -- [fermion] (b)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  \\
+  - i \Sigma (\slashed{p}) &= -i \Sigma_2(\slashed{p}) + i (\slashed{p}\delta_2 - \delta_m) .
+\end{align*}
+
+\subsection{(10.43)}
+(10.39)で定義したように，
+\begin{align*}
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[draw, circle] (o) at (0, 0) {1PI};
+      \vertex (a) at (1.5, 0);
+      \vertex (b) at (-1.5, 0);
+      \diagram*{
+      (a) -- [photon] (o) -- [photon] (b)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  &=
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (a) at (1.5, 0);
+      \vertex (b) at (0.5, 0);
+      \vertex (c) at (-0.5, 0);
+      \vertex (d) at (-1.5, 0);
+      \diagram*{
+      (a) -- [photon] (b),
+      (c) -- [photon] (d),
+      (b) -- [fermion, half right, looseness=1.5] (c),
+      (c) -- [fermion, half right, looseness=1.5] (b)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[crossed dot] (o) at (0, 0) {};
+      \vertex (a) at (1.5, 0);
+      \vertex (b) at (-1.5, 0);
+      \diagram*{
+      (a) -- [photon] (o) -- [photon] (b)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  \\
+  i \Pi &= i \Pi_2 - i \delta_3 .
+\end{align*}
+
+\subsection{(10.45)}
+計算すべき函数は(6.38)に光子質量を導入し，次元正則化したもの：
+\[
+\overline{u}(p') \delta\Gamma^\mu(p', p) u(p) = - ie^2 \int \frac{d^dk}{(2\pi)^d}
+\frac{\overline{u}(p') \gamma^\nu (\slashed{k}' + m) \gamma^\mu (\slashed{k} + m) \gamma_\nu u(p)}
+{[(k-p)^2 - \mu^2 + i\epsilon](k'^2 - m^2 + i\epsilon)(k^2 - m^2 + i\epsilon)} .
+\]
+(6.43)と同様に分母を計算すれば
+\[ \ell = k + yq -zp , \quad \Delta = (1-z)^2 m^2 + z \mu^2 -xyq^2 \]
+として
+\[ \frac{1}{[(k-p)^2 - \mu^2 + i\epsilon](k'^2 - m^2 + i\epsilon)(k^2 - m^2 + i\epsilon)} = \int_0^1 dx\,dy\,dz \mathop\delta(x+y+z-1) \frac{2}{(\ell^2 - \Delta)^3} . \]
+分母を計算する．(A.55)を使えば
+\begin{align}
+  \begin{split}
+    & \gamma^\nu (\slashed{k}' + m) \gamma^\mu (\slashed{k} + m) \gamma_\nu \\
+    &= \gamma^\nu \slashed{k}' \gamma^\mu \slashed{k} \gamma_\nu
+    + m \gamma^\nu \slashed{k}' \gamma^\mu \gamma_\nu
+    + m \gamma^\nu \gamma^\mu \slashed{k} \gamma_\nu
+    + m^2 \gamma^\nu \gamma^\mu \gamma_\nu \\
+    &= -2 \slashed{k} \gamma^\mu \slashed{k}' + (4-d) \slashed{k}' \gamma^\mu \slashed{k}
+    - (d-2) m^2 \gamma^\mu + m [ 4(k+k')^\mu - (4-d) (\slashed{k}'\gamma^\mu + \gamma^\mu\slashed{k}) ] .
+  \end{split}
+  \label{10_45_eq_1}
+\end{align}
+簡単のため，
+\[ k = \ell + a , \quad  k' = \ell + b , \quad a = -yq + zp , \quad b = (1-y)q + zp \]
+とおく．
+$\ell^1$の項は積分すれば$0$なので無視し，\eqref{p_192_Dirac_eq}を使えば，
+% Dirac方程式から$\slashed{p} u = m u$, $\overline{u} \slashed{p}' =\overline{u} m$．
+% さらに，$\overline{u} \slashed{q} u = \overline{u} (\slashed{p}' - \slashed{p}) u = 0$．
+\[
+\slashed{q} \gamma^\mu \slashed{q} = \slashed{q} (\gamma^\mu\gamma^\nu) q_\nu
+= \slashed{q} (2g^{\mu\nu} - \gamma^\nu\gamma^\mu) q_\nu = 2q^\mu \slashed{q} - \slashed{q} \slashed{q} \gamma^\mu = - q^2 \gamma^\mu .
+\]
+これらを使えば，
+\begin{align*}
+  \slashed{k} \gamma^\mu \slashed{k}' &= (\slashed\ell + \slashed{a}) \gamma^\mu (\slashed\ell + \slashed{b}) \\
+  &= \slashed\ell \gamma^\mu \slashed\ell + \slashed{a} \gamma^\mu \slashed{b} \\
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + (-y\slashed{q} + z\slashed{p}) \gamma^\mu [(1-y)\slashed{q} + z\slashed{p}] \\
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + [-y\slashed{q} + z(\slashed{p}' - \slashed{q})] \gamma^\mu [(1-y)\slashed{q} + zm] \\
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + [-(y+z)\slashed{q} + z\slashed{p}'] \gamma^\mu [(1-y)\slashed{q} + zm] \\
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + [-(1-x)\slashed{q} + zm] \gamma^\mu [(1-y)\slashed{q} + zm] \\
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu - (1-x)(1-y) \slashed{q} \gamma^\mu \slashed{q}
+  - (1-x)z m \slashed{q} \gamma^\mu + (1-y)z m \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + (1-x)(1-y) q^2 \gamma^\mu
+  - (1-x)z m \slashed{q} \gamma^\mu + (1-y)z m \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + (1-x)(1-y) q^2 \gamma^\mu
+  - (1-x)z m (2q^\mu - \gamma^\mu \slashed{q}) + (1-y)z m \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + (1-x)(1-y) q^2 \gamma^\mu
+  - 2 (1-x)z m q^\mu + (2-x-y)z m \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + (1-x)(1-y) q^2 \gamma^\mu
+  - 2 (1-x)z m q^\mu + (1+z)z m \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu
+\end{align*}
+および
+\begin{align*}
+  \slashed{k}' \gamma^\mu \slashed{k} &= (\slashed\ell + \slashed{b}) \gamma^\mu (\slashed\ell + \slashed{a}) \\
+  &= \slashed\ell \gamma^\mu \slashed\ell + \slashed{b} \gamma^\mu \slashed{a} \\
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + [(1-y)\slashed{q} + z\slashed{p}] \gamma^\mu (-y\slashed{q} + z\slashed{p}) \\
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + [(1-y)\slashed{q} + z(\slashed{p}' - \slashed{q})] \gamma^\mu (-y\slashed{q} + zm) \\
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + [(1-y-z)\slashed{q} + z\slashed{p}'] \gamma^\mu (-y\slashed{q} + zm) \\
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + [x\slashed{q} + zm] \gamma^\mu (-y\slashed{q} + zm) \\
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu - xy \slashed{q} \gamma^\mu \slashed{q}
+  + xzm \slashed{q} \gamma^\mu - yzm \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + xy q^2 \gamma^\mu
+  + xzm \slashed{q} \gamma^\mu - yzm \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + xy q^2 \gamma^\mu
+  + xzm (2q^\mu - \gamma^\mu \slashed{q}) - yzm \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + xy q^2 \gamma^\mu
+  + 2xzm q^\mu - (x+y)zm \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= \frac{2-d}{d} \ell^2 \gamma^\mu + xy q^2 \gamma^\mu
+  + 2xzm q^\mu - (1-z)zm \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu
+\end{align*}
+が得られる．したがって，\eqref{10_45_eq_1}の第1, 2項は
+\begin{align}
+  \begin{split}
+    & -2 \slashed{k} \gamma^\mu \slashed{k}' + (4-d) \slashed{k}' \gamma^\mu \slashed{k} \\
+    &= -2 \left[ \frac{2-d}{d} \ell^2 \gamma^\mu + (1-x)(1-y) q^2 \gamma^\mu
+    - 2 (1-x)z m q^\mu + (1+z)z m \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \right] \\
+    & \quad + (4-d) \left[ \frac{2-d}{d} \ell^2 \gamma^\mu + xy q^2 \gamma^\mu
+    + 2xzm q^\mu - (1-z)zm \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \right] \\
+    %
+    &= \frac{(2-d)^2}{d} \ell^2 \gamma^\mu - 2 (1-x)(1-y) q^2 \gamma^\mu
+    + (4-d) xy q^2 \gamma^\mu \\
+    & \quad - \left[ 2(1+z) + (4-d)(1-z) \right] zm \gamma^\mu \slashed{q}
+    + \left[ 4(1-x) + 2(4-d)x \right] zm q^\mu + (2-d) z^2m^2\gamma^\mu \\
+    %
+    &= \frac{(2-d)^2}{d} \ell^2 \gamma^\mu - 2 (1-x)(1-y) q^2 \gamma^\mu
+    + (4-d) xy q^2 \gamma^\mu \\
+    & \quad - \left[ 2(1+z) + (4-d)(1-z) \right] zm (2p'^\mu  - 2m\gamma^\mu)
+    + \left[ 4(1-x) + 2(4-d)x \right] zm (p'^\mu - p^\mu) \\
+    & \quad + (2-d) z^2m^2\gamma^\mu . \\
+  \end{split}
+  \label{10_45_eq_1_term1_2}
+\end{align}
+\eqref{10_45_eq_1}の第4項は
+\begin{align}
+  \begin{split}
+    4m (k^\mu + k'^\mu) &= 4m \left[ (1-2y)q^\mu + 2zp^\mu \right] \\
+    &= 4m \left[ (1-2y)(p'^\mu - p^\mu) + 2zp^\mu \right] \\
+    &= 4m \left[ (1-2y) p'^\mu + (-1 + 2y + 2z) p^\mu \right] \\
+    &= 4m \left[ (1-2y) p'^\mu + (1 - 2x) p^\mu \right] .
+  \end{split}
+  \label{10_45_eq_1_term4}
+\end{align}
+\eqref{10_45_eq_1}の第5項は，\eqref{prob6_3_eq1}から
+\begin{align}
+  \begin{split}
+    - (4-d) m (\slashed{k}' \gamma^\mu + \gamma^\mu \slashed{k})
+    &= - (4-d) m (2k^\mu + 2m \gamma^\mu - 2p^\mu) \\
+    &= - (4-d) m (-2yq^\mu + 2zp^\mu + 2m\gamma^\mu - 2p^\mu) \\
+    &= - (4-d) m [ -2y(p'^\mu - p^\mu) + 2zp^\mu + 2m\gamma^\mu - 2p^\mu ] \\
+    &= - (4-d) m [ -2yp'^\mu + 2(y+z-1) p^\mu + 2m\gamma^\mu ] \\
+    &= - (4-d) m [ -2yp'^\mu - 2x p^\mu + 2m\gamma^\mu ] .
+  \end{split}
+  \label{10_45_eq_1_term5}
+\end{align}
+\eqref{10_45_eq_1_term1_2}\eqref{10_45_eq_1_term4}\eqref{10_45_eq_1_term5}から\eqref{10_45_eq_1}は
+  \begin{align*}
+  & -2 \slashed{k} \gamma^\mu \slashed{k}' + (4-d) \slashed{k}' \gamma^\mu \slashed{k}
+  - (d-2) m^2 \gamma^\mu + m [ 4(k+k')^\mu - (4-d) (\slashed{k}'\gamma^\mu + \gamma^\mu\slashed{k}) ] \\
+  %
+  &= \frac{(2-d)^2}{d} \ell^2 \gamma^\mu - 2 (1-x)(1-y) q^2 \gamma^\mu
+  + (4-d) xy q^2 \gamma^\mu \\
+  & \quad - \left[ 2(1+z) + (4-d)(1-z) \right] zm (2p'^\mu  - 2m\gamma^\mu)
+  + \left[ 4(1-x) + 2(4-d)x \right] zm (p'^\mu - p^\mu) \\
+  & \quad + (2-d) z^2m^2\gamma^\mu - (d-2) m^2 \gamma^\mu \\
+  & \quad + 4m \left[ (1-2y) p'^\mu + (1 - 2x) p^\mu \right] - (4-d) m [ -2yp'^\mu - 2x p^\mu + 2m\gamma^\mu ]
+\end{align*}
+となり，$p$, $p'$を含まない項と含む項に分ければ
+\begin{align}
+  \begin{split}
+    &= \frac{(2-d)^2}{d} \ell^2 \gamma^\mu - 2 (1-x)(1-y) q^2 \gamma^\mu
+    + (4-d) xy q^2 \gamma^\mu \\
+    & \quad + 2 \left[ 2(1+z) + (4-d)(1-z) \right] zm^2 \gamma^\mu + (2-d) z^2m^2\gamma^\mu - (d-2) m^2 \gamma^\mu - 2 (4-d) m^2 \gamma^\mu \\
+    & \quad - 2 \left[ 2(1+z) + (4-d)(1-z) \right] zm p'^\mu + \left[ 4(1-x) + 2(4-d)x \right] zm (p'^\mu - p^\mu) \\
+    & \quad + 4m \left[ (1-2y) p'^\mu + (1 - 2x) p^\mu \right] + 2 (4-d) m [yp'^\mu + xp^\mu] .
+  \end{split}
+  \label{10_45_eq_5}
+\end{align}
+$p$, $p'$を含まない項のうち，$m$を含む項は$m^2 \gamma^\mu \times$
+\begin{align*}
+  & 2 \left[ 2(1+z) + (4-d)(1-z) \right] z + (2-d) z^2 - (d-2) - 2 (4-d)  \\
+  & = 4(1+z) z + 2(4-d)(1-z) z + (4-d) z^2 - 2 z^2  + (4-d) - 2  - 2 (4-d)  \\
+  &= 2(z^2 + 2z - 1) - (4-d)(z-1)^2 .
+\end{align*}
+$p$を含む項は$mp^\mu \times $
+\begin{align*}
+  -4(1-x)z - 2(4-d)xz + 4(1-2x) + 2(4-d)x &= 4[1 - 2x - z + xz] + 2(4-d) x (1-z) \\
+  &= 4 [ 1 - 2y - z + yz ] + 2 (4-d) y (1-z) .
+\end{align*}
+$p'$を含む項は$mp'^\mu \times $
+\begin{align*}
+  &  -4(1+z)z - 2(4-d)(1-z)z + 4(1-x)z + 2 (4-d) xz + 4(1-2y) + 2(4-d)y  \\
+  &= 4 [ 1 - 2y - xz - z^2 ] + 2 (4-d) [ xz + y -z + z^2 ] \\
+  &= 4 [ 1 - 2y - xz - z(1-x-y) ] + 2 (4-d) [ xz + y -z + z(1-x-y) ] \\
+  &= 4 [ 1 - 2y - z + yz ] + 2 (4-d) y (1-z) .
+\end{align*}
+さらに，
+\begin{align*}
+  \int_0^1 dz \int_0^{1-z} dy \, (1 - 2y - z + yz) &= \int_0^1 dz \, \left[ (1-z) - (1-z)^2 - (1-z)z + \frac{1}{2} (1-z)^2 z \right] \\
+  &= \int_0^1 dz \int_0^{1-z} dy \, \frac{1}{2} z(1-z)
+\end{align*}
+及び
+\[
+\int_0^1 dz \int_0^{1-z} dy \, y (1-z) = \int_0^1 dz \, \frac{1}{2} (1-z)^3 = \int_0^1 dz \int_0^{1-z} dy \, \frac{1}{2} (1-z)^2
+\]
+なので，$p$, $p'$を含む項は
+\[ \left[ 4 ( 1 - 2y - z +yz ) + 2 (4-d) y (1-z) \right] m(p^\mu + p'^\mu) = \left[ 2 z(1-z) + (4-d) (1-z)^2 \right] m(p^\mu + p'^\mu) . \]
+
+以上から，
+\begin{align*}
+  \eqref{10_45_eq_5} &= \frac{(2-d)^2}{d} \ell^2 \gamma^\mu - 2 (1-x)(1-y) q^2 \gamma^\mu + (4-d) xy q^2 \gamma^\mu \\
+  & \quad + \left[ 2(z^2 + 2z - 1) - (4-d)(z-1)^2 \right] m^2 \gamma^\mu \\
+  & \quad + \left[ 2 z(1-z) + (4-d) (1-z)^2 \right] m(p^\mu + p'^\mu) \\
+  %
+  &= \frac{(2-d)^2}{d} \ell^2 \gamma^\mu - 2 (1-x)(1-y) q^2 \gamma^\mu + (4-d) xy q^2 \gamma^\mu \\
+  & \quad + \left[ 2(z^2 + 2z - 1) - (4-d)(z-1)^2 \right] m^2 \gamma^\mu \\
+  & \quad + \left[ 2 z(1-z) + (4-d) (1-z)^2 \right] m (2m\gamma^\mu - i \sigma^{\mu\nu}q_\nu) \\
+  %
+  &= \frac{(2-d)^2}{d} \ell^2 \gamma^\mu - 2 (1-x)(1-y) q^2 \gamma^\mu + (4-d) xy q^2 \gamma^\mu \\
+  & \quad + \left[ 2(- z^2 + 4z - 1) + (4-d)(z-1)^2 \right] m^2 \gamma^\mu \\
+  & \quad - \left[ 2 z(1-z) + (4-d) (1-z)^2 \right] im \sigma^{\mu\nu}q_\nu \\
+  %
+  &= \frac{(2-d)^2}{d} \ell^2 \gamma^\mu \\
+  & \quad - \left( q^2 [2(1-x)(1-y) - \epsilon xy] + m^2 [2(1-4z+z^2) - \epsilon(1-z)^2] \right) \gamma^\mu \\
+  & \quad - \left[ 2 z(1-z) + (4-d) (1-z)^2 \right] im \sigma^{\mu\nu}q_\nu .
+\end{align*}
+(6.33)より，初め2項が$F_1$への寄与．したがって，
+\begin{align*}
+  \delta F_1(q^2) &= -2ie^2 \int_0^1 dx\,dy\,dz \mathop\delta(x+y+z-1) \int \frac{d^d\ell}{(2\pi)^d} \frac{1}{(\ell^2 - \Delta)^3} \frac{(2-d)^2}{d} \ell^2 \\
+  & \quad + 2ie^2 \int_0^1 dx\,dy\,dz \mathop\delta(x+y+z-1) \int \frac{d^d\ell}{(2\pi)^d} \frac{1}{(\ell^2 - \Delta)^3} \left( q^2 [\cdots] + m^2 [\cdots] \right) \\
+  &= \frac{e^2}{(4\pi)^{d/2}} \int_0^1 dx\,dy\,dz \mathop\delta(x+y+z-1) \left[ \frac{\Gamma(2-\frac{d}{2})}{\Delta^{2-d/2}} \frac{(2-\epsilon)^2}{2} \right. \\
+  & \quad + \left. \frac{\Gamma(3-\frac{d}{2})}{\Delta^{3-d/2}} \left( q^2 [2(1-x)(1-y) - \epsilon xy] + m^2 [2(1-4z+z^2) - \epsilon(1-z)^2] \right) \right] .
+\end{align*}

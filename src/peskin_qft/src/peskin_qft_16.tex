@@ -1,0 +1,1347 @@
+\renewcommand\theequation{\Roman{part}.\arabic{equation}}
+\chapter*{Final Project III: Dicays of the Higgs Boson}\addcontentsline{toc}{chapter}{Final Project III: Dicays of the Higgs Boson}
+\subsection{(a)}
+\eqref{problem21_1_Lag_e}から
+\[
+\Delta\mathcal{L}_e = i \frac{g}{\sqrt{2}} \frac{m_e}{m_W} \bar{\nu}_L e_R \phi^-
+- \frac{g}{2} \frac{m_e}{m_W} \bar{e}_L e_R (v+h+i\phi^3) + (\text{h.c.})
+\]
+\(h\bar{e}e\)の頂点は
+\[
+\vcenter{\hbox{
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (ein) at (240: 1.5) {\(e\)};
+    \vertex (h) at (0: 1.5) {\(h\)};
+    \vertex (eout) at (120: 1.5) {\(e\)};
+    \diagram*{
+      (ein) -- [fermion] (o) -- [fermion] (eout),
+      (o) -- [scalar] (h)
+    };
+  \end{feynman}
+\end{tikzpicture}}}
+= -i \frac{g}{2} \frac{m_e}{m_W} \left( \frac{1+\gamma^5}{2} + \frac{1-\gamma^5}{2} \right)
+= -i \frac{g}{2} \frac{m_e}{m_W} .
+\]
+
+(20.101)からquarkと\(SU(2)\) scalarの相互作用は
+\[
+\Delta\mathcal{L}_q = - \lambda_d \bar{Q}_L \phi d_R - \lambda_u \epsilon^{ab} \bar{Q}_{La} \phi^\dagger_b u_R + (\text{h.c.})
+\]
+\(\Delta\mathcal{L}_q\)の第１項は(21.38)(21.79)(20.75)を代入して
+\begin{align*}
+  - \lambda_d \bar{Q}_L \phi d_R &= - \lambda_d
+  \begin{pmatrix}
+    \bar{u}_L & \bar{d}_L
+  \end{pmatrix}
+  \begin{pmatrix}
+    -i \phi^- \\
+    (v+h+i\phi^3)/\sqrt{2}
+  \end{pmatrix}
+  d_R \\
+  %
+  &= i \lambda_d \bar{u}_L d_R \phi^- - \frac{\lambda_d}{\sqrt{2}} \bar{d}_L d_R (v+h+i\phi^3) .
+\end{align*}
+(20.63)(20.103)から
+\[ \lambda_d = \frac{g}{\sqrt{2}} \frac{m_d}{m_W} . \]
+よって
+\[
+- \lambda_d \bar{Q}_L \phi d_R =
+i \frac{g}{\sqrt{2}} \frac{m_d}{m_W} \bar{u}_L d_R \phi^-
+- \frac{g}{2} \frac{m_d}{m_W} \bar{d}_L d_R (v+h+i\phi^3) + (\text{h.c.})
+\]
+\(h\bar{d}d\)の頂点は
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (qin) at (240: 1.5) {\(d\)};
+    \vertex (h) at (0: 1.5) {\(h\)};
+    \vertex (qout) at (120: 1.5) {\(d\)};
+    \diagram*{
+      (qin) -- [fermion] (o) -- [fermion] (qout),
+      (o) -- [scalar] (h)
+    };
+  \end{feynman}
+\end{tikzpicture}}}
+= -i \frac{g}{2} \frac{m_d}{m_W} .
+\]
+
+\(\Delta\mathcal{L}_q\)の第２項は
+\begin{align*}
+  - \lambda_u \epsilon^{ab} \bar{Q}_{La} \phi^\dagger_b u_R &= - \lambda_u
+  \begin{pmatrix}
+    \bar{u}_L & \bar{d}_L
+  \end{pmatrix}
+  \begin{pmatrix}
+     & 1 \\ -1 &
+  \end{pmatrix}
+  \begin{pmatrix}
+    i \phi^+ \\
+    (v+h-i\phi^3)/\sqrt{2}
+  \end{pmatrix}
+  u_R \\
+  &= i \lambda_u \bar{d}_L u_R \phi^+ - \frac{\lambda_u}{\sqrt{2}} \bar{u}_L u_R (v+h-i\phi^3) \\
+  &= i \frac{g}{\sqrt{2}} \frac{m_u}{m_W} \bar{d}_L u_R \phi^+ - \frac{g}{2} \frac{m_u}{m_W}\frac{\lambda_u}{\sqrt{2}} \bar{u}_L u_R (v+h-i\phi^3) \\
+\end{align*}
+\(h\bar{u}u\)の頂点は
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (qin) at (240: 1.5) {\(u\)};
+    \vertex (h) at (0: 1.5) {\(h\)};
+    \vertex (qout) at (120: 1.5) {\(u\)};
+    \diagram*{
+      (qin) -- [fermion] (o) -- [fermion] (qout),
+      (o) -- [scalar] (h)
+    };
+  \end{feynman}
+\end{tikzpicture}}}
+= -i \frac{g}{2} \frac{m_u}{m_W} .
+\]
+
+以上から，lepton, quarkいずれの場合も
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (fin) at (240: 1.5) {\(f\)};
+    \vertex (h) at (0: 1.5) {\(h\)};
+    \vertex (fout) at (120: 1.5) {\(f\)};
+    \diagram*{
+      (fin) -- [fermion] (o) -- [fermion] (fout),
+      (o) -- [scalar] (h)
+    };
+  \end{feynman}
+\end{tikzpicture}}}
+= -i \frac{g}{2} \frac{m_f}{m_W} .
+\]
+
+\subsection{(b)}
+\eqref{fig21.8_scalar_Lagrangian}と(20.63)から
+\begin{align*}
+  \mathcal{L}_\text{Higgs} &= - \frac{g^2}{8} \frac{m_h{}^2}{m_W{}^2}
+  \left[ \phi^+\phi^- + \frac{(v+h)^2+(\phi^3)^2}{2} \right]^2 + \cdots \\
+  %
+  &= - \frac{g^2}{8} \frac{m_h{}^2}{m_W{}^2}
+  \left[ 2v \phi^+ \phi^- h + 2v (\phi^3)^2 h \right] + \cdots \\
+  %
+  &= - \frac{g^2}{2} \frac{m_h{}^2}{m_W} \phi^+ \phi^- h
+  - \frac{g^2}{2} \frac{m_h{}^2}{m_W} (\phi^3)^2 h + \cdots .
+\end{align*}
+\(h\phi\phi\)の頂点は
+\begin{align}
+  \vcenter{\hbox{
+    \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (pin) at (240: 1.5) {\(\phi^-\)};
+      \vertex (h) at (0: 1.5) {\(h\)};
+      \vertex (pout) at (120: 1.5) {\(\phi^+\)};
+      \diagram*{
+        (pout) -- [charged scalar] (o) -- [charged scalar] (pin),
+        (o) -- [scalar] (h)
+      };
+      \draw (o) node [below right] {\(\phi^+\)};
+      \draw (o) node [above right] {\(\phi^-\)};
+    \end{feynman}
+  \end{tikzpicture}}}
+  = -i \frac{g}{2} \frac{m_h{}^2}{m_W} , \qquad
+  \vcenter{\hbox{
+    \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (pin) at (240: 1.5) {\(\phi^3\)};
+      \vertex (h) at (0: 1.5) {\(h\)};
+      \vertex (pout) at (120: 1.5) {\(\phi^3\)};
+      \diagram*{
+        (pin) -- [scalar] (o) -- [scalar] (pout),
+        (o) -- [scalar] (h)
+      };
+    \end{feynman}
+  \end{tikzpicture}}}
+  = -i \frac{g}{2} \frac{m_h{}^2}{m_W} . \label{fp3_b_h_phi_phi}
+\end{align}
+
+\subsection{(c)}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (iar) at (30: 0.8);
+      \vertex (ial) at (150: 0.8);
+      \vertex (ib) at (270: 0.8);
+      \vertex (oar) at (30: 2.5) {\(G^b_\nu\)};
+      \vertex (oal) at (150: 2.5) {\(G^a_\mu\)};
+      \vertex (ob) at (270: 1.8) {\(h\)};
+      %
+      \diagram*{
+        (ib) -- [fermion, edge label=\(q+k_1\)] (ial) -- [fermion, edge label=\(q\)] (iar) -- [fermion, edge label=\(q-k_2\)] (ib),
+        (ob) -- [scalar, momentum=\(p\)] (ib),
+        (ial) -- [gluon, momentum=\(k_1\)] (oal),
+        (iar) -- [gluon, momentum=\(k_2\)] (oar)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+運動量について
+\begin{gather*}
+  p^\mu = (m_h, 0, 0, 0) , \quad
+  k_1^\mu = \frac{m_h}{2} (1, \sin\theta, 0, \cos\theta) , \quad
+  k_2^\mu = \frac{m_h}{2} (1, -\sin\theta, 0, -\cos\theta) , \\
+  %
+  k_1{}^2 = k_2{}^2 = 0 , \quad
+  k_1 \cdot k_2 = \frac{m_h{}^2}{2} , \quad
+  \epsilon_1 \cdot k_1 = \epsilon_1 \cdot k_1 = 0 .
+\end{gather*}
+不変振幅は
+\begin{align*}
+  i\mathcal{M}_1 &= -i \frac{g}{2} \frac{m_q}{m_W} \int\frac{d^dq}{(2\pi)^d} (-1)
+  \Tr \left[ ig_s \slashed\epsilon_1^\ast t^a \frac{i}{\slashed{q}-m_q} ig_s \slashed\epsilon_2^\ast t^b \frac{i}{\slashed{q}-\slashed{k}_2-m_q} \frac{i}{\slashed{q}+\slashed{k}_1-m_q} \right] \\
+  %
+  &= - \frac{gg_s{}^2}{2} \frac{m_q}{m_W} \Tr(t^at^b) \int\frac{d^dq}{(2\pi)^d}
+  \Tr \left[ \slashed\epsilon_1^\ast \frac{1}{\slashed{q}-m_q} \slashed\epsilon_2^\ast \frac{1}{\slashed{q}-\slashed{k}_2-m_q} \frac{1}{\slashed{q}+\slashed{k}_1-m_q} \right] .
+\end{align*}
+分母は(A.39)から
+\begin{align*}
+  & \int\frac{d^dq}{(2\pi)^d} \frac{1}{q^2-m_q{}^2} \frac{1}{(q+k_1)^2-m_q{}^2} \frac{1}{(q-k_2)^2-m_q{}^2} \\
+  &= \int_0^1 dx \int_0^{1-x} dy \frac{2}{(\ell^2-\Delta)^3} .
+\end{align*}
+ただし
+\begin{align*}
+  q &= \ell - (xk_1 - yk_2) , \\
+  \Delta &= - x(1-x) k_1{}^2 - y(1-y) k_2{}^2 - 2xyk_1\cdot k_2 + m_q{}^2 = m_q{}^2 - xy m_h{}^2 .
+\end{align*}
+分子
+\[ N = \Tr\left[ \slashed\epsilon_1^\ast (\slashed{q}+m_q) \slashed\epsilon_2^\ast (\slashed{q}-\slashed{k}_2+m_q) (\slashed{q}+\slashed{k}_1+m_q) \right] \]
+のうち\(\ell^2\)となる項は(A.27)(A.41)から
+\begin{align*}
+  N_2 &= m_q \Tr\left[ \slashed\epsilon_1^\ast \slashed\epsilon_2^\ast \slashed\ell \slashed\ell \right]
+  + m_q \Tr\left[ \slashed\epsilon_1^\ast \slashed\ell \slashed\epsilon_2^\ast \slashed\ell \right]
+  + m_q \Tr\left[ \slashed\epsilon_1^\ast \slashed\ell \slashed\epsilon_2^\ast \slashed\ell \right] \\
+  %
+  &= m_q \ell^2 \Tr\left[ \slashed\epsilon_1^\ast \slashed\epsilon_2^\ast \right]
+  + 2m_q 4 \epsilon_{1\mu}^\ast \epsilon_{2\nu}^\ast \left[ \ell^\mu \ell^\nu - g^{\mu\nu} \ell^2 + \ell^\mu \ell^\nu \right] \\
+  %
+  &= 4 m_q \epsilon_{1\mu}^\ast \epsilon_{2\nu}^\ast \ell^2 g^{\mu\nu}
+  + 8m_q \epsilon_{1\mu}^\ast \epsilon_{2\nu}^\ast \left[ 2\ell^\mu \ell^\nu - g^{\mu\nu} \ell^2 \right] \\
+  %
+  &= 4m_q \epsilon_{1\mu}^\ast \epsilon_{2\nu}^\ast \left[ 4\ell^\mu \ell^\nu - \ell^2 g^{\mu\nu} \right] \\
+  &\to 4m_q \epsilon_{1\mu}^\ast \epsilon_{2\nu}^\ast \left[ \frac{4}{d} - 1 \right] \ell^2 g^{\mu\nu} \\
+  &= 4(\epsilon_1^\ast \cdot \epsilon_2^\ast) m_q \left[ \frac{4}{d} - 1 \right] \ell^2 .
+\end{align*}
+定数項は\footnote{\verb|./src/py/fp3_c.ipynb|}
+\[ N_0 = 2(\epsilon_1^\ast \cdot \epsilon_2^\ast) m_q (2xym_h{}^2 - m_h{}^2 + 2m_q{}^2) . \]
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (iar) at (30: 0.8);
+      \vertex (ial) at (150: 0.8);
+      \vertex (ib) at (270: 0.8);
+      \vertex (oar) at (30: 2.5) {\(G^b_\nu\)};
+      \vertex (oal) at (150: 2.5) {\(G^a_\mu\)};
+      \vertex (ob) at (270: 1.8) {\(h\)};
+      %
+      \diagram*{
+        (ib) -- [fermion, edge label'=\(q+k_2\)] (iar) -- [fermion, edge label'=\(q\)] (ial) -- [fermion, edge label'=\(q-k_1\)] (ib),
+        (ob) -- [scalar, momentum=\(p\)] (ib),
+        (ial) -- [gluon, momentum=\(k_1\)] (oal),
+        (iar) -- [gluon, momentum=\(k_2\)] (oar)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+不変振幅は
+\begin{align*}
+  i\mathcal{M}_2 &= -i \frac{g}{2} \frac{m_q}{m_W} \int\frac{d^dq}{(2\pi)^d} (-1)
+  \Tr \left[ ig_s \slashed\epsilon_1^\ast t^a \frac{i}{\slashed{q}-m_q} ig_s \slashed\epsilon_2^\ast t^b \frac{i}{\slashed{q}+\slashed{k}_2-m_q} \frac{i}{\slashed{q}-\slashed{k}_1-m_q} \right] \\
+  %
+  &= - \frac{gg_s{}^2}{2} \frac{m_q}{m_W} \Tr(t^at^b) \int\frac{d^dq}{(2\pi)^d}
+  \Tr \left[ \slashed\epsilon_1^\ast \frac{1}{\slashed{q}-m_q} \slashed\epsilon_2^\ast \frac{1}{\slashed{q}+\slashed{k}_2-m_q} \frac{1}{\slashed{q}-\slashed{k}_1-m_q} \right] .
+\end{align*}
+分母は(A.39)から
+\begin{align*}
+  & \int\frac{d^dq}{(2\pi)^d} \frac{1}{q^2-m_q{}^2} \frac{1}{(q-k_1)^2-m_q{}^2} \frac{1}{(q+k_2)^2-m_q{}^2} \\
+  &= \int_0^1 dx \int_0^{1-x} dy \frac{2}{(\ell^2-\Delta)^3} .
+\end{align*}
+ただし
+\begin{align*}
+  q &= \ell + (xk_1 - yk_2) , \\
+  \Delta &= - x(1-x) k_1{}^2 - y(1-y) k_2{}^2 - 2xyk_1\cdot k_2 + m_q{}^2 = m_q{}^2 - xy m_h{}^2 .
+\end{align*}
+分子
+\[ N = \Tr\left[ \slashed\epsilon_1^\ast (\slashed{q}+m_q) \slashed\epsilon_2^\ast (\slashed{q}+\slashed{k}_2+m_q) (\slashed{q}-\slashed{k}_1+m_q) \right] \]
+のうち\(\ell^2\)となる項は先程と全く同じ．
+定数項も計算すれば一致する．
+
+\subsection{(f)}
+\subsubsection{Feynman rules}
+\eqref{problem21.4_W_W_h}から
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (h) at (240: 1.5) {\(h\)};
+    \vertex (Wm) at (0: 1.5) {\(W^-_\nu\)};
+    \vertex (Wp) at (120: 1.5) {\(W^+_\mu\)};
+    \diagram*{
+      (h) -- [scalar] (o) -- [boson] (Wp),
+      (o) -- [boson] (Wm)
+    };
+    \draw (o) node [left] {\(W^-\)};
+    \draw (o) node [below right] {\(W^+\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= igm_W g_{\mu\nu} .
+\]
+
+\eqref{problem21.8_W_phi_h-}\eqref{problem21.8_W_phi_h+}から
+\[
+\vcenter{\hbox{
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (h) at (240: 1.5) {\(h\)};
+    \vertex (Wm) at (0: 1.5) {\(W^\pm_\mu\)};
+    \vertex (pm) at (120: 1.5) {\(\phi^\pm\)};
+    \diagram*{
+      (h) -- [scalar, momentum'=\(k\)] (o) -- [scalar, reversed momentum'=\(p\)] (pm),
+      (o) -- [boson] (Wm)
+    };
+    \draw (o) node [left] {\(\phi^\mp\)};
+    \draw (o) node [above right] {\(W^\mp\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= \frac{g}{2} (p-k)_\mu .
+\]
+
+\eqref{fp3_b_h_phi_phi}から
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (pin) at (240: 1.5) {\(\phi^-\)};
+    \vertex (h) at (0: 1.5) {\(h\)};
+    \vertex (pout) at (120: 1.5) {\(\phi^+\)};
+    \diagram*{
+      (pout) -- [charged scalar] (o) -- [charged scalar] (pin),
+      (o) -- [scalar] (h)
+    };
+    \draw (o) node [below right] {\(\phi^+\)};
+    \draw (o) node [above right] {\(\phi^-\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= -i \frac{g}{2} \frac{m_h{}^2}{m_W} .
+\]
+
+\eqref{fig21.8_phi_phi_A}から
+\[
+\vcenter{\hbox{
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (in) at (-1.5, 0) {\(\phi^+\)};
+    \vertex (out) at (1.5, 0) {\(\phi^-\)};
+    \vertex (a) at (0, 1) {\(A^\mu\)};
+    \diagram*{
+      (in) -- [charged scalar, edge label=\(p\)] (o) -- [charged scalar, edge label=\(p'\)] (out),
+      (o) -- [photon] (a)
+    };
+    \draw (o) node [below left] {\(\phi^-\)};
+    \draw (o) node [below right] {\(\phi^+\)};
+  \end{feynman}
+\end{tikzpicture}
+}} =ie(p+p')^\mu .
+\]
+
+\eqref{problem21.1_A_phi_W_+}\eqref{problem21.1_A_phi_W_-}から
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (in) at (240: 1.5) {\(\phi^\pm\)};
+    \vertex (out) at (0: 1.5) {\(A_\mu\)};
+    \vertex (phi) at (120: 1.5) {\(W^\pm_\nu\)};
+    \diagram*{
+      (in) -- [scalar] (o) -- [boson] (out),
+      (o) -- [boson] (phi)
+    };
+    \draw (o) node [above right] {\(W^\mp\)};
+    \draw (o) node [below right] {\(\phi^\mp\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= \pm em_W g^{\mu\nu} .
+\]
+
+\eqref{fig21.8_scalar_Lagrangian}から
+\[
+\mathcal{L}_\text{Higgs} = i \frac{ge}{2} W_\mu^+ A^\mu h \phi^+
+- i \frac{ge}{2} W_\mu^- A^\mu h \phi^- + e^2 A_\mu A^\mu \phi^+ \phi^- + \cdots
+\]
+なので
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (h) at (45: 1.5) {\(h\)};
+    \vertex (A) at (135: 1.5) {\(A_\nu\)};
+    \vertex (phi) at (225: 1.5) {\(\phi^\mp\)};
+    \vertex (W) at (315: 1.5) {\(W^\mp_\mu\)};
+    \diagram*{
+      (h) -- [scalar] (o) -- [scalar] (phi),
+      (A) -- [boson] (o) -- [boson] (W)
+    };
+    \draw (o) node [right] {\(W^\pm\)};
+    \draw (o) node [left] {\(\phi^\pm\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= \mp \frac{ge}{2} g_{\mu\nu} , \quad
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (phiar) at (45: 1.5) {\(\phi^+\)};
+    \vertex (Aal) at (135: 1.5) {\(A_\nu\)};
+    \vertex (phibl) at (225: 1.5) {\(\phi^-\)};
+    \vertex (Abr) at (315: 1.5) {\(A_\mu\)};
+    \diagram*{
+      (phiar) -- [charged scalar] (o) -- [charged scalar] (phibl),
+      (Aal) -- [boson] (o) -- [boson] (Abr)
+    };
+    \draw (o) node [right] {\(\phi^-\)};
+    \draw (o) node [left] {\(\phi^+\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= 2ie^2 g_{\mu\nu} .
+\]
+
+\(SU(2)\)の構造定数は\(\epsilon^{abc}\)なので(16.6)から
+\[
+\mathcal{L}_\text{gauge} = - \frac{1}{4} g^2 (\epsilon^{eab} A_\kappa^a A_\lambda^b) (\epsilon^{ecd}A^{\kappa c}A^{\lambda d}) + \cdots
+\]
+\((abcd) = (1133)\)となるのは
+\begin{itemize}
+  \item \(a=1\), \(b=3\), \(c=1\), \(d=3\)
+  \item \(a=3\), \(b=1\), \(c=3\), \(d=1\)
+  \item \(a=1\), \(b=3\), \(c=3\), \(d=1\)
+  \item \(a=3\), \(b=1\), \(c=1\), \(d=3\)
+\end{itemize}
+の場合．\((abcd) = (2233)\)も同様に計算すれば
+\[
+- \frac{g^2}{2} \left( A_\kappa^1 A^{\kappa1} A_\lambda^3 A^{\lambda3}
++ A_\kappa^2 A^{\kappa2} A_\lambda^3 A^{\lambda3}
+- A_\kappa^1 A^{\kappa3} A_\lambda^1 A^{\lambda3}
+- A_\kappa^2 A^{\kappa3} A_\lambda^2 A^{\lambda3} \right) .
+\]
+(20.63)(20.64)(20.72)から
+\[
+A_\mu^1 = \frac{W^+_\mu + W^-_\mu}{\sqrt{2}} , \quad
+A_\mu^2 = i \frac{W^+_\mu - W^-_\mu}{\sqrt{2}} , \quad
+\quad A_\mu^3 = \frac{1}{\sin\theta_w} A_\mu
+\]
+なので，
+\begin{align*}
+  = g^2 \left( A^\kappa W^+_\kappa A^\lambda W^-_\lambda - W^+_\kappa W^{{-}\kappa} A_\lambda A^\lambda \right) .
+\end{align*}
+
+\(A^\mu A^\nu W^+_\rho W^-_\sigma\)との縮約を考える．
+第１項は
+\begin{itemize}
+  \item \(\kappa=\mu\), \(\lambda=\nu\), \(\lambda=\rho\), \(\kappa=\sigma\)
+  \item \(\kappa=\nu\), \(\lambda=\mu\), \(\lambda=\rho\), \(\kappa=\sigma\)
+\end{itemize}
+の縮約が可能で，それぞれ\(\delta^\mu_\sigma \delta^\nu_\rho\)および\(\delta^\mu_\rho \delta^\nu_\sigma\)となる．
+第２項は\(A^\lambda\)の縮約が２通りあるので\(2g^{\mu\nu} g_{\rho\sigma}\)．
+
+以上から
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (Aar) at (45: 1.5) {\(A^\nu\)};
+    \vertex (Aal) at (135: 1.5) {\(A_\mu\)};
+    \vertex (Wp) at (225: 1.5) {\(W^+_\rho\)};
+    \vertex (Wm) at (315: 1.5) {\(W^-_\sigma\)};
+    \diagram*{
+      (Aal) -- [photon] (o) -- [photon] (Aar),
+      (Wp) -- [boson] (o) -- [boson] (Wm)
+    };
+    \draw (o) node [right] {\(W^-\)};
+    \draw (o) node [left] {\(W^+\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= ie^2 \left( \delta^\mu_\rho \delta^\nu_\sigma + \delta^\mu_\sigma \delta^\nu_\rho -2g^{\mu\nu} g_{\rho\sigma} \right) .
+\]
+
+\subsubsection{Feynman rules of ghosts}
+\eqref{21_56_eigen_ghost_propagator}の計算\footnote{\verb|./src/py.ghost.ipynb|}を続行する．
+\begin{align*}
+  \mathcal{L}_\text{ghost} &= -ie \bar{c}^+ \partial^\mu A_\mu c^+ + ie \bar{c}^- \partial^\mu A_\mu c^- + \cdots \\
+  &\to ie (\partial^\mu\bar{c}^+) A_\mu c^+ - ie (\partial^\mu\bar{c}^-) A_\mu c^- + \cdots \\
+\end{align*}
+から
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (gin) at (330: 1.5) {\(\bar{c}^\pm\)};
+    \vertex (A) at (90: 1.5) {\(A_\mu\)};
+    \vertex (gout) at (210: 1.5) {\(c^\pm\)};
+    \diagram*{
+      (gin) -- [ghost] (o) -- [ghost, momentum=\(p\)] (gout),
+      (o) -- [photon] (A)
+    };
+    \draw (o) node [above right] {\(c^\pm\)};
+    \draw (o) node [above left] {\(\bar{c}^\pm\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= \mp iep_\mu .
+\]
+
+\[ \mathcal{L}_\text{ghost} = - \frac{g}{2} m_W \bar{c}^+ c^+ h - \frac{g}{2} m_W \bar{c}^- c^- h + \cdots \]
+から
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (gin) at (330: 1.5) {\(\bar{c}^\pm\)};
+    \vertex (h) at (90: 1.5) {\(h\)};
+    \vertex (gout) at (210: 1.5) {\(c^\pm\)};
+    \diagram*{
+      (gin) -- [ghost] (o) -- [ghost] (gout),
+      (o) -- [scalar] (h)
+    };
+    \draw (o) node [above right] {\(c^\pm\)};
+    \draw (o) node [above left] {\(\bar{c}^\pm\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= - i \frac{g}{2} m_W .
+\]
+
+\subsubsection{3-boson vertex diagrams}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [boson, momentum=\(q+k_1\), edge label'=\(\sigma\)] (a) -- [boson, momentum=\(q\), edge label'=\(\rho\)] (b) -- [boson, momentum=\(q-k_2\), edge label'=\(\sigma\)] (o)
+      };
+      \draw (o) node [left] {\(W^+\)};
+      \draw (o) node [right] {\(W^-\)};
+      \draw (a) node [above] {\(W^+\)};
+      \draw (b) node [above] {\(W^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [boson, momentum=\(q+k_1\), edge label'=\(\sigma\)] (a) -- [boson, momentum=\(q\), edge label'=\(\rho\)] (b) -- [boson, momentum=\(q-k_2\), edge label'=\(\sigma\)] (o)
+      };
+      \draw (o) node [left] {\(W^-\)};
+      \draw (o) node [right] {\(W^+\)};
+      \draw (a) node [above] {\(W^-\)};
+      \draw (b) node [above] {\(W^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+不変振幅は\footnote{\verb|./src/py/NonAbelian_1loop.ipynb|}(A.41)(A.44)(A.45)から
+\begin{align*}
+  &2 igm_W (ie)^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) (-i)^3 2
+  \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{(\text{Num})}{(\ell^2-\Delta)^3} \\
+  %
+  &= 4gm_W e^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d}
+  \frac{(-4xy+x+y-5) k_1\cdot k_2 g^{\mu\nu} + (4d-6) \ell^\mu \ell^\nu + 2\ell^2 g^{\mu\nu}}{(\ell^2-\Delta)^3} \\
+  %
+  &= gm_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} 4
+  \left[ (-4xy+x+y-5) \frac{m_h{}^2}{2} + \left(6-\frac{6}{d}\right) \ell^2 \right] \frac{1}{(\ell^2-\Delta)^3} \\
+  %
+  &= \frac{i}{(4\pi)^2} gm_W e^2 \epsilon^\ast_1 \cdot \epsilon^\ast_2 \int_0^1 dx\,dy \\
+  &\qquad\times \left[ (4xy-x-y+5) \frac{m_h{}^2}{\Delta} + 4 \left(6-\frac{6}{d}\right) \frac{d}{4} \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta}\right)^{2-d/2} \right] .
+\end{align*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [boson, momentum=\(q+k_1\)] (a) -- [anti charged scalar, momentum=\(q\)] (b) -- [boson, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(W^+\)};
+      \draw (o) node [right] {\(W^-\)};
+      \draw (a) node [above] {\(\phi^-\)};
+      \draw (b) node [above] {\(\phi^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [boson, momentum=\(q+k_1\)] (a) -- [charged scalar, edge label=\(q\)] (b) -- [boson, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(W^-\)};
+      \draw (o) node [right] {\(W^+\)};
+      \draw (a) node [above] {\(\phi^+\)};
+      \draw (b) node [above] {\(\phi^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & 2 igm_W em_W (-em_W) g^{\mu\nu} \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) (-i)^2 i 2
+  \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{1}{(\ell^2-\Delta)^3} \\
+  %
+  &= - 4 gm_W{}^3 e^2 \epsilon^\ast_1 \cdot \epsilon^\ast_2 \int_0^1 dx\,dy  \int \frac{d^d\ell}{(2\pi)^d} \frac{1}{(\ell^2-\Delta)^3} \\
+  &= \frac{i}{(4\pi)^2} gm_W e^2 \epsilon^\ast_1 \cdot \epsilon^\ast_2 \int_0^1 dx\,dy\, \frac{2m_W{}^2}{\Delta} .
+\end{align*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [boson, momentum=\(q+k_1\)] (a) -- [boson, momentum=\(q\)] (b) -- [anti charged scalar, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(W^+\)};
+      \draw (o) node [right] {\(\phi^+\)};
+      \draw (a) node [above] {\(W^+\)};
+      \draw (b) node [above] {\(W^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [boson, momentum=\(q+k_1\)] (a) -- [boson, momentum=\(q\)] (b) -- [charged scalar, edge label=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(W^-\)};
+      \draw (o) node [right] {\(\phi^-\)};
+      \draw (a) node [above] {\(W^-\)};
+      \draw (b) node [above] {\(W^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & 2 ie \frac{g}{2} em_W \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) (-i)^2 i 2
+  \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{(\text{Num})}{(\ell^2-\Delta)^3} \\
+  %
+  &= 2gm_W e^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d}
+  \frac{(2xy-2x+2y-2) k_1\cdot k_2 g^{\mu\nu} + \ell^\mu \ell^\nu - \ell^2 g^{\mu\nu}}{(\ell^2-\Delta)^3} \\
+  %
+  &= gm_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d}
+  2 \left[ (2xy-2x+2y-2) \frac{m_h{}^2}{2} + \left(\frac{1}{d}-1\right) \ell^2 \right] \frac{1}{(\ell^2-\Delta)^3} \\
+  % %
+  &= \frac{i}{(4\pi)^2} gm_W e^2 \epsilon^\ast_1 \cdot \epsilon^\ast_2 \int_0^1 dx\,dy \\
+  &\qquad\times \left[ -(xy-x+y-1) \frac{m_h{}^2}{\Delta} + 2\left(\frac{1}{d}-1\right) \frac{d}{4} \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta}\right)^{2-d/2} \right] .
+\end{align*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [charged scalar, edge label=\(q+k_1\)] (a) -- [boson, momentum=\(q\)] (b) -- [boson, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(\phi^+\)};
+      \draw (o) node [right] {\(W^+\)};
+      \draw (a) node [above] {\(W^-\)};
+      \draw (b) node [above] {\(W^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [anti charged scalar, momentum=\(q+k_1\)] (a) -- [boson, momentum=\(q\)] (b) -- [boson, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(\phi^-\)};
+      \draw (o) node [right] {\(W^-\)};
+      \draw (a) node [above] {\(W^+\)};
+      \draw (b) node [above] {\(W^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & 2ie \frac{g}{2} em_W \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) (-i)^2 i 2
+  \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{(\text{Num})}{(\ell^2-\Delta)^3} \\
+  %
+  &= 2gm_W e^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d}
+  \frac{(2xy+2x-2y-2) k_1\cdot k_2 g^{\mu\nu} + \ell^\mu \ell^\nu - \ell^2 g^{\mu\nu}}{(\ell^2-\Delta)^3} \\
+  %
+  &= gm_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d}
+  2 \left[ (2xy+2x-2y-2) \frac{m_h{}^2}{2} + \left(\frac{1}{d}-1\right) \ell^2 \right] \frac{1}{(\ell^2-\Delta)^3} \\
+  % %
+  &= \frac{i}{(4\pi)^2} gm_W e^2 \epsilon^\ast_1 \cdot \epsilon^\ast_2 \int_0^1 dx\,dy \\
+  &\qquad\times \left[ -(xy+x-y-1) \frac{m_h{}^2}{\Delta} + 2 \left(\frac{1}{d}-1\right) \frac{d}{4} \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta}\right)^{2-d/2} \right] .
+\end{align*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [boson, momentum=\(q+k_1\)] (a) -- [anti charged scalar, momentum=\(q\)] (b) -- [anti charged scalar, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(W^+\)};
+      \draw (o) node [right] {\(\phi^+\)};
+      \draw (a) node [above] {\(\phi^-\)};
+      \draw (b) node [above] {\(\phi^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [boson, momentum=\(q+k_1\)] (a) -- [charged scalar, edge label=\(q\)] (b) -- [charged scalar, edge label=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(W^-\)};
+      \draw (o) node [right] {\(\phi^-\)};
+      \draw (a) node [above] {\(\phi^+\)};
+      \draw (b) node [above] {\(\phi^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & 2ie \frac{g}{2} em_W \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) i^2 (-i) 2
+  \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{(q-k_1-2k_2)^\mu(-2q-k_2)^\nu}{(\ell^2-\Delta)^3} \\
+  %
+  &= 4gm_W e^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d}
+  \frac{\ell^\mu\ell^\nu}{(\ell^2-\Delta)^3} \\
+  %
+  &= gm_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d}
+  \frac{4}{d}\frac{\ell^2}{(\ell^2-\Delta)^3} \\
+  %
+  &= \frac{i}{(4\pi)^2} gm_W e^2 \epsilon^\ast_1 \cdot \epsilon^\ast_2 \int_0^1 dx\,dy\,
+  \frac{4}{d} \frac{d}{4} \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta}\right)^{2-d/2} .
+\end{align*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [anti charged scalar, momentum=\(q+k_1\)] (a) -- [anti charged scalar, momentum=\(q\)] (b) -- [boson, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(\phi^-\)};
+      \draw (o) node [right] {\(W^-\)};
+      \draw (a) node [above] {\(\phi^-\)};
+      \draw (b) node [above] {\(\phi^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [charged scalar, edge label=\(q+k_1\)] (a) -- [charged scalar, edge label=\(q\)] (b) -- [boson, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(\phi^+\)};
+      \draw (o) node [right] {\(W^+\)};
+      \draw (a) node [above] {\(\phi^+\)};
+      \draw (b) node [above] {\(\phi^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & 2ie \frac{g}{2} em_W \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) i^2 (-i) 2
+  \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{(-q-2k_1-k_2)^\mu(2q+k_1)^\nu}{(\ell^2-\Delta)^3} \\
+  %
+  &= 4gm_W e^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d}
+  \frac{\ell^\mu\ell^\nu}{(\ell^2-\Delta)^3} \\
+  %
+  &= gm_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d}
+  \frac{4}{d}\frac{\ell^2}{(\ell^2-\Delta)^3} \\
+  %
+  &= \frac{i}{(4\pi)^2} gm_W e^2 \epsilon^\ast_1 \cdot \epsilon^\ast_2 \int_0^1 dx\,dy\,
+  \frac{4}{d} \frac{d}{4} \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta}\right)^{2-d/2} .
+\end{align*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [anti charged scalar, momentum=\(q+k_1\)] (a) -- [boson, momentum=\(q\)] (b) -- [anti charged scalar, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(\phi^-\)};
+      \draw (o) node [right] {\(\phi^+\)};
+      \draw (a) node [above] {\(W^+\)};
+      \draw (b) node [above] {\(W^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [charged scalar, edge label=\(q+k_1\)] (a) -- [boson, momentum=\(q\)] (b) -- [charged scalar, edge label=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(\phi^+\)};
+      \draw (o) node [right] {\(\phi^-\)};
+      \draw (a) node [above] {\(W^-\)};
+      \draw (b) node [above] {\(W^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & 2 \left(-i \frac{g}{2} \frac{m_h{}^2}{m_W}\right) em_W (-em_W) \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) g^{\mu\nu} i^2 (-i) 2
+  \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{1}{(\ell^2-\Delta)^3} \\
+  %
+  &= -2gm_W m_h{}^2 e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{1}{(\ell^2-\Delta)^3} \\
+  %
+  &= \frac{i}{(4\pi)^2} gm_W e^2 \epsilon^\ast_1 \cdot \epsilon^\ast_2 \int_0^1 dx\,dy\, \frac{m_h{}^2}{\Delta}
+\end{align*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [charged scalar, edge label=\(q+k_1\)] (a) -- [charged scalar, edge label=\(q\)] (b) -- [charged scalar, edge label=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(\phi^+\)};
+      \draw (o) node [right] {\(\phi^-\)};
+      \draw (a) node [above] {\(\phi^+\)};
+      \draw (b) node [above] {\(\phi^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [anti charged scalar, momentum=\(q+k_1\)] (a) -- [anti charged scalar, momentum=\(q\)] (b) -- [anti charged scalar, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(\phi^-\)};
+      \draw (o) node [right] {\(\phi^+\)};
+      \draw (a) node [above] {\(\phi^-\)};
+      \draw (b) node [above] {\(\phi^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & 2 \left(-i \frac{g}{2} \frac{m_h{}^2}{m_W}\right) (ie)^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) i^3 2
+  \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{(2q+k_1)^\mu(2q-k_2)^\nu}{(\ell^2-\Delta)^3} \\
+  %
+  &= 8g \frac{m_h{}^2}{m_W} e^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{\ell^\mu\ell^\nu}{(\ell^2-\Delta)^3} \\
+  %
+  &= g m_W e^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d}
+  \frac{m_h{}^2}{m_W{}^2} \frac{8}{d} \frac{\ell^2}{(\ell^2-\Delta)^3} \\
+  %
+  &= \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,dy\,
+  \frac{m_h{}^2}{m_W{}^2} \frac{8}{d} \frac{d}{4} \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta}\right)^{2-d/2} .
+\end{align*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [ghost, momentum=\(q+k_1\)] (a) -- [ghost, momentum=\(q\)] (b) -- [ghost, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(\bar{c}^+\)};
+      \draw (o) node [right] {\(c^+\)};
+      \draw (a) node [above] {\(\bar{c}^+\)};
+      \draw (b) node [above] {\(c^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [ghost, momentum=\(q+k_1\)] (a) -- [ghost, momentum=\(q\)] (b) -- [ghost, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(\bar{c}^-\)};
+      \draw (o) node [right] {\(c^-\)};
+      \draw (a) node [above] {\(\bar{c}^-\)};
+      \draw (b) node [above] {\(c^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+  %
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [ghost, momentum=\(q+k_1\)] (a) -- [ghost, momentum=\(q\)] (b) -- [ghost, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(c^+\)};
+      \draw (o) node [right] {\(\bar{c}^+\)};
+      \draw (a) node [above] {\(c^+\)};
+      \draw (b) node [above] {\(\bar{c}^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (270: 1.5);
+      \vertex (a) at (150: 1.5);
+      \vertex (b) at (30: 1.5);
+      \vertex (h) at (270: 2.5) {\(h\)};
+      \vertex (Al) at (150: 3) {\(A_\mu\)};
+      \vertex (Ar) at (30: 3) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (b) -- [photon, momentum'=\(k_2\)] (Ar),
+        (o) -- [ghost, momentum=\(q+k_1\)] (a) -- [ghost, momentum=\(q\)] (b) -- [ghost, momentum=\(q-k_2\)] (o)
+      };
+      \draw (o) node [left] {\(c^-\)};
+      \draw (o) node [right] {\(\bar{c}^-\)};
+      \draw (a) node [above] {\(c^-\)};
+      \draw (b) node [above] {\(\bar{c}^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & 4 \left(-i \frac{g}{2} m_W \right) (ie)^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) i^3 (-2)
+  \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{q^\mu(q-k_2)^\nu}{(\ell^2-\Delta)^3} \\
+  %
+  &= -4g m_W e^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d} \frac{\ell^\mu\ell^\nu}{(\ell^2-\Delta)^3} \\
+  % %
+  &= -g m_W e^2 \epsilon_\mu^\ast(k_1) \epsilon_\nu^\ast(k_2) \int_0^1 dx\,dy \int \frac{d^d\ell}{(2\pi)^d}
+  \frac{4}{d} \frac{\ell^2}{(\ell^2-\Delta)^3} \\
+  % %
+  &= -\frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,dy\,
+  \frac{4}{d} \frac{d}{4} \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta}\right)^{2-d/2} .
+\end{align*}
+
+以上を全て足して\(\Delta = m_W{}^2 - xym_h{}^2\)を代入すれば
+\begin{align}
+  \begin{split}
+    i\mathcal{M}_{333} &= \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int_0^{1-x} dy \\
+    &\quad \times \left[ \frac{2m_W{}^2 + (2xy-x-y+8)m_h{}^2}{\Delta} + \left( 5d-4 + \frac{2m_h{}^2}{m_W{}^2} \right) \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta}\right)^{2-d/2} \right] \\
+    %
+    &= \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int_0^{1-x} dy \\
+    &\quad \times \left[ \frac{2m_W{}^2 + (2xy-x-y+8)m_h{}^2}{m_W{}^2-xym_h{}^2}
+    - 10 \left(2 - \frac{d}{2}\right) \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta}\right)^{2-d/2} \right. \\
+    &\qquad\qquad \left. + \left( 16 + \frac{2m_h{}^2}{m_W{}^2} \right) \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta}\right)^{2-d/2} \right] \\
+    %
+    &= \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int_0^{1-x} dy \\
+    &\quad \times \left[ \frac{2m_W{}^2 + (2xy-x-y+8)m_h{}^2}{m_W{}^2-xym_h{}^2} - 10 \right. \\
+    &\qquad\qquad + \left. \left( 16 + \frac{2m_h{}^2}{m_W{}^2} \right) \left( \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log(m_W{}^2 - xym_h{}^2) \right) \right] \\
+    %
+    &= \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int_0^{1-x} dy \\
+    &\times \left[ \frac{(4xy-x-y+8)m_h{}^2}{m_W{}^2-xym_h{}^2} - 8
+    + \left( 16 + \frac{2m_h{}^2}{m_W{}^2} \right) \left( \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log(m_W{}^2 - xym_h{}^2) \right) \right] .
+  \end{split}
+  \label{fp3_f_iM333}
+\end{align}
+
+\subsubsection{\(3+4\)-boson vertex diagrams}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (a) at (0, -2);
+      \vertex (h) at (0, -3) {\(h\)};
+      \vertex (Al) at (-2, 1) {\(A_\mu\)};
+      \vertex (Ar) at (2, 1) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar, momentum=\(p\)] (a) -- [boson, momentum=\(q+p\), half left] (o) -- [boson, momentum=\(q\), half left] (a),
+        (o) -- [photon, momentum'=\(k_1\)] (Al),
+        (o) -- [photon, momentum=\(k_2\)] (Ar)
+      };
+      \draw (a) node [above left] {\(W^+\)};
+      \draw (a) node [above right] {\(W^-\)};
+      \draw (o) node [below left] {\(W^-\)};
+      \draw (o) node [below right] {\(W^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & - (2d-2)gm_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int \frac{d^d\ell}{(2\pi)^d} \frac{1}{(\ell^2-\Delta')^2} \\
+  %
+  &= - \frac{i}{(4\pi)^2} gm_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,
+  (2d-2) \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta'}\right)^{2-d/2} \\
+  %
+  &= - \frac{i}{(4\pi)^2} gm_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx \\
+  &\quad\times \left[ -4 \left(2-\frac{d}{2}\right) \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta'}\right)^{2-d/2}
+  + 6 \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta'}\right)^{2-d/2}\right] \\
+  %
+  &= - \frac{i}{(4\pi)^2} gm_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx \,
+  \left[ -4 + 6 \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta'}\right)^{2-d/2}\right] .
+\end{align*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (a) at (0, -2);
+      \vertex (h) at (0, -3) {\(h\)};
+      \vertex (Al) at (-2, 1) {\(A_\mu\)};
+      \vertex (Ar) at (2, 1) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar, momentum=\(p\)] (a) -- [charged scalar, momentum=\(q+p\), half left] (o) -- [charged scalar, momentum=\(q\), half left] (a),
+        (o) -- [photon, momentum'=\(k_1\)] (Al),
+        (o) -- [photon, momentum=\(k_2\)] (Ar)
+      };
+      \draw (a) node [above left] {\(\phi^+\)};
+      \draw (a) node [above right] {\(\phi^-\)};
+      \draw (o) node [below left] {\(\phi^-\)};
+      \draw (o) node [below right] {\(\phi^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & - g \frac{m_h{}^2}{m_W} e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int \frac{d^d\ell}{(2\pi)^d} \frac{1}{(\ell^2-\Delta')^2} \\
+  &= - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \frac{m_h{}^2}{m_W{}^2}
+  \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta'}\right)^{2-d/2} .
+\end{align*}
+
+以上から\(\Delta' = m_W{}^2 - x(1-x)m_h{}^2\)を代入すれば
+\begin{align}
+  \begin{split}
+    i\mathcal{M}_{34}
+    &= - \frac{i}{(4\pi)^2} gm_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx \,
+    \left[ -4 + \left( 6 + \frac{m_h{}^2}{m_W{}^2} \right) \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta'}\right)^{2-d/2}\right] \\
+    %
+    &= - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \\
+    &\qquad\times \left[ -4 + \left( 6 + \frac{m_h{}^2}{m_W{}^2} \right)
+    \left[ \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log(m_W{}^2 - x(1-x)m_h{}^2) \right] \right] .
+  \end{split}
+  \label{fp3_f_iM34}
+\end{align}
+
+\subsubsection{\(4+3\)-boson vertex diagrams}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (h) at (-1, -2) {\(h\)};
+      \vertex (o) at (0, 0);
+      \vertex (a) at (2, 0);
+      \vertex (Al) at (0, 2) {\(A_\mu\)};
+      \vertex (Ar) at (2, 2) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar, momentum=\(p\)] (o) -- [boson, momentum=\(q+k_2\)] (a) -- [anti charged scalar, momentum=\(q\), half left] (o),
+        (o) -- [photon, momentum=\(k_1\)] (Al),
+        (a) -- [photon, momentum'=\(k_2\)] (Ar)
+      };
+      \draw (a) node [right] {\(W^-\)};
+      \draw (a) node [below right] {\(\phi^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (h) at (-1, -2) {\(h\)};
+      \vertex (o) at (0, 0);
+      \vertex (a) at (2, 0);
+      \vertex (Al) at (0, 2) {\(A_\mu\)};
+      \vertex (Ar) at (2, 2) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar, momentum=\(p\)] (o) -- [boson, momentum=\(q+k_2\)] (a) -- [charged scalar, edge label=\(q\), half left] (o),
+        (o) -- [photon, momentum=\(k_1\)] (Al),
+        (a) -- [photon, momentum'=\(k_2\)] (Ar)
+      };
+      \draw (a) node [right] {\(W^+\)};
+      \draw (a) node [below right] {\(\phi^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & - 2\frac{g}{2} m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int \frac{d^d\ell}{(2\pi)^d} \frac{1}{(\ell^2-\Delta'')^2} \\
+  &= - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,
+  \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta''}\right)^{2-d/2} \\
+  &= - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,
+  \left[ \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log(m_W{}^2) \right]
+\end{align*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (h) at (1, -2) {\(h\)};
+      \vertex (o) at (0, 0);
+      \vertex (a) at (-2, 0);
+      \vertex (Al) at (-2, 2) {\(A_\mu\)};
+      \vertex (Ar) at (0, 2) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar, momentum'=\(p\)] (o) -- [boson, momentum'=\(q+k_1\), edge label=\(W\)] (a) -- [anti charged scalar, momentum'=\(q\), half right] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (o) -- [photon, momentum'=\(k_2\)] (Ar)
+      };
+      \draw (a) node [left] {\(W^-\)};
+      \draw (a) node [below left] {\(\phi^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \quad
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (h) at (1, -2) {\(h\)};
+      \vertex (o) at (0, 0);
+      \vertex (a) at (-2, 0);
+      \vertex (Al) at (-2, 2) {\(A_\mu\)};
+      \vertex (Ar) at (0, 2) {\(A_\nu\)};
+      \diagram*{
+        (h) -- [scalar, momentum'=\(p\)] (o) -- [boson, momentum'=\(q+k_1\), edge label=\(W\)] (a) -- [charged scalar, edge label'=\(q\), half right] (o),
+        (a) -- [photon, momentum=\(k_1\)] (Al),
+        (o) -- [photon, momentum'=\(k_2\)] (Ar)
+      };
+      \draw (a) node [left] {\(W^+\)};
+      \draw (a) node [below left] {\(\phi^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  & - 2\frac{g}{2} m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int \frac{d^d\ell}{(2\pi)^d} \frac{1}{(\ell^2-\Delta'')^2} \\
+  &= - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,
+  \Gamma\left(2-\frac{d}{2}\right) \left(\frac{4\pi}{\Delta''}\right)^{2-d/2} \\
+  &= - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,
+  \left[ \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log(m_W{}^2) \right]
+\end{align*}
+
+以上から
+\begin{align}
+  i\mathcal{M}_{43} = - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2)
+  2 \left[ \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log(m_W{}^2) \right] .
+  \label{fp3_f_iM43}
+\end{align}
+
+\eqref{fp3_f_iM333}\eqref{fp3_f_iM34}\eqref{fp3_f_iM43}から
+\begin{align*}
+  i\mathcal{M}
+  &= \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int_0^{1-x} dy
+  \frac{(4xy-x-y+8)m_h{}^2}{m_W{}^2-xym_h{}^2} - 8 \\
+  %
+  &\qquad + \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int_0^{1-x} dy
+  \left( 16 + \frac{2m_h{}^2}{m_W{}^2} \right) \left( \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log m_W{}^2 \right) \\
+  %
+  &\qquad + \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int_0^{1-x} dy
+  \left( 16 + \frac{2m_h{}^2}{m_W{}^2} \right) \left( - \log(1 - xym_h{}^2/m_W{}^2) \right) \\
+  %
+  &\quad - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, (-4) \\
+  %
+  &\qquad - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,
+  \left( 6 + \frac{m_h{}^2}{m_W{}^2} \right)
+  \left( \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log m_W{}^2 \right) \\
+  %
+  &\qquad - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,
+  \left( 6 + \frac{m_h{}^2}{m_W{}^2} \right) \left[ - \log(1 - x(1-x)m_h{}^2/m_W{}^2) \right] \\
+  %
+  &\quad - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2)
+  2 \left( \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log m_W{}^2 \right) \\
+  %
+  %
+  &= \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int_0^{1-x} dy
+  \frac{(4xy-x-y+8)m_h{}^2}{m_W{}^2-xym_h{}^2} \\
+  %
+  &\qquad + \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2)
+  \left( 8 + \frac{m_h{}^2}{m_W{}^2} \right) \left( \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log m_W{}^2 \right) \\
+  %
+  &\qquad + \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int_0^{1-x} dy
+  \left( 16 + \frac{2m_h{}^2}{m_W{}^2} \right) \left( - \log(1 - xym_h{}^2/m_W{}^2) \right) \\
+  %
+  &\quad - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2)
+  \left( 6 + \frac{m_h{}^2}{m_W{}^2} \right)
+  \left( \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log m_W{}^2 \right) \\
+  %
+  &\qquad - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,
+  \left( 6 + \frac{m_h{}^2}{m_W{}^2} \right) \left[ - \log(1 - x(1-x)m_h{}^2/m_W{}^2) \right] \\
+  %
+  &\quad - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2)
+  2 \left( \frac{2}{\varepsilon} - \gamma + \log 4\pi - \log m_W{}^2 \right) \\
+  %
+  %
+  &= \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int_0^{1-x} dy
+  \frac{(4xy-x-y+8)m_h{}^2}{m_W{}^2-xym_h{}^2} \\
+  %
+  &\quad - \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\, \int_0^{1-x} dy
+  \left( 16 + \frac{2m_h{}^2}{m_W{}^2} \right) \log\left(1 - xy\frac{m_h{}^2}{m_W{}^2}\right) \\
+  %
+  &\quad + \frac{i}{(4\pi)^2} g m_W e^2 \epsilon^\ast(k_1) \cdot \epsilon^\ast(k_2) \int_0^1 dx\,
+  \left( 6 + \frac{m_h{}^2}{m_W{}^2} \right) \log\left(1 - x(1-x)\frac{m_h{}^2}{m_W{}^2}\right) .
+\end{align*}
+\(m_h \ll m_W\)なら
+\begin{align*}
+  & \int_0^1 dx\, \int_0^{1-x} dy\, \frac{(4xy-x-y+8)m_h{}^2}{m_W{}^2-xym_h{}^2} \\
+  &\quad - \left( 16 + \frac{2m_h{}^2}{m_W{}^2} \right) \int_0^1 dx\, \int_0^{1-x} dy\,  \log\left(1 - xy\frac{m_h{}^2}{m_W{}^2}\right) \\
+  &\quad + \left( 6 + \frac{m_h{}^2}{m_W{}^2} \right) \int_0^1 dx\, \log\left(1 - x(1-x)\frac{m_h{}^2}{m_W{}^2}\right) \\
+  %
+  &\approx \int_0^1 dx\, \int_0^{1-x} dy\, (4xy-x-y+8)\frac{m_h{}^2}{m_W{}^2} \\
+  &\quad + 16 \int_0^1 dx\, \int_0^{1-x} dy\, xy\frac{m_h{}^2}{m_W{}^2}
+  - 6 \int_0^1 dx\,  x(1-x)\frac{m_h{}^2}{m_W{}^2} \\
+  %
+  &= \frac{23}{6} \frac{m_h{}^2}{m_W{}^2} + \frac{2}{3} \frac{m_h{}^2}{m_W{}^2} - \frac{m_h{}^2}{m_W{}^2} \\
+  &= \frac{7}{2} \frac{m_h{}^2}{m_W{}^2} .
+\end{align*}

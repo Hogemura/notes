@@ -1,0 +1,389 @@
+\subsection{Problem 5.6}
+使う式を列挙しておく．Fierz恒等式：
+\[ \overline{u}_L(p_1) \gamma^\mu u_L(p_2) [\gamma^\mu]_{ab} = \overline{u}_R(p_2) \gamma^\mu u_R(p_1) = 2 [ u_L(p_2)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(p_2) ]_{ab} . \]
+$s$, $t$の定義と性質：
+\begin{align*}
+  s(p_1, p_2) &= \overline{u}_R(p_1)u_L(p_2) , & t(p_1, p_2) &= \overline{u}_L(p_1)u_R(p_2) , \\
+  t(p_1, p_2) &= (s(p_2, p_1))^\ast , & s(p_1, p_2) &= s(p_2, p_1) , & \lvert s(p_1, p_2) \rvert^2 = 2p_1 \cdot p_2 .
+\end{align*}
+射影に関する性質
+\[ u_L(p)\overline{u}_L(p) + u_R(p)\overline{u}_R(p) = \slashed{p} \]
+及び\footnote{全ての粒子が質量$0$なので，左巻きスピノルは上半分；右巻きスピノルは下半分の成分のみ持つ．$\overline{u}_L = u^\dagger_L \gamma_0$は下半分のみ}
+\[ \overline{u}_L u_L = \overline{u}_R u_R = 0 . \]
+
+$e^-_L e^+_R \to \gamma_-\gamma_+$の過程を考える．
+
+\begin{center}
+  \feynmandiagram [horizontal=a to b, baseline=(a.base)] {
+  i1 [particle=$e^-_L$] -- [fermion, edge label=$p_1$] a -- [photon, momentum'=$k_1$] i2 [particle=$\gamma_-$],
+  a -- [fermion, edge label'=$p_1-k_1$] b,
+  f2 [particle=$\gamma_+$] -- [photon, reversed momentum'=$k_2$] b -- [fermion, reversed momentum=$p_2$] f1 [particle=$e^+_R$]
+  };
+  \hfil
+  $+$
+  \hfil
+  \begin{tikzpicture}[arrowlabel/.style={/tikzfeynman/momentum/.cd, arrow shorten=0.37, arrow distance=1.5mm}, arrowlabel/.default=0.4, baseline=(a.base)]
+    \begin{feynman}
+      \vertex (a);
+      \vertex [right=of a] (b);
+      \vertex [below left=of a] (i1) {$e^-_L$};
+      \vertex [above left=of a] (f1) {$\gamma_-$};
+      \vertex [below right=of b] (i2) {$e^+_R$};
+      \vertex [above right=of b] (f2) {$\gamma_+$};
+      \diagram* {
+      (i1) -- [fermion, edge label=$p_1$] (a), (i2) -- [anti fermion, momentum'=$p_2$] (b),
+      (a) -- [fermion, edge label'=$p_1-k_2$] (b),
+      (a) -- [photon, momentum={[arrowlabel]}, edge label=$k_2$, near end] (f2), (b) -- [photon, momentum'={[arrowlabel]}, edge label'=$k_1$, near end] (f1)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+(a)で定義した偏極ベクトルを使い，不変振幅は
+\begin{align}
+  \begin{split}
+    i\mathcal{M} &= -ie^2 \epsilon^\ast_{-\mu}(k_1)\epsilon^\ast_{+\nu}(k_2) \overline{u}_L(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{(p_1 - k_1)^2} \gamma^\mu + \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{(p_1 - k_2)^2} \gamma^\nu \right] u_L(p_1) \\
+    %
+    &= -ie^2 \frac{\overline{u}_L(p_2)\gamma_\mu u_L(k_1) u_R(p_1)\gamma_\nu u_R(k_2)}{4\sqrt{(p_2 \cdot k_1)(p_1 \cdot k_2)}} \overline{u}_L(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{t} \gamma^\mu + \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{u} \gamma^\nu \right] u_L(p_1) \\
+  \end{split}
+  \label{prob5_5_iM_LR-+}
+\end{align}
+となる\footnote{$\epsilon(k_1)$の定義に$p_2$，$\epsilon(k_2)$の定義に$p_1$を使った}．
+
+\eqref{prob5_5_iM_LR-+}の第1項は，
+\begin{align}
+  \begin{split}
+    & \frac{\overline{u}_L(p_2)\gamma_\mu u_L(k_1) u_R(p_1)\gamma_\nu u_R(k_2)}{4\sqrt{(p_2 \cdot k_1)(p_1 \cdot k_2)}} \overline{u}_L(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{t} \gamma^\mu \right] u_L(p_1) \\
+    %
+    &= -\frac{2}{ut} \overline{u}_L(p_2) \left[ u_L(p_1)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_1)\overline{u}_L(p_2) + u_R(p_2)\overline{u}_R(k_1) \right] u_L(p_1) \\
+    %
+    &\quad +\frac{2}{ut} \overline{u}_L(p_2) \left[ u_L(p_1)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_1)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(k_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_1)\overline{u}_L(p_2) + u_R(p_2)\overline{u}_R(k_1) \right] u_L(p_1) \\
+    %
+    &= -\frac{2}{ut} \overline{u}_L(p_2) u_R(k_2)\overline{u}_R(p_1) u_L(p_1)\overline{u}_L(p_1) u_R(p_2)\overline{u}_R(k_1) u_L(p_1) \\
+    &\quad +\frac{2}{ut} \overline{u}_L(p_2) u_R(k_2)\overline{u}_R(p_1) u_L(k_1)\overline{u}_L(k_1) u_R(p_2)\overline{u}_R(k_1) u_L(p_1) \\
+    %
+    &= -\frac{2}{ut} t(p_2, k_2) s(p_1, p_1) t(p_1, p_2) s(k_1, p_1) + \frac{2}{ut} t(p_2, k_2) s(p_1, k_1) t(k_1, p_2) s(k_1, p_1) \\
+    &= \frac{2}{ut} t(p_2, k_2) s(p_1, k_1) t(k_1, p_2) s(k_1, p_1) .
+  \end{split}
+  \label{prob5_5_iM_LR-+_term1}
+\end{align}
+同様に，\eqref{prob5_5_iM_LR-+}の第2項は，
+\begin{align}
+  \begin{split}
+    & \frac{\overline{u}_L(p_2)\gamma_\mu u_L(k_1) u_R(p_1)\gamma_\nu u_R(k_2)}{4\sqrt{(p_2 \cdot k_1)(p_1 \cdot k_2)}} \overline{u}_L(p_2)
+    \left[ \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{u} \gamma^\nu \right] u_L(p_1) \\
+    %
+    &= -\frac{2}{u^2} \overline{u}_L(p_2) \left[ u_L(k_1)\overline{u}_L(p_2) + u_R(p_2)\overline{u}_R(k_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(p_1) \right] u_L(p_1) \\
+    %
+    &\quad +\frac{2}{u^2} \overline{u}_L(p_2) \left[ u_L(k_1)\overline{u}_L(p_2) + u_R(p_2)\overline{u}_R(k_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_2)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(k_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(p_1) \right] u_L(p_1) \\
+    %
+    &= -\frac{2}{u^2} \overline{u}_L(p_2) u_R(p_2)\overline{u}_R(k_1) u_L(p_1)\overline{u}_L(p_1) u_R(k_2)\overline{u}_R(p_1) u_L(p_1) \\
+    &\quad +\frac{2}{u^2} \overline{u}_L(p_2) u_R(p_2)\overline{u}_R(k_1) u_L(k_2)\overline{u}_L(k_2) u_R(k_2)\overline{u}_R(p_1) u_L(p_1) \\
+    %
+    &= -\frac{2}{u^2} t(p_2, p_2) s(k_1, p_1) t(p_1, k_2) s(p_1, p_1) + \frac{2}{u^2} t(p_2, p_2) s(k_1, k_2) t(k_2, k_2) s(p_1, p_1) \\
+    &= 0 .
+  \end{split}
+  \label{prob5_5_iM_LR-+_term2}
+\end{align}
+\eqref{prob5_5_iM_LR-+}\eqref{prob5_5_iM_LR-+_term1}\eqref{prob5_5_iM_LR-+_term2}から
+\begin{align}
+  i\mathcal{M}(e^-_L e^+_R \to \gamma_-\gamma_+) = -ie^2 \frac{2}{ut} t(p_2, k_2) s(p_1, k_1) t(k_1, p_2) s(k_1, p_1) . \label{prob5_5_iM_LR-+_cal}
+\end{align}
+
+$e^-_L e^+_R \to \gamma_+\gamma_-$の過程を考える．
+
+\begin{center}
+  \feynmandiagram [horizontal=a to b, baseline=(a.base)] {
+  i1 [particle=$e^-_L$] -- [fermion, edge label=$p_1$] a -- [photon, momentum'=$k_1$] i2 [particle=$\gamma_+$],
+  a -- [fermion, edge label'=$p_1-k_1$] b,
+  f2 [particle=$\gamma_-$] -- [photon, reversed momentum'=$k_2$] b -- [fermion, reversed momentum=$p_2$] f1 [particle=$e^+_R$]
+  };
+  \hfil
+  $+$
+  \hfil
+  \begin{tikzpicture}[arrowlabel/.style={/tikzfeynman/momentum/.cd, arrow shorten=0.37, arrow distance=1.5mm}, arrowlabel/.default=0.4, baseline=(a.base)]
+    \begin{feynman}
+      \vertex (a);
+      \vertex [right=of a] (b);
+      \vertex [below left=of a] (i1) {$e^-_L$};
+      \vertex [above left=of a] (f1) {$\gamma_+$};
+      \vertex [below right=of b] (i2) {$e^+_R$};
+      \vertex [above right=of b] (f2) {$\gamma_-$};
+      \diagram* {
+      (i1) -- [fermion, edge label=$p_1$] (a), (i2) -- [anti fermion, momentum'=$p_2$] (b),
+      (a) -- [fermion, edge label'=$p_1-k_2$] (b),
+      (a) -- [photon, momentum={[arrowlabel]}, edge label=$k_2$, near end] (f2), (b) -- [photon, momentum'={[arrowlabel]}, edge label'=$k_1$, near end] (f1)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+不変振幅は
+\begin{align}
+  \begin{split}
+    i\mathcal{M} &= -ie^2 \epsilon^\ast_{+\mu}(k_1)\epsilon^\ast_{-\nu}(k_2) \overline{u}_L(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{(p_1 - k_1)^2} \gamma^\mu + \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{(p_1 - k_2)^2} \gamma^\nu \right] u_L(p_1) \\
+    %
+    &= -ie^2 \frac{\overline{u}_R(p_1)\gamma_\mu u_R(k_1) u_L(p_2)\gamma_\nu u_L(k_2)}{4\sqrt{(p_1 \cdot k_1)(p_2 \cdot k_2)}} \overline{u}_L(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{t} \gamma^\mu + \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{u} \gamma^\nu \right] u_L(p_1) \\
+  \end{split}
+  \label{prob5_5_iM_LR+-}
+\end{align}
+となる\footnote{$\epsilon(k_1)$の定義に$p_1$，$\epsilon(k_2)$の定義に$p_2$を使った}．
+
+\eqref{prob5_5_iM_LR+-}の第1項は，
+\begin{align}
+  \begin{split}
+    & \frac{\overline{u}_R(p_1)\gamma_\mu u_R(k_1) u_L(p_2)\gamma_\nu u_L(k_2)}{4\sqrt{(p_1 \cdot k_1)(p_2 \cdot k_2)}} \overline{u}_L(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{t} \gamma^\mu \right] u_L(p_1) \\
+    %
+    &= -\frac{2}{t^2} \overline{u}_L(p_2) \left[ u_L(k_2)\overline{u}_L(p_2) + u_R(p_2)\overline{u}_R(k_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(p_1) \right] u_L(p_1) \\
+    %
+    &\quad +\frac{2}{t^2} \overline{u}_L(p_2) \left[ u_L(k_2)\overline{u}_L(p_2) + u_R(p_2)\overline{u}_R(k_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_1)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(k_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(p_1) \right] u_L(p_1) \\
+    %
+    &= -\frac{2}{t^2} \overline{u}_L(p_2) u_R(p_2)\overline{u}_R(k_2) u_L(p_1)\overline{u}_L(p_1) u_R(k_1)\overline{u}_R(p_1) u_L(p_1) \\
+    &\quad +\frac{2}{t^2} \overline{u}_L(p_2) u_R(p_2)\overline{u}_R(k_2) u_L(k_1)\overline{u}_L(k_1) u_R(k_1)\overline{u}_R(p_1) u_L(p_1) \\
+    %
+    &= -\frac{2}{t^2} t(p_2, p_2) s(k_2, p_1) t(p_1, k_1) s(p_1, p_1) + \frac{2}{ut} t(p_2, p_2) s(k_2, k_1) t(k_1, k_1) s(p_1, p_1) \\
+    &= 0 .
+  \end{split}
+  \label{prob5_5_iM_LR+-_term1}
+\end{align}
+同様に，\eqref{prob5_5_iM_LR+-}の第2項は，
+\begin{align}
+  \begin{split}
+    & \frac{\overline{u}_R(p_1)\gamma_\mu u_R(k_1) u_L(p_2)\gamma_\nu u_L(k_2)}{4\sqrt{(p_1 \cdot k_1)(p_2 \cdot k_2)}} \overline{u}_L(p_2)
+    \left[ \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{u} \gamma^\nu \right] u_L(p_1) \\
+    %
+    &= -\frac{2}{ut} \overline{u}_L(p_2) \left[ u_L(p_1)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_2)\overline{u}_L(p_2) + u_R(p_2)\overline{u}_R(k_2) \right] u_L(p_1) \\
+    %
+    &\quad +\frac{2}{ut} \overline{u}_L(p_2) \left[ u_L(p_1)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_2)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(k_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_2)\overline{u}_L(p_2) + u_R(p_2)\overline{u}_R(k_2) \right] u_L(p_1) \\
+    %
+    &= -\frac{2}{ut} \overline{u}_L(p_2) u_R(k_1)\overline{u}_R(p_1) u_L(p_1)\overline{u}_L(p_1) u_R(p_2)\overline{u}_R(k_2) u_L(p_1) \\
+    &\quad +\frac{2}{ut} \overline{u}_L(p_2) u_R(k_1)\overline{u}_R(p_1) u_L(k_2)\overline{u}_L(k_2) u_R(p_2)\overline{u}_R(k_2) u_L(p_1) \\
+    %
+    &= -\frac{2}{ut} t(p_2, k_1) s(p_1, p_1) t(p_1, p_2) s(k_2, p_1) + \frac{2}{ut} t(p_2, k_1) s(p_1, k_2) t(k_2, p_2) s(k_2, p_1) \\
+    &= \frac{2}{ut} t(p_2, k_1) s(p_1, k_2) t(k_2, p_2) s(k_2, p_1) .
+  \end{split}
+  \label{prob5_5_iM_LR+-_term2}
+\end{align}
+\eqref{prob5_5_iM_LR+-}\eqref{prob5_5_iM_LR+-_term1}\eqref{prob5_5_iM_LR+-_term2}から
+\begin{align}
+  i\mathcal{M}(e^-_L e^+_R \to \gamma_+\gamma_-) = -ie^2 \frac{2}{ut} t(p_2, k_1) s(p_1, k_2) t(k_2, p_2) s(k_2, p_1) . \label{prob5_5_iM_LR+-_cal}
+\end{align}
+
+$e^-_R e^+_L \to \gamma_-\gamma_+$の過程を考える．
+
+\begin{center}
+  \feynmandiagram [horizontal=a to b, baseline=(a.base)] {
+  i1 [particle=$e^-_R$] -- [fermion, edge label=$p_1$] a -- [photon, momentum'=$k_1$] i2 [particle=$\gamma_-$],
+  a -- [fermion, edge label'=$p_1-k_1$] b,
+  f2 [particle=$\gamma_+$] -- [photon, reversed momentum'=$k_2$] b -- [fermion, reversed momentum=$p_2$] f1 [particle=$e^+_L$]
+  };
+  \hfil
+  $+$
+  \hfil
+  \begin{tikzpicture}[arrowlabel/.style={/tikzfeynman/momentum/.cd, arrow shorten=0.37, arrow distance=1.5mm}, arrowlabel/.default=0.4, baseline=(a.base)]
+    \begin{feynman}
+      \vertex (a);
+      \vertex [right=of a] (b);
+      \vertex [below left=of a] (i1) {$e^-_R$};
+      \vertex [above left=of a] (f1) {$\gamma_-$};
+      \vertex [below right=of b] (i2) {$e^+_L$};
+      \vertex [above right=of b] (f2) {$\gamma_+$};
+      \diagram* {
+      (i1) -- [fermion, edge label=$p_1$] (a), (i2) -- [anti fermion, momentum'=$p_2$] (b),
+      (a) -- [fermion, edge label'=$p_1-k_2$] (b),
+      (a) -- [photon, momentum={[arrowlabel]}, edge label=$k_2$, near end] (f2), (b) -- [photon, momentum'={[arrowlabel]}, edge label'=$k_1$, near end] (f1)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+不変振幅は
+\begin{align}
+  \begin{split}
+    i\mathcal{M} &= -ie^2 \epsilon^\ast_{-\mu}(k_1)\epsilon^\ast_{+\nu}(k_2) \overline{u}_R(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{(p_1 - k_1)^2} \gamma^\mu + \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{(p_1 - k_2)^2} \gamma^\nu \right] u_R(p_1) \\
+    %
+    &= -ie^2 \frac{\overline{u}_L(p_1)\gamma_\mu u_L(k_1) u_R(p_2)\gamma_\nu u_R(k_2)}{4\sqrt{(p_1 \cdot k_1)(p_2 \cdot k_2)}} \overline{u}_R(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{t} \gamma^\mu + \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{u} \gamma^\nu \right] u_R(p_1) \\
+  \end{split}
+  \label{prob5_5_iM_RL-+}
+\end{align}
+となる\footnote{$\epsilon(k_1)$の定義に$p_1$，$\epsilon(k_2)$の定義に$p_2$を使った}．
+
+\eqref{prob5_5_iM_RL-+}の第1項は，
+\begin{align}
+  \begin{split}
+    & \frac{\overline{u}_L(p_1)\gamma_\mu u_L(k_1) u_R(p_2)\gamma_\nu u_R(k_2)}{4\sqrt{(p_1 \cdot k_1)(p_2 \cdot k_2)}} \overline{u}_R(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{t} \gamma^\mu \right] u_R(p_1) \\
+    %
+    &= -\frac{2}{t^2} \overline{u}_R(p_2) \left[ u_L(p_2)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(p_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(k_1) \right] u_R(p_1) \\
+    %
+    &\quad +\frac{2}{t^2} \overline{u}_R(p_2) \left[ u_L(p_2)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(p_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_1)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(k_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(k_1) \right] u_R(p_1) \\
+    %
+    &= -\frac{2}{t^2} \overline{u}_R(p_2) u_L(p_2)\overline{u}_L(k_2) u_R(p_1)\overline{u}_R(p_1) u_L(k_1)\overline{u}_L(p_1) u_R(p_1) \\
+    &\quad +\frac{2}{t^2} \overline{u}_R(p_2) u_L(p_2)\overline{u}_L(k_2) u_R(k_1)\overline{u}_R(k_1) u_L(k_1)\overline{u}_L(p_1) u_R(p_1) \\
+    %
+    &= -\frac{2}{t^2} s(p_2, p_2) t(k_2, p_1) s(p_1, k_1) t(p_1, p_1) + \frac{2}{ut} s(p_2, p_2) t(k_2, k_1) s(k_1, k_1) t(p_1, p_1) \\
+    &= 0 .
+  \end{split}
+  \label{prob5_5_iM_RL-+_term1}
+\end{align}
+同様に，\eqref{prob5_5_iM_RL-+}の第2項は，
+\begin{align}
+  \begin{split}
+    & \frac{\overline{u}_L(p_1)\gamma_\mu u_L(k_1) u_R(p_2)\gamma_\nu u_R(k_2)}{4\sqrt{(p_1 \cdot k_1)(p_2 \cdot k_2)}} \overline{u}_R(p_2)
+    \left[ \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{u} \gamma^\nu \right] u_R(p_1) \\
+    %
+    &= -\frac{2}{ut} \overline{u}_R(p_2) \left[ u_L(k_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(k_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_2)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(p_2) \right] u_R(p_1) \\
+    %
+    &\quad +\frac{2}{ut} \overline{u}_R(p_2) \left[ u_L(k_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(k_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_2)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(k_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_2)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(p_2) \right] u_R(p_1) \\
+    %
+    &= -\frac{2}{ut} \overline{u}_R(p_2) u_L(k_1)\overline{u}_L(p_1) u_R(p_1)\overline{u}_R(p_1) u_L(p_2)\overline{u}_L(k_2) u_R(p_1) \\
+    &\quad +\frac{2}{ut} \overline{u}_R(p_2) u_L(k_1)\overline{u}_L(p_1) u_R(k_2)\overline{u}_R(k_2) u_L(p_2)\overline{u}_L(k_2) u_R(p_1) \\
+    %
+    &= -\frac{2}{ut} s(p_2, k_1) t(p_1, p_1) s(p_1, p_2) t(k_2, p_1) + \frac{2}{ut} s(p_2, k_1) t(p_1, k_2) s(k_2, p_2) t(k_2, p_1) \\
+    &= \frac{2}{ut} s(p_2, k_1) t(p_1, k_2) s(k_2, p_2) t(k_2, p_1) .
+  \end{split}
+  \label{prob5_5_iM_RL-+_term2}
+\end{align}
+\eqref{prob5_5_iM_RL-+}\eqref{prob5_5_iM_RL-+_term1}\eqref{prob5_5_iM_RL-+_term2}から
+\begin{align}
+  i\mathcal{M}(e^-_R e^+_L \to \gamma_-\gamma_+) = -ie^2 \frac{2}{ut} s(p_2, k_1) t(p_1, k_2) s(k_2, p_2) t(k_2, p_1) . \label{prob5_5_iM_RL-+_cal}
+\end{align}
+
+$e^-_R e^+_L \to \gamma_+\gamma_-$の過程を考える．
+
+\begin{center}
+  \feynmandiagram [horizontal=a to b, baseline=(a.base)] {
+  i1 [particle=$e^-_R$] -- [fermion, edge label=$p_1$] a -- [photon, momentum'=$k_1$] i2 [particle=$\gamma_+$],
+  a -- [fermion, edge label'=$p_1-k_1$] b,
+  f2 [particle=$\gamma_-$] -- [photon, reversed momentum'=$k_2$] b -- [fermion, reversed momentum=$p_2$] f1 [particle=$e^+_L$]
+  };
+  \hfil
+  $+$
+  \hfil
+  \begin{tikzpicture}[arrowlabel/.style={/tikzfeynman/momentum/.cd, arrow shorten=0.37, arrow distance=1.5mm}, arrowlabel/.default=0.4, baseline=(a.base)]
+    \begin{feynman}
+      \vertex (a);
+      \vertex [right=of a] (b);
+      \vertex [below left=of a] (i1) {$e^-_R$};
+      \vertex [above left=of a] (f1) {$\gamma_+$};
+      \vertex [below right=of b] (i2) {$e^+_L$};
+      \vertex [above right=of b] (f2) {$\gamma_-$};
+      \diagram* {
+      (i1) -- [fermion, edge label=$p_1$] (a), (i2) -- [anti fermion, momentum'=$p_2$] (b),
+      (a) -- [fermion, edge label'=$p_1-k_2$] (b),
+      (a) -- [photon, momentum={[arrowlabel]}, edge label=$k_2$, near end] (f2), (b) -- [photon, momentum'={[arrowlabel]}, edge label'=$k_1$, near end] (f1)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+(a)で定義した偏極ベクトルを使い，不変振幅は
+\begin{align}
+  \begin{split}
+    i\mathcal{M} &= -ie^2 \epsilon^\ast_{+\mu}(k_1)\epsilon^\ast_{-\nu}(k_2) \overline{u}_R(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{(p_1 - k_1)^2} \gamma^\mu + \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{(p_1 - k_2)^2} \gamma^\nu \right] u_R(p_1) \\
+    %
+    &= -ie^2 \frac{\overline{u}_R(p_2)\gamma_\mu u_R(k_1) u_L(p_1)\gamma_\nu u_L(k_2)}{4\sqrt{(p_2 \cdot k_1)(p_1 \cdot k_2)}} \overline{u}_R(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{t} \gamma^\mu + \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{u} \gamma^\nu \right] u_R(p_1) \\
+  \end{split}
+  \label{prob5_5_iM_RL+-}
+\end{align}
+となる\footnote{$\epsilon(k_1)$の定義に$p_2$，$\epsilon(k_2)$の定義に$p_1$を使った}．
+
+\eqref{prob5_5_iM_RL+-}の第1項は，
+\begin{align}
+  \begin{split}
+    & \frac{\overline{u}_R(p_2)\gamma_\mu u_R(k_1) u_L(p_1)\gamma_\nu u_L(k_2)}{4\sqrt{(p_2 \cdot k_1)(p_1 \cdot k_2)}} \overline{u}_L(p_2)
+    \left[ \gamma^\nu \frac{\slashed{p}_1 - \slashed{k}_1}{t} \gamma^\mu \right] u_L(p_1) \\
+    %
+    &= -\frac{2}{ut} \overline{u}_R(p_2) \left[ u_L(k_2)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(k_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_2)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(p_2) \right] u_R(p_1) \\
+    %
+    &\quad +\frac{2}{ut} \overline{u}_R(p_2) \left[ u_L(k_2)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(k_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_1)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(k_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_2)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(p_2) \right] u_R(p_1) \\
+    %
+    &= -\frac{2}{ut} \overline{u}_R(p_2) u_L(k_2)\overline{u}_L(p_1) u_R(p_1)\overline{u}_R(p_1) u_L(p_2)\overline{u}_L(k_1) u_R(p_1) \\
+    &\quad +\frac{2}{ut} \overline{u}_R(p_2) u_L(k_2)\overline{u}_L(p_1) u_R(k_1)\overline{u}_R(k_1) u_L(p_2)\overline{u}_L(k_1) u_R(p_1) \\
+    %
+    &= -\frac{2}{ut} s(p_2, k_2) t(p_1, p_1) s(p_1, p_2) t(k_1, p_1) + \frac{2}{ut} s(p_2, k_2) t(p_1, k_1) s(k_1, p_2) t(k_1, p_1) \\
+    &= \frac{2}{ut} s(p_2, k_2) t(p_1, k_1) s(k_1, p_2) t(k_1, p_1) .
+  \end{split}
+  \label{prob5_5_iM_RL+-_term1}
+\end{align}
+同様に，\eqref{prob5_5_iM_RL+-}の第2項は，
+\begin{align}
+  \begin{split}
+    & \frac{\overline{u}_R(p_2)\gamma_\mu u_R(k_1) u_L(p_1)\gamma_\nu u_L(k_2)}{4\sqrt{(p_2 \cdot k_1)(p_1 \cdot k_2)}} \overline{u}_R(p_2)
+    \left[ \gamma^\mu \frac{\slashed{p}_1 - \slashed{k}_2}{u} \gamma^\nu \right] u_R(p_1) \\
+    %
+    &= -\frac{2}{u^2} \overline{u}_R(p_2) \left[ u_L(p_2)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(p_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(p_1)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(p_1) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_2)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(k_2) \right] u_R(p_1) \\
+    %
+    &\quad +\frac{2}{u^2} \overline{u}_R(p_2) \left[ u_L(p_2)\overline{u}_L(k_1) + u_R(k_1)\overline{u}_R(p_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_2)\overline{u}_L(k_2) + u_R(k_2)\overline{u}_R(k_2) \right] \\
+    &\qquad\qquad\quad\times \left[ u_L(k_2)\overline{u}_L(p_1) + u_R(p_1)\overline{u}_R(k_2) \right] u_R(p_1) \\
+    %
+    &= -\frac{2}{u^2} \overline{u}_R(p_2) u_L(p_2)\overline{u}_L(k_1) u_R(p_1)\overline{u}_R(p_1) u_L(k_2)\overline{u}_L(p_1) u_R(p_1) \\
+    &\quad +\frac{2}{u^2} \overline{u}_R(p_2) u_L(p_2)\overline{u}_L(k_1) u_R(k_2)\overline{u}_R(k_2) u_L(k_2)\overline{u}_L(p_1) u_R(p_1) \\
+    %
+    &= -\frac{2}{u^2} s(p_2, p_2) t(k_1, p_1) s(p_1, k_2) t(p_1, p_1) + \frac{2}{u^2} s(p_2, p_2) t(k_1, k_2) s(k_2, k_2) t(p_1, p_1) \\
+    &= 0 .
+  \end{split}
+  \label{prob5_5_iM_RL+-_term2}
+\end{align}
+\eqref{prob5_5_iM_RL+-}\eqref{prob5_5_iM_RL+-_term1}\eqref{prob5_5_iM_RL+-_term2}から
+\begin{align}
+  i\mathcal{M}(e^-_R e^+_L \to \gamma_+\gamma_-) = -ie^2 \frac{2}{ut} s(p_2, k_2) t(p_1, k_1) s(k_1, p_2) t(k_1, p_1) . \label{prob5_5_iM_RL+-_cal}
+\end{align}
+
+\eqref{prob5_5_iM_LR-+_cal}\eqref{prob5_5_iM_LR+-_cal}\eqref{prob5_5_iM_RL-+_cal}\eqref{prob5_5_iM_RL+-_cal}から，
+\begin{align*}
+  \lvert \mathcal{M}(e^-_L e^+_R \to \gamma_-\gamma_+) \rvert^2 &= \lvert \mathcal{M}(e^-_R e^+_L \to \gamma_+\gamma_-) \rvert^2
+   = e^4 \frac{64}{u^2t^2} (p_2 \cdot k_2) (p_1 \cdot k_1) (k_1 \cdot p_2) (k_1 \cdot p_1) \\
+   &= 4 e^4 \frac{t}{u} , \\
+  \lvert \mathcal{M}(e^-_L e^+_R \to \gamma_+\gamma_-) \rvert^2 &= \lvert \mathcal{M}(e^-_R e^+_L \to \gamma_-\gamma_+) \rvert^2
+   = e^4 \frac{64}{u^2t^2} (p_2 \cdot k_1) (p_1 \cdot k_2) (k_2 \cdot p_2) (k_2 \cdot p_1) \\
+   &= 4 e^4 \frac{u}{t} .
+\end{align*}
+従って，
+\[ \frac{1}{4} \sum_\text{spin} \sum_\text{polarization} \lvert\mathcal{M}\rvert^2 = 2e^4 \left( \frac{u}{t} + \frac{t}{u} \right) . \]
+慣性質量から観測すれば，(4.85)から
+\[ \frac{d\sigma}{d\Omega} = \frac{\lvert\mathcal{M}\rvert^2}{64\pi^2E_\text{cm}{^2}} = \frac{\alpha^2}{2s} \left( \frac{u}{t} + \frac{t}{u} \right)
+ = \frac{\alpha^2}{s} \frac{1+\cos^2\theta}{\sin^2\theta} . \]
+従って，
+\[ \frac{d\sigma}{d\cos\theta} = \frac{2\pi\alpha^2}{s} \frac{1+\cos^2\theta}{\sin^2\theta} . \]

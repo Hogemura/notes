@@ -1,0 +1,423 @@
+\renewcommand\theequation{\Roman{part}.\arabic{equation}}
+\chapter*{Final Project I: Radiation of Gluon Jets}\addcontentsline{toc}{chapter}{Final Project I: Radiation of Gluon Jets}
+\subsection{(d)}
+$\mu^2/s = \beta$とする．
+被積分函数は
+\[
+\frac{x_1{}^2 + x_2{}^2}{(1-x_1)(1-x_2)}
++ \left[ \frac{2(x_1+x_2)}{(1-x_1)(1-x_2)} - \frac{1}{(1-x_1)^2} - \frac{1}{(1-x_2)^2} \right] \beta
++ \frac{2}{(1-x_1)(1-x_2)} \beta^2 .
+\]
+
+積分範囲は(b)で求めた次の通り．
+\begin{center}
+  \begin{tikzpicture}[>=stealth]
+    \draw[->] (-1, 0) -- (4, 0) node [right] {$x_1$};
+    \draw[->] (0, -1) -- (0, 4) node [right] {$x_2$};
+    \draw (0, 0) node [below left] {O};
+    \filldraw[pattern=vertical lines] (3, 0) node [below] {$1-\beta$} to [out=100, in=-10] (0, 3) node [left] {$1-\beta$} -- cycle;
+  \end{tikzpicture}
+\end{center}
+
+$\beta$の$1$乗以上の項は無視する．
+被積分函数のうち$\beta$を含まない項は
+\begin{align*}
+  I_0 &= \int_0^{1-\beta} dx_1 \int_{1-x_1-\beta}^{1-\beta/(1-x_1)} dx_2 \,
+  \frac{x_1{}^2 + x_2{}^2}{(1-x_1)(1-x_2)} \\
+  %
+  &= \int \frac{dx_1}{1-x_1} \int \frac{x_2{}^2 + x_1{}^2}{1-x_2} \, dx_2 \\
+  %
+  &= \int \frac{dx_1}{1-x_1} \int \left( -x_2 - 1 - \frac{x_1{}^2 + 1}{x_2 - 1} \right) \, dx_2 \\
+  %
+  &= \int \frac{dx_1}{1-x_1} \frac{1}{2} \left[ -2 (x_1{}^2 + 1) \log (1-x_2) - x_2(x_2 + 2) \right]_{1-x_1-\beta}^{1-\beta/(1-x_1)} \\
+  %
+  &= \int \frac{dx_1}{1-x_1} \frac{1}{2} \left[ -2 (x_1{}^2 + 1) \log \frac{\beta}{1-x_1} + 2 (x_1{}^2 + 1) \log (x_1 + \beta) \right] \\
+  & \quad + \int \frac{dx_1}{1-x_1} \frac{1}{2} \left[ - \left( 1 - \frac{\beta}{1-x_1} \right) \left( 3 - \frac{\beta}{1-x_1} \right) + (1 - x_1 -\beta)(3 - x_1 - \beta) \right] \\
+  %
+  &\approx \int \frac{dx_1}{1-x_1} \left[ (x_1{}^2 + 1) \log (1 - x_1) - (x_1{}^2 + 1) \log \beta + (x_1{}^2 + 1) \log (x_1 + \beta) \right] \\
+  & \quad + \int \frac{dx_1}{1-x_1} \frac{x_1{}^2 - 4x_1}{2}
+  + \int \frac{dx_1}{1-x_1} \left[ \frac{2\beta}{1-x_1} - \frac{1}{2} \frac{\beta^2}{(1-x_1)^2} \right] .
+\end{align*}
+ここで，$(4-2x_1)\beta + \beta^2$は積分すれば$\beta^1$以上の次数となるため，無視した．
+計算を継続する：
+\begin{align*}
+  &= \int_0^{1-\beta} \frac{x_1{}^2 + 1}{1 - x_1} \log(1 - x_1) \, dx_1
+  - \log\beta \int_0^{1-\beta} \frac{x_1{}^2 + 1}{1 - x_1} \, dx_1 \\
+  & \quad + \int_0^{1-\beta} \frac{x_1{}^2 + 1}{1 - x_1} \log(x_1 + \beta) \, dx_1
+  + \frac{1}{2} \int_0^{1-\beta} \frac{x_1{}^2 - 4x_1}{1-x_1} \, dx_1 \\
+  & \quad + \int_0^{1-\beta} \left[ \frac{2\beta}{(1-x_1)^2} - \frac{1}{2} \frac{\beta^2}{(1-x_1)^3} \right] \, dx_1 .
+\end{align*}
+第1項：
+\begin{align*}
+  \int_0^{1-\beta} \frac{x_1{}^2 + 1}{1 - x_1} \log(1 - x_1) \, dx_1
+  &= \int_\beta^1 \frac{x^2 - 2x + 2}{x} \log x \, dx \\
+  &= \left[ 2x - \frac{x^2}{4} + \frac{x(x-4)}{2} \log x + \log^2 x \right]_\beta^1 \\
+  &\approx \frac{7}{4} - \log^2 \beta .
+\end{align*}
+第2項：
+\begin{align*}
+  \log\beta \int_0^{1-\beta} \frac{x_1{}^2 + 1}{1 - x_1} \, dx_1
+  &= \log\beta \int_\beta^1 \frac{x^2 - 2x + 2}{x} \, dx \\
+  &= \log\beta \left[ \frac{x^2}{2} - 2x + 2 \log x \right]_\beta^1 \\
+  &\approx - \frac{3}{2} \log\beta - 2 \log^2 \beta .
+\end{align*}
+第3項：
+\begin{align*}
+  & \int_0^{1-\beta} \frac{x_1{}^2 + 1}{1 - x_1} \log(x_1 + \beta) \, dx_1 \\
+  &= \int_\beta^1 \frac{x^2 - 2x + 2}{x} \log(1 + \beta - x) \, dx \\
+  &= \left[ \frac{(1+\beta-x)^2}{2} \log (1+\beta-x) \right]_\beta^1
+  + (1+\beta) \int_\beta^1 \log(1+\beta-x) \, dx
+  + \frac{1}{2} \int_\beta^1 (1+\beta-x) \, dx \\
+  & \quad - 2 \int_\beta^1 \log(1+\beta-x) \, dx \\
+  & \quad + 2 \int_\beta^1 \frac{\log(1+\beta-x)}{x} \, dx \\
+  %
+  &\approx - \int_\beta^1 \log(1+\beta-x) \, dx
+  + \frac{1}{2} \int_\beta^1 (1+\beta-x) \, dx
+  + 2 \int_\beta^1 \frac{\log(1+\beta-x)}{x} \, dx \\
+  %
+  &= \left[ (1+\beta-x) \log (1+\beta-x) + x - \frac{1}{4} (1+\beta-x)^2 \right]_\beta^1
+  + 2 \int_\beta^1 \frac{\log(1+\beta-x)}{x} \, dx \\
+  %
+  &\approx \frac{5}{4} + 2 \int_\beta^1 \frac{\log(1+\beta-x)}{x} \, dx \\
+  &\approx \frac{5}{4} + 2 \int_{\beta/(1+\beta)}^{1/(1+\beta)} \frac{\log(1+\beta) + \log(1-x)}{x} \, dx \\
+  &\approx \frac{5}{4} + 2 \int_{\beta/(1+\beta)}^{1/(1+\beta)} \frac{\log(1-x)}{x} \, dx \\
+  &\approx \frac{5}{4} + 2 \int_0^1 \frac{\log(1-x)}{x} \, dx \\
+  &= \frac{5}{4} - \frac{\pi^2}{3} .
+\end{align*}
+第4項：
+\begin{align*}
+  \frac{1}{2} \int_0^{1-\beta} \frac{x_1{}^2 - 4x_1}{1-x_1} \, dx_1
+  &= \frac{1}{2} \int_0^{1-\beta} \left( 3 - x - \frac{3}{1-x} \right) \, dx \\
+  &= \frac{1}{2} \left[ 3x - \frac{x^2}{2} + 3 \log(1-x) \right]_0^{1-\beta} \\
+  &= \frac{5}{4} + \frac{3}{2} \log\beta .
+\end{align*}
+第5項：
+\begin{align*}
+  \int_0^{1-\beta} \left[ \frac{2\beta}{(1-x_1)^2} - \frac{1}{2} \frac{\beta^2}{(1-x_1)^3} \right] \, dx_1 &= \left[ \frac{2\beta}{1-x_1} - \frac{1}{4} \frac{\beta^2}{(1-x_1)^2} \right]_0^{1-\beta} \\
+  &\approx \frac{7}{4} .
+\end{align*}
+
+以上から，
+\begin{align}
+  \begin{split}
+    I_0 &= \frac{7}{4} - \log^2 \beta
+    - \left( - \frac{3}{2} \log\beta - 2 \log^2 \beta \right)
+    +\frac{5}{4} - \frac{\pi^2}{3}
+    + \frac{5}{4} + \frac{3}{2} \log\beta
+    + \frac{7}{4}
+    \\
+    &= 6 + 3\log\beta + \log^2 \beta - \frac{\pi^2}{3} .
+  \end{split}
+  \label{FP1_I_d_0}
+\end{align}
+
+被積分函数のうち$\beta^1$を含む項は
+\begin{align*}
+  I_1 &= \beta \int_0^{1-\beta} dx_1 \int_{1-x_1-\beta}^{1-\beta/(1-x_1)} dx_2
+  \left[ \frac{2(x_1+x_2)}{(1-x_1)(1-x_2)} - \frac{1}{(1-x_1)^2} - \frac{1}{(1-x_2)^2} \right] \\
+  %
+  &= \beta \int dx_1 \int dx_2 \left[ \frac{2(x_1+x_2)}{(1-x_1)(1-x_2)} - \frac{1}{(1-x_1)^2} - \frac{1}{(1-x_2)^2} \right] \\
+  %
+  &= \beta \int dx_1 \int dx_2 \left[ \frac{4 - 2(1-x_1) - 2(1-x_2)}{(1-x_1)(1-x_2)} - \frac{1}{(1-x_1)^2} - \frac{1}{(1-x_2)^2} \right] \\
+  %
+  &= \beta \int dx_1 \int dx_2 \left[ \frac{4}{(1-x_1)(1-x_2)} - \frac{2}{1-x_1} - \frac{2}{1-x_2} - \frac{1}{(1-x_1)^2} - \frac{1}{(1-x_2)^2} \right] \\
+  %
+  &= \beta \int dx_1 \int dx_2 \left[ \frac{4}{(1-x_1)(1-x_2)} - \frac{4}{1-x_1} - \frac{2}{(1-x_1)^2} \right] ,
+\end{align*}
+計算の最後で，積分が$x_1$, $x_2$に関して対称であることを用いた．
+第1項：
+\begin{align*}
+  & 4\beta \int_0^{1-\beta} \frac{dx_1}{1-x_1} \int_{1-x_1-\beta}^{1-\beta/(1-x_1)} \frac{dx_2}{1-x_2} \\
+  %
+  &= 4\beta \int_0^{1-\beta} \left[ - \log (1-x_2) \right]_{1-x_1-\beta}^{1-\beta/(1-x_1)} \\
+  %
+  &= 4\beta \int_0^{1-\beta} \left[ \log (x_1 + \beta) - \log \frac{\beta}{1-x_1} \right] \\
+  %
+  &= 4\beta \int_0^{1-\beta} \frac{\log(x_1+\beta)}{1-x_1} dx_1
+  - 4\beta\log\beta \int_0^{1-\beta} \frac{dx_1}{1-x_1}
+  + 4\beta \int_0^{1-\beta} \frac{\log(1-x_1)}{1-x_1} dx_1 \\
+  %
+  &= 4\beta \int_\beta^1 \frac{\log(1+\beta-x)}{x} dx
+  + 4\beta\log\beta \left[ \log(1-x_1) \right]_0^{1-\beta}
+  + 2\beta \left[ \log^2 (1-x_1) \right]_0^{1-\beta} \\
+  %
+  &= 4\beta \int_\beta^1 \frac{\log(1+\beta-x)}{x} dx
+  + 4\beta\log^2\beta
+  + 2\beta\log^2\beta
+\end{align*}
+初めの積分については，$I_0$の第3項と同様に計算すればよいので，
+\begin{align*}
+  &\approx 4\beta \left( - \frac{\pi^2}{6} \right) + 4\beta\log^2\beta + 2\beta\log^2\beta \\
+  &\approx 0 .
+\end{align*}
+第2項：
+\begin{align*}
+  4\beta \int_0^{1-\beta} \frac{dx_1}{1-x_1} \int_{1-x_1-\beta}^{1-\beta/(1-x_1)} dx_2
+  &= 4\beta \int_0^{1-\beta} \frac{dx_1}{1-x_1} \left( x_1 + \beta - \frac{\beta}{1-x_1} \right) \\
+  &= 4\beta \int_0^{1-\beta} dx_1 \left[ -1 + \frac{\beta+1}{1-x_1} - \frac{\beta}{(1-x_1)^2} \right] \\
+  &\approx 0 .
+\end{align*}
+第3項：
+\begin{align*}
+  2\beta \int_0^{1-\beta} \frac{dx_1}{(1-x_1)^2} \int_{1-x_1-\beta}^{1-\beta/(1-x_1)} dx_2
+  &= 2\beta \int_0^{1-\beta} \frac{dx_1}{(1-x_1)^2} \left( x_1 + \beta - \frac{\beta}{1-x_1} \right) \\
+  &= 2\beta \int_0^{1-\beta} dx_1 \left[ \frac{1}{x_1 - 1} + \frac{\beta+1}{(1-x_1)^2} - \frac{\beta}{(1-x_1)^3} \right] \\
+  &= 2\beta \left[ \log (1 - x_1) + \frac{\beta+1}{1-x_1} - \frac{\beta}{2(1-x_1)^2} \right]_0^{1-\beta} \\
+  &= 2\beta \left[ \log\beta + \frac{1}{\beta} - \beta - \frac{1}{2\beta} + \frac{\beta}{2} \right] \\
+  &\approx 1 .
+\end{align*}
+以上から，
+\begin{align}
+  I_1 \approx 0 - 0 - 1 = -1 . \label{FP1_I_d_1}
+\end{align}
+
+$I_1$の第1項の計算結果から，積分のうち$\beta^2$を含む項は$0$である．
+\eqref{FP1_I_d_0}\eqref{FP1_I_d_1}から，積分は
+\[ I_0 + I_1 = 5 + 3\log\beta + \log^2 \beta - \frac{\pi^2}{3} . \]
+
+\subsection{(e)}
+(a)で得られたFeynmanパラメータの積分
+\[
+\int_0^1 dx \int_0^{1-x} dz \left[ \log \frac{z\beta}{z\beta - x(1-x-z)}
++ \frac{(1-x)(x+z)}{z\beta - x(1-x-z)} \right]
+\]
+を計算する．
+
+発散しない項：
+\begin{align}
+  \begin{split}
+    \int_0^1 dx \int_0^{1-x} dz \log (z\beta)
+    &= \int_0^1 dx \int_0^{1-x} dz \, (\log z + \log \beta) \\
+    %
+    &= \int_0^1 dx \left[ z \log z - z + z \log \beta \right]_0^{1-x} \\
+    &= \int_0^1 dx \left[ (1-x) \log (1-x) - (1-x) + (1-x) \log \beta \right] \\
+    &= \int_0^1 dx \left[ x \log x - x + x \log \beta \right] \\
+    &=  \left[ \frac{x^2}{2} \log x - \frac{x^2}{4} - \frac{x^2}{2} + \frac{x^2}{2} \log \beta \right]_0^1 \\
+    &= \frac{1}{2} \log\beta - \frac{3}{4} .
+  \end{split}
+  \label{FP1_I_e_1}
+\end{align}
+
+簡単のため，
+\[ F(z) = z\beta - x(1-x-z) = (x + \beta) z - x(1-x) \]
+とおく．
+$\log F (z)$には特異点
+\[ z_1 = \frac{x-\beta}{x+\beta}(1-x) \]
+が存在するので，それを回避するように積分する．
+\begin{center}
+  \begin{tikzpicture}[>=stealth]
+    \draw[->] (-1, 0) -- (10, 0) node [right] {$\Re z$};
+    \draw[->] (0, -1) -- (0, 2) node [above] {$\Im z$};
+    \draw (0, 0) node [below left] {O};
+    \begin{scope}[ultra thick, decoration={markings, mark=at position 0.6 with {\arrow{stealth}}}]
+      \draw[postaction={decorate}] (0, 0) -- (4, 0) arc (180:0:2);
+    \end{scope}
+    \fill (4, 0) circle [radius=0.1] node [below left] {$z_0 = \frac{x-\beta}{x+\beta}(1-x)$};
+    \fill (6, 0) circle [radius=0.1] node [below] {$z_1 = \frac{x(1-x)}{x+\beta}$};
+    \fill (8, 0) circle [radius=0.1] node [below] {$1-x$};
+  \end{tikzpicture}
+\end{center}
+
+線分での積分は\footnote{積分結果のうち実部しか使わないので，分岐はどう選んでも結構}
+\begin{align*}
+  & \int_{F=-x(1-x)}^{F=-\beta(1-x)} dz \log F(z) \\
+  &= \int_{-x(1-x)}^{-\beta(1-x)} dF \, \frac{dz}{dF} \log F \\
+  &= \frac{1}{x+\beta} \int_{\beta(1-x)}^{x(1-x)} dr \, (\log r + i\pi) \\
+  &= i\pi \frac{x-\beta}{x+\beta}(1-x) + \frac{1}{x+\beta} \int_{\beta(1-x)}^{x(1-x)} \log r \, dr \\
+  &= i\pi \frac{x-\beta}{x+\beta}(1-x) + \frac{1}{x+\beta} \left[ r \log r - r \right]_{\beta(1-x)}^{x(1-x)} \\
+  &= i\pi \frac{x-\beta}{x+\beta}(1-x) + \frac{x(1-x)}{x+\beta} \left[ \log x(1-x) - 1 \right] - \beta \frac{1-x}{x+\beta} \left[ \log \beta(1-x) - 1 \right] \\
+  &= i\pi \frac{x-\beta}{x+\beta}(1-x) + \frac{x(1-x)}{x+\beta} \left[ \log x + \log (1-x) - 1 \right] - \beta \frac{1-x}{x+\beta} \left[ \log \beta + \log(1-x) - 1 \right] \\
+  &= (i\pi - 1) \frac{x-\beta}{x+\beta}(1-x) + \frac{x-\beta}{x+\beta}(1-x) \log (1-x)
+  + \frac{x(1-x)}{x+\beta} \log x - \beta \log \beta \frac{1-x}{x+\beta} .
+\end{align*}
+
+半円
+\[
+z = z_1 + \frac{1-x}{x+\beta} \beta e^{i\theta} \quad (\theta \colon \pi \to 0)
+, \quad F = (x + \beta)(z - z_1) = \beta (1 - x) e^{i\theta}
+\]
+での積分は
+\begin{align*}
+   \int_{\theta=\pi}^{\theta=0} dz \log F
+  &= \int_\pi^0 d\theta \, \frac{dz}{d\theta} \log \beta (1-x) e^{i\theta} \\
+  &= i \beta \frac{1-x}{x+\beta} \int_\pi^0 d\theta \, e^{i\theta} [i \theta + \log \beta (1-x)] \\
+  %
+  &= \beta \frac{1-x}{x+\beta} \int_0^\pi d\theta \, \theta e^{i\theta}
+  + i \beta \frac{1-x}{x+\beta} \log \beta (1-x) \int_\pi^0 d\theta \, e^{i\theta} \\
+  %
+  &= \beta \frac{1-x}{x+\beta} \left[ (1-i\theta) e^{i\theta} \right]_0^\pi
+  + i \beta \frac{1-x}{x+\beta} \log \beta (1-x) \left[ -i e^{i\theta} \right]_\pi^0 \\
+  %
+  &= \beta \frac{1-x}{x+\beta} \left[ (1-i\theta) e^{i\theta} \right]_0^\pi
+  + i \beta \frac{1-x}{x+\beta} \log \beta (1-x) \left[ -i e^{i\theta} \right]_\pi^0 \\
+  %
+  &= \beta \frac{1-x}{x+\beta} \left[ i\pi - 2 \right]
+  + i \beta \frac{1-x}{x+\beta} \log \beta (1-x) \left[ -2i \right] \\
+  %
+  &= (i\pi - 2 + 2\log \beta) \beta \frac{1-x}{x+\beta} + 2 \beta \frac{1-x}{x+\beta} \log (1-x)
+\end{align*}
+従って，積分は
+\begin{align*}
+  \int_0^{1-x} dz \, \log \frac{1}{F} &= - (i\pi - 1) \frac{x-\beta}{x+\beta}(1-x) -\frac{x-\beta}{x+\beta}(1-x) \log (1-x)
+  - \frac{x(1-x)}{x+\beta} \log x + \beta \log \beta \frac{1-x}{x+\beta} \\
+  & \quad - (i\pi - 2 + 2\log \beta) \beta \frac{1-x}{x+\beta} - 2 \beta \frac{1-x}{x+\beta} \log (1-x) \\
+  %
+  &= - (i\pi - 2 + \log \beta) \beta \frac{1-x}{x+\beta} - (i\pi - 1) \frac{x-\beta}{x+\beta}(1-x) \\
+  & \quad - (1-x) \log (1-x) - \frac{x(1-x)}{x+\beta} \log x .
+\end{align*}
+これを$x \colon 0 \to 1$で積分する．
+第1項：
+\begin{align*}
+  - (i\pi - 2 + \log \beta) \beta \int_0^1 dx \, \frac{1-x}{x+\beta}
+  &= - (i\pi - 2 + \log \beta) \beta \int_0^1 dx \, \left( -1 + \frac{1+\beta}{x+\beta} \right) \\
+  &= - (i\pi - 2 + \log \beta) \beta \left[ -x + (1+\beta) \log (x+\beta) \right]_0^1 \\
+  &= - (i\pi - 2 + \log \beta) \beta \left[ -1 + (1+\beta) \log \frac{1+\beta}{\beta} \right] \\
+  &\approx 0 .
+\end{align*}
+第2項：
+\begin{align*}
+  - (i\pi - 1) \int_0^1 dx \, \frac{x-\beta}{x+\beta}(1-x)
+  &= - (i\pi - 1) \int_0^1 dx \, \frac{-(x+\beta)(x-1-2\beta) - 2\beta(1+\beta)}{x+\beta} \\
+  &= - (i\pi - 1) \int_0^1 dx \, \left[ - x + 1 + 2\beta - 2\beta(1+\beta) \frac{1}{x+\beta} \right] \\
+  &= - (i\pi - 1) \left[ - \frac{x^2}{2} + (1 + 2\beta)x - 2\beta(1+\beta) \log (x+\beta) \right]_0^1 \\
+  &= - (i\pi - 1) \left[ - \frac{1}{2} + (1 + 2\beta) - 2\beta(1+\beta) \log \frac{1+\beta}{\beta} \right] \\
+  &= - (i\pi - 1) \left[ - \frac{1}{2} + (1 + 2\beta) - 2\beta(1+\beta) \log \frac{1+\beta}{\beta} \right] \\
+  &\approx \frac{1}{2} (1 - i\pi) .
+\end{align*}
+第3項：
+\begin{align*}
+  -\int_0^1 dx \, (1-x) \log (1-x) &= -\int_0^1 dx \, x \log x \\
+  &= - \left[ \frac{x^2}{2} \log x - \frac{x^2}{4} \right]_0^1 \\
+  &= \frac{1}{4} .
+\end{align*}
+第4項：
+\begin{align*}
+  - \int_0^1 dx \, \frac{x(1-x)}{x+\beta} \log x
+  &= \int_0^1 dx \left[ x - \beta - 1 + \frac{\beta(\beta+1)}{x+\beta} \right] \log x \\
+  &= \int_0^1 x \log x \, dx - (\beta+1) \int_0^1 \log x \, dx + \beta(\beta+1) \int_0^1 \frac{\log x}{x+\beta} \, dx \\
+  &= - \frac{1}{4} + (\beta+1) + \beta(\beta+1) \int_0^1 \frac{\log x}{x+\beta} \, dx \\
+  &\approx \frac{3}{4} .
+\end{align*}
+以上から，
+\begin{align}
+  \begin{split}
+    \int_0^1 dx \int_0^{1-x} dz \, \log \frac{1}{F}
+    = 0 + \frac{1}{2} (1 - i\pi) + \frac{1}{4} + \frac{3}{4}
+    = \frac{3 - i\pi}{2} .
+  \end{split}
+  \label{FP1_I_e_2}
+\end{align}
+
+有理多項式の項も極$z_1$が存在するので，先程と同じ経路で積分する．
+線分での積分は
+\begin{align*}
+  \int_0^{z_0} dz \, \frac{(1-x)(x+z)}{z\beta - x(1-x-z)}
+  &= \frac{1-x}{x+\beta} \int_0^{z_0} \frac{z+x}{z-z_1} \, dz \\
+  &= \frac{1-x}{x+\beta} \int_0^{z_0} \left( 1 + \frac{x+z_1}{z-z_1} \right) \,  dz \\
+  &= \frac{1-x}{x+\beta} \left[ z_0 + (x+z_1) \log \left\lvert \frac{z_0-z_1}{z_1} \right\rvert \right] \\
+  &= \frac{1-x}{x+\beta} \left[ \frac{x-\beta}{x+\beta}(1-x) + (1+\beta) \frac{x}{x+\beta} \log \frac{\beta}{x} \right] \\
+  &= \left( \frac{1-x}{x+\beta} \right)^2 (x-\beta)
+  + (1+\beta)\log \beta \frac{x(1-x)}{(x+\beta)^2}
+  - (1+\beta) \frac{x(1-x)}{(x+\beta)^2} \log x .
+\end{align*}
+半円
+\[z = z_1 + \frac{1-x}{x+\beta} \beta e^{i\theta} \quad (\theta \colon \pi \to 0) \]
+での積分は
+\begin{align*}
+  \int dz \, \frac{(1-x)(x+z)}{z\beta - x(1-x-z)}
+  &= \frac{1-x}{x+\beta} \int_{\theta=\pi}^{\theta=0} \frac{z+x}{z-z_1} \frac{dz}{d\theta} \, d\theta \\
+  &= \frac{1-x}{x+\beta} \int_\pi^0 i (z+x) \, d\theta \\
+  &= i \frac{1-x}{x+\beta} \int_\pi^0 \left[ (1+\beta) \frac{x}{x+\beta} + \beta \frac{1-x}{x+\beta} e^{i\theta} \right] \, d\theta \\
+  &= i \frac{1-x}{x+\beta} \left[ - \pi (1+\beta) \frac{x}{x+\beta} - 2i \beta \frac{1-x}{x+\beta} \right] \\
+  &= - i \pi (1+\beta) \frac{x(1-x)}{(x+\beta)^2} + 2\beta \left( \frac{1-x}{x+\beta} \right)^2 .
+\end{align*}
+以上から，
+\begin{align*}
+  & \int_0^{1-x} dz \, \frac{(1-x)(x+z)}{z\beta - x(1-x-z)} \\
+  &= \left( \frac{1-x}{x+\beta} \right)^2 (x-\beta)
+  + (1+\beta)\log \beta \frac{x(1-x)}{(x+\beta)^2}
+  - (1+\beta) \frac{x(1-x)}{(x+\beta)^2} \log x \\
+  & \quad - i \pi (1+\beta) \frac{x(1-x)}{(x+\beta)^2} + 2\beta \left( \frac{1-x}{x+\beta} \right)^2 \\
+  &= \frac{(1-x)^2}{x+\beta} + (1+\beta)(\log\beta - i\pi) \frac{x(1-x)}{(x+\beta)^2} - (1+\beta) \frac{x(1-x)}{(x+\beta)^2} \log x .
+\end{align*}
+これを$x \colon 0 \to 1$で積分する．
+第1項：
+\begin{align*}
+  \int_0^1 dx \, \frac{(1-x)^2}{x+\beta}
+  &= \int_\beta^{1+\beta} \frac{(1+\beta-x)^2}{x} \\
+  &= \int_\beta^{1+\beta} \frac{x^2 - 2(1+\beta)x + (1+\beta)^2}{x} \\
+  &= \left[ \frac{x^2}{2} - 2(1+\beta)x + (1+\beta)^2 \log x \right]_\beta^{1+\beta} \\
+  &= \frac{1+2\beta}{2} - 2(1+\beta) + (1+\beta)^2 \log \frac{1+\beta}{\beta} \\
+  &\approx - \frac{3}{2} - \log\beta .
+\end{align*}
+第2項：
+\begin{align*}
+  (1+\beta)(\log\beta - i\pi) \int_0^1 dx \, \frac{x(1-x)}{(x+\beta)^2}
+  &= (1+\beta)(\log\beta - i\pi)\int_\beta^{1+\beta} \frac{(x-\beta)(1+\beta-x)}{x^2} \\
+  &= (1+\beta)(\log\beta - i\pi)\int_\beta^{1+\beta} \frac{- x^2 + (1+2\beta)x - \beta(1+\beta)}{x^2} \\
+  &= (1+\beta)(\log\beta - i\pi)\left[ - x + (1+2\beta) \log x + \beta(1+\beta) \frac{1}{x} \right]_\beta^{1+\beta} \\
+  &= (1+\beta)(\log\beta - i\pi)\left[ - 1 + (1+2\beta) \log \frac{1+\beta}{\beta} - 1 \right] \\
+  &\approx (\log\beta - i\pi)\left[ - 2 - \log\beta \right] \\
+  &= - 2 \log\beta - \log^2\beta + i\pi (2 + \log\beta) \\
+\end{align*}
+第3項：
+\begin{align*}
+  & - \int_0^1 dx \, \frac{x(1-x)}{(x+\beta)^2} \log x \\
+  %
+  &= - \int_\beta^{1+\beta} dx \, \frac{(x-\beta)(1+\beta-x)}{x^2} \log (x-\beta) \\
+  %
+  &= - \int_\beta^{1+\beta} dx \, \frac{- x^2 + (1+2\beta)x - \beta(1+\beta)}{x^2} \log (x-\beta) \\
+  %
+  &=  \int_\beta^{1+\beta} dx \log (x-\beta)
+  - (1+2\beta) \int_\beta^{1+\beta} dx \, \frac{\log (x-\beta)}{x}
+  + \beta(1+\beta) \int_\beta^{1+\beta} dx \, \frac{\log (x-\beta)}{x^2} .
+\end{align*}
+第3項の第1項：
+\[ \int_\beta^{1+\beta} dx \log (x-\beta) = \int_0^1 dx \log x = -1 . \]
+第3項の第2項：
+\begin{align*}
+  \int_\beta^{1+\beta} dx \, \frac{\log (x-\beta)}{x}
+  &= \int_1^{1+1/\beta} dx \, \frac{\log \beta(x-1)}{x} \\
+  &= \int_1^{1+1/\beta} dx \, \frac{\log \beta + \log (x-1)}{x} \\
+  &= \log \beta \int_1^{1+1/\beta} \frac{dx}{x} + \int_1^{1+1/\beta} dx \, \frac{\log (x-1)}{x} \\
+  &= \log \beta \log \frac{1+\beta}{\beta} + \int_1^{\beta/(1+\beta)} \left( - \frac{dx}{x^2} \right) x \log\left( \frac{1}{x} - 1 \right)  \\
+  &\approx - \log^2 \beta + \int_{\beta/(1+\beta)}^1 dx \, \frac{\log(1-x) - \log x}{x} \\
+  &= - \log^2 \beta + \int_{\beta/(1+\beta)}^1 dx \, \frac{\log(1-x)}{x}
+  - \int_{\beta/(1+\beta)}^1 dx \, \frac{\log x}{x} \\
+  &\approx - \log^2 \beta - \frac{\pi^2}{6} - \left[ \frac{1}{2} \log^2 x \right]_{\beta/(1+\beta)}^1 \\
+  &\approx - \log^2 \beta - \frac{\pi^2}{6} + \frac{1}{2} \log^2 \frac{\beta}{1+\beta} \\
+  &\approx - \frac{1}{2} \log^2 \beta - \frac{\pi^2}{6} .
+\end{align*}
+第3項の第3項：
+\begin{align*}
+  \beta(1+\beta) \int_\beta^{1+\beta} dx \, \frac{\log (x-\beta)}{x^2}
+  &= (1+\beta) \int_1^{1+1/\beta} dx \, \frac{\log\beta(x-1)}{x^2} \\
+  &= (1+\beta) \int_1^{1+1/\beta} dx \, \frac{\log\beta + \log(x-1)}{x^2} \\
+  &= (1+\beta) \log\beta \int_1^{1+1/\beta} \frac{dx}{x^2}
+  + (1+\beta) \int_1^{1+1/\beta} dx \, \frac{\log(x-1)}{x^2} \\
+  %
+  &= \log\beta + (1+\beta) \int_1^{\beta/(1+\beta)} \left( - \frac{dx}{x^2} \right) x^2 \log \left( \frac{1}{x} - 1 \right) \\
+  &= \log\beta + (1+\beta) \int_{\beta/(1+\beta)}^1 dx \log \frac{1-x}{x} \\
+  &= \log\beta + (1+\beta) \int_{\beta/(1+\beta)}^1 dx \log (1-x) - (1+\beta) \int_{\beta/(1+\beta)}^1 dx \log x \\
+  &= \log\beta + (1+\beta) \int_0^{1/(1+\beta)} dx \log x - (1+\beta) \int_{\beta/(1+\beta)}^1 dx \log x \\
+  &= \log\beta + (1+\beta) [x\log x - x]_0^{1/(1+\beta)} - (1+\beta) [x\log x - x]_{\beta/(1+\beta)}^1 \\
+  &\approx \log \beta .
+\end{align*}
+従って，第3項は
+\[ -\int_0^1 dx \, \frac{x(1-x)}{(x+\beta)^2} \log x = - 1 + \frac{1}{2} \log^2 \beta + \frac{\pi^2}{6} + \log \beta . \]
+以上から，$x$での積分結果は
+\begin{align}
+  \begin{split}
+    & \int_0^{1-x} dz \, \frac{(1-x)(x+z)}{z\beta - x(1-x-z)} \\
+    &= - \frac{3}{2} - \log\beta- 2 \log\beta - \log^2\beta + i\pi (2 + \log\beta) - 1 + \frac{1}{2} \log^2 \beta + \frac{\pi^2}{6} + \log \beta \\
+    &= - \frac{5}{2} - \frac{1}{2} \log^2 \beta - 2 \log \beta + \frac{\pi^2}{6} + i\pi (2 + \log\beta) .
+  \end{split}
+  \label{FP1_I_e_3}
+\end{align}
+
+\eqref{FP1_I_e_1}\eqref{FP1_I_e_2}\eqref{FP1_I_e_3}から，積分は
+\begin{align*}
+  & \frac{1}{2} \log\beta - \frac{3}{4} + \frac{3 - i\pi}{2}
+   - \frac{5}{2} - \frac{1}{2} \log^2 \beta - 2 \log \beta + \frac{\pi^2}{6} + i\pi (2 + \log\beta) \\
+  &= - \frac{7}{4} - \frac{1}{2} \log^2 \beta - \frac{3}{2} \log\beta + \frac{\pi^2}{6} + \frac{i\pi}{2} (3 + 2\log\beta) .
+\end{align*}

@@ -1,0 +1,709 @@
+\subsection{(10.46)}
+(10.39)で定義したように，
+\begin{align*}
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[blob] (o) at (0, 0) {};
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  &=
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0) ;
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \vertex (d) at (210: 0.8);
+      \vertex (e) at (330: 0.8);
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c),
+      (d) -- [photon, quarter right] (e),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[crossed dot] (o) at (0, 0) {};
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  \\[5pt]
+  - ie\Gamma^\mu(p', p) &= -ie\gamma^\mu -ie \left[\gamma^\mu \delta F_1(q^2) + \frac{i\sigma^{\mu\nu}q_\nu}{2m} F_2(q^2) \right] - ie\gamma^\mu\delta_1 .
+\end{align*}
+
+\section*{Problems}\addcontentsline{toc}{section}{Problems}
+\subsection{Problem 10.1: One-loop structure of QED}
+ガンマ行列8個の積を計算する．
+\begin{align*}
+  \Tr [ \gamma^\mu \slashed{k} \gamma^\nu \slashed{k} \gamma^\rho \slashed{k} \gamma^\sigma \slashed{k} ]
+  &= \Tr [ \gamma^\mu \slashed{k} (2k^\nu - \slashed{k} \gamma^\nu) \gamma^\rho \slashed{k} (2k^\sigma - \slashed{k} \gamma^\sigma) ] \\
+  %
+  &= 4k^\nu k^\sigma \Tr [ \gamma^\mu \slashed{k} \gamma^\rho \slashed{k} ]
+  - 2k^\nu \Tr [ \gamma^\mu \slashed{k} \gamma^\rho \slashed{k} \slashed{k} \gamma^\sigma ] \\
+  & \quad - 2k^\sigma \Tr [ \gamma^\mu \slashed{k} \slashed{k} \gamma^\nu \gamma^\rho \slashed{k} ]
+  + \Tr [ \gamma^\mu \slashed{k} \slashed{k} \gamma^\nu \gamma^\rho \slashed{k} \slashed{k} \gamma^\sigma ] \\
+  %
+  &= 4k^\nu k^\sigma \Tr [ \gamma^\mu \slashed{k} \gamma^\rho \slashed{k} ]
+  - 2 k^2 k^\nu \Tr [ \gamma^\mu \slashed{k} \gamma^\rho \gamma^\sigma ] \\
+  & \quad - 2 k^2 k^\sigma \Tr [ \gamma^\mu \gamma^\nu \gamma^\rho \slashed{k} ]
+  + k^4 \Tr [ \gamma^\mu  \gamma^\nu \gamma^\rho \gamma^\sigma ] \\
+  %
+  &= 16 k^\nu k^\sigma (2k^\mu k^\rho - k^2 g^{\mu\rho})
+  - 8 k^2 k^\nu (k^\mu g^{\rho\sigma} - g^{\mu\rho}k^\sigma + g^{\mu\sigma}k^\rho) \\
+  & \quad - 8 k^2 k^\sigma (g^{\mu\nu} k^\rho - g^{\mu\rho} k^\nu + k^\mu g^{\nu\rho})
+  + 4k^4 (g^{\mu\nu}g^{\rho\sigma} - g^{\mu\rho}g^{\nu\sigma} + g^{\mu\sigma}g^{\nu\rho}) \\
+  &= 32 k^\mu k^\nu k^\rho k^\sigma
+  - 8k^2 ( k^\mu k^\nu g^{\rho\sigma} + k^\rho k^\sigma g^{\mu\nu} + k^\mu k^\sigma g^{\nu\rho} + k^\nu k^\rho g^{\mu\sigma} ) \\
+  & \quad + 4k^4 (g^{\mu\nu}g^{\rho\sigma} - g^{\mu\rho}g^{\nu\sigma} + g^{\mu\sigma}g^{\nu\rho}) .
+\end{align*}
+(A.41)(A.42)から
+\begin{align*}
+  &\to 3 k^4 (g^{\mu\nu}g^{\rho\sigma} + g^{\mu\rho}g^{\nu\sigma} + g^{\mu\sigma}g^{\nu\rho})
+  - 2k^4 (g^{\mu\nu} g^{\rho\sigma} + g^{\rho\sigma} g^{\mu\nu} + g^{\mu\sigma} g^{\nu\rho} + g^{\nu \rho} g^{\mu\sigma}) \\
+  & \quad + 4k^4 (g^{\mu\nu}g^{\rho\sigma} - g^{\mu\rho}g^{\nu\sigma} + g^{\mu\sigma}g^{\nu\rho}) \\
+  %
+  &= 3 k^4 (g^{\mu\nu}g^{\rho\sigma} + g^{\mu\rho}g^{\nu\sigma} + g^{\mu\sigma}g^{\nu\rho})
+  - 4k^4 (g^{\mu\nu} g^{\rho\sigma} + g^{\mu\sigma} g^{\nu\rho}) \\
+  & \quad + 4k^4 (g^{\mu\nu}g^{\rho\sigma} - g^{\mu\rho}g^{\nu\sigma} + g^{\mu\sigma}g^{\nu\rho}) \\
+  &= 3 k^4 (g^{\mu\nu}g^{\rho\sigma} - 2g^{\mu\rho}g^{\nu\sigma} + g^{\mu\sigma}g^{\nu\rho}) .
+\end{align*}
+
+\chapter{Renormalization and Symmetry}
+\setcounter{section}{3}
+\section{Computation of Effective Action}
+\subsection{(11.67)}
+汎函数微分について．Euler-Lagrange方程式を導く際の変分と同様にして
+\begin{align*}
+  \frac{\delta \mathcal{L}[\phi, \ldots]}{\delta \phi}
+  &= \frac{\mathcal{L}[\phi + \delta \phi, \ldots] - \mathcal{L}[\phi, \ldots]}{\delta \phi} \\
+  &= \frac{1}{\delta \phi} \left[ \frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \right) + \cdots \right] \delta \phi \\
+  &= \frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \right) .
+\end{align*}
+$(\partial_\mu \phi_\text{cl}^i)^2/2$を2階変分すれば，$-\partial^2 \delta^{ij}$が得られる．
+
+\chapter{The Renormalization Group}
+\section{Wilson's Approach to Renormalization Theory}
+\subsection{(12.8)}
+汎関数積分のために(12.7)を和の形に書いておく：
+\[
+\int \mathcal{L}_0 = \frac{1}{2} \sum_{\lvert k\rvert = b\Lambda}^\Lambda \frac{k^2}{(2\pi)^d} \lvert \hat\phi(k) \rvert^2 .
+\]
+(9.23)と同様にして
+\[
+\int \mathcal{D}\hat\phi \, \exp \left( - \int \mathcal{L}_0 \right)
+= \prod_{b\Lambda \leq \lvert k\rvert < \Lambda} \sqrt{(2\pi)^d\frac{\pi}{k^2}} .
+\]
+$b\Lambda \leq \lvert k \rvert < \Lambda$でない場合は$\hat\phi(k) = 0$．
+以下では$b\Lambda \leq \lvert k \rvert < \Lambda$の場合を考える．
+(9.26)と同様にして
+\begin{align*}
+  & \int \mathcal{D}\hat\phi \, \exp \left( - \int \mathcal{L}_0 \right) \hat\phi(k) \hat\phi(p) \\
+  %
+  &= \left( \prod_{b\Lambda \leq \lvert l\rvert < \Lambda} \int d \Re\hat\phi(l) \, d \Im\hat\phi(l) \right)
+  \left( \Re\hat\phi(k) + i \Im\hat\phi(k) \right) \left( \Re\hat\phi(p) + i \Im\hat\phi(p) \right) \\
+  & \quad \times \exp \left[ - \frac{1}{2} \sum_{\lvert l\rvert = b\Lambda}^\Lambda \frac{l^2}{(2\pi)^d} (\Re \hat\phi(l))^2 \right]
+  \exp \left[ - \frac{1}{2} \sum_{\lvert l\rvert = b\Lambda}^\Lambda \frac{l^2}{(2\pi)^d} (\Im \hat\phi(l))^2 \right] .
+\end{align*}
+(9.26)の後で説明されているように，積分が非零となるのは$k + p = 0$の場合のみ．
+\begin{align*}
+  & \int \mathcal{D}\hat\phi \, \exp \left( - \int \mathcal{L}_0 \right) \hat\phi(k) \hat\phi(-k) \\
+  %
+  &= \left( \prod_{b\Lambda \leq \lvert l\rvert < \Lambda} \int d \Re\hat\phi(l) \, d \Im\hat\phi(l) \right)
+  \left[ (\Re\hat\phi(k))^2 + (\Im\hat\phi(k))^2 \right] \\
+  & \quad \times \exp \left[ - \frac{1}{2} \sum_{\lvert l\rvert = b\Lambda}^\Lambda \frac{l^2}{(2\pi)^d} (\Re \hat\phi(l))^2 \right]
+  \exp \left[ - \frac{1}{2} \sum_{\lvert l\rvert = b\Lambda}^\Lambda \frac{l^2}{(2\pi)^d} (\Im \hat\phi(l))^2 \right] \\
+  %
+  &= 2 \int d \Re\hat\phi(k) \, (\Re\hat\phi(k))^2 \exp \left[ - \frac{1}{2} \frac{k^2}{(2\pi)^d} (\Re \hat\phi(k))^2 \right]
+  \int d \Im\hat\phi(k) \, \exp \left[ - \frac{1}{2} \frac{k^2}{(2\pi)^d} (\Im \hat\phi(k))^2 \right] \\
+  & \quad\times \prod_{\substack{b\Lambda \leq \lvert l\rvert < \Lambda \\ l \neq k}}
+  \int d \Re\hat\phi(l) \, \exp \left[ - \frac{1}{2} \frac{l^2}{(2\pi)^d} (\Re \hat\phi(l))^2 \right]
+  \int d \Im\hat\phi(l) \, \exp \left[ - \frac{1}{2} \frac{l^2}{(2\pi)^d} (\Im \hat\phi(l))^2 \right] \\
+  %
+  &= \frac{(2\pi)^d}{k^2} \prod_{b\Lambda \leq \lvert k\rvert < \Lambda} \sqrt{(2\pi)^d\frac{\pi}{k^2}} .
+\end{align*}
+以上から
+\[
+\wick[offset=4mm]{ \c1{\hat\phi}(k) \c1{\hat\phi}(p) }
+= \frac{(2\pi)^d}{k^2} \mathop{\mathop{\delta^{(d)}}}(k+p) \Theta(k) .
+\]
+
+\subsection{(12.10)}
+(12.8)から
+\begin{align*}
+  \wick[offset=4mm]{ \c1{\hat\phi}(x) \c1{\hat\phi}(x) }
+  &= \int \frac{d^dk}{(2\pi)^d} \frac{d^dp}{(2\pi)^d} e^{-i(k+p) \cdot x}
+  \wick[offset=4mm]{ \c1{\hat\phi}(k) \c1{\hat\phi}(p) } \\
+  %
+  &= \int \frac{d^dk}{(2\pi)^d} \frac{d^dp}{(2\pi)^d} e^{-i(k+p) \cdot x}
+  \frac{(2\pi)^d}{k^2} \mathop{\delta^{(d)}}(k+p) \Theta(k) \\
+  %
+  &= \int_{b\Lambda \leq \lvert k \rvert < \Lambda} \frac{d^dk}{(2\pi)^d} \frac{1}{k^2} .
+\end{align*}
+よって，
+\begin{align*}
+  - \int d^dx \, \frac{\lambda}{4} \phi(x) \phi(x)
+  \wick[offset=4mm]{ \c1{\hat\phi}(x) \c1{\hat\phi}(x) }
+  &= - \int d^dx \, \frac{\lambda}{4} \phi(x) \phi(x) \int_{b\Lambda \leq \lvert k \rvert < \Lambda} \frac{d^dk}{(2\pi)^d} \frac{1}{k^2} \\
+  %
+  &= - \frac{\mu}{2} \int d^dx \, \phi(x) \phi(x) \\
+  %
+  &= - \frac{\mu}{2} \int d^dx \,
+  \int \frac{d^dk}{(2\pi)^d} \frac{d^dp}{(2\pi)^d} e^{-i(k+p) \cdot x} \phi(k) \phi(p) \\
+  %
+  &= - \frac{\mu}{2} \int \frac{d^dk}{(2\pi)^d} \frac{d^dp}{(2\pi)^d} \mathop{\delta^{(d)}}(k+p) \phi(k) \phi(p) \\
+  &= - \frac{\mu}{2} \int \frac{d^dk}{(2\pi)^d} \phi(k) \phi(-k) .
+\end{align*}
+
+\subsection{(12.14)}
+(12.8)から
+\begin{align*}
+  \wick[offset=4mm]{ \c1{\hat\phi}(x) \c1{\hat\phi}(y) }
+  &= \int \frac{d^dk}{(2\pi)^d} \frac{d^dp}{(2\pi)^d} e^{-i(k \cdot x + p \cdot y)}
+  \wick[offset=4mm]{ \c1{\hat\phi}(k) \c1{\hat\phi}(p) } \\
+  %
+  &= \int \frac{d^dk}{(2\pi)^d} \frac{d^dp}{(2\pi)^d} e^{-i(k \cdot x + p \cdot y)}
+  \frac{(2\pi)^d}{k^2} \mathop{\delta^{(d)}}(k+p) \Theta(k) \\
+  %
+  &= \int_{b\Lambda \leq \lvert k \rvert < \Lambda} \frac{d^dk}{(2\pi)^d} e^{-ik \cdot (x-y)} \frac{1}{k^2} .
+\end{align*}
+$\exp (-\lambda \phi^2 \hat\phi^2 / 4)$の2次の展開
+\[
+\frac{1}{2}
+\int d^dx \, \frac{\lambda}{4} \phi(x) \phi(x) \hat\phi(x) \hat\phi(x)
+\int d^dy \, \frac{\lambda}{4} \phi(y) \phi(y) \hat\phi(y) \hat\phi(y)
+\]
+を考える．$\hat\phi$の縮約には
+\[
+\wick[offset=4mm]{ \c1{\hat\phi}(x) \c1{\hat\phi}(x) } \wick[offset=4mm]{ \c1{\hat\phi}(y) \c1{\hat\phi}(y) }
+= \left( \vcenter{\hbox{
+\begin{tikzpicture}[every loop/.style={min distance=15mm}]
+  \begin{feynman}
+    \vertex (a) at (-1.2, 0);
+    \vertex (b) at (0, 0);
+    \vertex (c) at (1.2, 0);
+    \diagram*{
+    (a) -- (b) -- (c)
+    };
+    \draw (b) edge [in=130, out=50, loop, double] ();
+  \end{feynman}
+\end{tikzpicture}
+}} \right)^2
+\]
+および
+\[
+\wick[offset=4mm]{ \c1{\hat\phi}(x) \c2{\hat\phi}(x) \c1{\hat\phi}(y) \c2{\hat\phi}(y) }
+=
+\vcenter{\hbox{
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (a) at (-0.5, 0.5);
+    \vertex (b) at (0, 0);
+    \vertex (c) at (-0.5, -0.5);
+    \vertex (d) at (2, 0.5);
+    \vertex (e) at (1.5, 0);
+    \vertex (f) at (2, -0.5);
+    \diagram*{
+    (a) -- (b) -- (c),
+    (d) -- (e) -- (f),
+    (b) -- [double, half left, looseness=1.2] (e),
+    (b) -- [double, half right, looseness=1.2] (e),
+    };
+  \end{feynman}
+\end{tikzpicture}
+}}
+\]
+の2通りがある．2つ目の縮約は2通りあるので，
+\begin{align*}
+  & \frac{\lambda^2}{16} \int d^dx \,d^dy \, \phi(x) \phi(x) \phi(y) \phi(y)
+  \wick[offset=4mm]{ \c1{\hat\phi}(x) \c2{\hat\phi}(x) \c1{\hat\phi}(y) \c2{\hat\phi}(y) } \\
+  %
+  &= \frac{\lambda^2}{16} \int d^dx \, d^dy \, \phi^2(x) \phi^2(y)
+  \int\displaylimits_{\substack{b\Lambda \leq \lvert k \rvert < \Lambda \\ b\Lambda \leq \lvert p \rvert < \Lambda}} \frac{d^dk}{(2\pi)^d} \frac{d^dp}{(2\pi)^d}
+  e^{-i(k+p) \cdot (x-y)} \frac{1}{k^2} \frac{1}{p^2} \\
+  %
+  &= \frac{\lambda^2}{16}
+  \int\displaylimits_{\substack{b\Lambda \leq \lvert k \rvert < \Lambda \\ b\Lambda \leq \lvert p \rvert < \Lambda}} \frac{d^dk}{(2\pi)^d} \frac{d^dp}{(2\pi)^d} \frac{1}{k^2} \frac{1}{p^2}
+  \int d^dx \, \phi^2(x) e^{-i(k+p) \cdot x} \int d^dy \, \phi^2(y) e^{i(k+p) \cdot y} \\
+  %
+  &= \frac{\lambda^2}{16}
+  \int\displaylimits_{\substack{b\Lambda \leq \lvert k \rvert < \Lambda \\ b\Lambda \leq \lvert p \rvert < \Lambda}} \frac{d^dk}{(2\pi)^d} \frac{d^dp}{(2\pi)^d} \frac{1}{k^2} \frac{1}{p^2}
+  \mathcal{F}[\phi^2](-k-p) \mathcal{F}[\phi^2](k+p) \\
+  %
+  &= \frac{\lambda^2}{16}
+  \int\displaylimits_{\substack{b\Lambda \leq \lvert k \rvert < \Lambda \\ b\Lambda \leq \lvert p \rvert < \Lambda}} \frac{d^dk}{(2\pi)^d} \frac{d^dp}{(2\pi)^d} \frac{1}{k^2} \frac{1}{p^2}
+  \left\lvert \mathcal{F}[\phi^2](k+p) \right\rvert^2 .
+\end{align*}
+$\phi$の運動量に関する条件から，$\mathcal{F}[\phi^2](k+p) \approx \mathcal{F}[\phi^2](0) \mathop{\delta^{(d)}}(k+p)$．
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (a) at (-0.5, 0.5);
+      \vertex (b) at (0, 0);
+      \vertex (c) at (-0.5, -0.5);
+      \vertex (d) at (2, 0.5);
+      \vertex (e) at (1.5, 0);
+      \vertex (f) at (2, -0.5);
+      \diagram*{
+      (a) -- [fermion, edge label=$0$] (b) -- [anti fermion, edge label=$0$] (c),
+      (d) -- [anti fermion, edge label'=$0$] (e) -- [fermion, edge label'=$0$] (f),
+      (b) -- [doublefermion, half left, looseness=1.2, edge label=$k$] (e),
+      (b) -- [doublefermion, half right, looseness=1.2, edge label=$p$] (e),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+よって，
+\begin{align*}
+  &\approx \frac{1}{(2\pi)^d} \frac{\lambda^2}{16}
+  \int\displaylimits_{b\Lambda \leq \lvert k \rvert < \Lambda} \frac{d^dk}{(2\pi)^d} \left( \frac{1}{k^2} \right)^2
+  \left\lvert \mathcal{F}[\phi^2](0) \right\rvert^2 \\
+  %
+  &\approx \frac{\lambda^2}{16}
+  \int\displaylimits_{b\Lambda \leq \lvert k \rvert < \Lambda} \frac{d^dk}{(2\pi)^d} \left( \frac{1}{k^2} \right)^2
+  \int_{-\infty}^\infty \frac{d^dp}{(2\pi)^d} \, \left\lvert \mathcal{F}[\phi^2](p) \right\rvert^2 \\
+  %
+  &= \frac{\lambda^2}{16}
+  \int\displaylimits_{b\Lambda \leq \lvert k \rvert < \Lambda} \frac{d^dk}{(2\pi)^d} \left( \frac{1}{k^2} \right)^2
+  \left\lVert \mathcal{F}[\phi^2] \right\rVert^2 \\
+  %
+  &= \frac{\lambda^2}{16}
+  \int\displaylimits_{b\Lambda \leq \lvert k \rvert < \Lambda} \frac{d^dk}{(2\pi)^d} \left( \frac{1}{k^2} \right)^2
+  \left\lVert \phi^2 \right\rVert^2 \\
+  %
+  &= \frac{\lambda^2}{16}
+  \int\displaylimits_{b\Lambda \leq \lvert k \rvert < \Lambda} \frac{d^dk}{(2\pi)^d} \left( \frac{1}{k^2} \right)^2
+  \int d^dx \, \phi^4(x) \\
+  %
+  &= - \frac{1}{4!} \int d^dx \, \zeta \phi^4 .
+\end{align*}
+
+\section{The Callan-Symanzik Equation}
+\subsection{(12.52)}
+$n$頂点のGreen函数を考える．(7.42)(12.35)から
+\begin{align*}
+  \bra{\Omega} T \{ \phi(p_1) \phi(p_2) \cdots \phi(p_n) \} \ket{\Omega}
+  &= Z^{-n/2} \bra{\Omega} T \{ \phi_0(p_1) \phi_0(p_2) \cdots \phi(p_n) \} \ket{\Omega} \\
+  &= Z^{-n/2} \prod_{i=1}^n \frac{\sqrt{Z} i}{p_i{}^2} \bra{\boldsymbol{p}} S \ket{\boldsymbol{p}} \\
+  &= \left( \prod_{i=1}^n \frac{i}{p_i{}^2} \right)
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[draw, circle] (o) at (0, 0) {Amp};
+      \vertex (x1) at (135: 1.5);
+      \vertex (x2) at (45: 1.5);
+      \vertex (y1) at (225: 1.5);
+      \vertex (y2) at (315: 1.5);
+      \diagram*{
+      (o) -- [fermion, edge label'=$p_3 \cdots$] (x1),
+      (o) -- [fermion, edge label=$p_n$] (x2),
+      (y1) -- [fermion, edge label'=$p_1$] (o),
+      (y2) -- [fermion, edge label=$p_2$] (o)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+\end{align*}
+となる\footnote{くりこみした量でダイアグラムを計算するので，(7.45)の右辺の$\sqrt{Z}$は不要}．
+tree-levelは，
+\[
+\vcenter{\hbox{
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (x1) at (135: 1);
+    \vertex (x2) at (45: 1);
+    \vertex (y1) at (225: 1);
+    \vertex (y2) at (315: 1);
+    \diagram*{
+    (o) -- (x1),
+    (o) -- (x2),
+    (y1) -- (o),
+    (y2) -- (o)
+    };
+  \end{feynman}
+\end{tikzpicture}
+}}
+= -ig .
+\]
+1PI-loopは，(10.20)などで計算したように，$\log (-p^2)$の発散を持つ：
+\[
+\vcenter{\hbox{
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex (a) at (0.5, -0.5);
+    \vertex (b) at (0, 0);
+    \vertex (c) at (-0.5, -0.5);
+    \vertex (d) at (0.5, 1.5);
+    \vertex (e) at (0, 1);
+    \vertex (f) at (-0.5, 1.5);
+    \diagram*{
+    (a) -- (b) -- (c),
+    (d) -- (e) -- (f),
+    (b) -- [half left, looseness=1.2] (e),
+    (b) -- [half right, looseness=1.2] (e),
+    };
+  \end{feynman}
+\end{tikzpicture}
+}}
++ \dots = -i B \log \frac{\Lambda^2}{-p^2} .
+\]
+vertex countertermは，
+\[
+\vcenter{\hbox{
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex[crossed dot] (o) at (0, 0) {};
+    \vertex (x1) at (135: 1);
+    \vertex (x2) at (45: 1);
+    \vertex (y1) at (225: 1);
+    \vertex (y2) at (315: 1);
+    \diagram*{
+    (o) -- (x1),
+    (o) -- (x2),
+    (y1) -- (o),
+    (y2) -- (o)
+    };
+  \end{feynman}
+\end{tikzpicture}
+}}
+= -i\delta_g .
+\]
+運動量$p_i$の外線に対するexternal leg correctionは
+\begin{align*}
+  \vcenter{\hbox{
+  \begin{tikzpicture}[every loop/.style={min distance=15mm}]
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (x1) at (135: 1);
+      \vertex (x2) at (45: 1);
+      \vertex (y1) at (225: 1);
+      \vertex (y2) at (315: 2);
+      \vertex[draw] (y2p) at (315: 1) {elc};
+      \diagram*{
+      (o) -- (x1),
+      (o) -- (x2),
+      (y1) -- (o),
+      (y2) -- [fermion, edge label=$p_i$] (y2p) -- (o)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  &=
+  \vcenter{\hbox{
+  \begin{tikzpicture}[every loop/.style={min distance=15mm}]
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (x1) at (135: 1);
+      \vertex (x2) at (45: 1);
+      \vertex (y1) at (225: 1);
+      \vertex (y2) at (315: 1);
+      \vertex (y2p) at (315: 0.6);
+      \diagram*{
+      (o) -- (x1),
+      (o) -- (x2),
+      (y1) -- (o),
+      (y2) -- (y2p) -- (o)
+      };
+      \draw (y2p) edge [in=75, out=15, loop] ();
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (x1) at (135: 1);
+      \vertex (x2) at (45: 1);
+      \vertex (y1) at (225: 1);
+      \vertex (y2) at (315: 1);
+      \vertex[crossed dot] (y2p) at (315: 0.6) {};
+      \diagram*{
+      (o) -- (x1),
+      (o) -- (x2),
+      (y1) -- (o),
+      (y2) -- (y2p) -- (o)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  \\
+  &= (-ig) A_i \log \frac{\Lambda^2}{-p^2} + (-ig) \times ip_i{}^2\delta_{Z_i} \frac{i}{p_i{}^2} \\
+  &= (-ig) \left( A_i \log \frac{\Lambda^2}{-p^2} - \delta_{Z_i} \right)
+\end{align*}
+となる（$g^1$の項のみ考えるので，$i$について和を取れば良い）．
+
+\subsection{(12.57)}
+$G^{(2, 0)}(p)$を求める．電子の自己エネルギー(7.15)を使えば(12.49)と同様に
+\begin{align*}
+  G^{(2, 0)}(p) &=
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      % \vertex[crossed dot] (o) at (0, 0) {};
+      \vertex (a) at (1, 0);
+      \vertex (b) at (-1, 0);
+      \diagram*{
+      (a) -- (b)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (a) at (1.5, 0);
+      \vertex (b) at (0.5, 0);
+      \vertex (c) at (-0.5, 0);
+      \vertex (d) at (-1.5, 0);
+      \diagram*{
+      (a) -- (b) -- (c) -- [fermion] (d),
+      (b) -- [photon, half right, looseness=1.5] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[crossed dot] (o) at (0, 0) {};
+      \vertex (a) at (1.5, 0);
+      \vertex (b) at (-1.5, 0);
+      \diagram*{
+      (a) -- (o) -- [fermion] (b)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  \\
+  %
+  &= \frac{i}{\slashed{p}} + \frac{i}{\slashed{p}} [-i\Sigma_2] \frac{i}{\slashed{p}}
+  + \frac{i}{\slashed{p}} i (\slashed{p}\delta_2) \frac{i}{\slashed{p}} \\
+  %
+  &= \frac{i}{\slashed{p}} + \frac{i}{\slashed{p}} [-i\Sigma_2] \frac{i}{\slashed{p}}
+  - \frac{i}{\slashed{p}} \delta_2 .
+\end{align*}
+(12.50)と同様に，Callan-Syamzik方程式から
+\[ - \frac{i}{\slashed{p}} M \frac{\partial}{\partial M} \delta_2 + 2 \gamma_2 \frac{i}{\slashed{p}} = 0 \]
+なので
+\[ \gamma_2 = \frac{1}{2} M \frac{\partial}{\partial M} \delta_2 . \]
+
+$G^{(0, 2)}(q)$を求める．真空偏極(7.71)(7.73)を使えば(12.49)と同様に
+\begin{align*}
+  G^{(0, 2)}(q) &=
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (a) at (1, 0) {\nu};
+      \vertex (b) at (-1, 0) {\mu};
+      \diagram*{
+      (a) -- [photon] (b)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (a) at (1.2, 0) {\nu};
+      \vertex (b) at (0.5, 0);
+      \vertex (c) at (-0.5, 0);
+      \vertex (d) at (-1.2, 0) {\mu};
+      \diagram*{
+      (a) -- [photon] (b),
+      (c) -- [photon] (d),
+      (b) -- [fermion, half right, looseness=1.5] (c),
+      (c) -- [fermion, half right, looseness=1.5] (b)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[crossed dot] (o) at (0, 0) {};
+      \vertex (a) at (1.2, 0) {\nu};
+      \vertex (b) at (-1.2, 0) {\mu};
+      \diagram*{
+      (a) -- [photon] (o) -- [photon] (b)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  \\
+  &= \frac{-i}{q^2} \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{q^2} \right) \\
+  & \quad + \frac{-i}{q^2} \left( \delta^\mu{}_\rho - \frac{q^\mu q_\rho}{q^2} \right)
+  i (g^{\rho\sigma} q^2 - q^\rho q^\sigma) \Pi_2
+  \frac{-i}{q^2} \left( \delta^\nu{}_\sigma - \frac{q^\nu q_\sigma}{q^2} \right) \\
+  & \quad + \frac{-i}{q^2} \left( \delta^\mu{}_\rho - \frac{q^\mu q_\rho}{q^2} \right)
+  (-i)(g^{\rho\sigma} q^2 - q^\rho q^\sigma) \delta_3
+  \frac{-i}{q^2} \left( \delta^\nu{}_\sigma - \frac{q^\nu q_\sigma}{q^2} \right) \\
+  %
+  &= \frac{-i}{q^2} \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{q^2} \right) \\
+  & \quad + \frac{-i}{q^2} (g^{\mu\nu}q^2 - q^\mu q^\nu) i \Pi_2 \frac{-i}{q^2} + \frac{-i}{q^2} (g^{\mu\nu}q^2 - q^\mu q^\nu) (-i) \delta_3 \frac{-i}{q^2}  \\
+  %
+  &= \frac{-i}{q^2} \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{q^2} \right)
+  \left[ 1 + \Pi_2 - \delta_3 \right] .
+\end{align*}
+(12.50)と同様に，Callan-Syamzik方程式から
+\[ - M \frac{\partial}{\partial M} \delta_3 + 2 \gamma_3 = 0 \]
+なので
+\[ \gamma_3 = \frac{1}{2} M \frac{\partial}{\partial M} \delta_3 . \]
+
+\subsection{(12.58)}
+$G^{(2,1)}(p_1, p_2, q)$を求める．頂点補正(6.38)を使えば(12.52)と同様に
+\begin{align*}
+  G^{(2,1)}(p_1, p_2, q) &=
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0) ;
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \vertex (d) at (210: 0.8);
+      \vertex (e) at (330: 0.8);
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c),
+      (d) -- [photon, quarter right] (e),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[crossed dot] (o) at (0, 0) {};
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  \\
+  &\quad +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0) ;
+      \vertex (a) at (90: 2);
+      \vertex[draw] (ap) at (90: 1) {elc};
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \diagram*{
+      (a) -- [photon] (ap) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0) ;
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 2);
+      \vertex[draw] (bp) at (210: 1) {elc};
+      \vertex (c) at (330: 1.5);
+      \diagram*{
+      (a) -- [photon] (o) -- (bp) -- [fermion] (b),
+      (o) -- [anti fermion] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0) ;
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 2);
+      \vertex[draw] (cp) at (330: 1) {elc};
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- (cp) -- [anti fermion] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  \\[6pt]
+  %
+  &= \frac{i}{\slashed{p}_1} (-ie\gamma^\mu) \frac{i}{\slashed{p}_2}
+  \frac{-i}{q^2} \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{q^2} \right)
+  + \frac{i}{\slashed{p}_1} (-ie\delta\Gamma^\mu) \frac{i}{\slashed{p}_2}
+  \frac{-i}{q^2} \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{q^2} \right) \\
+  & \quad + \frac{i}{\slashed{p}_1} (-ie\gamma^\mu\delta_1) \frac{i}{\slashed{p}_2}
+  \frac{-i}{q^2} \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{q^2} \right) \\
+  & \quad + \frac{i}{\slashed{p}_1} (-ie\gamma^\mu) (\Pi_2 - \delta_3) \frac{i}{\slashed{p}_2}
+  \frac{-i}{q^2} \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{q^2} \right) \\
+  & \quad + \frac{i}{\slashed{p}_1} \left( 1 + \Sigma_2 \frac{1}{\slashed{p}_1} - \delta_2 \right) (-ie\gamma^\mu) \frac{i}{\slashed{p}_2}
+  \frac{-i}{q^2} \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{q^2} \right) \\
+  & \quad + \frac{i}{\slashed{p}_1} (-ie\gamma^\mu) \left( 1 + \Sigma_2 \frac{1}{\slashed{p}_2} - \delta_2 \right) \frac{i}{\slashed{p}_2}
+  \frac{-i}{q^2} \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{q^2} \right) .
+\end{align*}
+(12.53)と同様に，Callan-Syamzik方程式から
+\[ M \frac{\partial}{\partial M} (\delta_1 - 2\delta_2 - \delta_3) + \frac{\beta}{e} + 2 \gamma_2 + \gamma_3 = 0 . \]
+(12.57)を代入して
+\[ \beta = e M \frac{\partial}{\partial M} \left( - \delta_1 + \delta_2 + \frac{\delta_3}{2} \right) . \]

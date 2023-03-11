@@ -1,0 +1,732 @@
+\chapter{Perturbation Theory Anomalies}
+\section{The Axial Current in Two Dimensions}
+\subsection{(19.15)}
+$\psi$は反交換することに注意して，(4.31)から
+\begin{align*}
+  \braket{j^\mu(q)} &= \int d^2x \, e^{iq\cdot x} \braket{j^\mu(x)} \\
+  &= \int d^2x \, e^{iq\cdot x} \bra\Omega \bar\psi(x) \gamma^\mu \psi(x) \ket\Omega \\
+  &\sim i \int d^2x \, e^{iq\cdot x} \int d^2y \, \bra{0} \bar\psi(x) \gamma^\mu \psi(x) \mathcal{L}(y) \ket{0} \\
+  %
+  &= -ie \int d^2x \int d^2y \, e^{iq\cdot x}
+  \bra{0} \bar\psi(x) \gamma^\mu \psi(x) A_\nu(y) \bar\psi(y) \gamma^\nu \psi(y) \ket{0} \\
+  %
+  &= -ie \int d^2x \int d^2y \, e^{iq\cdot x}
+  \bra{0} \wick[offset=4mm]{\c1{\bar\psi}_\alpha(x) (\gamma^\mu)_{\alpha\beta} \c2{\psi}_\beta(x) A_\nu(y)
+   \c2{\bar\psi}_\gamma(y) (\gamma^\nu)_{\gamma\delta} \c1{\psi}_\delta(y) \ket{0}} \\
+  %
+  &= ie \int d^2x \int d^2y \, e^{iq\cdot x}
+  \int \frac{d^2k}{(2\pi)^2} \left( \frac{1}{\slashed{k}} \right)_{\delta\alpha} e^{-ik\cdot(y-x)}
+  \int \frac{d^2k'}{(2\pi)^2} \left( \frac{1}{\slashed{k'}} \right)_{\beta\gamma} e^{-ik'\cdot(x-y)} \\
+  %
+  &\qquad\times (\gamma^\mu)^{\alpha\beta} (\gamma^\nu)^{\gamma\delta}
+  \int \frac{d^2p}{(2\pi)^2} A_\nu(p) e^{-p\cdot y} \\
+  %
+  &= ie \int \frac{d^2k}{(2\pi)^2} \Tr\left[ \frac{1}{\slashed{k}} \gamma^\mu \frac{1}{\slashed{k}+\slashed{q}} \gamma^\nu \right] A_\nu(q) .
+\end{align*}
+これを(7.71)と比べれば良い．
+
+\setcounter{section}{2}
+\section{Goldstone Bosons and Chiral Symmetries in QCD}
+\subsection{(19.84)}
+Lagrangianは
+\[
+\mathcal{L} = u_L^\dagger i \bar\sigma^\mu D_\mu u_L + d_L^\dagger i \bar\sigma^\mu D_\mu d_L + (R) .
+\]
+$U(1)$微小変換は
+\[
+\begin{pmatrix}
+  u_L \\ d_L
+\end{pmatrix}
+\to e^{-i\epsilon}
+\begin{pmatrix}
+  u_L \\ d_L
+\end{pmatrix}
+=
+\begin{pmatrix}
+  e^{-i\epsilon} u_L \\ e^{-i\epsilon} d_L
+\end{pmatrix}
+\approx
+\begin{pmatrix}
+  (1-i\epsilon) u_L \\ (1-i\epsilon) d_L
+\end{pmatrix}
+\]
+で与えられる．この変換で$\mathcal{L}$は不変なので，不随するカレントは
+\begin{align*}
+  \epsilon j^\mu = \frac{\partial\mathcal{L}}{\partial \partial_\mu u_L} \Delta u_L
+  + \frac{\partial\mathcal{L}}{\partial \partial_\mu d_L} \Delta d_L
+  = u_L^\dagger i \bar\sigma^\mu (-i\epsilon u_L) + d_L^\dagger i \bar\sigma^\mu (-i\epsilon d_L) .
+\end{align*}
+一方で
+\[
+Q_L = \left( \frac{1-\gamma^5}{2} \right)
+\begin{pmatrix}
+  u \\ d
+\end{pmatrix}
+= \begin{pmatrix}
+   \frac{1-\gamma^5}{2} u \\ \frac{1-\gamma^5}{2} d
+\end{pmatrix}
+\]
+に対し
+\begin{align*}
+  \bar{Q}_L \gamma^\mu Q_L &=
+  \begin{pmatrix}
+    \bar{u} \frac{1+\gamma^5}{2} & \bar{d} \frac{1+\gamma^5}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+    \gamma^\mu \frac{1-\gamma^5}{2} u \\ \gamma^\mu \frac{1-\gamma^5}{2} d
+  \end{pmatrix}
+  \\
+  &= \bar{u} \frac{1+\gamma^5}{2} \gamma^\mu \frac{1-\gamma^5}{2} u + (d) \\
+  &=
+  \begin{pmatrix}
+    u_R^\dagger & u_L^\dagger
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & 0 \\ 0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & \sigma^\mu \\ \bar\sigma^\mu & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 0 \\ 0 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    u_L \\ u_R
+  \end{pmatrix}
+  + (d) \\
+  &= u_L^\dagger \bar\sigma^\mu u_L + (d)
+\end{align*}
+なので$j^\mu = \bar{Q}_L \gamma^\mu Q_L$．
+
+$SU(2)$微小変換は
+\[
+\begin{pmatrix}
+  u_L \\ d_L
+\end{pmatrix}
+\to e^{-i\epsilon_a \tau^a}
+\begin{pmatrix}
+  u_L \\ d_L
+\end{pmatrix}
+=
+\begin{pmatrix}
+  e^{-i\epsilon_a \tau^a} u_L \\ e^{-i\epsilon_a \tau^a} d_L
+\end{pmatrix}
+\approx
+\begin{pmatrix}
+  (1-i\epsilon_a \tau^a) u_L \\ (1-i\epsilon_a \tau^a) d_L
+\end{pmatrix}
+\]
+で与えられる．後は同様．
+
+% 怪しいので削除
+% \subsection{(19.88)}
+% \(\pi\)中間子について，isospinのtripletは
+% \[ \pi^b(x) = \bar{Q}(x) \gamma^5 \tau^b Q(x) \]
+% で与えられる（\(A=1, 2\)が\(u\), \(d\)に対応）ので，そのFourier変換は
+% \begin{align*}
+%     \pi^b(p) &= \int d^4x \, e^{ip\cdot x} \pi^b(x) \\
+%     &= \int d^4x \, e^{ip\cdot x} \bar{Q}(x) \gamma^5 \tau^b Q(x) \\
+%     &= \frac{1}{\sqrt{2}}\int d^4x \, e^{ip\cdot x} \int \frac{d^4k}{(2\pi)^4} e^{-ik\cdot x} \bar{Q}(k)
+%     \gamma^5 \tau^b \int \frac{d^4q}{(2\pi)^4} e^{iq\cdot x} Q(q) \\
+%     &= \int \frac{d^4q}{(2\pi)^4} \bar{Q}(p+q) \gamma^5 \tau^b Q(q)
+% \end{align*}
+% となる．縮約は
+% \[
+% \wick{\c1{Q}_A(p)\c1{\bar{Q}}_B(q)} = (2\pi)^4 \delta^{(4)}(p-q) \delta_{AB} \frac{i}{\slashed{p}-m_A} .
+% \]
+% \(j^{\mu5a}\)をFourier変換で表せば
+% \[
+% j^{\mu5a}(x) = \int\frac{d^4k}{(2\pi)^4} \int\frac{d^4k'}{(2\pi)^4} e^{i(k-k')\cdot x}
+% \bar{Q}(k) \gamma^\mu \gamma^5 \tau^a Q(k')
+% \]
+% なので，
+% \begin{align*}
+%     \bra{0} j^{\mu5a}(x) \pi^b(p) \ket{0}
+%     &= \int \frac{d^4q}{(2\pi)^4} \int\frac{d^4k}{(2\pi)^4} \int\frac{d^4k'}{(2\pi)^4} e^{i(k-k')\cdot x} \\
+%     &\qquad\times \bra{0} \bar{Q}_A(k) \gamma^\mu \gamma^5 (\tau^a)_{AB} Q_B(k')
+%     \bar{Q}_C(p+q) \gamma^5 (\tau^b)_{CD} Q_D(q) \ket{0} \\
+%     %
+%     &= \int \frac{d^4q}{(2\pi)^4} \int\frac{d^4k}{(2\pi)^4} \int\frac{d^4k'}{(2\pi)^4} e^{i(k-k')\cdot x} \\
+%     &\qquad\times \bra{0} \wick{\c1{\bar{Q}}_A(k) \gamma^\mu \gamma^5 (\tau^a)_{AB} \c2{Q}_B(k') \c2{\bar{Q}}_C(p+q) \gamma^5 (\tau^b)_{CD} \c1{Q}_D(q)} \ket{0} + \cdots \\
+%     %
+%     &= \int \frac{d^4q}{(2\pi)^4} e^{-ip\cdot x}
+%     \Tr\left[ \frac{i}{\slashed{q} - m} \gamma^\mu \gamma^5 \frac{i}{\slashed{p} + \slashed{q} - m} \gamma^5 \right] \Tr(\tau^a \tau^b) .
+% \end{align*}
+% これは(19.88)の右辺を与える．
+
+\chapter{Gauge Theories with Spontaneous Symmetry Breaking}
+\section{The Higgs Mechanism}
+\subsection{(20.27)}
+\(\mathbb{C}^2\)スピノルを\(\mathbb{R}^4\)ベクトルとして表す．
+(21.38)から
+\begin{align}
+  \mathbb{C}^2 \ni
+  \frac{1}{\sqrt{2}}
+  \begin{pmatrix}
+    -\phi^2 - i \phi^1 \\
+    h + i\phi^3
+  \end{pmatrix}
+  \mapsto
+  \begin{pmatrix}
+    \phi^1 \\ \phi^2 \\ \phi^3 \\ h
+  \end{pmatrix}
+  \in \mathbb{R}^4
+  \label{20_27_C2toR4}
+\end{align}
+とする．この対応により\(T^a\)は\(4\times4\)行列となる．
+(20.14)から
+\[ T^a = -i t^a = - \frac{i}{2} \sigma^a . \]
+\(a=1\)なら
+\begin{align*}
+  T^1
+  \begin{pmatrix}
+    \phi^1 \\ \phi^2 \\ \phi^3 \\ h
+  \end{pmatrix}
+  &= - \frac{i}{2} \sigma^1
+  \frac{1}{\sqrt{2}}
+  \begin{pmatrix}
+    -\phi^2 - i \phi^1 \\
+    h + i\phi^3
+  \end{pmatrix}
+  = \frac{1}{2\sqrt{2}}
+  \begin{pmatrix}
+    & -i \\ -i &
+  \end{pmatrix}
+  \begin{pmatrix}
+    -\phi^2 - i \phi^1 \\
+    h + i\phi^3
+  \end{pmatrix}
+  \\
+  &= \frac{1}{2\sqrt{2}}
+  \begin{pmatrix}
+    \phi^3 - ih \\
+    -\phi^1 + i \phi^2
+  \end{pmatrix}
+  = \frac{1}{2}
+  \begin{pmatrix}
+    h \\ -\phi^3 \\ \phi^2 \\ -\phi^1
+  \end{pmatrix}
+\end{align*}
+なので
+\[
+T^1 = \frac{1}{2}
+\begin{pmatrix}
+  & & & 1 \\ & & -1 & \\ & 1 & & \\ -1 & & &
+\end{pmatrix}
+.
+\]
+
+\(a=2\)なら
+\begin{align*}
+  T^2
+  \begin{pmatrix}
+    \phi^1 \\ \phi^2 \\ \phi^3 \\ h
+  \end{pmatrix}
+  &= - \frac{i}{2} \sigma^2
+  \frac{1}{\sqrt{2}}
+  \begin{pmatrix}
+    -\phi^2 - i \phi^1 \\
+    h + i\phi^3
+  \end{pmatrix}
+  = \frac{1}{2\sqrt{2}}
+  \begin{pmatrix}
+    & -1 \\ 1 &
+  \end{pmatrix}
+  \begin{pmatrix}
+    -\phi^2 - i \phi^1 \\
+    h + i\phi^3
+  \end{pmatrix}
+  \\
+  &= \frac{1}{2\sqrt{2}}
+  \begin{pmatrix}
+    -h - i\phi^3 \\
+    -\phi^2 - i \phi^1
+  \end{pmatrix}
+  = \frac{1}{2}
+  \begin{pmatrix}
+    \phi^3 \\ h \\ -\phi^1 \\ -\phi^2
+  \end{pmatrix}
+\end{align*}
+なので
+\[
+T^2 = \frac{1}{2}
+\begin{pmatrix}
+  & & 1 & \\ & & & 1 \\ -1 & & & \\ & -1 & &
+\end{pmatrix}
+.
+\]
+
+\(a=3\)なら
+\begin{align*}
+  T^3
+  \begin{pmatrix}
+    \phi^1 \\ \phi^2 \\ \phi^3 \\ h
+  \end{pmatrix}
+  &= - \frac{i}{2} \sigma^3
+  \frac{1}{\sqrt{2}}
+  \begin{pmatrix}
+    -\phi^2 - i \phi^1 \\
+    h + i\phi^3
+  \end{pmatrix}
+  = \frac{1}{2\sqrt{2}}
+  \begin{pmatrix}
+    -i & \\ & i
+  \end{pmatrix}
+  \begin{pmatrix}
+    -\phi^2 - i \phi^1 \\
+    h + i\phi^3
+  \end{pmatrix}
+  \\
+  &= \frac{1}{2\sqrt{2}}
+  \begin{pmatrix}
+    -\phi^1 + i \phi^2 \\
+    -\phi^3 + ih
+  \end{pmatrix}
+  = \frac{1}{2}
+  \begin{pmatrix}
+    -\phi^2 \\ \phi^1 \\ h \\ -\phi^3
+  \end{pmatrix}
+\end{align*}
+なので
+\[
+T^3 = \frac{1}{2}
+\begin{pmatrix}
+  & -1 & & \\ 1 & & & \\ & & & 1 \\ & & -1 &
+\end{pmatrix}
+.
+\]
+
+以上から
+\begin{align}
+  \begin{split}
+    T^1 &= \frac{1}{2}
+    \begin{pmatrix}
+      & & & 1 \\ & & -1 & \\ & 1 & & \\ -1 & & &
+    \end{pmatrix}
+    , \quad
+    T^2 = \frac{1}{2}
+    \begin{pmatrix}
+      & & 1 & \\ & & & 1 \\ -1 & & & \\ & -1 & &
+    \end{pmatrix}
+    , \quad
+    T^3 = \frac{1}{2}
+    \begin{pmatrix}
+      & -1 & & \\ 1 & & & \\ & & & 1 \\ & & -1 &
+    \end{pmatrix}
+    .
+  \end{split}
+  \label{20_27_TR4}
+\end{align}
+これらを
+\[
+\begin{pmatrix}
+  \phi^1 \\ \phi^2 \\ \phi^3 \\ 0
+\end{pmatrix}
+\in \mathbb{R}^3
+\]
+に制限すれば
+\begin{align}
+  T^1 =
+  \begin{pmatrix}
+    & & \\ & & -1 \\ & 1 &
+  \end{pmatrix}
+  , \quad
+  T^2 =
+  \begin{pmatrix}
+    & & 1\\ & &  \\ -1 & &
+  \end{pmatrix}
+  , \quad
+  T^3 =
+  \begin{pmatrix}
+    & -1 & \\ 1 & & \\ & &
+  \end{pmatrix}
+  .
+\label{20_27_TR3}
+\end{align}
+特に，\(a=1, 2, 3\)に対して
+\[ (T^a)_{bc} = \epsilon^{bac} .  \]
+
+(20.27)右辺は\(\phi^c \in \mathbb{R}^3\)に変換したベクトル．
+\(\phi \in \mathbb{C}^2\)は\(SU(2)\)の基本表現に属するが，\(\mathbb{R}^3\)ベクトルへの変換によって（見かけ上）随伴表現に属している．
+
+\section{The Glashow-Weinberg-Salam Theory of Weak Interactions}
+\subsection{(20.80)}
+(20.63)(20.64)から
+\[
+W_\mu^\pm = \frac{1}{\sqrt{2}} (A_\mu^1 \mp iA_\mu^2) , \quad
+Z_\mu^0 = \frac{1}{\sqrt{g^2+g'^2}} (gA_\mu^3 - g'B_\mu) , \quad
+A_\mu = \frac{1}{\sqrt{g^2+g'^2}} (g'A_\mu^3 + gB_\mu) .
+\]
+(20.68)(20.70)から
+\[
+e = \frac{gg'}{\sqrt{g^2+g'^2}} , \quad
+\cos\theta_w = \frac{g}{\sqrt{g^2+g'^2}} , \quad
+\sin\theta_w = \frac{g'}{\sqrt{g^2+g'^2}} .
+\]
+さらに
+\[
+A_\mu^3 = A_\mu \sin\theta_w + Z_\mu^0 \cos\theta_w , \quad
+B_\mu = A_\mu \cos\theta_w - Z_\mu^0 \sin\theta_w , \quad
+\]
+
+$E_L$の項は
+\begin{align*}
+  &
+  \begin{pmatrix}
+    \bar{\nu}_L & \bar{e}_L
+  \end{pmatrix}
+  i\gamma^\mu \left( -igA_\mu^a \tau^a + i \frac{1}{2}g'B_\mu \right)
+  \begin{pmatrix}
+    \nu_L \\ e_L
+  \end{pmatrix} \\
+  %
+  &=
+  \begin{pmatrix}
+    \bar{\nu}_L & \bar{e}_L
+  \end{pmatrix}
+  i\gamma^\mu \left[ -i\frac{g}{\sqrt{2}}
+  \begin{pmatrix}
+    & W_\mu^+ \\ W_\mu^- &
+  \end{pmatrix}
+  - i \frac{g}{2} A_\mu^3
+  \begin{pmatrix}
+    1 & \\ & -1
+  \end{pmatrix}
+  + i \frac{g'}{2} B_\mu
+  \begin{pmatrix}
+    1 & \\ & 1
+  \end{pmatrix}
+  \right]
+  \begin{pmatrix}
+    \nu_L \\ e_L
+  \end{pmatrix} \\
+  %
+  &= \frac{g}{\sqrt{2}} W_\mu^+ (\bar{\nu}_L \gamma^\mu e_L)
+  + \frac{g}{\sqrt{2}} W_\mu^- (\bar{e}_L \gamma^\mu \nu_L) \\
+  &\quad + \frac{1}{2} \bar{\nu}_L \gamma^\mu (gA_\mu^3-g'B_\mu) \nu_L
+  - \frac{1}{2} \bar{e}_L \gamma^\mu (gA_\mu^3+g'B_\mu) e_L .
+\end{align*}
+第1, 2項は$J_W^{\mu+}$, $J_W^{\mu-}$の第1項を与える．第3項は
+\[
+\frac{1}{2} \bar{\nu}_L \gamma^\mu (gA_\mu^3-g'B_\mu) \nu_L
+= \frac{\sqrt{g^2+g'^2}}{2} Z_\mu^0 \bar{\nu}_L \gamma^\mu \nu_L
+= \frac{g}{2} \frac{Z_\mu^0}{\cos\theta_w} (\bar{\nu}_L \gamma^\mu \nu_L)
+\]
+なので$J_Z^\mu$の第1項を与える．第4項は
+\begin{align*}
+  & -\frac{1}{2} \bar{e}_L \gamma^\mu (gA_\mu^3+g'B_\mu) e_L \\
+  &= -\frac{\sqrt{g^2+g'^2}}{2} (A_\mu^3\cos\theta_w+B_\mu\sin\theta_w) (\bar{e}_L \gamma^\mu e_L) \\
+  &= -\frac{\sqrt{g^2+g'^2}}{2} \left[ 2A_\mu \frac{e}{\sqrt{g^2+g'^2}} + Z_\mu^0(1-2\sin^2\theta_w) \right] (\bar{e}_L \gamma^\mu e_L) \\
+  &= - eA_\mu (\bar{e}_L \gamma^\mu e_L)
+  + g \frac{Z_\mu^0}{\cos\theta_w} \left( -\frac{1}{2}+\sin^2\theta \right) (\bar{e}_L \gamma^\mu e_L)
+\end{align*}
+なので$J_\text{EM}^\mu$の第1項の左成分と$J_Z^\mu$の第2成分を与える．
+
+$e_R$の項は
+\begin{align*}
+  \bar{e}_R i\gamma^\mu (ig'B_\mu) e_R
+  &= g'(Z_\mu^0\sin\theta_w - A_\mu\cos\theta_w) (\bar{e}_R \gamma^\mu e_R) \\
+  &= g \frac{\sin^2\theta_w}{\cos\theta_w} Z_\mu^0 (\bar{e}_R \gamma^\mu e_R)
+  - e A_\mu (\bar{e}_R \gamma^\mu e_R)
+\end{align*}
+なので$J_Z^\mu$の第3項と$J_\text{EM}^\mu$の第1項の右成分を与える．
+$u_R$は$Y=2/3$，$d_R$は$Y=-1/3$とすれば良い．
+
+$Q_L$の項は
+\begin{align*}
+  &
+  \begin{pmatrix}
+    \bar{u}_L & \bar{d}_L
+  \end{pmatrix}
+  i\gamma^\mu \left( -igA_\mu^a \tau^a - i \frac{1}{6}g'B_\mu \right)
+  \begin{pmatrix}
+    u_L \\ d_L
+  \end{pmatrix} \\
+  %
+  &=
+  \begin{pmatrix}
+    \bar{u}_L & \bar{d}_L
+  \end{pmatrix}
+  i\gamma^\mu \left[ -i\frac{g}{\sqrt{2}}
+  \begin{pmatrix}
+    & W_\mu^+ \\ W_\mu^- &
+  \end{pmatrix}
+  - i \frac{g}{2} A_\mu^3
+  \begin{pmatrix}
+    1 & \\ & -1
+  \end{pmatrix}
+  - i \frac{g'}{6} B_\mu
+  \begin{pmatrix}
+    1 & \\ & 1
+  \end{pmatrix}
+  \right]
+  \begin{pmatrix}
+    u_L \\ d_L
+  \end{pmatrix} \\
+  %
+  &= \frac{g}{\sqrt{2}} W_\mu^+ (\bar{u}_L \gamma^\mu d_L)
+  + \frac{g}{\sqrt{2}} W_\mu^- (\bar{d}_L \gamma^\mu u_L) \\
+  &\quad + \frac{1}{2} \bar{u}_L \gamma^\mu \left(gA_\mu^3+\frac{1}{3}g'B_\mu\right) u_L
+  - \frac{1}{2} \bar{d}_L \gamma^\mu \left(gA_\mu^3-\frac{1}{3}g'B_\mu\right) d_L .
+\end{align*}
+第1, 2項は$J_W^{\mu+}$, $J_W^{\mu-}$の第2項を与える．第3項は
+\begin{align*}
+  & \frac{1}{2} \bar{u}_L \gamma^\mu \left(gA_\mu^3+\frac{1}{3}g'B_\mu\right) u_L \\
+  &= \frac{\sqrt{g^2+g'^2}}{2} \left(A_\mu^3\cos\theta_w+\frac{1}{3}B_\mu\sin\theta_w\right) (\bar{u}_L \gamma^\mu u_L) \\
+  &= \frac{g}{2\cos\theta_w} \left[ \frac{4}{3} \cos\theta_w\sin\theta_w A_\mu + Z_\mu^0 \left(\cos^2\theta_w-\frac{\sin^2\theta_w}{3}\right) \right] (\bar{u}_L \gamma^\mu u_L)\\
+  &= \frac{2}{3} e A_\mu (\bar{u}_L \gamma^\mu u_L)
+  + \frac{g}{2} \frac{Z_\mu^0}{\cos\theta_w} \left(1-\frac{4}{3}\sin^2\theta_w\right) (\bar{u}_L \gamma^\mu u_L)
+\end{align*}
+なので$J_\text{EM}^\mu$の第2項と$J_Z^\mu$の第4項を与える．第4項は
+\begin{align*}
+  & - \frac{1}{2} \bar{d}_L \gamma^\mu \left(gA_\mu^3-\frac{1}{3}g'B_\mu\right) d_L \\
+  &= \frac{\sqrt{g^2+g'^2}}{2} \left(-A_\mu^3\cos\theta_w+\frac{1}{3}B_\mu\sin\theta_w\right) (\bar{d}_L \gamma^\mu d_L) \\
+  &= \frac{g}{2\cos\theta_w} \left[ -\frac{2}{3} \cos\theta_w\sin\theta_w A_\mu - Z_\mu^0 \left(\cos^2\theta_w+\frac{\sin^2\theta_w}{3}\right) \right] (\bar{d}_L \gamma^\mu d_L)\\
+  &= -\frac{1}{3} e A_\mu (\bar{u}_L \gamma^\mu u_L)
+  + \frac{g}{2} \frac{Z_\mu^0}{\cos\theta_w} \left(-1+\frac{2}{3}\sin^2\theta_w\right) (\bar{u}_L \gamma^\mu u_L)
+\end{align*}
+なので$J_\text{EM}^\mu$の第3項と$J_Z^\mu$の第5項を与える．
+
+\section*{Problems}\addcontentsline{toc}{section}{Problems}
+\subsection{Problem 20.4: Neutral-current deep inelastic scattering}
+partonレベルの散乱は次のようになる．
+
+\begin{center}
+  \begin{tikzpicture}[>=stealth]
+    \draw[->] (-1, 0) node [left] {\(\nu (k)\)} -- (-0.2, 0);
+    \draw[->] (1, 0) node [right] {\(q_f (p)\)} -- (0.2, 0);
+    \draw[->] (30: 0.2) -- (30: 1) node [right] {\(\nu (k')\)};
+    \draw[->] (210: 0.2) -- (210: 1) node [left] {\(q_f (p')\)};
+    %
+    \coordinate (O) at (0, 0);
+    \coordinate (pb) at (1, 0);
+    \coordinate (ka) at (30: 1);
+    \pic [draw, "$\theta$", angle radius=0.5cm, angle eccentricity=1.4] {angle=pb--O--ka};
+  \end{tikzpicture}
+\end{center}
+
+Mandelstam variableは
+\[
+p\cdot k = p'\cdot k' = \frac{\hat{s}}{2} , \quad
+p\cdot p' = k\cdot k' = - \frac{\hat{t}}{2} , \quad
+p\cdot k' = p'\cdot k = - \frac{\hat{u}}{2} .
+\]
+
+(17.31)(20.80)からeffective Lagrangianは
+\[
+\varDelta\mathcal{L} = \frac{g^2}{\cos^2\theta_w} \frac{1}{m_Z{}^2}
+\left[\bar\nu \gamma_\mu \frac{1}{2} \frac{1-\gamma^5}{2} \nu \right]
+\left[\bar{q} \gamma^\mu (T^3-\sin^2\theta_wQ) \frac{1\mp\gamma^5}{2} q \right] .
+\]
+
+\subsubsection{\(\nu + u_L \to \nu + u_L\)}
+不変振幅は
+\[
+i\mathcal{M} = \frac{g^2}{m_Z{}^2\cos^2\theta_w} \frac{\frac{1}{2} - \frac{2}{3}\sin^2\theta_w}{2}
+\left[\bar\nu(k') \gamma_\mu \frac{1-\gamma^5}{2} \nu(k) \right]
+\left[\bar{u}(p') \gamma^\mu \frac{1-\gamma^5}{2} u(p) \right]
+\]
+なので(A.27)から
+\begin{align*}
+  \lvert\mathcal{M}\rvert^2
+  &= \sum_\text{spins} \lvert\mathcal{M}\rvert^2 \\
+  %
+  &= \frac{1}{4} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left(\frac{1}{2} - \frac{2}{3}\sin^2\theta_w\right)^2
+  \Tr \left[ \slashed{k}' \gamma_\mu \frac{1-\gamma^5}{2} \slashed{k} \gamma_\nu \right]
+  \Tr \left[ \slashed{p}' \gamma^\mu \frac{1-\gamma^5}{2} \slashed{p} \gamma^\nu \right] \\
+  %
+  &= \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left(\frac{1}{2} - \frac{2}{3}\sin^2\theta_w\right)^2
+  \left[ k^\mu k'^\nu + k'^\mu k^\nu - (k\cdot k') g^{\mu\nu} + ik'_\alpha k_\beta \epsilon^{\alpha\mu\beta\nu} \right] \\
+  &\quad\times \left[ p_\mu p'_\nu + p'_\mu p_\nu - (p\cdot p') g_{\mu\nu} + ip'^\gamma p^\delta \epsilon_{\gamma\mu\delta\nu} \right] .
+\end{align*}
+運動量の積は(A.30)から
+\begin{align*}
+  & [k^\mu k'^\nu + k'^\mu k^\nu - (k\cdot k') g^{\mu\nu}]
+  [p_\mu p'_\nu + p'_\mu p_\nu - (p\cdot p') g_{\mu\nu}]
+  - k'_\alpha k_\beta p'^\gamma p^\delta \epsilon^{\alpha\mu\beta\nu}\epsilon_{\gamma\mu\delta\nu} \\
+  %
+  &= 2 (p\cdot k)(p'\cdot k') + 2 (p\cdot k')(p'\cdot k) + 2 (p\cdot k)(p'\cdot k') - 2 (p\cdot k')(p'\cdot k) \\
+  &= 4 (p\cdot k)(p'\cdot k')
+\end{align*}
+なので，
+\[
+\lvert\mathcal{M}(\nu u_L)\rvert^2
+= 4 \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+\left(\frac{1}{2} - \frac{2}{3}\sin^2\theta_w\right)^2
+(p\cdot k)(p'\cdot k') .
+\]
+
+\subsubsection{\(\nu + u_R \to \nu + u_R\)}
+不変振幅は
+\[
+i\mathcal{M} = \frac{g^2}{m_Z{}^2\cos^2\theta_w} \frac{ - \frac{2}{3}\sin^2\theta_w}{2}
+\left[\bar\nu(k') \gamma_\mu \frac{1-\gamma^5}{2} \nu(k) \right]
+\left[\bar{u}(p') \gamma^\mu \frac{1+\gamma^5}{2} u(p) \right]
+\]
+なので(A.27)から
+\begin{align*}
+  \lvert\mathcal{M}\rvert^2
+  %
+  &= \frac{1}{4} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left( - \frac{2}{3}\sin^2\theta_w\right)^2
+  \Tr \left[ \slashed{k}' \gamma_\mu \frac{1-\gamma^5}{2} \slashed{k} \gamma_\nu \right]
+  \Tr \left[ \slashed{p}' \gamma^\mu \frac{1+\gamma^5}{2} \slashed{p} \gamma^\nu \right] \\
+  %
+  &= \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left( - \frac{2}{3}\sin^2\theta_w\right)^2
+  \left[ k^\mu k'^\nu + k'^\mu k^\nu - (k\cdot k') g^{\mu\nu} + ik'_\alpha k_\beta \epsilon^{\alpha\mu\beta\nu} \right] \\
+  &\quad\times \left[ p_\mu p'_\nu + p'_\mu p_\nu - (p\cdot p') g_{\mu\nu} - ip'^\gamma p^\delta \epsilon_{\gamma\mu\delta\nu} \right] .
+\end{align*}
+運動量の積は(A.30)から
+\begin{align*}
+  & [k^\mu k'^\nu + k'^\mu k^\nu - (k\cdot k') g^{\mu\nu}]
+  [p_\mu p'_\nu + p'_\mu p_\nu - (p\cdot p') g_{\mu\nu}]
+  + k'_\alpha k_\beta p'^\gamma p^\delta \epsilon^{\alpha\mu\beta\nu}\epsilon_{\gamma\mu\delta\nu} \\
+  %
+  &= 2 (p\cdot k)(p'\cdot k') + 2 (p\cdot k')(p'\cdot k) - 2 (p\cdot k)(p'\cdot k') + 2 (p\cdot k')(p'\cdot k) \\
+  &= 4 (p\cdot k')(p'\cdot k)
+\end{align*}
+なので，
+\[
+\lvert\mathcal{M}(\nu u_R)\rvert^2
+= 4 \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+\left( - \frac{2}{3}\sin^2\theta_w\right)^2
+(p\cdot k')(p'\cdot k) .
+\]
+
+同様にして
+\begin{align*}
+  \lvert\mathcal{M}(\nu d_L)\rvert^2
+  &= 4 \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left(-\frac{1}{2} + \frac{1}{3}\sin^2\theta_w\right)^2
+  (p\cdot k)(p'\cdot k') , \\
+  %
+  \lvert\mathcal{M}(\nu d_R)\rvert^2
+  &= 4 \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left(\frac{1}{3}\sin^2\theta_w\right)^2
+  (p\cdot k')(p'\cdot k) .
+\end{align*}
+
+\subsubsection{antiquark}
+\(p \leftrightarrow p'\)とすればよいので，
+\begin{align*}
+  \lvert\mathcal{M}(\nu\bar{u}_L)\rvert^2
+  &= 4 \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left(\frac{1}{2} - \frac{2}{3}\sin^2\theta_w\right)^2
+  (p'\cdot k)(p\cdot k') , \\
+  %
+  \lvert\mathcal{M}(\nu\bar{u}_R)\rvert^2
+  &= 4 \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left( - \frac{2}{3}\sin^2\theta_w\right)^2
+  (p'\cdot k')(p\cdot k) , \\
+  %
+  \lvert\mathcal{M}(\nu\bar{d}_L)\rvert^2
+  &= 4 \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left(-\frac{1}{2} + \frac{1}{3}\sin^2\theta_w\right)^2
+  (p'\cdot k)(p\cdot k') , \\
+  %
+  \lvert\mathcal{M}(\nu\bar{d}_R)\rvert^2
+  &= 4 \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left(\frac{1}{3}\sin^2\theta_w\right)^2
+  (p'\cdot k')(p\cdot k) .
+\end{align*}
+
+\subsubsection{cross section}
+(17.27)から
+\[ y = \frac{\hat{s}+\hat{u}}{\hat{s}} = - \frac{\hat{t}}{\hat{s}} . \]
+(14.1)(14.2)(14.3)と同様に
+\[
+\frac{d\sigma}{dy} = - \hat{s} \frac{d\sigma}{d\hat{t}} = - 2 \frac{d\sigma}{d\cos\theta}
+= - \frac{1}{16\pi \hat{s}} \lvert\mathcal{M}\rvert^2 .
+\]
+
+up quarkの散乱断面積は
+\begin{align*}
+  \frac{d\sigma(\nu u)}{dy}
+  &= - \frac{1}{16\pi \hat{s}} \frac{\lvert\mathcal{M}(\nu u_L)\rvert^2 + \lvert\mathcal{M}(\nu u_R)\rvert^2}{2} \\
+  %
+  &= - \frac{1}{8\pi \hat{s}} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left(\frac{1}{2} - \frac{2}{3}\sin^2\theta_w\right)^2 \frac{\hat{s}^2}{4}
+  + \left( - \frac{2}{3}\sin^2\theta_w\right)^2 \frac{\hat{u}^2}{4} \right] \\
+  %
+  &= - \frac{\hat{s}}{32\pi} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left(\frac{1}{2} - \frac{2}{3}\sin^2\theta_w\right)^2
+  + \left( - \frac{2}{3}\sin^2\theta_w\right)^2 (1-y)^2 \right] \\
+  %
+  &= - \frac{sx}{32\pi} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left(\frac{1}{2} - \frac{2}{3}\sin^2\theta_w\right)^2
+  + \left( - \frac{2}{3}\sin^2\theta_w\right)^2 (1-y)^2 \right] .
+\end{align*}
+
+down quarkの散乱断面積は
+\begin{align*}
+  \frac{d\sigma(\nu d)}{dy}
+  &= - \frac{1}{16\pi \hat{s}} \frac{\lvert\mathcal{M}(\nu d_L)\rvert^2 + \lvert\mathcal{M}(\nu d_R)\rvert^2}{2} \\
+  %
+  &= - \frac{1}{8\pi \hat{s}} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left(-\frac{1}{2} + \frac{1}{3}\sin^2\theta_w\right)^2 \frac{\hat{s}^2}{4}
+  + \left( \frac{1}{3}\sin^2\theta_w\right)^2 \frac{\hat{u}^2}{4} \right] \\
+  %
+  &= - \frac{sx}{32\pi} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left( -\frac{1}{2} + \frac{1}{3}\sin^2\theta_w\right)^2
+  + \left( \frac{1}{3}\sin^2\theta_w\right)^2 (1-y)^2 \right] .
+\end{align*}
+
+up antiquarkの散乱断面積は
+\begin{align*}
+  \frac{d\sigma(\nu\bar{u})}{dy}
+  &= - \frac{1}{16\pi \hat{s}} \frac{\lvert\mathcal{M}(\nu\bar{u}_L)\rvert^2 + \lvert\mathcal{M}(\nu\bar{u}_R)\rvert^2}{2} \\
+  %
+  &= - \frac{1}{8\pi \hat{s}} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left(\frac{1}{2} - \frac{2}{3}\sin^2\theta_w\right)^2 \frac{\hat{u}^2}{4}
+  + \left( - \frac{2}{3}\sin^2\theta_w\right)^2 \frac{\hat{s}^2}{4} \right] \\
+  %
+  &= - \frac{sx}{32\pi} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left(\frac{1}{2} - \frac{2}{3}\sin^2\theta_w\right)^2 (1-y)^2
+  + \left( - \frac{2}{3}\sin^2\theta_w\right)^2 \right] .
+\end{align*}
+
+down antiquarkの散乱断面積は
+\begin{align*}
+  \frac{d\sigma(\nu\bar{d})}{dy}
+  &= - \frac{1}{16\pi \hat{s}} \frac{\lvert\mathcal{M}(\nu\bar{d}_L)\rvert^2 + \lvert\mathcal{M}(\nu\bar{d}_R)\rvert^2}{2} \\
+  %
+  &= - \frac{1}{8\pi \hat{s}} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left(-\frac{1}{2} + \frac{1}{3}\sin^2\theta_w\right)^2 \frac{\hat{u}^2}{4}
+  + \left( \frac{1}{3}\sin^2\theta_w\right)^2 \frac{\hat{s}^2}{4} \right] \\
+  %
+  &= - \frac{sx}{32\pi} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left( -\frac{1}{2} + \frac{1}{3}\sin^2\theta_w\right)^2 (1-y)^2
+  + \left( \frac{1}{3}\sin^2\theta_w\right)^2 \right] .
+\end{align*}
+
+\(\bar\nu + q \to \bar\nu + q\)の場合は\(k \leftrightarrow k'\)となるので，\(\hat{s}^2\)と\(\hat{u}^2\)を入れ替えればよい．
+従って，
+\begin{align*}
+  \frac{d\sigma(\bar\nu u)}{dy}
+  &= - \frac{sx}{32\pi} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left(\frac{1}{2} - \frac{2}{3}\sin^2\theta_w\right)^2 (1-y)^2
+  + \left( - \frac{2}{3}\sin^2\theta_w\right)^2 \right] , \\
+  %
+  \frac{d\sigma(\bar\nu d)}{dy}
+  &= - \frac{sx}{32\pi} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left( -\frac{1}{2} + \frac{1}{3}\sin^2\theta_w\right)^2 (1-y)^2
+  + \left( \frac{1}{3}\sin^2\theta_w\right)^2 \right] , \\
+  %
+  \frac{d\sigma(\bar\nu\bar{u})}{dy}
+  &= - \frac{sx}{32\pi} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left(\frac{1}{2} - \frac{2}{3}\sin^2\theta_w\right)^2
+  + \left( - \frac{2}{3}\sin^2\theta_w\right)^2 (1-y)^2 \right] , \\
+  %
+  \frac{d\sigma(\bar\nu\bar{d})}{dy}
+  &= - \frac{sx}{32\pi} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2
+  \left[ \left( -\frac{1}{2} + \frac{1}{3}\sin^2\theta_w\right)^2
+  + \left( \frac{1}{3}\sin^2\theta_w\right)^2 (1-y)^2 \right] .
+\end{align*}
+
+なお(20.73)(20.91)から
+\[
+\frac{1}{32\pi} \left(\frac{g^2}{m_Z{}^2\cos^2\theta_w}\right)^2 = \frac{G_F{}^2}{\pi} .
+\]

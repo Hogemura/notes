@@ -1,0 +1,349 @@
+\chapter{Critical Exponents and Scalar Field Theory}
+\setcounter{section}{2}
+\section{The Nonlinear Sigma Model}
+\subsection{Figure 13.1}
+非線形シグマ模型(13.73):
+\[
+\mathcal{L} = \frac{1}{2g^2} \left\lvert \partial_\mu \vec\pi \right\rvert
++ \frac{1}{2g^2} \left( \vec\pi \cdot \partial_\mu \vec\pi \right)^2
+\]
+の4点相関函数を求める．伝播函数は
+\begin{align*}
+  \wick{\c1{\pi}^i(x) \c1{\pi}^j(y)} &= \int \frac{d^2k}{(2\pi)^2} \frac{ig^2}{p^2} \delta^{ij} e^{-ik \cdot (x-y)},  \\
+  \wick{\c1{\pi}^i(p) \c1{\pi}^j(q)} &= (2\pi)^2 \mathop{\delta^{(2)}}(p+q) \frac{ig^2}{p^2} \delta^{ij} .
+\end{align*}
+(4.31)から
+\begin{align*}
+  &\bra\Omega T \left\{ \pi^i(x_1) \pi^j(x_2) \pi^k(x_3) \pi^l(x_4) \right\} \ket\Omega \\
+  &\approx \frac{i}{2g^2} \sum_{rs} \int d^2x
+  \bra{0} T \left\{ \pi^i(x_1) \pi^j(x_2) \pi^k(x_3) \pi^l(x_4) \pi^r(x) \partial_\mu \pi^r(x) \pi^s(x) \partial^\mu \pi^s(x) \right\} \ket{0} \\
+  %
+  &= \frac{i}{2g^2} \left( \prod_{i=1}^4 \frac{d^2p_i}{(2\pi)^2} e^{-i p_i \cdot x_i} \right)
+  \left( \prod_{i=1}^4 \frac{d^2k_i}{(2\pi)^2} \right)
+  \sum_{rs} \int d^2x e^{-i (k_1 + k_2 + k_3 + k_4) \cdot x} \\
+  & \quad\times \bra{0} T \left\{ \pi^i(p_1) \pi^j(p_2) \pi^k(p_3) \pi^l(p_4)
+  \pi^r(k_1) (-ik_{2\mu}) \pi^r(k_2) \pi^s(k_3) (-ik_4^\mu) \pi^s(k_4) \right\} \ket{0} \\
+  %
+  &= - \frac{i}{2g^2} \left( \prod_{i=1}^4 \frac{d^2p_i}{(2\pi)^2} e^{-i p_i \cdot x_i} \right)
+  \left( \prod_{i=1}^4 \frac{d^2k_i}{(2\pi)^2} \right) (k_2 \cdot k_4)
+  \sum_{rs} (2\pi)^2 \mathop{\delta^{(2)}}(k_1 + k_2 + k_3 + k_4) \\
+  & \quad\times \bra{0} T \left\{ \pi^i(p_1) \pi^j(p_2) \pi^k(p_3) \pi^l(p_4)
+  \pi^r(k_1) \pi^r(k_2) \pi^s(k_3) \pi^s(k_4) \right\} \ket{0} .
+\end{align*}
+縮約は全部で24通りある．
+例えば，$\delta^{ij} \delta^{kl}$を与える項は$(p_1, p_2)$と$(k_1, k_2)$を縮約する（4通り）か，$(p_1, p_2)$と$(k_3, k_4)$を縮約する（4通り），合計8通り．伝播函数を代入すれば
+\[
+- \frac{i}{g^2} \left( \prod_{i=1}^4 \frac{d^2p_i}{(2\pi)^2} e^{-i p_i \cdot x_i} \frac{ig^2}{p_i{}^2} \right)
+(2\pi)^2 \mathop{\delta^{(2)}}(p_1 + p_2 + p_3 + p_4) \delta^{ij} \delta^{kl} (p_1 + p_2) (p_3 + p_4)
+\]
+を得る．$\delta^{ik} \delta^{jl}$, $\delta^{il} \delta^{jk}$についても同様に計算すれば
+\begin{align*}
+  &
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (a) at (45: 1.5) {$l$};
+      \vertex (b) at (135: 1.5) {$k$};
+      \vertex (c) at (225: 1.5) {$i$};
+      \vertex (d) at (315: 1.5) {$j$};
+      \diagram*{
+      (a) -- [fermion, edge label=$p_4$] (o);
+      (b) -- [fermion, edge label=$p_3$] (o);
+      (c) -- [fermion, edge label=$p_1$] (o);
+      (d) -- [fermion, edge label=$p_2$] (o);
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}\\
+  &\quad = - \frac{i}{g^2}
+  \left[ (p_1+p_2)(p_3+p_4) \delta^{ij} \delta^{kl}
+  + (p_1+p_3)(p_2+p_4) \delta^{ik} \delta^{jl}
+  + (p_1+p_4)(p_2+p_3) \delta^{il} \delta^{jk} \right] .
+\end{align*}
+
+\subsection{(13.96)}
+(7.81)を使えば
+\begin{align*}
+  \langle \phi_a(0) \phi_b(0) \rangle
+  &= \int\displaylimits_{\substack{b\Lambda \leq \lvert p \rvert < \Lambda \\ b\Lambda \leq \lvert q \rvert < \Lambda}}
+  \frac{d^2p}{(2\pi)^2} \frac{d^2q}{(2\pi)^2} \langle \phi_a(p) \phi_b(q) \rangle
+  %
+  = \int\displaylimits_{\substack{b\Lambda \leq \lvert p \rvert < \Lambda \\ b\Lambda \leq \lvert q \rvert < \Lambda}}
+  \frac{d^2p}{(2\pi)^2} \frac{d^2q}{(2\pi)^2} (2\pi)^2 \mathop{\delta^{(2)}}(p+q) \frac{g^2}{p^2} \delta_{ab} \\
+  %
+  &= \int\displaylimits_{b\Lambda \leq \lvert p \rvert < \Lambda} \frac{d^2p}{(2\pi)^2} \frac{g^2}{p^2} \delta_{ab}
+  %
+  = \int\displaylimits_{b\Lambda \leq \lvert p \rvert < \Lambda} \frac{d\lvert p\rvert}{2\pi} \frac{g^2}{\lvert p\rvert} \delta_{ab}
+  %
+  = \delta_{ab} \frac{g^2}{2\pi} \log \frac{1}{b} .
+\end{align*}
+
+\subsection{(13.109)}
+$\beta(T)$を$T \sim T_\ast$で展開して
+\[ \beta(T) \approx \left[ \left. \frac{d\beta}{dT} \right|_{T=T_\ast} \right] (T - T_\ast) . \]
+(12.73)から
+\[
+\frac{\partial\bar{T}}{\partial\log p/M} = \beta(\bar{T})
+\approx \left[ \left. \frac{d\beta}{dT} \right|_{T=T_\ast} \right] (\bar{T} - T_\ast)
+= \left[ \left. \frac{d\beta}{dT} \right|_{T=T_\ast} \right] \bar\rho_T .
+\]
+
+\subsection{(13.114)}
+(13.113)で部分積分を実行して
+\begin{align*}
+  & \exp \left[ - \frac{1}{2g_0{}^2} \int d^dx \left\{ (\partial_\mu n)^2 + i \alpha (n^2 - 1) \right\} \right] \\
+  &= \exp \left[ - \frac{1}{2g_0{}^2} \int d^dx \left\{ - \vec{n} \cdot (\partial^2 \vec{n}) + i \alpha (n^2 - 1) \right\} \right] \\
+  &= \exp \left[ - \frac{1}{2g_0{}^2} \int d^dx \left\{ \vec{n} \cdot (-\partial^2 + i \alpha) \vec{n} - i \alpha \right\} \right] \\
+  &= \exp \left[ - \frac{1}{2g_0{}^2} \int d^dx \, \vec{n} \cdot (-\partial^2 + i \alpha) \vec{n} \right]
+  \exp \left[ \frac{i}{2g_0{}^2} \int d^dx \, \alpha \right] .
+\end{align*}
+ここで，$\vec{n}$を適当に変換して
+\[
+Z = \int \mathcal{D}\alpha \mathcal{D}\vec{n} \exp \left[ - \int d^dx \, \vec{n} \cdot (-\partial^2 + i \alpha) \vec{n} \right]
+\exp \left[ \frac{i}{2g_0{}^2} \int d^dx \, \alpha \right]
+\]
+としてよい．(9.24)から
+\begin{align*}
+  & \int \mathcal{D}\vec{n} \exp \left[ - \int d^dx \, \vec{n} \cdot (-\partial^2+ i \alpha) \vec{n} \right] \\
+  &= \int \mathcal{D}n^1 \cdots \mathcal{D}n^N \exp \left[ - \int d^dx \, n^1 (-\partial^2 + i \alpha) n^1 \right] \times \cdots \times
+  \exp \left[ - \int d^dx \, n^N (-\partial^2 + i \alpha) n^N \right] \\
+  &= [\det(-\partial^2 + i \alpha)]^{-N/2}
+\end{align*}
+なので，
+\[
+Z = \int \mathcal{D}\alpha \, [\det(-\partial^2 + i \alpha)]^{-N/2}
+\exp \left[ \frac{i}{2g_0{}^2} \int d^dx \, \alpha \right] .
+\]
+2つ目の表式は(9.77)を使えば得られる．
+
+\subsection{(13.115)}
+$(-\partial^2 + i\alpha)$の固有値は固有ベクトル$\ket{k}$に対し$k^2 + i\alpha$で与えられるので，
+\[ \Tr \{ \log (-\partial^2 + i\alpha) \} = \frac{1}{V} \sum_k \log (k^2 + i\alpha) . \]
+ここで，(9.22)と同様に離散Fourier変換を行った．(13.114)の指数関数の引数が$\alpha(x)$に関し極小なので，
+\begin{align*}
+  0 &= \frac{\delta}{\delta\alpha(x)} \left[ - \frac{N}{2} \Tr \{ \log (-\partial^2 + i\alpha) \}
+  + \frac{i}{2g_0{}^2} \int d^dy \, \alpha(y) \right] \\
+  &= \frac{\delta}{\delta\alpha(x)} \left[ - \frac{N}{2} \frac{1}{V} \sum_k \log (k^2 + i\alpha) \right]
+  + \frac{i}{2g_0{}^2} \int d^dy \, \delta(x-y) \\
+  &= - \frac{N}{2V} \sum_k \frac{1}{k^2 + i\alpha} \frac{\delta}{\delta\alpha(x)} (k^2 + i\alpha) + \frac{i}{2g_0{}^2} \\
+  &= - \frac{iN}{2V} \sum_k \frac{1}{k^2 + i\alpha} + \frac{i}{2g_0{}^2} \\
+  &\to - \frac{iN}{2} \int \frac{d^dk}{(2\pi)^d} \frac{1}{k^2 + i\alpha} + \frac{i}{2g_0{}^2} .
+\end{align*}
+
+\section*{Problems}\addcontentsline{toc}{section}{Problems}
+\subsection{Problem 13.3: The $\mathbb{C}P^N$ model}
+\subsubsection{(a)}
+$\mathbb{C}P^1$モデルのスカラーを
+\[
+\boldsymbol{z} = \begin{pmatrix}
+z_1 \\ z_2
+\end{pmatrix}
+\]
+とする．
+$\vec{n} = \boldsymbol{z}^\dagger \vec\sigma \boldsymbol{z}$を計算すれば
+\begin{align*}
+  n_1 &= (z_1^*, z_2^*) \sigma^1
+  \begin{pmatrix}
+    z_1 \\ z_2
+  \end{pmatrix}
+  = (z_1^*, z_2^*)
+  \begin{pmatrix}
+    & 1 \\
+    1 &
+  \end{pmatrix}
+  \begin{pmatrix}
+    z_1 \\ z_2
+  \end{pmatrix}
+  = z_1 z_2^* + z_1^* z_2 , \\
+  %
+  n_2 &= (z_1^*, z_2^*) \sigma^2
+  \begin{pmatrix}
+    z_1 \\ z_2
+  \end{pmatrix}
+  = (z_1^*, z_2^*)
+  \begin{pmatrix}
+    & -i \\
+    i &
+  \end{pmatrix}
+  \begin{pmatrix}
+    z_1 \\ z_2
+  \end{pmatrix}
+  = i (z_1 z_2^* - z_1^* z_2) , \\
+  %
+  n_3 &= (z_1^*, z_2^*) \sigma^3
+  \begin{pmatrix}
+    z_1 \\ z_2
+  \end{pmatrix}
+  = (z_1^*, z_2^*)
+  \begin{pmatrix}
+    1 & \\
+    & -1
+  \end{pmatrix}
+  \begin{pmatrix}
+    z_1 \\ z_2
+  \end{pmatrix}
+  = \lvert z_1 \rvert^2 - \lvert z_2 \rvert^2 .
+\end{align*}
+この結果を使えば
+\[ n_1{}^2 + n_2{}^2 + n_3{}^2 = (\lvert z_1 \rvert^2 + \lvert z_2 \rvert^2)^2 \]
+なので，
+規格化条件$n_1{}^2 + n_2{}^2 + n_3{}^2 = 1$は$\lvert z_1 \rvert^2 + \lvert z_2 \rvert^2 = 1$と等しい．
+非線形シグマ模型のラグランジアン(13.67)に代入して
+\begin{align*}
+  & (\partial_\mu n^1) (\partial^\mu n^1) + (\partial_\mu n^2) (\partial^\mu n^2) + (\partial_\mu n^3) (\partial^\mu n^3) \\
+  %
+  &= [ \partial_\mu(z_1 z_2^*) + \partial_\mu(z_1^* z_2) ] [ \partial^\mu(z_1 z_2^*) + \partial^\mu(z_1^* z_2) ] \\
+  & \quad - [ \partial_\mu(z_1 z_2^*) - \partial_\mu(z_1^* z_2) ] [ \partial^\mu(z_1 z_2^*) - \partial^\mu(z_1^* z_2) ] \\
+  & \quad + [ \partial_\mu(z_1 z_1^*) - \partial_\mu(z_2 z_2^*) ] [ \partial^\mu(z_1 z_1^*) - \partial^\mu(z_2 z_2^*) ] \\
+  %
+  &= 4 \partial_\mu(z_1 z_2^*) \partial^\mu(z_1^* z_2)
+  + \partial_\mu(z_1 z_1^*) \partial^\mu(z_1 z_1^*)
+  + \partial_\mu(z_2 z_2^*) \partial^\mu(z_2 z_2^*)
+  - 2\partial_\mu(z_1 z_1^*) \partial^\mu(z_2 z_2^*) \\
+  %
+  &= 4 \lvert z_1 \rvert^2 (\partial_\mu z_2) (\partial^\mu z_2^*)
+  + 4 \lvert z_2 \rvert^2 (\partial_\mu z_1) (\partial^\mu z_1^*)
+  + 4 z_1 z_2 (\partial_\mu z_1^*) (\partial^\mu z_2^*)
+  + 4 z_1^* z_2^* (\partial_\mu z_1) (\partial^\mu z_2) \\
+  %
+  & \quad + 2 \lvert z_1 \rvert^2 (\partial_\mu z_1) (\partial^\mu z_1^*)
+  + z_1{}^2 (\partial_\mu z_1^*) (\partial^\mu z_1^*)
+  + z_1^*{}^2 (\partial_\mu z_1) (\partial^\mu z_1) \\
+  %
+  & \quad + 2 \lvert z_2 \rvert^2 (\partial_\mu z_2) (\partial^\mu z_2^*)
+  + z_2{}^2 (\partial_\mu z_2^*) (\partial^\mu z_2^*)
+  + z_2^*{}^2 (\partial_\mu z_2) (\partial^\mu z_2) \\
+  %
+  & \quad -2 z_1 z_2 (\partial_\mu z_1^*) (\partial^\mu z_2^*)
+  -2 z_1^* z_2 (\partial_\mu z_1) (\partial^\mu z_2^*)
+  -2 z_1 z_2^* (\partial_\mu z_1^*) (\partial^\mu z_2)
+  -2 z_1^* z_2^* (\partial_\mu z_1) (\partial^\mu z_2) \\
+  %
+  &= 4 \lvert z_1 \rvert^2 (\partial_\mu z_2) (\partial^\mu z_2^*)
+  + 4 \lvert z_2 \rvert^2 (\partial_\mu z_1) (\partial^\mu z_1^*)
+  + 2 \lvert z_1 \rvert^2 (\partial_\mu z_1) (\partial^\mu z_1^*)
+  + 2 \lvert z_2 \rvert^2 (\partial_\mu z_2) (\partial^\mu z_2^*) \\
+  %
+  & \quad + z_1{}^2 (\partial_\mu z_1^*) (\partial^\mu z_1^*)
+  + z_1^*{}^2 (\partial_\mu z_1) (\partial^\mu z_1)
+  + z_2{}^2 (\partial_\mu z_2^*) (\partial^\mu z_2^*)
+  + z_2^*{}^2 (\partial_\mu z_2) (\partial^\mu z_2) \\
+  %
+  & \quad
+  + 2 z_1 z_2 (\partial_\mu z_1^*) (\partial^\mu z_2^*)
+  + 2 z_1^* z_2^* (\partial_\mu z_1) (\partial^\mu z_2)
+  -2 z_1^* z_2 (\partial_\mu z_1) (\partial^\mu z_2^*)
+  -2 z_1 z_2^* (\partial_\mu z_1^*) (\partial^\mu z_2) \\
+  %
+  &= 4 (\partial_\mu z_1) (\partial^\mu z_1^*)
+  + 4 (\partial_\mu z_2) (\partial^\mu z_2^*)
+  - 2 \lvert z_1 \rvert^2 (\partial_\mu z_1) (\partial^\mu z_1^*)
+  - 2 \lvert z_2 \rvert^2 (\partial_\mu z_2) (\partial^\mu z_2^*) \\
+  %
+  & \quad -2 z_1^* z_2 (\partial_\mu z_1) (\partial^\mu z_2^*)
+  -2 z_1 z_2^* (\partial_\mu z_1^*) (\partial^\mu z_2) \\
+  %
+  & \quad + (z_1^* \partial_\mu z_1 + z_2^* \partial_\mu z_2)(z_1^* \partial^\mu z_1 + z_2^* \partial^\mu z_2)
+  + (z_1 \partial_\mu z_1^* + z_2 \partial_\mu z_2^*)(z_1 \partial^\mu z_1^* + z_2 \partial^\mu z_2^*) \\
+  %
+  &= 4 (\partial_\mu z_1) (\partial^\mu z_1^*) + 4 (\partial_\mu z_2) (\partial^\mu z_2^*)
+  - 2 (z_1^* \partial_\mu z_1 + z_2^* \partial_\mu z_2)(z_1 \partial^\mu z_1^* + z_2 \partial^\mu z_2^*) \\
+  %
+  & \quad + (z_1^* \partial_\mu z_1 + z_2^* \partial_\mu z_2)(z_1^* \partial^\mu z_1 + z_2^* \partial^\mu z_2)
+  + (z_1 \partial_\mu z_1^* + z_2 \partial_\mu z_2^*)(z_1 \partial^\mu z_1^* + z_2 \partial^\mu z_2^*) .
+\end{align*}
+$\lvert z_1 \rvert^2 + \lvert z_2 \rvert^2 = 1$を微分して
+\[
+z_1 \partial_\mu z_1^* + z_1^* \partial_\mu z_1
++ z_2 \partial_\mu z_2^* + z_2^* \partial_\mu z_2 = 0
+\]
+なので，
+\begin{align*}
+  &= 4 (\partial_\mu z_1) (\partial^\mu z_1^*) + 4 (\partial_\mu z_2) (\partial^\mu z_2^*)
+  - 2 (z_1^* \partial_\mu z_1 + z_2^* \partial_\mu z_2)(z_1 \partial^\mu z_1^* + z_2 \partial^\mu z_2^*) \\
+  %
+  & \quad + 2 (z_1^* \partial_\mu z_1 + z_2^* \partial_\mu z_2)(z_1^* \partial^\mu z_1 + z_2^* \partial^\mu z_2) \\
+  %
+  &= 4 (\partial_\mu z_1) (\partial^\mu z_1^*) + 4 (\partial_\mu z_2) (\partial^\mu z_2^*) \\
+  & \quad - 2 (z_1^* \partial_\mu z_1 + z_2^* \partial_\mu z_2)
+  (z_1 \partial^\mu z_1^* + z_2 \partial^\mu z_2^* - z_1^* \partial^\mu z_1 - z_2^* \partial^\mu z_2) \\
+  %
+  &= 4 (\partial_\mu z_1) (\partial^\mu z_1^*) + 4 (\partial_\mu z_2) (\partial^\mu z_2^*)
+  - 4 (z_1^* \partial_\mu z_1 + z_2^* \partial_\mu z_2)(z_1 \partial^\mu z_1^* + z_2 \partial^\mu z_2^*) .
+\end{align*}
+以上から
+\[
+\left\lvert \partial_\mu \vec{n} \right\rvert^2
+= 4 \left[ (\partial_\mu\boldsymbol{z}) (\partial^\mu\boldsymbol{z}^*)
++ (\boldsymbol{z}^*\cdot\partial_\mu\boldsymbol{z}) (\boldsymbol{z}\cdot\partial^\mu\boldsymbol{z}^*) \right] .
+\]
+
+\renewcommand\theequation{\Roman{part}.\arabic{equation}}
+\chapter*{Final Project II: The Coleman-Weinberg Potential}\addcontentsline{toc}{chapter}{Final Project II: The Coleman-Weinberg Potential}
+\subsection{(a)}
+Coleman-Weinberg模型：
+\[
+\mathcal{L} = - \frac{1}{4} (F_{\mu\nu})^2 + (D_\mu\phi)^\dagger (D_\mu\phi)
++ \mu^2 \phi^\dagger \phi - \frac{\lambda}{6} (\phi^\dagger \phi)^2 .
+\]
+ポテンシャル項は
+\[ \phi_0 = \mu\sqrt{\frac{3}{\lambda}} \]
+で最小値を取る．
+\[ \phi(x) = \phi_0 + \frac{1}{\sqrt{2}} [\sigma(x) + i \pi(x)] \]
+とする．
+\begin{align*}
+  D_\mu \phi(x) &= (\partial_\mu + ieA_\mu) \left[ \phi_0 + \frac{1}{\sqrt{2}} [\sigma(x) + i \pi(x)] \right] \\
+  &= \frac{1}{\sqrt{2}} \partial_\mu \sigma + \frac{i}{\sqrt{2}} \partial_\mu \pi
+  + ieA_\mu \phi_0 + \frac{i}{\sqrt{2}}eA_\mu \sigma(x) - \frac{1}{\sqrt{2}} eA_\mu \pi(x) \\
+  &= \left[ \frac{1}{\sqrt{2}} \partial_\mu \sigma - \frac{1}{\sqrt{2}} eA_\mu \pi(x) \right]
+  + \frac{i}{\sqrt{2}} \partial_\mu \pi + ieA_\mu \phi_0 + \frac{i}{\sqrt{2}}eA_\mu \sigma(x)
+\end{align*}
+なので，
+\begin{align*}
+  (D_\mu\phi)^\dagger (D_\mu\phi)
+  &= \left[ \frac{1}{\sqrt{2}} \partial_\mu \sigma - \frac{1}{\sqrt{2}} eA_\mu \pi(x) \right]^2
+  + \left[ \frac{1}{\sqrt{2}} \partial_\mu \pi + eA_\mu \phi_0 + \frac{1}{\sqrt{2}}eA_\mu \sigma(x) \right]^2 \\
+  %
+  &= \frac{1}{2} (\partial_\mu\sigma)^2 + \frac{1}{2} e^2 A_\mu A^\mu \pi^2 - e \pi A^\mu \partial_\mu\sigma \\
+  &\quad + \frac{1}{2} (\partial_\mu\pi)^2 + \phi_0{}^2 e^2 A_\mu A^\mu + \frac{1}{2} e^2 A_\mu A^\mu \sigma^2 \\
+  &\quad + \sqrt{2} \phi_0 e A^\mu \partial_\mu\pi + \sqrt{2} \phi_0 e^2 A^\mu A_\mu \sigma + e \sigma A^\mu \partial_\mu\pi \\
+  %
+  &= \frac{1}{2} (\sqrt{2}\phi_0)^2 e^2 A_\mu A^\mu + \frac{1}{2} (\partial_\mu\sigma)^2 + \frac{1}{2} (\partial_\mu\pi)^2
+  + \frac{1}{2} e^2 A_\mu A^\mu \pi^2 + \frac{1}{2} e^2 A_\mu A^\mu \sigma^2 \\
+  &\quad + e \sigma A^\mu \partial_\mu\pi - e \pi A^\mu \partial_\mu\sigma
+  + \sqrt{2} \phi_0 e A^\mu \partial_\mu\pi + \sqrt{2} \phi_0 e^2 A^\mu A_\mu \sigma .
+\end{align*}
+さらに
+\[
+\phi^\dagger \phi
+= \left( \phi_0 + \frac{\sigma}{\sqrt{2}} \right)^2 + \left( \frac{\pi}{\sqrt{2}} \right)^2
+= \phi_0{}^2 + \sqrt{2} \phi_0 \sigma + \frac{\sigma^2}{2} + \frac{\pi^2}{2}
+\]
+および
+\begin{align*}
+  (\phi^\dagger \phi)^2 &= \left[ \left( \phi_0 + \frac{\sigma}{\sqrt{2}} \right)^2 + \left( \frac{\pi}{\sqrt{2}} \right)^2 \right]^2 \\
+  &= \left( \phi_0 + \frac{\sigma}{\sqrt{2}} \right)^4 + \pi^2 \left( \phi_0 + \frac{\sigma}{\sqrt{2}} \right)^2 + \frac{\pi^4}{4} \\
+  &= \phi_0{}^4 + (\sqrt{2}\phi_0)^3 \sigma + 3 \phi_0{}^2 \sigma^2 + \sqrt{2} \phi_0 \sigma^3 + \frac{\sigma^4}{4}
+  + \pi^2 \left( \phi_0{}^2 + \sqrt{2} \phi_0 \sigma + \frac{\sigma^2}{2} \right) + \frac{\pi^4}{4} .
+\end{align*}
+以上から
+\begin{align*}
+  \mathcal{L}
+  &\to - \frac{1}{4} (F_{\mu\nu})^2 + \frac{1}{2} (\sqrt{2}\phi_0)^2 e^2 A_\mu A^\mu \\
+  &\quad + \frac{1}{2} (\partial_\mu\sigma)^2 + \frac{1}{2} (\partial_\mu\pi)^2
+  + \frac{1}{2} e^2 A_\mu A^\mu \pi^2 + \frac{1}{2} e^2 A_\mu A^\mu \sigma^2 \\
+  &\quad + e \sigma A^\mu \partial_\mu\pi - e \pi A^\mu \partial_\mu\sigma
+  + \sqrt{2} \phi_0 e A^\mu \partial_\mu\pi + \sqrt{2} \phi_0 e^2 A^\mu A_\mu \sigma \\
+  &\quad + \mu^2 \left( \sqrt{2} \phi_0 \sigma + \frac{\sigma^2}{2} + \frac{\pi^2}{2} \right) \\
+  &\quad - \frac{\lambda}{6} \left[ (\sqrt{2}\phi_0)^3 \sigma + 3 \phi_0{}^2 \sigma^2 + \sqrt{2} \phi_0 \sigma^3 + \frac{\sigma^4}{4}
+  + \pi^2 \left( \phi_0{}^2 + \sqrt{2} \phi_0 \sigma + \frac{\sigma^2}{2} \right) + \frac{\pi^4}{4} \right] \\
+  %
+  &= - \frac{1}{4} (F_{\mu\nu})^2 + \frac{1}{2} \left( \frac{6\mu^2e^2}{\lambda} \right) A_\mu A^\mu
+  + \frac{1}{2} (\partial_\mu\sigma)^2 - \frac{1}{2} (2\mu^2) \sigma^2 + \frac{1}{2} (\partial_\mu\pi)^2  \\
+  &\quad - \frac{\lambda}{6} \left[ \frac{\sigma^4}{4} + \mu \sqrt{\frac{6}{\lambda}} \sigma^3
+  + \frac{\pi^2\sigma^2}{2} + \mu \sqrt{\frac{6}{\lambda}} \pi^2 \sigma + \frac{\pi^4}{4} \right] \\
+  &\quad + \frac{1}{2} e^2 A_\mu A^\mu \pi^2 + \frac{1}{2} e^2 A_\mu A^\mu \sigma^2 \\
+  &\quad + e \sigma A^\mu \partial_\mu\pi - e \pi A^\mu \partial_\mu\sigma
+  + \mu \sqrt{\frac{6}{\lambda}} e A^\mu \partial_\mu\pi + \mu \sqrt{\frac{6}{\lambda}} e^2 A^\mu A_\mu \sigma .
+\end{align*}

@@ -1,0 +1,741 @@
+\section*{Problems}\addcontentsline{toc}{section}{Problems}
+\subsection{Problem 21.1: Weak interaction contribution to the muon \(g-2\)}
+\subsubsection{\(WW\) diagram}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (2, 0);
+      \vertex (qin) at (3.5, 0) {\(A^\mu\)};
+      \vertex (a) at (120: 1.5);
+      \vertex (b) at (240: 1.5);
+      \vertex (pin) at (240: 3.5) {\(\mu_L\)};
+      \vertex (pout) at (120: 3.5) {\(\mu_L\)};
+      \diagram*{
+        (qin) -- [photon, momentum=\(q\)] (o),
+        (b) -- [boson, momentum'=\(k\)] (o) -- [boson, momentum'=\(k+q\)] (a),
+        (pin) -- [fermion, edge label=\(p\)] (b) -- [fermion, edge label=\(p-k\)] (a) -- [fermion, edge label=\(p+q\)] (pout),
+      };
+      \draw (a) node [above right] {\(W^-_\rho\)};
+      \draw (b) node [below right] {\(W^+_\nu\)};
+      \draw (o) node [above] {\(W^+\)};
+      \draw (o) node [below] {\(W^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+頂点の1 loop補正は
+\begin{align*}
+  & \bar{u}(p+q) (-ie\delta\Gamma^\mu-ie\delta\Gamma_5^\mu) u(p) \\
+  &= \int \frac{d^dk}{(2\pi)^d} \bar{u}(p+q) \frac{ig}{\sqrt{2}} \gamma_\rho \frac{i}{\slashed{p}-\slashed{k}} \frac{ig}{\sqrt{2}} \gamma_\nu \frac{1-\gamma^5}{2} u(p)
+  \frac{-i}{k^2-m_W{}^2} \frac{-i}{(k+q)^2-m_W{}^2} \\
+  &\quad\times ie [ g^{\nu\rho} (2k+q)^\mu + g^{\mu\nu} (-k+q)^\rho + g^{\mu\rho} (-k-2q)^\nu ] \\
+  %
+  &= - \frac{eg^2}{2} \int \frac{d^dk}{(2\pi)^d} \frac{1}{(k-p)^2 (k^2 - m_W{}^2) ((k+q)^2 - m_W{}^2)} \\
+  &\quad\times \bar{u}(p+q) \left[ \gamma^\nu(\slashed{p}-\slashed{k})\gamma_\nu(2k+q)^\mu
+  + (\slashed{k}-\slashed{q}) (\slashed{k}-\slashed{p}) \gamma^\mu
+  + \gamma^\mu (\slashed{k}-\slashed{p}) (\slashed{k}+2\slashed{q}) \right] \frac{1-\gamma^5}{2} u(p) .
+\end{align*}
+\(\gamma^5\)を含まない項は
+\begin{align*}
+  \delta\Gamma^\mu
+  &= -i\frac{g^2}{4} \int \frac{d^dk}{(2\pi)^d} \frac{1}{(k-p)^2 (k^2 - m_W{}^2) ((k+q)^2 - m_W{}^2)} \\
+  &\quad\times \left[ \gamma^\nu(\slashed{p}-\slashed{k})\gamma_\nu(2k+q)^\mu
+  + (\slashed{k}-\slashed{q}) (\slashed{k}-\slashed{p}) \gamma^\mu
+  + \gamma^\mu (\slashed{k}-\slashed{p}) (\slashed{k}+2\slashed{q}) \right] .
+\end{align*}
+
+分母は(A.39)から
+\[ -\frac{ig^2}{2} \int_0^1 dx \int_0^1 dy \int_0^1 dz \mathop{\delta}(1-x-y-z) \int\frac{d^4\ell}{(2\pi)^4} \frac{1}{(\ell^2-\Delta)^3} . \]
+ただし，
+\[ k = \ell + (zp-yq) , \quad \Delta = - y(1-y)q^2 - z(1-z)p^2 - 2yz p\cdot q + (1-z) m_W{}^2 . \]
+ここで\(p^2 = m^2\)，
+\begin{align}
+  2 p\cdot q = (p+q)^2 - p^2 - q^2 = m^2 - m^2 - q^2 = -q^2 \label{problem21_1_2pq}
+\end{align}
+なので
+\begin{align*}
+  \Delta &= - y(1-y)q^2 - z(1-z)m^2 + yz q^2 + (1-z) m_W{}^2 \\
+  &= -y(1-y-z)q^2 - z(1-z) m^2 + (1-z) m_W{}^2 \\
+  &= - xyq^2 - z(1-z) m^2 + (1-z) m_W{}^2.
+\end{align*}
+
+Dirac方程式から
+\[\slashed{p} u(p) = m u(p) , \quad \bar{u}(p+q) (\slashed{p}+\slashed{q}) = \bar{u}(p+q) m .\]
+
+分子は(A.55)から
+\begin{align*}
+  A_{WW} &= \gamma^\nu(\slashed{p}-\slashed{k})\gamma_\nu(2k+q)^\mu
+  + (\slashed{k}-\slashed{q}) (\slashed{k}-\slashed{p}) \gamma^\mu
+  + \gamma^\mu (\slashed{k}-\slashed{p}) (\slashed{k}+2\slashed{q}) \\
+  %
+  &= (d-2)(\slashed{k}-\slashed{p}) (2k+q)^\mu
+  + (\slashed{k}-\slashed{q}) (\slashed{k}-\slashed{p}) \gamma^\mu
+  + \gamma^\mu (\slashed{k}-\slashed{p}) (\slashed{k}+2\slashed{q}) .
+\end{align*}
+\(k = \ell + (zp-yq)\)を代入すると，(A.44)(A.45)より分子の\(\ell^2\)の項は発散し，\(\ell^0\)の定数項\(A_{WW}^0\)が収束する．
+
+第１項の定数項は
+\begin{align*}
+  & -2 \left[ (1-z) \slashed{p} + y \slashed{q} \right] \left[ 2zp^\mu + (1-2y) q^\mu \right] \\
+  &\sim -2(1-z)m \left[ 2zp^\mu + (1-2y) q^\mu \right] \\
+  &= -2(1-z)m \left[ z(p^\mu+p'^\mu) + (1-2y-z) q^\mu \right] .
+\end{align*}
+
+第２項の定数項は
+\begin{align*}
+  & - \left[ z \slashed{p} - (1+y) \slashed{q} \right] \left[ (1-z) \slashed{p} + y\slashed{q} \right] \gamma^\mu \\
+  &\sim - \left[ z (m-\slashed{q}) - (1+y) \slashed{q} \right] \left[ (1-z) \slashed{p} \gamma^\mu + y\slashed{q} \gamma^\mu \right] \\
+  &\sim - \left[ zm - (1+y+z) \slashed{q} \right] \left[ (1-z) (2p^\mu - \gamma^\mu \slashed{p}) + y\slashed{q} \gamma^\mu \right] \\
+  &\sim - \left[ zm - (1+y+z) \slashed{q} \right] \left[ 2(1-z)p^\mu - (1-z)m \gamma^\mu + y\slashed{q} \gamma^\mu \right] \\
+  %
+  &= -2z(1-z)m p^\mu + z(1-z)m^2 \gamma^\mu - yzm \slashed{q} \gamma^\mu \\
+  &\quad + 2(1-z)(1+y+z) p^\mu \slashed{q} - (1-z)(1+y+z)m \slashed{q} \gamma^\mu + y (1+y+z) q^2 \gamma^\mu \\
+  %
+  &\sim [y (1+y+z) q^2 + z(1-z)m^2] \gamma^\mu - 2z(1-z)m p^\mu - [(1-z)(1+y+z) + yz] m \slashed{q} \gamma^\mu \\
+  &= [y (1+y+z) q^2 + z(1-z)m^2] \gamma^\mu - 2z(1-z)m p^\mu - (1+y-z^2) m \slashed{q} \gamma^\mu .
+\end{align*}
+ここで
+\[
+\slashed{q} \gamma^\mu \sim (m - \slashed{p}) \gamma^\mu = m \gamma^\mu - \slashed{p} \gamma^\mu
+= m \gamma^\mu - (2p^\mu - \gamma^\mu \slashed{p}) \sim m \gamma^\mu - (2p^\mu - \gamma^\mu m)
+= 2 m \gamma^\mu - 2p^\mu
+\]
+なので
+\begin{align*}
+  &\sim [y (1+y+z) q^2 + z(1-z)m^2] \gamma^\mu - 2z(1-z)m p^\mu - (1+y-z^2) m (2 m \gamma^\mu - 2p^\mu) \\
+  &= [y (1+y+z) q^2 - (2+2y-z-z^2) m^2] \gamma^\mu + 2(1+y-z) m p^\mu \\
+  &= [y (1+y+z) q^2 - (2+2y-z-z^2) m^2] \gamma^\mu + (1+y-z) m (p^\mu+p'^\mu) - (1+y-z)m q^\mu .
+\end{align*}
+
+第３項の定数項は
+\begin{align*}
+  & - \gamma^\mu \left[ (1-z) \slashed{p} + y \slashed{q} \right] \left[ z \slashed{p} + (2-y) \slashed{q} \right] \\
+  &= - \gamma^\mu \left[ z(1-z) \slashed{p}^2+ y(2-y) \slashed{q}^2 + yz \slashed{q}\slashed{p} + (1-z)(2-y) \slashed{p}\slashed{q} \right] \\
+  &\sim - \gamma^\mu \left[ z(1-z) m^2 + y(2-y) q^2 + yz \slashed{q}\slashed{p} + (2-y-2z+yz) \slashed{p}\slashed{q} \right] \\
+  &= - \gamma^\mu \left[ z(1-z) m^2 + y(2-y) q^2 + yz (\slashed{q}\slashed{p}+\slashed{q}\slashed{p}) + (2-y-2z) \slashed{p}\slashed{q} \right] \\
+  &= - \gamma^\mu \left[ z(1-z) m^2 + y(2-y) q^2 + yz (2 p\cdot q) + (2-y-2z) \slashed{p}\slashed{q} \right] \\
+  &= \left[ -z(1-z)m^2 - y(2-y) q^2 \right] \gamma^\mu - yz (2p\cdot q) \gamma^\mu - (2-y-2z) \gamma^\mu\slashed{p}\slashed{q} .
+\end{align*}
+\eqref{problem21_1_2pq}および
+\begin{align*}
+  \gamma^\mu\slashed{p}\slashed{q} &= (2p^\mu - \slashed{p} \gamma^\mu) \slashed{q}
+  \sim - \slashed{p} \gamma^\mu \slashed{q} \sim (\slashed{q}-m) \gamma^\mu \slashed{q}
+  = (\slashed{q}-m) (2q^\mu - \slashed{q} \gamma^\mu ) \\
+  &= 2q^\mu\slashed{q} - 2mq^\mu - \slashed{q}\slashed{q}\gamma^\mu + m \slashed{q}\gamma^\mu
+  \sim -2mq^\mu - q^2\gamma^\mu + m(2m\gamma^\mu - 2p^\mu) \\
+  &= (2m^2-q^2) \gamma^\mu - 2mp'^\mu
+\end{align*}
+から
+\begin{align*}
+  &\sim \left[ -z(1-z)m^2 - y(2-y) q^2 \right] \gamma^\mu + yzq^2 \gamma^\mu - (2-y-2z) [(2m^2-q^2) \gamma^\mu - 2mp'^\mu] \\
+  &= \left[ (-4+2y+3z+z^2)m^2 + (2-3y-2z+y^2+yz)q^2 \right] \gamma^\mu + 2(2-y-2z)m p'^\mu \\
+  &= \left[ (-4+2y+3z+z^2)m^2 + (2-3y-2z+y^2+yz)q^2 \right] \gamma^\mu \\
+  &\qquad + (2-y-2z)m (p^\mu+p'^\mu) + (2-y-2z)m q^\mu .
+\end{align*}
+
+以上を全て足して，
+\begin{align*}
+  A_{WW}^0 &\sim -2(1-z)m \left[ z(p^\mu+p'^\mu) + (1-2y-z) q^\mu \right] \\
+  &+ [y (1+y+z) q^2 - (2+2y-z-z^2) m^2] \gamma^\mu + (1+y-z) m (p^\mu+p'^\mu) - (1+y-z)m q^\mu \\
+  & + \left[ (-4+2y+3z+z^2)m^2 + (2-3y-2z+y^2+yz)q^2 \right] \gamma^\mu \\
+  &\qquad + (2-y-2z)m (p^\mu+p'^\mu) + (2-y-2z)m q^\mu \\
+  %
+  &= \left[-2(3-2z+z^2)m^2 + y(2-2y-2z+2y^2+2yz)q^2\right] \gamma^\mu \\
+  &\qquad + (1-z)(3-2z)m (p^\mu+p'^\mu) - (2z-1)(1-2y-z) mq^\mu \\
+  %
+  &= \left[-2(3-2z+z^2)m^2 + y(2-2y-2z+2y^2+2yz)q^2\right] \gamma^\mu \\
+  &\qquad + (1-z)(3-2z)m (p^\mu+p'^\mu) - (2z-1)(x-y) mq^\mu .
+\end{align*}
+被積分函数の分母は\(x\leftrightarrow y\)について対称なので，
+\begin{align}
+  A_{WW}^0 \to \left[-2(3-2z+z^2)m^2 + y(2-2y-2z+2y^2+2yz)q^2\right] \gamma^\mu + (1-z)(3-2z)m (p^\mu+p'^\mu) .
+  \label{problem21_1_A_WW}
+\end{align}
+
+\subsubsection{Feynman rules of Goldstone bosons}
+(20.98)からlepton, neutrinoと\(SU(2)\) scalarの相互作用は
+\[ \Delta\mathcal{L}_e = - \lambda_e \bar{E}_L \phi e_R + (\text{h.c}) \]
+(21.38)(21.79)(20.75)を代入して
+\begin{align*}
+  - \lambda_e \bar{E}_L \phi e_R &= - \lambda_e
+  \begin{pmatrix}
+    \bar{\nu}_L & \bar{e}_L
+  \end{pmatrix}
+  \begin{pmatrix}
+    -i \phi^- \\
+    (v+h+i\phi^3)/\sqrt{2}
+  \end{pmatrix}
+  e_R \\
+  %
+  &= i \lambda_e \bar{\nu}_L e_R \phi^- - \frac{\lambda_e}{\sqrt{2}} \bar{e}_L e_R (v+h+i\phi^3) .
+\end{align*}
+(20.63)(20.100)から
+\[ \lambda_e = \frac{g}{\sqrt{2}} \frac{m_e}{m_W} . \]
+よって
+\begin{align}
+  \Delta\mathcal{L}_e = i \frac{g}{\sqrt{2}} \frac{m_e}{m_W} \bar{\nu}_L e_R \phi^-
+  - \frac{g}{2} \frac{m_e}{m_W} \bar{e}_L e_R (v+h+i\phi^3) + (\text{h.c}) .
+  \label{problem21_1_Lag_e}
+\end{align}
+
+\(e\nu\phi^-\)の頂点は
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (in) at (240: 1.5) {\(e_R\)};
+    \vertex (out) at (0: 1.5) {\(\nu_L\)};
+    \vertex (phi) at (120: 1.5) {\(\phi^+\)};
+    \diagram*{
+      (in) -- [fermion] (o) -- [fermion] (out),
+      (phi) -- [charged scalar] (o)
+    };
+    \draw (o) node [above right] {\(\phi^-\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= - \frac{g}{\sqrt{2}} \frac{m_e}{m_W} \frac{1+\gamma^5}{2} .
+\]
+
+\(e\nu\phi^+\)の頂点は
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (in) at (240: 1.5) {\(\nu_L\)};
+    \vertex (out) at (0: 1.5) {\(e_R\)};
+    \vertex (phi) at (120: 1.5) {\(\phi^-\)};
+    \diagram*{
+      (in) -- [fermion] (o) -- [fermion] (out),
+      (o) -- [charged scalar] (phi)
+    };
+    \draw (o) node [above right] {\(\phi^+\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= \frac{g}{\sqrt{2}} \frac{m_e}{m_W} \frac{1-\gamma^5}{2} .
+\]
+
+\eqref{fig21.8_scalar_Lagrangian}から
+\[
+\mathcal{L}_\text{Higgs} = ie \frac{gv}{2} A^\mu \phi^+ W^+_\mu - i e \frac{gv}{2} A^\mu \phi^- W^-_\mu .
+\]
+(20.63)を代入して
+\[
+i\mathcal{L}_\text{Higgs} = - em_W A^\mu \phi^+ W^+_\mu + em_W A^\mu \phi^- W^-_\mu .
+\]
+
+\(A\phi^+W^+\)の頂点は
+\begin{align}
+  \vcenter{\hbox{
+    \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (in) at (240: 1.5) {\(\phi^-\)};
+      \vertex (out) at (0: 1.5) {\(A_\mu\)};
+      \vertex (phi) at (120: 1.5) {\(W^-_\nu\)};
+      \diagram*{
+        (in) -- [anti charged scalar] (o) -- [boson] (out),
+        (o) -- [boson] (phi)
+      };
+      \draw (o) node [above right] {\(W^+\)};
+      \draw (o) node [below right] {\(\phi^+\)};
+    \end{feynman}
+  \end{tikzpicture}}}
+  = - em_W g^{\mu\nu} . \label{problem21.1_A_phi_W_+}
+\end{align}
+\(A\phi^-W^-\)の頂点は
+\begin{align}
+  \vcenter{\hbox{
+    \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (in) at (240: 1.5) {\(\phi^+\)};
+      \vertex (out) at (0: 1.5) {\(A_\mu\)};
+      \vertex (W) at (120: 1.5) {\(W^+_\nu\)};
+      \diagram*{
+        (in) -- [charged scalar] (o) -- [boson] (out),
+        (o) -- [boson] (W)
+      };
+      \draw (o) node [above right] {\(W^-\)};
+      \draw (o) node [below right] {\(\phi^-\)};
+    \end{feynman}
+  \end{tikzpicture}}}
+  = em_W g^{\mu\nu} . \label{problem21.1_A_phi_W_-}
+\end{align}
+
+\subsubsection{\(\phi W + W\phi\) diagrams}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (2, 0);
+      \vertex (qin) at (3.5, 0) {\(A^\mu\)};
+      \vertex (a) at (120: 1.5);
+      \vertex (b) at (240: 1.5);
+      \vertex (pin) at (240: 3.5) {\(\mu_R\)};
+      \vertex (pout) at (120: 3.5) {\(\mu_L\)};
+      \diagram*{
+        (qin) -- [photon, momentum=\(q\)] (o),
+        (b) -- [anti charged scalar, momentum'=\(k\)] (o) -- [boson, momentum'=\(k+q\)] (a),
+        (pin) -- [fermion, edge label=\(p\)] (b) -- [fermion, edge label=\(p-k\)] (a) -- [fermion, edge label=\(p+q\)] (pout)
+      };
+      \draw (a) node [above right] {\(W^-\)};
+      \draw (b) node [below right] {\(\phi^-\)};
+      \draw (o) node [above] {\(W^+\)};
+      \draw (o) node [below] {\(\phi^+\)};
+    \end{feynman}
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (2, 0);
+      \vertex (qin) at (3.5, 0) {\(A^\mu\)};
+      \vertex (a) at (120: 1.5);
+      \vertex (b) at (240: 1.5);
+      \vertex (pin) at (240: 3.5) {\(\mu_L\)};
+      \vertex (pout) at (120: 3.5) {\(\mu_R\)};
+      \diagram*{
+        (qin) -- [photon, momentum=\(q\)] (o),
+        (b) -- [boson, momentum'=\(k\)] (o) -- [anti charged scalar, momentum'=\(k+q\)] (a),
+        (pin) -- [fermion, edge label=\(p\)] (b) -- [fermion, edge label=\(p-k\)] (a) -- [fermion, edge label=\(p+q\)] (pout),
+      };
+      \draw (a) node [above right] {\(\phi^+\)};
+      \draw (b) node [below right] {\(W^+\)};
+      \draw (o) node [above] {\(\phi^-\)};
+      \draw (o) node [below] {\(W^-\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+頂点の1 loop補正は
+\begin{align*}
+  & \bar{u}(p+q) (-ie\delta\Gamma^\mu-ie\delta\Gamma_5^\mu) u(p) \\
+  &= \int \frac{d^dk}{(2\pi)^d} \bar{u}(p+q) \frac{ig}{\sqrt{2}} \gamma^\mu \frac{i}{\slashed{p}-\slashed{k}} \frac{-g}{\sqrt{2}} \frac{m}{m_W} \frac{1+\gamma^5}{2} u(p)
+  \frac{-i}{(k+q)^2-m_W{}^2} \frac{i}{k^2-m_W{}^2} (-em_W) \\
+  &+ \int \frac{d^dk}{(2\pi)^d} \bar{u}(p+q) \frac{g}{\sqrt{2}} \frac{m}{m_W} \frac{1+\gamma^5}{2} \frac{i}{\slashed{p}-\slashed{k}} \frac{ig}{\sqrt{2}} \gamma^\mu  u(p)
+  \frac{i}{(k+q)^2-m_W{}^2} \frac{-i}{k^2-m_W{}^2} em_W \\
+  %
+  &= -\frac{eg^2m_\mu}{2} \int \frac{d^dk}{(2\pi)^d} \frac{1}{(k-p)^2 (k^2 - m_W{}^2) ((k+q)^2 - m_W{}^2)} \\
+  &\quad\times \bar{u}(p+q) \left[ \gamma^\mu (\slashed{k}-\slashed{p}) \frac{1+\gamma^5}{2} + \frac{1+\gamma^5}{2} (\slashed{k}-\slashed{p}) \gamma^\mu \right] u(p) .
+\end{align*}
+\(\gamma^5\)を含まない項は
+\begin{align*}
+  \delta\Gamma^\mu
+  &= -\frac{ig^2}{4} \int \frac{d^dk}{(2\pi)^d} \frac{1}{(k-p)^2 (k^2 - m_W{}^2) ((k+q)^2 - m_W{}^2)} m
+  \left[ \gamma^\mu (\slashed{k}-\slashed{p}) + (\slashed{k}-\slashed{p}) \gamma^\mu \right] \\
+  %
+  &= -\frac{ig^2}{4} \int \frac{d^dk}{(2\pi)^d} \frac{1}{(k-p)^2 (k^2 - m_W{}^2) ((k+q)^2 - m_W{}^2)} 2m
+  \left[ k^\mu - p^\mu \right] .
+\end{align*}
+
+分子の定数項は
+\begin{align*}
+  A_{\phi W}^0 &= 2m \left[ -(1-z) p^\mu - y q^\mu \right] \\
+  &= - 2(1-z) m p^\mu - 2ym q^\mu \\
+  &= - (1-z) m (p^\mu+p'^\mu) + (1-2y-z)m q^\mu \\
+  &= - (1-z) m (p^\mu+p'^\mu) + (z-y) q^\mu \\
+  &\to - (1-z) m (p^\mu+p'^\mu) .
+\end{align*}
+
+\eqref{problem21_1_A_WW}と併せて
+\begin{align*}
+  A_{WW}^0 + A_{\phi W}^0 &=
+  \left[-2(3-2z+z^2)m^2 + y(2-2y-2z+2y^2+2yz)q^2\right] \gamma^\mu \\
+  &\qquad + (1-z)(3-2z)m (p^\mu+p'^\mu) - (1-z) m (p^\mu+p'^\mu) \\
+  %
+  &= \left[-2(3-2z+z^2)m^2 + y(2-2y-2z+2y^2+2yz)q^2\right] \gamma^\mu \\
+  &\qquad + 2(1-z)(2-z) m (p^\mu+p'^\mu) .
+\end{align*}
+Gordon恒等式(6.32)を使えば
+\begin{align*}
+  &= [\cdots] \gamma^\mu - 4(1-z)(2-z) m^2 \frac{i\sigma^{\mu\nu}q_\nu}{2m} .
+\end{align*}
+
+(6.33)から
+\begin{align*}
+  F_2(q^2) &= \frac{ig^2}{2} \int_0^1 dx \int_0^1 dy \int_0^1 dz \mathop{\delta}(1-x-y-z) \int\frac{d^4\ell}{(2\pi)^4} \frac{4(1-z)(2-z) m^2}{(\ell^2-\Delta)^3} \\
+  &= \frac{ig^2}{2}  \int_0^1 dx \int_0^1 dy \int_0^1 dz \mathop{\delta}(1-x-y-z) \frac{-i}{2(4\pi)^2} \frac{4(1-z)(2-z) m^2}{\Delta} \\
+  &= \frac{ig^2}{2}  \int_0^1 dx \int_0^1 dy \int_0^1 dz \mathop{\delta}(1-x-y-z) \frac{-i}{2(4\pi)^2} \frac{4(1-z)(2-z) m^2}{- xyq^2 - z(1-z) m^2 + (1-z) m_W{}^2} .
+\end{align*}
+よって
+\begin{align*}
+  F_2(q^2=0) &= \frac{g^2}{(4\pi)^2} \frac{m^2}{m_W{}^2} \int_0^1 dz \int_0^{1-z} dy \frac{2-z}{1-z(m/m_W^2)} \\
+  &\approx \frac{g^2}{(4\pi)^2} \frac{m^2}{m_W{}^2} \int_0^1 dz \int_0^{1-z} dy \, (2-z) \\
+  &= \frac{g^2}{(4\pi)^2} \frac{m^2}{m_W{}^2} \frac{5}{6} .
+\end{align*}
+(20.91)から
+\[ \frac{G_F}{\sqrt{2}} = \frac{g^2}{8m_W{}^2} \]
+なので，(6.37)から
+\[ a_\mu(\nu) = F_2(q^2=0) = - \frac{G_Fm^2}{8\pi^2\sqrt{2}} \frac{10}{3} . \]
+
+\subsubsection{general \(R_\xi\) gauge（未計算）}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (2, 0);
+      \vertex (qin) at (3.5, 0) {\(A^\mu\)};
+      \vertex (a) at (120: 1.5);
+      \vertex (b) at (240: 1.5);
+      \vertex (pin) at (240: 3.5) {\(\mu_L\)};
+      \vertex (pout) at (120: 3.5) {\(\mu_L\)};
+      \diagram*{
+        (qin) -- [photon, momentum=\(q\)] (o),
+        (b) -- [boson, momentum'=\(k\)] (o) -- [boson, momentum'=\(k+q\)] (a),
+        (pin) -- [fermion, edge label=\(p\)] (b) -- [fermion, edge label=\(p-k\)] (a) -- [fermion, edge label=\(p+q\)] (pout),
+      };
+      \draw (a) node [above right] {\(W^-_\beta\)};
+      \draw (b) node [below right] {\(W^+_\alpha\)};
+      \draw (o) node [above] {\(W^+_\rho\)};
+      \draw (o) node [below] {\(W^-_\nu\)};
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+頂点の1 loop補正は
+\begin{align*}
+  & \bar{u}(p+q) (-ie\delta\Gamma^\mu-ie\delta\Gamma_5^\mu) u(p) \\
+  &= \int \frac{d^dk}{(2\pi)^d} \bar{u}(p+q) \frac{ig}{\sqrt{2}} \gamma^\beta \frac{i}{\slashed{p}-\slashed{k}} \frac{ig}{\sqrt{2}} \gamma^\alpha \frac{1-\gamma^5}{2} u(p) \\
+  &\quad\times \frac{-i}{k^2-m_W{}^2} \left[ g_{\alpha\nu} - \frac{k_\alpha k_\nu}{k^2-\xi m_W{}^2}(1-\xi) \right]
+  \frac{-i}{(k+q)^2-m_W{}^2} \left[ g_{\beta\rho} - \frac{(k+q)_\beta (k+q)_\rho}{(k+q)^2-\xi m_W{}^2}(1-\xi) \right] \\
+  &\quad\times ie [ g^{\nu\rho} (2k+q)^\mu + g^{\mu\nu} (-k+q)^\rho + g^{\mu\rho} (-k-2q)^\nu ] \\
+  %
+  &= - \frac{eg^2}{2} \int \frac{d^dk}{(2\pi)^d} \frac{1}{(k-p)^2 (k^2 - m_W{}^2) ((k+q)^2 - m_W{}^2)} \bar{u}(p+q) A_{WW} \frac{1-\gamma^5}{2} u(p) \\
+  & - \frac{eg^2}{2} \int \frac{d^dk}{(2\pi)^d} \frac{1-\xi}{(k-p)^2 (k^2 - m_W{}^2) ((k+q)^2 - m_W{}^2) ((k+q)^2 - \xi m_W{}^2)} \\
+  &\quad\times \bar{u}(p+q) A_{12} \frac{1-\gamma^5}{2} u(p) \\
+  & - \frac{eg^2}{2} \int \frac{d^dk}{(2\pi)^d} \frac{1-\xi}{(k-p)^2 (k^2 - m_W{}^2) (k^2 - \xi m_W{}^2) ((k+q)^2 - m_W{}^2)} \\
+  &\quad\times \bar{u}(p+q) A_{21} \frac{1-\gamma^5}{2} u(p) \\
+  & - \frac{eg^2}{2} \int \frac{d^dk}{(2\pi)^d} \frac{(1-\xi)^2}{(k-p)^2 (k^2 - m_W{}^2) (k^2 - \xi m_W{}^2) ((k+q)^2 - m_W{}^2) ((k+q)^2 - \xi m_W{}^2)} \\
+  &\quad\times \bar{u}(p+q) A_{22} \frac{1-\gamma^5}{2} u(p) .
+\end{align*}
+ただし
+\begin{align*}
+  A_{12} &= - (\slashed{k}+\slashed{q}) (\slashed{k}-\slashed{p})
+  \left[ (\slashed{k}+\slashed{q}) (-2k-q)^\mu + \gamma^\mu (k+q) \cdot (k-q) + (\slashed{k}+2\slashed{q}) (k+q)^\mu \right] \\
+  %
+  A_{21} &= - \slashed{k} (\slashed{k}-\slashed{p}) \slashed{k} (-2k-q)^\mu
+  + (\slashed{k}-\slashed{q}) (\slashed{k}-\slashed{p}) \slashed{k} k^\mu
+  + \gamma^\mu (\slashed{k}-\slashed{p}) \slashed{k} k \cdot(k+2q) \\
+  %
+  A_{22} &= - (\slashed{k}+\slashed{q}) (\slashed{k}-\slashed{p}) \slashed{k}
+  \left[ k\cdot(k+q) (-2k-q)^\mu + k^\mu (k+q)\cdot(k-q) + (k+q)^\mu k\cdot(k+2q) \right] .
+\end{align*}
+
+\subsubsection{\(ZZ\) diagram}
+\(\mu\mu Z^0\)の頂点は(20.80)から
+\begin{align*}
+  & \frac{ig}{\cos\theta_w} \gamma^\mu
+  \left[ \left(-\frac{1}{2}+\sin^2\theta_w \right)\frac{1-\gamma^5}{2} + \sin^2\theta_w \frac{1+\gamma^5}{2} \right] \\
+  &= \frac{ig}{4\cos\theta_w} \gamma^\mu (4\sin^2\theta_w-1+\gamma^5)
+\end{align*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (2, 0);
+      \vertex (qin) at (3.5, 0) {\(A^\mu\)};
+      \vertex (a) at (120: 1.5);
+      \vertex (b) at (240: 1.5);
+      \vertex (pin) at (240: 3.5) {\(\mu_L\)};
+      \vertex (pout) at (120: 3.5) {\(\mu_L\)};
+      \diagram*{
+        (qin) -- [photon, momentum=\(q\)] (o),
+        (b) -- [fermion, edge label'=\(k\), edge label=\(\mu_L\)] (o) -- [fermion, edge label'=\(k+q\), edge label=\(\mu_L\)] (a),
+        (pin) -- [fermion, edge label=\(p\)] (b) -- [boson, momentum=\(p-k\), edge label'=\(Z^0\)] (a) -- [fermion, edge label=\(p+q\)] (pout),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+\end{center}
+
+頂点の1 loop補正は
+\begin{align*}
+  & \bar{u}(p+q) (\delta\Gamma^\mu+\delta\Gamma_5^\mu) u(p) \\
+  &= \int \frac{d^dk}{(2\pi)^d} \bar{u}(p+q) \frac{ig}{4\cos\theta_w} \gamma^\nu (4\sin^2\theta_w-1+\gamma^5)
+  \frac{i}{\slashed{k}+\slashed{q}-m} \gamma^\mu \frac{i}{\slashed{k}-m} \\
+  &\quad \times\frac{ig}{4\cos\theta_w} \gamma_\nu (4\sin^2\theta_w-1+\gamma^5) u(p) \frac{-i}{(p-k)^2-m_Z{}^2} \\
+  %
+  &= -\frac{i}{16} \left(\frac{g}{\cos\theta_w}\right)^2
+  \int\frac{d^dk}{(2\pi)^d} \frac{1}{(k^2-m^2) ((k+q)^2-m^2) ((p-k)^2 - m_Z{}^2)} \\
+  &\quad\times \bar{u}(p+q) \gamma^\nu (4\sin^2\theta_w-1+\gamma^5)(\slashed{k}+\slashed{q}+m) \gamma^\mu (\slashed{k}+m) \gamma_\nu (4\sin^2\theta_w-1+\gamma^5) u(p).
+\end{align*}
+\(\gamma^5\)を含まない項は
+\begin{align*}
+  \delta\Gamma^\mu
+  &= -\frac{i}{16} \left(\frac{g}{\cos\theta_w}\right)^2
+  \int\frac{d^dk}{(2\pi)^d} \frac{1}{(k^2-m^2) ((k+q)^2-m^2) ((p-k)^2 - m_Z{}^2)} \\
+  &\quad\times
+  \left[ (4\sin^2\theta_w-1)^2 \gamma^\nu (\slashed{k}+\slashed{q}+m) \gamma^\mu (\slashed{k}+m) \gamma_\nu
+  + \gamma^\nu (\slashed{k}+\slashed{q}-m) \gamma^\mu (\slashed{k}-m) \gamma_\nu \right] .
+\end{align*}
+分母は
+\[
+-\frac{i}{8} \left(\frac{g}{\cos\theta_w}\right)^2 \int_0^1 dx \int_0^1 dy \int_0^1 dz \mathop{\delta}(1-x-y-z) \int\frac{d^d\ell}{(2\pi)^d} \frac{1}{(\ell^2-\Delta)^3} .
+\]
+ただし
+\begin{align*}
+  k &= \ell + (zp-yq) , \\
+  \Delta &= -z(1-z)p^2 - y(1-y)q^2 + (x+y)m^2 + zm_Z{}^2 - 2yzp\cdot q \\
+  &= -z(1-z)m^2 - y(1-y)q^2 + (1-z)m^2 + zm_Z{}^2 + yzq^2 \\
+  &= - xy q^2 + (1-z)^2m^2 + zm_Z{}^2 .
+\end{align*}
+
+分子第１項の定数項は
+\begin{align*}
+  &= \gamma^\nu [z\slashed{p}+(1-y)\slashed{q}+m] \gamma^\mu [z\slashed{p}-y\slashed{q}+m] \gamma_\nu \\
+  &= \gamma^\nu [z\slashed{p}+(1-y)\slashed{q}] \gamma^\mu [z\slashed{p}-y\slashed{q}] \gamma_\nu \\
+  &\quad + m \gamma^\nu [z\slashed{p}+(1-y)\slashed{q}] \gamma^\mu \gamma_\nu
+  + m \gamma^\nu \gamma^\mu [z\slashed{p}-y\slashed{q}] \gamma_\nu
+  + m^2\gamma^\nu \gamma^\mu \gamma_\nu \\
+  %
+  &= -2 [z\slashed{p}-y\slashed{q}] \gamma^\mu [z\slashed{p}+(1-y)\slashed{q}] \\
+  &\quad + 4m [zp+(1-y)q]^\mu + 4m [zp-yq]^\mu - 2m^2 \gamma^\mu \\
+  %
+  &\sim -2 [(y+z)\slashed{p}-ym] \gamma^\mu [zm+(1-y)\slashed{q}] + 4m [2zp^\mu+(1-2y)q^\mu] - 2m^2 \gamma^\mu \\
+  %
+  &= -2(y+z)zm\slashed{p}\gamma^\mu - 2(1-y)(y+z)\slashed{p}\gamma^\mu\slashed{q} + 2yzm^2\gamma^\mu + 2y(1-y)m \gamma^\mu\slashed{q} \\
+  &\quad + 8zmp^\mu + 4(1-2y)mq^\mu - 2m^2 \gamma^\mu \\
+  %
+  &= 2(yz-1) m^2\gamma^\mu + 8zmp^\mu + 4(1-2y)mq^\mu \\
+  &\quad -2(y+z)zm\slashed{p}\gamma^\mu - 2(1-y)(y+z)\slashed{p}\gamma^\mu\slashed{q} + 2y(1-y)m \gamma^\mu\slashed{q} .
+\end{align*}
+ここで
+\begin{align*}
+  \slashed{p}\gamma^\mu &= 2p^\mu - \gamma^\mu\slashed{p} \sim 2p^\mu - m\gamma^\mu , \\
+  %
+  \slashed{p}\gamma^\mu\slashed{q} &\sim (m-\slashed{q}) \gamma^\mu \slashed{q}
+  = (m-\slashed{q}) (2q^\mu - \slashed{q} \gamma^\mu )
+  = - 2q^\mu\slashed{q} + 2mq^\mu + \slashed{q}\slashed{q}\gamma^\mu - m \slashed{q}\gamma^\mu \\
+  &\sim 2mq^\mu + q^2\gamma^\mu - m(2m\gamma^\mu - 2p^\mu) \\
+  &= (q^2-2m^2) \gamma^\mu + 2mp'^\mu , \\
+  %
+  \gamma^\mu\slashed{q} &= 2q^\mu - \slashed{q}\gamma^\mu \sim 2q^\mu - (m-\slashed{p})\gamma^\mu \\
+  &= 2q^\mu - m\gamma^\mu + \slashed{p}\gamma^\mu
+  = 2q^\mu - m\gamma^\mu + 2p^\mu - \gamma^\mu\slashed{p}
+  = 2q^\mu - m\gamma^\mu + 2p^\mu - m\gamma^\mu \\
+  &= 2p'^\mu - 2m\gamma^\mu
+\end{align*}
+を代入して
+\begin{align*}
+  &\sim 2(yz-1) m^2\gamma^\mu + 8zmp^\mu + 4(1-2y)mq^\mu \\
+  &\quad -2(y+z)zm (2p^\mu - m\gamma^\mu) - 2(1-y)(y+z) [(q^2-2m^2) \gamma^\mu + 2mp'^\mu] + 2y(1-y)m (2p'^\mu - 2m\gamma^\mu) \\
+  %
+  &= [\cdots] \gamma^\mu + 4(2-y-z)zmp^\mu - 4(1-y)zmp'^\mu + 4(1-2y)mq^\mu \\
+  &= [\cdots] \gamma^\mu + 2(1-z)zm(p^\mu+p'^\mu) + 2(2-4y-3z+2yz+z^2)mq^\mu \\
+  &= [\cdots] \gamma^\mu + 2(1-z)zm(p^\mu+p'^\mu) + 2(x-y)(x+y+1)mq^\mu \\
+  &\to [\cdots] \gamma^\mu + 2(1-z)zm(p^\mu+p'^\mu) .
+\end{align*}
+
+分子第２項の定数項は
+\begin{align*}
+  &= \gamma^\nu [z\slashed{p}+(1-y)\slashed{q}-m] \gamma^\mu [z\slashed{p}-y\slashed{q}-m] \gamma_\nu \\
+  &= \gamma^\nu [z\slashed{p}+(1-y)\slashed{q}] \gamma^\mu [z\slashed{p}-y\slashed{q}] \gamma_\nu \\
+  &\quad - m \gamma^\nu [z\slashed{p}+(1-y)\slashed{q}] \gamma^\mu \gamma_\nu
+  - m \gamma^\nu \gamma^\mu [z\slashed{p}-y\slashed{q}] \gamma_\nu
+  + m^2\gamma^\nu \gamma^\mu \gamma_\nu \\
+  %
+  &= -2 [z\slashed{p}-y\slashed{q}] \gamma^\mu [z\slashed{p}+(1-y)\slashed{q}] \\
+  &\quad - 4m [zp+(1-y)q]^\mu - 4m [zp-yq]^\mu - 2m^2 \gamma^\mu \\
+  %
+  &\sim -2 [(y+z)\slashed{p}-ym] \gamma^\mu [zm+(1-y)\slashed{q}] - 4m [2zp^\mu+(1-2y)q^\mu] - 2m^2 \gamma^\mu \\
+  %
+  &= -2(y+z)zm\slashed{p}\gamma^\mu - 2(1-y)(y+z)\slashed{p}\gamma^\mu\slashed{q} + 2yzm^2\gamma^\mu + 2y(1-y)m \gamma^\mu\slashed{q} \\
+  &\quad - 8zmp^\mu - 4(1-2y)mq^\mu - 2m^2 \gamma^\mu \\
+  %
+  &= 2(yz-1) m^2\gamma^\mu - 8zmp^\mu - 4(1-2y)mq^\mu \\
+  &\quad -2(y+z)zm\slashed{p}\gamma^\mu - 2(1-y)(y+z)\slashed{p}\gamma^\mu\slashed{q} + 2y(1-y)m \gamma^\mu\slashed{q} \\
+  %
+  &\sim 2(yz-1) m^2\gamma^\mu - 8zmp^\mu - 4(1-2y)mq^\mu \\
+  &\quad -2(y+z)zm (2p^\mu - m\gamma^\mu) - 2(1-y)(y+z) [(q^2-2m^2) \gamma^\mu + 2mp'^\mu] + 2y(1-y)m (2p'^\mu - 2m\gamma^\mu) \\
+  %
+  &= [\cdots] \gamma^\mu - 4(2+y+z)zmp^\mu - 4(1-y)zmp'^\mu - 4(1-2y)mq^\mu \\
+  &= [\cdots] \gamma^\mu - 4(3+z)zmp^\mu - 4(1-2y+z-yz)mq^\mu \\
+  &= [\cdots] \gamma^\mu - 2(3+z)zm(p^\mu+p'^\mu) - 2(2-4y-z-2yz-z^2)mq^\mu \\
+  &= [\cdots] \gamma^\mu - 2(3+z)zm(p^\mu+p'^\mu) + 2(x-y)(x+y-3) mq^\mu \\
+  &\to [\cdots] \gamma^\mu - 2(3+z)zm(p^\mu+p'^\mu) .
+\end{align*}
+
+以上から分子の定数項は
+\begin{align*}
+  A_{ZZ}^0 &= [\cdots] \gamma^\mu + (4\sin^2\theta_w-1)^2 2(1-z)zm(p^\mu+p'^\mu) - 2(3+z)zm(p^\mu+p'^\mu) \\
+  &= [\cdots] \gamma^\mu + 2 \left[ (4\sin^2\theta_w-1)^2 (1-z)z - (3+z)z \right]m(p^\mu+p'^\mu) \\
+  &= [\cdots] \gamma^\mu - 4 \left[ (4\sin^2\theta_w-1)^2 (1-z)z - (3+z)z \right] m^2 \frac{i\sigma^{\mu\nu}q_\nu}{2m} .
+\end{align*}
+よって
+\begin{align*}
+  F_2(q^2) &= \frac{i}{16} \left(\frac{g}{\cos\theta_w}\right)^2 \int_0^1 dz \int_0^{1-z} dy \int\frac{d^d\ell}{(2\pi)^d} \frac{4 \left[ (4\sin^2\theta_w-1)^2 (1-z)z - (3+z)z \right] m^2}{(\ell^2-\Delta)^3} \\
+  %
+  &= \frac{i}{8} \left(\frac{g}{\cos\theta_w}\right)^2 \int_0^1 dz \int_0^{1-z} dy
+  \frac{-i}{2(4\pi)^2} \frac{4 \left[ (4\sin^2\theta_w-1)^2 (1-z)z - (3+z)z \right] m^2}{\Delta} \\
+  %
+  &= \frac{i}{8} \left(\frac{g}{\cos\theta_w}\right)^2 \int_0^1 dz \int_0^{1-z} dy
+  \frac{-i}{2(4\pi)^2} \frac{4 \left[ (4\sin^2\theta_w-1)^2 (1-z)z - (3+z)z \right] m^2}{- xy q^2 + (1-z)^2m^2 + zm_Z{}^2} .
+\end{align*}
+\(m_Z \gg m\)なので
+\begin{align*}
+  a_\mu(Z) &= F_2(0) \\
+  &\approx \frac{i}{8} \left(\frac{g}{\cos\theta_w}\right)^2 \int_0^1 dz \int_0^{1-z} dy
+  \frac{-i}{2(4\pi)^2} \frac{4 \left[ (4\sin^2\theta_w-1)^2 (1-z)z - (3+z)z \right] m^2}{zm_Z{}^2} \\
+  %
+  &\approx \frac{1}{4(4\pi)^2} \frac{m^2}{m_Z{}^2} \left(\frac{g}{\cos\theta_w}\right)^2
+  \int_0^1 dz \int_0^{1-z} dy \left[ (4\sin^2\theta_w-1)^2 (1-z) - (3+z) \right] \\
+  %
+  &= \frac{1}{4(4\pi)^2} \frac{m^2}{m_Z{}^2} \left(\frac{g}{\cos\theta_w}\right)^2
+  \left[ \frac{1}{3} (4\sin^2\theta_w-1)^2 - \frac{5}{3} \right] .
+\end{align*}
+(20.73)(20.91)から
+\[
+= \frac{G_Fm^2}{8\pi^2\sqrt{2}} \left[ \frac{16}{3}\sin^4\theta_w - \frac{8}{3}\sin^2\theta_w - \frac{4}{3} \right] .
+\]
+
+\subsection[Problem 21.4]{Problem 21.4: Dependence of radiative corrections on the Higgs boson mass}
+\subsubsection{Feynman rules of Higgs bosons}
+\eqref{fig21.8_scalar_Lagrangian}から
+\[
+i\mathcal{L}_\text{Higgs} = i \frac{g^2}{4} W^+_\mu W^-\nu (v+h+i\phi^3) (v+h-i\phi^3) g^{\mu\nu} + \cdots .
+\]
+\(W^+W^-h\)の頂点は
+\begin{align}
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (h) at (240: 1.5) {\(h\)};
+    \vertex (Wm) at (0: 1.5) {\(W^-_\nu\)};
+    \vertex (Wp) at (120: 1.5) {\(W^+_\mu\)};
+    \diagram*{
+      (h) -- [scalar] (o) -- [boson] (Wp),
+      (o) -- [boson] (Wm)
+    };
+    \draw (o) node [left] {\(W^-\)};
+    \draw (o) node [below right] {\(W^+\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= i \frac{g^2v}{2} g_{\mu\nu} = igm_W g_{\mu\nu} . \label{problem21.4_W_W_h}
+\end{align}
+\(W^+W^-hh\)の頂点は\(h\)の縮約が２通りあることに注意して，
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (har) at (45: 1.5) {\(h\)};
+    \vertex (hal) at (135: 1.5) {\(h\)};
+    \vertex (Wm) at (225: 1.5) {\(W^-_\nu\)};
+    \vertex (Wp) at (315: 1.5) {\(W^+_\mu\)};
+    \diagram*{
+      (hal) -- [scalar] (o) -- [scalar] (har),
+      (Wp) -- [boson] (o) -- [boson] (Wm)
+    };
+    \draw (o) node [right] {\(W^-\)};
+    \draw (o) node [left] {\(W^+\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= 2 \cdot i \frac{g^2}{4} g_{\mu\nu} = i \frac{g^2}{2} g_{\mu\nu} .
+\]
+
+\eqref{fig21.8_scalar_Lagrangian}から
+\[
+i\mathcal{L}_\text{Higgs} = i \frac{g}{2}
+\left[ (\partial_\mu\phi^+) W^+_\nu h - (\partial_\mu h) W^+_\nu \phi^+
++ (\partial_\mu\phi^-) W^-_\nu h - (\partial_\mu h) W^-_\nu \phi^- \right] g^{\mu\nu} + \cdots .
+\]
+\(W^-\phi^-h\)の頂点は
+\begin{align}
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (h) at (240: 1.5) {\(h\)};
+    \vertex (Wm) at (0: 1.5) {\(W^-_\mu\)};
+    \vertex (pm) at (120: 1.5) {\(\phi^-\)};
+    \diagram*{
+      (h) -- [scalar, momentum'=\(k\)] (o) -- [charged scalar, reversed momentum'=\(p\)] (pm),
+      (o) -- [boson] (Wm)
+    };
+    \draw (o) node [left] {\(\phi^+\)};
+    \draw (o) node [above right] {\(W^+\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= i \frac{g}{2} (-ip_\mu + ik_\mu) = \frac{g}{2} (p-k)_\mu . \label{problem21.8_W_phi_h-}
+\end{align}
+\(W^+\phi^+h\)の頂点は
+\begin{align}
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (h) at (240: 1.5) {\(h\)};
+    \vertex (Wm) at (0: 1.5) {\(W^+_\mu\)};
+    \vertex (pm) at (120: 1.5) {\(\phi^+\)};
+    \diagram*{
+      (h) -- [scalar, momentum'=\(k\)] (o) -- [anti charged scalar, edge label'=\(p\)] (pm),
+      (o) -- [boson] (Wm)
+    };
+    \draw (o) node [left] {\(\phi^-\)};
+    \draw (o) node [above right] {\(W^-\)};
+  \end{feynman}
+\end{tikzpicture}}}
+= i \frac{g}{2} (-ip_\mu + ik_\mu) = \frac{g}{2} (p-k)_\mu . \label{problem21.8_W_phi_h+}
+\end{align}
+
+\eqref{fig21.8_scalar_Lagrangian}から
+\[
+i\mathcal{L}_\text{Higgs} = i \frac{1}{8} \frac{g^2}{\cos^2\theta_w} Z^0_\mu Z^0_\nu (v+h+i\phi^3) (v+h-i\phi^3) g^{\mu\nu} + \cdots .
+\]
+\(Z^0Z^0h\)の頂点は\(Z^0\)の縮約が２通りあることに注意して，
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (h) at (240: 1.5) {\(h\)};
+    \vertex (Wm) at (0: 1.5) {\(Z^0_\nu\)};
+    \vertex (Wp) at (120: 1.5) {\(Z^0_\mu\)};
+    \diagram*{
+      (h) -- [scalar] (o) -- [boson] (Wp),
+      (o) -- [boson] (Wm)
+    };
+  \end{feynman}
+\end{tikzpicture}}}
+= i \frac{g^2v}{2\cos^2\theta_w} g_{\mu\nu} = i \frac{gm_Z}{\cos\theta_w} g_{\mu\nu} .
+\]
+\(Z^0Z^0hh\)の頂点は\(Z^0\)の縮約が２通り，\(h\)の縮約が２通りあることに注意して，
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (har) at (45: 1.5) {\(h\)};
+    \vertex (hal) at (135: 1.5) {\(h\)};
+    \vertex (Wm) at (225: 1.5) {\(Z^0_\nu\)};
+    \vertex (Wp) at (315: 1.5) {\(Z^0_\mu\)};
+    \diagram*{
+      (hal) -- [scalar] (o) -- [scalar] (har),
+      (Wp) -- [boson] (o) -- [boson] (Wm)
+    };
+  \end{feynman}
+\end{tikzpicture}}}
+= i \frac{g^2}{2\cos^2\theta_w} g_{\mu\nu} .
+\]
+
+\eqref{fig21.8_scalar_Lagrangian}から
+\begin{align*}
+  i\mathcal{L}_\text{Higgs} &= \frac{g}{4\cos\theta_w}
+  \left[ \partial_\mu(h+i\phi^3) (v+h-i\phi^3) - \partial_\mu(h-i\phi^3) (v+h+i\phi^3) \right] Z^0_\nu g^{\mu\nu} + \cdots \\
+  &= \frac{ig}{2\cos\theta_w} \left[ \partial_\mu\phi^3 h - \phi^3 \partial_\mu h \right] Z^0_\nu g^{\mu\nu} + \cdots \\
+\end{align*}
+\(Z^0\phi^3h\)の頂点は
+\[
+\vcenter{\hbox{
+  \begin{tikzpicture}
+  \begin{feynman}
+    \vertex (o) at (0, 0);
+    \vertex (h) at (240: 1.5) {\(h\)};
+    \vertex (Wm) at (0: 1.5) {\(Z^0_\mu\)};
+    \vertex (pm) at (120: 1.5) {\(\phi^3\)};
+    \diagram*{
+      (h) -- [scalar, momentum'=\(k\)] (o) -- [scalar, reversed momentum'=\(p\)] (pm),
+      (o) -- [boson] (Wm)
+    };
+  \end{feynman}
+\end{tikzpicture}}}
+= \frac{g}{2\cos\theta_w} (p-k)_\mu .
+\]

@@ -1,0 +1,629 @@
+\chapter{Radiative Corrections: Introduction}
+\setcounter{section}{2}
+\section{The Electron Vertex Function: Evaluation}
+\subsection{(6.44)}
+電子の運動量$p$, $p'=p+q$について，
+\[ p'^2 = (p+q)^2 = m^2 \]
+が成立する．直ちに
+\[ 2p \cdot q  + q^2 = 0 \]
+が分かる．さらに，
+\[ x + y + z = 1 . \]
+よって，
+\begin{align*}
+  \ell^2 - \Delta &= (k + yq - zp)^2 + xyq^2 - (1-z)^2 m^2 \\
+  &= k^2 + y^2q^2 + z^2p^2 + 2y k \cdot q - 2yz p \cdot q - 2z k \cdot p  + xyq^2 - (1-z)^2 m^2 \\
+  &= k^2 + 2 k \cdot (yq - zp) + y^2q^2 + z^2p^2 - 2yz p \cdot q + xyq^2 - (1-z)^2 m^2 \\
+  &= k^2 + 2 k \cdot (yq - zp) + y(x+y)q^2 - 2yz p \cdot q + \{ z^2 - (1-z)^2 \} m^2 \\
+  &= k^2 + 2 k \cdot (yq - zp) + y(x+y)q^2 + yz q^2 + (2z-1) m^2 \\
+  &= k^2 + 2 k \cdot (yq - zp) + y(x+y+z)q^2 + (z-x-y) m^2 \\
+  &= k^2 + 2 k \cdot (yq - zp) + yq^2 + zm^2 - (x+y)m^2 \\
+  &= k^2 + 2 k \cdot (yq - zp) + yq^2 + zp^2 - (x+y)m^2 \\
+  &= D - i\epsilon .
+\end{align*}
+
+\subsection{p.191中盤の式}
+(6.38)の積分変数$k$を$l = k + yq - zp$に変更する．(6.38)は
+\begin{align}
+  2ie^2 \int_0^1 dxdydz \mathop\delta(x+y+z-1) \int \frac{d^4\ell}{(2\pi)^4}
+  \frac{\overline{u}(p') \left[ \slashed{k} \gamma^\mu \slashed{k}' + m^2\gamma^\mu - 2m (k+k')^\mu \right] u(p)}{D^3} \label{eq_p_191_vertex_factor}
+\end{align}
+となる．（積分値が変わらない範囲で；$\to$と表記する）分子を式変形する．
+
+ここで
+\[ k = \ell - yq + zp =: \ell + a , \quad k' = k + q =: \ell + b \]
+とおく．
+\[ \slashed{k} \gamma^\mu \slashed{k}' = (\slashed{\ell} + \slashed{a}) \gamma^\mu (\slashed{\ell} + \slashed{b})
+= \slashed{\ell} \gamma^\mu \slashed{\ell} + \slashed{\ell} \gamma^\mu \slashed{b} + \slashed{a} \gamma^\mu \slashed{\ell} + \slashed{a} \gamma^\mu \slashed{b}\]
+となるが，$\slashed{\ell} \gamma^\mu \slashed{b} = \ell_\nu \gamma^\nu \gamma^\mu \slashed{b}$なので，(6.45)から上式の第2, 3項の積分は$0$である．従って，
+\begin{align*}
+  &\to \slashed{\ell} \gamma^\mu \slashed{\ell} + \slashed{a} \gamma^\mu \slashed{b} \\
+  &= \ell^\nu \gamma^\nu \gamma^\mu \slashed{\ell} + ( - y\slashed{q} + z\slashed{p} ) \gamma^\mu ((1-y)\slashed{q} + z\slashed{p}) \\
+  &= \ell^\nu ( 2g^{\mu\nu} - \gamma^\mu \gamma^\nu) \slashed{\ell} + ( - y\slashed{q} + z\slashed{p} ) \gamma^\mu ((1-y)\slashed{q} + z\slashed{p}) \\
+  &= 2 \ell^\mu \slashed{\ell} - \gamma^\mu \slashed{\ell}\slashed{\ell} + ( - y\slashed{q} + z\slashed{p} ) \gamma^\mu ((1-y)\slashed{q} + z\slashed{p}) \\
+  &= 2 \ell^\mu \ell^\nu \gamma_\nu - \gamma^\mu \ell^2 + ( - y\slashed{q} + z\slashed{p} ) \gamma^\mu ((1-y)\slashed{q} + z\slashed{p}) .
+\end{align*}
+(6.46)から
+\begin{align*}
+  &\to 2 \frac{1}{4} g^{\mu\nu} \ell^2 \gamma_\nu - \gamma^\mu \ell^2 + ( - y\slashed{q} + z\slashed{p} ) \gamma^\mu ((1-y)\slashed{q} + z\slashed{p}) \\
+  &= \frac{1}{2} \gamma^\mu \ell^2 - \gamma^\mu \ell^2 + ( - y\slashed{q} + z\slashed{p} ) \gamma^\mu ((1-y)\slashed{q} + z\slashed{p}) \\
+  &= -\frac{1}{2} \gamma^\mu \ell^2 + ( - y\slashed{q} + z\slashed{p} ) \gamma^\mu ((1-y)\slashed{q} + z\slashed{p}) .
+\end{align*}
+同様に，
+\[ -2m (k+k')^\mu = -2m (2l^\mu + a^\mu + b^\mu ) \to -2m (a^\mu + b^\mu) = -2m ((1-2y) q^\mu + 2z p^\mu) . \]
+
+\subsection{p.192序盤の式}
+Dirac方程式
+\begin{align}
+  \slashed{p} u(p) = m u(p) , \quad \overline{u}(p') \slashed{p}' = \overline{u}(p') m , \quad \overline{u}(p') \slashed{q} u(p) = 0
+  \label{p_192_Dirac_eq}
+\end{align}
+に注意する．
+\begin{align*}
+  & \overline{u}(p') \left[ -\frac{\gamma^\mu}{2} \ell^2 + (-y\slashed{q}+z\slashed{p}) \gamma^\mu ((1-y)\slashed{q}+z\slashed{p})
+  + m^2\gamma^\mu - 2m ((1-2y)q^\mu + 2zp^\mu) \right] u(p)
+\end{align*}
+を計算する（これ以降は両端のスピノルを省略する）．2項目は
+\begin{align*}
+  &  (-y\slashed{q}+z\slashed{p}) \gamma^\mu [(1-y)\slashed{q} + z\slashed{p}]  \\
+  & = [- (y+z)\slashed{q} + z\slashed{p}' ] \gamma^\mu [(1-y)\slashed{q} + z\slashed{p}] \\
+  & = [- (y+z)\slashed{q} + zm] \gamma^\mu [(1-y)\slashed{q} + zm] \\
+  &= -(y+z)(1-y)\slashed{q}\gamma^\mu\slashed{q} - z(y+z)m \slashed{q}\gamma^\mu + z(1-y)m \gamma^\mu\slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= -(y+z)(1-y)(2q^\mu - \gamma^\mu\slashed{q})\slashed{q} \\
+  &\quad - z(y+z)m (2q^\mu - \gamma^\mu\slashed{q}) + z(1-y)m \gamma^\mu\slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= -2(y+z)(1-y)q^\mu\slashed{q} + (y+z)(1-y) \gamma^\mu\slashed{q}\slashed{q} \\
+  &\quad - 2z(y+z)m q^\mu + z(y+z)m \gamma^\mu\slashed{q} + z(1-y)m \gamma^\mu\slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= -2(y+z)(1-y)q^\mu\slashed{q} + (y+z)(1-y) \gamma^\mu q^2 \\
+  &\quad - 2z(y+z)m q^\mu + z(1+z)m \gamma^\mu\slashed{q} + z^2m^2 \gamma^\mu .
+\end{align*}
+$\overline{u}(p') \slashed{q} u(p) = 0$なので，
+\[ = (y+z)(1-y) \gamma^\mu q^2 - 2z(y+z)m q^\mu + z(1+z)m \gamma^\mu\slashed{q} + z^2m^2 \gamma^\mu . \]
+$\gamma^\mu\slashed{q} = \gamma^\mu (\slashed{p}' - \slashed{p}) = \gamma^\mu (\slashed{p}' - m) = (\gamma^\mu\slashed{p}' - m\gamma^\mu) = (2p'^\mu - \slashed{p}'\gamma^\mu - m\gamma^\mu) = 2p'^\mu - 2m\gamma^\mu$なので，
+\begin{align}
+  \begin{split}
+    &= (y+z)(1-y) \gamma^\mu q^2 - 2z(y+z)m q^\mu + z(1+z)m (2p'^\mu - 2m\gamma^\mu) + z^2m^2 \gamma^\mu \\
+    &= (y+z)(1-y) \gamma^\mu q^2 - 2z(y+z)m q^\mu + 2z(1+z)mp'^\mu -2 z(1+z)m^2 \gamma^\mu + z^2m^2 \gamma^\mu \\
+    &= (1-x)(1-y) \gamma^\mu q^2 - 2z(y+z)m q^\mu + 2z(1+z)mp'^\mu + (-2z - z^2) m^2 \gamma^\mu .
+  \end{split}
+  \label{eq_p_192_term2}
+\end{align}
+他の項も併せれば
+\begin{align}
+  \begin{split}
+    & -\frac{\gamma^\mu}{2} \ell^2 + (-y\slashed{q}+z\slashed{p}) \gamma^\mu ((1-y)\slashed{q}+z\slashed{p})
+    + m^2\gamma^\mu - 2m ((1-2y)q^\mu + 2zp^\mu) \\
+    &= -\frac{\gamma^\mu}{2} \ell^2 \\
+    & \quad + (1-x)(1-y) \gamma^\mu q^2 - 2z(y+z)m q^\mu + 2z(1+z)mp'^\mu + (-2z - z^2) m^2 \gamma^\mu \\
+    & \quad + m^2\gamma^\mu - 2m ((1-2y)q^\mu + 2zp^\mu) \\
+    &= -\frac{\gamma^\mu}{2} \ell^2 + (1-x)(1-y) \gamma^\mu q^2 + (1 -2z - z^2) m^2 \gamma^\mu \\
+    &\quad - 2z(y+z)m q^\mu + 2z(1+z)mp'^\mu - 2(1-2y)mq^\mu - 4zmp^\mu .
+  \end{split}
+  \label{p_192_eq1}
+\end{align}
+2行目の部分を計算する：
+\begin{align}
+  \begin{split}
+    & - 2z(y+z)m q^\mu + 2z(1+z)mp'^\mu - 2(1-2y)mq^\mu - 4zmp^\mu \\
+    &= - 4zmp^\mu + 2z(1+z)mp'^\mu - 2z(y+z)m q^\mu - 2(1-2y)mq^\mu \\
+    &= - 4zmp^\mu + 2z(1+z)m(p^\mu + q^\mu) - 2z(y+z)m q^\mu - 2(1-2y)mq^\mu \\
+    &= 2z(z-1)mp^\mu + 2z(1+z)mq^\mu - 2z(y+z)m q^\mu - 2(1-2y)mq^\mu \\
+    &= 2z(z-1)mp^\mu + 2z(1-y)m q^\mu - 2(1-2y)mq^\mu \\
+    &= 2z(z-1)mp^\mu + z(z-1)mq^\mu - z(z-1)mq^\mu + 2z(1-y)m q^\mu - 2(1-2y)mq^\mu \\
+    &= z(z-1)m(2p^\mu+q^\mu) - z(z-1)mq^\mu + 2z(1-y)m q^\mu - 2(1-2y)mq^\mu \\
+    &= (p'^\mu+p^\mu) \cdot m z(z-1) + q^\mu \cdot m ( -z^2 + z + 2z - 2yz - 2 + 4y) \\
+    &= (p'^\mu+p^\mu) \cdot m z(z-1) + q^\mu \cdot m ( -z^2 + 3z - 2yz - 2 + 4y) .
+  \end{split}
+  \label{p_192_eq2}
+\end{align}
+最後の部分を計算する：
+\begin{align}
+  \begin{split}
+    -z^2 + 3z - 2yz - 2 + 4y &= -z(1-x-y) + 3z - 2yz - 2 + 4y \\
+    &= xz - yz + 4y + 2z - 2 \\
+    &= xz - yz + 4y + 2(1-x-y) - 2 \\
+    &= xz - yz - 2x + 2y \\
+    &= (z - 2)(x - y) .
+  \end{split}
+  \label{p_192_eq3}
+\end{align}
+\eqref{p_192_eq1}\eqref{p_192_eq2}\eqref{p_192_eq3}から
+\[ -\frac{\gamma^\mu}{2} \ell^2 + (1-x)(1-y) \gamma^\mu q^2 + (1 -2z - z^2) m^2 \gamma^\mu + (p'^\mu+p^\mu) \cdot m z(z-1) + q^\mu \cdot m (z - 2)(x - y) . \]
+
+\section*{Problems}\addcontentsline{toc}{section}{Problems}
+\subsection{Problem 6.1: Rosenbluth formula}
+電子と陽子の散乱を考える．
+
+\begin{center}
+  \feynmandiagram [horizontal=a to b, baseline=(a.base)] {
+  i1 [particle=$e^-$] -- [fermion, edge label'=$p_1$] a -- [fermion, edge label'=$k_1$] f1 [particle=$e^-$],
+  a -- [photon, momentum=$q$] b [blob],
+  i2 [particle=$p^+$] -- [anti fermion, edge label'=$k_2$, very thick] b -- [anti fermion, edge label'=$p_2$, very thick] f2 [particle=$p^+$]
+  };
+\end{center}
+
+電子の質量は$0$，陽子の質量は$M$とする．スピンの平均を取った不変振幅は
+\begin{align*}
+  & \frac{1}{4} \sum_\text{spins} \lvert\mathcal{M}\rvert^2 = \frac{e^4}{4q^4} \Tr [\gamma_\mu \slashed{p}_1 \gamma_\nu \slashed{k}_1] \\
+  & \qquad \times \Tr \left[ \left( \gamma^\mu (F_1 + F_2) - \frac{(p_2 + k_2)^\mu}{2M} F_2 \right)
+  (\slashed{p}_2 + M) \left( \gamma^\nu (F_1 + F_2) - \frac{(p_2 + k_2)^\nu}{2M} F_2 \right) (\slashed{k}_2 + M) \right]
+\end{align*}
+である．1つめのトレースは次のように計算できる：
+\[ \Tr [\gamma_\mu \slashed{p}_1 \gamma_\nu \slashed{k}_1] = 4 [ p_{1\mu}k_{1\nu} + k_{1\mu}p_{1\nu} - g_{\mu\nu} (p_1 \cdot k_1) ] . \]
+2つめのトレースで非零なのはガンマ行列が偶数個含まれる項：
+\begin{align*}
+  \Tr[\cdots] &= (F_1 + F_2)^2 \Tr (\gamma^\mu \slashed{p}_2 \gamma^\nu \slashed{k}_2) + F_2{}^2 (p_2 + k_2)^\mu (p_2 + k_2)^\nu \\
+  & \quad + M^2 (F_1 + F_2)^2 \Tr (\gamma^\mu\gamma^\nu) + \frac{F_2{}^2}{4M^2} (p_2 + k_2)^\mu (p_2 + k_2)^\nu \Tr(\slashed{p}_2\slashed{k}_2) \\
+  & \quad - \frac{1}{2} F_2 (F_1 + F_2) (p_2 + k_2)^\nu \Tr (\gamma^\mu\slashed{p}_2)
+  - \frac{1}{2} F_2 (F_1 + F_2) (p_2 + k_2)^\nu \Tr (\gamma^\mu\slashed{k}_2) \\
+  & \quad - \frac{1}{2} F_2 (F_1 + F_2) (p_2 + k_2)^\mu \Tr (\gamma^\nu\slashed{p}_2)
+  - \frac{1}{2} F_2 (F_1 + F_2) (p_2 + k_2)^\mu \Tr (\gamma^\nu\slashed{k}_2) \\
+  &= 4 (F_1 + F_2)^2 [ p_2^\mu k_2^\nu + k_2^\mu p_2^\nu - g^{\mu\nu} (p_2 \cdot k_2) ] + F_2{}^2 (p_2 + k_2)^\mu (p_2 + k_2)^\nu \\
+  & \quad + 4 M^2 (F_1 + F_2)^2 g^{\mu\nu} + \frac{F_2{}^2}{M^2} (p_2 \cdot k_2) (p_2 + k_2)^\mu (p_2 + k_2)^\nu \\
+  & \quad - 4 F_2 (F_1 + F_2) (p_2 + k_2)^\mu (p_2 + k_2)^\nu \\
+  &= 4 (F_1 + F_2)^2 [ p_2^\mu k_2^\nu + k_2^\mu p_2^\nu - g^{\mu\nu} (p_2 \cdot k_2) ] \\
+  & \quad + 4 M^2 (F_1 + F_2)^2 g^{\mu\nu} \\
+  & \quad + \left[ F_2{}^2 + \frac{F_2{}^2}{M^2} (p_2 \cdot k_2) - 4 F_2 (F_1 + F_2) \right] (p_2 + k_2)^\mu (p_2 + k_2)^\nu .
+\end{align*}
+これらの積を求める．1項目は
+\begin{align*}
+  & [ p_{1\mu}k_{1\nu} + k_{1\mu}p_{1\nu} - g_{\mu\nu} (p_1 \cdot k_1) ][ p_2^\mu k_2^\nu + k_2^\mu p_2^\nu - g^{\mu\nu} (p_2 \cdot k_2) ] \\
+  &= [ p_{1\mu}k_{1\nu} + k_{1\mu}p_{1\nu} ][ p_2^\mu k_2^\nu + k_2^\mu p_2^\nu ] \\
+  &= 2(p_1 \cdot p_2)(k_1 \cdot k_2) + 2(p_1 \cdot k_2)(k_1 \cdot p_2) .
+\end{align*}
+2項目は
+\[  [ p_{1\mu}k_{1\nu} + k_{1\mu}p_{1\nu} - g_{\mu\nu} (p_1 \cdot k_1) ] g^{\mu\nu} = -2 (p_1 \cdot k_1) . \]
+3項目は
+\begin{align*}
+  & [ p_{1\mu}k_{1\nu} + k_{1\mu}p_{1\nu} - g_{\mu\nu} (p_1 \cdot k_1) ] (p_2 + k_2)^\mu (p_2 + k_2)^\nu \\
+  &= 2 p_1 \cdot (p_2 + k_2) k_1 \cdot (p_2 + k_2) - (p_1 \cdot k_1) (p_2 + k_2)^2 \\
+  &= 2 p_1 \cdot (p_2 + k_2) k_1 \cdot (p_2 + k_2) - 2M^2(p_1 \cdot k_1) - 2 (p_1 \cdot k_1)(p_2 \cdot k_2) .
+\end{align*}
+以上から，
+\begin{align}
+  \begin{split}
+    \frac{1}{4}\sum_\text{spins} \lvert\mathcal{M}\rvert^2 &= \frac{8e^4}{q^4}
+    (F_1 + F_2)^2 [(p_1 \cdot p_2)(k_1 \cdot k_2) + (p_1 \cdot k_2)(k_1 \cdot p_2) - M^2(p_1 \cdot k_1) ] \\
+    & + \frac{2e^4}{q^4} \left[ F_2{}^2 + \frac{F_2{}^2}{M^2} (p_2 \cdot k_2) - 4F_2(F_1 + F_2) \right] \\
+    & \qquad \times [ p_1 \cdot (p_2 + k_2) k_1 \cdot (p_2 + k_2) - M^2(p_1 \cdot k_1) - (p_1 \cdot k_1)(p_2 \cdot k_2) ] .
+  \end{split}
+  \label{prob6_1_eq1}
+\end{align}
+ここで，初めに陽子が静止している実験系から見る：
+\begin{align*}
+  p_1^\mu = (E, 0, 0, E) & , & k_1^\mu = (E', E'\sin\theta, 0, E'\cos\theta) & , &
+  p_2^\mu = (M, 0, 0, 0) .
+\end{align*}
+$p_1 + p_2 = k_1 + k_2$から
+\begin{align*}
+  k_2^\mu = (M + E - E', - E'\sin\theta, 0, E - E'\cos\theta) &,  & E'= \frac{ME}{M + 2E\sin^2\theta/2} .
+\end{align*}
+$q = p_1 - k_1$なので，
+\[ q^2 = p_1{}^2 + k_1{}^2 - 2 p_1\cdot k_1 = - 2 p_1\cdot k_1 . \]
+従って，
+\begin{align*}
+  (p_1 \cdot p_2)(k_1 \cdot k_2) &= ME (ME' + EE' - EE'\cos\theta) \\
+  &= MEE' \left( M + 2E\sin^2\theta/2 \right) \\
+  &= M^2E^2 , \\
+  (p_1 \cdot k_2)(k_1 \cdot p_2) &= (ME - EE' + EE'\cos\theta) ME' \\
+  &= ME' ME' \\
+  &= M^2E'^2 , \\
+  p_1 \cdot k_1 &= -\frac{1}{2} q^2 .
+\end{align*}
+
+以上から，\eqref{prob6_1_eq1}の第1項は
+\begin{align*}
+  &  \frac{8e^4}{q^4}
+  (F_1 + F_2)^2 [(p_1 \cdot p_2)(k_1 \cdot k_2) + (p_1 \cdot k_2)(k_1 \cdot p_2) - M^2(p_1 \cdot k_1) ] \\
+  & \quad = \frac{4e^4M^2}{q^4} (F_1 + F_2)^2 [2E^2 + 2E'^2 + q^2] .
+\end{align*}
+
+$q = k_2 - p_2$なので，
+\[ k_2 \cdot p_2 = M^2 - \frac{q^2}{2} . \]
+従って，
+\begin{align*}
+  & F_2{}^2 + \frac{F_2{}^2}{M^2} (p_2 \cdot k_2) - 4F_2(F_1 + F_2) \\
+  &= F_2{}^2 + \frac{F_2{}^2}{M^2} \left( M^2 - \frac{q^2}{2} \right) - 4F_2(F_1 + F_2) \\
+  &= -2 \left( 2F_1F_2 + F_2{}^2 + \frac{F_2{}^2q^2}{4M^2} \right)
+\end{align*}
+及び
+\begin{align*}
+  & p_1 \cdot (p_2 + k_2) k_1 \cdot (p_2 + k_2) - M^2(p_1 \cdot k_1) - (p_1 \cdot k_1)(p_2 \cdot k_2) \\
+  &= M (E + E') M (E + E') + M^2 \frac{q^2}{2} + \left( M^2 - \frac{q^2}{2} \right) \frac{q^2}{2} \\
+  &= M^2 \left[ (E + E')^2 + q^2 - \frac{q^4}{4M^2} \right]
+\end{align*}
+を得る．これらから，\eqref{prob6_1_eq1}の第2項は
+\begin{align*}
+  & \frac{2e^4}{q^4} \left[ F_2{}^2 + \frac{F_2{}^2}{M^2} (p_2 \cdot k_2) - 4F_2(F_1 + F_2) \right] \\
+  & \qquad \times [ p_1 \cdot (p_2 + k_2) k_1 \cdot (p_2 + k_2) - M^2(p_1 \cdot k_1) - (p_1 \cdot k_1)(p_2 \cdot k_2) ] \\
+  &= - \frac{4e^4M^2}{q^4} \left[ (E + E')^2 + q^2 - \frac{q^4}{4M^2} \right] \left( 2F_1F_2 + F_2{}^2 + \frac{F_2{}^2q^2}{4M^2} \right) \\
+  &= - \frac{4e^4M^2}{q^4} \left[ (E + E')^2 + q^2 - \frac{q^4}{4M^2} \right] \left( (F_1 + F_2)^2 - F_1{}^2 + \frac{F_2{}^2q^2}{4M^2} \right) .
+\end{align*}
+以上から，
+\begin{align*}
+  \frac{1}{4}\sum_\text{spins}\lvert\mathcal{M}\rvert^2 &= \frac{4e^4M^2}{q^4} (F_1 + F_2)^2 [2E^2 + 2E'^2 + q^2] \\
+  & \quad - \frac{4e^4M^2}{q^4} \left[ (E + E')^2 + q^2 - \frac{q^4}{4M^2} \right] \left( (F_1 + F_2)^2 - F_1{}^2 + \frac{F_2{}^2q^2}{4M^2} \right) \\
+  %
+  &= \frac{4e^4M^2}{q^4} (F_1 + F_2)^2 \left[ 2E^2 + 2E'^2 - (E + E')^2 + \frac{q^4}{4M^2} \right] \\
+  & \quad - \frac{4e^4M^2}{q^4} \left[ (E + E')^2 + q^2 - \frac{q^4}{4M^2} \right] \left( - F_1{}^2 + \frac{F_2{}^2q^2}{4M^2} \right) \\
+  %
+  &= \frac{4e^4M^2}{q^4} (F_1 + F_2)^2 \left[ (E - E')^2 + \frac{q^4}{4M^2} \right] \\
+  & \quad + \frac{4e^4M^2}{q^4} \left[ (E + E')^2 + q^2 - \frac{q^4}{4M^2} \right] \left( F_1{}^2 - \frac{F_2{}^2q^2}{4M^2} \right) .
+\end{align*}
+ここで，$p_2 \cdot k_2 = M^2 + M(E - E') = M^2 - q^2/2$なので，
+\[ E - E' = - \frac{q^2}{2M} . \]
+$p_1 \cdot k_1 = -q^2/2 = EE'(1 - \cos\theta) = 2EE'\sin^2\theta/2$なので，
+\[ q^2 = - 4EE'\sin^2 \frac{\theta}{2} . \]
+これらを使えば，
+\begin{align*}
+  \frac{1}{4}\sum_\text{spins}\lvert\mathcal{M}\rvert^2 &= \frac{4e^4M^2}{q^4} (F_1 + F_2)^2  \frac{q^4}{2M^2} \\
+  & \quad + \frac{4e^4M^2}{q^4} \left[ E^2 + E'^2 + 2EE' - 4EE'\sin^2 \frac{\theta}{2} - \frac{q^4}{4M^2} \right] \left( F_1{}^2 - \frac{F_2{}^2q^2}{4M^2} \right) \\
+  %
+  &= \frac{4e^4M^2}{q^4} (F_1 + F_2)^2  \frac{q^4}{2M^2} \\
+  & \quad + \frac{4e^4M^2}{q^4} \left[ (E - E')^2 + 4EE'\cos^2 \frac{\theta}{2} - \frac{q^4}{4M^2} \right] \left( F_1{}^2 - \frac{F_2{}^2q^2}{4M^2} \right) \\
+  %
+  &= \frac{4e^4M^2}{q^4} (F_1 + F_2)^2  \frac{q^4}{2M^2} + \frac{4e^4M^2}{q^4} \left( F_1{}^2 - \frac{F_2{}^2q^2}{4M^2} \right) 4EE'\cos^2 \frac{\theta}{2} \\
+  %
+  &= \frac{4e^4M^2}{q^4} (F_1 + F_2)^2  \frac{q^2}{2M^2} \left( - 4EE'\sin^2 \frac{\theta}{2} \right)+ \frac{4e^4M^2}{q^4} \left( F_1{}^2 - \frac{F_2{}^2q^2}{4M^2} \right) 4EE'\cos^2 \frac{\theta}{2} \\
+  %
+  &= \frac{16e^4M^2}{q^4}EE' \left[ \left( F_1{}^2 - \frac{q^2}{4M^2} F_2{}^2 \right) \cos^2 \frac{\theta}{2} - \frac{q^2}{2M^2} (F_1 + F_2)^2 \sin^2 \frac{\theta}{2} \right] \\
+  %
+  &= \frac{16e^4M^3E^2}{q^4(M + 2E\sin^2\theta/2)} \left[ \left( F_1{}^2 - \frac{q^2}{4M^2} F_2{}^2 \right) \cos^2 \frac{\theta}{2} - \frac{q^2}{2M^2} (F_1 + F_2)^2 \sin^2 \frac{\theta}{2} \right] \\
+  &= \frac{e^4M(M + 2E\sin^2\theta/2)}{E^2 \sin^4\theta/2} \left[ \left( F_1{}^2 - \frac{q^2}{4M^2} F_2{}^2 \right) \cos^2 \frac{\theta}{2} - \frac{q^2}{2M^2} (F_1 + F_2)^2 \sin^2 \frac{\theta}{2} \right] \\
+  &= \frac{16\pi^2 \alpha^2 M(M + 2E\sin^2\theta/2)}{E^2 \sin^4\theta/2} \left[ \left( F_1{}^2 - \frac{q^2}{4M^2} F_2{}^2 \right) \cos^2 \frac{\theta}{2} - \frac{q^2}{2M^2} (F_1 + F_2)^2 \sin^2 \frac{\theta}{2} \right] .
+\end{align*}
+(A.56)から
+\begin{align*}
+  d\sigma &= \frac{1}{4EM} \frac{d^3k_1d^3k_2}{(2\pi)^6 4E_1 E_2} \frac{1}{4}\sum_\text{spins}\lvert\mathcal{M}\rvert^2 (2\pi)^4 \mathop{\delta^{(4)}}(p_1 + p_2 - k_1 - k_2) \\
+  &= \frac{1}{4EM} \frac{d^3k_1}{(2\pi)^2 4E' E_2} \frac{1}{4}\sum_\text{spins}\lvert\mathcal{M}\rvert^2 \mathop\delta (E + M - E' - E_2) \\
+  &= \frac{1}{4EM} \frac{E' d\cos\theta dE'}{(2\pi) 4 E_2} \frac{1}{4}\sum_\text{spins}\lvert\mathcal{M}\rvert^2 \mathop\delta (E + M - E' - E_2) .
+\end{align*}
+$\boldsymbol{k}_2 = \boldsymbol{p}_1 + \boldsymbol{p}_2 - \boldsymbol{k}_1$なので，
+\[ \lvert\boldsymbol{k}_2\rvert^2 = E^2 +E'^2 - 2EE'\cos\theta . \]
+さらに，
+\[ E_2{}^2 = \lvert\boldsymbol{k}_2\rvert^2 + M^2 = M ^2 + E^2 +E'^2 - 2EE'\cos\theta . \]
+よって，
+\begin{align*}
+  \frac{d\sigma}{d\cos\theta} &= \frac{1}{4EM} \int \frac{E' dE'}{(2\pi) 4 E_2} \frac{1}{4}\sum_\text{spins}\lvert\mathcal{M}\rvert^2 \mathop\delta (E + M - E' - E_2) \\
+  &= \frac{1}{4EM} \frac{E'}{(2\pi) 4 E_2} \frac{1}{4}\sum_\text{spins}\lvert\mathcal{M}\rvert^2 \frac{E_2}{E_2 + E' - E\cos\theta} \\
+  &= \frac{1}{32\pi EM} \frac{1}{4}\sum_\text{spins}\lvert\mathcal{M}\rvert^2 \frac{E'}{E_2 + E' - E\cos\theta} \\
+  &= \frac{1}{32\pi EM} \frac{1}{4}\sum_\text{spins}\lvert\mathcal{M}\rvert^2 \frac{E'}{E + M - E\cos\theta} \\
+  &= \frac{1}{32\pi EM} \frac{1}{4}\sum_\text{spins}\lvert\mathcal{M}\rvert^2 \frac{E'}{M + 2E \sin^2\theta/2} \\
+  &= \frac{1}{32\pi} \frac{1}{4}\sum_\text{spins}\lvert\mathcal{M}\rvert^2 \frac{1}{(M + 2E \sin^2\theta/2)^2} \\
+  &= \frac{1}{32\pi} \frac{16\pi^2 \alpha^2 M}{E^2 \sin^4\theta/2(M + 2E\sin^2\theta/2)}
+  \left[ \left( F_1{}^2 - \frac{q^2}{4M^2} F_2{}^2 \right) \cos^2 \frac{\theta}{2} - \frac{q^2}{2M^2} (F_1 + F_2)^2 \sin^2 \frac{\theta}{2} \right] \\
+  %
+  &= \frac{\pi \alpha^2 M}{2E^2 \sin^4\theta/2(M + 2E\sin^2\theta/2)}
+  \left[ \left( F_1{}^2 - \frac{q^2}{4M^2} F_2{}^2 \right) \cos^2 \frac{\theta}{2} - \frac{q^2}{2M^2} (F_1 + F_2)^2 \sin^2 \frac{\theta}{2} \right] .
+\end{align*}
+
+\subsection{Problem 6.3: Exotic contributuons to $g-2$}
+\subsubsection{(a)}
+相互作用のハミルトニアンは
+\[ \mathcal{H}_\text{int} = \frac{\lambda}{\sqrt{2}} h \overline\psi \psi \]
+なので，これは結合定数$g = \lambda/\sqrt{2}$のYukawa理論(p.118)．
+
+\begin{center}
+  \feynmandiagram [horizontal= e to f] {
+  a -- [anti fermion, edge label=$p'$] b -- [dashed, reversed momentum'=$p-k$] c -- [anti fermion, edge label=$p$] d,
+  b -- [anti fermion, edge label=${k'=k+q}$] e -- [anti fermion, edge label=$k$] c,
+  e -- [photon, reversed momentum'=$q$] f;
+  };
+\end{center}
+
+p.189以降と同様に頂点補正を求める．上図に対応する振幅は
+\[
+\overline{u}(p') \delta\Gamma^\mu(p, p') u(p) = \frac{i\lambda^2}{2} \int \frac{d^4k}{(2\pi)^4}
+\frac{\overline{u}(p') \left[ \slashed{k}' \gamma^\mu \slashed{k} + m^2\gamma^\mu + m(\slashed{k}' \gamma^\mu + \gamma^\mu \slashed{k}) \right] u(p)}
+{[(k-p)^2 - m_h{}^2](k'^2 - m^2)(k^2 - m^2)}
+\]
+で与えられる（以降は両端のスピノル$\overline{u}(p') \cdots u(p)$は省略する）．
+
+まず，分母を求める．
+\begin{align*}
+  \ell = k + yq - zp & , & D = \ell^2 - \Delta + i\epsilon & , & \Delta = -xyq^2 + (1-z)^2 m^2 +zm_h{}^2
+\end{align*}
+とおけば，分母は
+\[ \int_0^1 dx \, dy \, dz  \mathop\delta(x+y+z-1) \frac{2}{D^3} = \int_0^1 dx \, dy \, dz  \mathop\delta(x+y+z-1) \frac{2}{(\ell^2 - \Delta + i\epsilon)^3} . \]
+
+次に分子を求める．
+\begin{align}
+  \begin{split}
+    \slashed{k}' \gamma^\mu + \gamma^\mu \slashed{k} &= \slashed{q} \gamma^\mu + (\slashed{k} \gamma^\mu + \gamma^\mu \slashed{k})
+    = 2k^\mu + \slashed{q} \gamma^\mu = 2k^\mu + (\slashed{p}' - \slashed{p}) \gamma^\mu = 2k^\mu + (m - \slashed{p}) \gamma^\mu \\
+    &= 2k^\mu + \gamma^\mu (m + \slashed{p}) - 2p^\mu \\
+    &= 2k^\mu + 2m \gamma^\mu - 2p^\mu
+  \end{split}
+  \label{prob6_3_eq1}
+\end{align}
+となるので，\eqref{eq_p_192_term2}と同様の計算を行えば
+\begin{align*}
+  & \slashed{k}' \gamma^\mu \slashed{k} + m^2\gamma^\mu + m(\slashed{k}' \gamma^\mu + \gamma^\mu \slashed{k}) \\
+  &= -\frac{1}{2} \gamma^\mu \ell^2 + [(1-y)\slashed{q} + z\slashed{p}] \gamma^\mu (-y\slashed{q}+z\slashed{p}) + m^2 \gamma^\mu + 2mk^\mu + 2m^2 \gamma^\mu - 2mp^\mu
+\end{align*}
+となる．第2項は
+\begin{align*}
+  & [(1-y)\slashed{q} + z\slashed{p}] \gamma^\mu (-y\slashed{q}+z\slashed{p}) \\
+  &= [(1-y-z)\slashed{q} + z\slashed{p}'] \gamma^\mu (-y\slashed{q}+z\slashed{p}) \\
+  &= [(1-y-z)\slashed{q} + zm] \gamma^\mu (-y\slashed{q}+zm) \\
+  %
+  &= -y(1-y-z) \slashed{q} \gamma^\mu \slashed{q} + z(1-y-z) m \slashed{q} \gamma^\mu
+  - yz m \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= -y(1-y-z) (2q^\mu - \gamma^\mu \slashed{q}) \slashed{q} + z(1-y-z) m (2q^\mu - \gamma^\mu \slashed{q})
+  - yz m \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= -2y(1-y-z) q^\mu\slashed{q} + y(1-y-z) \gamma^\mu \slashed{q} \slashed{q} + 2z(1-y-z) m q^\mu - z(1-y-z) m \gamma^\mu \slashed{q} \\
+  & \quad  - yz m \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  %
+  &= y(1-y-z) \gamma^\mu q^2 + 2z(1-y-z) m q^\mu - z(1-z) m \gamma^\mu \slashed{q} + z^2m^2 \gamma^\mu \\
+  &= y(1-y-z) \gamma^\mu q^2 + 2z(1-y-z) m q^\mu - z(1-z) m (2p'^\mu - 2m\gamma^\mu) + z^2m^2 \gamma^\mu \\
+  &= y(1-y-z) \gamma^\mu q^2 + 2z(1-y-z) m q^\mu - 2z(1-z) m p'^\mu + z(2-z)m^2 \gamma^\mu \\
+  &= yx \gamma^\mu q^2 + 2zx m q^\mu - 2z(1-z) m p'^\mu + z(2-z)m^2 \gamma^\mu .
+\end{align*}
+他の項と併せて，分子は
+\begin{align*}
+  &= -\frac{1}{2} \gamma^\mu \ell^2 + yx \gamma^\mu q^2 + 2zx m q^\mu - 2z(1-z) m p'^\mu + z(2-z)m^2 \gamma^\mu \\
+  & \quad + m^2 \gamma^\mu + 2mk^\mu + 2m^2 \gamma^\mu - 2mp^\mu \\
+  %
+  &= \left[ -\frac{\ell^2}{2} + (3+2z-z^2) m^2 + xy q^2 \right] \gamma^\mu + 2zx m q^\mu - 2z(1-z) m (p^\mu + q^\mu) \\
+  & \quad + 2m(\ell^\mu - yq^\mu + zp^\mu) - 2mp^\mu \\
+  %
+  &= \left[ -\frac{\ell^2}{2} + (3+2z-z^2) m^2 + xy q^2 \right] \gamma^\mu + 2(z^2 - 1) mp^\mu + 2 (zx - z + z^2 - y) mq^\mu \\
+  &= \left[ -\frac{\ell^2}{2} + (3+2z-z^2) m^2 + xy q^2 \right] \gamma^\mu + (z^2 - 1) m (p^\mu + p'^\mu) + (x-y)(1+z) mq^\mu \\
+  &= \left[ -\frac{\ell^2}{2} + (3+2z-z^2) m^2 + xy q^2 \right] \gamma^\mu + (z^2 - 1) m (p^\mu + p'^\mu) .
+\end{align*}
+Gordon恒等式を使って変形すれば，
+\begin{align*}
+  &= \left[ -\frac{\ell^2}{2} + (3+2z-z^2) m^2 + xy q^2 \right] \gamma^\mu + (z^2 - 1) m (2m\gamma^\mu - i \sigma^{\mu\nu}q_\nu) \\
+  &= \left[ -\frac{\ell^2}{2} + (1+z)^2 m^2 + xy q^2 \right] \gamma^\mu + \frac{i \sigma^{\mu\nu}q_\nu}{2m} 2m^2 (1 - z^2) .
+\end{align*}
+(6.33)(6.49)から
+\begin{align*}
+  F_2(q^2) &= \frac{i\lambda^2}{2} \int \frac{d^4\ell}{(2\pi)^4} \int_0^1 dx \, dy \, dz  \mathop\delta(x+y+z-1) \frac{2}{(\ell^2 - \Delta)^3} \overline{u}(p') 2m^2 (1 - z^2) u(p) \\
+  &= \frac{\lambda^2}{2} \frac{2m^2}{(4\pi)^2}  \int_0^1 dx \, dy \, dz  \mathop\delta(x+y+z-1) \frac{1 - z^2}{-xyq^2 + (1-z)^2 m^2 +zm_h{}^2} .
+\end{align*}
+(6.37)から
+\begin{align*}
+  \frac{g-2}{2} &=  F_2(q^2=0) \\
+   &= \frac{\lambda^2}{2} \frac{2m^2}{(4\pi)^2}  \int_0^1 dx \, dy \, dz  \mathop\delta(x+y+z-1) \frac{1 - z^2}{(1-z)^2 m^2 +zm_h{}^2} \\
+  &= \frac{\lambda^2}{(4\pi)^2} \int_0^1 dz \frac{(1 - z^2)(1-z)}{(1-z)^2  +z(m_h/m)^2} .
+\end{align*}
+
+\subsubsection{(c)}
+相互作用のハミルトニアンは
+\[ \mathcal{H}_\text{int} = \frac{i\lambda}{\sqrt{2}} a \overline\psi \gamma^5 \psi \]
+なので，これはvertex factorが$\lambda \gamma^5/\sqrt{2}$のQED (p.123)．
+
+\begin{center}
+  \feynmandiagram [horizontal= e to f] {
+  a -- [anti fermion, edge label=$p'$] b -- [dashed, reversed momentum'=$p-k$] c -- [anti fermion, edge label=$p$] d,
+  b -- [anti fermion, edge label=${k'=k+q}$] e -- [anti fermion, edge label=$k$] c,
+  e -- [photon, reversed momentum'=$q$] f;
+  };
+\end{center}
+
+p.189以降と同様に頂点補正を求める．上図に対応する振幅は
+\[
+\]
+\begin{align*}
+  \overline{u}(p') \delta\Gamma^\mu(p, p') u(p) &= -\frac{i\lambda^2}{2} \int \frac{d^4k}{(2\pi)^4}
+  \frac{\overline{u}(p') \gamma^5 \left[ \slashed{k}' \gamma^\mu \slashed{k} + m^2\gamma^\mu + m(\slashed{k}' \gamma^\mu + \gamma^\mu \slashed{k}) \right] \gamma^5 u(p)}
+  {[(k-p)^2 - m_a{}^2](k'^2 - m^2)(k^2 - m^2)} \\
+  &= \frac{i\lambda^2}{2} \int \frac{d^4k}{(2\pi)^4}
+  \frac{\overline{u}(p') \left[ \slashed{k}' \gamma^\mu \slashed{k} + m^2\gamma^\mu - m(\slashed{k}' \gamma^\mu + \gamma^\mu \slashed{k}) \right] u(p)}
+  {[(k-p)^2 - m_a{}^2](k'^2 - m^2)(k^2 - m^2)}
+\end{align*}
+
+で与えられる（以降は両端のスピノル$\overline{u}(p') \cdots u(p)$は省略する）．
+
+まず，分母を求める．
+\begin{align*}
+  \ell = k + yq - zp & , & D = \ell^2 - \Delta + i\epsilon & , & \Delta = -xyq^2 + (1-z)^2 m^2 +zm_a{}^2
+\end{align*}
+とおけば，分母は
+\[ \int_0^1 dx \, dy \, dz  \mathop\delta(x+y+z-1) \frac{2}{D^3} = \int_0^1 dx \, dy \, dz  \mathop\delta(x+y+z-1) \frac{2}{(\ell^2 - \Delta + i\epsilon)^3} . \]
+
+分子は
+\begin{align*}
+  &= -\frac{1}{2} \gamma^\mu \ell^2 + yx \gamma^\mu q^2 + 2zx m q^\mu - 2z(1-z) m p'^\mu + z(2-z)m^2 \gamma^\mu \\
+  & \quad + m^2 \gamma^\mu - 2mk^\mu - 2m^2 \gamma^\mu + 2mp^\mu \\
+  %
+  &= \left[ -\frac{\ell^2}{2} - (z - 1)^2 m^2 + xy q^2 \right] \gamma^\mu + 2zx m q^\mu - 2z(1-z) m (p^\mu + q^\mu) \\
+  & \quad - 2m(\ell^\mu - yq^\mu + zp^\mu) + 2mp^\mu \\
+  %
+  &= \left[ -\frac{\ell^2}{2} - (z - 1)^2 m^2 + xy q^2 \right] \gamma^\mu + 2(z - 1)^2 mp^\mu + 2 (zx - z + z^2 + y) mq^\mu \\
+  &= \left[ -\frac{\ell^2}{2} - (z - 1)^2 m^2 + xy q^2 \right] \gamma^\mu + (z - 1)^2 m (p^\mu + p'^\mu) + (x-y)(z-1) mq^\mu \\
+  &= \left[ -\frac{\ell^2}{2} - (z - 1)^2 m^2 + xy q^2 \right] \gamma^\mu + (z - 1)^2 m (p^\mu + p'^\mu) \\
+  &= \left[ -\frac{\ell^2}{2} - (z - 1)^2 m^2 + xy q^2 \right] \gamma^\mu + (z - 1)^2 m (2m\gamma^\mu - i \sigma^{\mu\nu}q_\nu) \\
+  &= \left[ -\frac{\ell^2}{2} + (z - 1)^2 m^2 + xy q^2 \right] \gamma^\mu + \frac{i \sigma^{\mu\nu}q_\nu}{2m} (-2m^2) (z - 1)^2 .
+\end{align*}
+(6.33)(6.49)から
+\begin{align*}
+  F_2(q^2) &= \frac{i\lambda^2}{2} \int \frac{d^4\ell}{(2\pi)^4} \int_0^1 dx \, dy \, dz  \mathop\delta(x+y+z-1) \frac{2}{(\ell^2 - \Delta)^3} \overline{u}(p') (-2m^2) (z - 1)^2 u(p) \\
+  &= -\frac{\lambda^2}{2} \frac{2m^2}{(4\pi)^2}  \int_0^1 dx \, dy \, dz  \mathop\delta(x+y+z-1) \frac{(z - 1)^2}{-xyq^2 + (1-z)^2 m^2 +zm_a{}^2} .
+\end{align*}
+(6.37)から
+\begin{align*}
+  \frac{g-2}{2} &=  F_2(q^2=0) \\
+   &= -\frac{\lambda^2}{2} \frac{2m^2}{(4\pi)^2}  \int_0^1 dx \, dy \, dz  \mathop\delta(x+y+z-1) \frac{(z - 1^2)}{(1-z)^2 m^2 +zm_a{}^2} \\
+  &= -\frac{\lambda^2}{(4\pi)^2} \int_0^1 dz \frac{(1-z)^3}{(1-z)^2  +z(m_a/m)^2} .
+\end{align*}
+
+\chapter{Radiative Corrections: Some Formal Developments}
+\setcounter{section}{1}
+\section{The LSZ Reduction formula}
+\subsection{(7.45)}
+直前にある4点相関函数について証明する．LSZ簡約公式(7.42)から
+\begin{align*}
+  & \left( \prod_1^2 \frac{\sqrt{Z} i}{p_i{}^2 - m^2} \right) \left( \prod_1^2 \frac{\sqrt{Z} i}{k_i{}^2 - m^2} \right)
+  \bra{\boldsymbol{p}_1 \boldsymbol{p}_2} S \ket{\boldsymbol{k}_1 \boldsymbol{k}_2} \\
+  &= \left( \prod_1^2 \int d^4x_i e^{ip_i \cdot x_i} \right) \left( \prod_1^2 \int d^4y_i e^{ik_i \cdot y_i} \right)
+  \bra{\Omega} T \{ \phi(x_1) \phi(x_2) \phi(y_1) \phi(y_2) \} \ket{\Omega} \\
+  &=
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[blob] (o) at (0, 0) {};
+      \vertex (x1) at (135: 1.5);
+      \vertex (x2) at (45: 1.5);
+      \vertex (y1) at (225: 1.5);
+      \vertex (y2) at (315: 1.5);
+      \diagram*{
+      (o) -- [fermion, edge label'=$p_1$] (x1),
+      (o) -- [fermion, edge label=$p_2$] (x2),
+      (y1) -- [fermion, edge label'=$k_1$] (o),
+      (y2) -- [fermion, edge label=$k_2$] (o)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }} \\
+  %
+  &=
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[draw, circle] (o) at (0, 0) {Amp};
+      \vertex (x1) at (135: 2.5);
+      \vertex (x2) at (45: 2.5);
+      \vertex (y1) at (225: 2.5);
+      \vertex (y2) at (315: 2.5);
+      \vertex[blob] (x1p) at (135: 1.5) {};
+      \vertex[blob] (x2p) at (45: 1.5) {};
+      \vertex[blob] (y1p) at (225: 1.5) {};
+      \vertex[blob] (y2p) at (315: 1.5) {};
+      \diagram*{
+      (o) -- (x1p) -- [fermion, edge label'=$p_1$] (x1),
+      (o) -- (x2p) -- [fermion, edge label=$p_2$] (x2),
+      (y1) -- [fermion, edge label'=$k_1$] (y1p) -- (o),
+      (y2) -- [fermion, edge label=$k_2$] (y2p) -- (o)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+\end{align*}
+(7.44)とその後の式から
+\[
+=
+\vcenter{\hbox{
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex[draw, circle] (o) at (0, 0) {Amp};
+    \vertex (x1) at (135: 1.5);
+    \vertex (x2) at (45: 1.5);
+    \vertex (y1) at (225: 1.5);
+    \vertex (y2) at (315: 1.5);
+    \diagram*{
+    (o) -- [fermion, edge label'=$p_1$] (x1),
+    (o) -- [fermion, edge label=$p_2$] (x2),
+    (y1) -- [fermion, edge label'=$k_1$] (o),
+    (y2) -- [fermion, edge label=$k_2$] (o)
+    };
+  \end{feynman}
+\end{tikzpicture}
+}}
+\times \frac{iZ}{p_1{}^2 - m^2} \frac{iZ}{p_2{}^2 - m^2} \frac{iZ}{k_1{}^2 - m^2} \frac{iZ}{k_2{}^2 - m^2} .
+\]
+以上から，
+\[
+\bra{\boldsymbol{p}_1 \boldsymbol{p}_2} S \ket{\boldsymbol{k}_1 \boldsymbol{k}_2} = (\sqrt{Z})^4
+\vcenter{\hbox{
+\begin{tikzpicture}
+  \begin{feynman}
+    \vertex[draw, circle] (o) at (0, 0) {Amp};
+    \vertex (x1) at (135: 1.5);
+    \vertex (x2) at (45: 1.5);
+    \vertex (y1) at (225: 1.5);
+    \vertex (y2) at (315: 1.5);
+    \diagram*{
+    (o) -- [fermion, edge label'=$p_1$] (x1),
+    (o) -- [fermion, edge label=$p_2$] (x2),
+    (y1) -- [fermion, edge label'=$k_1$] (o),
+    (y2) -- [fermion, edge label=$k_2$] (o)
+    };
+  \end{feynman}
+\end{tikzpicture}
+}}
+.
+\]
+
+\section{The Optical Theorem}
+\subsection{(7.53)}
+(7.52)の積分
+\begin{align*}
+  i\delta\mathcal{M} &= \frac{\lambda^2}{2} \int \frac{d^3q}{(2\pi)^4} \int dq^0 \frac{1}{(q - k/2)^2 - m^2 + i\epsilon}
+  \frac{1}{(q + k/2)^2 - m^2 + i\epsilon} \\
+  &= \frac{\lambda^2}{2} \int \frac{d^3q}{(2\pi)^4} \int dq^0 \frac{1}{(q^0 - k^0/2)^2 - E_{\boldsymbol{q}}{}^2 + i\epsilon}
+  \frac{1}{(q^0 + k^0/2)^2 - E_{\boldsymbol{q}}{}^2 + i\epsilon}
+\end{align*}
+を下半分の半円上で$q^0$について実行する．
+この際に，$q^0 = -k^0/2 + E_{\boldsymbol{q}} - i\epsilon$の極の留数のみ取れば，
+\begin{align*}
+  i\delta\mathcal{M} &= \frac{\lambda^2}{2} \int \frac{d^3q}{(2\pi)^4} \frac{1}{(-k^0 + E_{\boldsymbol{q}})^2 - E_{\boldsymbol{q}}{}^2} \frac{-2\pi i}{2 E_{\boldsymbol{q}}} \\
+  &= \frac{\lambda^2}{2} \int \frac{d^3q}{(2\pi)^4} \int dq^0
+  \frac{1}{(q^0 - k^0/2)^2 - E_{\boldsymbol{q}}{}^2} (-2\pi i) \mathop\delta ((k/2 + q)^2 - m^2)
+\end{align*}
+となる．従って，極を限定する操作は
+\[ \frac{1}{(q + k/2)^2 - m^2 + i\epsilon} \to -2\pi i \mathop\delta ((k/2 + q)^2 - m^2) \]
+とみなすことに等しい．
+
+\subsection{(7.55)}
+まず，
+\[ \frac{1}{x + i\epsilon} - \frac{1}{x - i\epsilon} = \frac{-2i\epsilon}{x^2 + \epsilon^2} = -2\pi i \mathop\delta (x) \]
+である．実際，$a < 0 < b$で積分すれば，
+\[ \int_a^b \frac{1}{x^2 + \epsilon^2} \,dx = \frac{1}{\epsilon} \int_{a/\epsilon}^{b/\epsilon} \frac{1}{x^2+1} \, dx \approx \frac{1}{\epsilon} \int_{-\infty}^{+\infty} \frac{1}{x^2+1} \, dx = \frac{\pi}{\epsilon} \]
+となる．$[a, b]$が$0$を含まなければ積分は$0$となる．
+
+(7.51)のあとで議論したように，$s \pm i\epsilon$での$\mathcal{M}$の不連続性を計算する．
+$\epsilon$は微小なので，$k^0 \pm i\epsilon$で計算してもよい．
+先ほど得られた式
+\begin{align*}
+  i\delta\mathcal{M}(k^0) &= \frac{\lambda^2}{2} \int \frac{d^4q}{(2\pi)^4}
+  \frac{1}{(k^0/2 - q^0)^2 - E_{\boldsymbol{q}}{}^2} (-2\pi i) \mathop\delta ((k/2 + q)^2 - m^2)
+\end{align*}
+を使えば，
+\begin{align*}
+  i\Disc\mathcal{M} &= i\delta\mathcal{M}(k^0+i\epsilon) -  i\delta\mathcal{M}(k^0-i\epsilon) \\
+  &= \frac{\lambda^2}{2} \int \frac{d^4q}{(2\pi)^4}
+  \left[ \frac{1}{(k^0/2 - q^0 + i\epsilon/2)^2 - E_{\boldsymbol{q}}{}^2} - \frac{1}{(k^0/2 - q^0 - i\epsilon/2)^2 - E_{\boldsymbol{q}}{}^2} \right] \\
+  & \qquad \times (-2\pi i) \mathop\delta ((k/2 + q)^2 - m^2) \\
+  %
+  &= \frac{\lambda^2}{2} \int \frac{d^4q}{(2\pi)^4}
+  \left[ \frac{1}{(k^0/2 - q^0 + i\epsilon/2)^2 - E_{\boldsymbol{q}}{}^2} - \frac{1}{(k^0/2 - q^0 - i\epsilon/2)^2 - E_{\boldsymbol{q}}{}^2} \right] \\
+  & \qquad \times (-2\pi i) \mathop\delta ((k/2 + q)^2 - m^2) \\
+  %
+  &= \frac{\lambda^2}{2} \int \frac{d^4q}{(2\pi)^4}
+  \left[ \frac{1}{(k^0/2 - q^0)^2 - E_{\boldsymbol{q}}{}^2 + i\epsilon} - \frac{1}{(k^0/2 - q^0)^2 - E_{\boldsymbol{q}}{}^2 - i\epsilon/2} \right] \\
+  & \qquad \times (-2\pi i) \mathop\delta ((k/2 + q)^2 - m^2) \\
+  %
+  &= \frac{\lambda^2}{2} \int \frac{d^4q}{(2\pi)^4}
+  (-2\pi i) \mathop\delta ((k^0/2 - q^0)^2 - E_{\boldsymbol{q}}{}^2) (-2\pi i) \mathop\delta ((k/2 + q)^2 - m^2) \\
+  %
+  &= \frac{\lambda^2}{2} \int \frac{d^4q}{(2\pi)^4} (-2\pi i) \mathop\delta ((k/2 - q)^2 - m^2) (-2\pi i) \mathop\delta ((k/2 + q)^2 - m^2)
+\end{align*}
+となる．従って，不連続値を求める操作は
+\[ \frac{1}{(q - k/2)^2 - m^2 + i\epsilon} \to -2\pi i \mathop\delta ((k/2 - q)^2 - m^2) \]
+とみなすことに等しい．
+
+\subsection{(7.58)～(7.59)}
+$m$の定義は
+\[ m^2 - m_0{}^2 - \Re M^2(m^2) = 0 . \]
+(7.44)と同様に，修正した伝播函数は
+\[ \frac{i}{p^2 - m_0{}^2 - \Re M^2(p^2)} \sim \frac{iZ}{p^2 - m^2} \]
+で与えられる．従って，
+\begin{align*}
+  \frac{i}{p^2 - m_0{}^2 - M^2(p^2)} &= \frac{i}{p^2 - m_0{}^2 - \Re M^2(p^2) - i \Im M^2(p^2)} \\
+  &= \frac{iZ}{p^2 - m^2 - iZ \Im M^2(p^2)} .
+\end{align*}
+
+\section*{Problems}\addcontentsline{toc}{section}{Problems}
+Problem 6.3(a)のYukawa vertex factorを求める際にdimensional regularizationをする．
+これにより，$\slashed\ell \gamma^\mu \slashed\ell$の計算結果が変化する．
+(6.46)から
+\[
+  \slashed\ell \gamma^\mu \slashed\ell = \ell_a \ell_b \gamma^a \gamma^\mu \gamma^b
+  \to \frac{\ell^2}{d} g_{ab} \gamma^a \gamma^\mu \gamma^b
+  = \frac{\ell^2}{d} \gamma^a \gamma^\mu \gamma_a
+  = \frac{2 - d}{d} \ell^2 \gamma^\mu .
+\]

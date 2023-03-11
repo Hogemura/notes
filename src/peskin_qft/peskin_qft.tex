@@ -1,0 +1,52 @@
+\documentclass[a4paper]{ltjsreport}
+\usepackage[hiragino-pro]{luatexja-preset}
+\usepackage{../hogehoge}
+\newtoks\subsectiontitle
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{\rightmark}
+\rhead{}
+\renewcommand{\subsectionmark}[1]{\markright{#1}\global\subsectiontitle{#1}}
+\renewcommand{\subsubsectionmark}[1]{\markright{\the\subsectiontitle~|~#1}}
+\renewcommand{\prepartname}{Part }
+\renewcommand{\postpartname}{}
+\renewcommand{\prechaptername}{Chapter }
+\renewcommand{\postchaptername}{}
+\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{4}
+\usepackage[backend=biber, sorting=none]{biblatex}
+\addbibresource{./src/biblio.bib}
+\begin{document}
+\chapter*{An Introduction to Quantum Field Theory (Peskin and Schroeder)}
+参考本：
+\begin{itemize}
+  \item \cite{griffiths2020introduction} Feynmanルールの証明はせずに摂動計算の練習
+  \item \cite{坂本眞人2020量子力学選書} 非可換ゲージ理論について分かりやすく書いてある
+  \item \cite{romao2012resource} 標準模型のFeynman rule一覧．Higgs field \(\phi\)の定義が異なるので注意が必要
+\end{itemize}
+
+\printbibliography
+\tableofcontents
+
+\part{Feynman Diagrams and Quantum Electrodynamics}
+\input{src/peskin_qft_1.tex}
+\input{src/peskin_qft_2.tex}
+\input{src/peskin_qft_3.tex}
+\input{src/peskin_qft_4.tex}
+\input{src/peskin_qft_5.tex}
+\part{Renormalization}
+\input{src/peskin_qft_6.tex}
+\input{src/peskin_qft_7.tex}
+\input{src/peskin_qft_8.tex}
+\input{src/peskin_qft_9.tex}
+\part{Non-Abelian Gauge Theories}
+\input{src/peskin_qft_10.tex}
+\input{src/peskin_qft_11.tex}
+\input{src/peskin_qft_12.tex}
+\input{src/peskin_qft_13.tex}
+\input{src/peskin_qft_14.tex}
+\input{src/peskin_qft_15.tex}
+\input{src/peskin_qft_16.tex}
+% \input{src/peskin_qft_17.tex}
+\end{document}
