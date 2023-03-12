@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Peskin QFT: 1</title>
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-chtml-full.js"></script>
+  <script> MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], tags: 'ams' } };</script>
+</head>
+<body>
+  <a href="../physics_books.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>物理の本</b></font>
+    </div>
+  </a>
+  <a href="https://github.com/Hogemura/notes/raw/main/src/peskin_qft/peskin_qft.pdf" target="_blank">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, yellow, white); float:left" align="center">
+      <font size="+2" color="black"><b>詳細pdf版</b></font>
+    </div>
+  </a>
+  <div style="clear:both;"></div>
+  <hr>
+  <!-- <a href="./peskin_qft_1.html"> -->
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, red, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 1</b></font>
+    </div>
+  <!-- </a> -->
+  <a href="./peskin_qft_2.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 2</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_3.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 3</b></font>
+    </div>
+  </a>
+  <div style="clear:both;"></div>
+  <hr>
+  <h1>Peskin &amp; Schroeder. <i>An Introduction to Quantum Field Theory</i></h1>
+  <p style="text-indent: 12pt;">
+    場の量子論の標準的テキスト．個人的に思い入れの深い（？）トピックをまとめた．問題の解答・解説などを書く予定．
+  </p>
+  <h2>全体的な話</h2>
+  <h3>Fourier変換のconvention</h3>
+  <p style="text-indent: 10pt;">
+    場のFourier変換はxxiのように
+    \[
+    \phi(x) = \int \frac{d^4k}{(2\pi)^4} e^{-ik\cdot x} \phi(k) , \quad
+    \phi(k) = \int d^4x \, e^{ik\cdot x} \phi(x)
+    \]
+    と定める．Fermionの場合は
+    \[
+    \psi(p) = \int d^4x \, e^{ip\cdot x} \psi(x) , \quad
+    \bar\psi(p) = \int d^4x \, e^{-ip\cdot x} \bar\psi(x)
+    \]
+    とする（\(\bar\psi(p)\)は\(\psi(p)\)のHermite共役に対し右から\(\gamma^0\)をかけたもの？明記されてない）．
+    Propagatorは
+    \begin{align*}
+      \braket{\psi(p) \bar\psi(q)}
+      &= \int d^4x \, e^{ip\cdot x} \int d^4y \, e^{-iq\cdot x}  \braket{\psi(x) \bar\psi(y)} \\
+      &= \int d^4x \, e^{ip\cdot x} \int d^4y \, e^{-iq\cdot y} \int \frac{d^4k}{(2\pi)^4} \frac{i\cancel{k}}{k^2} e^{-ik\cdot(x-y)} \\
+      &= \frac{i\cancel{p}}{p^2} (2\pi)^4 \mathop{\delta^{(4)}}(p-q) .
+    \end{align*}
+  </p>
+  <div style="background-color: aqua;">
+    (4.47)より\(e^{-ipx}\)は位置\(x\)に運動量\(p\)が入るものとする(e.g. (4.47), p. 507)．
+  </div>
+
+  <h2>Chapter 4: Interacting Fields and Feynman Diagrams</h2>
+  <p style="text-indent: 10pt;">
+    この本で一番大事なchapter．LagrangianもしくはHamiltonianからFeynman ruleを抽出できるようになるのが大事．
+    Feynman diagramを描く際は直観的で便利だが，怪しいと思ったら$\exp(i\int\mathcal{L})$, $\exp(-i\int\mathcal{H})$の展開に立ち戻るべき（少なくとも私はそうする）．
+    Lagrangianに微分が入っている場合は「運動量\(p\)が入る＝$e^{ip\cdot x}$」を使う．
+  </p>
+
+  <h3>Problem 4.3: Linear sigma model</h3>
+  <p style="text-indent: 10pt;">上で述べたことを自分で行う非常に良い練習問題</p>
+  <p style="text-indent: 10pt;">
+    ポテンシャルは
+    \[ V = -\frac{1}{2} \mu^2 \boldsymbol\Phi \cdot \boldsymbol\Phi + \frac{\lambda}{4} (\boldsymbol\Phi \cdot \boldsymbol\Phi)^2 - a \Phi^N  \]
+    で与えられる．$V$が$\Phi^i = 0$で極小となる$v$を求める．
+    \[ \frac{\partial V}{\partial \Phi^i} = (-\mu^2 + \lambda \boldsymbol\Phi \cdot \boldsymbol\Phi) \Phi^i - a \delta^{iN} \]
+    に$\Phi^i = 0 ~ (1 \leq i \leq N-1)$, $\Phi^N = v$を代入して，
+    \[ (-\mu^2 + \lambda v^2) v \delta^{iN} - a \delta^{iN} = 0 .\]
+    $a$は十分小さいので，
+    \[ v = \frac{\mu}{\sqrt{\lambda}} + \frac{a}{2\mu^2} \]
+    であり，
+    \[ \Phi^N = \frac{\mu}{\sqrt{\lambda}} + \sigma + \frac{a}{2\mu^2} . \]
+
+    $V$の表式は
+    \begin{align*}
+      V &= -\frac{1}{2} \mu^2 \boldsymbol\Phi \cdot \boldsymbol\Phi + \frac{\lambda}{4} (\boldsymbol\Phi \cdot \boldsymbol\Phi)^2 - a \Phi^N \\
+      &= -\frac{\mu^2}{2} \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma + \frac{a}{2\mu^2} \right)^2 \right\}
+      + \frac{\lambda}{4} \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma + \frac{a}{2\mu^2} \right)^2 \right\}^2
+      - a \left( \frac{\mu}{\sqrt{\lambda}} + \sigma + \frac{a}{2\mu^2} \right) \\
+      &\simeq -\frac{\mu^2}{2} \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 + 2 \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)\frac{a}{2\mu^2} \right\} \\
+      & \quad + \frac{\lambda}{4} \left[ \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 \right\}^2
+      + 2 \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 \right\} 2 \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)\frac{a}{2\mu^2} \right] \\
+      & \quad - a \left( \frac{\mu}{\sqrt{\lambda}} + \sigma \right).
+    \end{align*}
+    $a$を含まない項を先に計算する（これは(b)で計算した）：
+    \begin{align*}
+      V_0 &= -\frac{\mu^2}{2} \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 \right\}
+      + \frac{\lambda}{4} \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 \right\}^2 \\
+      &= -\frac{\mu^2}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) - \frac{\mu^2}{2} \left( \frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right)
+      + \frac{\lambda}{4} \left\{ (\boldsymbol\pi \cdot \boldsymbol\pi) + \left( \frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right) \right\}^2 \\
+      &= -\frac{\mu^2}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) - \frac{\mu^2}{2} \left( \frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right) \\
+      &\quad + \frac{\lambda}{4} \left\{ (\boldsymbol\pi \cdot \boldsymbol\pi) + 2 (\boldsymbol\pi \cdot \boldsymbol\pi) \left( \frac{\mu^2}{\lambda}
+      + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right) + \left( \frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right)^2 \right\} \\
+      &= -\frac{\mu^2}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) - \frac{\mu^4}{2\lambda} - \frac{\mu^3}{\sqrt{\lambda}}\sigma - \frac{\mu^2}{2}\sigma^2 \\
+      &\quad + \frac{\lambda}{4}(\boldsymbol\pi \cdot \boldsymbol\pi)^2 + \frac{\mu^2}{2}(\boldsymbol\pi \cdot \boldsymbol\pi) + \sqrt{\lambda}\mu (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma + \frac{\lambda}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma^2 \\
+      &\quad + \frac{\mu^4}{4\lambda} + \mu^2\sigma^2 + \frac{\lambda}{4}\sigma^4 + \frac{\mu^3}{\sqrt{\lambda}}\sigma + \frac{1}{2}\mu^2\sigma^2 + \sqrt{\lambda}\mu\sigma^3 \\
+      &= - \frac{\mu^4}{4\lambda} + \sqrt{\lambda}\mu\sigma^3 + \mu^2\sigma^2 + \frac{\lambda}{4}\sigma^4 + \frac{\lambda}{4}(\boldsymbol\pi \cdot \boldsymbol\pi)^2
+      + \sqrt{\lambda}\mu (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma + \frac{\lambda}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma^2 .
+    \end{align*}
+    次に，$a$を含む項を計算する：
+    \begin{align*}
+      V_a &= -\mu^2 \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)\frac{a}{2\mu^2}
+      + \lambda \left\{ \boldsymbol\pi \cdot \boldsymbol\pi + \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)^2 \right\} \left( \frac{\mu}{\sqrt{\lambda}} + \sigma\right)\frac{a}{2\mu^2}
+      - a \left( \frac{\mu}{\sqrt{\lambda}} + \sigma \right) \\
+      &= a \left( \frac{\mu}{\sqrt{\lambda}} + \sigma \right) \left\{ -\frac{3}{2} + \frac{\lambda}{2\mu^2} \left( \boldsymbol\pi \cdot \boldsymbol\pi + \frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right) \right\} \\
+      &= a \left( \frac{\mu}{\sqrt{\lambda}} + \sigma \right) \frac{\lambda}{2\mu^2} \left( \boldsymbol\pi \cdot \boldsymbol\pi - 2\frac{\mu^2}{\lambda} + 2\frac{\mu}{\sqrt{\lambda}}\sigma + \sigma^2 \right).
+    \end{align*}
+    以上から
+    \begin{align*}
+      V &= V_0 + V_a \\
+      &= \frac{1}{2}\left( 2\mu^2 + \frac{3a\sqrt{\lambda}}{\mu} \right) \sigma^2 + \frac{1}{2} \frac{a\sqrt{\lambda}}{\mu} (\boldsymbol\pi \cdot \boldsymbol\pi) \\
+      &\quad + \left( \sqrt{\lambda}\mu + \frac{a\lambda}{2\mu^2} \right) (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma + \left( \sqrt{\lambda}\mu
+      + \frac{a\lambda}{2\mu^2} \right) \sigma^3 + \frac{\lambda}{4} (\boldsymbol\pi \cdot \boldsymbol\pi)^2 + \frac{\lambda}{2} (\boldsymbol\pi \cdot \boldsymbol\pi) \sigma^2 + \frac{\lambda}{4} \sigma^4 \\
+      &\quad + \text{const}.
+    \end{align*}
+  </p>
+  <p style="text-indent: 10pt;">
+    質量は
+    \[ m_\sigma{}^2 = 2\mu^2 + \frac{3a\sqrt{\lambda}}{\mu} , \quad m_\pi{}^2 = \frac{a\sqrt{\lambda}}{\mu} . \]
+    propagatorは
+    <div align="center">
+      <img src ="./svg/prob4_3_propagator.svg" width="350pt">
+    </div>
+    <!-- \begin{align*}
+      \feynmandiagram[horizontal=a to b]{a -- [doublefermion] b};
+      &= \int \frac{d^4p}{(2\pi)^4} \frac{i}{p^2 - m_\sigma{}^2 + i\epsilon} e^{-ip(x-y)} , \\
+      \feynmandiagram[horizontal=a to b]{a -- [fermion] b};
+      &= \int \frac{d^4p}{(2\pi)^4} \frac{i}{p^2 - m_\pi{}^2 + i\epsilon} e^{-ip(x-y)} \delta^{ij}.
+    \end{align*} -->
+    vertex factorは
+    <div align="center">
+      <img src ="./svg/prob4_3_vertex.svg" width="350pt">
+    </div>
+    <!-- \begin{align*}
+      \feynmandiagram[vertical=a to b, inline=(b.base)]{i1 [particle=$j$] -- b -- i2 [particle=$i$] , a -- [double] b};
+      &= -2i \left( \sqrt{\lambda}\mu + \frac{a\lambda}{2\mu^2} \right) \delta^{ij} \\
+      %
+      \feynmandiagram[vertical=a to b, inline=(b.base)]{i1 -- [double] b -- [double] i2 , a -- [double] b};
+      &= -6i \left( \sqrt{\lambda}\mu + \frac{a\lambda}{2\mu^2} \right) \\
+      %
+      \feynmandiagram[horizontal=i1 to f1, inline=(c.base)]{i1 [particle=$k$] -- c [dot] -- i2 [particle=$j$], f1 [particle=$l$] -- c -- f2 [particle=$i$]};
+      &= -2i\lambda \left( \delta^{ij}\delta^{kl} + \delta^{il}\delta^{jk} + \delta^{ik}\delta^{jl} \right) \\
+      %
+      \feynmandiagram[horizontal=i1 to f1, inline=(c.base)]{i1 -- [double] c [dot] -- i2 [particle=$j$], f1 -- [double] c -- f2 [particle=$i$]};
+      &= -2i\lambda \delta^{ij} \\
+      %
+      \feynmandiagram[horizontal=i1 to f1, inline=(c.base)]{i1 -- [double] c [dot] -- [double] i2, f1 -- [double] c -- [double] f2};
+      &= -6i\lambda
+    \end{align*} -->
+    で与えられる．
+  </p>
+  <p style="text-indent: 10pt;">
+    $T$行列要素
+    \[ T = \Braket{ p_3^k p_4^l | T \exp\left( - \int d^4x\, \mathcal{H}_\text{int} \right) | p_1^i p_2^j } \]
+    を計算する．
+  </p>
+  <p style="text-indent: 10pt;">
+    まず，$2$次の展開を考える：
+    \[ \sum_{m, n} \Braket{ 0 | a_{\boldsymbol{p_3}}^k a_{\boldsymbol{p_4}}^l \frac{(-i)^2}{2!} (\sqrt{\lambda}\mu)^2 \int d^4x\, d^4y\,
+    \delta^{mm'} \delta^{nn'}
+    N\{ \pi^m(y) \pi^{m'}(y) \sigma(y) \pi^n(x) \pi^{n'}(x) \sigma(x) \} a_{\boldsymbol{p_1}}^{i\dagger} a_{\boldsymbol{p_2}}^{j\dagger} | 0 } . \]
+    <div align="center">
+      <img src ="./svg/prob4_3_diagram.svg" width="100pt">
+    </div>
+    <!-- \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (i1) at (-1, -2) {$i$};
+        \vertex (i2) at (1, -2)  {$j$};
+        \vertex (f1) at (-1, 2)  {$k$};
+        \vertex (f2) at (1, 2)  {$l$};
+        \vertex (a) at (0, -0.8);
+        \vertex (b) at (0, 0.8);
+        \diagram*{
+        (i1)  -- [momentum=$p_1$] (a),
+        (i2)  -- [momentum'=$p_2$] (a),
+        (a) -- [double,  momentum'=$q$] (b),
+        (b) -- [momentum=$p_3$] (f1),
+        (b) -- [momentum'=$p_4$] (f2)
+        };
+        \draw (a) node [below] {$x$};
+        \draw (b) node [above] {$y$};
+      \end{feynman}
+    \end{tikzpicture} -->
+    上図に対応する縮約は$4$通り存在する：
+    <ul>
+      <li>$(mi), (m'j), (nk), (n'l)$</li>
+      <li>$(m'i), (mj), (nk), (n'l)$</li>
+      <li>$(mi), (m'j), (n'k), (nl)$</li>
+      <li>$(m'i), (mj), (n'k), (nl)$</li>
+    </ul>
+    $x$と$y$の交換も数えれば$8$通りなので，
+    \begin{align*}
+      &\quad -4\lambda\mu^2 \int d^4x d^4y \, e^{i(p_3+p_4)y} \int \frac{d^4q}{(2\pi^4)} \frac{ie^{iq(y-x)}}{q^2 - m_\sigma{}^2} e^{-i(p_1+p_2)x} \delta^{ij}\delta^{kl} \\
+      &= -4\lambda\mu^2 \int \frac{d^4q}{(2\pi^4)} \frac{1}{q^2 - m_\sigma{}^2} \int d^4y \, e^{i(p_3+p_4-q)y} \int d^4x \, e^{-i(p_1+p_2-q)x} \delta^{ij}\delta^{kl} \\
+      &= -(2\pi)^4 4i\lambda\mu^2 \int \frac{d^4q}{q^2 - m_\sigma{}^2} \mathop{\delta^{(4)}}(p_3+p_4-q) \mathop{\delta^{(4)}}(p_1+p_2-q) \delta^{ij}\delta^{kl} \\
+      &= \frac{-4\lambda\mu^2}{(p_1+p_2)^2 - m_\sigma{}^2} \delta^{ij}\delta^{kl} i(2\pi)^4 \mathop{\delta^{(4)}}(p_1+p_2-p_3-p_4).
+    \end{align*}
+  </p>
+
+  <h2>Chapter 5: Elementary Processes of Quantum Electrodynamics</h2>
+  <h3>5.2 $e^+e^- \to \mu^+\mu^-$: Helicity Structure</h3>
+  <p style="text-indent: 10pt;">
+    運動量・spinに対するspinorを正しく書けるのが重要．特にantifermionはspinorとしてのspin, helicityと粒子のspin, helicityが逆になる．
+  </p>
+  <h4>(5.28)</h4>
+  <p style="text-indent: 10pt;">
+    Dirac方程式の解は(A.19)で与えられる：
+    \[
+    u^s(p) =
+    \begin{pmatrix}
+      \sqrt{p \cdot \sigma} \xi^s \\[5pt]
+      \sqrt{p \cdot \overline\sigma} \xi^s
+    \end{pmatrix}
+    , \quad
+    v^s(p) =
+    \begin{pmatrix}
+      \sqrt{p \cdot \sigma} \eta^s \\[5pt]
+      - \sqrt{p \cdot \overline\sigma} \eta^s
+    \end{pmatrix}
+    .
+    \]
+    高エネルギー極限では(A.20)のように，
+    \[
+    u^s(p) \approx \sqrt{2E}
+    \begin{pmatrix}
+      \frac{1}{2} (1 - \hat{p} \cdot \boldsymbol\sigma) \xi^s \\[5pt]
+      \frac{1}{2} (1 + \hat{p} \cdot \boldsymbol\sigma) \xi^s
+    \end{pmatrix}
+    , \quad
+    v^s(p) \approx \sqrt{2E}
+    \begin{pmatrix}
+      \frac{1}{2} (1 - \hat{p} \cdot \boldsymbol\sigma) \eta^s \\[5pt]
+      - \frac{1}{2} (1 + \hat{p} \cdot \boldsymbol\sigma) \eta^s
+    \end{pmatrix}
+    .
+    \]
+  </p>
+
+  <div style="background-color: aqua;">
+    電子のspinorは\(\xi={}^\top(1, 0)\)が\(+z\) (\(\sigma^3\xi=+\xi\))．
+    陽電子のspinorは\(\eta={}^\top(0, 1)\)が\(+z\)（電子と逆）(p. 61)
+  </div>
+  <div style="background-color: aqua;">
+    2成分のspinor $\xi$が$(\hat{p} \cdot \boldsymbol\sigma) \xi = + \xi$を満たすときhelicityを右と定義する．
+    陽電子の場合はspinorと粒子のspinが逆なので，helicityも逆になる(p. 142, 144)
+  </div>
+
+  <p style="text-indent: 10pt;">
+    電子は$z$方向のspin上向きなので，spinorは$\xi = {}^\top(1, 0)$．
+    $\hat{p} = (0, 0, 1)$の向きに進むので，helicityは右．
+    $\hat{p}\cdot\boldsymbol\sigma = \sigma^3$なので，
+    \[
+    u \approx \sqrt{2E}
+    \begin{pmatrix}
+      \frac{1}{2} (1 - \hat{p} \cdot \boldsymbol\sigma) \xi \\[5pt]
+      \frac{1}{2} (1 + \hat{p} \cdot \boldsymbol\sigma) \xi
+    \end{pmatrix}
+    \\
+    = \sqrt{2E}
+    \begin{pmatrix}
+      0 \\
+      0 \\
+      1 \\
+      0
+    \end{pmatrix}
+    .
+    \]
+    陽電子は$z$方向の粒子spinが上向きなので，spinorは$\eta = {}^\top(0, 1)$．
+    $\hat{p} = (0, 0, -1)$の向きに進むので，粒子helicityは左．
+    $\hat{p}\cdot\boldsymbol\sigma = - \sigma^3$なので，
+    \[
+    v \approx \sqrt{2E}
+    \begin{pmatrix}
+      \frac{1}{2} (1 - \hat{p} \cdot \boldsymbol\sigma) \eta \\[5pt]
+      - \frac{1}{2} (1 + \hat{p} \cdot \boldsymbol\sigma) \eta
+    \end{pmatrix}
+    = \sqrt{2E}
+    \begin{pmatrix}
+      0 \\ 0 \\ 0 \\ -1
+    \end{pmatrix}
+    .
+    \]
+  </p>
+
+  <h3>5.5 Compton Scattering</h3>
+  <h4>(5.99)</h4>
+  <p style="text-indent: 10pt;">
+    入射電子は$-z$の向きに進み，helicityは右とする．
+    $z$方向のspin下向きなので
+    \[
+    \hat{p} = (0, 0, -1) ,\quad \xi =
+    \begin{pmatrix}
+      0 \\ 1
+    \end{pmatrix}
+    ,\quad
+    u(p) =
+    \sqrt{2E}
+    \begin{pmatrix}
+      0 \\ 0 \\ 0 \\ 1
+    \end{pmatrix}
+    .
+    \]
+    (5.97)が非零となるのは散乱電子$u^\dagger(p')$の第3, 4成分が非零，すなわちhelicityが右の場合．
+    さらに，電子は$+z$側に散乱される(Figure 5.6)ので，$\xi^\dagger = (1, 0)$である．
+  </p>
+</body>
+</html>
