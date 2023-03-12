@@ -440,3 +440,72 @@ $p'$を含む項は$mp'^\mu \times $
   &= \frac{e^2}{(4\pi)^{d/2}} \int_0^1 dx\,dy\,dz \mathop\delta(x+y+z-1) \left[ \frac{\Gamma(2-\frac{d}{2})}{\Delta^{2-d/2}} \frac{(2-\epsilon)^2}{2} \right. \\
   & \quad + \left. \frac{\Gamma(3-\frac{d}{2})}{\Delta^{3-d/2}} \left( q^2 [2(1-x)(1-y) - \epsilon xy] + m^2 [2(1-4z+z^2) - \epsilon(1-z)^2] \right) \right] .
 \end{align*}
+
+\subsection{(10.46)}
+(10.39)で定義したように，
+\begin{align*}
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[blob] (o) at (0, 0) {};
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  &=
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0) ;
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (o) at (0, 0);
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \vertex (d) at (210: 0.8);
+      \vertex (e) at (330: 0.8);
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c),
+      (d) -- [photon, quarter right] (e),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  +
+  \vcenter{\hbox{
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex[crossed dot] (o) at (0, 0) {};
+      \vertex (a) at (90: 1.5);
+      \vertex (b) at (210: 1.5);
+      \vertex (c) at (330: 1.5);
+      \diagram*{
+      (a) -- [photon] (o) -- [fermion] (b),
+      (o) -- [anti fermion] (c)
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  }}
+  \\[5pt]
+  - ie\Gamma^\mu(p', p) &= -ie\gamma^\mu -ie \left[\gamma^\mu \delta F_1(q^2) + \frac{i\sigma^{\mu\nu}q_\nu}{2m} F_2(q^2) \right] - ie\gamma^\mu\delta_1 .
+\end{align*}
