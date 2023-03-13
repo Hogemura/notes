@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Peskin QFT: 5</title>
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-chtml-full.js"></script>
+  <script> MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], tags: 'ams' } };</script>
+</head>
+<body>
+  <a href="../physics_books.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>物理の本</b></font>
+    </div>
+  </a>
+  <a href="https://github.com/Hogemura/notes/raw/main/src/peskin_qft/peskin_qft.pdf" target="_blank">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, yellow, white); float:left" align="center">
+      <font size="+2" color="black"><b>詳細pdf版</b></font>
+    </div>
+  </a>
+  <div style="clear:both;"></div>
+  <hr>
+  <a href="./peskin_qft_1.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 1</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_2.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 2</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_3.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 3</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_4.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 4</b></font>
+    </div>
+  </a>
+  <!-- <a href="./peskin_qft_5.html"> -->
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, red, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 5</b></font>
+    </div>
+  <!-- </a> -->
+  <a href="./peskin_qft_6.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 6</b></font>
+    </div>
+  </a>
+  <div style="clear:both;"></div>
+  <hr>
+  <h1>Peskin &amp; Schroeder. <i>An Introduction to Quantum Field Theory</i></h1>
+  <h2>Chapter 19: Perturbation Theory Anomalies</h2>
+  <h3>19.3 Goldstone Bosons and Chiral Symmetries in QCD</h3>
+  <h4>(19.84)</h4>
+  <p style="text-indent: 10pt;">
+
+    Lagrangianは
+    \[
+    \mathcal{L} = u_L^\dagger i \bar\sigma^\mu D_\mu u_L + d_L^\dagger i \bar\sigma^\mu D_\mu d_L + (R) .
+    \]
+    $U(1)$微小変換は
+    \[
+    \begin{pmatrix}
+      u_L \\ d_L
+    \end{pmatrix}
+    \to e^{-i\epsilon}
+    \begin{pmatrix}
+      u_L \\ d_L
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      e^{-i\epsilon} u_L \\ e^{-i\epsilon} d_L
+    \end{pmatrix}
+    \approx
+    \begin{pmatrix}
+      (1-i\epsilon) u_L \\ (1-i\epsilon) d_L
+    \end{pmatrix}
+    \]
+    で与えられる．この変換で$\mathcal{L}$は不変なので，付随するカレントは
+    \begin{align*}
+      \epsilon j^\mu = \frac{\partial\mathcal{L}}{\partial \partial_\mu u_L} \Delta u_L
+      + \frac{\partial\mathcal{L}}{\partial \partial_\mu d_L} \Delta d_L
+      = u_L^\dagger i \bar\sigma^\mu (-i\epsilon u_L) + d_L^\dagger i \bar\sigma^\mu (-i\epsilon d_L) .
+    \end{align*}
+    一方で
+    \[
+    Q_L = \left( \frac{1-\gamma^5}{2} \right)
+    \begin{pmatrix}
+      u \\ d
+    \end{pmatrix}
+    = \begin{pmatrix}
+       \frac{1-\gamma^5}{2} u \\ \frac{1-\gamma^5}{2} d
+    \end{pmatrix}
+    \]
+    に対し
+    \begin{align*}
+      \bar{Q}_L \gamma^\mu Q_L &=
+      \begin{pmatrix}
+        \bar{u} \frac{1+\gamma^5}{2} & \bar{d} \frac{1+\gamma^5}{2}
+      \end{pmatrix}
+      \begin{pmatrix}
+        \gamma^\mu \frac{1-\gamma^5}{2} u \\ \gamma^\mu \frac{1-\gamma^5}{2} d
+      \end{pmatrix}
+      \\
+      &= \bar{u} \frac{1+\gamma^5}{2} \gamma^\mu \frac{1-\gamma^5}{2} u + (d) \\
+      &=
+      \begin{pmatrix}
+        u_R^\dagger & u_L^\dagger
+      \end{pmatrix}
+      \begin{pmatrix}
+        0 & 0 \\ 0 & 1
+      \end{pmatrix}
+      \begin{pmatrix}
+        0 & \sigma^\mu \\ \bar\sigma^\mu & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        1 & 0 \\ 0 & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        u_L \\ u_R
+      \end{pmatrix}
+      + (d) \\
+      &= u_L^\dagger \bar\sigma^\mu u_L + (d)
+    \end{align*}
+    なので$j^\mu = \bar{Q}_L \gamma^\mu Q_L$．
+
+    $SU(2)$微小変換は
+    \[
+    \begin{pmatrix}
+      u_L \\ d_L
+    \end{pmatrix}
+    \to e^{-i\epsilon_a \tau^a}
+    \begin{pmatrix}
+      u_L \\ d_L
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      e^{-i\epsilon_a \tau^a} u_L \\ e^{-i\epsilon_a \tau^a} d_L
+    \end{pmatrix}
+    \approx
+    \begin{pmatrix}
+      (1-i\epsilon_a \tau^a) u_L \\ (1-i\epsilon_a \tau^a) d_L
+    \end{pmatrix}
+    \]
+    で与えられる．後は同様．
+  </p>
+
+  <h2>Chapter 20: Gauge Theories with Spontaneous Symmetry Breaking</h2>
+  <p style="text-indent: 10pt;">
+    Higgs機構と$SU(2)\times U(1)_Y$ gauge理論の導入を行う．
+    <span style="background-color: aqua;">Higgs場は$\phi\in\mathbb{C}^2$だが，一部の箇所ではこれを$\mathbb{R}^4$の元として表し，さらに1成分を無視（$\mathbb{R}^3$へ沈め込み）する</span>．
+    本書の一部では$SU(2)$のvector representationと呼ばれているが，一般的な用語ではなさそう．
+    $SU(2)$群の生成子は$M_2(\mathbb{C})$行列なので，vector representationの下では$M_4(\mathbb{R})$行列になる．
+    計算箇所によっては$M_2(\mathbb{C})$のままで行う箇所があったり，$\mathbb{R}^4$で行う箇所がありややこしい（しかも明示されていない！）．
+    (20.22)の例では$SU(2)$の基本表現に属する$\phi \in \mathbb{C}^2$を考えているが，$\phi \in \mathbb{R}^3$へ沈め込むと$SU(2)$の随伴表現に属するように見える．
+  </p>
+
+  <h3>20.1 The Higgs Mechanism</h3>
+  <h4>(20.27)</h4>
+  <p style="text-indent: 10pt;">
+
+    \(\mathbb{C}^2\) scalarを\(\mathbb{R}^4\) vectorとして表す．
+    (21.38)から
+    \begin{align}
+      \mathbb{C}^2 \ni
+      \frac{1}{\sqrt{2}}
+      \begin{pmatrix}
+        -\phi^2 - i \phi^1 \\
+        h + i\phi^3
+      \end{pmatrix}
+      \mapsto
+      \begin{pmatrix}
+        \phi^1 \\ \phi^2 \\ \phi^3 \\ h
+      \end{pmatrix}
+      \in \mathbb{R}^4
+      \label{20_27_C2toR4}
+    \end{align}
+    とする．この対応により\(T^a\)は\(4\times4\)行列となる．
+    (20.14)から
+    \[ T^a = -i t^a = - \frac{i}{2} \sigma^a . \]
+    \(a=1\)なら
+    \begin{align*}
+      T^1
+      \begin{pmatrix}
+        \phi^1 \\ \phi^2 \\ \phi^3 \\ h
+      \end{pmatrix}
+      &= - \frac{i}{2} \sigma^1
+      \frac{1}{\sqrt{2}}
+      \begin{pmatrix}
+        -\phi^2 - i \phi^1 \\
+        h + i\phi^3
+      \end{pmatrix}
+      = \frac{1}{2\sqrt{2}}
+      \begin{pmatrix}
+        & -i \\ -i &
+      \end{pmatrix}
+      \begin{pmatrix}
+        -\phi^2 - i \phi^1 \\
+        h + i\phi^3
+      \end{pmatrix}
+      \\
+      &= \frac{1}{2\sqrt{2}}
+      \begin{pmatrix}
+        \phi^3 - ih \\
+        -\phi^1 + i \phi^2
+      \end{pmatrix}
+      = \frac{1}{2}
+      \begin{pmatrix}
+        h \\ -\phi^3 \\ \phi^2 \\ -\phi^1
+      \end{pmatrix}
+    \end{align*}
+    なので
+    \[
+    T^1 = \frac{1}{2}
+    \begin{pmatrix}
+      & & & 1 \\ & & -1 & \\ & 1 & & \\ -1 & & &
+    \end{pmatrix}
+    .
+    \]
+
+    \(a=2\)なら
+    \begin{align*}
+      T^2
+      \begin{pmatrix}
+        \phi^1 \\ \phi^2 \\ \phi^3 \\ h
+      \end{pmatrix}
+      &= - \frac{i}{2} \sigma^2
+      \frac{1}{\sqrt{2}}
+      \begin{pmatrix}
+        -\phi^2 - i \phi^1 \\
+        h + i\phi^3
+      \end{pmatrix}
+      = \frac{1}{2\sqrt{2}}
+      \begin{pmatrix}
+        & -1 \\ 1 &
+      \end{pmatrix}
+      \begin{pmatrix}
+        -\phi^2 - i \phi^1 \\
+        h + i\phi^3
+      \end{pmatrix}
+      \\
+      &= \frac{1}{2\sqrt{2}}
+      \begin{pmatrix}
+        -h - i\phi^3 \\
+        -\phi^2 - i \phi^1
+      \end{pmatrix}
+      = \frac{1}{2}
+      \begin{pmatrix}
+        \phi^3 \\ h \\ -\phi^1 \\ -\phi^2
+      \end{pmatrix}
+    \end{align*}
+    なので
+    \[
+    T^2 = \frac{1}{2}
+    \begin{pmatrix}
+      & & 1 & \\ & & & 1 \\ -1 & & & \\ & -1 & &
+    \end{pmatrix}
+    .
+    \]
+
+    \(a=3\)なら
+    \begin{align*}
+      T^3
+      \begin{pmatrix}
+        \phi^1 \\ \phi^2 \\ \phi^3 \\ h
+      \end{pmatrix}
+      &= - \frac{i}{2} \sigma^3
+      \frac{1}{\sqrt{2}}
+      \begin{pmatrix}
+        -\phi^2 - i \phi^1 \\
+        h + i\phi^3
+      \end{pmatrix}
+      = \frac{1}{2\sqrt{2}}
+      \begin{pmatrix}
+        -i & \\ & i
+      \end{pmatrix}
+      \begin{pmatrix}
+        -\phi^2 - i \phi^1 \\
+        h + i\phi^3
+      \end{pmatrix}
+      \\
+      &= \frac{1}{2\sqrt{2}}
+      \begin{pmatrix}
+        -\phi^1 + i \phi^2 \\
+        -\phi^3 + ih
+      \end{pmatrix}
+      = \frac{1}{2}
+      \begin{pmatrix}
+        -\phi^2 \\ \phi^1 \\ h \\ -\phi^3
+      \end{pmatrix}
+    \end{align*}
+    なので
+    \[
+    T^3 = \frac{1}{2}
+    \begin{pmatrix}
+      & -1 & & \\ 1 & & & \\ & & & 1 \\ & & -1 &
+    \end{pmatrix}
+    .
+    \]
+
+    以上から
+    \begin{align}
+      \begin{split}
+        T^1 &= \frac{1}{2}
+        \begin{pmatrix}
+          & & & 1 \\ & & -1 & \\ & 1 & & \\ -1 & & &
+        \end{pmatrix}
+        , \quad
+        T^2 = \frac{1}{2}
+        \begin{pmatrix}
+          & & 1 & \\ & & & 1 \\ -1 & & & \\ & -1 & &
+        \end{pmatrix}
+        , \quad
+        T^3 = \frac{1}{2}
+        \begin{pmatrix}
+          & -1 & & \\ 1 & & & \\ & & & 1 \\ & & -1 &
+        \end{pmatrix}
+        .
+      \end{split}
+      \label{20_27_TR4}
+    \end{align}
+    これらを
+    \[
+    \begin{pmatrix}
+      \phi^1 \\ \phi^2 \\ \phi^3 \\ 0
+    \end{pmatrix}
+    \in \mathbb{R}^3
+    \]
+    に制限すれば
+    \begin{align}
+      T^1 =
+      \begin{pmatrix}
+        & & \\ & & -1 \\ & 1 &
+      \end{pmatrix}
+      , \quad
+      T^2 =
+      \begin{pmatrix}
+        & & 1\\ & &  \\ -1 & &
+      \end{pmatrix}
+      , \quad
+      T^3 =
+      \begin{pmatrix}
+        & -1 & \\ 1 & & \\ & &
+      \end{pmatrix}
+      .
+    \label{20_27_TR3}
+    \end{align}
+    特に，\(a=1, 2, 3\)に対して
+    \[ (T^a)_{bc} = \epsilon^{bac} .  \]
+
+    (20.27)右辺は\(\phi^c \in \mathbb{R}^3\)に変換したvector．
+    \(\phi \in \mathbb{C}^2\)は\(SU(2)\)の基本表現に属するが，\(\mathbb{R}^3\) vectorへの変換によって（見かけ上）随伴表現に属している．
+  </p>
+
+  <h2>Chapter 21: Quantization of Spontaneously Broken Gauge Theories</h2>
+  <h3>21.1 The $R_\xi$ Gauges</h3>
+  <h4>(21.20)</h4>
+  <p style="text-indent: 10pt;">
+    (21.18)の相互作用項のうち，\(\varphi\)を含む項は(21.3)(21.5)より
+    \[
+    \bar\psi_L \phi \psi_R + \bar\psi_R \phi^\ast \psi_L
+    = \bar\psi \frac{1+\gamma^5}{2} \psi \frac{i\varphi}{\sqrt{2}}
+    + \bar\psi \frac{1-\gamma^5}{2} \psi \frac{-i\varphi}{\sqrt{2}}
+    = - \frac{1}{\sqrt{2}} \varphi (\bar\psi\gamma^5\psi) .
+    \]
+  </p>
+
+  <h4>(21.39)</h4>
+  <p style="text-indent: 10pt;">
+    \(SU(2) \times U_Y(1)\)基本表現に属する\(\phi\)の共変微分は(20.60)で与えられる：
+    \begin{align*}
+      (D_\mu\phi)_i &= \partial_\mu\phi_i - igA^a_\mu (\tau^a)_{ij} \phi_j - i g' B_\mu \frac{1}{2} \phi_i \\
+      &= \partial_\mu\phi_i + gA^a_\mu \left[-i(\tau^a)_{ij}\right] \phi_j + g' B_\mu \left[-\frac{i}{2}\delta_{ij}\right] \phi_j .
+    \end{align*}
+    これを(21.33)の形に合わせる．
+    \[ (D_\mu\phi)_i = \partial_\mu\phi_i + gA^a_\mu (T^a)_{ij} \phi_j \quad (a=1,2,3,Y) \]
+    とすれば\(a=1,2,3\)に対しては
+    \[ A^a_\mu = A^a_\mu , \quad T^a = -i \tau^a = T^a . \]
+    \(a=Y\)の場合は（p. 742の\(g^2FF^T\)の計算の後ろに書かれているように\(g \to g'\)と解釈する）
+    \[ A^Y_\mu = B_\mu , \quad T^Y = -\frac{i}{2} . \]
+    ここで\eqref{20_27_TR4}の導出と同様にすれば\(T^Y\)の変換は
+    \[
+    T^Y
+    \begin{pmatrix}
+      \phi^1 \\ \phi^2 \\ \phi^3 \\ h
+    \end{pmatrix}
+    = \frac{1}{2\sqrt{2}}
+    \begin{pmatrix}
+      -i & \\ & -i
+    \end{pmatrix}
+    \begin{pmatrix}
+      -\phi^2 - i \phi^1 \\
+      h + i\phi^3
+    \end{pmatrix}
+    = \frac{1}{2\sqrt{2}}
+    \begin{pmatrix}
+      -\phi^1 + i \phi^2 \\
+      \phi^3 - ih
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      -\phi^2 \\ \phi^1 \\ -h \\ \phi^3
+    \end{pmatrix}
+    \]
+    なので
+    \begin{align}
+      T^Y = \frac{1}{2}
+      \begin{pmatrix}
+        & -1 & & \\ 1 & & & \\ & & & -1 \\ & & 1 &
+      \end{pmatrix}
+      . \label{21_39_TY}
+    \end{align}
+
+    \(\mathbb{C}^2\)から\(\mathbb{R}^4\)に変換して計算する．
+    \eqref{20_27_C2toR4}から
+    \[
+    \phi_0 = \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+      0 \\ v
+    \end{pmatrix}
+    \mapsto
+    \begin{pmatrix}
+      0 \\ 0 \\ 0 \\ v
+    \end{pmatrix}
+    \]
+    である．\eqref{20_27_TR4}を使えば
+    \[
+    T^1\phi^0 = \frac{1}{2}
+    \begin{pmatrix}
+      v \\ 0 \\ 0 \\ 0
+    \end{pmatrix}
+    , \quad
+    T^2\phi^0 = \frac{1}{2}
+    \begin{pmatrix}
+      0 \\ v \\ 0 \\ 0
+    \end{pmatrix}
+    , \quad
+    T^3\phi^0 = \frac{1}{2}
+    \begin{pmatrix}
+      0 \\ 0 \\ v \\ 0
+    \end{pmatrix}
+    , \quad
+    T^Y\phi^0 = \frac{1}{2}
+    \begin{pmatrix}
+      0 \\ 0 \\ -v \\ 0
+    \end{pmatrix}
+    .
+    \]
+    第4成分（真空期待値\(v\)とHiggs場\(h\)）が\(0\)なので無視できる．
+    (21.36)の定義から
+    \[
+    F^a{}_i = T^a_{ij} \phi_{0j} = \frac{v}{2}
+    \begin{pmatrix}
+      1 & & \\
+      & 1 & \\
+      & & 1 \\
+      & & -1 \\
+    \end{pmatrix}
+    , \quad
+    (a = 1, 2, 3, Y; i = 1, 2, 3) .
+    \]
+    \(a=Y\)の場合は\(g \to g'\)とするので
+    \[
+    gF^a{}_i = \frac{v}{2}
+    \begin{pmatrix}
+      g & & \\
+      & g & \\
+      & & g \\
+      & & -g' \\
+    \end{pmatrix}
+    .
+    \]
+  </p>
+
+  <h3>21.2 The Goldstone Boson Equivalence Theorem</h3>
+  <p style="text-indent: 10pt;">gauge bosonの縦波成分がGoldstone bosonに相当する</p>
+  <h4>(21.54)</h4>
+  <p style="text-indent: 10pt;">
+    Feynman-'t Hooft gauge (\(\xi=1\))とすれば
+    \[
+    \braket{ {A^a_\mu}(k) {A^b_\nu}(q) } =  \frac{-ig_{\mu\nu}}{k^2-m_W{}^2} \delta^{ab} (2\pi)^4 \mathop{\delta^{(4)}}(k+q) .
+    \]
+    (20.63)の定義から
+    \begin{align*}
+      \braket{ {W^+_\mu}(k) {W^-_\nu}(q) } &= \frac{-ig_{\mu\nu}}{k^2-m_W{}^2} (2\pi)^4 \mathop{\delta^{(4)}}(k+q) , \\
+      \braket{ {W^+_\mu}(k) {W^+_\nu}(q) } &= \braket{ {W^-_\mu}(k) {W^-_\nu}(q) } = 0.
+    \end{align*}
+  </p>
+
+  <h4>(21.56)</h4>
+  <p style="text-indent: 10pt;">
+
+    ゲージ群\(SU(2)\times U_Y(1)\)の生成子\(T^a~(a=1, 2, 3, Y)\)に対応してghostは4つ存在する．
+    ここで
+    \begin{gather*}
+      c^+ = \frac{c^1+ic^2}{\sqrt{2}} , \quad c^- = \frac{c^1-ic^2}{\sqrt{2}} , \quad
+      c^Z = c^3 \cos\theta_w - c^Y \sin\theta_w , \quad c^A = c^3 \sin\theta_w + c^Y \cos\theta_w , \\
+      %
+      \bar{c}^+ = \frac{\bar{c}^1-i\bar{c}^2}{\sqrt{2}} , \quad \bar{c}^- = \frac{\bar{c}^1+i\bar{c}^2}{\sqrt{2}} , \quad
+      \bar{c}^Z = \bar{c}^3 \cos\theta_w - \bar{c}^Y \sin\theta_w , \quad \bar{c}^A = \bar{c}^3 \sin\theta_w + \bar{c}^Y \cos\theta_w
+    \end{gather*}
+    とする．Lagragianは(21.52)から
+    \begin{align*}
+      \mathcal{L}_\text{ghost}
+      &= \bar{c}^a \left[ - (\partial_\mu D^\mu)^{ab} - g^2 (T^a\phi_0) \cdot (T^b\phi) \right] c^b \\
+      &= \bar{c}^a \left[ - \partial^2 \delta^{ac} - g f^{abc} \partial_\mu A^b_\mu - g^2 (T^a\phi_0) \cdot (T^c\phi) \right] c^c .
+    \end{align*}
+
+    \eqref{20_27_TR4}\eqref{21_39_TY}から構造定数を求めれば\(f^{12Y} = 1\)．
+    これを使って計算すれば（<a href="./peskin_qft_6.html" target="_blank">計算詳細</a>）
+    \begin{align}
+      \begin{split}
+        \braket{ {c^+}(k) {\bar{c}^+}(q) } &= \braket{ {c^-}(k) {\bar{c}^-}(q) } = \frac{i}{k^2-m_W{}^2} (2\pi)^4 \mathop{\delta^{(4)}}(k-q) , \\
+        \braket{ {c^Z}(k) {\bar{c}^Z}(q) } &= \frac{i}{k^2-m_Z{}^2} (2\pi)^4 \mathop{\delta^{(4)}}(k-q) , \\
+        \braket{ {c^A}(k) {\bar{c}^A}(q) } &= \frac{i}{k^2} (2\pi)^4 \mathop{\delta^{(4)}}(k-q) .
+      \end{split}
+      \label{21_56_eigen_ghost_propagator}
+    \end{align}
+  </p>
+
+  <h4>Fig 21.8: Feynman rules of Goldstone bosons</h4>
+  <p style="text-indent: 10pt;">
+
+    Goldstone bosonのpropagatorは(21.55)から
+    \[
+    \braket{ {\phi_i}(k) {\phi_j}(q) } = \frac{i}{k^2-m^2} \delta_{ij} (2\pi)^4 \mathop{\delta^{(4)}}(k+q) .
+    \]
+    (21.79)の定義から
+    \begin{align*}
+      \braket{ {\phi_+}(k) {\phi_-}(q) } &= \frac{i}{k^2-m_W{}^2} (2\pi)^4 \mathop{\delta^{(4)}}(k+q) , \\
+      \braket{ {\phi_+}(k) {\phi_+}(q) } &= \braket{ {\phi_-}(k) {\phi_-}(q) } = 0 .
+    \end{align*}
+
+    (21.38)(21.79)から\(SU(2)\) scalar場は
+    \[
+    \phi =
+    \begin{pmatrix}
+      -i \phi^- \\
+      (v+h+i\phi^3)/\sqrt{2}
+    \end{pmatrix}
+    , \quad \phi^\dagger =
+    \begin{pmatrix}
+      i\phi^+ & \dfrac{v+h-i\phi^3}{\sqrt{2}}
+    \end{pmatrix}
+    \]
+    となる．
+
+    (20.60)に(20.65)(20.66)の結果を適用(\(Y=1/2\))して
+    \[
+    D_\mu = \partial_\mu - i\frac{g}{\sqrt{2}} (W^+_\mu T^+ + W^-_\mu T^-)
+    - i \frac{1}{\sqrt{g^2+g'^2}} Z^0_\mu (g^2T^3 - g'^2/2)
+    - i\frac{gg'}{\sqrt{g^2+g'^2}}  A_\mu (T^3+1/2) .
+    \]
+    (20.68)を代入して
+    \[
+    D_\mu = \partial_\mu - i\frac{g}{\sqrt{2}} (W^+_\mu T^+ + W^-_\mu T^-)
+    - i \frac{1}{\sqrt{g^2+g'^2}} Z^0_\mu (g^2T^3 - g'^2/2) - ie  A_\mu (T^3+1/2) .
+    \]
+
+    \(\phi\)の共変微分は
+    \begin{align*}
+      D_\mu \phi &= \partial_\mu \phi - i\frac{g}{\sqrt{2}} (W^+_\mu T^+ + W^-_\mu T^-) \phi
+      - i \frac{1}{\sqrt{g^2+g'^2}} Z^0_\mu (g^2T^3 - g'^2/2) \phi - ie  A_\mu (T^3+1/2) \phi \\
+      %
+      &= \partial_\mu \phi - i\frac{g}{\sqrt{2}}
+      \begin{pmatrix}
+        & W^+_\mu \\ W^-_\mu &
+      \end{pmatrix}
+      \phi - \frac{i}{2} Z^0_\mu
+      \begin{pmatrix}
+        \frac{g^2-g'^2}{\sqrt{g^2+g'^2}} & \\ & - \sqrt{g^2+g'^2}
+      \end{pmatrix}
+      \phi
+      -i e A_\mu
+      \begin{pmatrix}
+        1 & \\ & 0
+      \end{pmatrix}
+      \phi \\
+      %
+      &=
+      \begin{pmatrix}
+        -i \partial_\mu\phi^- \\
+        \partial_\mu(h+i\phi^3)/\sqrt{2}
+      \end{pmatrix}
+      - i\frac{g}{\sqrt{2}}
+      \begin{pmatrix}
+        W^+_\mu (v+h+i\phi^3)/\sqrt{2} \\
+        -i W^-_\mu \phi^-
+      \end{pmatrix}
+      \\
+      &\quad - \frac{i}{2} Z^0_\mu
+      \begin{pmatrix}
+        -i \frac{g^2-g'^2}{\sqrt{g^2+g'^2}} \phi^- \\[5pt]
+        - \sqrt{g^2+g'^2} (v+h+i\phi^3)/\sqrt{2}
+      \end{pmatrix}
+      -i e A_\mu
+      \begin{pmatrix}
+        -i \phi^- \\ 0
+      \end{pmatrix}
+      .
+    \end{align*}
+    (20.70)より
+    \begin{align*}
+      (D_\mu\phi)_1 &= - i\partial_\mu\phi^- - i\frac{g}{2} W^+_\mu (v+h+i\phi^3)
+      - \frac{1}{2} \frac{g^2-g'^2}{\sqrt{g^2+g'^2}} Z^0_\mu \phi^- - eA_\mu\phi^- \\
+      %
+      &= - i\partial_\mu\phi^- - i\frac{g}{2} W^+_\mu (v+h+i\phi^3)
+      - \frac{g}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right) Z^0_\mu \phi^- - eA_\mu\phi^- , \\
+      %%
+      (D_\mu\phi)_2 &= \frac{1}{\sqrt{2}} \partial_\mu(h+i\phi^3) - \frac{g}{\sqrt{2}} g W^-_\mu \phi^-
+      + \frac{i}{2\sqrt{2}} \sqrt{g^2+g'^2} Z^0_\mu (v+h+i\phi^3) \\
+      %
+      &= \frac{1}{\sqrt{2}} \partial_\mu(h+i\phi^3) - \frac{g}{\sqrt{2}} g W^-_\mu \phi^-
+      + \frac{i}{2\sqrt{2}} \frac{g}{\cos\theta_w} Z^0_\mu (v+h+i\phi^3) .
+    \end{align*}
+    (20.111)のLagrangianは(20.63)(20.112)(20.114)から
+    \begin{align}
+      \begin{split}
+        \mathcal{L}_\text{Higgs} &= \lvert D_\mu\phi\rvert^2 + \mu^2 \phi^\dagger \phi - \lambda (\phi^\dagger\phi)^2 \\
+        &= (D_\mu\phi)_1(D^\mu\phi)_1^\dagger + (D_\mu\phi)_2(D^\mu\phi)_2^\dagger
+        + \frac{m_h{}^2}{2} \phi^\dagger \phi - \frac{g^2}{8} \frac{m_h{}^2}{m_W{}^2} (\phi^\dagger\phi)^2
+      \end{split}
+      \label{fig21.8_scalar_Lagrangian}
+    \end{align}
+    で与えられる．
+
+    <div align="center">
+      <img src="./svg/fig21_8_diag1.svg" width="160pt">
+    </div>
+
+    <!-- \begin{center}
+      \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (o) at (0, 0);
+          \vertex (in) at (-1.5, 0) {\(\phi^+\)};
+          \vertex (out) at (1.5, 0) {\(\phi^-\)};
+          \vertex (a) at (0, 1) {\(A^\mu\)};
+          \diagram*{
+            (in) -- [charged scalar, edge label=\(p\)] (o) -- [charged scalar, edge label=\(p'\)] (out),
+            (o) -- [photon] (a)
+          };
+          \draw (o) node [below left] {\(\phi^-\)};
+          \draw (o) node [below right] {\(\phi^+\)};
+        \end{feynman}
+      \end{tikzpicture}
+    \end{center} -->
+
+    頂点の\(\phi^-\)には運動量\(p\)が入る(\(e^{-ip\cdot x}\))ので，\(\partial^\mu\phi^- \to -ip^\mu\phi^-\)．
+    よって\(\phi^-\phi^+A\)頂点は
+    \begin{align}
+      \begin{split}
+        i\mathcal{L}_\text{Higgs} &= i (-i\partial^\mu\phi^-) (-eA_\mu\phi^+) + i (i\partial^\mu\phi^+) (-eA_\mu\phi^-) + \cdots \\
+        %
+        &\to i (-p^\mu) (-e) + i (-p'^\mu) (-e) \\
+        &= ie(p+p')^\mu .
+      \end{split}
+      \label{fig21.8_phi_phi_A}
+    \end{align}
+
+    <div align="center">
+      <img src="./svg/fig21_8_diag2.svg" width="160pt">
+    </div>
+
+    <!-- \begin{center}
+      \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (o) at (0, 0);
+          \vertex (in) at (-1.5, 0) {\(\phi^+\)};
+          \vertex (out) at (1.5, 0) {\(\phi^-\)};
+          \vertex (a) at (0, 1) {\(Z^{0\mu}\)};
+          \diagram*{
+            (in) -- [charged scalar, edge label=\(p\)] (o) [dot] -- [charged scalar, edge label=\(p'\)] (out),
+            (o) -- [boson] (a)
+          };
+          \draw (o) node [below left] {\(\phi^-\)};
+          \draw (o) node [below right] {\(\phi^+\)};
+        \end{feynman}
+      \end{tikzpicture}
+    \end{center} -->
+    頂点の\(\phi^-\)には運動量\(p\)が入る(\(e^{-ip\cdot x}\))ので，\(\partial^\mu\phi^- \to -ip^\mu\phi^-\)．
+    よって\(\phi^-\phi^+Z^0\)頂点は
+    \begin{align*}
+      i\mathcal{L}_\text{Higgs} &=
+      i (-i\partial^\mu\phi^-) \frac{-g}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right) Z^0_\mu \phi^+
+      + i (i\partial^\mu\phi^+) \frac{-g}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right) Z^0_\mu \phi^- + \cdots \\
+      %
+      &\to i (-p^\mu) \frac{-g}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right)
+      + i (-p'^\mu) \frac{-g}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right) \\
+      %
+      &= \frac{ig(p+p')^\mu}{\cos\theta_w} \left( \frac{1}{2} - \sin^2\theta_w \right) .
+    \end{align*}
+  </p>
+</body>
+</html>

@@ -29,11 +29,26 @@
       <font size="+2" color="black"><b>Peskin 2</b></font>
     </div>
   </a>
-  <!-- <a href="./peskin_qft_2.html"> -->
+  <!-- <a href="./peskin_qft_3.html"> -->
     <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, red, white); float:left" align="center">
       <font size="+2" color="black"><b>Peskin 3</b></font>
     </div>
   <!-- </a> -->
+  <a href="./peskin_qft_4.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 4</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_5.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 5</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_6.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 6</b></font>
+    </div>
+  </a>
   <div style="clear:both;"></div>
   <hr>
   <h1>Peskin &amp; Schroeder. <i>An Introduction to Quantum Field Theory</i></h1>
@@ -146,6 +161,7 @@
   </p>
 
   <h2>Chapter 10: Systematics of Renormalization</h2>
+  <p style="text-indent: 10pt;">Callan-Symanzik方程式を使って&beta;函数を求める．counter termの計算は積分の発散項のみ見ればいいので楽</p>
   <h3>10.3 Renormalization of Quantum Electrodynamics</h3>
   <h4>(10.46)</h4>
   <p style="text-indent: 10pt;">
@@ -810,6 +826,479 @@
     \[ M \frac{\partial}{\partial M} (\delta_1 - 2\delta_2 - \delta_3) + \frac{\beta}{e} + 2 \gamma_2 + \gamma_3 = 0 . \]
     (12.57)を代入して
     \[ \beta = e M \frac{\partial}{\partial M} \left( - \delta_1 + \delta_2 + \frac{\delta_3}{2} \right) . \]
+  </p>
+
+  <h3>Problem 12.2: Beta function of the Gross-Neveu model</h3>
+  <p style="text-indent: 10pt;">
+    Gross-Neveu模型は
+    \[ \mathcal{L} = \sum_{i=1}^N \bar\psi_i (i\cancel\partial) \psi_i + \frac{g^2}{2} \left( \sum_{i=1}^N \bar\psi_i \psi_i \right) \]
+    で与えられる．$d = 2$のDirac行列は
+    \[
+    (\gamma^0)_{\alpha\beta} =
+    \begin{pmatrix}
+       & -i \\
+      i &
+    \end{pmatrix}
+    , \quad
+    (\gamma^1)_{\alpha\beta} =
+    \begin{pmatrix}
+      & i \\
+      i &
+    \end{pmatrix}
+    \]
+    である（スピノルの添字を$\alpha = 0, 1$などのギリシャ文字で表す）．
+  </p>
+  <p style="text-indent: 10pt;">
+    伝播函数は
+    <div align="center">
+      <img src="./svg/prob12_2_eq1.svg" width="200pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+    \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0) {$i\alpha$};
+        \vertex (a) at (2, 0) {$j\beta$};
+        \diagram*{
+        (o) -- [fermion, edge label=$p$] (a)
+        };
+      \end{feynman}
+    \end{tikzpicture}
+    }}
+    = \left( \frac{i}{\slashed{p}} \right)_{\beta\alpha} \delta_{ij}
+    \] -->
+    で与えられる．ガンマ行列は対角成分を持たないので，$\alpha = \beta$なら伝播函数は$0$である．
+
+    4点相関函数
+    <div align="center">
+      <img src="./svg/prob12_2_eq2.svg" width="400pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+    \begin{tikzpicture}
+      \begin{feynman}
+        \vertex[blob] (o) at (0, 0) {};
+        \vertex (a) at (45: 1.5) {$l\delta$};
+        \vertex (b) at (135: 1.5) {$k\gamma$};
+        \vertex (c) at (225: 1.5) {$i\alpha$};
+        \vertex (d) at (315: 1.5) {$j\beta$};
+        \diagram*{
+        (c) -- [fermion] (o) -- [fermion] (a);
+        (d) -- [fermion] (o) -- [fermion] (b);
+        };
+      \end{feynman}
+    \end{tikzpicture}
+    }}
+    = \bra{\Omega} T \{ \psi_{i\alpha}(x_1) \psi_{j\beta}(x_2) \bar\psi_{k\gamma}(x_3) \bar\psi_{l\delta}(x_4) \} \ket{\Omega}
+    \] -->
+    を求める．(4.31)から，1次の展開は
+    \begin{align*}
+      & \bra{0} T \{ \psi_{i\alpha}(x_1) \psi_{j\beta}(x_2) \bar\psi_{k\gamma}(x_3) \bar\psi_{l\delta}(x_4)
+      \left( i \frac{g^2}{2} \right) \int d^4x \sum_{mn} \sum_{\rho\sigma} \bar\psi_{m\rho}(x) \psi_{m\rho}(x) \bar\psi_{n\sigma}(x) \psi_{n\sigma}(x) \} \ket{0}
+    \end{align*}
+    となる．縮約の方法には4通りある：
+    <ol>
+      <li><img src="./svg/prob12_2_cont1.svg" width="100pt">なら</li>
+      \[
+      m=i , \quad m=k , \quad \rho\neq\alpha , \quad \rho\neq\gamma ; \quad
+      n=j , \quad n=l , \quad \sigma\neq\beta , \quad \sigma\neq\delta
+      \quad \therefore \quad \delta_{ik}\delta_{jl}\delta_{\alpha\gamma}\delta_{\beta\delta} .
+      \]
+      <li><img src="./svg/prob12_2_cont2.svg" width="100pt">なら</li>
+      \[
+      m=j , \quad m=l , \quad \rho\neq\beta , \quad \rho\neq\delta ; \quad
+      n=i , \quad n=k , \quad \sigma\neq\alpha , \quad \sigma\neq\gamma
+      \quad \therefore \quad \delta_{ik}\delta_{jl}\delta_{\alpha\gamma}\delta_{\beta\delta} .
+      \]
+      <li><img src="./svg/prob12_2_cont3.svg" width="100pt">なら</li>
+      \[
+      m=i , \quad m=l , \quad \rho\neq\alpha , \quad \rho\neq\delta ; \quad
+      n=j , \quad n=k , \quad \sigma\neq\beta , \quad \sigma\neq\gamma
+      \quad \therefore \quad \delta_{il}\delta_{jk}\delta_{\alpha\delta}\delta_{\beta\gamma} .
+      \]
+      <li><img src="./svg/prob12_2_cont4.svg" width="100pt">なら</li>
+      \[
+      m=j , \quad m=k , \quad \rho\neq\beta , \quad \rho\neq\gamma ; \quad
+      n=i , \quad n=l , \quad \sigma\neq\alpha , \quad \sigma\neq\delta
+      \quad \therefore \quad \delta_{il}\delta_{jk}\delta_{\alpha\delta}\delta_{\beta\gamma} .
+      \]
+    </ol>
+
+    以上から，
+    <div align="center">
+      <img src="./svg/prob12_2_eq3.svg" width="350pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+    \begin{tikzpicture}
+      \begin{feynman}
+        \vertex[dot] (o) at (0, 0) {};
+        \vertex (a) at (45: 1.2) {$l\delta$};
+        \vertex (b) at (135: 1.2) {$k\gamma$};
+        \vertex (c) at (225: 1.2) {$i\alpha$};
+        \vertex (d) at (315: 1.2) {$j\beta$};
+        \diagram*{
+        (c) -- [fermion] (o) -- [fermion] (a);
+        (d) -- [fermion] (o) -- [fermion] (b);
+        };
+      \end{feynman}
+    \end{tikzpicture}
+    }}
+    = ig^2 \left( \delta_{ik}\delta_{jl}\delta_{\alpha\gamma}\delta_{\beta\delta} + \delta_{il}\delta_{jk}\delta_{\alpha\delta}\delta_{\beta\gamma} \right) .
+    \] -->
+
+    相殺項は
+    <div align="center">
+      <img src="./svg/prob12_2_eq4.svg" width="600pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+    \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0) {$i\alpha$};
+        \vertex[crossed dot] (a) at (1, 0) {};
+        \vertex (b) at (2, 0) {$j\beta$};
+        \diagram*{
+        (o) -- [fermion, edge label=$p$] (a) -- (b)
+        };
+      \end{feynman}
+    \end{tikzpicture}
+    }}
+    = \left( i\slashed{p} \right)_{\beta\alpha} \delta_{ij} \delta_f , \quad
+    \vcenter{\hbox{
+    \begin{tikzpicture}
+      \begin{feynman}
+        \vertex[crossed dot] (o) at (0, 0) {};
+        \vertex (a) at (45: 1.2) {$l\delta$};
+        \vertex (b) at (135: 1.2) {$k\gamma$};
+        \vertex (c) at (225: 1.2) {$i\alpha$};
+        \vertex (d) at (315: 1.2) {$j\beta$};
+        \diagram*{
+        (c) -- [fermion] (o) -- [fermion] (a);
+        (d) -- [fermion] (o) -- [fermion] (b);
+        };
+      \end{feynman}
+    \end{tikzpicture}
+    }}
+    = 2ig \left( \delta_{ik}\delta_{jl}\delta_{\alpha\gamma}\delta_{\beta\delta} + \delta_{il}\delta_{jk}\delta_{\alpha\delta}\delta_{\beta\gamma} \right) \delta_g .
+    \] -->
+  </p>
+  <p style="text-indent: 10pt;">
+    $\delta_f$を求める．
+    <div align="center">
+      <img src="./svg/prob12_2_eq5.svg" width="500pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+    \begin{tikzpicture}[every loop/.style={min distance=25mm}]
+      \begin{feynman}
+        \vertex (o) at (0, -0.5) {$i\alpha$};
+        \vertex (a) at (1.5, 0);
+        \vertex (b) at (3, -0.5) {$j\beta$};
+        \diagram*{
+        (o) -- [fermion, edge label'=$p$] (a) -- [fermion] (b)
+        };
+        \draw (a) edge [in=140, out=40, loop, fermion, edge label'=$k$] ();
+      \end{feynman}
+      \draw (a) + (-0.6, 0.3) node {$k\gamma$};
+      \draw (a) + (0.6, 0.3) node {$l\delta$};
+    \end{tikzpicture}
+    }}
+    = -ig^2 \sum_{kl} \sum_{\gamma\delta} \int \frac{d^dk}{(2\pi)^d} (\cdots)
+    \left( \frac{i}{\slashed{k}} \right)_{\gamma\delta} \delta_{kl}
+    = 0
+    \] -->
+    なので，$\delta_f = 0$．
+  </p>
+  <p style="text-indent: 10pt;">
+    $\delta_g$を求める．頂点の1ループは
+    <div align="center">
+      <img src="./svg/prob12_2_eq6.svg" width="500pt">
+    </div>
+    <!-- \begin{align*}
+      \vcenter{\hbox{
+      \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (o) at (0, 0);
+          \vertex (a) at (-1, -0.5) {$i\alpha$};
+          \vertex (b) at (1, -0.5) {$j\beta$};
+          \vertex (c) at (0, 1.5);
+          \vertex (d) at (-1, 2) {$k\gamma$};
+          \vertex (e) at (1, 2) {$l\delta$};
+          \diagram*{
+          (a) -- [fermion] (o) -- [anti fermion] (b);
+          (o) -- [fermion, half left, looseness=1, edge label=$k+p$] (c);
+          (o) -- [fermion, half right, looseness=1, edge label'=$-k$] (c);
+          (d) -- [anti fermion] (c) -- [fermion] (e);
+          };
+        \end{feynman}
+        \draw (o) + (-0.6, 0.2) node {$a\mu$};
+        \draw (o) + (0.6, 0.2) node {$b\nu$};
+        \draw (c) + (-0.6, -0.2) node {$c\rho$};
+        \draw (c) + (0.6, -0.2) node {$d\sigma$};
+      \end{tikzpicture}
+      }}
+      +
+      \vcenter{\hbox{
+      \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (o) at (0, 0);
+          \vertex (a) at (-0.5, -1) {$i\alpha$};
+          \vertex (b) at (2, -1) {$j\beta$};
+          \vertex (c) at (1.5, 0);
+          \vertex (d) at (-0.5, 1) {$k\gamma$};
+          \vertex (e) at (2, 1) {$l\delta$};
+          \diagram*{
+          (a) -- [fermion] (o) -- [fermion] (d);
+          (o) -- [fermion, half left, edge label=$k+p$] (c);
+          (o) -- [anti fermion, half right, edge label'=$k$] (c);
+          (b) -- [fermion] (c) -- [fermion] (e);
+          };
+        \end{feynman}
+        \draw (o) + (0.3, -0.3) node {$a\mu$};
+        \draw (c) + (-0.3, -0.3) node {$b\nu$};
+        \draw (o) + (0.3, 0.3) node {$c\rho$};
+        \draw (c) + (-0.3, 0.3) node {$d\sigma$};
+      \end{tikzpicture}
+      }}
+      +
+      \vcenter{\hbox{
+      \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (o) at (0, 0);
+          \vertex (a) at (-0.5, -1) {$i\alpha$};
+          \vertex (b) at (2, -1) {$j\beta$};
+          \vertex (c) at (1.5, 0);
+          \vertex (d) at (-0.5, 1) {$l\delta$};
+          \vertex (e) at (2, 1) {$k\gamma$};
+          \diagram*{
+          (a) -- [fermion] (o) -- [fermion] (d);
+          (o) -- [fermion, half left, edge label=$k+p$] (c);
+          (o) -- [anti fermion, half right, edge label'=$k$] (c);
+          (b) -- [fermion] (c) -- [fermion] (e);
+          };
+        \end{feynman}
+        \draw (o) + (0.3, -0.3) node {$a\mu$};
+        \draw (c) + (-0.3, -0.3) node {$b\nu$};
+        \draw (o) + (0.3, 0.3) node {$d\sigma$};
+        \draw (c) + (-0.3, 0.3) node {$c\rho$};
+      \end{tikzpicture}
+      }}
+    \end{align*} -->
+    から成る．
+    $\log (-p^2)$の発散項にのみ興味があるので，それ以外の項は無視する．
+
+    1つ目は
+    \begin{align*}
+      V_s &= - \frac{(ig^2)^2}{2} \sum_{abcd} \sum_{\mu\nu\rho\sigma} \int \frac{d^dk}{(2\pi)^d}
+      \left( \delta_{kc} \delta_{ld} \delta_{\gamma\rho} \delta_{\delta\sigma} + \delta_{kd} \delta_{lc} \delta_{\gamma\sigma} \delta_{\delta\rho} \right) \\
+      & \quad\times \left( \frac{i}{\cancel{k} + \cancel{p}} \right)_{\rho\mu} \delta_{ac}
+      \left( \frac{i}{-\cancel{k}} \right)_{\sigma\nu} \delta_{bd}
+      \left( \delta_{ia} \delta_{jb} \delta_{\alpha\mu} \delta_{\beta\nu} + \delta_{ib} \delta_{ja} \delta_{\alpha\nu} \delta_{\beta\mu} \right) .
+    \end{align*}
+    和を計算すれば
+    \begin{align*}
+      & \sum_{abcd} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{kc} \delta_{ld} \delta_{\gamma\rho} \delta_{\delta\sigma} + \delta_{kd} \delta_{lc} \delta_{\gamma\sigma} \delta_{\delta\rho} \right)
+      \left( \frac{i}{\cancel{k} + \cancel{p}} \right)_{\rho\mu} \delta_{ac}
+      \left( \frac{i}{-\cancel{k}} \right)_{\sigma\nu} \delta_{bd} \\
+      & \quad\times \left( \delta_{ia} \delta_{jb} \delta_{\alpha\mu} \delta_{\beta\nu} + \delta_{ib} \delta_{ja} \delta_{\alpha\nu} \delta_{\beta\mu} \right) \\
+      %
+      %
+      &= \sum_{ab} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{ka} \delta_{lb} \delta_{\gamma\rho} \delta_{\delta\sigma} + \delta_{kb} \delta_{la} \delta_{\gamma\sigma} \delta_{\delta\rho} \right)
+      \left( \frac{i}{\cancel{k} + \cancel{p}} \right)_{\rho\mu}
+      \left( \frac{i}{-\cancel{k}} \right)_{\sigma\nu}
+      \\
+      & \quad\times \left( \delta_{ia} \delta_{jb} \delta_{\alpha\mu} \delta_{\beta\nu} + \delta_{ib} \delta_{ja} \delta_{\alpha\nu} \delta_{\beta\mu} \right) \\
+      %
+      %
+      &= \sum_{ab} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{ka} \delta_{lb} \delta_{\gamma\rho} \delta_{\delta\sigma} \right)
+      \left( \frac{i}{\cancel{k} + \cancel{p}} \right)_{\rho\mu}
+      \left( \frac{i}{-\cancel{k}} \right)_{\sigma\nu}
+      \left( \delta_{ia} \delta_{jb} \delta_{\alpha\mu} \delta_{\beta\nu} \right) \\
+      %
+      & \quad + \sum_{ab} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{ka} \delta_{lb} \delta_{\gamma\rho} \delta_{\delta\sigma} \right)
+      \left( \frac{i}{\cancel{k} + \cancel{p}} \right)_{\rho\mu}
+      \left( \frac{i}{-\cancel{k}} \right)_{\sigma\nu}
+      \left( \delta_{ib} \delta_{ja} \delta_{\alpha\nu} \delta_{\beta\mu} \right) \\
+      %
+      & \quad + \sum_{ab} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{kb} \delta_{la} \delta_{\gamma\sigma} \delta_{\delta\rho} \right)
+      \left( \frac{i}{\cancel{k} + \cancel{p}} \right)_{\rho\mu}
+      \left( \frac{i}{-\cancel{k}} \right)_{\sigma\nu}
+      \left( \delta_{ia} \delta_{jb} \delta_{\alpha\mu} \delta_{\beta\nu} \right) \\
+      %
+      & \quad + \sum_{ab} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{kb} \delta_{la} \delta_{\gamma\sigma} \delta_{\delta\rho} \right)
+      \left( \frac{i}{\cancel{k} + \cancel{p}} \right)_{\rho\mu}
+      \left( \frac{i}{-\cancel{k}} \right)_{\sigma\nu}
+      \left( \delta_{ib} \delta_{ja} \delta_{\alpha\nu} \delta_{\beta\mu} \right) \\
+      %
+      %
+      &= \left( \delta_{ik} \delta_{jl} \right) \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\gamma\alpha} \left( \frac{1}{\cancel{k}} \right)_{\delta\beta}
+      + \left( \delta_{il} \delta_{jk} \right) \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\gamma\beta} \left( \frac{1}{\cancel{k}} \right)_{\delta\alpha} \\
+      %
+      & \quad + \left( \delta_{il} \delta_{jk} \right) \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\delta\alpha} \left( \frac{1}{\cancel{k}} \right)_{\gamma\beta}
+      + \left( \delta_{ik} \delta_{jl} \right) \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\delta\beta} \left( \frac{1}{\cancel{k}} \right)_{\gamma\alpha}
+    \end{align*}
+    なので，
+    \begin{align*}
+      V_s &= g^4 \left( \delta_{ik} \delta_{jl} \right) \int \frac{d^dk}{(2\pi)^d}
+      \frac{(\cancel{k} + \cancel{p})_{\gamma\alpha}(\cancel{k})_{\delta\beta} + (\cancel{k})_{\gamma\alpha}(\cancel{k} + \cancel{p})_{\delta\beta}}{2k^2(k+p)^2} \\
+      & \quad + g^4 \left( \delta_{il} \delta_{jk} \right) \int \frac{d^dk}{(2\pi)^d}
+      \frac{(\cancel{k} + \cancel{p})_{\gamma\beta}(\cancel{k})_{\delta\alpha} + (\cancel{k})_{\gamma\beta}(\cancel{k} + \cancel{p})_{\delta\alpha}}{k^2(k+p)^2} \\
+      %
+      &\sim g^4 \delta_{ik} \delta_{jl} (\gamma^\mu)_{\gamma\alpha}(\gamma^\nu)_{\delta\beta} \int \frac{d^dk}{(2\pi)^d} \frac{k_\mu k_\nu}{k^2(k+p)^2}
+      + g^4 \delta_{il} \delta_{jk} (\gamma^\mu)_{\gamma\beta}(\gamma^\nu)_{\delta\alpha} \int \frac{d^dk}{(2\pi)^d} \frac{k_\mu k_\nu}{k^2(k+p)^2} \\
+      %
+      &= g^4 \left[ \delta_{ik} \delta_{jl} (\gamma^\mu)_{\gamma\alpha}(\gamma^\nu)_{\delta\beta}
+      + \delta_{il} \delta_{jk} (\gamma^\mu)_{\gamma\beta}(\gamma^\nu)_{\delta\alpha} \right]
+      \int \frac{d^dk}{(2\pi)^d} \frac{1}{k^2(k+p)^2} \frac{k^2 g_{\mu\nu}}{d} \\
+      %
+      &= g^4 \left[ \delta_{ik} \delta_{jl} (\gamma^\mu)_{\gamma\alpha}(\gamma_\mu)_{\delta\beta}
+      + \delta_{il} \delta_{jk} (\gamma^\mu)_{\gamma\beta}(\gamma_\mu)_{\delta\alpha} \right]
+      \frac{1}{d} \int \frac{d^dk}{(2\pi)^d} \frac{1}{(k+p)^2} \\
+      %
+      &= g^4 \left[ \delta_{ik} \delta_{jl} (\gamma^\mu)_{\gamma\alpha}(\gamma_\mu)_{\delta\beta}
+      + \delta_{il} \delta_{jk} (\gamma^\mu)_{\gamma\beta}(\gamma_\mu)_{\delta\alpha} \right]
+      \frac{1}{d} \int \frac{d^dk}{(2\pi)^d} \frac{1}{k^2} ,
+    \end{align*}
+    $k_\mu k_\nu$の変換に(A.41)を使った．
+    2つ目は
+    \begin{align*}
+      V_t &= (ig^2)^2 \sum_{abcd} \sum_{\mu\nu\rho\sigma} \int \frac{d^dk}{(2\pi)^d}
+      \left( \delta_{ik} \delta_{ac} \delta_{\alpha\gamma} \delta_{\mu\rho} + \delta_{ic} \delta_{ak} \delta_{\alpha\rho} \delta_{\mu\gamma} \right) \\
+      & \quad\times \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\sigma\rho} \delta_{cd}
+      \left( \frac{1}{\cancel{k}} \right)_{\mu\nu} \delta_{ab}
+      \left( \delta_{jl} \delta_{db} \delta_{\beta\delta} \delta_{\sigma\nu} + \delta_{jb} \delta_{dl} \delta_{\beta\nu} \delta_{\sigma\delta} \right) .
+    \end{align*}
+    和を計算すれば
+    \begin{align*}
+      & \sum_{abcd} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{ik} \delta_{ac} \delta_{\alpha\gamma} \delta_{\mu\rho} + \delta_{ic} \delta_{ak} \delta_{\alpha\rho} \delta_{\mu\gamma} \right)
+      \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\sigma\rho} \delta_{cd}
+      \left( \frac{1}{\cancel{k}} \right)_{\mu\nu} \delta_{ab} \\
+      & \quad\times \left( \delta_{jl} \delta_{db} \delta_{\beta\delta} \delta_{\sigma\nu} + \delta_{jb} \delta_{dl} \delta_{\beta\nu} \delta_{\sigma\delta} \right) \\
+      %
+      %
+      &= \sum_{ac} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{ik} \delta_{ac} \delta_{\alpha\gamma} \delta_{\mu\rho} + \delta_{ic} \delta_{ak} \delta_{\alpha\rho} \delta_{\mu\gamma} \right)
+      \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\sigma\rho}
+      \left( \frac{1}{\cancel{k}} \right)_{\mu\nu} \\
+      & \quad\times \left( \delta_{jl} \delta_{ca} \delta_{\beta\delta} \delta_{\sigma\nu} + \delta_{ja} \delta_{cl} \delta_{\beta\nu} \delta_{\sigma\delta} \right) \\
+      %
+      %
+      &= \sum_{ac} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{ik} \delta_{ac} \delta_{\alpha\gamma} \delta_{\mu\rho} \right)
+      \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\sigma\rho}
+      \left( \frac{1}{\cancel{k}} \right)_{\mu\nu}
+      \left( \delta_{jl} \delta_{ca} \delta_{\beta\delta} \delta_{\sigma\nu} \right) \\
+      %
+      & \quad + \sum_{ac} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{ik} \delta_{ac} \delta_{\alpha\gamma} \delta_{\mu\rho} \right)
+      \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\sigma\rho}
+      \left( \frac{1}{\cancel{k}} \right)_{\mu\nu}
+      \left( \delta_{ja} \delta_{cl} \delta_{\beta\nu} \delta_{\sigma\delta} \right) \\
+      %
+      & \quad + \sum_{ac} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{ic} \delta_{ak} \delta_{\alpha\rho} \delta_{\mu\gamma} \right)
+      \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\sigma\rho}
+      \left( \frac{1}{\cancel{k}} \right)_{\mu\nu}
+      \left( \delta_{jl} \delta_{ca} \delta_{\beta\delta} \delta_{\sigma\nu} \right) \\
+      %
+      & \quad + \sum_{ac} \sum_{\mu\nu\rho\sigma}
+      \left( \delta_{ic} \delta_{ak} \delta_{\alpha\rho} \delta_{\mu\gamma} \right)
+      \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\sigma\rho}
+      \left( \frac{1}{\cancel{k}} \right)_{\mu\nu}
+      \left( \delta_{ja} \delta_{cl} \delta_{\beta\nu} \delta_{\sigma\delta} \right) \\
+      %
+      %
+      &= N \left( \delta_{ik} \delta_{jl} \delta_{\alpha\gamma} \delta_{\beta\delta} \right) \Tr \left( \frac{1}{\cancel{k} + \cancel{p}} \frac{1}{\cancel{k}} \right)
+      + \left( \delta_{ik} \delta_{jl} \delta_{\alpha\gamma} \right) \left( \frac{1}{\cancel{k} + \cancel{p}} \frac{1}{\cancel{k}} \right)_{\delta\beta} \\
+      %
+      & \quad + \left( \delta_{ik} \delta_{jl} \delta_{\beta\delta} \right) \left( \frac{1}{\cancel{k} + \cancel{p}} \frac{1}{\cancel{k}} \right)_{\gamma\alpha}
+      + \left( \delta_{il} \delta_{jk} \right) \left( \frac{1}{\cancel{k}} \right)_{\delta\alpha} \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\gamma\beta} \\
+      %
+      %
+      &\sim (2N+2) \left( \delta_{ik} \delta_{jl} \delta_{\alpha\gamma} \delta_{\beta\delta} \right) \frac{k^2 + k \cdot p}{k^2(k+p)^2}
+      + \left( \delta_{il} \delta_{jk} \right) \left( \frac{1}{\cancel{k}} \right)_{\delta\alpha} \left( \frac{1}{\cancel{k} + \cancel{p}} \right)_{\gamma\beta}
+    \end{align*}
+    なので
+    \begin{align*}
+      V_t &= - g^4 (2N+2) \delta_{ik} \delta_{jl} \delta_{\alpha\gamma} \delta_{\beta\delta} \int \frac{d^dk}{(2\pi)^d} \frac{k^2 + k \cdot p}{k^2(k+p)^2}
+      - g^4 \delta_{il} \delta_{jk} (\gamma^\mu)_{\gamma\beta}(\gamma^\nu)_{\delta\alpha} \int \frac{d^dk}{(2\pi)^d} \frac{k_\mu k_\nu}{k^4} \\
+      %
+      &= - g^4 (2N+2) \delta_{ik} \delta_{jl} \delta_{\alpha\gamma} \delta_{\beta\delta} \int \frac{d^dk}{(2\pi)^d} \frac{k^2 + k \cdot p}{k^2(k+p)^2}
+      - g^4 \delta_{il} \delta_{jk} (\gamma^\mu)_{\gamma\beta}(\gamma_\mu)_{\delta\alpha} \frac{1}{d} \int \frac{d^dk}{(2\pi)^d} \frac{1}{k^2} .
+    \end{align*}
+    3つ目は$V_t$で$k\gamma \leftrightarrow l\delta$を入れ替えたもの：
+    \[ V_u = - g^4 (2N+2) \delta_{il} \delta_{jk} \delta_{\alpha\delta} \delta_{\beta\gamma} \int \frac{d^dk}{(2\pi)^d} \frac{k^2 + k \cdot p}{k^2(k+p)^2}
+    - g^4 \delta_{ik} \delta_{jl} (\gamma^\mu)_{\delta\beta}(\gamma_\mu)_{\gamma\alpha} \frac{1}{d} \int \frac{d^dk}{(2\pi)^d} \frac{1}{k^2} . \]
+
+    以上から
+    \begin{align*}
+      V_s + V_t + V_u &= - g^4 (2N+2) \left( \delta_{ik} \delta_{jl} \delta_{\alpha\gamma} \delta_{\beta\delta} + \delta_{il} \delta_{jk} \delta_{\alpha\delta} \delta_{\beta\gamma} \right)
+      \int \frac{d^dk}{(2\pi)^d} \frac{k^2 + p \cdot k}{k^2(k+p)^2} \\
+      %
+      &= - g^4 (2N+2) \left( \delta_{ik} \delta_{jl} \delta_{\alpha\gamma} \delta_{\beta\delta} + \delta_{il} \delta_{jk} \delta_{\alpha\delta} \delta_{\beta\gamma} \right)
+      \int_0^1 dx \int \frac{d^d\ell}{(2\pi)^d} \frac{\ell^2 + \Delta}{(\ell^2 - \Delta)^2} \\
+      %
+      &\approx ig^4 (2N+2) \left( \delta_{ik} \delta_{jl} \delta_{\alpha\gamma} \delta_{\beta\delta} + \delta_{il} \delta_{jk} \delta_{\alpha\delta} \delta_{\beta\gamma} \right)
+      \int_0^1 dx \frac{1}{(4\pi)^{d/2}} \frac{d}{2} \Gamma(1-d/2) \left( \frac{1}{\Delta} \right)^{1-d/2} .
+    \end{align*}
+
+    $\epsilon = 2-d$とすれば
+    \begin{align*}
+      \frac{1}{(4\pi)^{d/2}} \frac{d}{2} \Gamma(1-d/2) \left( \frac{1}{\Delta} \right)^{1-d/2}
+      &= \frac{1}{4\pi} (1-\epsilon/2) \Gamma(\epsilon/2) \left( \frac{4\pi}{\Delta} \right)^{\epsilon/2} \\
+      &\approx \frac{1}{4\pi} \left( 1 - \frac{\epsilon}{2} \right) \left( \frac{2}{\epsilon} - \gamma \right) \left( 1 - \frac{\epsilon}{2} \log\frac{\Delta}{4\pi} \right) \\
+      &\approx \frac{1}{4\pi} \left( \frac{2}{\epsilon} - \gamma - \log\frac{\Delta}{4\pi} \right) \\
+      &\approx - \frac{1}{4\pi} \log(-p^2)
+    \end{align*}
+    なので，
+    \[
+      V_s + V_t + V_u = - \frac{ig^4}{4\pi} (2N+2) \left( \delta_{ik} \delta_{jl} \delta_{\alpha\gamma} \delta_{\beta\delta} + \delta_{il} \delta_{jk} \delta_{\alpha\delta} \delta_{\beta\gamma} \right) \log(-p^2)  .
+    \]
+    $p^2 = -M^2$で，これと相殺項の和が$0$なので，
+    \[ \delta_g = \frac{g^3}{4\pi} (N+1) \log M^2 =  \frac{g^3}{2\pi} (N+1) \log M . \]
+  </p>
+
+  <h2>Chapter 16: Quantization of Non-Abelian Gauge Theories</h2>
+  <h3>16.3 Ghosts and Unitarity</h3>
+  <h4>Figure 16.5</h4>
+  <div align="center">
+    <img src="./svg/fig16_5_diag.svg" width="120pt">
+  </div>
+  <!-- \begin{center}
+    \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (A) at (90: 1.5) {\(A^b_\mu\)};
+        \vertex (gout) at (210: 1.5) {\(c^a\)};
+        \vertex (gin) at (330: 1.5) {\(\bar{c}^c\)};
+        \diagram*{
+          (gin) -- [ghost, momentum'=\(k\)] (o) -- [ghost, momentum=\(p\)] (gout),
+          (A) -- [photon, momentum=\(q\)] (o)
+        };
+        \draw (o) node [below right] {\(c^c\)};
+        \draw (o) node [above left] {\(\bar{c}^a\)};
+      \end{feynman}
+    \end{tikzpicture}
+  \end{center} -->
+
+  <p style="text-indent: 10pt;">
+    (16.32)から
+    \begin{align*}
+      \mathcal{L}_\text{ghost} &= \bar{c}^a \left( -g\partial^\mu f^{abc} A^b_\mu \right) c^c + \cdots \\
+      &= -gf^{abc} \bar{c}^a (\partial^\mu A^b_\mu) c^c - gf^{abc} \bar{c}^a A^b_\mu (\partial^\mu c^c) + \cdots \\
+      &= -gf^{abc} \bar{c}^a (-iq^\mu A^b_\mu) c^c - gf^{abc} \bar{c}^a A^b_\mu (-ik^\mu c^c) + \cdots \\
+      &= -gf^{abc} \bar{c}^a (-ip^\mu A^b_\mu) c^c + \cdots
+    \end{align*}
+    となるので，頂点は
+    \[ i\mathcal{L} \to -gf^{abc}p_\mu . \]
   </p>
 </body>
 </html>
