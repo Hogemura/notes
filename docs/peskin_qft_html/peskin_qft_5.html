@@ -2,8 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Peskin QFT: 5</title>
-  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-chtml-full.js"></script>
+  <meta name="viewport" content="width=device-width">
+  <title>Peskin場の量子論：解説・補足５</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script> MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], tags: 'ams' } };</script>
 </head>
 <body>
@@ -47,6 +49,16 @@
   <a href="./peskin_qft_6.html">
     <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
       <font size="+2" color="black"><b>Peskin 6</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_7.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 7</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_8.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 8</b></font>
     </div>
   </a>
   <div style="clear:both;"></div>
@@ -617,14 +629,16 @@
       + \frac{i}{2\sqrt{2}} \frac{g}{\cos\theta_w} Z^0_\mu (v+h+i\phi^3) .
     \end{align*}
     (20.111)のLagrangianは(20.63)(20.112)(20.114)から
-    \begin{align}
-      \begin{split}
-        \mathcal{L}_\text{Higgs} &= \lvert D_\mu\phi\rvert^2 + \mu^2 \phi^\dagger \phi - \lambda (\phi^\dagger\phi)^2 \\
-        &= (D_\mu\phi)_1(D^\mu\phi)_1^\dagger + (D_\mu\phi)_2(D^\mu\phi)_2^\dagger
-        + \frac{m_h{}^2}{2} \phi^\dagger \phi - \frac{g^2}{8} \frac{m_h{}^2}{m_W{}^2} (\phi^\dagger\phi)^2
-      \end{split}
-      \label{fig21.8_scalar_Lagrangian}
-    \end{align}
+    <div id="fig21.8_scalar_Lagrangian">
+      \begin{align}
+        \begin{split}
+          \mathcal{L}_\text{Higgs} &= \lvert D_\mu\phi\rvert^2 + \mu^2 \phi^\dagger \phi - \lambda (\phi^\dagger\phi)^2 \\
+          &= (D_\mu\phi)_1(D^\mu\phi)_1^\dagger + (D_\mu\phi)_2(D^\mu\phi)_2^\dagger
+          + \frac{m_h{}^2}{2} \phi^\dagger \phi - \frac{g^2}{8} \frac{m_h{}^2}{m_W{}^2} (\phi^\dagger\phi)^2
+        \end{split}
+        \label{fig21.8_scalar_Lagrangian}
+      \end{align}
+    </div>
     で与えられる．
 
     <div align="center">

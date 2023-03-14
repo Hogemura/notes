@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Peskin場の量子論：解説・補足７</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script> MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], tags: 'ams' } };</script>
+</head>
+<body>
+  <a href="../physics_books.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>物理の本</b></font>
+    </div>
+  </a>
+  <a href="https://github.com/Hogemura/notes/raw/main/src/peskin_qft/peskin_qft.pdf" target="_blank">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, yellow, white); float:left" align="center">
+      <font size="+2" color="black"><b>詳細pdf版</b></font>
+    </div>
+  </a>
+  <div style="clear:both;"></div>
+  <hr>
+  <a href="./peskin_qft_1.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 1</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_2.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 2</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_3.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 3</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_4.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 4</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_5.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 5</b></font>
+    </div>
+  </a>
+  <a href="./peskin_qft_6.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 6</b></font>
+    </div>
+  </a>
+  <!-- <a href="./peskin_qft_7.html"> -->
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, red, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 7</b></font>
+    </div>
+  <!-- </a> -->
+  <a href="./peskin_qft_8.html">
+    <div style="border:solid 2px; width:200px; margin:20px; background:linear-gradient(to left, blue, white); float:left" align="center">
+      <font size="+2" color="black"><b>Peskin 8</b></font>
+    </div>
+  </a>
+  <div style="clear:both;"></div>
+  <hr>
+  <h1>Peskin &amp; Schroeder. <i>An Introduction to Quantum Field Theory</i></h1>
+  <h2>Chapter 21: Quantization of Spontaneously Broken Gauge Theories</h2>
+  <h3>Problem 21.1: Weak interaction contribution to the muon \(g-2\)</h3>
+  <p style="text-indent: 10pt;">教科書本文では導出されていないFeynmar ruleを導出する．文献によってconventionが異なるのがややこしい</p>
+  <h4>Feynman rules of Goldstone bosons</h4>
+  <p style="text-indent: 10pt;">
+    (20.98)からlepton, neutrinoと\(SU(2)\) scalarの相互作用は
+    \[ \Delta\mathcal{L}_e = - \lambda_e \bar{E}_L \phi e_R + (\text{h.c}) \]
+    (21.38)(21.79)(20.75)を代入して
+    \begin{align*}
+      - \lambda_e \bar{E}_L \phi e_R &= - \lambda_e
+      \begin{pmatrix}
+        \bar{\nu}_L & \bar{e}_L
+      \end{pmatrix}
+      \begin{pmatrix}
+        -i \phi^- \\
+        (v+h+i\phi^3)/\sqrt{2}
+      \end{pmatrix}
+      e_R \\
+      %
+      &= i \lambda_e \bar{\nu}_L e_R \phi^- - \frac{\lambda_e}{\sqrt{2}} \bar{e}_L e_R (v+h+i\phi^3) .
+    \end{align*}
+    (20.63)(20.100)から
+    \[ \lambda_e = \frac{g}{\sqrt{2}} \frac{m_e}{m_W} . \]
+    よって
+    \begin{align}
+      \Delta\mathcal{L}_e = i \frac{g}{\sqrt{2}} \frac{m_e}{m_W} \bar{\nu}_L e_R \phi^-
+      - \frac{g}{2} \frac{m_e}{m_W} \bar{e}_L e_R (v+h+i\phi^3) + (\text{h.c}) .
+      \label{problem21_1_Lag_e}
+    \end{align}
+
+    \(e\nu\phi^-\), \(e\nu\phi^+\)の頂点は
+    <div align="center">
+      <img src="./svg/prob21_1_e_nu_phi_vertex.svg" width="550pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (in) at (240: 1.5) {\(e_R\)};
+        \vertex (out) at (0: 1.5) {\(\nu_L\)};
+        \vertex (phi) at (120: 1.5) {\(\phi^+\)};
+        \diagram*{
+          (in) -- [fermion] (o) -- [fermion] (out),
+          (phi) -- [charged scalar] (o)
+        };
+        \draw (o) node [above right] {\(\phi^-\)};
+      \end{feynman}
+    \end{tikzpicture}}}
+    = - \frac{g}{\sqrt{2}} \frac{m_e}{m_W} \frac{1+\gamma^5}{2}
+    , \quad
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (in) at (240: 1.5) {\(\nu_L\)};
+        \vertex (out) at (0: 1.5) {\(e_R\)};
+        \vertex (phi) at (120: 1.5) {\(\phi^-\)};
+        \diagram*{
+          (in) -- [fermion] (o) -- [fermion] (out),
+          (o) -- [charged scalar] (phi)
+        };
+        \draw (o) node [above right] {\(\phi^+\)};
+      \end{feynman}
+    \end{tikzpicture}}}
+    = \frac{g}{\sqrt{2}} \frac{m_e}{m_W} \frac{1-\gamma^5}{2} .
+    \] -->
+
+    <a href="./peskin_qft_5.html#fig21.8_scalar_Lagrangian" target="_blank">(6)</a>から
+    \[
+    \mathcal{L}_\text{Higgs} = ie \frac{gv}{2} A^\mu \phi^+ W^+_\mu - i e \frac{gv}{2} A^\mu \phi^- W^-_\mu .
+    \]
+    (20.63)を代入して
+    \[
+    i\mathcal{L}_\text{Higgs} = - em_W A^\mu \phi^+ W^+_\mu + em_W A^\mu \phi^- W^-_\mu .
+    \]
+
+    \(A\phi^+W^+\), \(A\phi^-W^-\)の頂点は
+    <div align="center" id="problem21.1_A_phi_W">
+      <img src="./svg/prob21_1_A_phi_W_vertex.svg" width="480pt">
+    </div>
+    <!-- \[
+      \vcenter{\hbox{
+        \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (o) at (0, 0);
+          \vertex (in) at (240: 1.5) {\(\phi^-\)};
+          \vertex (out) at (0: 1.5) {\(A_\mu\)};
+          \vertex (phi) at (120: 1.5) {\(W^-_\nu\)};
+          \diagram*{
+            (in) -- [anti charged scalar] (o) -- [boson] (out),
+            (o) -- [boson] (phi)
+          };
+          \draw (o) node [above right] {\(W^+\)};
+          \draw (o) node [below right] {\(\phi^+\)};
+        \end{feynman}
+      \end{tikzpicture}}}
+      = - em_W g^{\mu\nu}
+      , \quad
+      % \label{problem21.1_A_phi_W_+}
+      \vcenter{\hbox{
+        \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (o) at (0, 0);
+          \vertex (in) at (240: 1.5) {\(\phi^+\)};
+          \vertex (out) at (0: 1.5) {\(A_\mu\)};
+          \vertex (W) at (120: 1.5) {\(W^+_\nu\)};
+          \diagram*{
+            (in) -- [charged scalar] (o) -- [boson] (out),
+            (o) -- [boson] (W)
+          };
+          \draw (o) node [above right] {\(W^-\)};
+          \draw (o) node [below right] {\(\phi^-\)};
+        \end{feynman}
+      \end{tikzpicture}}}
+      = em_W g^{\mu\nu} .
+      % \label{problem21.1_A_phi_W_-}
+      \] -->
+  </p>
+
+  <h3>Problem 21.4: Dependence of radiative corrections on the Higgs boson mass</h3>
+  <h4>Feynman rules of Higgs bosons</h4>
+  <p style="text-indent: 10pt;">
+    <a href="./peskin_qft_5.html#fig21.8_scalar_Lagrangian">(6)</a>から
+    \[
+    i\mathcal{L}_\text{Higgs} = i \frac{g^2}{4} W^+_\mu W^-\nu (v+h+i\phi^3) (v+h-i\phi^3) g^{\mu\nu} + \cdots .
+    \]
+    \(W^+W^-h\)の頂点は
+    <div align="center" id="problem21.4_W_W_h">
+      <img src="./svg/prob21_4_W_W_h_vertex.svg" width="300pt">
+    </div>
+    <!--
+      \[
+      \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (h) at (240: 1.5) {\(h\)};
+        \vertex (Wm) at (0: 1.5) {\(W^-_\nu\)};
+        \vertex (Wp) at (120: 1.5) {\(W^+_\mu\)};
+        \diagram*{
+          (h) -- [scalar] (o) -- [boson] (Wp),
+          (o) -- [boson] (Wm)
+        };
+        \draw (o) node [left] {\(W^-\)};
+        \draw (o) node [below right] {\(W^+\)};
+      \end{feynman}
+    \end{tikzpicture}}}
+    = i \frac{g^2v}{2} g_{\mu\nu} = igm_W g_{\mu\nu} .
+    % \label{problem21.4_W_W_h}
+    \] -->
+    \(W^+W^-hh\)の頂点は\(h\)の縮約が２通りあることに注意して，
+    <div align="center">
+      <img src="./svg/prob21_4_W_W_h_h_vertex.svg" width="300pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (har) at (45: 1.5) {\(h\)};
+        \vertex (hal) at (135: 1.5) {\(h\)};
+        \vertex (Wm) at (225: 1.5) {\(W^-_\nu\)};
+        \vertex (Wp) at (315: 1.5) {\(W^+_\mu\)};
+        \diagram*{
+          (hal) -- [scalar] (o) -- [scalar] (har),
+          (Wp) -- [boson] (o) -- [boson] (Wm)
+        };
+        \draw (o) node [right] {\(W^-\)};
+        \draw (o) node [left] {\(W^+\)};
+      \end{feynman}
+    \end{tikzpicture}}}
+    = 2 \cdot i \frac{g^2}{4} g_{\mu\nu} = i \frac{g^2}{2} g_{\mu\nu} .
+    \] -->
+
+    <a href="./peskin_qft_5.html#fig21.8_scalar_Lagrangian">(6)</a>から
+    \[
+    i\mathcal{L}_\text{Higgs} = i \frac{g}{2}
+    \left[ (\partial_\mu\phi^+) W^+_\nu h - (\partial_\mu h) W^+_\nu \phi^+
+    + (\partial_\mu\phi^-) W^-_\nu h - (\partial_\mu h) W^-_\nu \phi^- \right] g^{\mu\nu} + \cdots .
+    \]
+    \(W^-\phi^-h\), \(W^+\phi^+h\)の頂点は
+    <div align="center" id="problem21.4_W_phi_h">
+      <img src="./svg/prob21_4_W_phi_h_vertex.svg" width="750pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (h) at (240: 1.5) {\(h\)};
+        \vertex (Wm) at (0: 1.5) {\(W^-_\mu\)};
+        \vertex (pm) at (120: 1.5) {\(\phi^-\)};
+        \diagram*{
+          (h) -- [scalar, momentum'=\(k\)] (o) -- [charged scalar, reversed momentum'=\(p\)] (pm),
+          (o) -- [boson] (Wm)
+        };
+        \draw (o) node [left] {\(\phi^+\)};
+        \draw (o) node [above right] {\(W^+\)};
+      \end{feynman}
+    \end{tikzpicture}}}
+    = i \frac{g}{2} (-ip_\mu + ik_\mu) = \frac{g}{2} (p-k)_\mu
+    , \quad
+    % \label{problem21.4_W_phi_h-}
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (h) at (240: 1.5) {\(h\)};
+        \vertex (Wm) at (0: 1.5) {\(W^+_\mu\)};
+        \vertex (pm) at (120: 1.5) {\(\phi^+\)};
+        \diagram*{
+          (h) -- [scalar, momentum'=\(k\)] (o) -- [anti charged scalar, edge label'=\(p\)] (pm),
+          (o) -- [boson] (Wm)
+        };
+        \draw (o) node [left] {\(\phi^-\)};
+        \draw (o) node [above right] {\(W^-\)};
+      \end{feynman}
+    \end{tikzpicture}}}
+    = i \frac{g}{2} (-ip_\mu + ik_\mu) = \frac{g}{2} (p-k)_\mu .
+    % \label{problem21.4_W_phi_h+}
+    \] -->
+
+    <a href="./peskin_qft_5.html#fig21.8_scalar_Lagrangian">(6)</a>から
+    \[
+    i\mathcal{L}_\text{Higgs} = i \frac{1}{8} \frac{g^2}{\cos^2\theta_w} Z^0_\mu Z^0_\nu (v+h+i\phi^3) (v+h-i\phi^3) g^{\mu\nu} + \cdots .
+    \]
+    \(Z^0Z^0h\)の頂点は\(Z^0\)の縮約が２通りあることに注意して，
+    <div align="center">
+      <img src="./svg/prob21_4_Z_Z_h_vertex.svg" width="350pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (h) at (240: 1.5) {\(h\)};
+        \vertex (Wm) at (0: 1.5) {\(Z^0_\nu\)};
+        \vertex (Wp) at (120: 1.5) {\(Z^0_\mu\)};
+        \diagram*{
+          (h) -- [scalar] (o) -- [boson] (Wp),
+          (o) -- [boson] (Wm)
+        };
+      \end{feynman}
+    \end{tikzpicture}}}
+    = i \frac{g^2v}{2\cos^2\theta_w} g_{\mu\nu} = i \frac{gm_Z}{\cos\theta_w} g_{\mu\nu} .
+    \] -->
+    \(Z^0Z^0hh\)の頂点は\(Z^0\)の縮約が２通り，\(h\)の縮約が２通りあることに注意して，
+    <div align="center">
+      <img src="./svg/prob21_1_Z_Z_h_h_vertex.svg" width="250pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (har) at (45: 1.5) {\(h\)};
+        \vertex (hal) at (135: 1.5) {\(h\)};
+        \vertex (Wm) at (225: 1.5) {\(Z^0_\nu\)};
+        \vertex (Wp) at (315: 1.5) {\(Z^0_\mu\)};
+        \diagram*{
+          (hal) -- [scalar] (o) -- [scalar] (har),
+          (Wp) -- [boson] (o) -- [boson] (Wm)
+        };
+      \end{feynman}
+    \end{tikzpicture}}}
+    = i \frac{g^2}{2\cos^2\theta_w} g_{\mu\nu} .
+    \] -->
+
+    <a href="./peskin_qft_5.html#fig21.8_scalar_Lagrangian">(6)</a>から
+    \begin{align*}
+      i\mathcal{L}_\text{Higgs} &= \frac{g}{4\cos\theta_w}
+      \left[ \partial_\mu(h+i\phi^3) (v+h-i\phi^3) - \partial_\mu(h-i\phi^3) (v+h+i\phi^3) \right] Z^0_\nu g^{\mu\nu} + \cdots \\
+      &= \frac{ig}{2\cos\theta_w} \left[ \partial_\mu\phi^3 h - \phi^3 \partial_\mu h \right] Z^0_\nu g^{\mu\nu} + \cdots \\
+    \end{align*}
+    \(Z^0\phi^3h\)の頂点は
+    <div align="center">
+      <img src="./svg/prob21_1_Z_phi_h_vertex.svg" width="270pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (h) at (240: 1.5) {\(h\)};
+        \vertex (Wm) at (0: 1.5) {\(Z^0_\mu\)};
+        \vertex (pm) at (120: 1.5) {\(\phi^3\)};
+        \diagram*{
+          (h) -- [scalar, momentum'=\(k\)] (o) -- [scalar, reversed momentum'=\(p\)] (pm),
+          (o) -- [boson] (Wm)
+        };
+      \end{feynman}
+    \end{tikzpicture}}}
+    = \frac{g}{2\cos\theta_w} (p-k)_\mu .
+    \] -->
+  </p>
+
+  <h2>Final Project III: Dicays of the Higgs Boson</h2>
+  <h3>(a)</h3>
+  <p>
+    \eqref{problem21_1_Lag_e}から
+    \[
+    \Delta\mathcal{L}_e = i \frac{g}{\sqrt{2}} \frac{m_e}{m_W} \bar{\nu}_L e_R \phi^-
+    - \frac{g}{2} \frac{m_e}{m_W} \bar{e}_L e_R (v+h+i\phi^3) + (\text{h.c.})
+    \]
+    \(h\bar{e}e\)の頂点は
+    <div align="center">
+      <img src="./svg/fp3_h_e_e_vertex.svg" width="420pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+    \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (ein) at (240: 1.5) {\(e\)};
+        \vertex (h) at (0: 1.5) {\(h\)};
+        \vertex (eout) at (120: 1.5) {\(e\)};
+        \diagram*{
+          (ein) -- [fermion] (o) -- [fermion] (eout),
+          (o) -- [scalar] (h)
+        };
+      \end{feynman}
+    \end{tikzpicture}}}
+    = -i \frac{g}{2} \frac{m_e}{m_W} \left( \frac{1+\gamma^5}{2} + \frac{1-\gamma^5}{2} \right)
+    = -i \frac{g}{2} \frac{m_e}{m_W} .
+    \] -->
+
+    (20.101)からquarkと\(SU(2)\) scalarの相互作用は
+    \[
+    \Delta\mathcal{L}_q = - \lambda_d \bar{Q}_L \phi d_R - \lambda_u \epsilon^{ab} \bar{Q}_{La} \phi^\dagger_b u_R + (\text{h.c.})
+    \]
+    \(\Delta\mathcal{L}_q\)の第１項は(21.38)(21.79)(20.75)を代入して
+    \begin{align*}
+      - \lambda_d \bar{Q}_L \phi d_R &= - \lambda_d
+      \begin{pmatrix}
+        \bar{u}_L & \bar{d}_L
+      \end{pmatrix}
+      \begin{pmatrix}
+        -i \phi^- \\
+        (v+h+i\phi^3)/\sqrt{2}
+      \end{pmatrix}
+      d_R \\
+      %
+      &= i \lambda_d \bar{u}_L d_R \phi^- - \frac{\lambda_d}{\sqrt{2}} \bar{d}_L d_R (v+h+i\phi^3) .
+    \end{align*}
+    (20.63)(20.103)から
+    \[ \lambda_d = \frac{g}{\sqrt{2}} \frac{m_d}{m_W} . \]
+    よって
+    \[
+    - \lambda_d \bar{Q}_L \phi d_R =
+    i \frac{g}{\sqrt{2}} \frac{m_d}{m_W} \bar{u}_L d_R \phi^-
+    - \frac{g}{2} \frac{m_d}{m_W} \bar{d}_L d_R (v+h+i\phi^3) + (\text{h.c.})
+    \]
+    \(h\bar{d}d\)の頂点は
+    <div align="center">
+      <img src="./svg/fp3_h_d_d_vertex.svg" width="200pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (qin) at (240: 1.5) {\(d\)};
+        \vertex (h) at (0: 1.5) {\(h\)};
+        \vertex (qout) at (120: 1.5) {\(d\)};
+        \diagram*{
+          (qin) -- [fermion] (o) -- [fermion] (qout),
+          (o) -- [scalar] (h)
+        };
+      \end{feynman}
+    \end{tikzpicture}}}
+    = -i \frac{g}{2} \frac{m_d}{m_W} .
+    \] -->
+
+    \(\Delta\mathcal{L}_q\)の第２項は
+    \begin{align*}
+      - \lambda_u \epsilon^{ab} \bar{Q}_{La} \phi^\dagger_b u_R &= - \lambda_u
+      \begin{pmatrix}
+        \bar{u}_L & \bar{d}_L
+      \end{pmatrix}
+      \begin{pmatrix}
+         & 1 \\ -1 &
+      \end{pmatrix}
+      \begin{pmatrix}
+        i \phi^+ \\
+        (v+h-i\phi^3)/\sqrt{2}
+      \end{pmatrix}
+      u_R \\
+      &= i \lambda_u \bar{d}_L u_R \phi^+ - \frac{\lambda_u}{\sqrt{2}} \bar{u}_L u_R (v+h-i\phi^3) \\
+      &= i \frac{g}{\sqrt{2}} \frac{m_u}{m_W} \bar{d}_L u_R \phi^+ - \frac{g}{2} \frac{m_u}{m_W}\frac{\lambda_u}{\sqrt{2}} \bar{u}_L u_R (v+h-i\phi^3) \\
+    \end{align*}
+    \(h\bar{u}u\)の頂点は
+    <div align="center">
+      <img src="./svg/fp3_h_u_u_vertex.svg" width="200pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (qin) at (240: 1.5) {\(u\)};
+        \vertex (h) at (0: 1.5) {\(h\)};
+        \vertex (qout) at (120: 1.5) {\(u\)};
+        \diagram*{
+          (qin) -- [fermion] (o) -- [fermion] (qout),
+          (o) -- [scalar] (h)
+        };
+      \end{feynman}
+    \end{tikzpicture}}}
+    = -i \frac{g}{2} \frac{m_u}{m_W} .
+    \] -->
+
+    以上から，lepton, quarkいずれの場合も
+    <div align="center">
+      <img src="./svg/fp3_h_f_f_vertex.svg" width="200pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (fin) at (240: 1.5) {\(f\)};
+        \vertex (h) at (0: 1.5) {\(h\)};
+        \vertex (fout) at (120: 1.5) {\(f\)};
+        \diagram*{
+          (fin) -- [fermion] (o) -- [fermion] (fout),
+          (o) -- [scalar] (h)
+        };
+      \end{feynman}
+    \end{tikzpicture}}}
+    = -i \frac{g}{2} \frac{m_f}{m_W} .
+    \] -->
+  </p>
+
+  <h3>(b)</h3>
+  <p style="text-indent: 10pt;">
+    <a href="./peskin_qft_5.html#fig21.8_scalar_Lagrangian">(6)</a>と(20.63)から
+    \begin{align*}
+      \mathcal{L}_\text{Higgs} &= - \frac{g^2}{8} \frac{m_h{}^2}{m_W{}^2}
+      \left[ \phi^+\phi^- + \frac{(v+h)^2+(\phi^3)^2}{2} \right]^2 + \cdots \\
+      %
+      &= - \frac{g^2}{8} \frac{m_h{}^2}{m_W{}^2}
+      \left[ 2v \phi^+ \phi^- h + 2v (\phi^3)^2 h \right] + \cdots \\
+      %
+      &= - \frac{g^2}{2} \frac{m_h{}^2}{m_W} \phi^+ \phi^- h
+      - \frac{g^2}{2} \frac{m_h{}^2}{m_W} (\phi^3)^2 h + \cdots .
+    \end{align*}
+    \(h\phi\phi\)の頂点は
+    <div align="center">
+      <img src="./svg/fp3_h_phi_phi_vertex.svg" width="480pt">
+    </div>
+    <!-- \[
+      \vcenter{\hbox{
+        \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (o) at (0, 0);
+          \vertex (pin) at (240: 1.5) {\(\phi^-\)};
+          \vertex (h) at (0: 1.5) {\(h\)};
+          \vertex (pout) at (120: 1.5) {\(\phi^+\)};
+          \diagram*{
+            (pout) -- [charged scalar] (o) -- [charged scalar] (pin),
+            (o) -- [scalar] (h)
+          };
+          \draw (o) node [below right] {\(\phi^+\)};
+          \draw (o) node [above right] {\(\phi^-\)};
+        \end{feynman}
+      \end{tikzpicture}}}
+      = -i \frac{g}{2} \frac{m_h{}^2}{m_W} , \qquad
+      \vcenter{\hbox{
+        \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (o) at (0, 0);
+          \vertex (pin) at (240: 1.5) {\(\phi^3\)};
+          \vertex (h) at (0: 1.5) {\(h\)};
+          \vertex (pout) at (120: 1.5) {\(\phi^3\)};
+          \diagram*{
+            (pin) -- [scalar] (o) -- [scalar] (pout),
+            (o) -- [scalar] (h)
+          };
+        \end{feynman}
+      \end{tikzpicture}}}
+      = -i \frac{g}{2} \frac{m_h{}^2}{m_W} .
+      % \label{fp3_b_h_phi_phi}
+      \] -->
+  </p>
+
+  <h3>(f)</h3>
+  <h4>Feynman rules of Higgs boson and photon</h4>
+  <p style="text-indent: 10pt;">
+    上で示したように
+    <div align="center">
+      <img src="./svg/fp3_vertices.svg" width="600pt">
+    </div>
+    <!-- \begin{align*}
+      \vcenter{\hbox{
+        \begin{tikzpicture}
+          \begin{feynman}
+            \vertex (o) at (0, 0);
+            \vertex (h) at (240: 1.5) {\(h\)};
+            \vertex (Wm) at (0: 1.5) {\(W^-_\nu\)};
+            \vertex (Wp) at (120: 1.5) {\(W^+_\mu\)};
+            \diagram*{
+              (h) -- [scalar] (o) -- [boson] (Wp),
+              (o) -- [boson] (Wm)
+            };
+            \draw (o) node [left] {\(W^-\)};
+            \draw (o) node [below right] {\(W^+\)};
+          \end{feynman}
+        \end{tikzpicture}}}
+        &= igm_W g_{\mu\nu} , &
+        %
+        \vcenter{\hbox{
+        \begin{tikzpicture}
+          \begin{feynman}
+            \vertex (o) at (0, 0);
+            \vertex (h) at (240: 1.5) {\(h\)};
+            \vertex (Wm) at (0: 1.5) {\(W^\pm_\mu\)};
+            \vertex (pm) at (120: 1.5) {\(\phi^\pm\)};
+            \diagram*{
+              (h) -- [scalar, momentum'=\(k\)] (o) -- [scalar, reversed momentum'=\(p\)] (pm),
+              (o) -- [boson] (Wm)
+            };
+            \draw (o) node [left] {\(\phi^\mp\)};
+            \draw (o) node [above right] {\(W^\mp\)};
+          \end{feynman}
+        \end{tikzpicture}}}
+        &= \frac{g}{2} (p-k)_\mu , \\
+        %
+        \vcenter{\hbox{
+          \begin{tikzpicture}
+          \begin{feynman}
+            \vertex (o) at (0, 0);
+            \vertex (pin) at (240: 1.5) {\(\phi^-\)};
+            \vertex (h) at (0: 1.5) {\(h\)};
+            \vertex (pout) at (120: 1.5) {\(\phi^+\)};
+            \diagram*{
+              (pout) -- [charged scalar] (o) -- [charged scalar] (pin),
+              (o) -- [scalar] (h)
+            };
+            \draw (o) node [below right] {\(\phi^+\)};
+            \draw (o) node [above right] {\(\phi^-\)};
+          \end{feynman}
+        \end{tikzpicture}}}
+        &= -i \frac{g}{2} \frac{m_h{}^2}{m_W} , &
+        %
+        \vcenter{\hbox{
+        \begin{tikzpicture}
+          \begin{feynman}
+            \vertex (o) at (0, 0);
+            \vertex (in) at (-1.5, 0) {\(\phi^+\)};
+            \vertex (out) at (1.5, 0) {\(\phi^-\)};
+            \vertex (a) at (0, 1) {\(A^\mu\)};
+            \diagram*{
+              (in) -- [charged scalar, edge label=\(p\)] (o) -- [charged scalar, edge label=\(p'\)] (out),
+              (o) -- [photon] (a)
+            };
+            \draw (o) node [below left] {\(\phi^-\)};
+            \draw (o) node [below right] {\(\phi^+\)};
+          \end{feynman}
+        \end{tikzpicture}
+        }} &= ie(p+p')^\mu , \\
+        %
+        \vcenter{\hbox{
+        \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (o) at (0, 0);
+          \vertex (in) at (240: 1.5) {\(\phi^\pm\)};
+          \vertex (out) at (0: 1.5) {\(A_\mu\)};
+          \vertex (phi) at (120: 1.5) {\(W^\pm_\nu\)};
+          \diagram*{
+            (in) -- [scalar] (o) -- [boson] (out),
+            (o) -- [boson] (phi)
+          };
+          \draw (o) node [above right] {\(W^\mp\)};
+          \draw (o) node [below right] {\(\phi^\mp\)};
+        \end{feynman}
+      \end{tikzpicture}}}
+      &= \pm em_W g^{\mu\nu} .
+    \end{align*} -->
+
+    <a href="./peskin_qft_5.html#"fig21.8_scalar_Lagrangian>(6)</a>から
+    \[
+    \mathcal{L}_\text{Higgs} = i \frac{ge}{2} W_\mu^+ A^\mu h \phi^+
+    - i \frac{ge}{2} W_\mu^- A^\mu h \phi^- + e^2 A_\mu A^\mu \phi^+ \phi^- + \cdots
+    \]
+    なので
+    <div align="center">
+      <img src="./svg/fp3_A_phi___vertex.svg" width="450pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (h) at (45: 1.5) {\(h\)};
+        \vertex (A) at (135: 1.5) {\(A_\nu\)};
+        \vertex (phi) at (225: 1.5) {\(\phi^\mp\)};
+        \vertex (W) at (315: 1.5) {\(W^\mp_\mu\)};
+        \diagram*{
+          (h) -- [scalar] (o) -- [scalar] (phi),
+          (A) -- [boson] (o) -- [boson] (W)
+        };
+        \draw (o) node [right] {\(W^\pm\)};
+        \draw (o) node [left] {\(\phi^\pm\)};
+      \end{feynman}
+    \end{tikzpicture}}}
+    = \mp \frac{ge}{2} g_{\mu\nu} , \quad
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (phiar) at (45: 1.5) {\(\phi^+\)};
+        \vertex (Aal) at (135: 1.5) {\(A_\nu\)};
+        \vertex (phibl) at (225: 1.5) {\(\phi^-\)};
+        \vertex (Abr) at (315: 1.5) {\(A_\mu\)};
+        \diagram*{
+          (phiar) -- [charged scalar] (o) -- [charged scalar] (phibl),
+          (Aal) -- [boson] (o) -- [boson] (Abr)
+        };
+        \draw (o) node [right] {\(\phi^-\)};
+        \draw (o) node [left] {\(\phi^+\)};
+      \end{feynman}
+    \end{tikzpicture}}}
+    = 2ie^2 g_{\mu\nu} .
+    \] -->
+
+    \(SU(2)\)の構造定数は\(\epsilon^{abc}\)なので(16.6)から
+    \[
+    \mathcal{L}_\text{gauge} = - \frac{1}{4} g^2 (\epsilon^{eab} A_\kappa^a A_\lambda^b) (\epsilon^{ecd}A^{\kappa c}A^{\lambda d}) + \cdots
+    \]
+    \((abcd) = (1133)\)となるのは
+    <ul>
+      <li>\(a=1\), \(b=3\), \(c=1\), \(d=3\)</li>
+      <li>\(a=3\), \(b=1\), \(c=3\), \(d=1\)</li>
+      <li>\(a=1\), \(b=3\), \(c=3\), \(d=1\)</li>
+      <li>\(a=3\), \(b=1\), \(c=1\), \(d=3\)</li>
+    </ul>
+    の場合．\((abcd) = (2233)\)も同様に計算すれば
+    \[
+    - \frac{g^2}{2} \left( A_\kappa^1 A^{\kappa1} A_\lambda^3 A^{\lambda3}
+    + A_\kappa^2 A^{\kappa2} A_\lambda^3 A^{\lambda3}
+    - A_\kappa^1 A^{\kappa3} A_\lambda^1 A^{\lambda3}
+    - A_\kappa^2 A^{\kappa3} A_\lambda^2 A^{\lambda3} \right) .
+    \]
+    (20.63)(20.64)(20.72)から
+    \[
+    A_\mu^1 = \frac{W^+_\mu + W^-_\mu}{\sqrt{2}} , \quad
+    A_\mu^2 = i \frac{W^+_\mu - W^-_\mu}{\sqrt{2}} , \quad
+    \quad A_\mu^3 = \frac{1}{\sin\theta_w} A_\mu
+    \]
+    なので，
+    \begin{align*}
+      = g^2 \left( A^\kappa W^+_\kappa A^\lambda W^-_\lambda - W^+_\kappa W^{{-}\kappa} A_\lambda A^\lambda \right) .
+    \end{align*}
+
+    \(A^\mu A^\nu W^+_\rho W^-_\sigma\)との縮約を考える．
+    第１項は
+    <ul>
+      <li>\(\kappa=\mu\), \(\lambda=\nu\), \(\lambda=\rho\), \(\kappa=\sigma\)</li>
+      <li>\(\kappa=\nu\), \(\lambda=\mu\), \(\lambda=\rho\), \(\kappa=\sigma\)</li>
+    </ul>
+    の縮約が可能で，それぞれ\(\delta^\mu_\sigma \delta^\nu_\rho\)および\(\delta^\mu_\rho \delta^\nu_\sigma\)となる．
+    第２項は\(A^\lambda\)の縮約が２通りあるので\(2g^{\mu\nu} g_{\rho\sigma}\)．
+
+    以上から
+    <div align="center">
+      <img src="./svg/fp3_A_A_W_W_vertex.svg" width="360pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (Aar) at (45: 1.5) {\(A^\nu\)};
+        \vertex (Aal) at (135: 1.5) {\(A_\mu\)};
+        \vertex (Wp) at (225: 1.5) {\(W^+_\rho\)};
+        \vertex (Wm) at (315: 1.5) {\(W^-_\sigma\)};
+        \diagram*{
+          (Aal) -- [photon] (o) -- [photon] (Aar),
+          (Wp) -- [boson] (o) -- [boson] (Wm)
+        };
+        \draw (o) node [right] {\(W^-\)};
+        \draw (o) node [left] {\(W^+\)};
+      \end{feynman}
+    \end{tikzpicture}}}
+    = ie^2 \left( \delta^\mu_\rho \delta^\nu_\sigma + \delta^\mu_\sigma \delta^\nu_\rho -2g^{\mu\nu} g_{\rho\sigma} \right) .
+    \] -->
+  </p>
+
+  <h4>Feynman rules of ghosts</h4>
+  <p style="text-indent: 10pt;">
+    <a href="./peskin_qft_6.html" target="_blank">ghost Lagrangianの計算</a>から
+    <!-- \eqref{21_56_eigen_ghost_propagator}の計算\footnote{\verb|./src/py.ghost.ipynb|}を続行する． -->
+    \begin{align*}
+      \mathcal{L}_\text{ghost} &= -ie \bar{c}^+ \partial^\mu A_\mu c^+ + ie \bar{c}^- \partial^\mu A_\mu c^- - \frac{g}{2} m_W \bar{c}^+ c^+ h - \frac{g}{2} m_W \bar{c}^- c^- h + \cdots \\
+      &\to ie (\partial^\mu\bar{c}^+) A_\mu c^+ - ie (\partial^\mu\bar{c}^-) A_\mu c^- - \frac{g}{2} m_W \bar{c}^+ c^+ h - \frac{g}{2} m_W \bar{c}^- c^- h + \cdots \\
+    \end{align*}
+    から
+    <div align="center">
+      <img src="./svg/fp3_c_c__vertex.svg" width="500pt">
+    </div>
+    <!-- \[
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (gin) at (330: 1.5) {\(\bar{c}^\pm\)};
+        \vertex (A) at (90: 1.5) {\(A_\mu\)};
+        \vertex (gout) at (210: 1.5) {\(c^\pm\)};
+        \diagram*{
+          (gin) -- [ghost] (o) -- [ghost, momentum=\(p\)] (gout),
+          (o) -- [photon] (A)
+        };
+        \draw (o) node [above right] {\(c^\pm\)};
+        \draw (o) node [above left] {\(\bar{c}^\pm\)};
+      \end{feynman}
+    \end{tikzpicture}}}
+    = \mp iep_\mu ], \quad
+    \vcenter{\hbox{
+      \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (o) at (0, 0);
+        \vertex (gin) at (330: 1.5) {\(\bar{c}^\pm\)};
+        \vertex (h) at (90: 1.5) {\(h\)};
+        \vertex (gout) at (210: 1.5) {\(c^\pm\)};
+        \diagram*{
+          (gin) -- [ghost] (o) -- [ghost] (gout),
+          (o) -- [scalar] (h)
+        };
+        \draw (o) node [above right] {\(c^\pm\)};
+        \draw (o) node [above left] {\(\bar{c}^\pm\)};
+      \end{feynman}
+    \end{tikzpicture}}}
+    = - i \frac{g}{2} m_W .
+    \] -->
+  </p>
+</body>
+</html>
