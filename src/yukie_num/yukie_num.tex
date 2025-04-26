@@ -9,13 +9,15 @@
 \renewcommand{\paragraphmark}[1]{\markright{#1}}
 \renewcommand{\chaptermark}[1]{}
 \renewcommand{\sectionmark}[1]{}
-
 \renewcommand{\postpartname}{巻}
+\usepackage[backend=biber, sorting=none]{biblatex}
+\addbibresource{./src/yukie_num.bib}
 \makeatletter
 \@addtoreset{chapter}{part}
 \makeatother
 \begin{document}
 \chapter*{整数論（雪江明彦）}
+\printbibliography
 \tableofcontents
 \part{初等整数論から$p$進数へ（第1版第4刷）}
 \include{src/yukie_num_1.tex}
