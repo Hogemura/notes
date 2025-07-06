@@ -40,10 +40,10 @@ $\phi(a, b, c, d)=1$となるのは$a, b, c, d$が偶数の時なので，$\ker\
 \paragraph{例2.2.10}
 $\mu\in\mathbb{Z}$，$l$を素数，$\zeta$を$1$の原始$l$乗根，$F=\mathbb{Q}(\zeta)$とする．
 定理I-8.11.7から$\Gal(F/\mathbb{Q})\simeq(\mathbb{Z}/l\mathbb{Z})^\times$．
-命題I-7.4.3(2)から$\lvert\Gal(F/\mathbb{Q})\rvert=l-1=[F:\mathbb{Q}]$．
+命題I-7.4.3 (2)から$\lvert\Gal(F/\mathbb{Q})\rvert=l-1=[F:\mathbb{Q}]$．
 よって，$\Hom_\mathbb{Q}^\text{al}(F, \overline{\mathbb{Q}})=\{\sigma_1, \ldots, \sigma_{l-1}\}$．
 
-$\mu=a^l\ (a\in F^\times)$と仮定する．命題I-8.1.18(2)から
+$\mu=a^l\ (a\in F^\times)$と仮定する．命題I-8.1.18 (2)から
 \[\N_{F/\mathbb{Q}}(\mu)=\N_{F/\mathbb{Q}}(a^l)=[\N_{F/\mathbb{Q}}(a)]^l=\prod_{i=1}^{l-1}\sigma_i(\mu)=\prod_{i=1}^{l-1}\mu=\mu^{l-1}=a^{l(l-1)}.\]
 補題I-8.1.17から$\N_{F/\mathbb{Q}}(a)\in\mathbb{Q}$なので互いに素な$b, c\in\mathbb{Z}$によって$\N_{F/\mathbb{Q}}(a)=c/b$．
 上の式に代入して$c^l=(ba^{l-1})^l$，よって$c=ba^{l-1}$となり矛盾．以上から$\mu\not\in(F^\times)^l$．
@@ -72,7 +72,7 @@ $F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)
 \end{screen}
 \begin{proof}
   $g(x)\in A[x]$なので$\sqrt[e]{\mu}\in L$は$A$上整，すなわち$B$の元となり$\varDelta_{L/K}(1, \sqrt[e]{\mu}, \ldots, \sqrt[e]{\mu}^{n-1})=\varDelta(g)\in A\setminus\mathfrak{p}\subset A_\mathfrak{p}^\times$（命題1.9.9）．
-  補題1.7.3(2)から$\{ 1, \sqrt[e]{\mu}, \ldots, \sqrt[e]{\mu}^{n-1} \}$は$B$に含まれる$L$の$K$基底となり，補題1.8.3から$\varDelta_{L/K, \mathfrak{p}}=A$．
+  補題1.7.3 (2)から$\{ 1, \sqrt[e]{\mu}, \ldots, \sqrt[e]{\mu}^{n-1} \}$は$B$に含まれる$L$の$K$基底となり，補題1.8.3から$\varDelta_{L/K, \mathfrak{p}}=A$．
   $\varDelta_{L/K}$は$\mathfrak{p}$で割り切れないのでDedekindの判別定理から$\mathfrak{p}$は$L$で不分岐．
 \end{proof}
 
@@ -106,7 +106,7 @@ $F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)
 \begin{proof}
   命題1.9.9から$\varDelta_{K/\mathbb{Q}}(1, t, t^2)=\varDelta(f)=49$．
   $\{1, t, t^2\}$は$K=\mathbb{Q}(t)$の$\mathbb{Q}$基底で，$\mathcal{O}_K$に含まれる．
-  よって系1.7.5(2)から$\varDelta_{K/\mathbb{Q}}(1, t, t^2)=(\mathcal{O}_K:\mathbb{Z}[t])^2\varDelta_K$となり従う．
+  よって系1.7.5 (2)から$\varDelta_{K/\mathbb{Q}}(1, t, t^2)=(\mathcal{O}_K:\mathbb{Z}[t])^2\varDelta_K$となり従う．
 \end{proof}
 
 \begin{screen}
@@ -118,9 +118,9 @@ $F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)
   従って，定理1.3.23から，$7\mathbb{Z}$の上にある$\mathcal{O}_K$の素イデアルは$1$個で，$K$の完備化は$\mathbb{Q}_7(t)$．
   $\mathbb{Q}_7[t]$の整数環は$\mathbb{Z}_7[t]$なので，再び定理1.3.23から$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_7\simeq\mathbb{Z}_7[t]$．
   さらに，$\mathbb{Z}[t]\otimes_\mathbb{Z}\mathbb{Z}_7 \simeq \mathbb{Z}_7[t]$で，これらの同型は同じ写像である（$a \otimes b \mapsto ab$）．
-  従って，命題1.8.9(3)から$(B_\mathfrak{p}:M\otimes_AA_\mathfrak{p}) = (B\otimes_A\widehat{A}_\mathfrak{p}:M\otimes_A\widehat{A}_\mathfrak{p}) = (\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_7:\mathbb{Z}[t]\otimes_\mathbb{Z}\mathbb{Z}_7) = 1$．
+  従って，命題1.8.9 (3)から$(B_\mathfrak{p}:M\otimes_AA_\mathfrak{p}) = (B\otimes_A\widehat{A}_\mathfrak{p}:M\otimes_A\widehat{A}_\mathfrak{p}) = (\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_7:\mathbb{Z}[t]\otimes_\mathbb{Z}\mathbb{Z}_7) = 1$．
 
-  $\mathfrak{p}=p\mathbb{Z}\neq7\mathbb{Z}$に対しては$(B_\mathfrak{p}:M\otimes_AA_\mathfrak{p})$は命題1.8.9(2)から$p$の冪なので$7$の倍数では無い．よって命題1.8.9(1)から$(B:M)=(\mathcal{O}_K:\mathbb{Z}[t])=1$．上の話と合わせて$\varDelta_K=\varDelta_{K/\mathbb{Q}}(1, t, t^2)=49$．
+  $\mathfrak{p}=p\mathbb{Z}\neq7\mathbb{Z}$に対しては$(B_\mathfrak{p}:M\otimes_AA_\mathfrak{p})$は命題1.8.9 (2)から$p$の冪なので$7$の倍数では無い．よって命題1.8.9 (1)から$(B:M)=(\mathcal{O}_K:\mathbb{Z}[t])=1$．上の話と合わせて$\varDelta_K=\varDelta_{K/\mathbb{Q}}(1, t, t^2)=49$．
 \end{proof}
 
 \begin{screen}
@@ -208,7 +208,7 @@ $F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)
   $\beta_1, \ldots, \beta_n\in\mathbb{Z}_p\ (p< n)$とすれば$i\neq j$で$\beta_i\equiv\beta_j\bmod p\mathbb{Z}_p$
 \end{screen}
 \begin{proof}
-  命題I-9.1.31(1)から$\lvert\mathbb{Z}_p/p\mathbb{Z}_p\rvert=p$．
+  命題I-9.1.31 (1)から$\lvert\mathbb{Z}_p/p\mathbb{Z}_p\rvert=p$．
   $\beta_1-\beta_2, \ldots, \beta_1-\beta_n$のうち少なくとも1つが$\equiv0$，もしくは1組が$\equiv$である．
   後者の場合はその二つの差が$\equiv0$となり主張を満たす．
 \end{proof}
@@ -241,7 +241,7 @@ $F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)
 
   例2.3.3と同様に，$A=\mathbb{Z}$，$B=\mathcal{O}_K$，$M=\mathbb{Z}[\alpha]$，$\mathfrak{p}=p\mathbb{Z}$とすれば
   $(B_\mathfrak{p}:M\otimes_AA_\mathfrak{p})=(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p:\mathbb{Z}_p[\alpha])$．
-  命題1.8.9(2)からこれは$\mathcal{N}(\mathfrak{p})=p$の冪．主張の後半は命題1.8.9(1)から従う．
+  命題1.8.9 (2)からこれは$\mathcal{N}(\mathfrak{p})=p$の冪．主張の後半は命題1.8.9 (1)から従う．
 \end{proof}
 
 \paragraph{例2.3.5}~
@@ -319,17 +319,17 @@ $F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)
 %
 %   $2\mathbb{Z}$の上にある$\mathcal{O}_K$の素イデアルを$\mathfrak{p}_1, \ldots, \mathfrak{p}_g$とする．
 %   $\mathfrak{p}_i$によよる$K, \mathcal{O}_K$の完備化を$\widehat{K}_i, \widehat{B}_i$とする．
-%   定理1.3.23(2)から$K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\widehat{K}_1\times\cdots\times\widehat{K}_g$．
+%   定理1.3.23 (2)から$K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\widehat{K}_1\times\cdots\times\widehat{K}_g$．
 %   上で示したように，$K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\mathbb{Q}_2{}^3$なので，$\widehat{K}_1\times\cdots\times\widehat{K}_g\simeq\mathbb{Q}_2{}^3$となる．
 %   体の直積は異なる数の体の直積と同型にはなり得ないので$g=3$．
 %   $\mathbb{Q}_2$の整数環は$\mathbb{Z}_2$なので，$\phi_i$の$\widehat{B}_i$への制限を$\overline{\phi}_i$とすれば補題</a>から$\overline{\phi}_i\colon\widehat{B}_i\simeq\mathbb{Z}_2$となる．
-%   定理1.3.23(2)から$K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\widehat{K}_1\times\widehat{K}_2\times\widehat{K}_3$．
+%   定理1.3.23 (2)から$K\otimes_\mathbb{Q}\mathbb{Q}_2\simeq\widehat{K}_1\times\widehat{K}_2\times\widehat{K}_3$．
 %   さらに，$\phi_1\times\phi_2\times\phi_3$によって$\widehat{K}_1\times\widehat{K}_2\times\widehat{K}_3\simeq\mathbb{Q}_2{}^3$．
 %   これを合成すれば，上で先程構成した$\phi$になり，$\alpha\otimes_\mathbb{Q}1\mapsto(\beta_1, \beta_2, \beta_3)$．
 %   Thm1.3.23から，上の同型を$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_2$に制限すれば，$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_2\simeq\mathbb{Z}_2{}^3$が得られ，やはり$\alpha \otimes 1\mapsto(\beta_1, \beta_2, \beta_3)$．
-%   （定理1.3.23(2)の同型と$\overline{\phi}_1\times\cdots\times\overline{\phi}_3$の合成）
+%   （定理1.3.23 (2)の同型と$\overline{\phi}_1\times\cdots\times\overline{\phi}_3$の合成）
 %
-%   $g=3$なので定理1.3.23(4)(5)から$[\widehat{K}_i:\mathbb{Q}_2]=1$となり，補題</a>から$\widehat{K}_i=\mathbb{Q}_2$．
+%   $g=3$なので定理1.3.23 (4)(5)から$[\widehat{K}_i:\mathbb{Q}_2]=1$となり，補題</a>から$\widehat{K}_i=\mathbb{Q}_2$．
 %   さらにその整数環は$\mathbb{Z}_2$．つまり上の$\phi$と$\overline{\phi}$は自己同型．
 % \end{proof}
 
@@ -338,9 +338,9 @@ $F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)
 \end{screen}
 \begin{proof}
   $\alpha^2-\alpha\in\mathcal{O}_K$である．
-  $\ord_p(1/2)=0$なので$\lvert1/2\rvert=1$，すなわち$1/2\in\mathbb{Z}_p$（定理I-9.1.26(5)）．
+  $\ord_p(1/2)=0$なので$\lvert1/2\rvert=1$，すなわち$1/2\in\mathbb{Z}_p$（定理I-9.1.26 (5)）．
   よって$(\alpha^2-\alpha) \otimes 1/2\in\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p$．
-  % （定理1.3.23(2)により，これを$\widehat{\mathcal{O}}_1\times\cdots$にうつせば，$(\phi_1(\alpha^2-2)/2, \ldots)$となる）
+  % （定理1.3.23 (2)により，これを$\widehat{\mathcal{O}}_1\times\cdots$にうつせば，$(\phi_1(\alpha^2-2)/2, \ldots)$となる）
 \end{proof}
 
 \begin{screen}
@@ -348,7 +348,7 @@ $F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)
 \end{screen}
 \begin{proof}
   $p\mathbb{Z}$の上にある$\mathcal{O}_K$の素イデアルを$P_1, \ldots$，$P_i$進距離による$\mathcal{O}_K$の完備化を$\widehat{\mathcal{O}}_i$とする．
-  定理1.3.23(2)から$\phi_i\colon\mathcal{O}_K\hookrightarrow\widehat{\mathcal{O}}_i$として$\phi\colon\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\ni x\otimes y\mapsto(\phi_1(x)y, \ldots)\in\widehat{\mathcal{O}}_1\times\cdots$なので，$\phi_i(\gamma)\in\widehat{\mathcal{O}}_i$．
+  定理1.3.23 (2)から$\phi_i\colon\mathcal{O}_K\hookrightarrow\widehat{\mathcal{O}}_i$として$\phi\colon\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\ni x\otimes y\mapsto(\phi_1(x)y, \ldots)\in\widehat{\mathcal{O}}_1\times\cdots$なので，$\phi_i(\gamma)\in\widehat{\mathcal{O}}_i$．
   よって全ての$p$を考えれば，$\mathcal{O}_K$の全ての素イデアル$P$に対し，$P$進距離による完備化を$\widehat{\mathcal{O}}$とすれば$\gamma \in \widehat{\mathcal{O}}$．
   よって命題1.2.14から$\gamma\in\mathcal{O}_K$．
 \end{proof}
@@ -380,7 +380,7 @@ $F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)
   \end{align*}
   で，判別式は
   \[\varDelta(g)=-2012b^6 + 30180cb^5 - 175547c^2b^4 + 487910c^3b^3 - 634283c^4b^2 + 311860c^5b - 50300c^6.\]
-  系1.7.5(2)，命題1.9.9から
+  系1.7.5 (2)，命題1.9.9から
   \begin{align*}
     (\mathcal{O}_K:\mathbb{Z}[x])^2 &= \frac{\varDelta(c)}{\varDelta_K} = 4b^6+60cb^5+349c^2b^4-970c^3b^3+1261c^4b^2-620c^5b+100c^6\\
     &\equiv c^2b^2(349b^2+1261c^2)\equiv0\bmod4
@@ -462,12 +462,12 @@ $F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)
 \end{screen}
 \begin{proof}
   $L, M$における$\mathcal{O}_K =: A$の整閉包を$B, C$とする．
-  命題1.5.3(2)から$A$, $B$, $C$は完備離散付値環で，$\phi(B)=C$となる（追加補題\ref{iso_field_integral_closure}, p.\pageref{iso_field_integral_closure}）．
+  命題1.5.3 (2)から$A$, $B$, $C$は完備離散付値環で，$\phi(B)=C$となる（追加補題\ref{iso_field_integral_closure}, p.\pageref{iso_field_integral_closure}）．
   それぞれの素イデアルを$\mathfrak{p}, P, \mathcal{P}$とすると，$\phi(P)=\mathcal{P}$となることは容易に分かる．
-  命題I-6.5.8(2)から$S=A\setminus\mathfrak{p}$は$A^\times$に含まれ，$S \subset (B \setminus P) \subset B^\times$，$S\subset C^\times$が成立する．
+  命題I-6.5.8 (2)から$S=A\setminus\mathfrak{p}$は$A^\times$に含まれ，$S \subset (B \setminus P) \subset B^\times$，$S\subset C^\times$が成立する．
   よって$A_\mathfrak{p} = S^{-1}A = A$，$B_\mathfrak{p} = B$，$C_\mathfrak{p} = C$である．
 
-  $\{v_1, \ldots, v_n\}$を$B$の$A$基底とする（命題I-8.1.24(3)）．$\phi$は$K$の元を不変にするので$A$の元も変えない．
+  $\{v_1, \ldots, v_n\}$を$B$の$A$基底とする（命題I-8.1.24 (3)）．$\phi$は$K$の元を不変にするので$A$の元も変えない．
   $a_1v_1+\cdots+a_nv_n=0$ならば$a_1=\cdots=a_n=0$．
   よって，$a_1\phi(v_1)+\cdots+a_n\phi(v_n)=0$ならば$a_1=\cdots=a_n=0$なので$\{\phi(v_1), \ldots, \phi(v_n)\}$は$A$上一次独立．
   $\forall c\in C$に対し$\phi^{-1}(c)=a_1v_1+\cdots+a_nv_n$となる$a_1, \ldots\in A$が存在する．
@@ -486,7 +486,7 @@ $F^\times\supset R=\{\, \mu^i(F^\times)^l\mid1\leq i\leq l\, \}\supset(F^\times)
 \end{screen}
 \begin{proof}
   命題1.9.9から$\varDelta_{K/\mathbb{Q}}(1, \alpha, \alpha^2) = \varDelta(f) = -436$．
-  系1.7.5(2)から$\varDelta_{K/\mathbb{Q}}(1, \alpha, \alpha^2) = (\mathcal{O}_K:\mathbb{Z}[\alpha])^2\varDelta_K$．
+  系1.7.5 (2)から$\varDelta_{K/\mathbb{Q}}(1, \alpha, \alpha^2) = (\mathcal{O}_K:\mathbb{Z}[\alpha])^2\varDelta_K$．
   命題1.8.5から$\varDelta_K$は$4$で割り切れるので，$\varDelta_K = -436$．
   $(\mathcal{O}_K:\mathbb{Z}[\alpha]) = 1$となるので，$\mathcal{O}_K = \mathbb{Z}[\alpha]$．
 \end{proof}
@@ -514,28 +514,28 @@ $\gamma$の$\mathbb{Q}_2$上共軛を$\overline{\gamma}$とすれば
 \end{align*}
 とする．命題I-8.1.19から$A, B\in\mathbb{Z}_2$．
 $4B=A^2+b^2[4\N_{F/\mathbb{Q}_2}(\alpha)-\Tr_{F/\mathbb{Q}_2}(\alpha)^2]\in4\mathbb{Z}_2$なので$b^2[4\N_{F/\mathbb{Q}_2}(\alpha)-\Tr_{F/\mathbb{Q}_2}(\alpha)^2]\in\mathbb{Z}_2$．
-$\ord_2(4\N_{F/\mathbb{Q}_2}(\alpha)-\Tr_{F/\mathbb{Q}_2}(\alpha)^2)=0$なので$\ord_2(b)\geq0$，つまり$b\in\mathbb{Z}_2$（命題1.1.3，定理I-9.1.26(5)）．
+$\ord_2(4\N_{F/\mathbb{Q}_2}(\alpha)-\Tr_{F/\mathbb{Q}_2}(\alpha)^2)=0$なので$\ord_2(b)\geq0$，つまり$b\in\mathbb{Z}_2$（命題1.1.3，定理I-9.1.26 (5)）．
 $B$の定義式で$\ord_2$を考えて$a\in\mathbb{Z}_2$．
 従って，$\mathcal{O}_F \subset \mathbb{Z}_2[\gamma]$であり，$\mathcal{O}_F = \mathbb{Z}_2[\gamma]$．
 
 $y^2+(c+2)/4y+(c+d+1)/16$の判別式は$\equiv1\bmod4$．
 よって命題1.9.9から$\varDelta_{F/\mathbb{Q}_2}(1, \gamma)$は$2$で割り切れないので，補題1.8.3から$\varDelta_{F/\mathbb{Q}_2, 2}$は$2\mathbb{Z}_2$で割り切れず，$\varDelta_{F/\mathbb{Q}_2}$も$2\mathbb{Z}_2$で割り切れない．
 よって，Dedekindの判別定理から$2\mathbb{Z}_2$は$F/\mathbb{Q}_2$で不分岐．
-定理I-9.1.26(7)から$2\mathbb{Z}_2$は$\mathbb{Z}_2$の唯一の素イデアルなので$F/\mathbb{Q}_2$は不分岐拡大．
+定理I-9.1.26 (7)から$2\mathbb{Z}_2$は$\mathbb{Z}_2$の唯一の素イデアルなので$F/\mathbb{Q}_2$は不分岐拡大．
 
 $\varDelta_{K/\mathbb{Q}, 2}=\varDelta_{\mathbb{Q}_2/\mathbb{Q}_2}\varDelta_{F/\mathbb{Q}_2}$は$2$で割り切れないので，$\varDelta_{K}$は$2$で割り切れない（命題1.8.5）．
-命題1.9.9から系1.7.5(2)から$\varDelta(f)=-5296=(\mathcal{O}_K:\mathbb{Z}[\alpha])^2\varDelta_K$なので$\varDelta_K=-331$，$(\mathcal{O}_K:\mathbb{Z}[\alpha])=4$．
+命題1.9.9から系1.7.5 (2)から$\varDelta(f)=-5296=(\mathcal{O}_K:\mathbb{Z}[\alpha])^2\varDelta_K$なので$\varDelta_K=-331$，$(\mathcal{O}_K:\mathbb{Z}[\alpha])=4$．
 
 \paragraph{命題2.3.9}
 まず，$p\mid a$もしくは$p\mid b$について$\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p= V\otimes_\mathbb{Z}\mathbb{Z}_p$を証明し，$(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p:V\otimes_\mathbb{Z}\mathbb{Z}_p)=1$．
 次に，$p\nmid 3, a, b$に対しても同じことが証明できる．
 
 \begin{itemize}
-  \item $a$が$3$の倍数なら素数$p$は上のいずれかに属する．よって命題1.8.9(1)(3)から$(\mathcal{O}_K:V)=1$
-  \item $a, b$が$3$の倍数でなければ，命題1.8.9(3)から，$p\neq3$については，命題1.8.9(1)の右辺の因子は$1$．よって命題1.8.9(1)から$(\mathcal{O}_K:V)=(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_3:V\otimes_\mathbb{Z}\mathbb{Z}_3)$
+  \item $a$が$3$の倍数なら素数$p$は上のいずれかに属する．よって命題1.8.9 (1)(3)から$(\mathcal{O}_K:V)=1$
+  \item $a, b$が$3$の倍数でなければ，命題1.8.9 (3)から，$p\neq3$については，命題1.8.9 (1)の右辺の因子は$1$．よって命題1.8.9 (1)から$(\mathcal{O}_K:V)=(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_3:V\otimes_\mathbb{Z}\mathbb{Z}_3)$
   \begin{itemize}[label=•]
     \item $a^2b^4\not\equiv1\bmod9$なら$(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_3:V\otimes_\mathbb{Z}\mathbb{Z}_3)=1$なので$(\mathcal{O}_K:V)=1$
-    \item $a^2b^4\equiv1\bmod9$なら，命題1.8.9(2)から$(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_3:V\otimes_\mathbb{Z}\mathbb{Z}_3)$は$3$の冪．
+    \item $a^2b^4\equiv1\bmod9$なら，命題1.8.9 (2)から$(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_3:V\otimes_\mathbb{Z}\mathbb{Z}_3)$は$3$の冪．
     $\varDelta_{K/\mathbb{Q}, 3}=(3)$なので$\varDelta_K$の$\ord_3$は$1$．よって，$(\mathcal{O}_K:V)=3$
   \end{itemize}
 \end{itemize}
@@ -552,7 +552,7 @@ $\varDelta_{K/\mathbb{Q}, 2}=\varDelta_{\mathbb{Q}_2/\mathbb{Q}_2}\varDelta_{F/\
   $p$の上にある$\mathcal{O}_K$の素イデアルによる$K$の完備化を$\widehat{K}_1, \ldots, \widehat{K}_g$とする．
   $\beta_1 \in K \subset \widehat{K}_i$なので$\mathbb{Q}_p(\beta_1) \subset \widehat{K}_i$となり$[\widehat{K}_i:\mathbb{Q}_p(\beta_1)]\geq1$．
   よって$[\widehat{K}_i:\mathbb{Q}_p]\geq3$．
-  定理1.3.23(4)(5)から$[\widehat{K}_1:\mathbb{Q}_p] + \cdots + [\widehat{K}_g:\mathbb{Q}_p] = 3$なので$g=1$．
+  定理1.3.23 (4)(5)から$[\widehat{K}_1:\mathbb{Q}_p] + \cdots + [\widehat{K}_g:\mathbb{Q}_p] = 3$なので$g=1$．
   すなわち，$p\mathbb{Z}$の上にある$\mathcal{O}_K$の素イデアルは1つ．
   $\widehat{K}_1$を$\widehat{K}$と書けば，$[\widehat{K}:\mathbb{Q}_p]=3$で$[\widehat{K}:\mathbb{Q}_p(\beta_1)]=1$．
   従って，$\widehat{K} = \mathbb{Q}_p(\beta_1)$．$\widehat{K}$の整数環を$\widehat{\mathcal{O}}_K$とする．
@@ -564,7 +564,7 @@ $\varDelta_{K/\mathbb{Q}, 2}=\varDelta_{\mathbb{Q}_2/\mathbb{Q}_2}\varDelta_{F/\
   \[3\ord_P(\beta_1)=\ord_P(\beta_1{}^3)=\ord_P(ab^2)=3\ord_p(ab^2)=3.\]
   よって$\ord_P(\beta_1)=1$となり$\beta_1$は$\widehat{\mathcal{O}}_K$の素元．
   再び命題1.10.7から$\widehat{\mathcal{O}}_K=\mathbb{Z}_p[\beta_1]$．
-  定理1.3.23(6)から$p\mathbb{Z}$の分岐指数は$3$なので，$K/\mathbb{Q}$で完全分岐．
+  定理1.3.23 (6)から$p\mathbb{Z}$の分岐指数は$3$なので，$K/\mathbb{Q}$で完全分岐．
 
   $V \subset \mathcal{O}_K$なので，$V \otimes_\mathbb{Z} \mathbb{Z}_p \subset \mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p$．
   $b \in \mathbb{Z}_p^\times$，$\beta_2 = \beta_1{}^2/b$に注意して，テンソル積の普遍性から加群準同型$\phi \colon V \otimes_\mathbb{Z} \mathbb{Z}_p \to \mathbb{Z}_p[\beta_1]$を得る（$\sigma \colon \mathcal{O}_K \hookrightarrow \widehat{\mathcal{O}}_K$）．
@@ -607,10 +607,10 @@ $\varDelta_{K/\mathbb{Q}, 2}=\varDelta_{\mathbb{Q}_2/\mathbb{Q}_2}\varDelta_{F/\
   % \end{align*}
   % なので$\phi$が積を保つことも分かる．よって，$\phi$は環準同型．$\phi$は明らかに全射．$\ker\phi=\{0\}$なので単射．よって$\phi\colon V\otimes_\mathbb{Z}\mathbb{Z}_p\simeq\mathbb{Z}_p[\beta_1]$．
   $\phi$が$\mathbb{Z}_p$代数の同型であることは容易に分かる．
-  定理1.3.23(2)から同型
+  定理1.3.23 (2)から同型
   \[ \mathcal{O}_k \otimes_\mathbb{Z} \mathbb{Z}_p \ni v \otimes c \mapsto \sigma(v)c \in \widehat{\mathcal{O}}_K = \mathbb{Z}_p[\beta_1] \]
   の存在が分かるので，$\mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p = V \otimes_\mathbb{Z} \mathbb{Z}_p$．
-  % 定理1.3.23(2)から同型
+  % 定理1.3.23 (2)から同型
   % \[\mathbb{Z}_p[\beta_1]\ni b_0+\beta_1b_1+\beta_1{}^2b_2/b\mapsto1\otimes_\mathbb{Z}b_0+\beta_1\otimes_\mathbb{Z}b_1+\beta_1{}^2\otimes_\mathbb{Z}b_2/b\in\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\]
   % が存在する．上の同型と合わせて，同型
   % \[V\otimes_\mathbb{Z}\mathbb{Z}_p\ni1\otimes_\mathbb{Z}b_0+\beta_1\otimes_\mathbb{Z}b_1+\beta_2\otimes_\mathbb{Z}b_2\mapsto1\otimes_\mathbb{Z}b_0+\beta_1\otimes_\mathbb{Z}b_1+\beta_1{}^2\otimes_\mathbb{Z}b_2/b\in\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p\]
@@ -678,8 +678,8 @@ $\varDelta_{K/\mathbb{Q}, 2}=\varDelta_{\mathbb{Q}_2/\mathbb{Q}_2}\varDelta_{F/\
   \]
 
   $\mathbb{Z}_{(p)} = S^{-1}\mathbb{Z}$に対して命題1.11.14の適用を考えよう．
-  命題1.11.14(2)から$S^{-1}\mathcal{O}_K$は$S^{-1}\mathcal{O}_N, S^{-1}\mathcal{O}_M$で生成される．
-  定理1.11.16(2)の証明と同様に，$S^{-1}\mathcal{O}_N$の$S^{-1}\mathbb{Z}$基底を$\{v_1, v_2\}$，
+  命題1.11.14 (2)から$S^{-1}\mathcal{O}_K$は$S^{-1}\mathcal{O}_N, S^{-1}\mathcal{O}_M$で生成される．
+  定理1.11.16 (2)の証明と同様に，$S^{-1}\mathcal{O}_N$の$S^{-1}\mathbb{Z}$基底を$\{v_1, v_2\}$，
   $S^{-1}\mathcal{O}_M$の$S^{-1}\mathbb{Z}$基底を$\{w_1, w_2\}$とすれば，$S^{-1}\mathcal{O}_K$の$S^{-1}\mathbb{Z}$基底は$\{v_1w_1, \ldots, v_2w_2\}$．
   同定理(4)の証明と同様に$\varDelta_{K/\mathbb{Q}, p}= \varDelta_{N/\mathbb{Q}, p}{}^2\varDelta_{M/\mathbb{Q}, p}{}^2$となる．
 
@@ -699,13 +699,13 @@ $\varDelta_{K/\mathbb{Q}, 2}=\varDelta_{\mathbb{Q}_2/\mathbb{Q}_2}\varDelta_{F/\
   $S^{-1}\mathcal{O}_N$の$S^{-1}\mathbb{Z}$基底は$\{1, \sqrt{b}\}$となる．
   この場合は，上での$s_i, t_j$は$1$として良い．
 
-  命題2.5.4(1)なら$\{1, (1+\sqrt{a})/2\}$が$S^{-1}\mathcal{O}_M$の$S^{-1}\mathbb{Z}$基底になる．
+  命題2.5.4 (1)なら$\{1, (1+\sqrt{a})/2\}$が$S^{-1}\mathcal{O}_M$の$S^{-1}\mathbb{Z}$基底になる．
 \end{proof}
 
 \section{$4$次巡回体}
 \paragraph{命題2.6.4}
 $\{1, \alpha, \sqrt{d}, \beta\}$で生成される$\mathbb{Z}$加群を$V$とする．
-$\varDelta_{K/\mathbb{Q}}(1, \alpha, \sqrt{d}, \beta)=(\mathcal{O}_K:V)^2\varDelta_K=2^8d^3$が成立する（系1.7.5(2)）．
+$\varDelta_{K/\mathbb{Q}}(1, \alpha, \sqrt{d}, \beta)=(\mathcal{O}_K:V)^2\varDelta_K=2^8d^3$が成立する（系1.7.5 (2)）．
 $\forall p\mid d$に対し，$\varDelta{K/\mathbb{Q}, p}=(p^3)$なので$p^3\mid\varDelta_K$．
 よって$(\mathcal{O}_K:V)^2$は$2$の冪乗．
 命題1.8.9から$(\mathcal{O}_K:V)=\prod_p(\mathcal{O}_K\otimes_\mathbb{Z}\mathbb{Z}_p:V\otimes_\mathbb{Z}\mathbb{Z}_p)$となるが，

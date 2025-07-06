@@ -6,7 +6,7 @@
   自然な写像$\phi\colon\mathfrak{p}^n/\mathfrak{p}^m \ni a + \mathfrak{p}^m \mapsto a + \mathfrak{p}^mA_\mathfrak{p} \in \mathfrak{p}^nA_\mathfrak{p}/\mathfrak{p}^mA_\mathfrak{p}$は単射
 \end{screen}
 \begin{proof}
-  $\ker(\phi) = (\mathfrak{p}^mA_\mathfrak{p}\cap\mathfrak{p}^n) + \mathfrak{p}^m$であるが，命題I-6.5.9(4)から$\mathfrak{p}^mA_\mathfrak{p}\cap\mathfrak{p}^n\subset\mathfrak{p}^mA_\mathfrak{p}\cap A = \mathfrak{p}^m$なので，$\ker(\phi)\subset 0 + \mathfrak{p}^m$．
+  $\ker(\phi) = (\mathfrak{p}^mA_\mathfrak{p}\cap\mathfrak{p}^n) + \mathfrak{p}^m$であるが，命題I-6.5.9 (4)から$\mathfrak{p}^mA_\mathfrak{p}\cap\mathfrak{p}^n\subset\mathfrak{p}^mA_\mathfrak{p}\cap A = \mathfrak{p}^m$なので，$\ker(\phi)\subset 0 + \mathfrak{p}^m$．
   $\ker(\phi)\supset 0 + \mathfrak{p}^m$は明らかなので，$\ker(\phi) = 0 + \mathfrak{p}^m$．
 \end{proof}
 
@@ -27,7 +27,7 @@
 \begin{proof}
   $\ker(\phi) = \set{b + \mathfrak{p}^{m-n}\in A/\mathfrak{p}^{m-n} | b\in A, bx\in\mathfrak{p}^m}$である．
   $\ord_\mathfrak{p}(bx)\geq m$，$\ord_\mathfrak{p}(x) = n$なので，$\ord_\mathfrak{p}(b)\geq m-n$であり，$b\in\mathfrak{p}^{m-n}A_\mathfrak{p}$．
-  $b\in A$でもあるので，命題I-6.5.9(4)から$b\in A\cap\mathfrak{p}^{m-n}A_\mathfrak{p} = \mathfrak{p}^{m-n}$．
+  $b\in A$でもあるので，命題I-6.5.9 (4)から$b\in A\cap\mathfrak{p}^{m-n}A_\mathfrak{p} = \mathfrak{p}^{m-n}$．
   従って，$\ker(\phi) = 0 + \mathfrak{p}^{m-n}$．
 \end{proof}
 
@@ -40,7 +40,7 @@
 \end{proof}
 
 \section{分岐と完備化}
-\paragraph{注1.3.6(2)}~
+\paragraph{注1.3.6 (2)}~
 \begin{screen}
   $\mathfrak{p}$がDedekind環$A$の素イデアル，Dedekind環$B$が$A$の整閉包，$P_1, \ldots, P_t\in B$を$\mathfrak{p}$の上にある全ての素イデアルとした場合，イデアル$\mathfrak{p}B$の素イデアル分解が，$\mathfrak{p}B = P_1{}^{e_1}\cdots P_t{}^{e_t}\ (e_i>0)$であり，これらが$\mathfrak{p}$の上にある$B$の全ての素イデアルである
 \end{screen}
@@ -56,7 +56,7 @@
   命題I-8.3.15により$\mathfrak{p}BB_{P_i} = P_i{}^{e_i}$なる$e_i\in\mathbb{Z}$が存在．
   $\mathfrak{p}B\in P_i$なので命題I-8.3.12から
   \[\mathfrak{p}B = \bigcap_i(\mathfrak{p}BB_{P_i}\cap B) = \bigcap_i(P_i{}^{e_i}B_{P_i}\cap B) = \bigcap_i P_i{}^{e_i} = P_1{}^{e_1}\cdots P_t{}^{e_t}\]
-  が命題I-6.5.9(4)と中国剰余定理から成立．
+  が命題I-6.5.9 (4)と中国剰余定理から成立．
   $\mathfrak{p}B\subset P_i$ならば$1\in B$を考え$\mathfrak{p}\subset P_i$．
   逆に，$\mathfrak{p}\subset P_i$ならば両辺に$B$をかけて（$P_i$は$B$のイデアルなので）$\mathfrak{p}B\subset P_i$．
   よって，$\mathfrak{p}\subset P_i$なる全ての素イデアル$P_1, \ldots, P_t$によって$\mathfrak{p}B = P_1{}^{e_1}\cdots P_t{}^{e_t} ~ (e_i>0)$．
@@ -192,7 +192,7 @@
 \begin{screen}
   \begin{thm}
     \label{Thm_1_3_23_2}
-    定理1.3.23(2)の環同型について
+    定理1.3.23 (2)の環同型について
   \end{thm}
 \end{screen}
 p.24の終盤に書かれているように$\phi_i\colon B\hookrightarrow\widehat{B}_i$として，環同型
@@ -397,11 +397,11 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   よって群準同型$\phi\colon D_1\to\Aut_{\widehat{K}_\mathfrak{p}}^\text{al}(\widehat{L}_1)$を考えることができる．
   ここで，$\sigma$が$\widehat{L}_1$に自明に作用するなら，$\sigma$は$L$にも自明に作用するので，$\ker\phi = 1$，つまり$\phi$は単射である．
   よって，$|D_1|\leq|\Aut_{\widehat{K}_\mathfrak{p}}^\text{al}(\widehat{L}_1)|$．
-  $L/K$はGalois拡大であるので，命題1.4.7から$|D_1| = ef$．命題I-7.4.3(1)から$|\Aut_{\widehat{K}_\mathfrak{p}}^\text{al}(\widehat{L}_1)|\leq[\widehat{L}_1:\widehat{K}_\mathfrak{p}]$．
-  さらに定理1.3.23(4)から$[\widehat{L}_1:\widehat{K}_\mathfrak{p}] = ef$．
+  $L/K$はGalois拡大であるので，命題1.4.7から$|D_1| = ef$．命題I-7.4.3 (1)から$|\Aut_{\widehat{K}_\mathfrak{p}}^\text{al}(\widehat{L}_1)|\leq[\widehat{L}_1:\widehat{K}_\mathfrak{p}]$．
+  さらに定理1.3.23 (4)から$[\widehat{L}_1:\widehat{K}_\mathfrak{p}] = ef$．
   以上から$ef = |D_1|\leq|\Aut_{\widehat{K}_\mathfrak{p}}^\text{al}(\widehat{L}_1)|\leq[\widehat{L}_1:\widehat{K}_\mathfrak{p}] = ef$．
   よって$\phi$は全単射で$|\Aut_{\widehat{K}_\mathfrak{p}}^\text{al}(\widehat{L}_1)| = [\widehat{L}_1:\widehat{K}_\mathfrak{p}]$．
-  命題I-7.4.3(2)から$\widehat{L}_1/\widehat{K}_\mathfrak{p}$はGalois拡大である．
+  命題I-7.4.3 (2)から$\widehat{L}_1/\widehat{K}_\mathfrak{p}$はGalois拡大である．
   さらに，$\Gal(\widehat{L}_1/\widehat{K}_\mathfrak{p})$の元を$L$に制限すれば$D_1\simeq\Gal(\widehat{L}_1/\widehat{K}_\mathfrak{p})$．
 \end{proof}
 
@@ -430,7 +430,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   $w_1, \ldots, w_n\in\mathcal{O}_K$なので，$B\in M_n(\mathbb{Z})$が存在し$\boldsymbol{w} = B\boldsymbol{v}$．
   同様に，$C\in\ M_n(\mathbb{Z})$が存在し$\boldsymbol{v} = C\boldsymbol{w}$．
   よって$B, C$は互いの逆行列になっていて，主張の$A\in\GL_n(\mathbb{Z})$が存在する．
-  系I-6.7.9(1)から$\det A\in\mathbb{Z}^\times = \{\pm 1\}$．
+  系I-6.7.9 (1)から$\det A\in\mathbb{Z}^\times = \{\pm 1\}$．
 \end{proof}
 
 \begin{screen}
@@ -458,7 +458,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   $\det P\in A_\mathfrak{p}^\times$
 \end{screen}
 \begin{proof}
-  $\ord_\mathfrak{p}(\varDelta_{L/K}(v_1, \ldots, v_n))\leq 1$なので，加法的付値の性質（命題I-8.4.5(1)）から，
+  $\ord_\mathfrak{p}(\varDelta_{L/K}(v_1, \ldots, v_n))\leq 1$なので，加法的付値の性質（命題I-8.4.5 (1)）から，
   \[\ord_\mathfrak{p}((\det P)^2\varDelta_{L/K}(w_1, \ldots, w_n)) = 2\ord_\mathfrak{p}(\det P) + \ord_\mathfrak{p}(\varDelta_{L/K}(w_1, \ldots, w_n))\leq 1.\]
   よって，$\ord_\mathfrak{p}(\det P) = 0$であり，$\det P\in A_\mathfrak{p}^\times$．
 \end{proof}
@@ -490,7 +490,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
 \end{screen}
 \begin{proof}
   $A\supset\mathfrak{p}_1{}^{a-1}\supset\mathfrak{p}_1{}^a$なので命題I-6.8.22から，$(A/\mathfrak{p}_1{}^a)/(\mathfrak{p}_1{}^{a-1}/\mathfrak{p}_1{}^a)\simeq A/\mathfrak{p}_1{}^{a-1}$．
-  命題1.2.13(1)から$\mathfrak{p}_1{}^{a-1}/\mathfrak{p}_1{}^a\simeq A/\mathfrak{p}_1$なので，$(A/\mathfrak{p}_1{}^a)/(A/\mathfrak{p}_1)\simeq A/\mathfrak{p}_1{}^{a-1}$となり，$((A/\mathfrak{p}_1{^a}):(A/\mathfrak{p}_1)) = |A/\mathfrak{p}_1{}^{a-1}|$．
+  命題1.2.13 (1)から$\mathfrak{p}_1{}^{a-1}/\mathfrak{p}_1{}^a\simeq A/\mathfrak{p}_1$なので，$(A/\mathfrak{p}_1{}^a)/(A/\mathfrak{p}_1)\simeq A/\mathfrak{p}_1{}^{a-1}$となり，$((A/\mathfrak{p}_1{^a}):(A/\mathfrak{p}_1)) = |A/\mathfrak{p}_1{}^{a-1}|$．
   Lagrangeの定理から，
   \[|A/\mathfrak{p}_1{}^a| = ((A/\mathfrak{p}_1{^a}):(A/\mathfrak{p}_1))|A/\mathfrak{p}_1| = |A/\mathfrak{p}_1{}^{a-1}||A/\mathfrak{p}_1|.\]
   これを繰り返して，$|A/\mathfrak{p}_1{}^a| = |A/\mathfrak{p}_1|^a$．
@@ -716,9 +716,9 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
     $\pi_B\in B$が$A$上整なら$\pi_B$の$K$上最小多項式$f(x)\in K[x]$は$A[x]$の元である
 \end{screen}
 \begin{proof}
-  $\pi_B$は$A$上整なので，$h(\pi_B)=0$なるモニック$h(x)\in A[x]$が存在し，さらに命題I-7.1.11(2)から$h(x)=g(x)f(x)$なる$g(x)\in K[x]$が存在する．
+  $\pi_B$は$A$上整なので，$h(\pi_B)=0$なるモニック$h(x)\in A[x]$が存在し，さらに命題I-7.1.11 (2)から$h(x)=g(x)f(x)$なる$g(x)\in K[x]$が存在する．
   $\pi_B=\alpha_1,\alpha_2,\ldots,\alpha_n\in\overline{K}$を$f(x)$の根とすると，これらは$h(x)$の根なので$A$上整である．
-  $f(x)=\sum_{i=1}^na_ix^i$とおくと，係数$a_i$は$\alpha_i$の基本対称式となるので，やはり$A$上整である（$\overline{K}$は$A$の拡大環なので命題I-8.1.4(4)から従う）．
+  $f(x)=\sum_{i=1}^na_ix^i$とおくと，係数$a_i$は$\alpha_i$の基本対称式となるので，やはり$A$上整である（$\overline{K}$は$A$の拡大環なので命題I-8.1.4 (4)から従う）．
   $f(x)\in K[x]$なので，$a_i\in K$．よって，$a_i\in K$は$A$上整となるが，$A$が整閉整域であることから，$a_i\in A$．よって$f(x)\in A[x]$.
 \end{proof}
 
@@ -733,7 +733,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   $\mathcal{P}$は$C$の素イデアルなので$a,b\in C$について，$\tau^{-1}(a)\tau^{-1}(b)\in\mathcal{P}$ならば$\tau^{-1}(a)\in\mathcal{P}$もしくは$\tau^{-1}(b)\in\mathcal{P}$．
   よって，$\tau(\tau^{-1}(a)\tau^{-1}(b))=ab\in\tau(\mathcal{P})$ならば$a\in\tau(\mathcal{P})$もしくは$b\in\tau(\mathcal{P})$となり，$\tau(\mathcal{P})$は$C$の素イデアル．
   $C$の素イデアルは唯一なので，$\tau(\mathcal{P})=\mathcal{P}$．
-  命題I-8.1.4(2)から$C$は$B$上整．命題I-8.1.15から$P$の上にある$C$の素イデアルが存在し，これは$\mathcal{P}$．
+  命題I-8.1.4 (2)から$C$は$B$上整．命題I-8.1.15から$P$の上にある$C$の素イデアルが存在し，これは$\mathcal{P}$．
   よって$\pi_B\in P\subset\mathcal{P}$．以上から，$\tau(\pi_B)\in\mathcal{P}$．
   $\tau$を$L$に制限すれば$\sigma\in\Hom^\text{al}_K(L,\overline{K})$になるので，$\sigma(\pi_B)\in\mathcal{P}$．
 \end{proof}
@@ -769,7 +769,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   補題1.10.6から$\Tr_{L/K}(x)=\Tr_K(\phi)$なので，
   \[\Tr_{L/K}(x)=\Tr_K(\phi)=\Tr_{\widehat{K}_\mathfrak{p}}(\widehat{\phi}).\]
 
-  定理1.3.23(2)から同型$\varphi \colon L \otimes_K \widehat{K}_\mathfrak{p} \to \widehat{L}_1 \times \cdots \times \widehat{L}_g$が存在するので，$\widehat{K}_\mathfrak{p}$準同型
+  定理1.3.23 (2)から同型$\varphi \colon L \otimes_K \widehat{K}_\mathfrak{p} \to \widehat{L}_1 \times \cdots \times \widehat{L}_g$が存在するので，$\widehat{K}_\mathfrak{p}$準同型
   \[\phi_x=\varphi\widehat{\phi}\varphi^{-1} \colon \widehat{L}_1\times\cdots\times\widehat{L}_g\to \widehat{L}_1\times\cdots\times\widehat{L}_g\]
   が存在し，$\Tr_{\widehat{K}_\mathfrak{p}}(\widehat{\phi})=\Tr_{\widehat{K}_\mathfrak{p}}(\varphi\widehat{\phi}\varphi^{-1})=\Tr_{\widehat{K}_\mathfrak{p}}(\phi_x)$．
   \[
@@ -782,12 +782,12 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   \end{CD}
   \]
   $\varphi\widehat{\phi}=\phi_x\varphi$を$a\otimes t\in L\otimes_K\widehat{K}_\mathfrak{p}$に作用させて$\phi_x(\varphi(a\otimes t)) = \varphi(a\otimes t)\varphi(x\otimes1)$となる．
-  $\varphi_i \colon B\hookrightarrow\widehat{B}_i$として，$\varphi(x\otimes1) = (\varphi_1(x), \ldots, \varphi_g(x))$である（定理1.3.23(3)）ので，$\phi_x$は$L_1\times\cdots\times L_g$の元に$(\varphi_1(x), \ldots, \varphi_g(x))$をかける写像である：
+  $\varphi_i \colon B\hookrightarrow\widehat{B}_i$として，$\varphi(x\otimes1) = (\varphi_1(x), \ldots, \varphi_g(x))$である（定理1.3.23 (3)）ので，$\phi_x$は$L_1\times\cdots\times L_g$の元に$(\varphi_1(x), \ldots, \varphi_g(x))$をかける写像である：
   \[\phi_x\colon\widehat{L}_1\times\cdots\times\widehat{L}_g\ni (c_1,\ldots,c_g)\mapsto(\varphi_1(x)c_1, \ldots, \varphi_g(x)c_g)\in \widehat{L}_1\times\cdots\times\widehat{L}_g.\]
   $\phi_x$を$\widehat{L}_i$に制限した$\widehat{K}_\mathfrak{p}$準同型
   \[\psi_{x,i}\colon\widehat{L}_i\ni c_i\mapsto \varphi_i(x)c_i\in\widehat{L}_i\]
   を考える．
-  $[\widehat{L}_i:\widehat{K}_\mathfrak{p}]=n_i$とすれば，定理1.3.23(4)(5)から$n_1+\cdots+n_g=n$．
+  $[\widehat{L}_i:\widehat{K}_\mathfrak{p}]=n_i$とすれば，定理1.3.23 (4)(5)から$n_1+\cdots+n_g=n$．
   $\widehat{L}_i$の$\widehat{K}_\mathfrak{p}$基底を$\{z_i^{(1)},\ldots,z_i^{(n_i)}\}$とすれば$\widehat{L}_1\times\cdots\times\widehat{L}_g$の$\widehat{K}_\mathfrak{p}$基底として
   \[\left\{(z_1^{(1)},\ldots,0),\ldots,(z_1^{(n_1)},\ldots,0);(0,z_2^{(1)},\ldots,0),\ldots,(0,z_2^{(n_2)},\ldots,0);\ldots;(0,\ldots,z_g^{(1)}),\ldots,(0,\ldots,z_g^{(n_g)})\right\}\]
   を取ることができる．
@@ -813,18 +813,18 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   また，$\mathfrak{p}$進付値は$\lvert x\rvert _\mathfrak{p}=\lvert A/\mathfrak{p}\rvert^{-\ord_\mathfrak{p}(x)}$で定義される．
   更に，$\mathfrak{p}$距離$d\colon K\times K\ni(x,y)\mapsto\lvert x-y\rvert _\mathfrak{p}\in\lvert A/\mathfrak{p}\rvert^a\ (a\in\mathbb{Z})$を定義する．
   距離空間$(K,d)$を完備化して距離空間$(\widehat{K}_\mathfrak{p},\widehat{d})$が得られる．
-  補題1.2.6(1)から$\widehat{d}\colon\widehat{K}_\mathfrak{p}\times\widehat{K}_\mathfrak{p}\ni(\widehat{x},\widehat{y})\mapsto\lvert A/\mathfrak{p}\rvert^a\ (a\in\mathbb{Z})$．
+  補題1.2.6 (1)から$\widehat{d}\colon\widehat{K}_\mathfrak{p}\times\widehat{K}_\mathfrak{p}\ni(\widehat{x},\widehat{y})\mapsto\lvert A/\mathfrak{p}\rvert^a\ (a\in\mathbb{Z})$．
   完備化の定義から$x\in K$と$\vartheta\colon K\hookrightarrow\widehat{K}_\mathfrak{p}$によって
   \[\widehat{d}(\vartheta(x),\vartheta(0))=d(x,0)=\lvert A/\mathfrak{p}\rvert^{-\ord_\mathfrak{p}(x)}=\lvert x\rvert _\mathfrak{p}.\]
 
-  ところで，定理1.2.8(7)から$\widehat{A}_\mathfrak{p}$は$\widehat{\mathfrak{p}}=\mathfrak{p}\widehat{A}_\mathfrak{p}$を極大イデアルとする離散付値環である．
+  ところで，定理1.2.8 (7)から$\widehat{A}_\mathfrak{p}$は$\widehat{\mathfrak{p}}=\mathfrak{p}\widehat{A}_\mathfrak{p}$を極大イデアルとする離散付値環である．
   ここで，$\widehat{x}\in\widehat{K}_\mathfrak{p}$に対し
   \[\widehat{d}(\widehat{x},\vartheta(0))=\lvert\widehat{x}\rvert _{\widehat{\mathfrak{p}}}=\lvert\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\rvert^{-\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}\]
   によって$\lvert\bullet\rvert _{\widehat{\mathfrak{p}}}$と$\ord_{\widehat{\mathfrak{p}}}(\bullet)$を定義する．
-  命題1.2.13(1)から$\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\simeq A/\mathfrak{p}$なので
+  命題1.2.13 (1)から$\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\simeq A/\mathfrak{p}$なので
   \[\widehat{d}(\widehat{x},\vartheta(0))=\lvert\widehat{x}\rvert _{\widehat{\mathfrak{p}}}=\lvert\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\rvert^{-\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}=\lvert A/\mathfrak{p}\rvert^{-\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}.\]
   $\vartheta(x)$に対しては，$\lvert\vartheta(x)\rvert _{\widehat{\mathfrak{p}}}=\lvert x\rvert _\mathfrak{p}$, $\ord_{\widehat{\mathfrak{p}}}(\vartheta(x))=\ord_\mathfrak{p}(x)$．
-  更に，定理1.2.8(6)から$\widehat{x}\in\widehat{K}_\mathfrak{p}$として，
+  更に，定理1.2.8 (6)から$\widehat{x}\in\widehat{K}_\mathfrak{p}$として，
   \[\lvert\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\rvert^{-\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}\leq\lvert\widehat{A}_\mathfrak{p}/\widehat{\mathfrak{p}}\rvert^{-n}\Leftrightarrow n\leq\ord_{\widehat{\mathfrak{p}}}(\widehat{x})\Leftrightarrow\widehat{x}\in\mathfrak{p}^n\widehat{A}_\mathfrak{p}=\widehat{\mathfrak{p}}^n\widehat{A}_\mathfrak{p}.\]
   よって，$\widehat{x}\in\widehat{\mathfrak{p}}^{\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}\widehat{A}_\mathfrak{p}$, $\widehat{x}\notin\widehat{\mathfrak{p}}^{\ord_{\widehat{\mathfrak{p}}}(\widehat{x})+1}\widehat{A}_\mathfrak{p}$となるので，$\widehat{x}\widehat{A}_\mathfrak{p}=\widehat{\mathfrak{p}}^{\ord_{\widehat{\mathfrak{p}}}(\widehat{x})}\widehat{A}_\mathfrak{p}$．
   これは（離散付値環での）加法的付値の定義と一致している．
@@ -862,8 +862,8 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   （PI：素イデアル，QF：商体，aPI：上にある素イデアル，IC：整閉包，FE：有限次拡大）
 
   $A$, $K$を$\mathfrak{p}$進距離で完備化すると位相環$\widehat{A}_\mathfrak{p}$，位相体$\widehat{K}_\mathfrak{p}$が得られる（系1.2.9）．
-  $\widehat{K}_\mathfrak{p}$は$\widehat{A}_\mathfrak{p}$の商体であり，$\widehat{A}_\mathfrak{p}$は$\mathfrak{p}\widehat{A}_\mathfrak{p}$を極大イデアルとする離散付値環である（定理1.2.8(7)）．更に，$B$, $L$を$P_1$進距離で完備化すると位相環$\widehat{B}_1$，位相体$\widehat{L}_1$が得られ，$\widehat{L}_1$は$\widehat{B}_1$の商体であり，$\widehat{B}_1$は$P_1\widehat{B}_1$を極大イデアルとする離散付値環である．
-  $P_1\widehat{B}_1$は$\mathfrak{p}\widehat{A}_\mathfrak{p}$の上にある素イデアルである（補題1.3.3）．この時，$\widehat{L}_1$は$\widehat{K}_\mathfrak{p}$の有限次拡大で$\widehat{B}_1$は$\widehat{L}_1$における$\widehat{A}_\mathfrak{p}$の整閉包である（定理1.3.23(3)）．
+  $\widehat{K}_\mathfrak{p}$は$\widehat{A}_\mathfrak{p}$の商体であり，$\widehat{A}_\mathfrak{p}$は$\mathfrak{p}\widehat{A}_\mathfrak{p}$を極大イデアルとする離散付値環である（定理1.2.8 (7)）．更に，$B$, $L$を$P_1$進距離で完備化すると位相環$\widehat{B}_1$，位相体$\widehat{L}_1$が得られ，$\widehat{L}_1$は$\widehat{B}_1$の商体であり，$\widehat{B}_1$は$P_1\widehat{B}_1$を極大イデアルとする離散付値環である．
+  $P_1\widehat{B}_1$は$\mathfrak{p}\widehat{A}_\mathfrak{p}$の上にある素イデアルである（補題1.3.3）．この時，$\widehat{L}_1$は$\widehat{K}_\mathfrak{p}$の有限次拡大で$\widehat{B}_1$は$\widehat{L}_1$における$\widehat{A}_\mathfrak{p}$の整閉包である（定理1.3.23 (3)）．
   \[
   \begin{CD}
     P_1\widehat{B}_1                     @<\text{MI1}<< \widehat{B}_1            @>\text{QF}>> \widehat{L}_1\\
@@ -874,10 +874,10 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   （MI1：唯一の極大イデアル）
 
   $M$を$\widehat{L}_1/\widehat{K}_\mathfrak{p}$の中間体とする．
-  $M$と$\widehat{B}_1$は環なので$M\cap\widehat{B}_1$は環であり，$M\cap\widehat{B}_1$は$M$の$\widehat{A}_\mathfrak{p}$における整閉包である（命題I-8.1.4(3)）．
+  $M$と$\widehat{B}_1$は環なので$M\cap\widehat{B}_1$は環であり，$M\cap\widehat{B}_1$は$M$の$\widehat{A}_\mathfrak{p}$における整閉包である（命題I-8.1.4 (3)）．
   $x\in\widehat{L}_1$が$M\cap\widehat{B}_1$上整なら$\widehat{B}_1$上整となる．
   $\widehat{B}_1$は整閉整域なので$x\in\widehat{B}_1$．
-  $x\in\widehat{B}_1$は$\widehat{A}_\mathfrak{p}$上整なので$M\cap\widehat{B}_1$上整である（命題I-8.1.4(2)）．以上から，$\widehat{L}_1$の$M\cap\widehat{B}_1$における整閉包は$\widehat{B}_1$である．
+  $x\in\widehat{B}_1$は$\widehat{A}_\mathfrak{p}$上整なので$M\cap\widehat{B}_1$上整である（命題I-8.1.4 (2)）．以上から，$\widehat{L}_1$の$M\cap\widehat{B}_1$における整閉包は$\widehat{B}_1$である．
   $M\cap\widehat{B}_1$はDedekind環で，$M\cap\widehat{B}_1$の商体は$M$である（命題1.3.2）．
 
   $M\cap P_1\widehat{B}_1$が$M\cap\widehat{B}_1$の素イデアルであることは容易に示せる．
@@ -895,7 +895,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   \end{CD}
   \]
 
-  $A$が仮定1.1.2を満たせば，$\widehat{A}_\mathfrak{p}$も仮定1.1.2を満たす（命題1.2.13(4)）．
+  $A$が仮定1.1.2を満たせば，$\widehat{A}_\mathfrak{p}$も仮定1.1.2を満たす（命題1.2.13 (4)）．
   $M\cap\widehat{B}_1$と$\widehat{B}_1$も仮定1.1.2を満たす（命題1.3.2）．
 \end{proof}
 
@@ -917,7 +917,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
 \begin{proof}
   $\widehat{A}_\mathfrak{p}$は仮定1.1.2を満たすので，剰余体は有限体．
   $a$の$k$上最小多項式を$\phi(x)\in k[x]$とする．
-  $k$は有限体なので完全体（系I-7.3.6）となり，$k(a)/k$は分離拡大である（定義I-7.3.1(5)）．
+  $k$は有限体なので完全体（系I-7.3.6）となり，$k(a)/k$は分離拡大である（定義I-7.3.1 (5)）．
   よって$\phi(x)$は分離多項式で，$\phi(a)=0$, $\phi'(a)\neq0$．
   $\Phi(x)\equiv\phi(x)\bmod\mathfrak{p}\widehat{A}_\mathfrak{p}$となるモニック$\Phi(x)\in\widehat{A}_\mathfrak{p}[x]$及び$\alpha_0\equiv a\bmod P_1\widehat{B}_1$となる$\alpha_0\in\widehat{B}_1$を考える（$\alpha_0$は$a$の代表元）．
   $\Phi(\alpha_0)\equiv 0\bmod P_1\widehat{B}_1$, $\Phi'(\alpha_0)\not\equiv 0\bmod P_1\widehat{B}_1$であるので，Henselの補題から$\Phi(\alpha)=0$となる$\alpha\in\widehat{B}_1\ (\alpha\equiv\alpha_0\bmod P_1\widehat{B}_1)$が存在する．
@@ -926,11 +926,11 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
 
   $\widehat{K}_\mathfrak{p}(\alpha)\cap\widehat{B}_1$の剰余体$m=\widehat{K}_\mathfrak{p}(\alpha)\cap\widehat{B}_1/\widehat{K}_\mathfrak{p}(\alpha)\cap P_1\widehat{B}_1$を考える．
   $\alpha\in\widehat{K}_\mathfrak{p}(\alpha)\cap\widehat{B}_1$なので，$a\in m$である（$\vartheta\colon m \hookrightarrow l$について$a \in \Im \vartheta$）．
-  $k(a)$は$a$を含む最小の体なので$[m:k(a)]\geq 1$．先程の結果と定理1.3.23(4)から
+  $k(a)$は$a$を含む最小の体なので$[m:k(a)]\geq 1$．先程の結果と定理1.3.23 (4)から
   \[[k(a):k]=[\widehat{K}_\mathfrak{p}(\alpha):\widehat{K}_\mathfrak{p}]\geq f(\widehat{K}_\mathfrak{p}(\alpha)\cap P_1\widehat{B}_1:\mathfrak{p}\widehat{A}_\mathfrak{p})=[m:k]\]
   となるので，$[k(a):m]\geq 1$．以上から$[k(a):m]=1$，
   \[[\widehat{K}_\mathfrak{p}(\alpha):\widehat{K}_\mathfrak{p}]=f(\widehat{K}_\mathfrak{p}(\alpha)\cap P_1\widehat{B}_1:\mathfrak{p}\widehat{A}_\mathfrak{p})=[m:k]=[k(a):k]\]
-  となるので，再び定理1.3.23(4)から分岐指数は$e(\widehat{K}_\mathfrak{p}(\alpha)\cap P_1\widehat{B}_1:\mathfrak{p}\widehat{A}_\mathfrak{p})=1$．つまり，$\widehat{K}_\mathfrak{p}(\alpha)/\widehat{K}_\mathfrak{p}$は不分岐拡大．
+  となるので，再び定理1.3.23 (4)から分岐指数は$e(\widehat{K}_\mathfrak{p}(\alpha)\cap P_1\widehat{B}_1:\mathfrak{p}\widehat{A}_\mathfrak{p})=1$．つまり，$\widehat{K}_\mathfrak{p}(\alpha)/\widehat{K}_\mathfrak{p}$は不分岐拡大．
 \end{proof}
 
 \begin{screen}
@@ -959,19 +959,19 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
 \begin{proof}
   相対イデアル$\N_{L/K}(I)$は$\Set{\N_{L/K}(b) | b\in I}$で生成される$A$のイデアル（定義1.10.1）なので，$A$の適当なイデアル$J$によって，$\N_{L/K}(I)=\left(\N_{L/K}(x)\right)+J$と書くことができる．
   $\left(\N_{L/K}(x)\right)$は$\mathfrak{p}$と互いに素なので，素イデアル分解には$\mathfrak{p}$は現れない：$\left(\N_{L/K}(x)\right)=\mathfrak{p}^0\cdots$．
-  よって，定理I-8.3.17(3)から$\N_{L/K}(I)=\left(\N_{L/K}(x)\right)+J$の素イデアル分解は$\mathfrak{p}^0\cdots$となる，つまり$\N_{L/K}(I)$は$\mathfrak{p}$と互いに素．
+  よって，定理I-8.3.17 (3)から$\N_{L/K}(I)=\left(\N_{L/K}(x)\right)+J$の素イデアル分解は$\mathfrak{p}^0\cdots$となる，つまり$\N_{L/K}(I)$は$\mathfrak{p}$と互いに素．
 \end{proof}
 
 \begin{screen}
   $\N_{L/K}(I)\supset\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}$
 \end{screen}
 \begin{proof}
-  $\N_{L/K}(I)\supset\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}J$なので，定理I-8.3.17(2)から$A$のイデアル$J'$があり，$J'\N_{L/K}(I)=\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}J$．
+  $\N_{L/K}(I)\supset\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}J$なので，定理I-8.3.17 (2)から$A$のイデアル$J'$があり，$J'\N_{L/K}(I)=\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}J$．
   $J$の素イデアル分解を$\tilde{\mathfrak{p}}_1{}^{a_1}\cdots\tilde{\mathfrak{p}}_s{}^{a_s}$とすれば，$J'\N_{L/K}(I)=\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}\tilde{\mathfrak{p}}_1{}^{a_1}\cdots\tilde{\mathfrak{p}}_s{}^{a_s}$．
   $\N_{L/K}(I)$が$J$と互いに素であることから，$\N_{L/K}(I)$の素イデアル分解には$\tilde{\mathfrak{p}}_1,\ldots,\tilde{\mathfrak{p}}_s$は現れない．
   よって，$J'=\tilde{\mathfrak{p}}_1{}^{a_1}\cdots\tilde{\mathfrak{p}}_s{}^{a_s}J''$となるので，$\tilde{\mathfrak{p}}_1{}^{a_1}\cdots\tilde{\mathfrak{p}}_s{}^{a_s}J''\N_{L/K}(I)=\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}\tilde{\mathfrak{p}}_1{}^{a_1}\cdots\tilde{\mathfrak{p}}_s{}^{a_s}$．
   よって，$J''\N_{L/K}(I)=\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}$．
-  定理I-8.3.17(2)から$\N_{L/K}(I)\supset\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}$．
+  定理I-8.3.17 (2)から$\N_{L/K}(I)\supset\mathfrak{p}_1{}^{f_1}\cdots\mathfrak{p}_t{}^{f_t}$．
 \end{proof}
 
 \begin{screen}
@@ -987,7 +987,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   $I\widehat{B}_1=x\widehat{B}_1$，$y\in I$なら$z\in\widehat{B}_1$が存在して$y=zx$となる
 \end{screen}
 \begin{proof}
-  $x\widehat{B}_1=I\widehat{B}_1\supset y\widehat{B}_1$なので，定理I-8.3.17(2)から単項イデアル整域$\widehat{B}_1$のイデアル$z'\widehat{B}_1$が存在し$xz'\widehat{B}_1=y\widehat{B}_1$となる．
+  $x\widehat{B}_1=I\widehat{B}_1\supset y\widehat{B}_1$なので，定理I-8.3.17 (2)から単項イデアル整域$\widehat{B}_1$のイデアル$z'\widehat{B}_1$が存在し$xz'\widehat{B}_1=y\widehat{B}_1$となる．
   $y\in y\widehat{B}_1$なので$y\in xz'\widehat{B}_1$，つまり$b\in\widehat{B}_1$があり$y=xz'b$．
   $z=z'b\in\widehat{B}_1$とすれば主張が従う．
 \end{proof}
@@ -1030,7 +1030,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   \[m(w_i) \colon B \ni a = \sum_{i=1}^n a^{(i)}w_i \mapsto aw_i = \sum_{i=1}^n b^{(i)}w_i \in B.\]
   これは$B \otimes_A \widehat{A}_\mathfrak{p}$の元に$w_i \otimes 1 \in B \otimes_A \widehat{A}_\mathfrak{p}$をかける写像$\tilde{m}(w_i)$を誘導する：
   \[\tilde{m}(w_i) \colon B \otimes_A \widehat{A}_\mathfrak{p} \ni a \otimes t = \sum_{i=1}^n a^{(i)}w_i \otimes t \mapsto aw_i \otimes t = \sum_{i=1}^n b^{(i)}w_i \otimes t \in B \otimes_A \widehat{A}_\mathfrak{p}.\]
-  定理1.3.23(2)から，$\phi_i\colon B\hookrightarrow\widehat{B}_i$として同型
+  定理1.3.23 (2)から，$\phi_i\colon B\hookrightarrow\widehat{B}_i$として同型
   \[\phi\colon B \otimes_A \widehat{A}_\mathfrak{p} \ni a\otimes t\rightarrow(\phi_1(a)t, \ldots, \phi_g(a)t) \in \widehat{B}_1 \times \cdots \times \widehat{B}_g\]
   が得られる．$\phi$によって$\{w_i\}_{1 \leq i \leq n}$は$\{(\phi_1(w_i), \ldots, \phi_g(w_i))\}_{1 \leq i \leq g}$に写るので，$\{(\phi_1(w_i), \ldots, \phi_g(w_i))\}_{1 \leq i \leq g}$は$\widehat{B}_1 \times \cdots \times \widehat{B}_g$の$\widehat{A}_\mathfrak{p}$基底である．
 
@@ -1047,7 +1047,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   $\phi(a \otimes t)=(\phi_1(a)t, \ldots, \phi_g(a)t)$，$\phi(aw_i \otimes t)=(\phi(w_i)\phi_1(a)t, \ldots, \phi(w_i)\phi_g(a)t)$であるので，$\widehat{m}(w_i)$は$\widehat{B}_1\times\cdots\times\widehat{B}_g$の元に$(\phi_1(w_i), \ldots, \phi_g(w_i))$をかける写像である．
   構成から（適当な基底を取ることによって）$\Tr(m)=\Tr(\tilde{m})=\Tr(\widehat{m})$であることが分かる．
 
-  $\{v_{i,1},\ldots,v_{i,N_i}\}$を$\widehat{B}_i$の$\widehat{A}_\mathfrak{p}$基底とする（$N_i=e_if_i$：定理1.3.23(4)）．
+  $\{v_{i,1},\ldots,v_{i,N_i}\}$を$\widehat{B}_i$の$\widehat{A}_\mathfrak{p}$基底とする（$N_i=e_if_i$：定理1.3.23 (4)）．
   \begin{align*}
     \overline{v}_1=(v_{1,1},0,\ldots,0),&\ldots,\overline{v}_{N_1}=(v_{1,N_1},0,\ldots,0)\\
     \overline{v}_{N_1+1}=(0,v_{2,1},0,\ldots,0),&\ldots,\overline{v}_{N_1+N_2}=(0,v_{2,N_2},0,\ldots,0)\\
@@ -1079,7 +1079,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
   ,\quad \det M_i = \varDelta_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(v_{i,1},\ldots,v_{i,N_i}).\]
   よって，
   \[\varDelta_{L/K}(w_1,\ldots,w_n) = \det W = (\det A)^2 \det M = (\det A)^2 \prod_{i=1}^g \det M_i = (\det A)^2 \prod_{i=1}^g\varDelta_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(v_{i,1},\ldots,v_{i,N_i})\]
-  となり，系I-6.7.9(1)から$\det A \in \widehat{A}_\mathfrak{p}^\times$なので
+  となり，系I-6.7.9 (1)から$\det A \in \widehat{A}_\mathfrak{p}^\times$なので
   \begin{align*}
     \ord_{\mathfrak{p}}(\varDelta_{L/K}(w_1,\ldots,w_n)) &= \ord_{\mathfrak{p}\widehat{A}_\mathfrak{p}}\left(\prod_{i=1}^g\varDelta_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(v_{i,1},\ldots,v_{i,N_i})\right) \\
     &= \sum_{i = 1}^g\ord_{\mathfrak{p}\widehat{A}_\mathfrak{p}}\left(\varDelta_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(v_{i,1},\ldots,v_{i,N_i})\right).
@@ -1147,8 +1147,8 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
 \end{screen}
 \begin{proof}
   命題I-8.1.24から$B_N$は階数$l$の自由$A$加群（だから基底が$l$個）．
-  $\varDelta_{N/K}(x_1,\ldots,x_l)\neq 0$なので命題1.7.3(2)から$\{x_1,\ldots,x_l\}\subset N$は$K$上一次独立．
-  よって定理I-8.11.9(3)から$M$上一次独立．命題I-8.11.9(2)から$[L:M]=l$なので$\{x_1,\ldots,x_l\}$は$L$の$M$基底となる．
+  $\varDelta_{N/K}(x_1,\ldots,x_l)\neq 0$なので命題1.7.3 (2)から$\{x_1,\ldots,x_l\}\subset N$は$K$上一次独立．
+  よって定理I-8.11.9 (3)から$M$上一次独立．命題I-8.11.9 (2)から$[L:M]=l$なので$\{x_1,\ldots,x_l\}$は$L$の$M$基底となる．
 \end{proof}
 
 \paragraph{定理1.11.16}~
@@ -1165,7 +1165,7 @@ $L\otimes_K\widehat{K}_\mathfrak{p}\simeq\widehat{L}_1\times\cdots$なので，$
 \begin{proof}
   まず，
   \[\Tr_{L/K}(v_iw_kv_jw_l)=\Tr_{L/K}(v_iv_jw_kw_l).\]
-  命題I-8.1.18(5)から
+  命題I-8.1.18 (5)から
   \[=\Tr_{M/K}\left(\Tr_{L/M}(v_iv_jw_kw_l)\right).\]
   $v_iv_j\in M$なので，
   \[=\Tr_{M/K}\left(v_iv_j\Tr_{L/M}(w_kw_l)\right).\]
@@ -1244,11 +1244,11 @@ $\Tr_{L/K}$じゃなくて$\Tr_{K/\mathbb{Q}}$じゃね？
   $a\in P$，$x\in\mathcal{O}_L$なので$ax\in P$．よって，$ax\in\mathfrak{p}$．以上から，$\mathfrak{p}$は$\mathcal{O}_K$のイデアル．
   $a,b\in\mathcal{O}_K$で$ab\in \mathfrak{p}$とする．
   $ab\in P$で$P$は$\mathcal{O}_L$の素イデアルなので$a\in P$（若しくは$b\in P$）となり，$a\in\mathfrak{p}$．よって，$\mathfrak{p}$は$\mathcal{O}_K$の素イデアル．
-  $\mathcal{O}_L$は完備離散付値環（命題I-9.1.31(4)，命題1.5.3(2)）なので$\mathfrak{p}\mathcal{O}_L=P^e\mathcal{O}_L$となる$e$が存在する（命題I-8.3.15）．
+  $\mathcal{O}_L$は完備離散付値環（命題I-9.1.31 (4)，命題1.5.3 (2)）なので$\mathfrak{p}\mathcal{O}_L=P^e\mathcal{O}_L$となる$e$が存在する（命題I-8.3.15）．
   $\mathcal{O}_L/P$は$\mathcal{O}_K/\mathfrak{p}$の有限次拡大．
   $\mathcal{O}_L$は単項イデアル整域なので$P$は単項イデアル．
   $\mathcal{O}_L$は仮定1.1.2を満たす（命題1.5.3）ので，$\mathcal{O}_L/P$は有限体．
-  よって$\mathcal{O}_K/\mathfrak{p}$も有限体．よって，定理1.3.23(1)の証明と同様にして$K$（を$L$への包含）上では$P$進距離は$\mathfrak{p}$進距離の冪乗となる．
+  よって$\mathcal{O}_K/\mathfrak{p}$も有限体．よって，定理1.3.23 (1)の証明と同様にして$K$（を$L$への包含）上では$P$進距離は$\mathfrak{p}$進距離の冪乗となる．
   $P\supset p\mathbb{Z}_p$，$\mathcal{O}_K\supset\mathbb{Z}$なので$\mathfrak{p}\supset p\mathbb{Z}$．
   よって補題1.3.3より$\mathfrak{p}$は$p\mathbb{Z}$の上にある素イデアル（$p\mathbb{Z}=\mathfrak{p}\cap\mathbb{Z}$）．
   \[
@@ -1268,7 +1268,7 @@ $\Tr_{L/K}$じゃなくて$\Tr_{K/\mathbb{Q}}$じゃね？
   \]
   $\beta\in K$なので$\beta\in\widehat{K}$．よって，$\widehat{K}\supset\mathbb{Q}_p(\beta)=L$．
   $f,g$共に$\mathbb{Q}_p$上既約なので$[L:\mathbb{Q}_p]=\deg f=\deg g=[K:\mathbb{Q}]$．
-  定理1.3.23(3)(4)から$[\widehat{K}:\mathbb{Q}_p]\leq[K:\mathbb{Q}]$なので$[L:\mathbb{Q}_p]\geq[\widehat{K}:\mathbb{Q}_p]$．
+  定理1.3.23 (3)(4)から$[\widehat{K}:\mathbb{Q}_p]\leq[K:\mathbb{Q}]$なので$[L:\mathbb{Q}_p]\geq[\widehat{K}:\mathbb{Q}_p]$．
   以上から$\widehat{K}=L$．
 \end{proof}
 
@@ -1292,7 +1292,7 @@ $\Tr_{L/K}$じゃなくて$\Tr_{K/\mathbb{Q}}$じゃね？
 \end{screen}
 \begin{proof}
   $F$は$\mathbb{Q}_p$の有限次拡大でもあるので，$\lvert\mathcal{O}_F/\mathcal{P}\rvert$は$\lvert\mathbb{Z}_p/p\mathbb{Z}_p\rvert$の倍数．
-  命題I-9.1.31(1)から$\lvert\mathbb{Z}_p/p\mathbb{Z}_p\rvert=\lvert\mathbb{Z}/p\mathbb{Z}\rvert=p$なので，$\lvert\mathcal{O}_F/\mathcal{P}\rvert$は$p$の倍数．
+  命題I-9.1.31 (1)から$\lvert\mathbb{Z}_p/p\mathbb{Z}_p\rvert=\lvert\mathbb{Z}/p\mathbb{Z}\rvert=p$なので，$\lvert\mathcal{O}_F/\mathcal{P}\rvert$は$p$の倍数．
   従って，$\mathcal{O}_F/\mathcal{P}$の標数は$p$（p.I-216など参照）．
   $L/K$が馴分岐なので$p \nmid e$となり，$\mathcal{O}_F$の元として$e$と$0$は異なる同値類に属する．よって$e\not\in\mathcal{P}$であり，$\lvert e\rvert=1$．
 \end{proof}
@@ -1311,17 +1311,17 @@ $\Tr_{L/K}$じゃなくて$\Tr_{K/\mathbb{Q}}$じゃね？
   $\alpha=a+b\sqrt{\pi}\in F\ (a,b\in K)$が$\mathcal{O}_K$上整であるとする．
   \[A=\Tr_{F/K}(\alpha)=(a+b\sqrt{\pi})+(a-b\sqrt{\pi})=2a,\quad B=\N_{F/K}(\alpha)=(a+b\sqrt{\pi})(a-b\sqrt{\pi})=a^2-\pi b^2.\]
   命題I-8.1.19から$A, B\in\mathcal{O}_K$．$4B=A^2-4\pi b^2\in 4\mathcal{O}_K$なので$4\pi b^2\in\mathcal{O}_K$，つまり$\ord_\mathfrak{p}(4\pi b^2)\geq 0$．
-  よって$2m+1+2\ord_\mathfrak{p}(b)\geq 0$（命題1.1.3(1)）なので$\ord_\mathfrak{p}(b)\geq -m$．
+  よって$2m+1+2\ord_\mathfrak{p}(b)\geq 0$（命題1.1.3 (1)）なので$\ord_\mathfrak{p}(b)\geq -m$．
   よって$b=c\pi^{-m}\ (c\in\mathcal{O}_K)$と表すことができる．
   $\ord_\mathfrak{p}(b)< 0$とする．つまり$0\leq\ord_\mathfrak{p}(c)\leq m-1$．
   $A^2-4\pi b^2=A^2-\pi c^2d^2\in 4\mathcal{O}_K$なので$A^2-\pi c^2d^2\equiv 0\bmod\mathfrak{p}^{2m}$．
   $A=\pi^kt\ (\ord_\mathfrak{p}(t)=0)$，$c=\pi^{s-1}u\ (\ord_\mathfrak{p}(u)=0, s\leq m)$とおけば，この式は$\pi^{2k}t^2-\pi^{2s-1}u^2d^2=\pi^{2m}w\ (\ord_\mathfrak{p}(w)\geq0)$となる．
 
-  $2k>2s-1$であれば$\pi^{2s-1}(\pi^{2k-2s+1}t^2-u^2d^2)=\pi^{2m}w$．命題1.1.3(3)から$\ord_\mathfrak{p}(\pi^{2k-2s+1}t^2-u^2d^2)=0$なので$2s-1\geq 2m$．
+  $2k>2s-1$であれば$\pi^{2s-1}(\pi^{2k-2s+1}t^2-u^2d^2)=\pi^{2m}w$．命題1.1.3 (3)から$\ord_\mathfrak{p}(\pi^{2k-2s+1}t^2-u^2d^2)=0$なので$2s-1\geq 2m$．
   これは$s\leq m$に矛盾．
 
   $2k< 2s-1$であれば$\pi^{2k}(t^2-\pi^{2s-2k-1}u^2d^2)=\pi^{2m}w$．
-  命題1.1.3(3)から$\ord_\mathfrak{p}(t^2-\pi^{2s-2k-1}u^2d^2)=0$なので$k\geq m$となり，$2s-1>2k\geq2m$となり$s\leq m$に矛盾．
+  命題1.1.3 (3)から$\ord_\mathfrak{p}(t^2-\pi^{2s-2k-1}u^2d^2)=0$なので$k\geq m$となり，$2s-1>2k\geq2m$となり$s\leq m$に矛盾．
   以上から$\ord_\mathfrak{p}(b)\geq 0$，つまり$b\in\mathcal{O}_K$．
   $a^2-\pi b^2\in\mathcal{O}_K$なので$a^2\in\mathcal{O}_K$，よって$a\in\mathcal{O}_K$．
   以上から$\mathcal{O}_F$は$\mathcal{O}_K+\mathcal{O}_K\sqrt{\pi}$．
@@ -1370,7 +1370,7 @@ $\Tr_{L/K}$じゃなくて$\Tr_{K/\mathbb{Q}}$じゃね？
   $\alpha=(1+\sqrt{\mu})/2\in F$とすれば，$\alpha$は$g(x)=x^2-x+(1-\mu)/4$の根．
   $(1-\mu)/4\in\mathcal{O}_K$なので$g(x)\in\mathcal{O}_K[x]$であることから，$\alpha$は$\mathcal{O}_K$上モニックの根となる．
   つまり，$\alpha\in\mathcal{O}_F$．また，命題1.9.9から$\varDelta_{F/K}(1,\alpha)=\mu\neq 0$．
-  よって，命題1.7.3(2)から，$\{1,\alpha\}$は$F$の$K$基底となり$\mathcal{O}_K$上一次独立．
+  よって，命題1.7.3 (2)から，$\{1,\alpha\}$は$F$の$K$基底となり$\mathcal{O}_K$上一次独立．
   $\{1,\alpha\}\in\mathcal{O}_F$なので，これは$\mathcal{O}_F$の$\mathcal{O}_K$基底になる．
   よって，$\mathcal{O}_F=\mathcal{O}_K[\alpha]$で，$\varDelta_{F/K}$の計算に$\varDelta_{F/K}(1,\alpha)=\mu$を使える．
   $K$は局所体なので命題1.5.3から$\mathcal{O}_K$は完備離散付値環．
@@ -1387,7 +1387,7 @@ $\Tr_{L/K}$じゃなくて$\Tr_{K/\mathbb{Q}}$じゃね？
   $\sqrt{\pi}\mathcal{O}_F=\{\pi b+a\sqrt{\pi}\mid a,b\in\mathcal{O}_K\}$．
   $c,d\in\mathcal{O}_F\setminus\sqrt{\pi}\mathcal{O}_F$とする．
   $c=c_1+c_2\sqrt{\pi}$，$d=d_1+d_2\sqrt{\pi}$とすれば，$c_1,d_1\not\in\pi\mathcal{O}_K$，つまり$\ord_\mathfrak{p}(c_1)=\ord_\mathfrak{p}(d_1)=0$．
-  $cd=(c_1d_1+c_2d_2\pi)+(c_1d_2+c_2d_1)\sqrt{\pi}$で，命題1.1.3(3)から$\ord_\mathfrak{p}(c_1d_1+c_2d_2\pi)=0$なので$cd\in\mathcal{O}_F\setminus\sqrt{\pi}\mathcal{O}_F$．
+  $cd=(c_1d_1+c_2d_2\pi)+(c_1d_2+c_2d_1)\sqrt{\pi}$で，命題1.1.3 (3)から$\ord_\mathfrak{p}(c_1d_1+c_2d_2\pi)=0$なので$cd\in\mathcal{O}_F\setminus\sqrt{\pi}\mathcal{O}_F$．
   つまり，$\sqrt{\pi}\mathcal{O}_F$は素イデアル．
 \end{proof}
 
