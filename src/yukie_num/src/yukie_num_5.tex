@@ -1,0 +1,1567 @@
+\setcounter{chapter}{2}
+\chapter{\(\zeta\)函数と\(L\)函数}
+\setcounter{section}{1}
+\section{Riemann \(\zeta\)函数とDirichlet \(L\)函数}
+\paragraph{補題3.2.6}~
+\begin{screen}
+  \(p \leq \mathcal{N}(\mathfrak{p}) \leq p^n\)
+\end{screen}
+\begin{proof}
+  準同型\(\phi\colon \mathbb{Z} \hookrightarrow \mathcal{O}_K \twoheadrightarrow \mathcal{O}_K/\mathfrak{p}_i\)を考える．
+  上にある素イデアルの定義から\(\ker\phi = \mathfrak{p}_i \cap \mathbb{Z} = p\mathbb{Z}\)なので，\(\mathbb{Z}/p\mathbb{Z} \to \mathcal{O}_K/\mathfrak{p}_i\)は単射．
+  従って，\(p \leq \#(\mathcal{O}_K/\mathfrak{p}_i)\)．
+
+  系I-8.1.25から\(\mathcal{O}_K\)は階数\(n\)の自由\(\mathbb{Z}\)加群なので\(\mathcal{O}_K/p\mathcal{O}_K \simeq \mathbb{Z}^{\oplus n}/p\mathbb{Z}^{\oplus n} \simeq (\mathbb{Z}/p\mathbb{Z})^{\oplus n}\)．
+  注II-1.3.6 (2)から，準同型\((\mathbb{Z}/p\mathbb{Z})^{\oplus n} \simeq \mathcal{O}_K/p\mathcal{O}_K = \mathcal{O}_K/\mathfrak{p}_1{}^{e_1} \cdots \mathfrak{p}_g{}^{e_g} \twoheadrightarrow \mathcal{O}_K/\mathfrak{p}_i\)は全射．
+  以上から，\(p^n \geq \#(\mathcal{O}_K/\mathfrak{p}_i)\)．
+\end{proof}
+
+\paragraph{定理3.2.23}~
+\begin{screen}
+  \[ \xi(s, \chi) = \frac{\tau(\chi)}{\sqrt{m}} \xi(1-s, \bar\chi) \]
+\end{screen}
+\begin{proof}
+  p.69中段で示したように
+  \begin{align*}
+    \xi(s, \chi) &= \xi_+(s, \chi) + \frac{\tau(\chi)}{\sqrt{m}} \xi_+(1-s, \bar\chi) \\
+    %
+    &= \frac{\tau(\chi)}{2\sqrt{m}} \int_0^1 \sum_{n\in\mathbb{Z}} \bar\chi(n) e^{-\pi n^2t/m} t^{\frac{1-s}{2}} \, d^\times t \\
+    & \qquad + \frac{\tau(\chi)}{\sqrt{m}} \frac{1}{2} \sum_{i=1}^m \bar\chi(i) \int_1^\infty \sum_{n\in\mathbb{Z}}
+    e^{-\pi (i+mn)^2t/m} t^{\frac{1-s}{2}} \, d^\times t \\
+    %
+    &= \frac{\tau(\chi)}{2\sqrt{m}} \int_0^1 \sum_{n\in\mathbb{Z}} \sum_{i=1}^m \bar\chi(i+mn) e^{-\pi (i+mn)^2t/m} t^{\frac{1-s}{2}} \, d^\times t \\
+    &\qquad + \frac{\tau(\chi)}{\sqrt{m}} \frac{1}{2} \sum_{i=1}^m \bar\chi(i) \int_1^\infty \sum_{n\in\mathbb{Z}}
+    e^{-\pi (i+mn)^2t/m} t^{\frac{1-s}{2}} \, d^\times t \\
+    %
+    &= \frac{\tau(\chi)}{2\sqrt{m}} \int_0^1 \sum_{n\in\mathbb{Z}} \sum_{i=1}^m \bar\chi(i) e^{-\pi (i+mn)^2t/m} t^{\frac{1-s}{2}} \, d^\times t \\
+    &\qquad + \frac{\tau(\chi)}{\sqrt{m}} \frac{1}{2} \sum_{i=1}^m \bar\chi(i) \int_1^\infty \sum_{n\in\mathbb{Z}}
+    e^{-\pi (i+mn)^2t/m} t^{\frac{1-s}{2}} \, d^\times t \\
+    %
+    &= \frac{\tau(\chi)}{2\sqrt{m}} \sum_{i=1}^m \bar\chi(i) \int_0^\infty \sum_{n\in\mathbb{Z}}
+    e^{-\pi (i+mn)^2t/m} t^{\frac{1-s}{2}} \, d^\times t \\
+    &= \frac{\tau(\chi)}{\sqrt{m}} \xi(1-s, \bar\chi) .
+  \end{align*}
+\end{proof}
+
+\paragraph{定理3.2.24}~
+\begin{screen}
+  \[ \xi(s, \chi) = - \sqrt{-1} \frac{\tau(\chi)}{\sqrt{m}} \xi(1-s, \bar\chi) \]
+\end{screen}
+\begin{proof}
+  本文で示したように，\(\Re(s)>1\)に対しては(3.2.18)から系1.1.11が適用でき，積分と無限和を交換できるため
+  \begin{align*}
+    \xi(s, \chi) &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_0^\infty \sum_{n\in\mathbb{Z}} (i+mn) \sqrt{\frac{t}{m}}
+    e^{-\pi(i+mn)^2t/m} t^{\frac{s}{2}} \, d^\times t \\
+    &= \frac{1}{2} \int_0^\infty \sum_{n\in\mathbb{Z}} \chi(n) n \sqrt{\frac{t}{m}} e^{-\pi n^2t/m} t^{\frac{s}{2}} \, d^\times t .
+  \end{align*}
+  ここで
+  \begin{align*}
+    \xi_+(s, \chi) &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_1^\infty \sum_{n\in\mathbb{Z}} (i+mn) \sqrt{\frac{t}{m}}
+    e^{-\pi(i+mn)^2t/m} t^{\frac{s}{2}} \, d^\times t \\
+    &= \frac{1}{2} \int_1^\infty \sum_{n\in\mathbb{Z}} \chi(n) n \sqrt{\frac{t}{m}} e^{-\pi n^2t/m} t^{\frac{s}{2}} \, d^\times t
+  \end{align*}
+  とおく．(3.2.17)と定理1.1.8よりこれは任意の\(s\in\mathbb{C}\)について正則．さらに
+  \[ f(x) := x e^{-\pi x^2} , \quad g(x) := f\left((i+mx)\sqrt{\frac{t}{m}}\right) \]
+  とする．本文で示したように
+  \[ (\mathcal{F}f)(x) = - \sqrt{-1} f(x) . \]
+
+  \(0\)から\(1\)までの積分の項を評価する：
+  \begin{align*}
+    \xi(s, \chi) - \xi_+(s, \chi)
+    &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_0^1 \sum_{n\in\mathbb{Z}} (i+mn) \sqrt{\frac{t}{m}}
+    e^{-\pi(i+mn)^2t/m} t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_0^1 \sum_{n\in\mathbb{Z}} g(n) t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_0^1 \sum_{n\in\mathbb{Z}} (\mathcal{F}g)(n) t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_0^1 \sum_{n\in\mathbb{Z}} e^{2\pi\sqrt{-1}in/m}
+    \frac{1}{\sqrt{mt}} (\mathcal{F}f)\left(\frac{n}{\sqrt{mt}}\right) t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_0^1 \sum_{n\in\mathbb{Z}} e^{2\pi\sqrt{-1}in/m}
+    \frac{-\sqrt{-1}}{\sqrt{mt}} \frac{n}{\sqrt{mt}} e^{-\pi n^2/mt} t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= -\frac{\sqrt{-1}}{2} \int_0^1 \sum_{n\in\mathbb{Z}} \bar\chi(n) \tau(\chi)
+    \frac{n}{mt} e^{-\pi n^2/mt} t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= -\frac{\sqrt{-1}}{2} \int_1^\infty \sum_{n\in\mathbb{Z}} \bar\chi(n) \tau(\chi)
+    \frac{nt}{m} e^{-\pi n^2t/m} t^{-\frac{s}{2}} \, d^\times t \\
+    %
+    &= - \sqrt{-1} \frac{\tau(\chi)}{\sqrt{m}} \frac{1}{2} \int_1^\infty \sum_{n\in\mathbb{Z}} \bar\chi(n) n
+    \sqrt{\frac{t}{m}} e^{-\pi n^2t/m} t^{\frac{1-s}{2}} \, d^\times t \\
+    &= - \sqrt{-1} \frac{\tau(\chi)}{\sqrt{m}} \xi_+ (1-s, \bar\chi) .
+  \end{align*}
+  同様に
+  \begin{align*}
+    \xi_+(s, \chi) &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_1^\infty \sum_{n\in\mathbb{Z}} (i+mn) \sqrt{\frac{t}{m}}
+    e^{-\pi(i+mn)^2t/m} t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_1^\infty \sum_{n\in\mathbb{Z}} g(n) t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_1^\infty \sum_{n\in\mathbb{Z}} (\mathcal{F}g)(n) t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_1^\infty \sum_{n\in\mathbb{Z}} e^{2\pi\sqrt{-1}in/m}
+    \frac{1}{\sqrt{mt}} (\mathcal{F}f)\left(\frac{n}{\sqrt{mt}}\right) t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= \frac{1}{2} \sum_{i=1}^m \chi(i) \int_1^\infty \sum_{n\in\mathbb{Z}} e^{2\pi\sqrt{-1}in/m}
+    \frac{-\sqrt{-1}}{\sqrt{mt}} \frac{n}{\sqrt{mt}} e^{-\pi n^2/mt} t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= -\frac{\sqrt{-1}}{2} \int_1^\infty \sum_{n\in\mathbb{Z}} \bar\chi(n) \tau(\chi)
+    \frac{n}{mt} e^{-\pi n^2/mt} t^{\frac{s}{2}} \, d^\times t \\
+    %
+    &= -\frac{\sqrt{-1}}{2} \int_0^1 \sum_{n\in\mathbb{Z}} \bar\chi(n) \tau(\chi)
+    \frac{nt}{m} e^{-\pi n^2t/m} t^{-\frac{s}{2}} \, d^\times t \\
+    %
+    &= - \sqrt{-1} \frac{\tau(\chi)}{\sqrt{m}} \frac{1}{2} \int_0^1 \sum_{n\in\mathbb{Z}} \bar\chi(n) n
+    \sqrt{\frac{t}{m}} e^{-\pi n^2t/m} t^{\frac{1-s}{2}} \, d^\times t .
+  \end{align*}
+  以上から
+  \[ \xi(s, \chi) = - \sqrt{-1} \frac{\tau(\chi)}{\sqrt{m}} \xi (1-s, \bar\chi) . \]
+\end{proof}
+
+\section{Dirichletの算術級数定理}
+\paragraph{補題3.3.3}~
+\(n\equiv 1 \bmod m\)なら，全てのDirichlet指標\(\chi\)について\(\chi(n)=1\)．
+Dirichlet指標は\((\mathbb{Z}/m\mathbb{Z})^\times\)の指標より一意に引き起こされる．
+命題3.3.2から，\((\mathbb{Z}/m\mathbb{Z})^\times\)の指標の数は\(\#(\mathbb{Z}/m\mathbb{Z})^\times = \phi(m)\)に等しい．
+よって，
+\[ \sum_\chi \chi(n) = \sum_\chi = \phi(m) . \]
+
+\(n\not\equiv 1 \bmod m\)の場合．全てのDirichlet指標\(\chi\)について\(\chi(n)=1\)とする．
+命題3.3.2で示された自然な同型\(G\simeq(G^\ast)^\ast\)により
+\[ (\mathbb{Z}/m\mathbb{Z})^\times =: G \ni n + m\mathbb{Z} \mapsto (\chi \mapsto \chi(n)=1) \in (G^\ast)^\ast \]
+であるが，\((\chi \mapsto \chi(n)=1)\)は\((G^\ast)^\ast\)の単位元である．
+従って，同型であることより\(n+m\mathbb{Z}\)が\((\mathbb{Z}/m\mathbb{Z})^\times\)の単位元であることになり，矛盾．
+
+\setcounter{section}{5}
+\section{Kronecker記号}
+\paragraph{定理3.6.7}~
+\begin{screen}
+  \begin{prop}
+    \(A\)を整閉整域，\(K\)を\(A\)の商体，\(L\)を\(K\)の代数拡大とする．
+    \(\alpha\in L\)が\(A\)上整であるための必要十分条件は\(\alpha\)の\(K\)上最小多項式の係数が\(A\)の元となることである
+  \end{prop}
+\end{screen}
+\begin{proof}
+  必要条件であることは明らか．
+
+  \(\alpha\in L\)が\(A\)上整であるとする．\(\alpha\)の\(K\)上の最小多項式を
+  \[ f(x) = x^n + a_1 x^{n-1} + \cdots + a_n \]
+  とする．
+  % \(\bar{L}\)を\(L\)の代数閉包，
+  \(\alpha_1, \ldots, \alpha_n \in \bar{K}\)を\(\alpha\)の共役元とすれば
+  \[ f(x) = x^n + a_1 x^{n-1} + \cdots + a_n = (x-\alpha_1) \cdots (x-\alpha_n) \]
+  \(\alpha\)と\(\alpha_i\)は共役なので，\(\phi_i(\alpha) = \alpha_i\)となる\(\phi_i \in \Hom_K^\text{al}(L, \bar{K})\)が存在する．
+  \(\alpha \in L\)が\(A\)上整なので，\(b_i \in A\)により
+  \[ \alpha^m + b_1 \alpha^{m-1} + \cdots + b_m = 0 . \]
+  これに\(\phi_i\)を作用させれば，
+  \[ \alpha_i{}^m + b_1 \alpha_i{}^{m-1} + \cdots + b_m = 0. \]
+  従って\(\alpha_i\)も\(A\)上整である．
+
+  \(a_i \in K\)は\(\alpha_1, \ldots, \alpha_n\)の和・積で表されるので，やはり\(A\)上整である．
+  \(A\)は整閉なので，\(a_i \in A\)である．
+\end{proof}
+
+\begin{screen}
+  \(K=\mathbb{Q}(\sqrt{d})\), \(D=\Delta_K\)に対し，\(\mathbb{Z}_{(p)}\)の\(K\)における整閉包\(\mathcal{O}_{\mathbb{Z}_{(p)}}\)は\(\mathbb{Z}_{(p)}[\sqrt{D}]\)
+\end{screen}
+\begin{proof}
+  \(\alpha \in \mathcal{O}_{\mathbb{Z}_{(p)}}\)とする．\(\alpha\in K\)なので，\(a, b \in \mathbb{Q}\)により\(\alpha=a+b\sqrt{d}\)と表せる．
+  \(\mathbb{Z}_{(p)}\)は離散付値環であり（補題I-8.3.3），上に示した命題から，\(\alpha\)の\(\mathbb{Q}\)上最小多項式の係数は\(\mathbb{Z}_{(p)}\)の元となる．
+
+  \(b=0\)なら\(\alpha\in\mathbb{Q}\)であり，\(\mathbb{Q}\)上の最小多項式は\(x-a\)．よって\(\alpha=a\in\mathbb{Z}_{(p)}\)．
+
+  \(b\neq0\)なら\(\alpha\)の\(\mathbb{Q}\)上最小多項式は\(x^2-2ax+(a^2-b^2d)\)なので，\(2a \in \mathbb{Z}_{(p)}\)及び\(a^2-b^2d \in \mathbb{Z}_{(p)}\)．
+  \(2 \in \mathbb{Z}_{(p)}^\times\)なので\(a \in \mathbb{Z}_{(p)}\)．
+  さらに\(b^2d \in \mathbb{Z}_{(p)}\)．
+  \(p\nmid D\)なので\(p\nmid d\)となり\(d\in \mathbb{Z}_{(p)}^\times\)．
+  よって\(b^2 \in \mathbb{Z}_{(p)}\)．これより\(b\in\mathbb{Z}_{(p)}\)が従う．
+
+  以上から\(a, b \in \mathbb{Z}_{(p)}\)なので\(\alpha \in \mathbb{Z}[\sqrt{d}] = \mathbb{Z}[\sqrt{D}]\)．
+  従って\(\mathcal{O}_{\mathbb{Z}_{(p)}} \subset \mathbb{Z}[\sqrt{D}]\)．
+
+  逆の包含関係は容易に示せる．
+\end{proof}
+
+\begin{screen}
+  Dedekind環\(\mathbb{Z}_{(p)}[\sqrt{D}]\)における\(p\mathbb{Z}_{(p)}[\sqrt{D}]\)の素イデアル分解を求める：
+  \[
+    \mathbb{Z}_{(p)}[\sqrt{D}]/p\mathbb{Z}_{(p)}[\sqrt{D}] \simeq \mathbb{Z}_{(p)}[x]/(x^2-D, p)
+    \simeq (\mathbb{Z}_{(p)}/p\mathbb{Z}_{(p)})[x]/(x^2-D) \simeq \mathbb{F}_p[x]/(x^2-D)
+  \]
+\end{screen}
+\begin{proof}
+  \(f(x) \in \mathbb{Z}_{(p)}[x]\)は\(g(x) \in \mathbb{Z}_{(p)}[x]\)及び\(a,b \in \mathbb{Z}_{(p)}\)によって
+  \[ f(x) = (x^2-D) g(x) + ax + b \]
+  と表せることを示す．\(f(x) = x^n\)の場合に示せば十分である．
+  \(n = 0, 1\)の場合は自明．\(1, x, \ldots, x^n\)に対し主張が成立すると仮定(\(n\geq 1\))．
+  \[ x^{n+1} = (x^2-D)x^{n-1} + Dx^{n-1} \]
+  及び
+  \[ x^{n+2} = (x^2-D)x^n + Dx^n \]
+  となるので，帰納法により示せる．
+  これより，\(\mathbb{Z}_{(p)}[x]/(x^2-D, p)\)の元は\(a, b\in\mathbb{Z}_{(p)}\)により\([ax+b]\)と表せる．
+
+  1つ目の同型は
+  \[ \mathbb{Z}_{(p)}[x]/(x^2-D, p) \ni [f(x)] \mapsto [f(\sqrt{D})] \in \mathbb{Z}_{(p)}[\sqrt{D}]/p\mathbb{Z}_{(p)}[\sqrt{D}] \]
+  で与えられる．\(f(x) \sim g(x)\)とする．\(f(x)-g(x) \in (x^2-D, p)\)なので，\(f(\sqrt{D})-g(\sqrt{D}) \in p\mathbb{Z}_{(p)}[\sqrt{D}]\)．
+  よってこの写像はwell-definedである．この写像の逆写像は
+  \[ \mathbb{Z}_{(p)}[\sqrt{D}]/p\mathbb{Z}_{(p)}[\sqrt{D}] \ni [a+b\sqrt{D}] \mapsto [a+bx] \in \mathbb{Z}_{(p)}[x]/(x^2-D, p) \]
+  である．
+
+  2つ目の同型は
+  \[ \mathbb{Z}_{(p)}[x]/(x^2-D, p) \ni [f(x)] \mapsto [\bar{f}(x)] \in (\mathbb{Z}_{(p)}/p\mathbb{Z}_{(p)})[x]/(x^2-D) \]
+  で与えられる．ただし，\(\bar{f}\)は\(f\)の係数を\(\bmod p\mathbb{Z}_{(p)}\)で考えた多項式である．
+  \(f(x) \sim g(x)\)とする．\(f-g \in (x^2-D, p)\)なので，\(\bar{f} - \bar{g} \in (x^2-D)\)．
+  よってこの写像はwell-definedである．これが全単射な準同型であることは容易に分かる．
+
+  3つ目の同型を示すために\(\mathbb{Z}_{(p)}/p\mathbb{Z}_{(p)} \simeq \mathbb{F}_p\)を示す．
+  \(a \in \mathbb{Z}\)，\(s \in \mathbb{Z}\setminus p\mathbb{Z}\)によって\(a/s \in \mathbb{Z}_{(p)}\)とする．
+  \(p\nmid s\)なので\(s^{-1} \in \mathbb{Z}\)が存在し，\(ss^{-1} \equiv 1 \bmod p\)となる．
+  \[ \mathbb{Z}_{(p)}/p\mathbb{Z}_{(p)} \ni [a/s] \mapsto [as^{-1}] \in \mathbb{F}_p = \mathbb{Z}/p\mathbb{Z} \]
+  がwell-definedであり全単射な準同型となることは容易に示せる．
+  これを使えば\((\mathbb{Z}_{(p)}/p\mathbb{Z}_{(p)})[x]/(x^2-D) \simeq \mathbb{F}_p[x]/(x^2-D)\)となる．
+\end{proof}
+
+\begin{screen}
+  \(\chi_D(p)=0\)なら\(p\)は\(\mathcal{O}_K/\mathbb{Z}\)で分岐
+\end{screen}
+\begin{proof}
+  \(d \equiv 1 \bmod 4\)の場合．\(D=d\)である．\(p\mid d\)なので整数\(c\)により\(d=pc\)とおける．
+  \(p\)は奇素数．よって\(p\equiv c\equiv1\)若しくは\(p\equiv c\equiv3\)である．
+  \(\mathcal{O}_K = \mathbb{Z}[(1+\sqrt{d})/2]\)における\((p)\)の素イデアル分解は
+  \[ \mathcal{O}_K/p\mathcal{O}_K \simeq \mathbb{F}_p[x]/(x^2-x-(cp-1)/4) . \]
+  ここで\(\mathbb{F}_p[x]\)において
+  \[ x^2 - x - \frac{cp-1}{4} = x^2 + (p-1)x - \frac{cp-1}{4} = \left(x+\frac{p-1}{2}\right)^2 - \frac{p(c+p-2)}{4} \]
+  \(c+p\equiv2\bmod 4\)なので，
+  \[ x^2 - x - \frac{cp-1}{4} = \left(x+\frac{p-1}{2}\right)^2 . \]
+  従って，\(p\)は分岐指数\(2\)である．
+
+  \(d \equiv 2 \bmod 4\)の場合．\(D=4d\)である．\(p\mid 4d\)なので\(p\)は2若しくは奇素数．同様に示せる．
+
+  \(d \equiv 3 \bmod 4\)の場合．\(D=4d\)である．\(p\mid 4d\)なので\(p\)は2若しくは奇素数．同様に示せる．
+\end{proof}
+
+\setcounter{chapter}{4}
+\chapter{アデール・イデールとDedekind \(\zeta\)関数}
+\section{アデール・イデールの定義}
+\begin{screen}
+  \(X\)を集合とする．
+  \(\mathfrak{B} \subset 2^X\)が以下の条件を満たせば\(\mathfrak{B}\)は
+  \[ \Set{\bigcup B_i | B_i \in \mathfrak{B}} \]
+  を開集合系とする位相\(\mathfrak{O}\)を定める．
+  さらに\(\mathfrak{B}\)は\(\mathfrak{O}\)の基底となる．
+  \begin{enumerate}
+    \item 任意の\(x\in X\)に対して，ある\(B\in\mathfrak{B}\)が存在し\(x \in B\)
+    \item 任意の\(B_1, B_2 \in\mathfrak{B}\)と任意の\(x\in B_1 \cap B_2\)に対して，ある\(B_3 \in\mathfrak{B}\)が存在し\(x \in B_3 \subset B_1 \cap B_2\)
+  \end{enumerate}
+\end{screen}
+
+\begin{screen}
+  \(X_i\)が位相群なら\(X=\prod X_i\)は直積位相により位相群となる
+\end{screen}
+\begin{proof}
+  \(x_i, y_i \in X_i\)に対し
+  \[
+  \phi_i \colon X_i \times X_i \ni (x_i, y_i) \mapsto x_i y_i \in X_i ,\quad
+  \psi_i \colon X_i \times \ni x_i \mapsto x_i{}^{-1} \in X_i
+  \]
+  は連続写像である．まず
+  \[
+  \phi \colon \prod_{i\in I} X_i \times \prod_{i\in I} X_i \ni ((x_i), (y_i)) \mapsto
+  (x_iy_i) \in \prod_{i\in I} X_i
+  \]
+  が連続であることを示す．
+  \(\prod X_i\)の開基は
+  \[ \Set{ \prod_{i\in S} U_i \times \prod_{i\in I\setminus S} X_i | \text{S is finite} } \]
+  なので，
+  \[ O :=\phi^{-1} \left( \prod_{i\in S} U_i \times \prod_{i\in I\setminus S} X_i \right) \]
+  が\(\prod X_i \times \prod X_i\)の開集合となることを示せばよい．変形すれば
+  \[
+  O
+  = \prod_{i\in S} \phi_i{}^{-1}(U_i) \times \prod_{i\in I\setminus S} \phi_i{}^{-1}(X_i)
+  = \prod_{i\in S} \phi_i{}^{-1}(U_i) \times \prod_{i\in I\setminus S} (X_i \times X_i) .
+  \]
+  \(\phi_i\)は連続なので\(\phi_i{}^{-1}(U_i)\)は\(X_i \times X_i\)の開集合である．
+  \(X_i \times X_i\)の開集合は\(X_i\)の開集合\(V_{ij}\), \(W_{ij}\)により
+  \[ \bigcup_j V_{ij} \times W_{ij} \]
+  と表せる．よって
+  \begin{align*}
+    O &= \prod_{i\in S} \bigcup_j \left(V_{ij} \times W_{ij}\right) \times \prod_{i\in I\setminus S} (X_i \times X_i) \\
+    &= \bigcup \prod_{i\in S} (V_{ij_i} \times W_{ij_i}) \times \prod_{i\in I\setminus S} (X_i \times X_i) \\
+    &= \bigcup \left( \left( \prod_{i\in S} V_{ij_i} \times \prod_{i\in I\setminus S} X_i \right) \times \left( \prod_{i\in S} W_{ij_i} \times \prod_{i\in I\setminus S} X_i \right) \right) .
+  \end{align*}
+  \(\prod V_{ij} \times \prod X_i\), \(\prod W_{ij} \times \prod X_i\)は\(\prod X_i\)の開集合なので，示せた．
+
+  逆元を返す写像\(\psi\)についてはより簡単に示せる．
+\end{proof}
+
+\paragraph{定義5.1.2}~
+\begin{screen}
+  \(a \in K\)とする．有限個の素点を除く有限素点\(v\)に対して\(a \in \mathcal{O}_v\)
+\end{screen}
+\begin{proof}
+  \(A\)を\(K\)の整数環とする．
+  \(K\)は\(A\)の商体なので\(a_1, a_2 \in A\)により\(a=a_1/a_2\)と表せる．
+  \((a_2)\)の\(A\)における素イデアル分解に現れる素イデアルの集合を\(S\)とする．
+  \(S\)は有限個の素イデアルから成る．
+  \(\mathfrak{p} \in (\Spec A) \setminus S\)を考える．
+  仮定より\(\ord_\mathfrak{p}(a_2)=0\)なので，\(\mathfrak{p}\)進距離で完備化した\(\widehat{K}_\mathfrak{p}\)においても\(\ord_\mathfrak{p}(a_2)=0\)である．
+  定理1.2.8 (5)から\(a_2 \in \widehat{A}_\mathfrak{p}\setminus\mathfrak{p}\)である．
+  局所環の性質（命題I-6.5.8）から\(a_2 \in \widehat{A}_\mathfrak{p}^\times\)なので\(a=a_1/a_2\in\widehat{A}_\mathfrak{p}\)．
+\end{proof}
+
+\begin{screen}
+  \(K \hookrightarrow \mathbb{A}\)の構成
+\end{screen}
+\begin{proof}
+  \(a \in K\)とする．無限素点に対しては
+  \[ K \ni a \mapsto (\sigma_v(a))_{v\in\mathfrak{M}_\infty} \in \prod_{v\in\mathfrak{M}_\infty} K_v = K_\infty \]
+  によって埋め込む．
+  有限素点に対しては，\(S = \Set{v \in \mathfrak{M}_\text{f} | \ord_v(a) < 0}\)とおく．
+  Dedekind環における素イデアル分解の有限性より\(S\)は有限集合である．
+  \(v \in S\)に対しては\(a \in K_v\)であり，\(v \in \mathfrak{M}_\text{f}\setminus S\)に対しては\(a \in \mathcal{O}_v\)である．
+  よって\(K \ni a \mapsto (a)_{v\in\mathfrak{M}_\text{f}} \in \prod_{v\in S} K_v \times \prod_{v\in\mathfrak{M}_\text{f}\setminus S} \mathcal{O}_v\)は埋め込みである．
+\end{proof}
+
+\begin{screen}
+  \(K^\times \hookrightarrow \mathbb{A}^\times\)の構成
+\end{screen}
+\begin{proof}
+  \(a \in K^\times\)とする．無限素点に対しては
+  \[ K^\times \ni a \mapsto (\sigma_v(a))_{v\in\mathfrak{M}_\infty} \in \prod_{v\in\mathfrak{M}_\infty} K_v^\times = K_\infty^\times \]
+  によって埋め込む．
+  有限素点に対しては，\(S = \Set{v \in \mathfrak{M}_\text{f} | \ord_v(a) \neq 0}\)とおく．
+  Dedekind環における素イデアル分解の有限性より\(S\)は有限集合である．
+  \(v \in S\)に対しては\(a \in K_v^\times\)である．
+  \(v \in \mathfrak{M}_\text{f}\setminus S\)は素イデアル分解に現れないので\(\ord_v(a)=0\)．
+  すなわち\(a \in \mathcal{O}_v^\times\)．
+  よって\(K^\times \ni a \mapsto (a)_{v\in\mathfrak{M}_\text{f}} \in \prod_{v\in S} K_v^\times \times \prod_{v\in\mathfrak{M}_\text{f}\setminus S} \mathcal{O}_v^\times\)は埋め込みである．
+\end{proof}
+
+\paragraph{命題5.1.3}~
+\begin{screen}
+  \(\mathbb{A}\)の開集合は
+  \begin{align}
+    \bigcup_{\mathfrak{M}_\infty \subset S \subset \mathfrak{M}} \left( \prod_{v\in S} \text{open set of } K_v \times \prod_{v \in \mathfrak{M}\setminus S} \mathcal{O}_v \right)
+    \label{5_1_3_open_basis_of_adele_ring}
+  \end{align}
+  と表すことができる．
+\end{screen}
+\begin{proof}
+  \(\mathbb{A}\)の開基は
+  \[ \bigcup_{\mathfrak{M}_\infty \subset S \subset \mathfrak{M}} \set{ U | U \in \mathfrak{O}_{\mathbb{A}(S)}} \]
+  なので，\(\mathbb{A}\)の開集合は，\(\mathbb{A}(S)\)の開集合の\(S\)についての和
+  \[ \bigcup_{\mathfrak{M}_\infty \subset S \subset \mathfrak{M}} U \quad (U \in \mathfrak{O}_{\mathbb{A}(S)}) \]
+  で表せる．
+  \[ \mathbb{A}(S) = \prod_{v\in S} K_v \times \prod_{v\in\mathfrak{M}\setminus S} \mathcal{O}_v \]
+  には直積位相の構造が入っており，その開基は有限集合\(T\)によって
+  \[
+  \prod_{v \in S\cap T} \text{open set of } K_v
+  \times \prod_{v \in T\setminus S} \text{open set of } \mathcal{O}_v
+  \times \prod_{v \in S\setminus T} K_v
+  \times \prod_{v \not\in S\cup T} \mathcal{O}_v
+  \]
+  と表せる．
+  \(K_v\)の開集合を\(U_v^K\)，\(\mathcal{O}_v\)の開集合を\(U_v^\mathcal{O}\)と表すことにすれば，これは
+  \[
+  \prod_{v \in S\cap T} U_v^K \times \prod_{v \in T\setminus S} U_v^\mathcal{O}
+  \times \prod_{v \in S\setminus T} K_v \times \prod_{v \not\in S\cup T} \mathcal{O}_v .
+  \]
+  \(\mathcal{O}_v\)は\(K_v\)の開集合（かつ閉集合）．
+  さらに\(\mathcal{O}_v\)は\(K_v\)の部分距離空間であるので，\(\mathcal{O}_v\)の位相は\(K_v\)の相対位相である．
+  \(v \in T\setminus S\)に対して，\(U_v^\mathcal{O} = U_v \cap \mathcal{O}_v\)となる\(U_v \in \mathfrak{O}(K_v)\)が存在する．
+  \(U_v \cap \mathcal{O}_v\)は\(K_v\)の開集合であるので，これを改めて\(U_v^K\)と表せば
+  \[
+  = \prod_{v \in S\cap T} U_v^K \times \prod_{v \in T\setminus S} U_v^K
+  \times \prod_{v \in S\setminus T} K_v \times \prod_{v \not\in S\cup T} \mathcal{O}_v
+  %
+  = \prod_{v \in T} U_v^K \times \prod_{v \in S\setminus T} K_v \times \prod_{v \not\in S\cup T} \mathcal{O}_v .
+  \]
+  \(K_v\)は\(K_v\)の開集合なので，結局，\(\mathbb{A}(S)\)の開基は
+  \[
+  = \prod_{v \in S\cup T} U_v^K \times \prod_{v \not\in S\cup T} \mathcal{O}_v
+  \]
+  と表せる．
+  以上から，\(\mathbb{A}(S)\)の開集合は
+  \[ \bigcup_{T \supset S} \left( \prod_{v \in T} U_v^K \times \prod_{v \not\in T} \mathcal{O}_v \right) \]
+  と表せる．
+  さらに\(\mathbb{A}\)の開集合は，
+  \[
+  \bigcup_{\mathfrak{M}_\infty \subset S \subset \mathfrak{M}}
+  \left[
+  \bigcup_{T \supset S} \left( \prod_{v \in T} U_v^K \times \prod_{v \not\in T} \mathcal{O}_v \right)
+  \right]
+  =
+  \bigcup_{\mathfrak{M}_\infty \subset T \subset \mathfrak{M}} \left( \prod_{v\in T} U_v^K \times \prod_{v \in \mathfrak{M}\setminus T} \mathcal{O}_v \right)
+  \]
+  と表せる．
+\end{proof}
+
+\paragraph{命題5.1.4}~
+\begin{screen}
+  (2) \(\mathbb{A}^\times / K^\times \mathbb{A}^\times(\infty) \simeq \Cl_K\)
+\end{screen}
+\begin{proof}
+  準同型
+  \[ \phi \colon \mathbb{A}^\times \ni (x_v) \mapsto \left[ \prod_{v\in\mathfrak{M}_\text{f}} \mathfrak{p}_{K,v}{}^{\ord_v(x_v)} \right] \in X_K/P_K = \Cl_K \]
+  を考える．
+  \(\phi\)が全射であることを示す．
+  \(I \in X_K\)とする．
+  \(I\)の素イデアル分解を\(I = \prod_{v \in \mathfrak{M}_\text{f}} \mathfrak{p}_{K,v}{}^{n_v}\)（素イデアル分解に現れない有限素点については\(n_v=0\)）とする．
+  \(\mathcal{O}_v\)における\(\mathfrak{p}_v\)の生成元を\(\pi_v\)とすれば，\((\pi_v{}^{n_v}) \mapsto [I]\)である．
+  よって示せた．
+
+  次に\((x_v) \in\ker\phi\)とする．
+  \(S = \Set{v \in \mathfrak{M}_\text{f} | \ord_v(x_v) \neq 0}\)とおく．
+  \(\prod_{v\in S} \mathfrak{p}_{K,v}{}^{\ord_v(x_v)} \in X_K\)なので，\(\prod_{v\in S} \mathfrak{p}_{K,v}{}^{\ord_v(x_v)} = (a)\)となる\(a \in K^\times\)が存在する．
+  左辺は\((a)\)の素イデアル分解なので，素イデアル分解の一意性から\(v\in S\)に対しては\(\ord_v(a) = \ord_v(x_v)\)．
+  さらに\(v\in\mathfrak{M}_\text{f}\setminus S\)に対しては\(\ord_v(a) = 0 = \ord_v(x_v)\)である．
+  以上から全ての\(v \in \mathfrak{M}_\text{f}\)に対して\(x_v = ay_v\)となる\(y_v \in \mathcal{O}_v^\times\)が存在する．
+  無限素点\(v\in\mathfrak{M}_\text{f}\)については\(x_v = \sigma_v(a) y_v\)とすれば，\((y_v) \in \mathbb{A}^\times(\infty)\)である．
+  以上から\(\ker\phi \subset K^\times \mathbb{A}^\times(\infty)\)．
+  逆の包含関係は容易に示せる．
+  よって\(\ker\phi = K^\times \mathbb{A}^\times(\infty)\)．
+  準同型定理から\(\Cl_K \simeq \mathbb{A}^\times/\ker\phi = \mathbb{A}^\times/K^\times \mathbb{A}^\times(\infty)\)が従う．
+\end{proof}
+
+\paragraph{(5.1.5)}
+アデール環の有限部分は
+\[
+\mathbb{A}_\text{f} := \bigcup_{S} \left( \prod_{v\in S} K_v \times \prod_{v\in\mathfrak{M}_\text{f}\setminus S} \mathcal{O}_v \right) .
+\]
+% COMBAK: 本文の定義だと(5.1.7)がどうやっても成立しない
+
+\section{アデール・イデール上の不変測度}
+\paragraph{定理5.2.6}~
+\begin{screen}
+  \(I_f\)は\(\mathbb{A}_\text{f}\)の開集合かつ閉集合
+\end{screen}
+\begin{proof}
+  まず
+  \[
+    a_v + \mathfrak{p}_v{}^{n_v} = \Set{ x \in K_v | q_v{}^{-n_v} \geq \lvert x - a_v \rvert_v }
+    = \Set{ x \in K_v | q_v{}^{-n_v+1} > \lvert x - a_v \rvert_v } .
+  \]
+  開球は開集合であり，閉球は閉集合なので，\(a_v + \mathfrak{p}_v{}^{n_v}\)は\(K_v\)の開集合であり閉集合．
+
+  与えられた\(a=(a_v)_v \in \mathbb{A}_\text{f}\), \(S \subset \mathfrak{M}_\text{f}\), \(n_v \in \mathbb{Z}\)に対して
+  \[ I_\text{f} = (a_v)_v + \prod_{v\in S} \mathfrak{p}_v{}^{n_v} \times \prod_{v\in\mathfrak{M}_\text{f}\setminus S} \mathcal{O}_v \]
+  とする．有限集合\(T\)が存在し
+  \[ (a_v)_v \in \prod_{v\in T} K_v \times \prod_{v\in\mathfrak{M}_\text{f}\setminus T} \mathcal{O}_v \]
+  である．
+  \(v\in\mathfrak{M}_\text{f}\setminus (S \cup T)\)に対して\(a_v+\mathcal{O}_v=\mathcal{O}_v\)であるので
+  \[ I_\text{f} = \prod_{v\in S\cup T} \left( a_v + \mathfrak{p}_v{}^{n_v} \right) \times \prod_{v\in\mathfrak{M}_\text{f}\setminus (S \cup T)} \mathcal{O}_v . \]
+
+  \(I_\text{f}\)が開集合であることを示す．
+  \(a_v + \mathfrak{p}_v{}^{n_v}\)は\(K_v\)の開集合であるので\(I_\text{f}\)は
+  \[ \prod_{v\in S\cup T} \text{open set of } K_v \times \prod_{v\in\mathfrak{M}_\text{f}\setminus (S \cup T)} \mathcal{O}_v . \]
+  という形をしており，（命題5.1.3と同様に）これは\(\mathbb{A}_\text{f}\)の開基であるので開集合．
+
+  任意の有限集合\(R \subset \mathfrak{M}_\text{f}\)に対して\(I_\text{f} \cap \mathbb{A}_\text{f}(R)\)が\(\mathbb{A}_\text{f}(R)\)の閉集合であることを示す．
+  まず
+  \begin{align*}
+    I_\text{f} \cap \mathbb{A}_\text{f}(R)
+    &= \left( \prod_{v\in S\cup T} \left( a_v + \mathfrak{p}_v{}^{n_v} \right) \times \prod_{v\in\mathfrak{M}_\text{f}\setminus (S \cup T)} \mathcal{O}_v \right)
+    \cap
+    \left( \prod_{v\in R} K_v \times \prod_{v\in\mathfrak{M}_\text{f}\setminus R} \mathcal{O}_v \right) \\
+    &= \prod_{v\in (S\cup T)\cap R} \left( a_v + \mathfrak{p}_v{}^{n_v} \right)
+    \times
+    \prod_{v \in (S\cup T)\setminus R} \left[ \left( a_v + \mathfrak{p}_v{}^{n_v} \right) \cap \mathcal{O}_v \right]
+    \times \prod_{v\in R\setminus (S \cup T)} \mathcal{O}_v
+    \times \prod_{v\in\mathfrak{M}_\text{f}\setminus (S \cup T \cup R)} \mathcal{O}_v .
+  \end{align*}
+  ここで\(a_v + \mathfrak{p}_v{}^{n_v}\)と\(\mathcal{O}_v\)は共に\(K_v\)の開集合かつ閉集合．
+  よって，\(\mathbb{A}_\text{f}(R) \setminus (I_\text{f} \cap \mathbb{A}_\text{f}(R))\)は
+  \[ \prod_{v\in (S\cup T \cup R)} \text{open set of } K_v \times \prod_{v\in\mathfrak{M}_\text{f}\setminus (S \cup T \cup R)} \mathcal{O}_v \]
+  の有限和であるので，\(\mathbb{A}_\text{f}(R)\)の開集合．
+  \(\mathbb{A}_\text{f}(R)\)の位相は直積位相かつ\(\mathbb{A}_\text{f}\)の相対位相なので（命題5.3.1），
+  \[ \mathbb{A}_\text{f}(R) \setminus (I_\text{f} \cap \mathbb{A}_\text{f}(R)) = U_R \cap \mathbb{A}_\text{f}(R)\]
+  となる\(\mathbb{A}_\text{f}\)の開集合\(U_R\)が存在する．
+  \[ \mathbb{A}_\text{f}(R) \subset I_\text{f} \sqcup U_R \]
+  の両辺を全ての有限集合\(R\)について和を取れば
+  \[
+  \mathbb{A}_\text{f} = \bigcup_{R \subset \mathfrak{M}_\text{f}} \mathbb{A}_\text{f}(R)
+  \subset \bigcup_{R \subset \mathfrak{M}_\text{f}}( I_\text{f} \sqcup U_R)
+  = I_\text{f} \sqcup \bigcup_{R \subset \mathfrak{M}_\text{f}} U_R \subset \mathbb{A}_\text{f} .
+  \]
+  よって\(\mathbb{A}_\text{f} = I_\text{f} \sqcup \bigcup_{R \subset \mathfrak{M}_\text{f}}\)である．
+  \(\bigcup_{R \subset \mathfrak{M}_\text{f}}\)は\(\mathbb{A}_\text{f}\)の開集合なので，\(I_\text{f}\)は\(\mathbb{A}_\text{f}\)の閉集合．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \label{5_2_6_lem_pnpm_pn-m}
+    \(t = \#(\mathfrak{p}_F{}^n/\mathfrak{p}_F{}^m) = (\#(\mathcal{O}_F/\mathfrak{p}_F))^{n-m} \)
+  \end{lem}
+\end{screen}
+\begin{proof}
+  命題II-1.8.6から従う．
+\end{proof}
+
+\paragraph{補題5.2.12}
+簡単のため
+\[
+I = a + \prod_{v\in S} \mathfrak{p}_v{}^{m_v} \times \prod_{v\not\in S} \mathcal{O}_v , \quad
+J = b + \prod_{v\in T} \mathfrak{p}_v{}^{n_v} \times \prod_{v\not\in T} \mathcal{O}_v
+\]
+の場合を考える．\(m = \max_v\set{m_v, n_v}\)とする．同じ細分データ\((S\cup T, m)\)を持つ\(I\), \(J\)の細分が存在することを証明する．
+
+\(v \in S\)なら\(\mathfrak{p}_v{}^{n_v}/\mathfrak{p}_v{}^m\)の完全代表系を\(\set{c_1, \ldots, c_t}\)とすれば区間の成分を
+\[ a_v + \mathfrak{p}_v{}^{m_v} = \bigsqcup_{i=1}^t a_v + c_i + \mathfrak{p}_v{}^m \]
+と分割できる．\(v \in T\setminus S\)なら\(\mathcal{O}_v/\mathfrak{p}_v{}^m\)の完全代表系を\(\set{c_1, \ldots, c_t}\)とすれば区間の成分を
+\[ a_v + \mathcal{O}_v = \bigsqcup_{i=1}^t a_v + c_i + \mathfrak{p}_v{}^m \]
+と分割できる．以上から，
+\[
+I = \bigsqcup_i \left( a_i + \prod_{v \in S \cup T} \mathfrak{p}_v{}^m \times \prod_{v\not\in S \cup T} \mathcal{O}_v \right) ,\quad
+J = \bigsqcup_i \left( b_i + \prod_{v \in S \cup T} \mathfrak{p}_v{}^m \times \prod_{v\not\in S \cup T} \mathcal{O}_v \right)
+\]
+と細分できる．
+
+\paragraph{定理5.2.6 (v)}~
+\begin{screen}
+  \(\nu(a+\mathfrak{p}_F{}^n) = q_F{}^{-n}\) (p.178)
+\end{screen}
+\begin{proof}
+  \(\mathcal{O}_F/\mathfrak{p}_F{}^n\)の完全代表系を\(a_1, \ldots, a_t\)とする．
+  \(\mathcal{O}_F = \bigsqcup_{i=1}^t (a_i + \mathfrak{p}_F{}^n)\)である．
+  追加補題\ref{5_2_6_lem_pnpm_pn-m}から\(t=q_F{}^n\)である．従って
+  \[ 1 = \nu(\mathcal{O}_F) = \sum_{i=1}^{t} \nu(a_i + \mathfrak{p}_F{}^n) = \sum_{i=1}^{t} \nu(\mathfrak{p}_F{}^n) = t \nu(\mathfrak{p}_F{}^n) . \]
+  従って\(\nu(\mathfrak{p}_F{}^n) = 1/t = q_F{}^{-n}\)．
+\end{proof}
+
+\begin{screen}
+  \(\nu(I_\infty) = \mu(I_\infty)\)
+\end{screen}
+\begin{proof}
+  \(\nu\)は不変測度なので，\(a_i \in \mathbb{R}\)に対して\(\nu(\prod_{i=1}^{n} [0, a_i)) = \prod_{i=1}^{n} a_i\)を示せばよい．
+  \(a_i \in \mathbb{Q}\)なら\(a_i = b_i/c_i\)となる\(b_i, c_i \in \mathbb{Z}\)が存在する（\(c_i \neq 0\)）．
+  \(l = \LCM(c_1, \ldots, c_n)\)とする．\(1 = \nu( \prod_{i=1}^{n} [0, 1)) = l^n \nu( \prod_{i=1}^{n} [0, \frac{1}{l}))\)なので\(\nu( \prod_{i=1}^{n} [0, \frac{1}{l})) = l^{-n}\)である．
+  ここで
+  \[ [0, a_i) = \left[0, \frac{1}{l} \right) \sqcup \left[\frac{1}{l}, \frac{2}{l} \right) \sqcup \cdots \sqcup \left[ \left( \frac{b_il}{c_i}-1 \right) \frac{1}{l}, \frac{b_il}{c_i} \frac{1}{l} \right) \]
+  と分割すれば，
+  \[ \nu\left( \prod_{i=1}^{n} [0, a_i) \right) = \prod_{i=1}^{n} \frac{b_il}{c_i} \left(\frac{1}{l}\right)^n = \prod_{i=1}^{n} \frac{b_i}{c_i} =  \prod_{i=1}^{n} a_i . \]
+  \(a_i \in \mathbb{R}\)の場合
+  \[ 0 < a_{i,j} < a_{i,j+1} , \quad \lim_{j\to\infty} a_{i,j} = a_i \]
+  となる\(a_{i,j} \in \mathbb{Q}\)を考える．
+  \[
+  \prod_{i=1}^{n} [0, a_i) = \bigsqcup_{j_1 \geq 0} \cdots \bigsqcup_{j_n \geq 0} \prod_{i=1}^{n} [a_{i,j_i}, a_{i, j_i+1})
+  \]
+  である．測度の可算加法性から
+  \begin{align*}
+    \nu\left( \prod_{i=1}^{n} [0, a_i) \right)
+    &= \sum_{j_1\geq0} \cdots \sum_{j_n\geq0} \nu \left( \prod_{i=1}^{n} [a_{i,j_i}, a_{i, j_i+1}) \right)
+    = \sum_{j_1\geq0} \cdots \sum_{j_n\geq0} \prod_{i=1}^{n} (a_{i, j_i+1} - a_{i,j_i}) \\
+    &= \lim_{N_1 \to \infty} \cdots \lim_{N_n \to \infty} \sum_{j_1=0}^{N_1} \cdots \sum_{j_n=0}^{N_n} \prod_{i=1}^{n} (a_{i, j_i+1} - a_{i,j_i}) \\
+    &= \lim_{N_1 \to \infty} \cdots \lim_{N_n \to \infty} \prod_{i=1}^{n} a_{i, N_i+1} .
+  \end{align*}
+  十分大きな\(N_i\)を選べば\(0<a_i - a_{i,N_{i+1}}<\epsilon<1\)となるので
+  \begin{align*}
+    0 &< \prod_{i=1}^{n} a_i - \prod_{i=1}^{n} a_{i, N_i+1}
+    < \prod_{i=1}^{n} a_i - \prod_{i=1}^{n} (a_i - \epsilon)
+    \leq \epsilon n (a_1 + \cdots + a_n) + \epsilon^2 \frac{n(n-1)}{2} (a_1a_2 + \cdots) + \cdots \\
+    &< \epsilon n (a_1 + \cdots + a_n) + \epsilon \frac{n(n-1)}{2} (a_1a_2 + \cdots) + \cdots \\
+    &= M\epsilon
+  \end{align*}
+  となる\(M\)が存在する．これは\(N_1, \ldots, N_n\)に依存しないので，
+  \[ \lim_{N_1 \to \infty} \cdots \lim_{N_n \to \infty} \prod_{i=1}^{n} a_{i, N_i+1} = \prod_{i=1}^{n} a_i . \]
+\end{proof}
+
+\paragraph{命題5.2.25}~
+\begin{screen}
+  \begin{prop}
+    \label{5_2_25_product_of_borel_is_borel_of_product}
+    \(X\), \(Y\)が第二可算な位相空間なら，直積位相空間\(X\times Y\)のBorel集合族\(\mathfrak{B}(X\times Y)\)と積測度空間の完全加法族\(\mathfrak{B}(X)\otimes\mathfrak{B}(Y)\)は一致する．
+  \end{prop}
+\end{screen}
+\begin{proof}
+  \(\mathfrak{B}(X\times Y)\)は\(X\times Y\)の開集合系\(\set{A\times B | A\in\mathfrak{O}(X), B\in\mathfrak{O}(Y)}\)から生成された完全加法族であり，\(\mathfrak{B}(X)\otimes\mathfrak{B}(Y)\)は\(\set{A\times B | A\in\mathfrak{B}(X), B\in\mathfrak{B}(Y)}\)から生成された完全加法族である．
+
+  \(A\in\mathfrak{O}(X)\)および\(B\in\mathfrak{O}(Y)\)とする．
+  \(X\), \(Y\)は第二可算なので\(A = \bigcup_{i=1}^\infty A_i\)および\(B = \bigcup_{j=1}^\infty B_j\)となる\(A_i\), \(B_j\)が存在する．
+  \(A\times B = \bigcup_{i,j} A_i \times B_j\)であるが，\(A_i\in\mathfrak{O}(X) \subset \mathfrak{B}(X)\)であり\(B_j\in\mathfrak{O}(Y) \subset \mathfrak{B}(Y)\)なので\(A_i \times B_j \subset \mathfrak{B}(X)\times \mathfrak{B}(Y)\)である．
+  完全加法族は可算合併について閉じているので，\(A\times B = \bigcup_{i,j} A_i \times B_j \subset \mathfrak{B}(X)\otimes\mathfrak{B}(Y)\)．
+  以上から\(\mathfrak{B}(X\times Y) \subset \mathfrak{B}(X)\otimes\mathfrak{B}(Y)\)．
+
+  集合\(\set{A \subset X | A\times Y \in \mathfrak{B}(X\times Y)}\)を考える．
+  これは\(\mathfrak{O}(X)\)を含むBorel集合族であるので，\(\mathfrak{B}(X)\)を含む：\(\mathfrak{B}(X) \subset \set{A \subset X | A\times Y \in \mathfrak{B}(X\times Y)}\)．
+  同様に\(\mathfrak{B}(Y) \subset \set{B \subset Y | X\times B \in \mathfrak{B}(X\times Y)}\)．
+  \(A \in \mathfrak{B}(X)\), \(B \in \mathfrak{B}(Y)\)とする．
+  上記考察から\(A \times B = A\times Y \cap X\times B \in \mathfrak{B}(X\times Y)\)．
+  以上から\(\mathfrak{B}(X)\otimes\mathfrak{B}(Y) \subset \mathfrak{B}(X\times Y)\)．
+\end{proof}
+
+\begin{screen}
+  \begin{dfn}[集合半代数]
+    \(\mathcal{I} \subset 2^X\)が次の条件を満たすとき\(\mathcal{I}\)を\(X\)上の集合半代数と言う：
+    \begin{enumerate}
+      \item \(X, \varnothing \in \mathcal{I}\)；
+      \item 任意の\(E, F \in \mathcal{I}\)に対して\(E \cap F \in \mathcal{I}\)；
+      \item 任意の\(E \in \mathcal{I}\)に対して\(E^c\)は\(\mathcal{I}\)の有限非交和で表せる．
+    \end{enumerate}
+  \end{dfn}
+\end{screen}
+
+\begin{screen}
+  \begin{dfn}[有限加法族]
+    \(\mathcal{A} \subset 2^X\)が次の条件を満たすとき\(\mathcal{A}\)を\(X\)上の有限加法族と言う：
+    \begin{enumerate}
+      \item \(X \in \mathcal{A}\)；
+      \item 任意の\(E \in \mathcal{A}\)に対して\(E^c \in \mathcal{A}\)；
+      \item 任意の\(E, F \in \mathcal{A}\)に対して\(E \cup F \in \mathcal{A}\)．
+    \end{enumerate}
+  \end{dfn}
+  \(E\cap F = (E^c \cup F^c)^c \in \mathcal{A}\)である．
+\end{screen}
+
+\begin{screen}
+  \begin{dfn}[単調族]
+    \(\mathcal{M} \subset 2^X\)が次の条件を満たすとき\(\mathcal{M}\)を\(X\)上の単調族と言う：
+    \begin{enumerate}
+      \item \(\mathcal{M}\)の任意の単調増加列\((E_n)_{n\in\mathbb{N}}\)に対して\(\bigcup_{n=1}^\infty E_n \in \mathcal{M}\)；
+      \item \(\mathcal{M}\)の任意の単調減少列\((E_n)_{n\in\mathbb{N}}\)に対して\(\bigcap_{n=1}^\infty E_n \in \mathcal{M}\)．
+    \end{enumerate}
+  \end{dfn}
+\end{screen}
+
+\begin{screen}
+  \begin{prop}
+    \label{5_2_25_generated_finitely_additive_class}
+    \(\mathcal{I}\)を\(X\)上の集合半代数とする．\(\mathcal{I}\)で生成される有限加法族\(\mathcal{A}(\mathcal{I})\)は\(\mathcal{I}\)の有限非交和の集合である：
+    \[ \mathcal{A}(\mathcal{I}) = \Set{ \bigsqcup_{i=1}^n E_i | E_i \in \mathcal{I} } \]
+  \end{prop}
+\end{screen}
+\begin{proof}
+  右辺を\(\mathcal{A}\)とする．\(E\in \mathcal{A}\)とする．
+  \(E_i \in \mathcal{I}\)により\(E = \bigsqcup_{i=1}^n E_i\)と表せる．
+  \(E^c = \bigcap_{i=1}^n E_i{}^c\)である．
+  \(E_i{}^c\)は\(\mathcal{I}\)の元の有限非交和で表せるので，\(E^c\)も\(\mathcal{I}\)の元の有限非交和で表せる．
+  従って\(E^c \in \mathcal{A}\)．
+  さらに\(F \in \mathcal{A}\)とすれば，\(F\cap E^c \in \mathcal{A}\)である．
+  よって\(E \cup F = E \sqcup (F\cap E^c) \in \mathcal{A}\)．
+  以上から\(\mathcal{A}\)は有限加法族である．
+
+  \(\mathcal{I} \subset \mathcal{A} \subset \mathcal{A}(\mathcal{I})\)を満たす有限加法族\(\mathcal{A}\)を考える．
+  \(\mathcal{A}\)は有限加法族なので互いに交わらない\(E_i \in \mathcal{I} \subset \mathcal{A}\)について\(\bigsqcup_{i=1}^n E_i \in \mathcal{A}\)である．
+  よって\(\mathcal{A}(\mathcal{I}) \subset \mathcal{A}\)であり，\(\mathcal{A} = \mathcal{A}(\mathcal{I})\)．
+\end{proof}
+
+\begin{screen}
+  \begin{prop}
+    \label{5_2_25_generated_monotone_class}
+    \(\mathcal{A}\)を\(X\)上の有限加法族とする．\(\mathcal{A}\)で生成される単調族\(\mathcal{M}(\mathcal{A})\)は\(\mathcal{A}\)で生成される完全加法族\(\sigma(\mathcal{A})\)に等しい．
+  \end{prop}
+\end{screen}
+\begin{proof}
+  完全加法族は単調族なので\(\mathcal{A} \subset \sigma(\mathcal{A}) \subset \mathcal{M}(\mathcal{A})\).
+
+  \(\mathcal{M}(\mathcal{A})\)が完全加法族であることを示す．
+  任意の\(A \subset X\)に対して
+  \[ \mathcal{M}_A = \Set{ B \subset X | A \cup B, A\setminus B, B\setminus A \in \mathcal{M}(\mathcal{A}) } \]
+  とする．
+  \(\mathcal{M}_A\)の単調増加列\((B_n)_{n\in\mathbb{N}}\)を考える．
+  \(A\cup B_n, A\setminus B_n, B_n\setminus A \in \mathcal{M}(\mathcal{A})\)である．
+  まず
+  \[ A\cup \left(\bigcup_{n=1}^\infty B_n\right) = \bigcup_{n=1}^\infty (A\cup B_n) \in \mathcal{M}(\mathcal{A}) . \]
+  さらに
+  \[
+  A\setminus \left(\bigcup_{n=1}^\infty B_n\right) = A\cap \left(\bigcup_{n=1}^\infty B_n\right)^c
+  = A\cap \left(\bigcup_{n=1}^\infty B_n^c\right) = \bigcup_{n=1}^\infty (A \cap B_n{}^c)
+  = \bigcup_{n=1}^\infty (A \setminus B_n)
+  \]
+  であるが\(A \setminus B_n \in \mathcal{M}(\mathcal{A})\)は単調減少なので，\(A\setminus (\bigcup_{n=1}^\infty B_n) = \bigcup_{n=1}^\infty (A \setminus B_n) \in \mathcal{M}(\mathcal{A})\)．
+  同様に
+  \[
+  \left( \bigcup_{n=1}^\infty B_n  \right) \setminus A = \bigcup_{n=1}^\infty (B_n\setminus A) \in \mathcal{M}(\mathcal{A}) .
+  \]
+  以上から\(\bigcup_{n=1}^\infty B_n \in \mathcal{M}_A\)である．
+  同様に\(\mathcal{M}_A\)の単調減少列\((B_n)_{n\in\mathbb{N}}\)に対して\(\bigcup_{n=1}^\infty B_n \in \mathcal{M}_A\)も証明できるので，\(\mathcal{M}_A\)は単調族である．
+  さらに\(A, B \subset X\)に対して\(A \in \mathcal{M}_B\)と\(B \in \mathcal{M}_A\)は同値である．
+  任意の\(A, B \in \mathcal{A}\)に対して\(B \in \mathcal{M}_A\)であるから\(\mathcal{A} \subset \mathcal{M}_A\)．
+  \(\mathcal{M}(\mathcal{A})\)は\(\mathcal{A}\)を含む最小の単調族なので\(\mathcal{M}(\mathcal{A}) \subset \mathcal{M}_A\)．
+  任意の\(A \in \mathcal{A}\)と\(B \in \mathcal{M}(\mathcal{A})\)に対して\(B \in \mathcal{M}_A\)であり，\(A \in \mathcal{M}_B\)が成立するので\(\mathcal{A} \subset \mathcal{M}_B\)．
+  以上から任意の\(B \in \mathcal{M}(\mathcal{A})\)に対して\(\mathcal{M}(\mathcal{A}) \subset \mathcal{M}_B\)である．
+  従って任意の\(A, B \in \mathcal{M}(\mathcal{A})\)に対して\(A \in \mathcal{M}_B\)であるので，\(A \cup B, A\setminus B, B\setminus A \in \mathcal{M}(\mathcal{A})\)．
+  特に\(A^c = X\setminus A \in \mathcal{M}(\mathcal{A})\)であるので，\(\mathcal{M}(\mathcal{A})\)は有限加法族である．
+  \(\mathcal{M}(\mathcal{A})\)は有限加法族かつ単調族である．
+  \(A_n \in \mathcal{M}(\mathcal{A})\)である．\(E_n = \bigcup_{k=1}^n A_k\)とすれば\((E_n)_{n\in\mathbb{N}}\)は単調増加列なので\(\bigcup_{n=1}^\infty A_n = \bigcup_{n=1}^\infty E_n \in \mathcal{M}(\mathcal{A})\)．
+  以上から\(\mathcal{M}(\mathcal{A})\)は完全加法族である．
+
+  完全加法族\(\sigma(\mathcal{A}) \supset \mathcal{A}\)を考える．
+  \(\sigma(\mathcal{A})\)は単調族でもあるので，\(\mathcal{M}(\mathcal{A}) \subset \sigma(\mathcal{A})\)．
+\end{proof}
+
+\begin{screen}
+  測度空間\((\mathbb{A}, \mathfrak{B}(\mathbb{A}), d_\text{pr}x)\)は\((K_\infty, \mathfrak{B}(K_\infty), d_\infty x)\)と\((\mathbb{A}_\text{f}, \mathfrak{B}(\mathbb{A}_\text{f}), d_\text{f}x)\)の積測度空間である．
+\end{screen}
+\begin{proof}
+  (5.1.7)より位相空間として\(\mathbb{A}\)と\(K_\infty \times \mathbb{A}_\text{f}\)は同相である．
+  命題5.2.21から\(\mathbb{A}_\text{f}\)は第二可算．\(K_\infty\simeq\mathbb{R}^n\)も第二可算である．
+  追加命題\ref{5_2_25_product_of_borel_is_borel_of_product}から\(\mathfrak{B}(\mathbb{A}) = \mathfrak{B}(K_\infty) \otimes \mathfrak{B}(\mathbb{A}_\text{f})\)である．
+
+  局所体\(F\)について，\(a, b \in \mathcal{O}_F\)，\(\mathfrak{p} \in \Spec \mathcal{O}_F\)とする．
+  \(m \leq n\)に対して\((a + \mathfrak{p}^m) \cap (b + \mathfrak{p}^n) \neq \varnothing\)とする．
+  \(a-b \in \mathfrak{p}^m\)である．よって\(a+\mathfrak{p}^m=b+\mathfrak{p}^m \supset b+\mathfrak{p}^n\)
+  である．
+  従って，相異なる\(\mathcal{O}_F\)の区間の関係は交わらないか，包含されるかである．
+  \(a+\mathfrak{p}^n \subset \mathcal{O}_F\)とする．
+  \(\mathcal{O}_F/\mathfrak{p}^n\)の完全代表系を\(\set{a_1=a, a_2, \ldots, a_t}\)とすれば，\((a+\mathfrak{p}^n)^c = \bigsqcup_{i=2}^t (a_i+\mathfrak{p}^n)\)である．
+
+  以上から\(\mathbb{A}\)の区間\(I \simeq I_\infty \times I_\text{f}\)の集合\(\mathcal{I}\)は集合半代数である．
+  よって追加命題\ref{5_2_25_generated_finitely_additive_class}から\(\mathcal{I}\)の有限非交和全体の集合\(\mathcal{A}(\mathcal{I})\)は有限加法族である．
+
+  命題5.2.21より\(\sigma(\mathcal{A}(\mathcal{I}))\)は\(\mathbb{A}\)の開集合を含む最小の完全加法族であるので，Borel集合族\(\mathfrak{B}(\mathbb{A})\)に一致する．
+
+  \(I_m = [m, -m)^n \times \prod_{v\in\mathfrak{M}_\text{f}}\mathcal{O}_v\)とする．
+  \(d_\text{pr}x(I_m) = (2m)^n = (d_\infty x \times d_\text{f}x)(I_m)\)であり，\(\bigcup_{m=1}^\infty I_m = \mathbb{A}\)である．
+  \(A_m = I_m \setminus (I_1 \cup \cdots \cup I_{m-1})\)とすれば\(A_m \in \mathcal{A}(\mathcal{I})\)及び\(\bigsqcup_{m=1}^\infty A_m = \mathbb{A}\)である．
+  ここで
+  \[ \mathcal{M}_m = \Set{ E \in \sigma(\mathcal{A}(\mathcal{I})) | d_\text{pr}x(E \cap A_m) = (d_\infty x \times d_\text{f}x)(E \cap A_m) } \]
+  とする．
+  \(E \in \mathcal{A}(\mathcal{I})\)とすれば\(E \cap A_m \in \mathcal{A}(\mathcal{I})\)である．
+  \(\mathcal{A}(\mathcal{I})\)の元は区間の有限非交和なので\(E \cap A_m = \bigsqcup_{i=1}^k E_i\)となる区間\(E_i\)が存在する．
+  測度の可算加法性から
+  \[
+  d_\text{pr}x(E \cap A_m) = d_\text{pr}x\left(\bigsqcup_{i=1}^k E_i\right) = \sum_{i=1}^k d_\text{pr}x(E_i)
+  = \sum_{i=1}^k (d_\infty x \times d_\text{f}x)(E_i)
+  = (d_\infty x \times d_\text{f}x)(E \cap A_m)
+  \]
+  となるので\(\mathcal{A}(\mathcal{I}) \subset \mathcal{M}_m\)である．
+  \(\mathcal{M}_m\)が単調族であることを示す．
+  \((E_k)_{k\in\mathbb{N}}\)を\(\mathcal{M}_m\)の単調増加列とする．
+  測度の単調収束定理から
+  \begin{align*}
+    d_\text{pr}x\left( \bigcup_{k=1}^\infty E_k \cap A_m \right)
+    &= d_\text{pr}x\left( \bigcup_{k=1}^\infty (E_k \cap A_m) \right)
+    = \lim_{k\to\infty} d_\text{pr}x (E_k \cap A_m) \\
+    &= \lim_{k\to\infty} (d_\infty x \times d_\text{f}x) (E_k \cap A_m)
+    = (d_\infty x \times d_\text{f}x) \left( \bigcup_{k=1}^\infty E_k \cap A_m \right)
+  \end{align*}
+  なので，\(\bigcup_{k=1}^\infty E_k \in \mathcal{M}_m\)である．
+  単調減少列\((E_k)_{k\in\mathbb{N}}\)についても同様にして，\(\bigcap_{k=1}^\infty E_k \in \mathcal{M}_m\)である．
+  以上から\(\mathcal{M}_m\)は単調族である．
+
+  \(\mathcal{M}_m\)は\(\mathcal{A}(\mathcal{I})\)を含む単調族なので，追加命題\ref{5_2_25_generated_monotone_class}から\(\sigma(\mathcal{A}(\mathcal{I})) \subset \mathcal{M}_m\)．
+  よって，任意の\(E \in \sigma(\mathcal{A}(\mathcal{I})) = \mathfrak{B}(\mathbb{A})\)に対して
+  \[ d_\text{pr}x(E \cap A_m) = (d_\infty x \times d_\text{f}x)(E \cap A_m) \]
+  である．測度の可算加法性から
+  \begin{align*}
+    d_\text{pr}x(E)
+    &= d_\text{pr}x \left( \bigsqcup_{m=1}^\infty (E \cap A_m) \right)
+    = \sum_{m=1}^\infty d_\text{pr}x (E \cap A_m)
+    = \sum_{m=1}^\infty (d_\infty x \times d_\text{f}x)(E \cap A_m) \\
+    &= (d_\infty x \times d_\text{f}x)(E) .
+  \end{align*}
+\end{proof}
+
+\section{\(\mathbb{A}/K\), \(\mathbb{A}^1/K^\times\)の体積}
+\paragraph{補題5.3.4}~
+\begin{screen}
+  \(V V^{-1} \subset U\)を満たす\(1\)の近傍\(V\)が存在する．
+\end{screen}
+\begin{proof}
+  \(G \ni x \mapsto x^{-1} \in G\)と\(G \times G \ni (X, y) \mapsto xy \in G\)が連続なので\(f \colon G \times G \ni (x, y) \mapsto xy^{-1} \in G\)も連続．
+
+  \(f^{-1}(U)\)は直積位相空間\(G \times G\)の開集合であるので，\(G\)の開集合\(U_\lambda\), \(V_\lambda\)によって\(f^{-1}(U) = \bigcup_\lambda U_\lambda \times V_\lambda\)と表せる．
+  \((1, 1) \in f^{-1}(U)\)なので，\(1\in U_\lambda, V_\lambda\)となる\(\lambda\)が存在．
+  この\(\lambda\)に対して\(f(U_\lambda \times V_\lambda) \subset U\)．
+  特に\(V = V_\lambda \cap U_\lambda\)とすれば\(1 \in V\)であり\(f(V \times V) = VV^{-1} \subset U\)．
+\end{proof}
+
+\begin{screen}
+  \begin{prop}
+    \(G\)を位相群，\(U\)を\(G\)の開集合とする．\(g \in G\)に対して\(gU\)も\(G\)の開集合である
+  \end{prop}
+\end{screen}
+\begin{proof}
+  \(G\)は位相群なので\(\phi\colon G\times G \ni (g, h) \mapsto gh \in G\)は連続である．
+  \(a\in gU\)とする．\(a = gu\)となる\(u \in U\)が存在する．
+  \(\phi(g^{-1}, a) = g^{-1}a = u\)なので\((g^{-1}, a) \in \mu^{-1}(U)\)．
+  \(\mu^{-1}(U)\)は\(G\)の開集合なので，直積位相の定義から\((g^{-1}, a) \in U_a \times V_a\)となる\(G\)の開集合\(U_a\), \(V_a\)が存在する．
+  \(U_a \times V_a \subset \phi^{-1}(U)\)なので，\(\phi(g^{-1}, V_a) = g^{-1} V_a \subset U\)．
+  従って，\(a \in V_a \subset gU\)．
+  これを全ての\(a \in gU\)に対して考えれば
+  \[ gU = \bigcup_{a\in gU} a \subset \bigcup_{a\in gU} V_a \subset gU \]
+  となるので，\(gU = \bigcup_{a\in gU} V_a\)は開集合である．
+\end{proof}
+
+\begin{screen}
+  \(g \in \bar\Gamma\)に対して\(gV \cap \Gamma \neq \varnothing\)である．
+\end{screen}
+\begin{proof}
+  \(gV \cap \Gamma = \varnothing\)とする．\(\Gamma \subset (gV)^c\)である．
+  \(gV\)は開集合なので\((gV)^c\)は閉集合．従って\(\bar\Gamma \subset (gV)^c\)．
+  \(1 \in V\)なので\(g \in gV\)である．\(g \in \bar\Gamma\)なので矛盾．
+  以上から\(gV \cap \Gamma \neq \varnothing\)．
+\end{proof}
+
+\begin{screen}
+  \(h^{-1}g \not\in \Gamma\)なら\(h^{-1}g U \cap \Gamma = \varnothing\)となる\(1\)の近傍\(U\)が存在する
+\end{screen}
+\begin{proof}
+  \(1 \in \Gamma\)なので\(1 \neq h^{-1}g\)である．
+  \(G\)はHausdorff空間なので\(U_1 \ni h^{-1}g\)と\(U_2 \ni 1\)が存在し\(U_1 \cap U_2 = \varnothing\)．
+  ここで\(V = U_1 \cap \Gamma^c\)とする．
+  \(\Gamma\)は閉集合なので\(V\)は開集合で，\(h^{-1}g \in V\)である．
+  \(U = g^{-1}h V\)とすれば\(U\)は\(1\)を含む開集合である．
+\end{proof}
+
+\paragraph{補題5.3.10}~
+\begin{screen}
+  \(\pi^{-1}(B) \cap \mathcal{F}\)は\(\pi\)により\(B\)と1対1に対応する
+\end{screen}
+\begin{proof}
+  \(\pi\colon G \twoheadrightarrow G/\Gamma\)を\(A\)上に制限すると\(A \simeq B\)であり，\(\mathcal{F}\)上に制限すると\(\mathcal{F} \simeq G/\Gamma\)である．
+  \(\mathcal{F}\)上で\(\pi\)は単射なので\(\pi^{-1}(B) \cap \mathcal{F}\)上でも\(\pi\)は単射である．
+  \(\pi(\mathcal{F}) = G/\Gamma\)なので，任意の\(b \in B \subset G/\Gamma\)に対して\(\pi(x) = b\)となる\(x\in\mathcal{F}\)が存在する．
+  \(x\in\pi^{-1}(B)\)なので，\(\pi(\pi^{-1}(B)\cap\mathcal{F}) \supset B\)．
+  \(\pi(\pi^{-1}(B)\cap\mathcal{F}) \subset B\)は明らかなので\(\pi(\pi^{-1}(B)\cap\mathcal{F}) = B\)．
+\end{proof}
+
+\begin{screen}
+  \(A = \bigsqcup_{\gamma\in\Gamma} (A\gamma\cap\mathcal{F})\gamma^{-1}\)
+\end{screen}
+\begin{proof}
+  \(\gamma\in\Gamma\)なら\(\pi(A\gamma)=\pi(A)=B\)なので\(A\gamma\subset\pi^{-1}(B)\)である．
+  \(\gamma_1\neq\gamma_2\in\Gamma\)に対して\(A\gamma_1\cap A\gamma_2\neq\varnothing\)とする．
+  \(a_1\gamma_1 = a_2\gamma_2\)となる\(a_1, a_2 \in A\)が存在する．
+  \(a_1 = a_2\gamma_2 \gamma_1{}^{-1} \in A\)なので\(\pi(a_1) = \pi(a_2\gamma_2 \gamma_1{}^{-1}) = \pi(a_2)\)である．
+  \(A\)上で\(\pi\)は単射なので\(a_1 = a_2\)．
+  \(\gamma_1 = \gamma_2\)となり矛盾．
+  従って\(\gamma_1\neq\gamma_2\in\Gamma\)に対して\(A\gamma_1\cap A\gamma_2=\varnothing\)である．
+  以上から\(\pi^{-1}(B) = \pi^{-1}(\pi(A))= \bigcup_{\gamma\in\Gamma}A\gamma = \bigsqcup_{\gamma\in\Gamma}A\gamma\)．
+
+  \(A \ni a \mapsto a\Gamma \in B\)と\(\pi^{-1}(B)\cap\mathcal{F} \ni x \mapsto x\Gamma \in B\)は共に全単射なので，任意の\(a \in A\)に対して\(a\gamma\in\pi^{-1}(B)\cap\mathcal{F}\)となる\(\gamma\in\Gamma\)が唯一存在する．
+  上記考察から，任意の\(a \in A\)に対して\(a\in(A\gamma\cap\mathcal{F})\gamma^{-1}\)となる\(\gamma\in\Gamma\)が唯一存在する．
+  よって\(A \subset \bigcup_{\gamma\in\Gamma} (A\gamma\cap\mathcal{F})\gamma^{-1}\)．
+  逆の包含関係は明らかなので\(A = \bigcup_{\gamma\in\Gamma} (A\gamma\cap\mathcal{F})\gamma^{-1}\)．
+  \(\gamma\)の唯一性から，右辺の要素は共通部分を持たないので，\(A = \bigsqcup_{\gamma\in\Gamma} (A\gamma\cap\mathcal{F})\gamma^{-1}\)．
+\end{proof}
+
+\paragraph{命題5.3.11}~
+\begin{screen}
+  \(\pi|_U \colon U \to \pi(U)\)は同相写像
+\end{screen}
+\begin{proof}
+  \(\pi|_U\)が全射であることは明らか．
+  \(u_1, u_2 \in U\)に対して\(\pi(u_1)=\pi(u_2)\)とする．
+  \(u_1 \Gamma = u_2 \Gamma\)となるので\(u_1 \gamma_1 = u_2 \gamma_2\)となる\(\gamma_1, \gamma_2 \in \Gamma\)が存在する．
+  \(u_2{}^{-1}u_1 = \gamma_2 \gamma_1{}^{-1}\)となるが，左辺は\(U^{-1}U\)の元，右辺は\(\Gamma\)の元であり，\(U^{-1}U \cap \Gamma = \set{1}\)なので，\(u_2{}^{-1}u_1 = \gamma_2 \gamma_1{}^{-1} = 1\).
+  よって\(u_1 = u_2\)なので\(\pi|_U\)は単射．
+
+  \(\pi(U)\)の開集合は\(G/\Gamma\)の開集合\(V\)によって\(\pi(U) \cap V\)と表せる．
+  \(\pi|_U{}^{-1}(\pi(U) \cap V) = \pi|_U{}^{-1} \circ \pi(U) \cap \pi|_U{}^{-1}(V) = U \cap \pi^{-1}(V)\)．
+  \(G/\Gamma\)の開集合の定義(p.181)から\(\pi^{-1}(V)\)は\(G\)の開集合なので，\(U \cap \pi^{-1}(V)\)は\(U\)の開集合．すなわち\(\pi|_U\)は連続．
+
+  \(\pi\colon G\to G/\Gamma\)が開写像であることを示す．
+  \(V\)を\(G\)の開集合とする．
+  \(\pi^{-1} \circ \pi(V)\)が\(G\)の開集合であることを示せばよい．
+  \(\pi^{-1} \circ \pi(V) = \bigcup_{\gamma\in\Gamma} V\gamma\)である．
+  \(V\gamma\)は\(G\)の開集合なので\(\bigcup_{\gamma\in\Gamma} V\gamma\)も\(G\)の開集合である．
+  よって示せた．
+
+  \(U\)の開集合は\(G\)の開集合\(V\)により\(U \cap V\)と表せる．
+  \(\pi|_U\)は単射なので\(\pi|_U(U\cap V) = \pi|_U(U) \cap \pi|_U(V) = \pi(U) \cap \pi(U\cap V)\)．
+  \(U \cap V\)は\(G\)の開集合で\(\pi\)は開写像なので\(\pi(U\cap V)\)は\(G/\Gamma\)の開集合．
+  よって\(\pi(U) \cap \pi(U\cap V)\)は\(\pi(U)\)の開集合．
+  すなわち\(\pi|_U\)は開写像．
+\end{proof}
+
+\begin{screen}
+  \(U^{-1}U \cap \Gamma = \set{1}\)かつ\(\bar{U}\)がコンパクトな\(U\)が存在する
+\end{screen}
+\begin{proof}
+  補題5.3.4の証明と同様にすれば\(W^{-1}W \cap \Gamma = \set{1}\)となる\(W\)の存在が示せる．
+  \(G\)は局所コンパクトなので，\(\bar{V}\)がコンパクトとなる\(V \ni 1\)が存在する．
+
+  \(U = W\cap V\)とする．\(\bar{U}\)がコンパクトであることを示せば良い．
+  \(\bar{U}\)の開被覆\(\bigcup_{\lambda\in\Lambda} U_\lambda\supset\bar{U}\)を考える．
+  \(\set{U_\lambda , \bar{U}^c}\)は\(\bar{V}\)の開被覆なので，有限個の\(\lambda_1, \ldots, \lambda_n \in \Lambda\)が存在して\(U_{\lambda_1} \cup \cdots \cup U_{\lambda_n} \cup \bar{U}^c \supset \bar{V}\)．
+  よって\(\bar{U} \subset U_{\lambda_1} \cup \cdots \cup U_{\lambda_n}\)なので，\(\bar{U}\)はコンパクト．
+\end{proof}
+
+\paragraph{補題5.3.14}~
+\begin{screen}
+  同型の構成
+\end{screen}
+\begin{proof}
+  命題II-1.8.6は中国式剰余定理から従うので，加群の同型は
+  \[
+    \begin{tikzcd}
+    I/\mathcal{O}_K \arrow[r, "\sim"]\arrow[d, phantom, sloped, "\ni"] & \displaystyle\prod_{v\in S} (\mathfrak{p}_{K,v}{}^{n_v}/\mathcal{O}_K) \arrow[r, "\sim"]\arrow[d, phantom, sloped, "\ni"] & \displaystyle\prod_{v\in S} (\mathfrak{p}_{v}{}^{n_v}/\mathcal{O}_v) \arrow[d, phantom, sloped, "\ni"] \\
+    {[y]} \arrow[r, mapsto] & ([y])_{v\in S} \arrow[r, mapsto] & ([y])_{v\in S}
+  \end{tikzcd}
+  \]
+  で与えられる．
+\end{proof}
+
+\begin{screen}
+  \(w\in\mathcal{O}_K\)
+\end{screen}
+\begin{proof}
+  任意の\(v\in\mathfrak{M}_\text{f}\)に対して\(w=(z_1)_v-(z_2)_v\in\mathcal{O}_v \cap K\)が成立．
+  命題1.12.14から\(w\in\mathcal{O}_K\)が従う．
+\end{proof}
+
+\paragraph{命題5.3.13}~
+\begin{screen}
+  \(F=\theta([0,1]^n) \times \prod_{v\in\mathfrak{M}_\text{f}} \mathcal{O}_v\)はコンパクト
+\end{screen}
+\begin{proof}
+  \([0, 1]^n \subset \mathbb{R}^n\)は有界閉集合なのでコンパクト．
+  命題II-1.2.13から\(\mathcal{O}_v\)はコンパクト．
+  コンパクト集合の直積はコンパクトなので\(F\)もコンパクト．
+\end{proof}
+
+\begin{screen}
+  \(\mathbb{A}/K\)はコンパクト
+\end{screen}
+\begin{proof}
+  \(F \hookrightarrow \mathbb{A}\)は連続写像であることは容易に分かる．
+  離散部分群による剰余類\(\mathbb{A}/K\)の開集合の定義(p.181)から\(\mathbb{A} \twoheadrightarrow \mathbb{A}/K\)は連続．
+  よって\(f \colon F \to \mathbb{A}/K\)は連続．
+  基本領域\(\theta([0,1)^n) \times \prod_{v\in\mathfrak{M}_\text{f}} \mathcal{O}_v\)は\(F\)に含まれるので\(\Im f = \mathbb{A}/K\)．
+  コンパクト集合の連続写像による像はコンパクトなので，\(\mathbb{A}/K\)はコンパクト．
+\end{proof}
+
+\subparagraph{(2)}
+同型
+\[
+\begin{tikzcd}
+  \mathbb{R}^n \arrow[r, "\theta"]\arrow[d, phantom, sloped, "\ni"] & \mathbb{R} \otimes_\mathbb{Q} K \arrow[r, "\psi"]\arrow[d, phantom, sloped, "\ni"] & K_\infty \arrow[d, phantom, sloped, "\ni"] \\
+  (y_1, \ldots, y_n) \arrow[r, mapsto] & \sum_{i=1}^n (y_i \otimes w_i) \arrow[r, mapsto] & \left( \sum_{i=1}^n y_i \sigma_v(w_i) \right)_{v\in\mathfrak{M}_\infty}
+\end{tikzcd}
+\]
+を考える．補題5.3.14から
+\[
+K_\infty \times \prod_{v\in\mathfrak{M}_\text{f}} \supset \mathcal{F} = \psi\circ\theta([0,1)^n) \times \prod_{v\in\mathfrak{M}_\text{f}} \mathcal{O}_v \simeq \mathbb{A}/K
+\]
+である．変数変換を考えれば
+\begin{align*}
+  \int_\mathcal{F} d_\text{pr}x
+  &= \int_{[0,1)^n} dy_1 \cdots dy_n \, \det J(\psi\circ\theta) \int_{\prod \mathcal{O}_v} d_\text{f}x
+  = \int_{[0,1)^n} dy_1 \cdots dy_n \, \det J(\psi\circ\theta) \\
+  &= \det J(\psi\circ\theta)
+  = \sqrt{\Delta_K} .
+\end{align*}
+
+\paragraph{命題5.3.18}~
+\begin{screen}
+  \(X \times S \in \mathfrak{B}(\mathbb{A}^\times)\)なら\(X \times S^c \in \mathfrak{B}(\mathbb{A}^\times)\)
+\end{screen}
+\begin{proof}
+  \(\mathbb{A}^1\)は開集合なので\(X \times\mathbb{A}^1\)は\(\mathbb{R}_+\times\mathbb{A}^1\simeq\mathbb{A}^\times\)の開集合．
+  従って\(X\times\mathbb{A}^1 \in \mathfrak{B}(\mathbb{A}^\times)\)．
+  よって\((X\times\mathbb{A}^1)^c = X^c \times\mathbb{A}^1\in \mathfrak{B}(\mathbb{A}^\times)\)．
+  以上から\((X\times S^c)^c = X\times S \cup X^c \times\mathbb{A}^1\in \mathfrak{B}(\mathbb{A}^\times)\)なので\(X \times S^c \in \mathfrak{B}(\mathbb{A}^\times)\)．
+\end{proof}
+
+\paragraph{命題5.3.20}
+積公式（定理II-1.12.2）から\(K^\times \hookrightarrow \mathbb{A}^\times\)は\(K^\times \hookrightarrow \mathbb{A}^1\)である．
+
+\begin{screen}
+  \(\mathbb{A}^\times(\infty) \cap K^\times = \mathcal{O}_K^\times\)
+\end{screen}
+\begin{proof}
+  \(a \in K^\times\)とする．
+  \(K^\times \hookrightarrow \mathbb{A}^\times(\infty)\)は対角埋め込みであるので，全ての\(v\in\mathfrak{M}_\text{f}\)に対して\(a \in \mathcal{O}_v^\times\)．
+  よって命題II-1.2.14 (2)から\(a\in\mathcal{O}_K\)．
+  さらに，全ての\(\mathfrak{p}\in\Spec\mathcal{O}_K\)に対して\(\ord_\mathfrak{p}(a)=0\)なので\(1/a \in (\mathcal{O}_K)_\mathfrak{p}\)．
+  命題II-1.2.14 (1)から\(1/a\in\mathcal{O}_K\)．以上から\(a\in\mathcal{O}_K^\times\)．
+  よって\(\mathbb{A}^\times(\infty) \cap K^\times \subset \mathcal{O}_K^\times\)．
+  逆の包含関係は容易に示せる．
+\end{proof}
+
+\begin{screen}
+  \(\epsilon\in\mathcal{O}_K^\times\)に対して，\(\epsilon = w \epsilon_1{}^{n_1} \cdots \epsilon_r{}^{n_r}\)となる1の冪根\(w\)と\(n_1, \ldots, n_r\in\mathbb{Z}\)が存在する
+\end{screen}
+\begin{proof}
+  定理II-3.3.1の補足(p.\pageref{II_3_3_1})参照．
+\end{proof}
+
+\begin{screen}
+  \(f \colon \bigsqcup_i a_i l^{-1}(F(\mathbb{R}\times[0,1)^r)) \ni x \mapsto [x] \in \mathbb{A}^\times/K^\times \)が全射
+\end{screen}
+\begin{proof}
+  \(x \in \mathbb{A}^\times\)とする．
+  \(a_1, \ldots, a_h\in\mathbb{A}^1\)は\(\mathbb{A}^\times/K^\times\mathbb{A}^\times(\infty)\)の完全代表系なので，\(x = a_i \xi x'\)となる\(\xi\in K^\times\)と\(x'\in\mathbb{A}^\times(\infty)\)が存在する．
+  \((y_0, \ldots, y_r) = F^{-1} \circ l(x') \in \mathbb{R}^{r+1}\)とれば
+  \begin{align*}
+    F(y_0, y_1-\lfloor y_1 \rfloor, \ldots, y_r-\lfloor y_r\rfloor)
+    &= n^{-1} y_0 \delta + \sum_{i=1}^r (y_i - \lfloor y_i \rfloor) l(\epsilon_i) \\
+    &= n^{-1} y_0 \delta + \sum_{i=1}^r y_i  l(\epsilon_i) - \sum_{i=1}^r - \lfloor y_i \rfloor l(\epsilon_i) \\
+    &= F(y_0, \ldots, y_r) - l(\epsilon_1{}^{\lfloor y_1 \rfloor} \cdots \epsilon_r{}^{\lfloor y_r \rfloor}) \\
+    &= l(x') - l(\epsilon_1{}^{\lfloor y_1 \rfloor} \cdots \epsilon_r{}^{\lfloor y_r \rfloor}) .
+  \end{align*}
+  \(\epsilon:=\epsilon_1{}^{\lfloor y_1 \rfloor} \cdots \epsilon_r{}^{\lfloor y_r \rfloor}\)とすれば，上に述べたことから\(\epsilon \in \mathcal{O}_K^\times\)である．
+  \(a_i x'\epsilon^{-1} \in a_i l^{-1}(F(\mathbb{R}\times[0,1)^r))\)であり，\(f(a_ix'\epsilon^{-1}) = [a_ix'] = [x]\)．
+\end{proof}
+
+\begin{screen}
+  \(x \in \mathbb{A}^\times\)に対して\(\# f^{-1}([x]) = e\)
+\end{screen}
+\begin{proof}
+  \(x' \in l^{-1}(F(\mathbb{R}\times[0,1)^r))\)とする．
+  \(x \in f^{-1}([a_ix'])\)なら\(x = a_ix'\xi\)となる\(\xi\in K^\times\)が存在する．
+  従って\(\xi\in K^\times\)で\(x'\xi\in l^{-1}(F(\mathbb{R}\times[0,1)^r))\)となるものを全て求めればよい．
+
+  \(x', x'\xi \in \mathbb{A}^\times(\infty)\)なので\(\xi \in \mathbb{A}^\times(\infty) \cap K^\times = \mathcal{O}_K^\times\)である．
+  \(l(x'\xi) = l(x') + l(\xi) \in F(\mathbb{R}\times[0,1)^r)\)および\(l(x') \in F(\mathbb{R}\times[0,1)^r)\)なので，\(l(\xi) = n^{-1}y_0\delta + \sum_{i=1}^{r} s_i l(\epsilon_i)\)となる\(s_i \in (-1, 1)\)が存在する．
+  \(\xi\in\mathcal{O}_K^\times\)なので積公式から\(\lambda(l(\xi))=0\)．
+  同様に\(\lambda(l(\epsilon_i))=0\)なので\(y_0 = 0\)．
+  よって\(l(\xi) = \sum_{i=1}^{r} s_i l(\epsilon_i)\)．
+  \(\xi = w \epsilon_1{}^{n_1} \cdots \epsilon_r{}^{n_r}\)となる1の冪根\(w\)と\(n_1, \ldots, n_r\in\mathbb{Z}\)が存在するので，\(s_i = n_i = 0\)．
+  従って，\(\xi\)は1の冪根である．
+
+  逆に，\(\xi\in K^\times\)が1の冪根であれば，\(\xi^k = 1\)となる\(k\)が存在する．
+  \(0 = \log\lvert \sigma_v(\xi^k) \rvert _v = k \log \lvert \sigma_v(\xi) \rvert _v\)となるので，\(l(\xi) = (0,\ldots,0)\)．
+  よって\(x'\xi\in l^{-1}(F(\mathbb{R}\times[0,1)^r))\)であり\(f(a_ix') = f(a_ix'\xi)\)．
+\end{proof}
+
+\begin{screen}
+  \(\mathbb{A}^1\)の開集合\(V \subset U\)で\(V \cap K^\times = \set{1}\)となるものが存在する
+\end{screen}
+\begin{proof}
+  \(K^\times \cap U = \set{x_1=1, x_2, \ldots, x_t}\)とする．
+  埋め込みを明示的に表せば\((\sigma_0(x_i), \ldots, \sigma_r(x_i), x_i, \ldots, x_i) \in U\)である．
+  \((1, \ldots, 1)\)の近傍\(W \subset \mathbb{R}^{r+1}\)で\(i=2, \ldots, t\)に対しては\((\sigma_0(x_i), \ldots, \sigma_r(x_i)) \not\in W\)となるものが存在する．
+  \(\mathbb{A}^\times(\infty)\)には直積位相が入っているので，\(W \times \prod_{v\in\mathfrak{M}_\text{f}} \mathcal{O}_v^\times\)は\(\mathbb{A}^\times(\infty)\)の開集合であり，\(\mathbb{A}^\times\)の開集合でもある．
+  \(V := U \cap \left( W \times \prod_{v\in\mathfrak{M}_\text{f}} \mathcal{O}_v^\times \right) \subset \mathbb{A}^1\)は\(\mathbb{A}^1\)の開集合であり，\(V \cap K^\times = \set{1}\)である．
+\end{proof}
+
+\begin{screen}
+  \(C := \Set{x_\infty\in\mathbb{R}^n | (x_\infty, x_\text{f}) \in l^{-1}(F(\set{0}\times[0, 1]^r))}\)が\(\mathbb{R}^n\)のコンパクト集合
+\end{screen}
+\begin{proof}
+  \(C\)の点列\(\set{x_i}\)が\(x \in \mathbb{R}^n\)に収束すると仮定する．\(x \in C\)を示す．
+  \(\log\)の連続性から\(l((x_i, \bullet)) \to l((x, \bullet))\)である．
+  \(F(\set{0}\times[0, 1]^r)\)は\(l(\epsilon_1), \ldots l(\epsilon_r)\)で張られる有界集合であり，これが\(\mathbb{R}^n\)の閉集合であることは明らか．
+  \(l((x_i, \bullet)) \in F(\set{0}\times[0, 1]^r)\)なので，\(l((x, \bullet)) \in F(\set{0}\times[0, 1]^r)\)．
+  従って\(x_i \in C\)である．
+  \(C\)の有界性は明らか．
+\end{proof}
+
+\begin{screen}
+  \(f \colon \bigsqcup_i a_i X(m) \ni x \mapsto [x] \in N(m)/K^\times \)が全射で任意の\(x \in N(m)\)に対して\(\# f^{-1}([x]) = e\)
+\end{screen}
+\begin{proof}
+  (5.3.23)の証明と同様である．
+
+  \(x \in N(m)\)とする．
+  \(x \in \mathbb{A}^\times\)で\(1\leq\lvert x\rvert\leq m\)である．
+  \(a_1, \ldots, a_h\in\mathbb{A}^1\)は\(\mathbb{A}^\times/K^\times\mathbb{A}^\times(\infty)\)の完全代表系なので，\(x = a_i \xi x'\)となる\(\xi\in K^\times\)と\(x'\in\mathbb{A}^\times(\infty)\)が存在する．
+  積公式より\(\lvert\xi\rvert=1\)なので\(1 \leq \lvert x\rvert = \lvert a_i\xi x'\rvert = \lvert a_i x'\rvert \leq m\)である．
+  \((y_0, \ldots, y_r) = F^{-1} \circ l(x') \in \mathbb{R}^{r+1}\)とすれば
+  \[
+    F(y_0, y_1-\lfloor y_1 \rfloor, \ldots, y_r-\lfloor y_r\rfloor)
+    = l(x') - l(\epsilon_1{}^{\lfloor y_1 \rfloor} \cdots \epsilon_r{}^{\lfloor y_r \rfloor}) .
+  \]
+  \(\epsilon:=\epsilon_1{}^{\lfloor y_1 \rfloor} \cdots \epsilon_r{}^{\lfloor y_r \rfloor}\)とすれば，\(\epsilon \in \mathcal{O}_K^\times\)である．
+  \(l(x'\epsilon) = F(y_0, y_1-\lfloor y_1 \rfloor, \ldots, y_r-\lfloor y_r\rfloor)\)の成分和を取れば\(\log\lvert x'\rvert - \log\lvert\epsilon\rvert = \log\lvert x'\rvert = y_0\)．
+  \(y_0 \in [0, \log m]\)となるので\(a_i x'\epsilon^{-1} \in a_i l^{-1}(F([0, \log m]\times[0,1)^r))\)であり，\(f(a_ix'\epsilon^{-1}) = [a_ix'] = [x]\)．
+  以上から\(f\)は全射である．
+
+  \(x' \in l^{-1}(F([0, \log m]\times[0,1)^r))\)とする．
+  \(x \in f^{-1}([a_ix'])\)なら\(x = a_ix'\xi\)となる\(\xi\in K^\times\)が存在する．
+  従って\(\xi\in K^\times\)で\(x'\xi\in l^{-1}(F([0, \log m]\times[0,1)^r))\)となるものを全て求めればよい．
+
+  \(x', x'\xi \in \mathbb{A}^\times(\infty)\)なので\(\xi \in \mathbb{A}^\times(\infty) \cap K^\times = \mathcal{O}_K^\times\)である．
+  \(l(x'\xi) = l(x') + l(\xi) \in F([0, \log m]\times[0,1)^r)\)および\(l(x') \in F([0, \log m]\times[0,1)^r)\)なので，\(l(\xi) = n^{-1}y_0\delta + \sum_{i=1}^{r} s_i l(\epsilon_i)\)となる\(s_i \in (-1, 1)\)が存在する．
+  \(\xi\in\mathcal{O}_K^\times\)なので積公式から\(\lambda(l(\xi))=0\)．
+  同様に\(\lambda(l(\epsilon_i))=0\)なので\(y_0 = 0\)．
+  よって\(l(\xi) = \sum_{i=1}^{r} s_i l(\epsilon_i)\)．
+  \(\xi = w \epsilon_1{}^{n_1} \cdots \epsilon_r{}^{n_r}\)となる1の冪根\(w\)と\(n_1, \ldots, n_r\in\mathbb{Z}\)が存在するので，\(s_i = n_i = 0\)．
+  従って，\(\xi\)は1の冪根である．
+
+  逆に，\(\xi\in K^\times\)が1の冪根であれば，\(\xi^k = 1\)となる\(k\)が存在する．
+  \(0 = \log\lvert \sigma_v(\xi^k) \rvert _v = k \log \lvert \sigma_v(\xi) \rvert _v\)となるので，\(l(\xi) = (0,\ldots,0)\)．
+  よって\(x'\xi\in l^{-1}(F([0, \log m]\times[0,1)^r))\)であり\(f(a_ix') = f(a_ix'\xi)\)．
+\end{proof}
+
+\section{アデール上のFourier解析}
+\paragraph{補題5.4.7}~
+\begin{screen}
+  \(\Tr_{L/K} \colon \mathbb{A}_L \to \mathbb{A}_K\)は連続
+\end{screen}
+\begin{proof}
+  \(x = (x_w) \in \mathbb{A}_L\)とする．
+  \(\Tr_{L/K}(x) \in \mathbb{A}_K\)の\(v \in \mathfrak{M}_K\)成分は\(v\)の上にある素点を\(w_1, \ldots, w_g\)とすれば，\(\sum_{i=1}^{g} \Tr_{L_{w_i}/K_v}(x_{w_i})\)である．
+  無限素点については\(\Hom_\mathbb{Q}^\text{al}(K, \bar{\mathbb{Q}})\)の元の延長となる\(\Hom_\mathbb{Q}^\text{al}(L, \bar{\mathbb{Q}})\)の元が上にある素点である．
+  実埋め込みの延長は実埋め込みもしくは虚埋め込みであり，虚埋め込みの延長は虚埋め込みとなる．
+  すなわち\(v\in\mathfrak{M}_{K,\mathbb{R}}\)の上にある素点は\(w \in \mathfrak{M}_{K,\infty}\)であり，\(v\in\mathfrak{M}_{K,\mathbb{C}}\)の上にある素点は\(w \in \mathfrak{M}_{K,\mathbb{C}}\)である．
+
+  \(\mathbb{A}_K\)の開基は\eqref{5_1_3_open_basis_of_adele_ring}のように表されるので，
+  \begin{align*}
+    & \Tr_{L/K}{}^{-1} \left( \prod_{v\in S} U_v^K \times \prod_{v\in\mathfrak{M}_K\setminus S} \mathcal{O}_{K, v} \right) \\
+    &= \prod_{v\in S} \left( \sum_{w_i\mid v} \Tr_{L_{w_i}/K_v} \right)^{-1}(U_v^K) \times \prod_{v\in\mathfrak{M}_K\setminus S}  \left( \sum_{w_i\mid v} \Tr_{L_{w_i}/K_v} \right)^{-1}(\mathcal{O}_{K, v}) \\
+    &= \prod_{v\in \mathfrak{M}_{K,\infty}} \left( \sum_{w_i\mid v} \Tr_{L_{w_i}/K_v} \right)^{-1}(U_v^K)
+    \times \prod_{v\in S_\text{f}} \left( \sum_{w_i\mid v} \Tr_{L_{w_i}/K_v} \right)^{-1}(U_v^K)
+    \times \prod_{v\in\mathfrak{M}_{K,\text{f}}\setminus S_\text{f}} \left( \prod_{w\mid v} \mathcal{O}_{L,w} \right)
+  \end{align*}
+  である．\(w\mid v\)は素点\(w\in\mathfrak{M}_L\)が素点\(v\in\mathfrak{M}_K\)の上にあることを表す．
+  従って，\(v\in\mathfrak{M}_K\)に対して
+  \[ \sum_{w_i\mid v} \Tr_{L_{w_i}/K_v} \colon \prod_{w_i\mid v} L_{w_i} \ni (x_{w_i}) \mapsto \sum_{w_i\mid v} \Tr_{L_{w_i}/K_v}(x_{w_i}) \in K_v \]
+  が連続写像であることを示せばよい．
+
+  まず\(v\in\mathfrak{M}_{K,\mathbb{R}}\)を考える．
+  \(v\)の上にある素点を\(w_1, \ldots, w_{g_1} \in \mathfrak{M}_{L, \mathbb{R}}\)および\(w_{g_1+1}, \ldots, w_{g_1+g_2} \in \mathfrak{M}_{L, \mathbb{C}}\)とすれば，
+  \[
+  \sum_{i=1}^{g_1+g_2} \Tr_{L_{w_i}/K_v}(x_{w_i}) = \sum_{i=1}^{g_1} x_{w_i} + 2 \sum_{i=g_1+1}^{g_1+g_2} \Re(x_{w_i})
+  \]
+  である．これが\(\mathbb{R}^{g_1} \times \mathbb{C}^{g_2} \to \mathbb{R}\)の連続写像であることは明らか．
+
+  次に\(v\in\mathfrak{M}_{K,\mathbb{C}}\)を考える．
+  \[ \sum_{i=1}^g \Tr_{L_{w_i}/K_v}(x_{w_i}) = \sum_{i=1}^g x_{w_i} \]
+  であるので，これは\(\mathbb{C}^g \to \mathbb{C}\)の連続写像．
+
+  最後に\(v\in\mathfrak{M}_{K,\text{f}}\)を考える．
+  トレース，ノルム共に\(\Hom_{K_v}^\text{al}(L_{w_i}, \overline{K_v})\)の元の和・積で表される．
+  \(w_i\)に対応する素イデアルを\(P_i\)とする．
+  ここで\(L_{w_i}\)のGalois閉包を\(N\)，\(N\)の唯一の素イデアルを\(\mathcal{P}\)とする．
+  \(x_{w_i}, x_{w_i}' \in L_{w_i}\)に対して\(\lvert x_{w_i} - x_{w_i}' \rvert\to0\)なら\(\lvert \sigma(x_{w_i}) - \sigma(x_{w_i}') \rvert\to0\)を示せばよい．
+  \(\ord_{P_i}(x_{w_i} - x_{w_i}') > \epsilon\)とする．
+  命題I-7.3.7から\(\sigma\in\Hom_{K_v}^\text{al}(L_{w_i}, \overline{K_v})\)は\(\chi \in \Gal(N/K_v)\)に延長できる．
+  定理II-1.3.26から\(\mathcal{P} = \chi(\mathcal{P})\)となる．
+  注II-1.3.6から素イデアル分解\(P_i \mathcal{O}_{N} = \mathcal{P}^{e(\mathcal{P}/P_i)}\)を考えれば
+  \begin{align*}
+    \ord_\mathcal{P}(\sigma(x_{w_i}) - \sigma(x_{w_i}'))
+    &= \ord_{\chi(\mathcal{P})}(\chi(x_{w_i}) - \chi(x_{w_i}'))
+    = \ord_\mathcal{P}(x_{w_i} - x_{w_i}') \\
+    &= e(\mathcal{P}/P_i) \ord_{P_i}(x_{w_i} - x_{w_i}') \\
+    &> \epsilon e(\mathcal{P}/P_i)
+  \end{align*}
+  なので\(\sigma\in\Hom_{K_v}^\text{al}(L_{w_i}, \overline{K_v})\)は連続．
+  従って，トレース，ノルムも連続である．
+\end{proof}
+
+\paragraph{定義5.4.16}
+仮定II-1.3.1の状況を考える．
+
+\begin{screen}
+  \begin{lem}
+    \(I\)を\(A\)のイデアル，\(S\)を\(A\)の乗法的集合とすれば\((S^{-1}I)^{-1} = S^{-1}I^{-1}\)
+  \end{lem}
+\end{screen}
+\begin{proof}
+  \(A\)はDedekind環なのでNoether環である．よって\(I\)は\(A\)上有限生成である．
+  \(I = a_1 A + \cdots + a_n A\)とする．
+
+  \(x \in (S^{-1}I)^{-1}\)とする．\(x(S^{-1}I) = S{-1}A\)である．
+  特に\(xa_i \in S^{-1}A\)であるので，\(s_i xa_i \in A\)となる\(s_i \in S\)が存在する．
+  ここで\(s = s_1 \cdots s_n\)とすれば全ての\(i=1, \ldots, n\)に対して\(sxa_i \in A\)となる．
+  よって\(sx I \subset A\)．すなわち\(sx \in I^{-1}\)．よって\(x \in S^{-1}I^{-1}\)．
+  以上から\((S^{-1}I)^{-1} \subset S^{-1}I^{-1}\)．
+
+  逆に\(x \in I^{-1}\)および\(s \in S\)により\(x/s \in S^{-1}I^{-1}\)とする．
+  仮定から\(xI \subset A\)である．
+  任意の\(a \in I\)と\(t \in S\)により\(a/t \in S^{-1}I\)とすれば\((x/s)(a/t) = (ax)/(st) \in S^{-1}A\)．
+  よって\(x/s \in (S^{-1}I)^{-1}\)．
+  以上から\((S^{-1}I)^{-1} \supset S^{-1}I^{-1}\)．
+\end{proof}
+
+\begin{screen}
+  \begin{prop}
+    \(S\)を\(A\)の乗法的集合とすれば\(S^{-1}\delta(B/A) = \delta(S^{-1}B/S^{-1}A)\)
+  \end{prop}
+\end{screen}
+\begin{proof}
+  上記補題から\(S^{-1}\delta^{-1}(B/A) = \delta^{-1}(S^{-1}B/S^{-1}A)\)を示せばよい．
+
+  \(y \in \delta^{-1}(B/A)\)および\(s\in S\)により\(y/s \in S^{-1}\delta(B/A)\)とする．
+  任意の\(b \in B\)と\(t \in S\)により\(b/t \in S^{-1}B\)とする．
+  \(\Tr_{L/K}((b/t)(y/s)) = \Tr_{L/K}(by) / (st) \in S^{-1}A\)なので\(y/s \in \delta^{-1}(S^{-1}B/S^{-1}A)\)である．
+  以上から\(S^{-1}\delta^{-1}(B/A) \subset \delta^{-1}(S^{-1}B/S^{-1}A)\)．
+
+  逆に\(y \in \delta^{-1}(S^{-1}B/S^{-1}A)\)とする．
+  \(B\)の\(A\)基底を\(b_1, \ldots, b_n\)とすれば，\(b_i/1 \in S^{-1}B\)なので\(\Tr_{L/K}(yb_i) \in S^{-1}A\)である．
+  すなわち\(\Tr_{L/K}(yb_i) = a_i/s_i\)となる\(a_i \in A\)と\(s_i \in S\)が存在する．
+  \(s = s_1 \cdots s_n\)とすれば\(\Tr_{L/K}(yb_i) = (as/s_i)/s\)である．
+  よって\(\Tr_{L/K}(ys b_i) = as/s_i \in A\)である．
+  両辺の\(A\)係数の線型結合を考えれば，任意の\(b \in B\)に対して\(\Tr_{L/K}(ysb) \in A\)なので\(ys \in \delta^{-1}(B/A)\)．
+  よって\(y \in S^{-1}\delta^{-1}(B/A)\)なので\(S^{-1}\delta^{-1}(B/A) \supset \delta^{-1}(S^{-1}B/S^{-1}A)\)．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \(\mathfrak{p}\)を\(A\)の素イデアル，\(S=A\setminus\mathfrak{p}\)とすれば，\(\Spec S^{-1}B = \Set{S^{-1}P | \mathfrak{p} \subset P \in \Spec B}\)
+  \end{lem}
+\end{screen}
+\begin{proof}
+  \(B\)の素イデアルで\(S\)と交わらないものは\(S^{-1}B\)の素イデアルと\(P \mapsto S^{-1}P\)により1対1に対応する（命題II-1.3.7）．
+  \(P \in \Spec B\)が\(S\subset A\)と交わらないとする．
+  \(A \setminus \mathfrak{p} = S \subset A \setminus (A\cap P)\)
+  なので\(\mathfrak{p} \supset P \cap A\)．
+  \(P \cap A\)は\(A\)の素イデアルであり，極大イデアルなので\(\mathfrak{p} = P \cap A\)．
+  逆に\(P\in\Spec B\)が\(\mathfrak{p}\)の上にあれば，\(S \cap P = (A\setminus\mathfrak{p}) \cap P = (A\setminus\mathfrak{p}) \cap A \cap P = (A\setminus\mathfrak{p}) \cap \mathfrak{p} = \varnothing\)．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \(S^{-1}A = A_\mathfrak{p}\)の\(\mathfrak{p}\)進距離による完備化は\(\widehat{A}_\mathfrak{p}\)．
+    \(S^{-1}B\)の\(P\)進距離による完備化は\(\widehat{B}_P\)．
+\end{lem}
+\end{screen}
+\begin{proof}
+  命題II-1.2.13から\(\varprojlim A_\mathfrak{p}/\mathfrak{p}^n A_\mathfrak{p} = \varprojlim A/\mathfrak{p}^n = \widehat{A}_\mathfrak{p}\)．
+  \(S^{-1}B\)に対しても同様に\(B/P^n \simeq S^{-1}B/S^{-1}P^n\)なので\(\varprojlim B/P^n = \varprojlim S^{-1}B/S^{-1}P^n = \widehat{B}_P\)．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \(B\)の全ての素イデアルを\(P=P_1, P_2, \ldots, P_g\)とする．
+    \(x \in \widehat{L}_1\)と\(N_i \geq 0\)に対して\(\ord_{P_1}(x-y) \geq N_1\)および\(\ord_{P_i}(y) \geq N_i\) (\(i\neq1\))を満たす\(y \in L\)が存在する．
+    \(x \in \widehat{B}_P\)なら\(y \in B\)とできる．
+  \end{lem}
+\end{screen}
+\begin{proof}
+  \(B\)の素イデアルは有限個なので，系II-1.8.8から\(\ord_{P_i}(\pi_i)=1\)および\(j \neq i\)に対して\(\ord_{P_j}(\pi_i)=0\)となる\(\pi_i \in L\)が存在する．
+  命題II-1.2.14から\(\pi_i \in B\)である．
+
+  \(x\pi_2{}^{-N_2} \cdots \pi_g{}^{-N_g} \in \widehat{L}_1\)の\(P\)進展開を
+  \[ x\pi_2{}^{-N_2} \cdots \pi_g{}^{-N_g} = \sum_{j\geq k} a_j \pi_1{}^j \]
+  とする．\(a_j \in B\)である．ここで
+  \[ y = \left( \sum_{j=k}^{N_1-1} a_j \pi_1{}^j \right) \pi_2{}^{N_2} \cdots \pi_g{}^{N_g} \]
+  とする．\(i\neq1\)なら\(\ord_{P_1}(\pi_i)=0\)なので，
+  \[
+  \ord_{P_1}(x-y) = \ord_{P_1}\left( x\pi_2{}^{-N_2} \cdots \pi_g{}^{-N_g} - \sum_{j=k}^{N_1-1} a_j \pi_1{}^j \right)
+  = \ord_{P_1}\left( \sum_{j\geq N_1} a_j \pi_1{}^j \right) \geq N_1 .
+  \]
+  さらに\(\ord_{P_i}(y) \geq N_i\)である．
+
+  \(x \in \widehat{B}_P\)なら\(\ord_P(x\pi_2{}^{-N_2} \cdots \pi_g{}^{-N_g}) \geq 0\)なので，\(P\)進展開の最低次の項は\(k\geq0\)である．
+  よって\(y \in B\)である．
+\end{proof}
+
+\begin{screen}
+  \(B\)の素イデアル\(P\)と\(P\)の下にある\(A\)の素イデアル\(\mathfrak{p}\)に対して\(\ord_P \delta(B/A) = \ord_P \delta(\widehat{B}_P/\widehat{A}_\mathfrak{p})\)
+\end{screen}
+\begin{proof}
+  まず\(A\)が局所環の場合を考える．
+  \(B\)の素イデアルを\(P=P_1, P_2, \ldots, P_g\)とする．全ての\(P_i\)は\(\mathfrak{p}\)の上にある．
+  補題II-1.10.10から\(x \in L\)に対して\(\Tr_{L/K}(x) = \sum_{i=1}^g \Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(x)\)である．
+  ここで\(x \in \delta^{-1}(\widehat{B}_P/\widehat{A}_\mathfrak{p})\)とする．
+  \(x \in \widehat{L}_1\)なので上記補題から\(x - \xi \in \widehat{B}_P\)および\(i \neq 1\)に対して\(\xi \in \widehat{B}_i\)となる\(\xi \in L\)が存在する．
+  任意の\(y \in B\)に対して
+  \[ \Tr_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}(\xi y) = \Tr_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}(xy) + \Tr_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}((\xi-x)y) \]
+  であるが，\(x\in \delta^{-1}(\widehat{B}_P/\widehat{A}_\mathfrak{p})\)なので\(\Tr_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}(xy) \in \widehat{A}_\mathfrak{p}\)．
+  \((\xi-x)y \in \widehat{B}_P\)なので命題I-8.1.19から\(\Tr_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}((\xi-x)y) \in \widehat{A}_\mathfrak{p}\)．
+  \(i\neq1\)に対しては\(\xi y \in \widehat{B}_i\)なので\(\Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(\xi y) \in \widehat{A}_\mathfrak{p}\)．
+  以上から\(\Tr_{L/K}(\xi y) = \sum_{i=1}^g \Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(\xi y) \in \widehat{A}_\mathfrak{p}\)．
+  よって\(\Tr_{L/K}(\xi y) \in K \cap \widehat{A}_\mathfrak{p}\)であるが，命題II-1.2.14から\(\Tr_{L/K}(\xi y) \in A\)である．
+  よって\(\xi \in \delta^{-1}(B/A)\)．
+  以上から，\(x \in \delta^{-1}(\widehat{B}_P/\widehat{A}_\mathfrak{p})\)に対して\(\ord_P(x) = \ord_P(\xi)\)を満たす\(\xi \in \delta^{-1}(B/A)\)が存在する．
+  よって\(\ord_P \delta^{-1}(B/A) \leq \ord_P \delta^{-1}(\widehat{B}_P/\widehat{A}_\mathfrak{p})\)．
+
+  \(x\in\delta^{-1}(B/A)\), \(y\in\widehat{B}_P\)とする．
+  \(x \in B \subset \widehat{B}_P\)なので上記補題からと\(x-\xi \in \widehat{B}_P\)および\(i\neq1\)に対して\(\xi \in \widehat{B}_i\)となる\(\xi \in L\)が存在する．
+  さらに\((\eta-y)x \in \widehat{B}_P\)および\(i\neq1\)に対して\((\xi-x) \eta \in \widehat{B}_i\)となる\(\eta \in B\)が存在する．
+  \[ \Tr_{L/K}(\xi\eta) = \Tr_{L/K}(x\eta) + \Tr_{L/K}((\xi-x)\eta) = \Tr_{L/K}(x\eta) + \sum_{i=1}^g \Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}((\xi-x)\eta) \]
+  となるが，\(x\in\delta^{-1}(B/A)\)なので\(\Tr_{L/K}(x\eta) \in A\)である．
+  全ての\(i\)に対して\((\xi-x)\eta \in \widehat{B}_i\)なので\(\Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}((\xi-x)\eta) \in \widehat{A}_\mathfrak{p}\)である．
+  \(\Tr_{L/K}((\xi-x)\eta) = \sum_{i=1}^g \Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}((\xi-x)\eta) \in K \cap \widehat{A}_\mathfrak{p} = A\)なので\(\Tr_{L/K}(\xi\eta) \in A\)．
+  \(i\neq1\)に対しては\(\xi \in \widehat{B}_i\)および\(\eta\in B\)なので\(\xi\eta \in \widehat{B}_i\)．
+  よって\(\Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(\xi\eta) \in \widehat{A}_\mathfrak{p}\)となる．
+  以上から\(\Tr_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}(\xi\eta) = \Tr_{L/K}(\xi\eta) - \sum_{i=2}^g \Tr_{\widehat{L}_i/\widehat{K}_\mathfrak{p}}(\xi\eta) \in \widehat{A}_\mathfrak{p}\)．
+  \(\Tr_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}((\xi-x)\eta) \in \widehat{A}_\mathfrak{p}\)と併せて，\(\Tr_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}(x\eta) \in \widehat{A}_\mathfrak{p}\)．
+  \((\eta-y)x \in \widehat{B}_P\)なので\(\Tr_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}((\eta-y)x) \in \widehat{A}_\mathfrak{p}\)．
+  よって\(\Tr_{\widehat{L}_1/\widehat{K}_\mathfrak{p}}(xy) \in \widehat{A}_\mathfrak{p}\)．
+  すなわち\(x \in \delta^{-1}(\widehat{B}_P/\widehat{A}_\mathfrak{p})\)．
+  よって\(\ord_P \delta^{-1}(B/A) \geq \ord_P \delta^{-1}(\widehat{B}_P/\widehat{A}_\mathfrak{p})\)．
+
+  以上から\(\ord_P \delta^{-1}(B/A) = \ord_P \delta^{-1}(\widehat{B}_P/\widehat{A}_\mathfrak{p})\)．
+
+  \(A\)が局所環でない場合．\(\mathfrak{p}\)を\(A\)の素イデアル，\(S=A\setminus\mathfrak{p}\)とする．
+  上記命題から\(S^{-1}B\)のイデアルとして\(S^{-1}\delta(B/A) = \delta(S^{-1}B/S^{-1}A)\)．
+  素イデアル分解の一意性から\(\ord_{S^{-1}P} \delta(S^{-1}B/S^{-1}A) = \ord_P \delta(B/A)\)．
+  \(S^{-1}A = A_\mathfrak{p}\)は局所環であり，\(S^{-1}P\)は\(\mathfrak{p}A_\mathfrak{p}\)の上にある素イデアル．
+  これに対して命題の主張を適用すれば，\(\ord_{S^{-1}P} \delta(S^{-1}B/S^{-1}A) = \ord_P \delta(\widehat{B}_P/\widehat{A}_\mathfrak{p})\)．
+  よって示せた．
+\end{proof}
+
+\paragraph{補題5.4.23}~
+\begin{screen}
+  \(\Lambda \simeq \mathbb{Z}^n\)
+\end{screen}
+\begin{proof}
+  \(d\mathcal{O}_K \subset \Lambda \subset \mathcal{O}_K\)はいずれも有限生成\(\mathbb{Z}\)加群．
+  PID上の有限生成加群の構造定理から\(\Lambda \simeq \mathbb{Z}^m \oplus \mathbb{Z}/p_1\mathbb{Z} \oplus \cdots \oplus \mathbb{Z}/p_r\mathbb{Z}\)．
+  \(\Lambda\)は捩れがないので\(r=0\)であり，\(m=n\)が従う．
+\end{proof}
+
+\paragraph{(5.4.26)}~
+\begin{screen}
+  \begin{lem}
+    Dedekind環\(A\)の分数イデアル\(I\)について\(I=\mathfrak{p}_1{}^{a_1}\cdots\mathfrak{p}_t{}^{a_t}\)なら\(I^{-1}=\mathfrak{p}_1{}^{-a_1}\cdots\mathfrak{p}_t{}^{-a_t}\)
+  \end{lem}
+\end{screen}
+\begin{proof}
+  系I-8.3.22から
+  \[
+  I^{-1} = (\mathfrak{p}_1{}^{a_1}\cdots\mathfrak{p}_t{}^{a_t})^{-1}
+  = \mathfrak{p}_1{}^{-1} (\mathfrak{p}_1{}^{a_1-1}\cdots\mathfrak{p}_t{}^{a_t})^{-1}
+  = \cdots
+  =\mathfrak{p}_1{}^{-a_1}\cdots\mathfrak{p}_t{}^{-a_t} .
+  \]
+\end{proof}
+
+\begin{screen}
+  \(\widehat\Lambda = Y \cap K \)
+\end{screen}
+\begin{proof}
+  \(\#S < \infty\)なので系II-1.8.8から\(v \in S\)に対して\(\ord_v(\pi_v)=1\)および\(v \neq w \in S\)に対して\(\ord_w(\pi_v)=0\)となる\(\pi_v \in K\)が存在する．
+  命題II-1.2.14から\(\pi_v \in \mathcal{O}_K\)である．
+  このとき\(\prod_{v\in S} \pi_v{}^{-m_v} \Lambda = \mathcal{O}_K\)を示す．
+  \(x \in \Lambda\)とする．\(x \in K\)で\(v\in S\)に対しては\(\ord_v(x) \geq m_v\)および\(v \not\in S\)に対しては\(\ord_v(x) \geq 0\)．
+  よって\(\prod_{v\in S} \pi_v{}^{-m_v} x\)は全ての\(v \in \mathfrak{M}_\text{f}\)に対して\(\ord_v(\prod_{v\in S} \pi_v{}^{-m_v} x) \geq 0\)を満たすので，命題II-1.2.14から\(\prod_{v\in S} \pi_v{}^{-m_v} x \in \mathcal{O}_K\)．
+  逆に\(x \in \mathcal{O}_K\)とする．\(\prod_{v\in S} \pi_v{}^{m_v} x \in \Lambda\)なので\(x \in \prod_{v\in S} \pi_v{}^{-m_v} \Lambda\)．
+  以上で示せた．
+
+  \(z \in \widehat\Lambda\)とする．
+  \(z \in K\)で任意の\(x \in \Lambda\)に対して\(\Tr_{K/\mathbb{Q}}(xz) \in \mathbb{Z}\)である．
+  上記で示したことより，任意の\(x \in \mathcal{O}_K\)に対して\(\Tr_{K/\mathbb{Q}}(x \prod_{v\in S} \pi_v^{m_v} z) \in \mathbb{Z}\)なので\(\prod_{v\in S} \pi_v^{m_v} z \in \delta^{-1}(K/\mathbb{Q})\)．
+  従って\(v \in S\)に対しては\(\ord_v(z) = -m_v - \delta_v\)，\(v \not\in S\)に対しては\(\ord_v(z) = - \delta_v\)．
+  すなわち\(z \in Y\)．
+
+  \(z \in Y \cap K\)とする．任意の\(x \in \Lambda = (\prod_{v\in S} \mathfrak{p}_v^{m_v} \times \prod_{v\not\in S} \mathcal{O}_v ) \cap K\)に対して\(xz \in \prod_{v\in\mathfrak{M}_\text{f}} \mathfrak{p}_v^{-\delta_v} \cap K\)．
+  任意の\(v\in\mathfrak{M}_\text{f}\)に対して\(xz \in \mathfrak{p}_v^{-\delta_v}\)なので\(xz \in \delta^{-1}(K_v/\mathbb{Q}_p)\)である．
+  すなわち\(\Tr_{K_v/\mathbb{Q}_p}(xz) \in \mathbb{Z}_p\)．
+  よって補題II-1.10.10から任意の\(p\)に対して\(\Tr_{K/\mathbb{Q}}(xz) = \sum_{v\mid p} \Tr_{K_v/\mathbb{Q}_p}(xz) \in \mathbb{Z}_p\)である．
+  命題II-1.2.14から\(\Tr_{K/\mathbb{Q}}(xz) \in \mathbb{Z}\)なので\(z \in \widehat\Lambda\)である．
+\end{proof}
+
+\begin{screen}
+  \(\mathbb{Z}_p{}^n / B\mathbb{Z}_p{}^n \simeq \prod_{v\mid p} \mathcal{O}_v/\mathfrak{p}_v{}^{m_v}\)
+\end{screen}
+\begin{proof}
+  \(K\)と\(\mathbb{Q}^n\)の対応は
+  \[ \phi \colon K \ni x = \sum_{i=1}^n x_i w_i \mapsto (x_1, \ldots, x_n) \in \mathbb{Q}^n \]
+  で与えられる．\(\set{w_1, \ldots, w_n}\)は\(\mathcal{O}_K\)の\(\mathbb{Z}\)基底なので，\(\phi(\mathcal{O}_K) = \mathbb{Z}^n\)である．
+  補題5.4.23から\(\Lambda\)は自由加群であるので，\(\Lambda\)の\(\mathbb{Z}\)基底を\(\lambda_1, \ldots, \lambda_n \in \mathcal{O}_K\)とする．
+  さらに\(\lambda_j = \sum_{i=1}^n B_{ij} w_i\)となる\(B_{ij} \in \mathbb{Z}\)が存在する．
+  \(\phi\)を\(\Lambda\)に制限すれば
+  \[
+  \phi \colon \Lambda \ni \sum_{j=1}^n y_j \lambda_j = \sum_{i=1}^n \left( \sum_{j=1}^n B_{ij} y_j \right) w_i
+  \mapsto
+  \begin{pmatrix}
+     \sum_{j=1}^n B_{1j} y_j \\
+     \vdots \\
+     \sum_{j=1}^n B_{nj} y_j
+  \end{pmatrix}
+  =
+  B
+  \begin{pmatrix}
+    y_1 \\ \vdots \\ y_n
+  \end{pmatrix}
+  \in B\mathbb{Z}^n
+  \]
+  となる．
+
+  定理II-1.3.23(2)から
+  \[
+  \Phi\colon \mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p \ni x \otimes y \mapsto (\phi_v(x) y)_v \in \prod_{v\mid p} \mathcal{O}_v
+  \]
+  は同型である．これを制限すれば同型
+  \[
+  \Lambda \otimes_\mathbb{Z} \mathbb{Z}_p \ni x \otimes y \mapsto (\phi_v(x) y)_v \in \prod_{v\mid p} \mathfrak{p}_v{}^{m_v}
+  \]
+  が得られる．
+
+  さらに
+  \[
+  \mathbb{Z}^n \otimes_\mathbb{Z} \mathbb{Z}_p \ni
+  \begin{pmatrix}
+    x_1 \\ \vdots \\ x_n
+  \end{pmatrix}
+  \otimes y
+  \mapsto
+  \begin{pmatrix}
+    x_1 y \\ \vdots \\ x_n y
+  \end{pmatrix}
+  \in \mathbb{Z}_p{}^n
+  \]
+  は同型であり，これを制限すれば同型\(B\mathbb{Z}^n \otimes_\mathbb{Z} \mathbb{Z}_p\simeq B\mathbb{Z}_p{}^n\)が得られる．
+
+  以上から
+  \[ \prod_{v\mid p} \mathcal{O}_v \simeq \mathcal{O}_K \otimes_\mathbb{Z} \mathbb{Z}_p \simeq \mathbb{Z}^n \otimes_\mathbb{Z} \mathbb{Z}_p \simeq \mathbb{Z}_p{}^n \]
+  を制限すれば
+  \[ \prod_{v\mid p}  \mathfrak{p}_v{}^{m_v} \simeq \Lambda \otimes_\mathbb{Z} \mathbb{Z}_p \simeq B\mathbb{Z}^n \otimes_\mathbb{Z} \mathbb{Z}_p \simeq B \mathbb{Z}_p{}^n . \]
+  よって
+  \[
+  \prod_{v\mid p} \mathcal{O}_v / \mathfrak{p}_v{}^{m_v}
+  \simeq
+  \left . \prod_{v\mid p} \mathcal{O}_v \right / \prod_{v\mid p} \mathfrak{p}_v{}^{m_v}
+  \simeq \mathbb{Z}_p{}^n / B\mathbb{Z}_p{}^n .
+  \]
+\end{proof}
+
+\begin{screen}
+  \( \lvert \mathcal{O}_v / \mathfrak{p}_v{}^{m_v} \rvert = \mathcal{N}(\mathfrak{p}_v)^{m_v} \)
+\end{screen}
+\begin{proof}
+  命題II-1.8.6から従う．
+\end{proof}
+
+\section{Dedekind \(\zeta\)函数の極}
+\paragraph{命題5.5.4}
+5.3節で考えたように\(t=\underline{\lambda} s\)となる
+\[ \underline{\lambda} = (\lvert t\rvert^{1/n}, \ldots, \lvert t\rvert^{1/n}, 1, \ldots, 1) \in \mathbb{A}^\times(\infty) , \quad s\in\mathbb{A}^1 \]
+が存在する．
+% 命題5.3.20 (1)の証明で構成した\(\mathbb{A}^1 \supset \mathcal{F} \twoheadrightarrow \mathbb{A}^1/K^\times\)を考えれば
+% \[ \Set{ \underline{\lambda} sx | x \in K^\times} = \Set{\underline{\lambda} s'x | x \in K^\times} \]
+% となる\(s' \in \mathcal{F}\)が存在する．
+% よって，初めから\(t = \underline{\lambda} s\)~(\(s \in \mathcal{F}\))としてよい．
+
+\begin{screen}
+  \(t \in \mathbb{A}^\times(\infty)\)であるとしてよい
+\end{screen}
+\begin{proof}
+  \(S_1 = \Set{v \in \mathfrak{M}_\text{f} | \ord_v(t_v) \neq 0}\)とおく．\(S_1\)は有限集合である．
+  系II-1.8.8から\(\ord_v(\pi_v) = 1\)および\(v \neq w \in S_1\)に対して\(\ord_w(\pi_v) = 0\)となる\(\pi_v \in K\)が存在する．
+  \[ \Set{tx | x \in K^\times} = \Set{t \prod_{v\in S} \pi_v{}^{-\ord_v(t_v)} x | x \in K^\times} \]
+  なので，全ての\(v\in\mathfrak{M}_\text{f}\)に対して\(\ord_v(t_v) = 0\)であるとしてよい．
+\end{proof}
+
+定理5.4.21の証明と同様に\(\Phi=\Phi_\infty \otimes \ch_{\alpha+V}\)の場合を考えればよい．ただし，
+\[ \alpha \in K , \quad V = \prod_{v\in S_2} \mathfrak{p}_v{}^{m_{2,v}} \times \prod_{v\in\mathfrak{M}_\text{f} \setminus S_2} \mathcal{O}_v , \quad \# S_2 < \infty, \quad m_{2,v} \geq 0 \]
+である．\(\mathbb{A}^\times \ni t = (t_\infty, t_\text{f}) \in K_\infty^\times \times \mathbb{A}_\text{f}^\times\)と表せば
+\[ \sum_{x\in K^\times} \lvert \Phi(tx) \rvert = \sum_{\stackrel{x\in K^\times}{tx \in \alpha+V}} \lvert \Phi_\infty(t_\infty x) \rvert . \]
+
+\begin{screen}
+  \(x \in \Lambda = \prod_{v\in S} \mathfrak{p}_{K, v}{}^{m_v}\)について和を取ればよい
+\end{screen}
+\begin{proof}
+  \(tx\in\alpha+V\)なら全ての\(v\in\mathfrak{M}_\text{f}\)に対して\(t_v x - \alpha \in \mathfrak{p}_v{}^{m_{2,v}}\)．
+  従って\(\ord_v(t_vx-\alpha) \geq m_{2,v}\)である．
+  この時，全ての\(v\in\mathfrak{M}_\text{f}\)に対して
+  \begin{enumerate}
+    \item \(0 \leq m_{2,v} \leq \ord_v(x) < \ord_v(\alpha)\)
+    \item \(0 \leq m_{2,v} \leq \ord_v(\alpha) < \ord_v(x)\)
+    \item \(\ord_v(x) = \ord_v(\alpha)\)かつ\(\ord_v(t_vx-\alpha) \geq m_{2,v}\)
+  \end{enumerate}
+  のいずれかが成立する．
+  有限個の素点を除く，殆ど全ての有限素点\(v\in\mathfrak{M}_\text{f}\)に対して\(\ord_v(\alpha) = m_{2,v} = 0\)である．
+  このような素点に対しては上記2.もしくは3.が成立するので，殆ど全ての有限素点\(v\in\mathfrak{M}_\text{f}\)に対して\(\ord_v(x) \geq 0\)である．
+  \(\ord_v(\alpha)\), \(m_{2,v}\)のうち少なくとも1つが非零となる素点全体の集合を\(S\)とする．
+  \(S\)は有限集合である．\(v\in S\)に対しては\(\ord_v(x) \geq m_{2,v}\)もしくは\(\ord_v(x) = \ord_v(\alpha)\)が成立する．
+  従って，\(\ord_v(x) \geq m_v\)となる\(m_v\)が存在する．
+  以上から
+  \[ x \in \Lambda_1 := \Set{ x\in K | \ord_v(x) \geq m_v ~ (v \in S) , \quad \ord_v(x) \geq 0 ~ (v\in\mathfrak{M}_\text{f}\setminus S) } \]
+  について和をとればよい．
+
+  次に\(\Lambda_1 = \Lambda\)を示す．
+  \(x \in \Lambda_1 \subset K^\times\)とする．有限個の素点を除いて，殆ど全ての有限素点\(v\)に対して\(\ord_v(x)=0\)である．
+  よって，\(T \supset S\)と\(n_v \geq m_v\)が存在して，\(v \in T\)に対して\(\ord_v(x) = n_v\)および\(v \not\in T\)に対して\(\ord_v(x) = 0\)となる．
+  命題I-8.4.6から全ての\(v \in T\)に対して\(x \in \mathfrak{p}_{K, v}{}^{n_v}\)である．
+  補題I-8.3.23から\(x \in \bigcap_{v\in T} \mathfrak{p}_{K, v}{}^{n_v} = \prod_{v\in T} \mathfrak{p}_{K, v}{}^{n_v} \subset \Lambda\)．
+
+  逆の包含関係は命題I-8.4.6から直ちに従う．
+\end{proof}
+
+\begin{screen}
+  \(\Lambda \simeq \mathbb{Z}^{\oplus n}\)
+\end{screen}
+\begin{proof}
+  全ての\(v\in S\)に対して\(m_v \geq 0\)であれば\(\Lambda \subset \mathcal{O}_K\)なので，補題5.4.23から主張が従う．
+
+  \(m_v < 0\)となる\(v\)が存在する場合を考える．
+  \(\mathbb{Z}^{\oplus n} \simeq \prod_{m_v \geq 0} \mathfrak{p}_{K, v}{}^{m_v} \subset \Lambda\)である．
+  \(\Lambda\)は分数イデアルなので，有限生成\(\mathcal{O}_K\)加群である．
+  \(\mathcal{O}_K \simeq \mathbb{Z}^{\oplus n}\)は\(\mathbb{Z}\)加群として有限生成なので，\(\Lambda\)も有限生成加群である．
+  PID上の有限生成加群の構造定理から\(\Lambda \simeq \mathbb{Z}^m \oplus \mathbb{Z}/p_1\mathbb{Z} \oplus \cdots \oplus \mathbb{Z}/p_r\mathbb{Z}\)．
+  \(\Lambda\)は捩れがないので\(r=0\)．
+  よって\(\Lambda \simeq \mathbb{Z}^m\)である．
+  \(\Lambda \supset \mathbb{Z}^{\oplus n}\)なので，\(m \geq n\)である．
+
+  \(\Lambda\)の\(\mathbb{Z}\)基底を\(\lambda_1, \ldots, \lambda_m\)とする．
+  \(\sum_{i=1}^n x_i \lambda_i = 0\)となる\(x_1 \in \mathbb{Q}\)が存在したと仮定する．
+  \(x_i = a_i / y_i\)となる\(a_i, y_i \in \mathbb{Z}\)が存在するので，
+  \[ (a_1 y_2 \cdots y_m) \lambda_1 + \cdots + (a_n y_1 \cdots y_{m-1}) \lambda_m = 0 . \]
+  \(\lambda_1, \ldots, \lambda_m\)は\(\mathbb{Z}\)基底なので，上式の係数は\(0\)．
+  \(y_i \neq 0\)なので\(a_i = 0\)．
+  よって，\(\lambda_1, \ldots, \lambda_m\)は\(\mathbb{Q}\)基底でもある．
+  \(\Lambda \subset K\)であり，\(K\)は階数\(n\)の自由\(\mathbb{Q}\)加群なので\(m \leq n\)．
+  以上から\(m=n\)である．
+\end{proof}
+
+\(x \in \Lambda\setminus\set{0} \subset K^\times\)に対して
+\[
+f_1(x) = \sigma_1(x) , \ldots, \, f_{r_1}(x) = \sigma_{r_1}(x) , \,
+f_{r_1+1}(x) = \Re \sigma_{r_1+1}(x) ,\,  f_{r_1+2}(x) = \Im \sigma_{r_1+1}(x) , \ldots
+\]
+とする．
+
+\(v \in \mathfrak{M}_\text{f}\)に対して\(t_v = \underline{\lambda}_v s_v = \lvert t\rvert^{1/n} s_v\)なので
+\[
+\lvert t_1 f_1(x)\rvert^n + \cdots + \lvert t_n f_n(x)\rvert^n
+= \lvert t\rvert \left( \lvert s_1 \sigma_1(x)\rvert^n + \cdots + \lvert s_n f_n(x)\rvert^n \right) .
+\]
+\(\Phi_\infty\)は急速減少函数なので
+\begin{align*}
+  C(N)
+  &\geq \left\lvert \left( \lvert t_1 f_1(x)\rvert^n + \cdots + \lvert t_n f_n(x)\rvert^n \right)^N \Phi_\infty(t_1 f_1(x), \ldots, t_n f_n(x)) \right\rvert \\
+  &= \lvert t \rvert^N \left( \lvert s_1 f_1(x)\rvert^n + \cdots + \lvert s_n f_n(x)\rvert^n \right)^N
+  \left\lvert \Phi_\infty(t_1 f_1(x), \ldots, t_n f_n(x)) \right\rvert
+\end{align*}
+となる\(C(N)\)が存在する．
+\(\lvert s_1\rvert, \ldots, \lvert s_n\rvert\)のうち最小のものを\(s\)とすれば
+\begin{align*}
+  \left\lvert \Phi_\infty(t_1 f_1(x), \ldots, t_n f_n(x)) \right\rvert &
+  \leq C(N) \lvert t \rvert^{-N} \left( \lvert s_1 f_1(x)\rvert^n + \cdots + \lvert s_n f_n(x)\rvert^n \right)^{-N} \\
+  &\leq \frac{C(N)}{s^{nN}} \lvert t \rvert^{-N} \left( \lvert f_1(x)\rvert^n + \cdots + \lvert f_n(x)\rvert^n \right)^{-N} .
+\end{align*}
+よって，
+\[ \sum_{x\in\Lambda\setminus\set{0}} \frac{1}{\left( \lvert f_1(x)\rvert^n + \cdots + \lvert f_n(x)\rvert^n \right)^N} \]
+が有限であることを示せばよい．
+\[ \lVert x \rVert :=  \lvert f_1(x)\rvert^n + \cdots + \lvert f_n(x)\rvert^n \]
+とする．
+
+\(\Lambda\)は階数\(n\)の自由\(\mathbb{Z}\)加群なので，その基底を\(\lambda_1, \ldots, \lambda_n\)とする．
+\(\Lambda \ni x = \sum_{i=1}^n x_i \lambda_i\)とすれば，
+\[
+\begin{pmatrix}
+  f_1(x) \\ \vdots \\ f_n(x)
+\end{pmatrix}
+=
+\begin{pmatrix}
+  f_1(\lambda_1) & \cdots & f_1(\lambda_n) \\
+  & \vdots & \\
+  f_n(\lambda_1) & \cdots & f_n(\lambda_n) \\
+\end{pmatrix}
+\begin{pmatrix}
+  x_1 \\ \vdots \\ x_n
+\end{pmatrix}
+\]
+である．
+
+原点から十分離れた\((x_1, \ldots, x_n) \in \mathbb{Z}^n\)を考える．
+\(\lvert x_i \rvert \sim R\)であれば
+\[ \frac{1}{\lVert x \rVert^n} \sim \frac{1}{R^{nN}} \]
+であり，これを満たす\((x_1, \ldots, x_n)\)は\(R^n\)個程度存在する．
+よって，和は
+\[ \sum_R \frac{1}{(R^{N-1})^n} \]
+と表せる．\(\zeta\)函数の収束と同様に，これは収束する．
+
+\paragraph{定理5.5.3}~
+\begin{screen}
+  \(\lvert a \rvert^{-1} = \lvert \Delta_K \rvert\) (p.217)
+\end{screen}
+\begin{proof}
+  \(K\)の素点\(v\)に対して，\(\delta_v = \ord_{\mathfrak{p}_{K,v}}(\delta(K/\mathbb{Q}))\)とする．
+  命題II-1.2.13から
+  \((\pi_v) = \mathfrak{p}_v\)となる\(\pi_v \in \mathcal{O}_v\)により\(a_v = \pi_v{}^{\delta_v}\)とする．
+  \[
+  \lvert a_v\rvert_v = \mathcal{N}_{K_v}(\mathfrak{p}_v)^{-\delta_v}
+  = \lvert \mathcal{O}_v/\mathfrak{p}_v \rvert^{-\delta_v}
+  = \lvert \mathcal{O}_K/\mathfrak{p}_{K,v} \rvert^{-\delta_v}
+  = \mathcal{N}_K(\mathfrak{p}_{K,v})^{-\delta_v} .
+  \]
+  命題II-1.11.4，命題II-1.8.5，命題II-1.10.15，系II-1.10.16から
+  \begin{align*}
+    \lvert \Delta_K \rvert
+    &= \mathcal{N}_\mathbb{Q}(\Delta_{K/\mathbb{Q}}) = \mathcal{N}_\mathbb{Q}(\N_{K/\mathbb{Q}}(\delta_{K/\mathbb{Q}}))
+    = \mathcal{N}_K(\delta_{K/\mathbb{Q}})
+    = \mathcal{N}_K \left( \prod_v \mathfrak{p}_{K,v}{}^{\delta_v} \right)
+    = \prod_v \mathcal{N}_K(\mathfrak{p}_{K,v})^{\delta_v} \\
+    &= \prod_v \lvert a_v \rvert_v{}^{-1}
+    = \lvert a \rvert^{-1} .
+  \end{align*}
+\end{proof}
