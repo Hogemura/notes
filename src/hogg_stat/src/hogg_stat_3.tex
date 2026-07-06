@@ -1,0 +1,295 @@
+\chapter{Inferences About Normal Linear Models}
+\setcounter{section}{7}
+\section{The Distributions of Certain Quadratic Forms}
+\paragraph{Remark 9.8.3}~
+\begin{screen}
+  \(\boldsymbol{X} \sim \mathcal{N}(\boldsymbol\mu, \Sigma)\)，\(A\)を\(\rank A = r\)の対称行列，\(Q = \boldsymbol{X}^\top A \boldsymbol{X}\)とする．
+  \(Q\)が\(\chi^2(r)\)分布に従う必要十分条件は\(A\Sigma A = A\)である．
+\end{screen}
+\begin{proof}
+  \(\Sigma = \Gamma^\top \Lambda \Gamma\)を固有値分解，\(\Sigma^{1/2} = \Gamma^\top \Lambda^{1/2} \Gamma\)とする．
+  \[
+  Q = \boldsymbol{X}^\top A \boldsymbol{X} = (\Sigma^{-1/2} \boldsymbol{X})^\top \Sigma^{1/2} A \Sigma^{1/2} (\Sigma^{-1/2} \boldsymbol{X})
+  \]
+  と表せる．Thoerem 3.5.2より
+  \[
+  \Sigma^{-1/2} \boldsymbol{X}
+  \sim \mathcal{N}(\Sigma^{-1/2}\boldsymbol\mu, \Sigma^{-1/2}\Sigma\Sigma^{-1/2})
+  = \mathcal{N}(\Sigma^{-1/2}\boldsymbol\mu, 1) .
+  \]
+
+  \(A\Sigma A = A\)が成立する場合．
+  まず
+  \[ (\Sigma^{1/2} A \Sigma^{1/2})^2 = \Sigma^{1/2} A \Sigma A \Sigma^{1/2} = \Sigma^{1/2} A \Sigma^{1/2} . \]
+  となるので，\(\Sigma^{1/2} A \Sigma^{1/2}\)の固有値は\(0, 1\)である．この行列の固有値分解を
+  \[
+  \Sigma^{1/2} A \Sigma^{1/2} =
+  \begin{pmatrix}
+    \boldsymbol{v}_1 & \cdots & \boldsymbol{v}_n
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & & & \\
+    & \ddots & & \\
+    & & 0 & \\
+    & & & \ddots
+  \end{pmatrix}
+  \begin{pmatrix}
+    \boldsymbol{v}_1^\top \\ \vdots \\ \boldsymbol{v}_n^\top
+  \end{pmatrix}
+  \]
+  とすれば
+  \begin{align*}
+    Q &= (\Sigma^{-1/2} \boldsymbol{X})^\top
+    \begin{pmatrix}
+      \boldsymbol{v}_1 & \cdots & \boldsymbol{v}_n
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & & & \\
+      & \ddots & & \\
+      & & 0 & \\
+      & & & \ddots
+    \end{pmatrix}
+    \begin{pmatrix}
+      \boldsymbol{v}_1^\top \\ \vdots \\ \boldsymbol{v}_n^\top
+    \end{pmatrix}
+    (\Sigma^{-1/2} \boldsymbol{X})
+    \\
+    &=
+    \begin{pmatrix}
+      \boldsymbol{v}_1^\top \Sigma^{-1/2} \boldsymbol{X} & \cdots & \boldsymbol{v}_n^\top \Sigma^{-1/2} \boldsymbol{X}
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & & & \\
+      & \ddots & & \\
+      & & 0 & \\
+      & & & \ddots
+    \end{pmatrix}
+    \begin{pmatrix}
+      \boldsymbol{v}_1^\top \Sigma^{-1/2} \boldsymbol{X} \\ \vdots \\ \boldsymbol{v}_n^\top \Sigma^{-1/2} \boldsymbol{X}
+    \end{pmatrix}
+    \\
+    %
+    &= \sum_{i=1}^r \left( \boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{X} \right)^2 .
+  \end{align*}
+  Theorem 3.5.2から
+  \[
+  \boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{X}
+  \sim \mathcal{N}(\boldsymbol{v}_i^\top \Sigma^{-1/2}\boldsymbol\mu, \lvert \boldsymbol{v}_i\rvert^2)
+  = \mathcal{N}(\boldsymbol{v}_i^\top \Sigma^{-1/2}\boldsymbol\mu, 1) .
+  \]
+  (9.3.1)から，\(Q\)は自由度\(r\)の\(\chi^2\)分布で，非心度は
+  \begin{align*}
+    \theta &= \sum_{i=1}^r \left( \boldsymbol{v}_i^\top \Sigma^{-1/2}\boldsymbol\mu \right)^2 \\
+    &=
+    (\Sigma^{-1/2} \boldsymbol\mu)^\top \begin{pmatrix}
+      \boldsymbol{v}_1 & \cdots & \boldsymbol{v}_n
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & & & \\
+      & \ddots & & \\
+      & & 0 & \\
+      & & & \ddots
+    \end{pmatrix}
+    \begin{pmatrix}
+      \boldsymbol{v}_1^\top \\ \vdots \\ \boldsymbol{v}_n^\top
+    \end{pmatrix} (\Sigma^{-1/2} \boldsymbol\mu)
+    \\
+    &= (\Sigma^{-1/2} \boldsymbol\mu)^\top \Sigma^{1/2} A \Sigma^{1/2} (\Sigma^{-1/2} \boldsymbol\mu)
+    = \boldsymbol\mu^\top \Sigma^{-1/2} \Sigma^{1/2} A \Sigma^{1/2} \Sigma^{-1/2} \boldsymbol\mu \\
+    &= \boldsymbol\mu^\top A \boldsymbol\mu .
+  \end{align*}
+
+  逆に\(Q\)が自由度\(r\)の\(\chi^2\)分布に従う場合．\(\Sigma^{1/2} A \Sigma^{1/2}\)の固有値分解を
+  \[
+  \Sigma^{1/2} A \Sigma^{1/2} =
+  \begin{pmatrix}
+    \boldsymbol{v}_1 & \cdots & \boldsymbol{v}_n
+  \end{pmatrix}
+  \begin{pmatrix}
+    \lambda_1 & & \\
+    & \ddots & \\
+    & & \lambda_n
+  \end{pmatrix}
+  \begin{pmatrix}
+    \boldsymbol{v}_1^\top \\ \vdots \\ \boldsymbol{v}_n^\top
+  \end{pmatrix}
+  \]
+  とする．さらに
+  \[ (Z_1, \ldots, Z_n) = \boldsymbol{Z} = \Sigma^{-1/2} \boldsymbol{X} - \Sigma^{-1/2}\boldsymbol\mu \sim \mathcal{N}(\boldsymbol{0}, 1) \]
+  とすれば\(Z_1, \ldots, Z_n \sim \mathcal{N}(0, 1)\)であり，互いに全て独立である．
+
+  \(Q\)を計算すれば
+  \begin{align*}
+    Q
+    &= (\Sigma^{-1/2} \boldsymbol{X})^\top \Sigma^{1/2} A \Sigma^{1/2} (\Sigma^{-1/2} \boldsymbol{X}) \\
+    %
+    &= (\Sigma^{-1/2} \boldsymbol{X})^\top
+    \begin{pmatrix}
+      \boldsymbol{v}_1 & \cdots & \boldsymbol{v}_n
+    \end{pmatrix}
+    \begin{pmatrix}
+      \lambda_1 & & \\
+      & \ddots & \\
+      & & \lambda_n
+    \end{pmatrix}
+    \begin{pmatrix}
+      \boldsymbol{v}_1^\top \\ \vdots \\ \boldsymbol{v}_n^\top
+    \end{pmatrix}
+    (\Sigma^{-1/2} \boldsymbol{X}) \\
+    %
+    &=
+    \begin{pmatrix}
+      \boldsymbol{v}_1^\top \Sigma^{-1/2} \boldsymbol{X} & \cdots & \boldsymbol{v}_n^\top \Sigma^{-1/2} \boldsymbol{X}
+    \end{pmatrix}
+    \begin{pmatrix}
+      \lambda_1 & & \\
+      & \ddots & \\
+      & & \lambda_n
+    \end{pmatrix}
+    \begin{pmatrix}
+      \boldsymbol{v}_1^\top \Sigma^{-1/2} \boldsymbol{X} \\ \vdots \\ \boldsymbol{v}_n^\top \Sigma^{-1/2} \boldsymbol{X}
+    \end{pmatrix}
+    \\
+    %
+    &= \sum_{i=1}^n \lambda_i \left( \boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{X} \right)^2 \\
+    %
+    &= \sum_{i=1}^n \lambda_i \left( \boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu} + \boldsymbol{v}_i \cdot \boldsymbol{Z} \right)^2 \\
+    %
+    &= \sum_{i=1}^n \lambda_i
+    \left[
+      (\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu})^2
+      + 2(\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu})(\boldsymbol{v}_i \cdot \boldsymbol{Z})
+      + (\boldsymbol{v}_i \cdot \boldsymbol{Z})^2
+    \right] .
+  \end{align*}
+  ここで
+  \[
+  Z_i' =
+  \boldsymbol{v}_i \cdot \boldsymbol{Z} = v_{i1} Z_1 + \cdots v_{in} Z_n
+  \sim \mathcal{N}(\boldsymbol{0}, v_{i1}{}^2 + \cdots + v_{in}{}^2)
+  = \mathcal{N}(\boldsymbol{0}, 1)
+  \]
+  とすれば
+  \[
+  Q = \sum_{i=1}^n \lambda_i
+    \left[
+      (\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu})^2
+      + 2(\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu}) Z_i'
+      + (Z_i')^2
+    \right]
+  \]
+  となる．
+  \[ Z_i' = \sum_{j=1}^n v_{ij} Z_j , \quad \sum_{k=1}^n v_{ik} v_{jk} = \delta_{ij} \]
+  なので
+  \[
+  Z_i = \sum_{j=1}^n v_{ji} Z_j' , \quad
+  \sum_{i=1}^n Z_i{}^2 = \sum_{i=1}^n \sum_{j=1}^n v_{ji} Z_j' \sum_{k=1}^n v_{ki} Z_k'
+  = \sum_{j, k} Z_j' Z_k' \delta_{jk}
+  = \sum_{i=1}^n Z_i'{}^2 .
+  \]
+  変数変換を考えれば，
+  \begin{align*}
+    f'(z_1', \ldots, z_n')
+    &= \left\lvert \frac{\partial z}{\partial z'} \right\rvert f(z_1, \ldots, z_n)
+    = f(z_1, \ldots, z_n)
+    = f(z_1) \cdots f(z_n) \\
+    &= \frac{1}{(2\pi)^{n/2}} \exp \left( - \frac{1}{2} \sum_{i=1}^n z_i{}^2  \right)
+    = \frac{1}{(2\pi)^{n/2}} \exp \left( - \frac{1}{2} \sum_{i=1}^n z_i'{}^2  \right) .
+  \end{align*}
+  以上から
+  \begin{align*}
+    M_Q(t) &= E[e^{tq}] \\
+    &= \int dz_1' \cdots dz_n' \, f'(z_1', \ldots, z_n') e^{tq(z_1', \ldots, z_n')} \\
+    %
+    &= \prod_{i=1}^n \int \frac{dz_i'}{\sqrt{2\pi}} \,
+    \exp \left[
+      t \lambda_i (\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu})^2
+      + 2 t \lambda_i (\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu}) z_i'
+      + t \lambda_i (z_i')^2
+      -  \frac{z_i'{}^2}{2}
+    \right] \\
+    %
+    &= \prod_{i=1}^n
+    \exp \left[ t \lambda_i (\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu})^2 \right]
+    \int \frac{dz_i'}{\sqrt{2\pi}} \,
+    \exp \left[
+      - \frac{1 - 2t \lambda_i}{2} (z_i')^2
+      + 2 t \lambda_i (\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu}) z_i'
+    \right] \\
+    %
+    &= \prod_{i=1}^n
+    \exp \left[ t \lambda_i (\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu})^2 \right]
+    \exp \left[ \frac{2 t^2 \lambda_i{}^2 (\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu})^2}{(1 - 2t \lambda_i)} \right]
+    \times \frac{1}{\sqrt{1 - 2t \lambda_i}} \\
+    %
+    &= \prod_{i=1}^n
+    \exp \left[
+      \left(t \lambda_i  + \frac{2 t^2 \lambda_i{}^2 }{1 - 2t \lambda_i} \right)
+      (\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu})^2
+    \right]
+    \times \frac{1}{\sqrt{1 - 2t \lambda_i}} \\
+    %
+    &= \prod_{i=1}^n
+    \exp \left[
+      \left(t \lambda_i  + \frac{2 t^2 \lambda_i{}^2 }{1 - 2t \lambda_i} \right)
+      (\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu})^2
+    \right]
+    \times \frac{1}{\sqrt{1 - 2t \lambda_i}} \\
+    %
+    &= \prod_{i=1}^n
+    \exp \left[
+       \frac{t\lambda_i}{1 - 2t \lambda_i}
+      (\boldsymbol{v}_i^\top \Sigma^{-1/2} \boldsymbol{\mu})^2
+    \right]
+    \times \frac{1}{\sqrt{1 - 2t \lambda_i}} .
+  \end{align*}
+  これと(9.3.2)を比べれば\(r\)個の\(i\)について\(\lambda_i = 1\)であり，他は\(\lambda_i=0\)であることが分かる．
+  \(\lambda_i\)は\(\Sigma^{1/2} A \Sigma^{1/2}\)の固有値であったので，
+  \[ \Sigma^{1/2} A \Sigma^{1/2} = \Sigma^{1/2} A \Sigma^{1/2} \Sigma^{1/2} A \Sigma^{1/2} =\Sigma^{1/2} A \Sigma A \Sigma^{1/2} . \]
+  従って\(\Sigma A \Sigma = A\)．
+\end{proof}
+
+\section{The Independence of Certain Quadratic Forms}
+\paragraph{(9.9.13)}~
+\begin{screen}
+  半正定値行列\(A\)の対角成分は\(0\)以上である
+\end{screen}
+\begin{proof}
+  \(A_{11} = 0\)とする．\(\boldsymbol{x}^\top = (x_1, 0, \ldots, 0)\)との二次形式は\(\boldsymbol{x}^\top A \boldsymbol{x} = A_{11} x_1{}^2\)．
+  これが任意の\(x_1\)に対して\(0\)以上であるので，\(A_{11} \geq 0\)である．
+\end{proof}
+\[
+\Gamma^\top A \Gamma =
+\begin{pmatrix}
+  I_r & 0 \\ 0 & 0
+\end{pmatrix}
+= \Gamma^\top A_1 \Gamma + \Gamma^\top A_2 \Gamma .
+\]
+\(A_1\), \(A_2\)は半正定値なので\(\Gamma^\top A_1 \Gamma\), \(\Gamma^\top A_2 \Gamma\)も半正定値．
+よって，\(\Gamma^\top A_1 \Gamma\), \(\Gamma^\top A_2 \Gamma\)の第\(r+1, \ldots, n\)対角成分は\(0\)である．
+次の補題を示せば主張が従う．
+
+\begin{screen}
+  半正定値行列の対角成分が\(0\)であれば，一致する列・行の成分も\(0\)である
+\end{screen}
+\begin{proof}
+  \(A_{ii} = 0\)とする．
+  \(\boldsymbol{x}^\top A \boldsymbol{x}\)で\(x_i\)を含む項は\(2 \sum_{j\neq i} A_{ij} x_j x_i\)である．
+  任意の\(x_i\)に対してこれが\(0\)以上である必要があるので，\(\sum_{j\neq i} A_{ij} x_j = 0\)．
+  これが任意の\(x_j\)~(\(j\neq i\))に対して成立するので，\(A_{ij} = 0\)~(\(i\neq j\))．
+\end{proof}
+
+\chapter{Nonparametric and Robust Statistics}
+\setcounter{section}{1}
+\section{Sample Median and the Sign Test}
+\paragraph{Theorem 10.2.3}
+\(X\)の中央値が\(\theta\)の場合，
+\[ P_\theta (\sqrt{n} Q_2 \leq x) = P_\theta \left( S\left(\frac{x}{\sqrt{n}}\right) \leq \frac{n}{2} \right) = P_{\theta - x/\sqrt{n}} \left( S(0) \leq \frac{n}{2} \right) . \]
+Theorem 10.2.2で\(z_\alpha = 0\), \(\delta = \sqrt{n} \theta - x\), \(\theta_n = \theta - x/\sqrt{n}\)とすれば
+\[ P_{\theta_n} \left[ \frac{S(0) - n/2}{\sqrt{n}/2} \leq 0 \right] \to \Phi(-\delta/\tau_S) = \Phi \left( \frac{x - \sqrt{n}\theta}{\tau_S} \right) . \]
+上記から
+\[ P_\theta (\sqrt{n} Q_2 \leq x) = \Phi \left( \frac{x - \sqrt{n}\theta}{\tau_S} \right) . \]
+ここで，
+\[ P_\theta \left( \frac{\sqrt{n}(Q_2 - \theta)}{\tau_S} \leq x \right) = P_\theta (\sqrt{n} Q_2 \leq \tau_S x + \sqrt{n} \theta) = \Phi (x) \]
+となるので
+\[ \frac{\sqrt{n}(Q_2 - \theta)}{\tau_S} \sim \mathcal{N}(0, 1) . \]

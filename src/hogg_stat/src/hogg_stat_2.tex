@@ -1,0 +1,461 @@
+\chapter{Optimal Tests of Hypotheses}
+\section{Most Powerful Tests}
+\paragraph{Remark 8.1.1}~
+\begin{screen}
+  \begin{dfn}
+    \begin{enumerate}
+      \item \((X, \mathcal{F})\)を測度空間，\(\mu_1, \ldots, \mu_n\)を\(\mathcal{F}\)上の測度とする．
+      可測集合\(S \in \mathcal{F}\)に対して\(\boldsymbol\mu(S)=(\mu_1(S), \ldots, \mu_n(S)) \in \mathbb{R}^n\)を\(S\)によるベクトル測度と呼ぶ．
+      \item ベクトル測度\(\boldsymbol\mu \colon \mathcal{F} \to \mathbb{R}^n\)に対して，任意の\(S \in \mathcal{F}\)に対して\(\boldsymbol\mu(S)>0\)なら\(0<\boldsymbol\mu(A)<\boldsymbol\mu(S)\)となる\(A \subset S\)が存在する時，\(\boldsymbol\mu\)は非原子的と呼ぶ．
+    \end{enumerate}
+  \end{dfn}
+\end{screen}
+
+\begin{screen}
+  \begin{prop}[Ross\cite{ross2005elementary}]
+    \((X, \mathcal{F})\)を測度空間，\(\boldsymbol\mu\)を非原子的な有限ベクトル測度とする．
+    以下の(LT1), (LT2), (LT3)が成立する．
+    \begin{enumerate}[label=(LT\arabic*)]
+      \item 任意の\(S \in \mathcal{F}\)と任意の\(r \in [0, 1]\)に対して\(\boldsymbol\mu(A)=r\boldsymbol\mu(S)\)となる\(A \subset S\)が存在する
+      \item 任意の\(S \in \mathcal{F}\)に対して\(\boldsymbol\mu(A)=r\boldsymbol\mu(S)\)となる\(r \in (0, 1)\)と\(A \subsetneq S\)が存在する
+      \item 任意の\(S \in \mathcal{F}\)に対して\(\set{A_r}_{r\in[0,1]} \subset \mathcal{F}\)が存在し，\(0\leq r \leq s \leq 1\)に対して\(A_r \subset A_s \subset S\)と\(\boldsymbol\mu(A_r)=r\boldsymbol\mu(S)\)が成立する．
+    \end{enumerate}
+  \end{prop}
+\end{screen}
+
+\begin{proof}
+  (LT3)\(\Rightarrow\)(LT1)と(LT1)\(\Rightarrow\)(LT2)は明らかである．
+
+  (LT2)\(\Rightarrow\)(LT3)を証明する．\(S \in \mathcal{F}\)とする．
+  \(\mathcal{S} = \set{ A \in \mathcal{F} | A \subset S }\)とする．
+  \(\mathcal{S}\)は包含関係により半順序集合となる．
+  \(\mathcal{C}\)を\(\varnothing\), \(S\)を含む\(\mathcal{S}\)の極大鎖とする．
+  \(I = \set{\boldsymbol\mu(A)/\boldsymbol\mu(S) | A \in \mathcal{C}}\)とする\footnote{\(\boldsymbol\mu(A)=r\boldsymbol\mu(S)\)を満たす場合に，\(r=\mu_1(A)/\mu_1(S)=\cdots\)と表す}．
+  \(0, 1 \in I\)である．
+
+  \(I = [0, 1]\)であることを示せばよい．\(I \subsetneq [0, 1]\)と仮定し矛盾を示す．
+  \(a \in [0, 1] \setminus I\)とする．さらに
+  \[ a_\infty = \sup \set{I \cap [0, a)} , \, b_\infty = \inf \set{I \cap (a, 1]} \]
+  とすれば\(a_\infty \leq a \leq b_\infty\)である．
+
+  全順序集合\(\mathcal{C}\)の部分列\(\set{A_n}_{n\geq1}\)で\(A_n \subset A_{n+1}\)および\(\boldsymbol\mu(A_n)/\boldsymbol\mu(S) \to a_\infty\)となるものが存在する．
+  \(\epsilon>0\)とする．
+  \(a_\infty\)の定義から\(a_\infty-\epsilon\leq x\leq a_\infty\)となる\(x \in I \cap [0, a)\)が存在する．
+  さらに\(I\)の定義から\(\boldsymbol\mu(A_N)/\boldsymbol\mu(S) =x\)となる\(A_N \in \mathcal{C}\)が存在する．
+  よって\(\lvert a_\infty - \boldsymbol\mu(A_N)/\boldsymbol\mu(S) \rvert \leq \epsilon\)が成立する．
+
+  \(A_\infty\)が\(\set{A_n}\)の取り方に依らないことを示す．
+  \(\set{A_n}, \set{A_m'} \subset \mathcal{C}\)が共に
+  \[
+  A_n \subset A_{n+1} , \, A_m' \subset A_{m+1}' ,\,
+  \lim_{n\to\infty} A_n = \lim_{m\to\infty} A_m' = a_\infty \boldsymbol\mu(S)
+  \]
+  を満たすものとする．\(x\in \bigcup_{n=1}^\infty A_n\)とする．
+  \(x \in A_n\)となる\(A_n \in \mathcal{C}\)が存在する．
+  \(\boldsymbol\mu(A_m')/\boldsymbol\mu(S) \to a_\infty\)であるので，
+  \[ 0 < a_\infty - \boldsymbol\mu(A_m')/\boldsymbol\mu(S) < a_\infty - \boldsymbol\mu(A_n)/\boldsymbol\mu(S) \]
+  を満たす\(A_m'\)が存在する．\(\boldsymbol\mu(A_n)/\boldsymbol\mu(S) < \boldsymbol\mu(A_m')/\boldsymbol\mu(S)\)である．\(\mathcal{C}\)は全順序集合なので\(A_n \subset A_m'\)である．
+  よって\(x \in \bigcup_{m=1}^\infty A_m'\)となるので，\(\bigcup_{n=1}^\infty A_n \subset \bigcup_{m=1}^\infty A_m'\)である．
+  逆の包含関係も示せるので，\(\bigcup_{n=1}^\infty A_n = \bigcup_{m=1}^\infty A_m'\)．
+  すなわち\(A_\infty\)は\(\set{A_n}\)の取り方に依らない．
+
+  同様に\(\mathcal{C}\)の部分列\(\set{B_n}_{n\geq1}\)で\(B_n \supset B_{n+1}\)および\(\boldsymbol\mu(B_n)/\boldsymbol\mu(S) \to b_\infty\)となるものが存在する．
+
+  ここで
+  \[ A_\infty = \lim_{n\to\infty} \bigcup_{k=1}^n A_k , \, B_\infty = \lim_{n\to\infty} \bigcap_{k=1}^n B_k \]
+  とする．\(A_0 = \varnothing\)とすれば
+  \begin{align*}
+    \boldsymbol\mu(A_\infty) &= \boldsymbol\mu \left( \lim_{n\to\infty} \bigcup_{k=1}^n A_k \right)
+    = \boldsymbol\mu \left( \lim_{n\to\infty} \sum_{k=1}^n A_k \setminus A_{k-1} \right)
+    = \lim_{n\to\infty} \sum_{k=1}^n \boldsymbol\mu(A_k \setminus A_{k-1})
+    = \lim_{n\to\infty} \boldsymbol\mu(A_n) \\
+    &= a_\infty \boldsymbol\mu(S) , \\
+    %
+    \boldsymbol\mu(B_\infty) &= b_\infty \boldsymbol\mu(S)
+  \end{align*}
+  が成立する．
+
+  \(A_\infty = \bigcup \set{A\in\mathcal{C} | \boldsymbol\mu(A)/\boldsymbol\mu(S)\leq a_\infty}\)を示す．
+  \(x \in A_\infty\)とする．\(x \in A_n\)となる\(n\)が存在する．
+  \(A_n \subset A_\infty\)なので\(\boldsymbol\mu(A_n)/\boldsymbol\mu(S) \leq \boldsymbol\mu(A_\infty)/\boldsymbol\mu(S) = a_\infty\)である．
+  \(x \in \bigcup \set{A\in\mathcal{C} | \boldsymbol\mu(A)/\boldsymbol\mu(S)\leq a_\infty}\)となる．
+  よって\(A_\infty \subset \bigcup \set{A\in\mathcal{C} | \boldsymbol\mu(A)/\boldsymbol\mu(S)\leq a_\infty}\)．
+
+  逆に\(x\in\bigcup \set{A\in\mathcal{C} | \boldsymbol\mu(A)/\boldsymbol\mu(S)\leq a_\infty}\)とする．
+  \(\boldsymbol\mu(A)/\boldsymbol\mu(S)\leq a_\infty\)となる\(x\in A\in\mathcal{C}\)が存在する．
+  ここで\(\boldsymbol\mu(A_n)/\boldsymbol\mu(S) \to a_\infty\)なので，\(0 \leq a_\infty - \boldsymbol\mu(A_n)/\boldsymbol\mu(S) \leq a_\infty - \boldsymbol\mu(A)/\boldsymbol\mu(S)\)となる\(A_n\in\mathcal{C}\)が存在する．
+  \(\mathcal{C}\)は全順序集合であり\(\boldsymbol\mu(A)/\boldsymbol\mu(S) \leq \boldsymbol\mu(A_n)/\boldsymbol\mu(S)\)なので\(A \subset A_n\)である．
+  \(x \in A_n \subset A_\infty\)となるので\(\bigcup \set{A\in\mathcal{C} | \boldsymbol\mu(A)/\boldsymbol\mu(S)\leq a_\infty} \subset A_\infty\)．
+  以上から\(A_\infty = \bigcup \set{A\in\mathcal{C} | \boldsymbol\mu(A)/\boldsymbol\mu(S)\leq a_\infty}\)である．
+
+  同様に\(B_\infty = \bigcap \set{A\in\mathcal{C} | \boldsymbol\mu(A)/\boldsymbol\mu(S)\geq b_\infty}\)である．
+
+  \(A_\infty \in \mathcal{C}\)であることを示す．
+  \(a_\infty = a\)とする．\(a_\infty=a\not\in I\)なので，\(A_\infty\not\in\mathcal{C}\)である．
+  \(\mathcal{C} \cup A_\infty\)は\(\mathcal{F}\)の全順序部分集合であり，\(\mathcal{C}\)より真に大きい．
+  これは\(\mathcal{C}\)の極大性に反するので，\(a_\infty < a\)である．
+  \(a_\infty\not\in I\)なら上記と同様の議論により矛盾する．
+  よって\(a_\infty\in I\)であり\(A_\infty \in \mathcal{C}\)である．
+  同様に\(a<b_\infty\), \(b_\infty\in I\)であり\(B_\infty \in \mathcal{C}\)である．
+
+  \(a_\infty < a < b_\infty\)であるので\(A_\infty \subsetneq B_\infty\)である．
+  LT2から\(\boldsymbol\mu(C) = r \boldsymbol\mu(B_\infty\setminus A_\infty)\)となる\(r\)と\(C \subsetneq B_\infty\setminus A_\infty\)が存在する．
+  \(A_\infty \subsetneq A_\infty + C \subsetneq B_\infty\)である．
+  \[
+  a_\infty = \frac{\boldsymbol\mu(A_\infty)}{\boldsymbol\mu(S)}
+  < \frac{\boldsymbol\mu(A_\infty+C)}{\boldsymbol\mu(S)}
+  < \frac{\boldsymbol\mu(B_\infty)}{\boldsymbol\mu(S)} = b_\infty
+  \]
+  となるので，\(A_\infty + C \not\in \mathcal{C}\)である．
+  よって\(\mathcal{C} \cup \set{A_\infty + C}\)は\(\mathcal{C}\)より真に大きい全順序集合なので，\(\mathcal{C}\)の極大性に反する．
+  以上から\(I=[0, 1]\)となりLT3が成立する．
+
+  次にLT2が成立することを示す．
+  ここで任意の\(S \in \mathcal{F}\)に対して\(\mu_1(S) \leq\mu_2(S) \leq\cdots\leq\mu_n(S)\)が成立する場合にLT2が成立することを示せばよい．
+  実際，任意の非原子的な\(\boldsymbol\mu=(\mu_1, \ldots, \mu_n)\)に対して\(\boldsymbol\mu'=(\mu_1, \mu_1+\mu_2 \ldots, \mu_1+\cdots+\mu_n)\)とすれば，\(\boldsymbol\mu'\)は非原子的であり，上記の条件を満たす．
+  \(\boldsymbol\mu'\)に対してLT2が成立すれば\(\boldsymbol\mu\)に対してもLT2が成立する．
+
+  \(n=1\)なら，\(\boldsymbol\mu\)が非原子的であることからLT2が存在する．
+
+  \(n=1, \ldots, k\)でLT2が成立すると仮定する．上記で示したことから\(n=1,\ldots, k\)に対してLT2, LT3が成立する．
+  \(\mu_1, \ldots, \mu_{n+1}\)を測度とする．
+  \(\boldsymbol\nu = (\mu_2, \ldots, \mu_{n+1})\)に対してLT1を適用すれば
+  \[ S = S^1 + S^2 + S^3 , \, \boldsymbol\nu(S^i) = \frac{1}{3} \boldsymbol\nu(S) \]
+  となる可測集合\(S^1, S^2, S^3 \subset S\)が存在する．
+  \(S^i\)に対してLT3を適用すれば\(\set{A_r^i}_{r\in[0,1]}\)が存在し，\(0\leq r\leq s\leq 1\)に対して\(A_r^i \subset A_s^i \subset S^i\)と\(\boldsymbol\nu(A_r^i)=r\boldsymbol\nu(S^i)=(r/3)\boldsymbol\nu(S)\)が成立する．
+  \(A_0^i=S^i\)および\(A_1^i=\phi\)とする．
+
+  \(S=S^1+S^2+S^3\)なので，\(\mu_1(S)=\mu_1(S^1)+\mu_1(S^2)+\mu_1(S^3)\)である．
+  \begin{enumerate}
+    \item \(\mu_1(S)=0\)の場合．
+    \(\boldsymbol\mu(S^i) = 0 = \boldsymbol\mu(S)/3\)となり(LT2)が成立する．
+
+    \item \(\mu_1(S^i) = \mu_1(S)/3\)となる\(i\)が存在する場合．
+    \(\boldsymbol\mu(S^i) = \boldsymbol\mu(S)/3\)となり(LT2)が成立する．
+
+    \item \(\mu_1(S^i)<\mu_1(S)/3\)となる\(i\)が1つの場合．適当に\(S^i\)を入れ替えて
+    \[ \mu_1(S^2) < \frac{1}{3} \mu_1(S) < \mu_1(S^3) \leq \mu_1(S^1) \]
+    としても一般性を失わない．ここで
+    \[
+    A_r=
+    \begin{cases}
+      A^1_{3r} & 0 \leq r\leq 1/3 \\
+      S^1 + A^2_{3r-1} & 1/3 < r\leq 2/3 \\
+      S^1 + S^2 + A^3_{3r-2} & 2/3 < r\leq 1
+    \end{cases}
+    \]
+    とする．全ての\(r\in[0,1]\)に対して\(\boldsymbol\nu(A_r)=r\boldsymbol\nu(S)\)が成立する．
+    \(\mu_1\), \(\mu_2\)に関する仮定から
+    \[
+    \left\lvert \frac{\mu_1(A_{r+\epsilon})}{\mu_1(S)} - \frac{\mu_1(A_{r})}{\mu_1(S)} \right\rvert
+    = \frac{\mu_1(A_{r+\epsilon}\setminus A_r)}{\mu_1(S)}
+    \leq \frac{\mu_2(A_{r+\epsilon}\setminus A_r)}{\mu_1(S)}
+    \leq \frac{\mu_2(A_{r+\epsilon})-\mu_2(A_{r})}{\mu_1(S)}
+    = \frac{\mu_2(S)}{\mu_1(S)} \epsilon
+    \]
+    なので\(\mu_1(A_r)/\mu_1(S)\)は\(r\)に関して連続である．ここで
+    \[ \phi(1/3) = \frac{\mu_1(A^1_1)}{\mu_1(S)} = \frac{\mu_1(S^1)}{\mu_1(S)} > \frac{1}{3}  \]
+    および
+    \[ \phi(2/3) = \frac{\mu_1(S^1+A^2_1)}{\mu_1(S)} = \frac{\mu_1(S^1)+\mu_1(S^2)}{\mu_1(S)} = \frac{\mu_1(S)-\mu_1(S^3)}{\mu_1(S)} < \frac{2}{3} \]
+    であるので，\(\mu_1(A_r)/\mu_1(S)=r\)となる\(1/3<r<2/3\)が存在する．
+    よって\(\boldsymbol\mu(A_r) = r\boldsymbol\mu(S)\)となり(LT2)が成立する．
+
+    \item \(\mu_1(S^i)<\mu_1(S)/3\)となる\(i\)が2つの場合．
+    \[ \mu_1(S^1) \leq \mu_1(S^3) < \frac{1}{3} \mu_1(S) < \mu_1(S^2) \]
+    として良い．
+    \[ \phi(1/3) < \frac{1}{3} , \, \phi(2/3) > \frac{2}{3} \]
+    なので，上の場合と同様に\(\boldsymbol\mu(A_r) = r\boldsymbol\mu(S)\)となり(LT2)が成立する．
+  \end{enumerate}
+\end{proof}
+
+\begin{screen}
+  \begin{thm}[Lyapunov\cite{liapounoff1940fonctions}]
+    非原子的な有限ベクトル測度\(\boldsymbol\mu\)の値域\(L=\set{ \boldsymbol\mu(S) \in \mathbb{R}^n | S \in \mathcal{F} }\)は凸な有界閉集合である．
+  \end{thm}
+\end{screen}
+\begin{proof}
+  \(A, B \in \mathcal{F}\)および\(0<r<1\)とする．
+  LT1から
+  \[ \boldsymbol\mu(A') = r \boldsymbol\mu(A\setminus B) , \, \boldsymbol\mu(B') = (1-r) \boldsymbol\mu(B\setminus A) , \, \]
+  を満たす\(A'\subset A\setminus B\)と\(B'\subset B\setminus A\)が存在する．ここで
+  \begin{align*}
+    r \boldsymbol\mu(A) + (1-r) \boldsymbol\mu(B)
+    &= r (\boldsymbol\mu(A\setminus B)+\boldsymbol\mu(A\cap B))
+    + (1-r) (\boldsymbol\mu(B\setminus A)+\boldsymbol\mu(A\cap B)) \\
+    &= \boldsymbol\mu(A') + \boldsymbol\mu(B') + \boldsymbol\mu(A\cap B)
+    = \boldsymbol\mu(A' + A\cap B + B') \in L .
+  \end{align*}
+  \(L\)が有界となることは明らか．
+  点列\(\set{A_n \in \mathcal{F}}_{n\in\mathbb{N}}\)を考える．上記の証明と同様に
+  \[ \lim_{n\to\infty} \boldsymbol\mu(A_n) = \boldsymbol\mu(A_\infty) \]
+  となる\(A_\infty\in\mathcal{F}\)が存在するので，\(L\)の任意の点列は\(L\)に収束する．
+  すなわち\(L\)は閉集合である．
+\end{proof}
+
+\begin{screen}
+  \begin{thm}[Neyman and Pearson\cite{neyman1936contributions}]
+    \(f_1(\boldsymbol{x}), \ldots, f_{m+1}(\boldsymbol{x})\)を\(\int  \lvert f_i(\boldsymbol{x}) \rvert \, d\boldsymbol{x} < \infty\)を満たす可測函数\(\mathbb{R}^k\to\mathbb{R}\)とする．
+    与えられた\(c_1, \ldots, c_m \in \mathbb{R}\)に対して
+    \[
+    \mathcal{S} = \Set{S \in \mathbb{R}^k | \int_S f_i(\boldsymbol{x}) \, d\boldsymbol{x} = c_i } , \,
+    \mathcal{S}_0 = \Set{S_0 \in \mathcal{S} | \int_{S_0} f_{m+1}(\boldsymbol{x}) \, d\boldsymbol{x} \geq \int_S f_{m+1}(\boldsymbol{x}) \, d\boldsymbol{x} , \, \forall S \in \mathcal{S} }
+    \]
+    とする．\(S \in \mathcal{S}\)に対して，
+    \[
+    \begin{cases}
+      f_{m+1}(\boldsymbol{x}) \geq k_1 f_1(\boldsymbol{x}) + \cdots + k_m f_m(\boldsymbol{x}) & (\boldsymbol{x} \in S) \\
+      f_{m+1}(\boldsymbol{x}) \leq k_1 f_1(\boldsymbol{x}) + \cdots + k_m f_m(\boldsymbol{x}) & (\boldsymbol{x} \not\in S)
+    \end{cases}
+    \]
+    となる\(k_1, \ldots, k_m\)が存在すれば，\(S \in \mathcal{S}_0\)である．
+  \end{thm}
+\end{screen}
+
+\(m=1\), \(f_1(\boldsymbol{x})=L_{\theta'}(\boldsymbol{x})\), \(f_2(\boldsymbol{x})=L_{\theta''}(\boldsymbol{x})\), \(c_1=\alpha\)とすれば本文のTheorem 8.1.1の主張を得る．
+
+\(\mu_i(S) = \int_S f_i(\boldsymbol{x}) \, d\boldsymbol{x}\)とすれば\(\mu_i\)は非原子的な有限測度である．ここで
+\[
+M = \Set{(\mu_1(S), \ldots, \mu_{m+1}(S)) | S \subset \mathbb{R}^k} , \,
+N = \Set{(\mu_1(S), \ldots, \mu_m(S)) | S \subset \mathbb{R}^k}
+\]
+とする．\(M\), \(N\)はコンパクト凸集合である．
+
+\begin{screen}
+  \begin{thm}[Dantzing and Wald\cite{dantzig1951fundamental}]
+    \((c_1, \ldots, c_m)\)が\(N\)の内部に含まれるとする．\(S\in\mathcal{S}\)が\(S\in\mathcal{S}_0\)ならば
+    \[
+    \begin{cases}
+      f_{m+1}(\boldsymbol{x}) \geq k_1 f_1(\boldsymbol{x}) + \cdots + k_m f_m(\boldsymbol{x}) & (\boldsymbol{x} \in S) \\
+      f_{m+1}(\boldsymbol{x}) \leq k_1 f_1(\boldsymbol{x}) + \cdots + k_m f_m(\boldsymbol{x}) & (\boldsymbol{x} \not\in S)
+    \end{cases}
+    \]
+    が殆ど至る所で成立する\(k_1, \ldots, k_m\)が存在する．
+  \end{thm}
+\end{screen}
+\begin{proof}
+  \((c_1, \ldots, c_m)\)が\(N\)の内部に含まれるとする．
+  \[
+  c^* = \max\set{ c_{m+1} | (c_1, \ldots, c_{m+1}) \in M} , \,
+  c^{**} = \min\set{ c_{m+1} | (c_1, \ldots, c_{m+1}) \in M}
+  \]
+  とする．
+
+  \(c^*=c^{**}\)の場合．
+  \begin{lem}
+    任意の\((\bar{c}_1, \ldots, \bar{c}_m) \in N\)に対して\((\bar{c}_1, \ldots, \bar{c}_m, \bar{c}) \in M\)となる\(\bar{c}\)が唯一存在する．
+  \end{lem}
+  \begin{proof}
+    \((\bar{c}_1, \ldots, \bar{c}_m)\)を\(c_1, \ldots, c_m\)と異なる\(N\)の内点とする．
+    \(\mu_i(S) = \bar{c}_i\)となる\(S\)に対して\(\bar{c}=\mu(S)\)とすれば\((\bar{c}_1, \ldots, \bar{c}_m, \bar{c}) \in M\)となるので，主張を満たす\(\bar{c}\)は存在する．
+
+    ここで\((\bar{c}_1, \ldots, \bar{c}_m, \bar{c}^*) \in M\)および\((\bar{c}_1, \ldots, \bar{c}_m, \bar{c}^{**}) \in M\)となる\(\bar{c}^*\neq\bar{c}^{**}\)が存在するとする．
+    \((c_1, \ldots, c_m)\), \((\bar{c}_1, \ldots, \bar{c}_m)\)は\(N\)の内点なので，\((c_1', \ldots, c_m') \in N\)が存在し，\((c_1, \ldots, c_m)\)は\((c_1', \ldots, c_m')\)と\((\bar{c}_1, \ldots, \bar{c}_m)\)の線分上に位置する．
+    先程と同様の議論で\((c_1', \ldots, c_m', c') \in M\)となる\(c'\)が存在する．
+    \((c_1', \ldots, c_m', c')\), \((\bar{c}_1, \ldots, \bar{c}_m, \bar{c}^*)\), \((\bar{c}_1, \ldots, \bar{c}_m, \bar{c}^{**})\)で囲まれる凸集合を\(T\)とする．\(M\)は凸集合なので\(T \subset M\)である．
+    しかし，\((c_1, \ldots, c_m, h) \in T\)および\((c_1, \ldots, c_m, h') \in T\)となる\(h \neq h'\)が存在し矛盾．
+
+    \((\bar{c}_1, \ldots, \bar{c}_m)\)が\(N\)の境界点の場合も，上記と同様にすれば\(M\)の凸性から\(\bar{c}\)の唯一性が導ける．
+  \end{proof}
+
+  上記補題から任意の\((g_1, \cdots, g_{m+1}) \in M\)に対して\(g_{m+1} = \phi(g_1, \ldots, g_m)\)によって函数\(\phi\colon N \to \mathbb{R}\)が定義できる．
+  \(M\)は凸集合なので\(\phi\)は線型写像である．\((0, \ldots, 0) \in M\)なので
+  \[ \phi(g_1, \ldots, g_m) = \sum_{i=1}^m k_i g_i \]
+  とする．\(M\)の定義から，任意の\(S\)に対して
+  \[ \int_S f_{m+1}(\boldsymbol{x}) \, d\boldsymbol{x} = \sum_{i=1}^m k_i \int_S f_i(\boldsymbol{x}) \, d\boldsymbol{x} \]
+  となる．よって，殆ど至る所で
+  \[ f_{m+1}(\boldsymbol{x}) = \sum_{i=1}^m k_i f_i(\boldsymbol{x}) . \]
+
+  有界閉凸集合\(M\)の次元を\(M\)のアフィン包
+  \[ \aff(M) = \Set{\sum_{i=1}^n \alpha_i x_i | n\in\mathbb{N}, \, x_i \in M , \, \alpha_i \in \mathbb{R} , \, \sum_{i=1}^n \alpha_i = 1 } \]
+  の次元とする：\(\dim M = \dim_\mathbb{R} \aff(M)\)．
+
+  \begin{lem}
+    \(c^*=c^{**}\)と\(\dim M=\dim N\)は同値である
+  \end{lem}
+  \begin{proof}
+    \(c^*=c^{**}\)とする．\(M \supset N\)なので\(\dim M \geq \dim N\)である．
+    \(\aff(M)\)の一次独立なベクトル
+    \[ (c^1_1, \ldots, c^1_{m+1}) , \ldots , (c^{\dim M}_1, \ldots, c^{\dim M}_{m+1}) \]
+    が存在する．\(\alpha_1, \ldots, \alpha_{\dim M}\)が悉くは\(0\)でなければ
+    \[
+    \alpha_1
+    \begin{pmatrix}
+      c^1_1 \\ \vdots \\ c^1_{m+1}
+    \end{pmatrix}
+    + \cdots +
+    \alpha_{\dim M}
+    \begin{pmatrix}
+      c^{\dim M}_1 \\ \vdots \\ c^{\dim M}_{m+1}
+    \end{pmatrix}
+    \neq
+    \begin{pmatrix}
+      0 \\ \vdots \\ 0
+    \end{pmatrix}
+    \]
+    である．
+    上式の第\(1, \ldots, m\)成分が全て\(0\)ならば先程示したことより\(c^i_{m+1} = k_1 c^i_1 + \cdots + k_m c^i_m \)であるので，第\(m+1\)成分も\(0\)となり矛盾．
+    従って，第\(1, \ldots, m\)成分のうち少なくとも1つは非零である．
+    よって悉くは\(0\)でない\(\alpha_1, \ldots, \alpha_{\dim M}\)に対して
+    \[
+    \alpha_1
+    \begin{pmatrix}
+      c^1_1 \\ \vdots \\ c^1_m
+    \end{pmatrix}
+    + \cdots +
+    \alpha_{\dim M}
+    \begin{pmatrix}
+      c^{\dim M}_1 \\ \vdots \\ c^{\dim M}_m
+    \end{pmatrix}
+    \neq
+    \begin{pmatrix}
+      0 \\ \vdots \\ 0
+    \end{pmatrix}
+    \]
+    となるので
+    \[ (c^1_1, \ldots, c^1_m) , \ldots , (c^{\dim M}_1, \ldots, c^{\dim M}_m) \]
+    は\(\aff(N)\)の一次独立な元である．すなわち\(\dim N \geq \dim M\)である．
+    以上から\(\dim M = \dim N\)である．
+
+    逆に\(\dim M = \dim N\)とする．
+    \(c\neq 0\)なら\((0, \ldots, 0, c) \not\in \aff(M)\)であることを示す．
+    \((\boldsymbol{0}, c) \in \aff(M)\)とする．
+    \(\boldsymbol{c}_1, \ldots, \boldsymbol{c}_{\dim N}\)を\(\aff(N)\)の一次独立なベクトルとする．
+    \((\boldsymbol{c}_1, 0), \ldots, (\boldsymbol{c}_{\dim N}, 0)\), \((\boldsymbol{0}, c)\)は\(\aff(M)\)の一次独立なベクトルなので，\(\dim M > \dim N\)となり矛盾．
+
+    \(\aff(M)\)の一次独立なベクトル\(\set{\boldsymbol{d}^i := (c^i_1, \ldots, c^i_{m+1})}_{1\leq i\leq \dim M} \)が存在する．
+    \(\boldsymbol{c}^i := (c^i_1, \ldots, c^i_m) \neq \boldsymbol{0}\)である．
+    \(\boldsymbol{c}^1 , \ldots, \boldsymbol{c}^{\dim M}\)が一次独立であることを示す．
+    もし一次独立でなければ
+    \[ \boldsymbol{c}^{dim M} = \alpha_1 \boldsymbol{c}^1 + \cdots +  \alpha_{\dim M-1} \boldsymbol{c}^{\dim M-1} \]
+    となる\(\alpha^i\)が存在する（としても一般性を失わない）．
+    \(\dim N = \dim M\)なので\(\boldsymbol{c}^1, \ldots, \boldsymbol{c}^{\dim M-1}\)と一次独立な\(\boldsymbol{c}' = (c'_1, \ldots, c'_m)\)が存在する．
+    \(\boldsymbol{d}' = (c'_1, \ldots, c'_m, c'_{m+1}) \in M\)となる\(c'_{m+1}\)が存在する．
+    \(\boldsymbol{d}'\)は\(\boldsymbol{d}^1, \ldots, \boldsymbol{d}^{\dim M}\)と一次独立なので，次元の最大性に矛盾．
+    従って\(\boldsymbol{c}^1, \ldots, \boldsymbol{c}^{\dim M}\)は一次独立な\(\aff(N)\)の元である．
+
+    ここで
+    \[
+    (c_1, \ldots, c_m, c^*) = \alpha_1 \boldsymbol{d}^1 + \cdots + \alpha_{\dim M} \boldsymbol{d}^{\dim M} , \quad
+    (c_1, \ldots, c_m, c^{**}) = \beta_1 \boldsymbol{d}^1 + \cdots + \beta_{\dim M} \boldsymbol{d}^{\dim M}
+    \]
+    とする．
+    \((c_1, \ldots, c_m) \in N\)は\(\boldsymbol{c}^1, \ldots, \boldsymbol{c}^{\dim M-1}\)の線型結合により一意に表すことができるので\(\alpha_i = \beta_i\)．
+    従って\(c^* = c^{**}\)である．
+  \end{proof}
+
+  \(c^*>c^{**}\)の場合．先程の考察から\(\dim M > \dim N\)である．
+
+  \begin{lem}
+    \(c^*>c^{**}\)なら\(\dim M = \dim N + 1\)である．
+  \end{lem}
+  \begin{proof}
+    \(\dim M \geq \dim N+2\)とする．\(M\)の一次独立なベクトル
+    \[ (c^1_1 , \ldots, c^1_{m+1}) , \ldots, (c^{\dim M}_1 , \ldots, c^{\dim M}_{m+1}) \]
+    が存在する．\(c^i_1=\cdots=c^i_m=0\)となるものは高々1個しか存在しない．
+    \(\alpha_1, \ldots, \alpha_{\dim M}\)が悉くは\(0\)でなければ
+    \[
+    \alpha_1
+    \begin{pmatrix}
+      c^1_1 \\ \vdots \\ c^1_{m+1}
+    \end{pmatrix}
+    + \cdots +
+    \alpha_{\dim M}
+    \begin{pmatrix}
+      c^{\dim M}_1 \\ \vdots \\ c^{\dim M}_{m+1}
+    \end{pmatrix}
+    \neq
+    \begin{pmatrix}
+      0 \\ \vdots \\ 0
+    \end{pmatrix}
+    \]
+    である．第\(m+1\)成分が\(0\)であれば，
+    \[
+    \alpha_1
+    \begin{pmatrix}
+      c^1_1 \\ \vdots \\ c^1_m
+    \end{pmatrix}
+    + \cdots +
+    \alpha_{\dim M}
+    \begin{pmatrix}
+      c^{\dim M}_1 \\ \vdots \\ c^{\dim M}_m
+    \end{pmatrix}
+    \neq
+    \begin{pmatrix}
+      0 \\ \vdots \\ 0
+    \end{pmatrix}
+    \]
+    である．左辺のうち\(\boldsymbol{0}\)であるのは高々1個なので，非零なものは少なくとも\(\dim M-1\)個しか存在しない．
+    よって\(\dim M-1\geq\dim N+1\)個以上の一次独立な\(N\)の元が存在し矛盾．
+
+    よって第\(m+1\)成分は\(0\)であるが，任意の\(\alpha^i\)に対してこれが成立することはない．
+  \end{proof}
+
+  \(c^{**}<c<c^*\)となる\(c\)が存在する．\((c_1, \ldots, c_m, c)\)が\(M\)の内点となることを示す．
+  \(\dim N=n=\dim M-1\)とする．
+  \(\set{\boldsymbol{c}^i = (c^i_1, \ldots, c^i_m)}_{1\leq i\leq n}\)を一次独立な\(N\)の点で，\(\boldsymbol{c}^1, \cdots, \boldsymbol{c}^n\)の張る単体
+  \[ \Set{\sum_{i=1}^n \alpha_i \boldsymbol{c}^i | \alpha_i \geq 0, \, \sum_{i=1}^n \alpha_i = 1 } \]
+  が\((c_1, \ldots, c_m)\)を内点として含むように選ぶ．すなわち
+  \[
+  (c_1, \ldots, c_m) = \alpha_1 \boldsymbol{c}^1 + \cdots + \alpha_n \boldsymbol{c}^n , \quad \sum_{i=1}^n \alpha_i = 1 , \quad \alpha_i > 0
+  \]
+  となる\(\alpha_i\)が存在する．
+  \(M\), \(N\)の定義より各\(\boldsymbol{c}^i\)に対して\((c^i_1, \ldots, c^i_m , h_i) \in M\)となる\(h_i\)が（一意とは限らず）存在する．
+  \(\set{(c^i_1, \ldots, c^i_m , h_i)}_{1\leq i\leq n}\), \((c_1, \ldots, c_m, c^*)\), \((c_1, \ldots, c_m, c^{**})\)の凸包を\(T\)とする．
+  \(\aff(T)\)は\(n+1\)個の一次独立なベクトル\(\set{(c^i_1, \ldots, c^i_m , h_i)}_{1\leq i\leq n}\), \((0, \ldots, 0, c^*-c^{**})\)を含むので\(\dim M=\dim T\)である．
+  さらに\((c_1, \ldots, c_m, c)\)は\(T\)の内点であることも示せる．具体的には
+  \[
+  \begin{pmatrix}
+    c_1 \\ \vdots \\ c_m \\ c
+  \end{pmatrix}
+  =
+  \lambda_1
+  \begin{pmatrix}
+    c_1 \\ \vdots \\ c_m \\ c^*
+  \end{pmatrix}
+  + \lambda_2
+  \begin{pmatrix}
+    c_1 \\ \vdots \\ c_m \\ c^{**}
+  \end{pmatrix}
+  +
+  (1-\lambda_1-\lambda_2)
+  \sum_{i=1}^n \alpha_i \boldsymbol{c}^i
+  \]
+  が\(0<\lambda_1, \lambda_2<1\)に解を持つことを示せばよい．
+  以上から\((c_1, \ldots, c_m, c)\)は\(M\)の内点である．
+
+  \((c_1, \ldots, c_m, c^*)\)は\(M\)の境界点なので，支持超平面定理から\((c_1, \ldots, c_m, c^*)\)における\(M\)の超平面\(\Pi\)が存在し，\(M\)は\(\Pi\)により分離された半空間に含まれる．
+  \((g_1, \ldots, g_{m+1})\)により\(\mathbb{R}^{m+1}\)の点を表すことにすれば，\(\Pi\)上の点は
+  \[ k_{m+1} g_{m+1} - \sum_{i=1}^m k_ig_i = k_{m+1}c^* - \sum_{i=1}^m k_ic_i \]
+  と表せる．
+  \(k_{m+1}=0\)なら\(M\)の内点である\((c_1, \ldots, c_m, c)\)が\(\Pi\)に含まれることになり矛盾．
+  よって\(k_{m+1}\neq0\)である．従って，必要なら\(k_1, \ldots, k_m\)を再定義し
+  \[ \Pi \colon g_{m+1} - \sum_{i=1}^m k_ig_i = c^* - \sum_{i=1}^m k_ic_i \]
+  と表せる．
+  \(c<c^*\)なので，
+  \[ M \subset \Set{ (g_1, \ldots, g_{m+1}) | g_{m+1} - \sum_{i=1}^m k_ig_i \leq c^* - \sum_{i=1}^m k_ic_i  } \]
+  である．
+
+  ここで\(S \in \mathcal{S}\)が\(S \in \mathcal{S}_0\)であるとする．\(\mu_i\)などの定義から\(\mu_i(S)=c_i\)および\(\mu_{m+1}(S)=c^*\)である．
+  任意の可測集合\(T \subset \mathbb{R}^k\)に対して\((\mu_1(T), \ldots, \mu_{m+1}(T)) \in M\)なので，
+  \[ \mu_{m+1}(T) - \sum_{i=1}^m k_i \mu_i(T) \leq \mu_{m+1}(S) -  \sum_{i=1}^m k_i \mu_i(S) . \]
+  従って
+  \[
+  \int_T f_{m+1}(\boldsymbol{x}) \, d\boldsymbol{x} - \sum_{i=1}^m k_i \int_T f_i(\boldsymbol{x}) \, d\boldsymbol{x}
+  \leq \int_S f_{m+1}(\boldsymbol{x}) \, d\boldsymbol{x} - \sum_{i=1}^m k_i \int_S f_i(\boldsymbol{x}) \, d\boldsymbol{x} .
+  \]
+  \(T \subset S\)なら
+  \[ \int_{S\setminus T} f_{m+1}(\boldsymbol{x}) \, d\boldsymbol{x} \geq \sum_{i=1}^m k_i \int_{S\setminus T} f_i(\boldsymbol{x}) \, d\boldsymbol{x} \]
+  なので殆ど至る所で
+  \[ f_{m+1}(\boldsymbol{x}) \geq k_1 f_1(\boldsymbol{x}) + \cdots + k_m f_m(\boldsymbol{x}) \quad (\boldsymbol{x} \in S) . \]
+  \(T \supset S\)なら
+  \[ \int_{T\setminus S} f_{m+1}(\boldsymbol{x}) \, d\boldsymbol{x} \leq \sum_{i=1}^m k_i \int_{T\setminus S} f_i(\boldsymbol{x}) \, d\boldsymbol{x} \]
+  なので殆ど至る所で
+  \[ f_{m+1}(\boldsymbol{x}) \leq k_1 f_1(\boldsymbol{x}) + \cdots + k_m f_m(\boldsymbol{x}) \quad (\boldsymbol{x} \not\in S) . \]
+\end{proof}
+
+\section{Uniformly Most Powerful Tests}
+\paragraph{(8.2.3)}~
+\begin{screen}
+  \(L(\theta, \boldsymbol{X})\)が単調減少尤度比を持つとする．
+  仮説検定\(H_0\colon\theta < \theta'\)および\(H_1\colon\theta\geq\theta'\)は\(Y \geq c_Y\)を棄却域とする一様最強力不偏検定である．
+\end{screen}

@@ -1,0 +1,316 @@
+\setcounter{chapter}{3}
+\chapter{Some Elementary Statistical Inferences}
+\setcounter{section}{1}
+\section{Confidence Intervals}
+\paragraph{(4.2.8)}~
+\begin{screen}
+  \[
+  \hat\Delta = \bar{X} - \bar{Y} = \frac{1}{n_1} \sum_{i=1}^{n_1} X_i - \frac{1}{n_2} \sum_{i=1}^{n_2} Y_i
+  \]
+  に対し
+  \[ \Var(\hat\Delta) = \frac{\sigma_1{}^2}{n_1} + \frac{\sigma_2{}^2}{n_2} \]
+\end{screen}
+\begin{proof}
+  \(i\neq j\)に対し\(X_i\)と\(X_j\)はiidなので
+  \begin{align*}
+    \Var(\hat\Delta) &= E(\hat{\Delta}^2) - E(\hat\Delta)^2 \\
+    &= E \left[ \frac{1}{n_1{}^2} \sum_{i,j} X_i X_j + \frac{1}{n_2{}^2} \sum_{i,j} Y_i Y_j - \frac{1}{n_1n_2} \sum_{i,j} X_i Y_j \right]
+    - (\mu_1-\mu_2)^2 \\
+    %
+    &= \frac{1}{n_1{}^2} \sum_i E(X_i{}^2) + \frac{1}{n_1{}^2} \sum_{i\neq j} E(X_i) E(X_j)
+    + \frac{1}{n_2{}^2} \sum_i E(Y_i{}^2) + \frac{1}{n_2{}^2} \sum_{i\neq j} E(Y_i) E(Y_j) \\
+    &\, - \frac{2}{n_1n_2} \sum_{ij} E(X_i) E(Y_j) - (\mu_1-\mu_2)^2 \\
+    %
+    &= \frac{1}{n_1{}^2} (\sigma_1{}^2 + \mu_1{}^2) + \frac{n_1-1}{n_1} \mu_1{}^2
+    + \frac{1}{n_2{}^2} (\sigma_2{}^2 + \mu_2{}^2) + \frac{n_2-1}{n_2} \mu_2{}^2
+    - 2\mu_1 \mu_2 - (\mu_1-\mu_2)^2 \\
+    %
+    &= \frac{\sigma_1{}^2}{n_1} + \frac{\sigma_2{}^2}{n_2} .
+  \end{align*}
+\end{proof}
+
+\section{Confidence Intervals for Parameters of Discrete Distributions}
+\paragraph{(4.3.1)}
+\(F_T(t, \theta)\)は\(\theta\)に関し連続・単調減少と仮定する．
+\[ \bar\theta(X_1, \ldots, X_n) = \sup\Set{\theta\in\Omega | F_T(T(X_1, \ldots, X_n); \theta) \geq \alpha_1} \]
+とする．すなわち\(\theta > \bar\theta\)なら\(F_T(T; \theta) < \alpha_1\)．同様に
+\[ \underbar\theta(X_1, \ldots, X_n) = \inf\Set{\theta\in\Omega | F_T({T-}(X_1, \ldots, X_n); \theta) \leq 1-\alpha_2} \]
+とする．すなわち\(\theta < \underbar\theta\)なら\(F_T(T; \theta) > 1-\alpha_2\)．
+
+\(\vec{x} = (x_1, \ldots, x_n)\)と略記する．確率測度の単調性から
+\begin{align*}
+  & \Pr\Set{ \vec{x} | \underbar\theta(\vec{x}) \leq \theta \leq \bar\theta(\vec{x}) } \\
+  %
+  &= 1 - \Pr\Set{ \vec{x} | \theta < \underbar\theta(\vec{x}) }
+  - \Pr\Set{ \vec{x} | \theta > \bar\theta(\vec{x}) } \\
+  %
+  &\geq 1 - \Pr\Set{ \vec{x} | F_T(t(\vec{x}); \theta) < \alpha_1 }
+  - \Pr\Set{ \vec{x} | F_T({t-}(\vec{x}); \theta) > 1-\alpha_2 } .
+\end{align*}
+
+sample \(\vec{x}\)の実現確率を\(p(\vec{x})\)と表せば，
+\[ \Pr\Set{ \vec{x} | F_T(t(\vec{x}); \theta) < \alpha_1 } = \sum_{F_T(t(\vec{x}); \theta) < \alpha_1} p(\vec{x}) . \]
+さらに\(g(t) = \Set{\vec{x} | t(\vec{x}) = t}\)と表せば，
+\[
+\sum_{F_T(t(\vec{x}); \theta) < \alpha_1} p(\vec{x})
+= \sum_{F_T(t; \theta) < \alpha_1} \sum_{\vec{x} \in g(t)} p(\vec{x})
+= \sum_{F_T(t; \theta) < \alpha_1} p(t)
+= \Pr\Set{ t | F_T(t; \theta) < \alpha_1 } .
+\]
+よって，
+\begin{align*}
+  & \Pr\Set{ \vec{x} | \underbar\theta(\vec{x}) \leq \theta \leq \bar\theta(\vec{x}) } \\
+  &\geq 1 - \Pr\Set{ t | F_T(t; \theta) < \alpha_1 } - \Pr\Set{ t- | F_T({t-}; \theta) > 1-\alpha_2 } \\
+  &\geq 1 - \alpha_1 - \alpha_2 .
+\end{align*}
+なお，\(\bar\theta\), \(\underbar\theta\)は
+\[ F_T(t-; \underbar\theta) = 1-\alpha_2 , \, F_T(t; \bar\theta) = \alpha_1 \]
+の解．
+
+\section{Order Statistics}
+\paragraph{(4.4.8)}
+\(Y_i < \xi_p < Y_j\)は\(X_k < \xi_p\)~(\(k=1,\dots,n\))となるsampleが\(i\)以上\(j-1\)以下であることと同値．
+ここで，\(n\)回のsamplingをBernouli試行と考える．各試行の成功は「sample \(X_k\)について\(X_k < \xi_p\)」とする．
+試行の成功確率は\(P(X < \xi_p) = F(\xi_p) = p\)．
+よって，\(n\)回のsamplingについて成功が\(i\)回以上\(j-1\)回以下となる確率は
+\[ P(Y_i < \xi_p < Y_j) = \sum_{k=i}^{j-1}
+\begin{pmatrix}
+  n \\ k
+\end{pmatrix}
+p^{k} (1-p)^{n-k} . \]
+
+\chapter{Consistency and Limiting Distributions}
+\setcounter{section}{1}
+\section{Convergence in Distributions}
+\paragraph{Example 5.2.3}
+自由度\(n\)の\(t\)分布のpdfは
+\[
+f_n(y) = \frac{\Gamma[(n+1)/2]}{\sqrt{\pi n}\Gamma(n/2)} \frac{1}{(1+y^2/n)^{(n+1)/2}}
+= \frac{1}{\sqrt{\pi}} \frac{\Gamma[(n+1)/2]}{\sqrt{n}\Gamma(n/2)} \frac{1}{\sqrt{1+y^2/n}} \frac{1}{(1+y^2/n)^{n/2}} .
+\]
+
+まず
+\[ A(n) = \frac{\Gamma[(n+1)/2]}{\sqrt{\pi n}\Gamma(n/2)} \frac{1}{(1+y^2/n)^{(n+1)/2}} \]
+とすれば
+\[ \frac{A(n+2)}{A(n)} = \frac{n+1}{\sqrt{n(n+2)}} > 1 \]
+などとなるので，\(A(n)\)は単調増加．Strilingの公式から
+\[ \lim_{n\to\infty} A(n) = \sqrt{2} \]
+なので，\(A(n) \leq \sqrt{2}\)．
+
+任意の\(n\)に対し
+\[ \frac{1}{\sqrt{1+y^2/n}} \leq 1 . \]
+
+最後に
+\[ B(n) = \log \frac{1}{(1+y^2/n)^{n/2}} = - \frac{n}{2} \log \left(1+\frac{y^2}{n}\right) \]
+とすれば
+\[ \frac{dB}{dn} = - \frac{1}{2} \log \left(1+\frac{y^2}{n}\right) + \frac{1}{2} \frac{y^2}{n+y^2} . \]
+さらに
+\[ \frac{d^2B}{dn^2} = \frac{y^2}{2(n+y^2)} \left(\frac{1}{n} - \frac{1}{n+y^2}\right) \geq 0 \]
+なので\(dB/dn\)は単調増加．
+\[ \lim_{n\to\infty} \frac{dB}{dn} = 0 \]
+なので\(dB/dn \geq 0\)．従って\(B(n) \leq B(1)\)．
+
+\paragraph{Theorem 5.2.3}~
+\begin{screen}
+  \begin{lem}
+    \[
+      X_n \stackrel{D}{\to} X \Leftrightarrow \lim_{n\to\infty} f_{X_n}(x) = f_X(x) \Leftrightarrow \lim_{n\to\infty} \phi_{X_n}(t) = \phi_X(t) .
+    \]
+  \end{lem}
+\end{screen}
+\begin{proof}
+  \(X_n \stackrel{D}{\to} X\)とする．
+  \[ \lim_{n\to\infty} F_{X_n}(t) = F_X(t) \]
+  なので
+  \[ \lim_{n\to\infty} \int_{-\infty}^t f_{X_n}(x) \, dx = \int_{-\infty}^t f_X(x) \, dx . \]
+  \(f_{X_n} > 0\)は（絶対）可積分なので，Lebesgueの収束定理から
+  \[ \int_{-\infty}^t \lim_{n\to\infty} f_{X_n}(x) \, dx = \int_{-\infty}^t f_X(x) \, dx . \]
+  両辺\(t\)で微分すれば
+  \[ \lim_{n\to\infty} f_{X_n}(x) = f_X(x) . \]
+  さらに
+  \[
+    \lim_{n\to\infty} \phi_{X_n}(t) = \lim_{n\to\infty} \int_{-\infty}^\infty f_{X_n}(x) e^{itx} \, dx
+    = \int_{-\infty}^\infty \lim_{n\to\infty} f_{X_n}(x) e^{itx} \, dx
+    = \int_{-\infty}^\infty f_X(x) e^{itx} \, dx
+    = \phi_X(t) .
+  \]
+
+  \(\lim_{n\to\infty} f_{X_n}(x) = f(x)\)とする．\(f_{X_n}\), \(f_X\)はいずれも（絶対）可積分なので，
+  \[
+    \lim_{n\to\infty} F_{X_n}(t) = \lim_{n\to\infty} \int_{-\infty}^t f_{X_n}(x) \, dx
+    = \int_{-\infty}^t \lim_{n\to\infty} f_{X_n}(x) \, dx
+    = \int_{-\infty}^t f_X(x) \, dx = F(t) .
+  \]
+
+  \(\lim_{n\to\infty} \phi_{X_n}(t) = \phi_X(t)\)とする．\(f_{X_n}\)は（絶対）可積分なので，
+  \[
+    \lim_{n\to\infty} \phi_{X_n}(t) = \lim_{n\to\infty} \int_{-\infty}^\infty f_{X_n}(x) e^{itx} \, dx
+    = \int_{-\infty}^\infty \lim_{n\to\infty} f_{X_n}(x) e^{itx} \, dx .
+  \]
+  よって，
+  \begin{align*}
+    0 &= \lim_{n\to\infty} \phi_{X_n}(t) - \phi_X(t) = \int_{-\infty}^\infty \lim_{n\to\infty} f_{X_n}(x) e^{itx} \, dx - \int_{-\infty}^\infty f_X(x) e^{itx} \, dx \\
+    &= \int_{-\infty}^\infty \left[ \lim_{n\to\infty} f_{X_n}(x) - f_X(x) \right] e^{itx} \, dx .
+  \end{align*}
+  Fourier逆変換より\(\lim_{n\to\infty} f_{X_n}(x) = f(x)\)が従う．
+\end{proof}
+
+\begin{screen}
+  \begin{lem}
+    \(X_n \stackrel{P}{\to} X\)なら\(\lim_{n\to\infty} E[\lvert e^{itX_n} - e^{itX} \rvert] = 0\)（\(t\)に関する各点収束）．
+  \end{lem}
+\end{screen}
+\begin{proof}
+  各点収束を示せば良いので\(t\)は固定して考える．
+  任意の\(\epsilon>0\)に対して
+  \[ \lvert x-y \rvert < \delta \Rightarrow \lvert e^{itx} - e^{ity} \rvert
+  = \lvert 1 - e^{it(x-y)} \rvert < \epsilon \]
+  となる\(\delta\)が存在する．
+  \begin{align*}
+    E[\lvert e^{itX_n} - e^{itX} \rvert] &= E[\lvert 1 - e^{it(X_n-X)} \rvert] \\
+    &= E_{\lvert X_n - X\rvert < \delta}[\lvert 1 - e^{it(X_n-X)} \rvert] + E_{\lvert X_n - X\rvert \geq \delta}[\lvert 1 - e^{it(X_n-X)} \rvert] \\
+    &= E_{\lvert X_n - X\rvert < \delta}[\epsilon] + E_{\lvert X_n - X\rvert \geq \delta}[2] \\
+    &\leq \epsilon + 2 P(\lvert X_n - X\rvert \geq \delta) .
+  \end{align*}
+  \(X_n \stackrel{P}{\to} X\)なので\(\lim_{n\to\infty} E[\lvert e^{itX_n} - e^{itX} \rvert] = 0\)が従う．
+\end{proof}
+
+\begin{screen}
+  \(X_n \stackrel{D}{\to} X\)及び\(Y_n \stackrel{P}{\to} 0\)なら\(X_n+Y_n \stackrel{D}{\to} X\)
+\end{screen}
+\begin{proof}
+  \(\lim_{n\to\infty}\lvert \phi_{X_n+Y_n}(t) - \phi_X(t) \rvert = 0\)を示せばよい．
+  \[  \lvert \phi_{X_n+Y_n}(t) - \phi_X(t) \rvert
+  \leq \lvert \phi_{X_n+Y_n}(t) - \phi_{X_n}(t) \rvert + \lvert \phi_{X_n}(t) - \phi_X(t) \rvert \]
+  である．\(X_n \stackrel{D}{\to} X\)なので\(\lim_{n\to\infty}\lvert \phi_{X_n}(t) - \phi_X(t) \rvert = 0\)．
+  よって，\(\lim_{n\to\infty}\lvert \phi_{X_n+Y_n}(t) - \phi_{X_n}(t) \rvert = 0\)を示せばよい．
+  \begin{align*}
+    \lvert \phi_{X_n+Y_n}(t) - \phi_{X_n}(t) \rvert
+    &= \left\lvert E[e^{it{X_n+Y_n}}] - E[e^{itX_n}] \right\rvert \\
+    &= \left\lvert E[e^{it{X_n+Y_n}} - e^{itX_n}] \right\rvert \\
+    &\leq E\left[ \left\lvert e^{it{X_n+Y_n}} - e^{itX_n} \right\rvert \right] \\
+    &= E\left[ \left\lvert 1 - e^{itY_n} \right\rvert \right] .
+  \end{align*}
+  上記補題より\(\lim_{n\to\infty} E[\lvert 1 - e^{itY_n} \rvert] = 0\)であるので
+  \[ \lim_{n\to\infty}\lvert \phi_{X_n+Y_n}(t) - \phi_{X_n}(t) \rvert = 0 . \]
+\end{proof}
+
+\setcounter{section}{3}
+\section{Extensions to Multivariate Distributions}
+\paragraph{Theorem 5.4.6}~
+\begin{screen}
+  \[ \lim_{n\to\infty} E \left[ \exp \left( \frac{1}{\sqrt{n}} \sum_{i=1}^n W_i \right) \right] = \exp \left( \frac{1}{2} \boldsymbol{t}^\top {} \boldsymbol\Sigma \boldmath{t} \right) \]
+\end{screen}
+\begin{proof}
+  記号の整理をしておく：
+  \[ \boldsymbol{X}_i =
+  \begin{pmatrix}
+    X_{i1} \\ \vdots \\ X_{ip}
+  \end{pmatrix}
+  , \,
+  E(\boldsymbol{X}_i) =
+  \begin{pmatrix}
+    \mu_{1} \\ \vdots \\ \mu_{p}
+  \end{pmatrix}
+  , \,
+  W_i = \boldsymbol{t} \cdot (\boldsymbol{X}_i - \boldsymbol{\mu}) = \sum_{j=1}^p t_j (X_{ij} - \mu_j) .
+  \]
+  さらに
+  \[ E(X_{ij}-\mu_j) = 0 , \, E[(X_{ij}-\mu_j)(X_{ik}-\mu_k)] = \Sigma_{jk} . \]
+  Taylorの定理から
+  \begin{align*}
+    \exp \left( \frac{X_{ij} - \mu_j}{\sqrt{n}} t_j \right)
+    &= 1 + \frac{X_{ij} - \mu_j}{\sqrt{n}} t_j
+    + \frac{(X_{ij}-\mu_j)^2}{2n} \exp \left( \frac{X_{ij} - \mu_j}{\sqrt{n}} \xi_j \right) t_j{}^2 \\
+    %
+    &= 1 + \frac{X_{ij} - \mu_j}{\sqrt{n}} t_j
+    + \frac{(X_{ij}-\mu_j)^2}{2n} t_j{}^2
+    + \frac{(X_{ij}-\mu_j)^2}{2n} \left[\exp \left( \frac{X_{ij} - \mu_j}{\sqrt{n}} \xi_j \right) -1 \right] t_j{}^2 .
+  \end{align*}
+  最後の項に関して
+  \[ \lim_{n\to\infty} \frac{(X_{ij}-\mu_j)^2}{2} \left[\exp \left( \frac{X_{ij} - \mu_j}{\sqrt{n}} \xi_j \right) -1 \right] t_j{}^2 = 0 . \]
+  である．
+  \begin{align*}
+    \exp \left( \frac{1}{\sqrt{n}} \sum_{i=1}^n W_i \right)
+    &= \prod_{i=1}^n \exp \left( \frac{1}{\sqrt{n}} W_i \right) \\
+    &= \prod_{i=1}^n \exp \left( \frac{1}{\sqrt{n}} \sum_{j=1}^p t_j (X_{ij} - \mu_j) \right)  \\
+    &= \prod_{i=1}^n \prod_{j=1}^p \exp \left( \frac{X_{ij} - \mu_j}{\sqrt{n}} t_j \right) \\
+    &= \prod_{i=1}^n \prod_{j=1}^p \left( 1 + \frac{X_{ij} - \mu_j}{\sqrt{n}} t_j
+    + \frac{(X_{ij}-\mu_j)^2}{2n} t_j{}^2 + o(1/n) \right) .
+  \end{align*}
+  \(\{\boldsymbol{X}_i\}\)はiidなので，
+  \begin{align*}
+    M_n(\boldsymbol{t}) &= E \left[ \exp \left( \frac{1}{\sqrt{n}} \sum_{i=1}^n W_i \right) \right] \\
+    &= E \left[ \prod_{i=1}^n \prod_{j=1}^p \left( 1 + \frac{X_{ij} - \mu_j}{\sqrt{n}} t_j
+    + \frac{(X_{ij}-\mu_j)^2}{2n} t_j{}^2 + o(1/n) \right) \right] \\
+    %
+    &= \prod_{i=1}^n E \left[ \prod_{j=1}^p \left( 1 + \frac{X_{ij} - \mu_j}{\sqrt{n}} t_j
+    + \frac{(X_{ij}-\mu_j)^2}{2n} t_j{}^2 + o(1/n) \right) \right] \\
+    %
+    &= \prod_{i=1}^n E \left[ 1 + \sum_{j=1}^p \frac{X_{ij} - \mu_j}{\sqrt{n}} t_j
+    + \sum_{j<k} \frac{(X_{ij} - \mu_j)(X_{ik} - \mu_k)}{n} t_j t_k
+    + \sum_{j=1}^p \frac{(X_{ij}-\mu_j)^2}{2n} t_j{}^2 + o(1/n) \right] \\
+    %
+    &= \prod_{i=1}^n \left[ 1 + \sum_{j<k} \frac{\Sigma_{jk}}{n} t_j t_k
+    + \sum_{j=1}^p \frac{\Sigma_{jj}}{2n} t_j{}^2 + o(1/n) \right] \\
+    %
+    &= \left[ 1 + \sum_{j\neq k} \frac{\Sigma_{jk}}{2n} t_j t_k
+    + \sum_{j=1}^p \frac{\Sigma_{jj}}{2n} t_j{}^2 + o(1/n) \right]^n \\
+    %
+    &= \left[ 1 + \sum_{jk} \frac{\Sigma_{jk}}{2n} t_j t_k + o(1/n) \right]^n \\
+    &= \left[ 1 + \frac{1}{2n} \boldsymbol{t}^\top {} \boldsymbol\Sigma \boldmath{t} + o(1/n) \right]^n .
+  \end{align*}
+  \(n\to\infty\)とすればTheorem 5.2.10から
+  \[
+  \lim_{n\to\infty} E \left[ \exp \left( \frac{1}{\sqrt{n}} \sum_{i=1}^n W_i \right) \right]
+  = \exp \left( \frac{1}{2} \boldsymbol{t}^\top {} \boldsymbol\Sigma \boldmath{t} \right) .
+  \]
+\end{proof}
+
+\setcounter{chapter}{6}
+\chapter{Sufficiency}
+\setcounter{section}{5}
+\section{Functions of a Parameter}
+\paragraph{Exercise 7.6.8}
+\(X_i \sim \mathcal{N}(\theta, 1)\)に対して，変数変換を
+\[
+\begin{pmatrix}
+  Y_1 \\ \vdots \\ Y_{n-1} \\ Y_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+  X_1 \\ \vdots \\ X_{n-1} \\ \bar{X}
+\end{pmatrix}
+\]
+とする．\(Y_1, \ldots, Y_n\)の積率母函数は
+\begin{align*}
+  & m_{Y_1,\ldots,Y_n}(s_1, \ldots, s_n) \\
+  &= \int dy_1 \cdots dy_n \, g(y_1,\ldots,y_n) \exp \left[ s_1 y_1 + \cdots + s_n y_n \right] \\
+  &= \int dx_1 \cdots dx_n \, f(x_1,\ldots,x_n)
+  \exp \left[ s_1 x_1 + \cdots + s_{n-1} x_{n-1} + \frac{s_n}{n} \sum_{i=1}^n x_i \right] \\
+  %
+  &= \int dx_1 \cdots dx_n \, f(x_1,\ldots,x_n)
+  \exp \left[ \sum_{i=1}^{n-1} \left( s_i + \frac{s_n}{n} \right) x_i + \frac{s_n}{n} x_n \right] \\
+  %
+  &= \prod_{i=1}^{n-1} \int dx_i \, f_{X_i}(x_i) \exp \left[ \left( s_i + \frac{s_n}{n} \right) x_i \right]
+  \times \int dx_n \, f_{X_n}(x_n) \exp \left[ \frac{s_n}{n} x_n \right] \\
+  %
+  &= \prod_{i=1}^{n-1} \exp \left[ \theta \left( s_i + \frac{s_n}{n} \right) + \frac{1}{2} \left( s_i + \frac{s_n}{n} \right)^2 \right]
+  \times \exp \left[ \theta \frac{s_n}{n} + \frac{1}{2} \left( \frac{s_n}{n} \right)^2 \right] \\
+  %
+  &= \exp \left[ \theta \left( \sum_{i=1}^{n-1} s_i + \frac{n-1}{n} s_n + \frac{s_n}{n} \right)
+  + \frac{1}{2} \left\{ \sum_{i=1}^{n-1} \left( s_i + \frac{s_n}{n} \right)^2 + \left( \frac{s_n}{n} \right)^2 \right\} \right] \\
+  %
+  &= \exp \left[ \theta \sum_{i=1}^{n-1} s_i + \frac{1}{2} \left( \sum_{i=1}^{n-1} s_i{}^2 + \frac{s_n{}^2}{n} + \frac{2}{n} s_n \sum_{i=1}^{n-1} s_i \right) \right] .
+\end{align*}
+\(Y_1, Y_n\)の積率母函数は
+\begin{align*}
+  m_{Y_1,Y_n}(s_1, s_n) &= \int dy_1 dy_n \, g_{Y_1,Y_n}(y_1, y_n) \exp \left[ s_1 y_1 + s_n y_n \right] \\
+  &= \int dy_1 dy_n \int dy_2 \cdots dy_{n-1} \, g(y_1, \ldots, y_n) \exp \left[ s_1 y_1 + s_n y_n \right] \\
+  &= m_{Y_1,\ldots,Y_n}(s_1, 0, \ldots, 0, s_n) \\
+  &= \exp \left[ \theta (s_1+s_n) + \frac{1}{2} \left( s_1{}^2 + \frac{s_n{}^2}{n} + \frac{2}{n} s_ 1s_n \right) \right] .
+\end{align*}
+(3.5.3)と比べれば
+\[
+\mu_1 = \mu_2 = \theta, \, \sigma_1{}^2 = 1, \, \sigma_2{}^2 = \frac{1}{n} , \, \rho = \frac{1}{\sqrt{n}} .
+\]
