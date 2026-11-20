@@ -1,0 +1,684 @@
+\setcounter{chapter}{2}
+\chapter{bootstrap}
+\setcounter{section}{2}
+\section{bootstrapによる推測}
+\paragraph{表3.3}
+最右列の理論値を求める．
+
+まず記号の整理を行う．
+求めたい指標は中央値：
+\[ g(F) = \theta ; \quad g(F_n) = \tilde\theta . \]
+bootstrapで求めるのは平均値：
+\[ \hat\theta ; \quad \hat{\theta}^\ast . \]
+バイアスは
+\[ \text{Bias} = E(\hat\theta) - \theta , \quad \text{Bias}^\ast = E^\ast(\hat{\theta}^\ast) - \tilde\theta . \]
+
+\(\hat\theta = \hat\theta(x_1 , \ldots , x_n)\)は平均値であり，今回の場合は
+\[ \hat\theta = \frac{1}{n} \sum_{i=1}^{n} x_i = 218.9 . \]
+bootstrapの対応する統計量は
+\[ \hat{\theta}^\ast = \frac{1}{n} \sum_{i=1}^{n} x_i{}^\ast . \]
+\(\tilde\theta = g(F_n)\)は（\(x_1, \ldots, x_n\)から得られる）経験的分布\(F_n\)の中央値であり，
+\[ \tilde\theta = 129 . \]
+さらに
+\[
+  E^\ast(\hat{\theta}^\ast)
+  = \frac{1}{n} \sum_{i=1}^{n} E^\ast(x_i{}^\ast)
+  = \frac{1}{n} \sum_{i=1}^{n} \frac{x_1 + \cdots + x_n}{n}
+  = \frac{1}{n} \sum_{i=1}^{n} x_i
+  = 218.9 .
+\]
+なので
+\[ \text{Bias}^\ast = E^\ast(\hat{\theta}^\ast) - \tilde\theta = 218.9 - 129 = 89.9 . \]
+したがって，\(\theta\)の推定値\(\hat\theta_c\)は
+\[ \hat\theta_c = \hat\theta - \text{Bias}^\ast = 218.9 - 89.9 = 129 . \]
+
+最後に\(\hat{\theta}^\ast\)の分散を求める．
+\begin{align*}
+  \Var^\ast(\hat{\theta}^\ast) &= E^\ast((\hat{\theta}^\ast)^2) - (E^\ast(\hat{\theta}^\ast))^2 \\
+  &= E^\ast\left( \frac{1}{n^2} \sum_{ij} x_i{}^\ast x_j{}^\ast \right) - \left( \frac{1}{n} \sum_i x_i \right)^2 \\
+  &= \frac{1}{n} \sum_i E^\ast((x_i{}^\ast)^2)
+  + \frac{1}{n^2} \sum_{i\neq j} E^\ast(x_i{}^\ast x_j{}^\ast)
+  - \frac{1}{n^2} \left( \sum_i x_i \right)^2 \\
+  %
+  &= \frac{1}{n} \sum_i \frac{x_1{}^2 + \cdots + x_n{}^2}{n}
+  + \frac{1}{n^2} \sum_{j\neq j} \frac{(x_1 + \cdots + x_n)^2}{n^2}
+  - \frac{1}{n^2} \left( \sum_i x_i \right)^2 \\
+  %
+  &= \frac{1}{n^2} \sum_i x_i{}^2 - \frac{1}{n^3} \left( \sum_i x_i \right)^2 \\
+  &= 5330 .
+\end{align*}
+
+\section*{練習問題}
+\addcontentsline{toc}{section}{練習問題}
+\paragraph{問題3.3}
+\(F(x)\)からの\(n\)個のサンプルを\(X_1, \ldots, X_n\)，及びこれらの順序統計量を\(Y_1, \ldots, Y_n\)とする．
+\(Y_k\)の確率密度函数は
+\[ g_k(y_k) = \frac{n!}{(k-1)!(n-k)!} [F(y_k)]^{k-1} [1 - F(y_k)]^{n-k} f(y_k) . \]
+十分大きな\(n\)に対して\(n = kp\)としたときの\(Y_{np}\)の分散を求めたい．
+
+\(\delta = F(y_k) - p\)で新しい確率変数を定義する．\(\delta\)の確率密度函数は
+\begin{align*}
+  h(\delta) &= g(y_k) \frac{dy_k}{d\delta} \\
+  &= \frac{n!}{(k-1)!(n-k)!} [F(y_k)]^{k-1} [1 - F(y_k)]^{n-k} \\
+  &= \frac{n!}{(np-1)!(n-np)!} [\delta + p]^{np-1} [1 - \delta - p]^{n-np} \\
+  &\approx \frac{n!}{(np)!(n-np)!} [\delta + p]^{np} [1 - \delta - p]^{n(1-p)} \\
+\end{align*}
+対数をとれば
+\begin{align*}
+  \log h(\delta) &= \log \frac{n!}{(np)!(n-np)!} \left[ np \log(p + \delta) + n(1-p) \log(1-p-\delta) \right] \\
+  &\approx \log \frac{n!}{(np)!(n-np)!} \left[ np \left( \log p + \frac{\delta}{p} - \frac{\delta^2}{2p^2} \right) + n(1-p) \left( \log(1-p) + \frac{-\delta}{1-p} - \frac{\delta^2}{2(1-p)^2} \right) \right] \\
+  &= \log \frac{n!}{(np)!(n-np)!} \left[ np \log p + n(1-p) \log (1-p) - \frac{n}{p(1-p)} \frac{\delta^2}{2} \right] .
+\end{align*}
+Stirlingの公式\(n! \approx \sqrt{2\pi n} (n/e)^n\)を使用すれば
+\begin{align*}
+  h(\delta) &= \frac{n!}{(np)!(n-np)!} p^{np} (1-p)^{n(1-p)} \exp \left( \frac{n\delta^2}{2p(1-p)} \right) \\
+  &\approx \sqrt{\frac{n}{2\pi p(1-p)}} \exp \left( \frac{n\delta^2}{2p(1-p)} \right) .
+\end{align*}
+したがって
+\[ \delta \sim \mathcal{N} \left( 0, \frac{p(1-p)}{n} \right) . \]
+
+\setcounter{chapter}{4}
+\chapter{誤差測定のある線形モデル}
+\section*{練習問題}
+\addcontentsline{toc}{section}{練習問題}
+\paragraph{問題5.7}
+\(\{\theta_i\}\), \(\{\delta_i\}\), \(\{\epsilon_i\}\)の確率密度函数は
+\[
+f(\{\theta_i\}, \{\delta_i\}, \{\epsilon_i\})
+= \frac{1}{(2\pi)^{3n/2} (\sigma \sigma_x \sigma_y)^n}
+\prod_{i=1}^n \exp \left[ - \frac{(\theta_i-\mu)^2}{2\sigma^2} - \frac{\delta_i{}^2}{2\sigma_x{}^2} - \frac{\epsilon_i{}^2}{2\sigma_y{}^2} \right] .
+\]
+\(\delta_i = x_i - \theta_i\)および\(\epsilon_i = y_i - \alpha - \beta\theta_i\)により変数変換をする．変換のJacobianは
+\[
+\left\lvert \frac{\partial (\theta_i, \delta_i, \epsilon_i)}{\partial (\theta_i, x_i, y_i)} \right\rvert = 1
+\]
+なので\(\{\theta_i\}\), \(\{x_i\}\), \(\{y_i\}\)の確率密度函数は
+\begin{align*}
+  & g(\{\theta_i\}, \{x_i\}, \{y_i\}) \\
+  &= \frac{1}{(2\pi)^{3n/2} (\sigma \sigma_x \sigma_y)^n}
+  \prod_{i=1}^n \exp \left[ - \frac{(\theta_i-\mu)^2}{2\sigma^2} - \frac{\delta_i{}^2}{2\sigma_x{}^2} - \frac{\epsilon_i{}^2}{2\sigma_y{}^2} \right] \\
+  %
+  &= \frac{1}{(2\pi)^{3n/2} (\sigma \sigma_x \sigma_y)^n}
+  \prod_{i=1}^n \exp \left[
+    - \frac{(\theta_i-\mu)^2}{2\sigma^2}
+    - \frac{(x_i - \theta_i)^2}{2\sigma_x{}^2}
+    - \frac{(y_i - \alpha - \beta\theta_i)^2}{2\sigma_y{}^2} \right] \\
+  %
+  &= \frac{1}{(2\pi)^{3n/2} (\sigma \sigma_x \sigma_y)^n}
+  \prod_{i=1}^n \\
+  &\quad\times \exp \left[
+    - \left( \frac{1}{\sigma^2} + \frac{1}{\sigma_x{}^2} + \frac{\beta^2}{\sigma_y{}^2} \right) \frac{\theta_i{}^2}{2}
+    + \left( \frac{\mu}{\sigma^2} + \frac{x_i}{\sigma_x{}^2} + \frac{\beta(y_i-\alpha)}{\sigma_y{}^2} \right) \theta_i
+    - \left( \frac{\mu^2}{2\sigma^2} + \frac{x_i{}^2}{2\sigma_x{}^2} + \frac{(y_i-\alpha)^2}{2\sigma_y{}^2} \right) \right] \\
+  %
+  &= \frac{1}{(2\pi)^{3n/2} (\sigma \sigma_x \sigma_y)^n}
+  \prod_{i=1}^n \exp \left[ - \frac{A}{2} \theta_i{}^2 + B_i \theta_i - C_i \right] .
+\end{align*}
+これを\(\theta_i\)で積分すれば
+\begin{align*}
+  g(\{\theta_i\}, \{x_i\}, \{y_i\})
+  &= \int d\theta_1 \cdots d\theta_n \,  g(\{\theta_i\}, \{x_i\}, \{y_i\}) \\
+  &= \frac{1}{(2\pi)^n (\sigma \sigma_x \sigma_y)^n} \frac{1}{A^{n/2}}
+  \prod_{i=1}^n \exp \left( \frac{B_i{}^2}{2A} - C_i \right) .
+\end{align*}
+よって対数尤度は
+\[
+l = - n \log(2\pi\sigma_x \sigma_y) - n \log\sigma - \frac{n}{2} \log A + \frac{1}{2A} \sum_i B_i{}^2 - \sum_i C_i .
+\]
+
+\(\alpha\), \(\beta\), \(\mu\), \(\sigma\)を最尤推定すればよい．
+
+\chapter{一般化線形モデル}
+\setcounter{section}{5}
+\section{over-dispersion}
+個人間差がある場合は固定効果モデルより混合効果モデルを使用すべき，という話．
+
+\paragraph{(6.42)}
+ここでは
+\[ E(\mu_i) = \mu , \quad \Var(\mu_i) = \tau^2 , \quad y_i\mid\mu_i \sim \Bin(\mu_i, m_i) \]
+を考えている．
+
+\section*{練習問題}
+\addcontentsline{toc}{section}{練習問題}
+\paragraph{問題6.3}
+ここで考えているのはCox-Snell型の疑似決定係数\(R^2_\text{CS}\)．
+McFaddenの擬似決定係数
+\[ R^2_\text{Mc} = 1- \frac{\ln L(\hat{\boldsymbol\beta})}{\ln L(\boldsymbol{0})} \]
+は線形正規モデルにおいては，線形回帰の決定係数\(R^2\)に一致する．
+
+\chapter{ノンパラメトリック回帰モデル}
+\setcounter{section}{4}
+\section{smootherのバラツキとsmoothingパラメータ}
+\paragraph{(7.27)}
+\cite{hall1990variance}で導入されたようである．
+
+\setcounter{chapter}{11}
+\chapter{トピックスIV}
+\setcounter{section}{1}
+\section{balanced dataでの推測}
+\paragraph{(12.49)(12.50)(12.51)}
+まず施設\(i\)のみを考える．
+\[
+\boldsymbol{1}_n =
+\begin{pmatrix}
+  1 \\ \vdots \\ 1
+\end{pmatrix}
+, \quad
+I_n =
+\begin{pmatrix}
+  1 & & \\
+  & \ddots & \\
+  & & 1
+\end{pmatrix}
+, \quad
+J_n =
+\begin{pmatrix}
+  1 & \cdots & 1 \\
+  \vdots & \ddots & \vdots \\
+  1 & \cdots & 1
+\end{pmatrix}
+\]
+とすれば
+\[
+  \boldsymbol{y}_i
+  =
+  \begin{pmatrix}
+    y_{i11} \\ \vdots \\ y_{iJn}
+  \end{pmatrix}
+  = (\boldsymbol{1}_J \otimes I_n)
+  \begin{pmatrix}
+    \beta_1 \\ \vdots \\ \beta_J
+  \end{pmatrix}
+  + \boldsymbol{1}_{Jn} \alpha_i
+  + (\boldsymbol{1}_n \otimes I_J)
+  \begin{pmatrix}
+    \gamma_{i1} \\ \vdots \\ \gamma_{iJ}
+  \end{pmatrix}
+  +
+  \begin{pmatrix}
+    \epsilon_{i11} \\ \vdots \\ \epsilon_{iJn}
+  \end{pmatrix}
+  \sim \mathcal{N}(X \boldsymbol\beta, V)
+\]
+である．ただし，
+\[
+X = I_J \otimes \boldsymbol{1}_n , \quad
+\boldsymbol\beta =
+\begin{pmatrix}
+  \beta_1 \\ \vdots \\ \beta_J
+\end{pmatrix}
+\]
+および
+\begin{align*}
+  V &= \sigma_\alpha{}^2 \boldsymbol{1}_{Jn} \boldsymbol{1}_{Jn}^\top
+  + \sigma_\gamma{}^2 (\boldsymbol{1}_n \otimes I_J) (\boldsymbol{1}_n \otimes I_J)^\top
+  + \sigma_E{}^2 I_{Jn} \\
+  &= \sigma_\alpha{}^2 J_{Jn} + \sigma_\gamma{}^2 (I_J \otimes J_n) + \sigma_E{}^2 I_{Jn}
+\end{align*}
+である．
+
+\begin{screen}
+  \(V\)の固有値は
+  \[
+  \lambda_1 = \sigma_E{}^2 , \quad
+  \lambda_2 = \sigma_E{}^2 + n\sigma_\gamma{}^2 , \quad
+  \lambda_3 = \sigma_E{}^2 + n\sigma_\gamma{}^2 + Jn \sigma_\alpha{}^2 .
+  \]
+  で与えられ，それぞれに対応する射影行列・重複度は
+  \[
+    P_1 = I_J \otimes \left( I_n - \frac{1}{n} J_n \right) , \quad
+    P_2 = \frac{1}{n} \left( I_J - \frac{1}{J} J_J \right) \otimes J_n , \quad
+    P_3 = \frac{1}{Jn} J_{Jn}
+  \]
+  および
+  \[ n_1 = J(n-1) , \quad n_2 = J-1, \quad n_3 = 1 . \]
+\end{screen}
+\begin{proof}
+  固有値を\(\lambda\)，固有ベクトルを
+  \[
+  \begin{pmatrix}
+    x_{11} \\ \vdots \\ x_{Jn}
+  \end{pmatrix}
+  \]
+  とする．固有値方程式は
+  \begin{align*}
+    \lambda
+    \begin{pmatrix}
+      x_{11} \\ \vdots \\ x_{Jn}
+    \end{pmatrix}
+    &= V
+    \begin{pmatrix}
+      x_{11} \\ \vdots \\ x_{Jn}
+    \end{pmatrix}
+    \\
+    &= \sigma_\alpha{}^2
+    J_{Jn}
+    \begin{pmatrix}
+      x_{11} \\ \vdots \\ x_{Jn}
+    \end{pmatrix}
+    +
+    \sigma_\gamma{}^2
+    \begin{pmatrix}
+      J_n & & \\
+      & \ddots & \\
+      & & J_n
+    \end{pmatrix}
+    \begin{pmatrix}
+      x_{11} \\ \vdots \\ x_{Jn}
+    \end{pmatrix}
+    +
+    \sigma_E{}^2
+    \begin{pmatrix}
+      x_{11} \\ \vdots \\ x_{Jn}
+    \end{pmatrix}
+    \\
+    %
+    &= \sigma_\alpha{}^2
+    \begin{pmatrix}
+      \sum_{jk} x_{jk} \\ \vdots \\ \sum_{jk} x_{jk}
+    \end{pmatrix}
+    +
+    \sigma_\gamma{}^2
+    \begin{pmatrix}
+      \sum_k x_{1k} \\ \vdots \\ \sum_k x_{2k} \\ \vdots \\ \sum_k x_{Jk} \\ \vdots
+    \end{pmatrix}
+    +
+    \sigma_E{}^2
+    \begin{pmatrix}
+      x_{11} \\ \vdots \\ x_{Jn}
+    \end{pmatrix}
+  \end{align*}
+  となる．変形すれば
+  \[
+  (\lambda - \sigma_E{}^2)
+  \begin{pmatrix}
+    x_{11} \\ \vdots \\ x_{Jn}
+  \end{pmatrix}
+  = \sigma_\alpha{}^2
+  \begin{pmatrix}
+    \sum_{jk} x_{jk} \\ \vdots \\ \sum_{jk} x_{jk}
+  \end{pmatrix}
+  +
+  \sigma_\gamma{}^2
+  \begin{pmatrix}
+    \sum_k x_{1k} \\ \vdots \\ \sum_k x_{2k} \\ \vdots \\ \sum_k x_{Jk} \\ \vdots
+  \end{pmatrix}
+  .
+  \]
+  \(n\)個ずつの成分に注目すれば
+  \begin{align*}
+    & (\lambda - \sigma_E{}^2) x_{11} = \cdots = (\lambda - \sigma_E{}^2) x_{1n} \\
+    & \quad \vdots \\
+    & (\lambda - \sigma_E{}^2) x_{J1} = \cdots = (\lambda - \sigma_E{}^2) x_{Jn}
+  \end{align*}
+  が得られる．
+  \begin{enumerate}
+    \item \(\lambda = \sigma_E{}^2\)の場合．
+    これは明らかに固有値方程式を満たす．
+    \(\lambda_2 = \sigma_E{}^2 + n \sigma_\gamma{}^2\)とする．
+    固有値方程式に代入すれば
+    \[ \sum_k x_{jk} = 0 \quad (j=1, \dots, J) . \]
+    これらは独立な\(J\)個の方程式なので部分空間の次元は\(Jn - J = J(n-1)\)である．ここで
+    \[
+    \boldsymbol{w}_1^{(l)}
+    = \frac{1}{\sqrt{l(l+1)}}
+    \begin{pmatrix}
+      1 \\ \vdots \\ 1 \\ -l \\ 0 \\ \vdots \\ 0
+    \end{pmatrix}
+    \in \mathbb{R}^n
+      \quad (l = 1, \dots, n-1)
+    \]
+    とする．これらは正規直交系を成す．もとの\(Jn\)次元での正規直交系としては\(\dim = J(n-1)\)の
+    \[
+      \boldsymbol{v}_1^{(1, l)} =
+      \begin{pmatrix}
+        \boldsymbol{w}_1^{(l)} \\ 0 \\ \vdots \\ 0
+      \end{pmatrix}
+      , \quad
+      \boldsymbol{v}_1^{(2, l)} =
+      \begin{pmatrix}
+        0 \\ \boldsymbol{w}_1^{(l)} \\ 0 \\ \vdots \\ 0
+      \end{pmatrix}
+      , \quad
+      \dots
+      , \quad
+      \boldsymbol{v}_1^{(J, l)} =
+      \begin{pmatrix}
+        0 \\ \vdots \\ 0 \\ \boldsymbol{w}_1^{(l)}
+      \end{pmatrix}
+    \]
+    が取れる．よって\(\lambda_1\)の対応する射影行列は
+    \begin{align*}
+      P_1 &= \sum_j \sum_l \boldsymbol{v}_1^{(j, l)} (\boldsymbol{v}_1^{(j, l)} )^\top \\
+      &=
+      \begin{pmatrix}
+        \sum_l \boldsymbol{w}_1^{(l)} (\boldsymbol{w}_1^{(l)})^\top & & \\
+        & \ddots & \\
+        & & \sum_l \boldsymbol{w}_1^{(l)} (\boldsymbol{w}_1^{(l)})^\top
+      \end{pmatrix}
+      \\
+      &= I_J \otimes \left( I_n - \frac{1}{n} J_n \right) .
+    \end{align*}
+    最後の計算は帰納法により容易に示せる．
+
+    \item \(\lambda \neq \sigma_E{}^2\)の場合．
+    \begin{align}
+      x_{11} = \cdots = x_{1n} , \quad \ldots , \quad x_{J1} = \cdots = x_{Jn}
+      \label{12_49_p2p3}
+    \end{align}
+    となる．これらを再び固有値方程式に代入すれば
+    \[
+    (\lambda - \sigma_E{}^2)
+    \begin{pmatrix}
+      x_{11} \\ \vdots \\ x_{Jn}
+    \end{pmatrix}
+    = n \sigma_\alpha{}^2
+    \begin{pmatrix}
+      \sum_{j} x_{j1} \\ \vdots \\ \sum_{j} x_{j1}
+    \end{pmatrix}
+    +
+    n \sigma_\gamma{}^2
+    \begin{pmatrix}
+      x_{11} \\ \vdots \\ x_{21} \\ \vdots \\ x_{J1} \\ \vdots
+    \end{pmatrix}
+    .
+    \]
+    整理すれば
+    \[
+    (\lambda - \sigma_E{}^2 - n \sigma_\gamma{}^2)
+    \begin{pmatrix}
+      x_{11} \\ x_{21} \\ \vdots \\ x_{J1}
+    \end{pmatrix}
+    =  n \sigma_\alpha{}^2
+    \begin{pmatrix}
+      \sum_{j} x_{j1} \\ \vdots \\ \sum_{j} x_{j1}
+    \end{pmatrix}
+    .
+    \]
+    右辺の成分はすべて同じなので
+    \[
+    (\lambda - \sigma_E{}^2 - n \sigma_\gamma{}^2) x_{11} = \cdots = (\lambda - \sigma_E{}^2 - n \sigma_\gamma{}^2) x_{J1} .
+    \]
+    \begin{enumerate}
+      \item \(\lambda = \sigma_E{}^2 + n \sigma_\gamma{}^2\)の場合．
+      これは明らかに固有値方程式を満たす．
+      \(\lambda_2 = \sigma_E{}^2 + n \sigma_\gamma{}^2\)とする．
+      固有値方程式に代入すれば
+      \[ \sum_j x_{j1} = 0 . \]
+      これと\eqref{12_49_p2p3}を併せれば，固有値ベクトルは\(k=1\)の成分のみで完全に決定する．
+      直交系としては
+      \[
+      \begin{pmatrix}
+        x_{11} \\ \vdots \\ x_{J1}
+      \end{pmatrix}
+      = \boldsymbol{w}_2^{(l)}
+      = \begin{pmatrix}
+        1 \\ \vdots \\ 1 \\ -l \\ 0 \\ \vdots \\ 0
+      \end{pmatrix}
+       \quad (l = 1, \dots, J-1)
+      \]
+      が取れる．よって，もとの\(Jn\)次元での正規直交系としては\(\dim = J-1\)の
+      \[
+      \begin{pmatrix}
+        x_{11} \\ \vdots \\ x_{Jn}
+      \end{pmatrix}
+      = \boldsymbol{v}_2^{(l)}
+      = \frac{1}{\sqrt{l(l+1)n}} \boldsymbol{w}_2^{(l)} \otimes \boldsymbol{1}_n
+      \quad (k = 1, \dots, J-1)
+      \]
+      が取れる．よって\(\lambda_2\)に対応する射影行列は
+      \begin{align*}
+        P_2
+        &= \sum_{l=1}^{J-1} \boldsymbol{v}_2^{(l)} (\boldsymbol{v}_2^{(l)})^\top
+        = \sum_{l=1}^{J-1} \frac{1}{l(l+1)n} (\boldsymbol{w}_2^{(l)} \otimes \boldsymbol{1}_n) (\boldsymbol{w}_2^{(l)} \otimes \boldsymbol{1}_n)^\top \\
+        %
+        &= \sum_{l=1}^{J-1} \frac{1}{l(l+1)n} (\boldsymbol{w}_2^{(l)} \otimes \boldsymbol{1}_n) ((\boldsymbol{w}_2^{(l)})^\top \otimes \boldsymbol{1}_n^\top) \\
+        %
+        &= \frac{1}{n} \sum_{l=1}^{J-1} \frac{1}{l(l+1)} (\boldsymbol{w}_2^{(l)} (\boldsymbol{w}_2^{(l)})^\top) \otimes (\boldsymbol{1}_n \boldsymbol{1}_n^\top) \\
+        %
+        &= \frac{1}{n} \left( I_J - \frac{1}{J} J_J \right) \otimes J_n .
+      \end{align*}
+      最後の計算は帰納法により容易に示せる．
+
+      \item \(\lambda \neq \sigma_E{}^2 + n \sigma_\gamma{}^2\)の場合．
+      \(x_{11} = \cdots = x_{J1} =\)である．\eqref{12_49_p2p3}と併せれば
+      \[ x_{11} = \cdots x_{1n} = x_{21} = \cdots = x_{Jn} . \]
+      固有ベクトルは
+      \[ \boldsymbol{v}_3 = \frac{1}{\sqrt{Jn}} \boldsymbol{1}_{Jn} \]
+      の1本のみ．固有値方程式に代入すれば固有値は
+      \[ \lambda_3 =  \sigma_E{}^2 + n \sigma_\gamma{}^2 + Jn \sigma_\alpha{}^2 . \]
+      対応する射影行列は
+      \[ P_3 = \boldsymbol{v}_3 \boldsymbol{v}_3^\top = \frac{1}{Jn} J_{Jn} . \]
+    \end{enumerate}
+  \end{enumerate}
+\end{proof}
+
+射影行列の性質から
+\[ P_1 + P_2 + P_3 = I_{Jn} , \quad P_aP_a = P_a , \quad P_aP_b = 0 \quad (a \neq b) \]
+を満たす．よって
+\begin{align}
+  \det V = \lambda_1{}^{n_1} \lambda_2{}^{n_2} \lambda_3{}^{n_3} , \quad
+  V^{-1} = \frac{1}{\lambda_1} P_1 + \frac{1}{\lambda_2} P_2 + \frac{1}{\lambda_3} P_3
+  \label{12_49_V_decomp_corollary}
+\end{align}
+が得られる．
+
+施設\(i\)の対数尤度は
+\[
+l_i = -\frac{Jn}{2} \log 2\pi - \frac{1}{2} \log \lvert V \rvert
+ - \frac{1}{2} (\boldsymbol{y}_i - X \boldsymbol\beta)^\top V^{-1} (\boldsymbol{y}_i - X \boldsymbol\beta) .
+\]
+\(\boldsymbol{y}_i\)は独立なので，全施設の対数尤度は
+\begin{align}
+  l = -\frac{IJn}{2} \log 2\pi - \frac{I}{2} \log \lvert V \rvert
+    - \frac{1}{2} \sum_{i=1}^I (\boldsymbol{y}_i - X \boldsymbol\beta)^\top V^{-1} (\boldsymbol{y}_i - X \boldsymbol\beta) .
+  \label{12_49_ll_all_inst}
+\end{align}
+まず\(\boldsymbol\beta\)の最尤推定量を求める．
+\[
+\frac{\partial l}{\partial \beta} = \sum_i X^\top V^{-1} (\boldsymbol{y}_i - X \boldsymbol\beta) = \boldsymbol{0}
+\]
+なので，
+\[
+\hat{\boldsymbol\beta} = (X^\top V^{-1}X)^{-1} X^\top V^{-1} \bar{\boldsymbol{y}}_\bullet
+, \quad
+\bar{\boldsymbol{y}}_\bullet := \frac{1}{I} \sum_i \boldsymbol{y}_i .
+\]
+ここで
+\begin{align*}
+  X^\top V^{-1}
+  &= (I_J \otimes \boldsymbol{1}_n^\top)
+  \left( \frac{1}{\lambda_1} P_1 + \frac{1}{\lambda_2} P_2 + \frac{1}{\lambda_3} P_3 \right) \\
+  &= \frac{1}{\lambda_1} (I_J \otimes \boldsymbol{1}_n^\top) \left( I_J \otimes \left( I_n - \frac{1}{n} J_n \right) \right)
+  + \frac{1}{n\lambda_2} (I_J \otimes \boldsymbol{1}_n^\top) \left( \left( I_J - \frac{1}{J} J_J \right) \otimes J_n \right) \\
+  &\quad + \frac{1}{Jn\lambda_3} (I_J \otimes \boldsymbol{1}_n^\top) \left( J_J \otimes J_n \right) \\
+  %
+  &= \frac{1}{\lambda_1} I_J \otimes \boldsymbol{1}_n^\top \left( I_n - \frac{1}{n} J_n \right)
+  + \frac{1}{n\lambda_2} \left( I_J - \frac{1}{J} J_J \right) \otimes \boldsymbol{1}_n^\top J_n
+  + \frac{1}{Jn\lambda_3} J_J \otimes \boldsymbol{1}_n^\top J_n \\
+  %
+  &= \frac{1}{\lambda_2} \left( I_J - \frac{1}{J} J_J \right) \otimes \boldsymbol{1}_n^\top
+  + \frac{1}{J\lambda_3} J_J \otimes \boldsymbol{1}_n^\top .
+\end{align*}
+さらに
+\begin{align*}
+  X^\top V^{-1} X &=
+  \left[ \frac{1}{\lambda_2} \left( I_J - \frac{1}{J} J_J \right) \otimes \boldsymbol{1}_n^\top
+  + \frac{1}{J\lambda_3} J_J \otimes \boldsymbol{1}_n^\top \right] \otimes (I_J \otimes \boldsymbol{1}_n) \\
+  %
+  &= \frac{1}{\lambda_2} \left( I_J - \frac{1}{J} J_J \right) \otimes n
+  + \frac{1}{J\lambda_3} J_J \otimes n \\
+  %
+  &= \frac{n}{\lambda_2} \left( I_J - \frac{1}{J} J_J \right) + \frac{n}{J\lambda_3} J_J .
+\end{align*}
+以上から
+\[ X^\top V^{-1} = \frac{1}{n} (X^\top V^{-1} X ) \otimes \boldsymbol{1}_n^\top . \]
+よって
+\begin{align*}
+  \hat{\boldsymbol\beta} &= (X^\top V^{-1}X)^{-1} X^\top V^{-1} \bar{\boldsymbol{y}}_\bullet \\
+  &= \frac{1}{n}(X^\top V^{-1}X)^{-1} \left[ (X^\top V^{-1} X ) \otimes \boldsymbol{1}_n^\top \right] \bar{\boldsymbol{y}}_\bullet \\
+  %
+  &= \frac{1}{n} [(X^\top V^{-1}X)^{-1} \otimes 1] \left[ (X^\top V^{-1} X ) \otimes \boldsymbol{1}_n^\top \right] \bar{\boldsymbol{y}}_\bullet \\
+  &= \frac{1}{n} I_J \otimes \boldsymbol{1}_n^\top \bar{\boldsymbol{y}}_\bullet \\
+  %
+  &= \frac{1}{n}
+  \begin{pmatrix}
+    1 & \cdots & 1 &&& & \\
+    &&& \ddots &&& \\
+    &&&& 1 & \cdots & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    \bar{y}_{\bullet11} \\ \vdots \\ \bar{y}_{\bullet Jn}
+  \end{pmatrix}
+  \\
+  &=
+  \begin{pmatrix}
+    \bar{y}_{\bullet 1 \bullet} \\ \vdots \\ \bar{y}_{\bullet J \bullet}
+  \end{pmatrix} .
+\end{align*}
+従って
+\[
+\boldsymbol{y}_i - X \hat{\boldsymbol\beta}
+=
+\begin{pmatrix}
+  y_{i11} - \bar{y}_{\bullet 1 \bullet} \\
+  \vdots \\
+  y_{i1n} - \bar{y}_{\bullet 1 \bullet} \\ \hline
+  y_{i21} - \bar{y}_{\bullet 2 \bullet} \\
+  \vdots \\
+  y_{i2n} - \bar{y}_{\bullet 2 \bullet} \\ \hline
+  \vdots \\
+  y_{iJn} - \bar{y}_{\bullet J \bullet}
+\end{pmatrix}
+=:
+\begin{pmatrix}
+  \boldsymbol{z}_{i1} \\ \vdots \\  \boldsymbol{z}_{iJ}
+\end{pmatrix}
+.
+\]
+\(\boldsymbol{z}_{ij}\)の第\(k\)成分は
+\[ (\boldsymbol{z}_{ij})_k = y_{ijk} - \bar{y}_{\bullet j \bullet} \]
+である．
+\(P_1\)との積は
+\[
+  P_1 (\boldsymbol{y}_i - X \hat{\boldsymbol\beta})
+  =
+  \begin{pmatrix}
+    I_n - J_n/n & & \\
+    & \ddots & \\
+    & & I_n - J_n/n
+  \end{pmatrix}
+  \begin{pmatrix}
+    \boldsymbol{z}_{i1} \\ \vdots \\  \boldsymbol{z}_{iJ}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    (I_n - J_n/n) \boldsymbol{z}_{i1} \\
+    \vdots \\
+    (I_n - J_n/n) \boldsymbol{z}_{iJ}
+  \end{pmatrix}
+  .
+\]
+\(j\)番目のblockは
+\[ \left( I_n - \frac{J_n}{n} \right) \boldsymbol{z}_{ij} \]
+であり，これの第\(k\)成分は
+\[
+(\boldsymbol{z}_{ij})_k - \frac{1}{n} \sum_k (\boldsymbol{z}_{ij})_k
+= (y_{ijk} - \bar{y}_{\bullet j \bullet}) - \frac{1}{n} \sum_k (y_{ijk} - \bar{y}_{\bullet j \bullet})
+= y_{ijk} - \bar{y}_{ij\bullet} .
+\]
+よって，
+\begin{align}
+  \begin{split}
+    \sum_i (\boldsymbol{y}_i - X \hat{\boldsymbol\beta})^\top P_1 (\boldsymbol{y}_i - X \hat{\boldsymbol\beta})
+    &= \sum_i(\boldsymbol{y}_i - X \hat{\boldsymbol\beta})^\top P_1 P_1 (\boldsymbol{y}_i - X \hat{\boldsymbol\beta}) \\
+    &= \sum_i \sum_{jk} (y_{ijk} - \bar{y}_{ij\bullet} )^2 \\
+    &= \text{SSE} .
+  \end{split}
+  \label{12_49_p1_sse}
+\end{align}
+次に\(P_2\)との積は
+\[
+  P_2 (\boldsymbol{y}_i - X \hat{\boldsymbol\beta})
+  = \frac{1}{n}
+  \begin{pmatrix}
+    (1-1/J) J_n & - J_n/J & \cdots \\
+    - J_n/J & (1-1/J) J_n & \cdots \\
+    \vdots & \vdots & \ddots
+  \end{pmatrix}
+  \begin{pmatrix}
+    \boldsymbol{z}_{i1} \\ \vdots \\  \boldsymbol{z}_{iJ}
+  \end{pmatrix}
+  .
+\]
+これの\(j\)番目のblockは
+\[ \frac{1}{n} J_n \boldsymbol{z}_{ij} - \frac{1}{Jn} \sum_j J_n \boldsymbol{z}_{ij} \]
+であり，これの第\(k\)成分は
+\[
+\frac{1}{n} \sum_k (\boldsymbol{z}_{ij})_k - \frac{1}{Jn} \sum_{jk} (\boldsymbol{z}_{ij})_k
+= \frac{1}{n} \sum_k (y_{ijk} - \bar{y}_{\bullet j\bullet}) - \frac{1}{Jn} \sum_{jk} (y_{ijk} - \bar{y}_{\bullet j\bullet})
+= \bar{y}_{ij\bullet} - \bar{y}_{\bullet j\bullet} - \bar{y}_{i\bullet\bullet} + \bar{y}_{\bullet\bullet\bullet} .
+\]
+よって
+\begin{align}
+  \begin{split}
+    \sum_i (\boldsymbol{y}_i - X \hat{\boldsymbol\beta})^\top P_2 (\boldsymbol{y}_i - X \hat{\boldsymbol\beta})
+    &= \sum_i(\boldsymbol{y}_i - X \hat{\boldsymbol\beta})^\top P_2 P_2 (\boldsymbol{y}_i - X \hat{\boldsymbol\beta}) \\
+    &= \sum_i \sum_{jk} (\bar{y}_{ij\bullet} - \bar{y}_{\bullet j\bullet} - \bar{y}_{i\bullet\bullet} + \bar{y}_{\bullet\bullet\bullet})^2 \\
+    &= \text{SSAB} .
+  \end{split}
+  \label{12_49_p2_ssab}
+\end{align}
+
+最後に\(P_3\)との積は
+\[
+  P_3 (\boldsymbol{y}_i - X \hat{\boldsymbol\beta})
+  = \frac{1}{Jn}
+  \begin{pmatrix}
+    1 & \cdots & 1 \\
+    \vdots & \ddots & \vdots \\
+    1 & \cdots & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    \boldsymbol{z}_{i1} \\ \vdots \\  \boldsymbol{z}_{iJ}
+  \end{pmatrix}
+  .
+\]
+これの\((j-1)n+k\)成分は
+\[
+\frac{1}{Jn} \sum_{jk} (\boldsymbol{z}_{ij})_k
+= \frac{1}{Jn} \sum_{jk} (y_{ijk} - \bar{y}_{\bullet j \bullet})
+= \bar{y}_{i\bullet\bullet} - \bar{y}_{\bullet\bullet\bullet} .
+\]
+よって
+\begin{align}
+  \begin{split}
+    \sum_i (\boldsymbol{y}_i - X \hat{\boldsymbol\beta})^\top P_3 (\boldsymbol{y}_i - X \hat{\boldsymbol\beta})
+    &= \sum_i(\boldsymbol{y}_i - X \hat{\boldsymbol\beta})^\top P_3 P_3 (\boldsymbol{y}_i - X \hat{\boldsymbol\beta}) \\
+    &= \sum_i \sum_{jk} (\bar{y}_{i\bullet\bullet} - \bar{y}_{\bullet\bullet\bullet})^2 \\
+    &= \text{SSA} .
+  \end{split}
+  \label{12_49_p3_ssa}
+\end{align}
+
+\eqref{12_49_V_decomp_corollary}\eqref{12_49_ll_all_inst}\eqref{12_49_p1_sse}\eqref{12_49_p2_ssab}\eqref{12_49_p3_ssa}から
+\begin{align*}
+  l &= - \frac{IJn}{2} \log (2\pi)
+  - \frac{I}{2} \log (\lambda_1{}^{n_1} \lambda_2{}^{n_2} \lambda_3{}^{n_3})
+  - \frac{1}{2} \sum_{\nu=1}^3 \lambda_\nu \sum_i (\boldsymbol{y}_i - X \hat{\boldsymbol\beta})^\top P_\nu (\boldsymbol{y}_i - X \hat{\boldsymbol\beta}) \\
+  &=  - \frac{IJn}{2} \log (2\pi)
+  - \frac{IJ(n-1)}{2} \log\lambda_1 - \frac{I(J-1)}{2} \log\lambda_2 - \frac{I}{2} \log\lambda_3
+  - \frac{1}{2} \left( \frac{\text{SSE}}{\lambda_1} + \frac{\text{SSAB}}{\lambda_2} + \frac{\text{SSA}}{\lambda_3} \right) .
+\end{align*}
+\(\lambda_1\), \(\lambda_2\), \(\lambda_3\)の最尤推定量は
+\[
+{\hat\lambda}_1 = \text{MSE} , \quad
+{\hat\lambda}_2 = \frac{I-1}{I} \text{MSAB} , \quad
+{\hat\lambda}_3 = \frac{I-1}{I} \text{MSA} .
+\]
+よって
+\begin{align*}
+  {\hat\sigma}_E{}^2 &= {\hat\lambda}_1 = \text{MSE} , \\
+  {\hat\sigma}_\gamma{}^2 &= \frac{{\hat\lambda}_2 - {\hat\lambda}_1}{n} = \frac{1}{n} \left( \frac{I-1}{I} \text{MSAB} - \text{MSE} \right) , \\
+  {\hat\sigma}_\alpha{}^2 &= \frac{{\hat\lambda}_3 - {\hat\lambda}_2}{n} = \frac{I-1}{IJn} (\text{MSA} - \text{MSAB}) .
+\end{align*}

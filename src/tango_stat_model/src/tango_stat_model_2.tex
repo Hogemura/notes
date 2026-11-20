@@ -1,0 +1,77 @@
+\chapter{トピックスV}
+\setcounter{section}{4}
+\section{疾病の集積性}
+\paragraph{(13.22)}
+簡単のため\(E(d_K) = \mu_k\)，\(\sum\mu_k = \mu\)，\(\sum_k n_k = n\)とする．
+\(d_k\)は互いに独立なので
+\[ p(d_1, \ldots, d_K) = \prod_{k=1}^K \frac{e^{-\mu_k} \mu_k{}^{d_k}}{d_k!} . \]
+さらに\(\sum d_k \sim \Pois(\mu)\)なので
+\[ p\left(\sum d_k = d\right) = \frac{e^{-\mu} \mu^d}{d!} . \]
+よって
+\[
+p(d_1, \ldots, d_K \mid \sum d_k = d)
+= \frac{p(d_1, \ldots, d_K)}{p\left(\sum d_k = d\right)}
+= \frac{d!}{d_1! \cdots d_K!} \prod_{d=1}^K \left( \frac{\mu_k}{\mu} \right)^{d_k} .
+\]
+すなわち，\((d_1, \ldots, d_K)\)は
+\[ p_k = \frac{\mu_k}{\mu} \]
+とした多項分布に従う．
+
+帰無仮説\(H_0 \colon \mu_k = \tau n_k\)では(13.23)が得られる．
+
+\paragraph{(13.29)(13.31)}
+\[ p_k = \frac{\mu_k}{\mu} = \frac{n_k (1+a_{k_0,k}\theta)}{\sum_l n_l (1+a_{l_0,l}\theta)} \]
+とすれば尤度は
+\[ L(d_1, \ldots, d_K) = \frac{d!}{d_1! \cdots d_K!} p_k{}^{d_k} \]
+で与えられる．
+
+\paragraph{(13.44)(13.47)}
+\(C_\lambda\)の\(\chi^2\)分布による近似：
+\[ \frac{\chi_\nu^2 - \nu}{\sqrt{2\nu}} = \frac{C_\lambda - E(C_\lambda)}{\sqrt{\Var(C_\lambda)}} \]
+を考える．両辺の歪度を等しくするには
+\[ \sqrt{\frac{8}{\nu}} = \sqrt{\beta_1(C_\lambda)} \]
+とすればよい．
+
+\paragraph{(13.45)}
+簡単のため添字の\(p\)，\(\lambda\)は省略する．
+
+(13.38)から\( \boldsymbol{r} - \boldsymbol{p} \sim \mathcal{N}(0, V/d) \)．
+(13.43)から
+\[
+E(C) = E \left[ \sum_{ij} A_{ij} (r_i-p_i) (r_j-p_j) \right]
+= \sum_{ij} A_{ij} E \left[ (r_i-p_i) (r_j-p_j) \right]
+= \sum_{ij} A_{ij} E V_{ij}
+= \frac{1}{d} \Tr(AV) .
+\]
+
+\paragraph{(13.46)}
+2次の場合は
+\begin{align*}
+  E(C^2) &= E \left[ \sum_{ijkl} A_{ij} A_{kl} (r_i-p_i) (r_j-p_j) (r_k-p_k) (r_l-p_l) \right] \\
+  &= \sum_{ijkl} A_{ij} A_{kl} E \left[ (r_i-p_i) (r_j-p_j) (r_k-p_k) (r_l-p_l) \right] .
+\end{align*}
+Isserlisの定理から
+\[ E(X_1X_2X_3X_4) = E(X_1X_2) E(X_3X_4) + E(X_1X_3) E(X_2X_4) + E(X_1X_4) E(X_2X_3) \]
+なので
+\begin{align*}
+  &= \frac{1}{d^2} \sum_{ijkl} A_{ij} A_{kl} V_{ij} V_{kl}
+  + \frac{2}{d^2} \sum_{ijkl} A_{ij} A_{kl} V_{ik} V_{jl} \\
+  &= \frac{1}{d^2} (\Tr(AV))^2 + \frac{2}{d^2} \Tr(AVAV) .
+\end{align*}
+
+\paragraph{(13.48)}
+3次の場合は
+\begin{align*}
+  & E(C^3) \\
+  &= E \left[ \sum_{ghijkl} A_{gh} A_{ij} A_{kl} (r_g-p_g) (r_h-p_h) (r_i-p_i) (r_j-p_j) (r_k-p_k) (r_l-p_l) \right] \\
+  &= \sum_{ghijkl} A_{gh} A_{ij} A_{kl} E \left[ (r_g-p_g) (r_h-p_h) (r_i-p_i) (r_j-p_j) (r_k-p_k) (r_l-p_l) \right] \\
+  &= \frac{1}{d^3} \sum_{ghijkl} A_{gh} A_{ij} A_{kl} V_{gh} V_{ij} V_{kl}
+  + \frac{6}{d^3} \sum_{ghijkl} A_{gh} A_{ij} A_{kl} V_{gh} V_{ik} V_{jl}
+  + \frac{8}{d^3} \sum_{ghijkl} A_{gh} A_{ij} A_{kl} V_{gi} V_{hk} V_{jl} \\
+  &= \frac{1}{d^3} (\Tr(AV))^3 + \frac{6}{d^3} \Tr(AV) \Tr(AVAV) + \frac{8}{d^3} \Tr(AVAVAV) .
+\end{align*}
+求める歪度は
+\[
+\sqrt{\beta_1} = \frac{E[(C-E(C))^3]}{(\Var(C))^{1.5}}
+= \frac{E(C^3) - 3 E(C^2)E(C) + 2(E(C))^3}{(\Var(C))^{1.5}} .
+\]
